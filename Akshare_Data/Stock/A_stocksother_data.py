@@ -64,8 +64,15 @@ def get_stock_ipo_benefit_ths():
     限量: 单次返回当前交易日的所有数据; 该数据每周更新一次, 返回最近一周的数据
     """
     try:
-        stock_ipo_benefit_ths_df = ak.stock_ipo_benefit_ths()
-        return stock_ipo_benefit_ths_df.to_dict(orient="records")
+        result = ak.stock_ipo_benefit_ths()
+        if isinstance(result, str) and result == "当前没有数据，请稍后再试。":
+            return {"message": result}
+        return result.to_dict(orient="records")
+    except AttributeError as e:
+        if "'NoneType' object has no attribute 'text'" in str(e):
+            return {"message": "当前没有数据，请稍后再试。"}
+        else:
+            raise HTTPException(status_code=500, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

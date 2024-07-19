@@ -1,0 +1,42 @@
+# 盈利预测
+
+import akshare as ak
+from fastapi import APIRouter, HTTPException
+
+router = APIRouter()
+
+
+@router.get("/stock_profit_forecast_em")
+def get_stock_profit_forecast_em():
+    """
+    东方财富网-数据中心-研究报告-盈利预测
+    """
+    try:
+        stock_profit_forecast_em_df = ak.stock_profit_forecast_em()
+        return stock_profit_forecast_em_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/stock_hk_profit_forecast_et")
+def get_stock_hk_profit_forecast_et(symbol: str, indicator: str):
+    """
+    经济通-公司资料-盈利预测
+    """
+    try:
+        stock_hk_profit_forecast_et_df = ak.stock_hk_profit_forecast_et(symbol=symbol, indicator=indicator)
+        return stock_hk_profit_forecast_et_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/stock_profit_forecast_ths")
+def get_stock_profit_forecast_ths(symbol: str, indicator: str):
+    """
+    同花顺-盈利预测
+    """
+    try:
+        stock_profit_forecast_ths_df = ak.stock_profit_forecast_ths(symbol=symbol, indicator=indicator)
+        return stock_profit_forecast_ths_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

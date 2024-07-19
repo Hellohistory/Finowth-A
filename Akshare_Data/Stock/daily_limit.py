@@ -1,0 +1,106 @@
+import akshare as ak
+from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel
+
+router = APIRouter()
+
+
+# 请求模型
+class DateRequest(BaseModel):
+    date: str
+
+
+# 涨停股池
+@router.post("/stock_zt_pool_em")
+def get_stock_zt_pool_em(request: DateRequest):
+    """
+    接口: stock_zt_pool_em
+    目标地址: https://quote.eastmoney.com/ztb/detail#type=ztgc
+    描述: 东方财富网-行情中心-涨停板行情-涨停股池
+    限量: 单次返回指定 symbol 的涨停股池数据; 该接口只能获取近期的数据
+    """
+    try:
+        stock_zt_pool_em_df = ak.stock_zt_pool_em(date=request.date)
+        return stock_zt_pool_em_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 昨日涨停股池
+@router.post("/stock_zt_pool_previous_em")
+def get_stock_zt_pool_previous_em(request: DateRequest):
+    """
+    接口: stock_zt_pool_previous_em
+    目标地址: https://quote.eastmoney.com/ztb/detail#type=zrzt
+    描述: 东方财富网-行情中心-涨停板行情-昨日涨停股池
+    限量: 单次返回指定 symbol 的昨日涨停股池数据; 该接口只能获取近期的数据
+    """
+    try:
+        stock_zt_pool_previous_em_df = ak.stock_zt_pool_previous_em(date=request.date)
+        return stock_zt_pool_previous_em_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 强势股池
+@router.post("/stock_zt_pool_strong_em")
+def get_stock_zt_pool_strong_em(request: DateRequest):
+    """
+    接口: stock_zt_pool_strong_em
+    目标地址: https://quote.eastmoney.com/ztb/detail#type=qsgc
+    描述: 东方财富网-行情中心-涨停板行情-强势股池
+    限量: 单次返回指定 symbol 的强势股池数据；该接口只能获取近期的数据
+    """
+    try:
+        stock_zt_pool_strong_em_df = ak.stock_zt_pool_strong_em(date=request.date)
+        return stock_zt_pool_strong_em_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 次新股池
+@router.post("/stock_zt_pool_sub_new_em")
+def get_stock_zt_pool_sub_new_em(request: DateRequest):
+    """
+    接口: stock_zt_pool_sub_new_em
+    目标地址: https://quote.eastmoney.com/ztb/detail#type=cxgc
+    描述: 东方财富网-行情中心-涨停板行情-次新股池
+    限量: 单次返回指定 symbol 的次新股池数据；该接口只能获取近期的数据
+    """
+    try:
+        stock_zt_pool_sub_new_em_df = ak.stock_zt_pool_sub_new_em(date=request.date)
+        return stock_zt_pool_sub_new_em_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 炸板股池
+@router.post("/stock_zt_pool_zbgc_em")
+def get_stock_zt_pool_zbgc_em(request: DateRequest):
+    """
+    接口: stock_zt_pool_zbgc_em
+    目标地址: https://quote.eastmoney.com/ztb/detail#type=zbgc
+    描述: 东方财富网-行情中心-涨停板行情-炸板股池
+    限量: 单次返回指定 symbol 的炸板股池数据；该接口只能获取近期的数据
+    """
+    try:
+        stock_zt_pool_zbgc_em_df = ak.stock_zt_pool_zbgc_em(date=request.date)
+        return stock_zt_pool_zbgc_em_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 跌停股池
+@router.post("/stock_zt_pool_dtgc_em")
+def get_stock_zt_pool_dtgc_em(request: DateRequest):
+    """
+    接口: stock_zt_pool_dtgc_em
+    目标地址: https://quote.eastmoney.com/ztb/detail#type=zbgc
+    描述: 东方财富网-行情中心-涨停板行情-跌停股池
+    限量: 单次返回指定 symbol 的跌停股池数据；该接口只能获取近期的数据
+    """
+    try:
+        stock_zt_pool_dtgc_em_df = ak.stock_zt_pool_dtgc_em(date=request.date)
+        return stock_zt_pool_dtgc_em_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

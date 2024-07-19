@@ -1,0 +1,65 @@
+openapi: 3.0.3
+info:
+  title: 上海证券交易所股票数据总貌API
+  description: 上海证券交易所-股票数据总貌
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:36925
+    description: 本地开发服务器
+paths:
+  /stock_sse_summary:
+    get:
+      summary: 获取最近交易日的股票数据总貌
+      description: 返回最近交易日的股票数据总貌 (当前交易日的数据需要交易所收盘后统计)
+      responses:
+        '200':
+          description: 成功返回股票数据总貌
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    项目:
+                      type: string
+                      description: 数据项目名称
+                      example: 流通股本
+                    股票:
+                      type: string
+                      description: 股票数据
+                      example: "46083.59"
+                    主板:
+                      type: string
+                      description: 主板数据
+                      example: "44634.76"
+                    科创板:
+                      type: string
+                      description: 科创板数据
+                      example: "1448.83"
+        '400':
+          description: 错误请求
+        '500':
+          description: 服务器错误
+
+components:
+  schemas:
+    StockSummary:
+      type: object
+      properties:
+        项目:
+          type: string
+          description: 数据项目名称
+          example: 流通股本
+        股票:
+          type: string
+          description: 股票数据
+          example: "46083.59"
+        主板:
+          type: string
+          description: 主板数据
+          example: "44634.76"
+        科创板:
+          type: string
+          description: 科创板数据
+          example: "1448.83"

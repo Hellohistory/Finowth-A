@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from Akshare_Data.request_model import SymbolRequest
+from Akshare_Data.request_model import SymbolRequest, DateRequest
 from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
 
 router = APIRouter()
@@ -148,6 +148,74 @@ def get_stock_hk_hot_rank_em():
     try:
         stock_hk_hot_rank_em_df = ak.stock_hk_hot_rank_em()
         return stock_hk_hot_rank_em_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/stock_hot_follow_xq", operation_id="post_stock_hot_follow_xq")
+async def post_stock_hot_follow_xq(request: SymbolRequest):
+    """
+    雪球-沪深股市-热度排行榜-关注排行榜
+    """
+    try:
+        stock_hot_follow_xq_df = ak.stock_hot_follow_xq(symbol=request.symbol)
+        return stock_hot_follow_xq_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/stock_hot_tweet_xq", operation_id="post_stock_hot_tweet_xq")
+async def post_stock_hot_tweet_xq(request: SymbolRequest):
+    """
+    雪球-沪深股市-热度排行榜-讨论排行榜
+    """
+    try:
+        stock_hot_tweet_xq_df = ak.stock_hot_tweet_xq(symbol=request.symbol)
+        return stock_hot_tweet_xq_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/stock_hot_deal_xq", operation_id="post_stock_hot_deal_xq")
+async def post_stock_hot_deal_xq(request: SymbolRequest):
+    """
+    雪球-沪深股市-热度排行榜-交易排行榜
+    """
+    try:
+        stock_hot_deal_xq_df = ak.stock_hot_deal_xq(symbol=request.symbol)
+        return stock_hot_deal_xq_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/stock_hot_rank_wc", operation_id="post_stock_hot_rank_wc")
+async def post_stock_hot_rank_wc(request: DateRequest):
+    """
+    问财-热门股票排名数据
+    """
+    try:
+        stock_hot_rank_wc_df = ak.stock_hot_rank_wc(date=request.date)
+        return stock_hot_rank_wc_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/stock_hk_hot_rank_detail_em", operation_id="post_stock_hot_rank_em")
+async def post_stock_hk_hot_rank_detail_em(request: SymbolRequest):
+    """
+    接口: stock_hot_rank_detail_em
+
+    目标地址: http://guba.eastmoney.com/rank/stock?code=000665
+
+    描述: 东方财富网-股票热度-历史趋势及粉丝特征
+
+    限量: 单次返回指定个股的股票近期历史数据
+
+    请求类型: `POST`
+    """
+    try:
+        stock_hk_hot_rank_detail_em_df = ak.stock_hk_hot_rank_detail_em(symbol=request.symbol)
+        return stock_hk_hot_rank_detail_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

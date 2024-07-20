@@ -30,20 +30,6 @@ async def gpost_stock_industry_pe_ratio_cninfo(request: SymbolDateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 乐咕乐股-A 股个股指标: 市盈率, 市净率, 股息率
-@router.post("/stock_a_indicator_lg", operation_id="post_stock_a_indicator_lg")
-async def post_stock_a_indicator_lg(request: SymbolRequest):
-    """
-    描述: 乐咕乐股-A 股个股指标: 市盈率, 市净率, 股息率
-    限量: 单次获取指定 symbol 的所有历史数据
-    """
-    try:
-        stock_a_indicator_lg_df = ak.stock_a_indicator_lg(symbol=request.symbol)
-        return stock_a_indicator_lg_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
 # 乐咕乐股-股息率-A 股股息率
 @router.post("/stock_a_gxl_lg", operation_id="post_stock_a_gxl_lg")
 async def post_stock_a_gxl_lg(request: SymbolRequest):

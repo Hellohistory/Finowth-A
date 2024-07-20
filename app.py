@@ -31,7 +31,7 @@ from Akshare_Data.Stock.dividend import router as router20
 from Akshare_Data.Stock.featured_data import router as router17
 from Akshare_Data.Stock.financial_report_issuance import router as router19
 from Akshare_Data.Stock.goodwill import router as router12
-from Akshare_Data.Stock.his_trends_fan_char import router as router39
+
 from Akshare_Data.Stock.historical_data import router as router6
 from Akshare_Data.Stock.industry_sector import router as router37
 from Akshare_Data.Stock.info_data import router as router45
@@ -52,10 +52,9 @@ from Akshare_Data.Stock.stock_institutional_survey_statisticsj import router as 
 from Akshare_Data.Stock.stock_market_overview import router as router3
 from Akshare_Data.Stock.stock_pledge import router as router14
 from Akshare_Data.Stock.stock_popularity import router as router38
-from Akshare_Data.Stock.stock_sector_spot import router as router47
+
 from Akshare_Data.Stock.technical_indicators import router as router41
 from Akshare_Data.Stock.time_sharing_data import router as router4
-from Akshare_Data.doc import router as router49
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -173,7 +172,8 @@ app.include_router(router35)
 app.include_router(router36)
 app.include_router(router37)
 app.include_router(router38)
-app.include_router(router39)
+
+
 app.include_router(router40)
 app.include_router(router41)
 app.include_router(router42)
@@ -181,9 +181,11 @@ app.include_router(router43)
 app.include_router(router44)
 app.include_router(router45)
 app.include_router(router46)
-app.include_router(router47)
+
+
 app.include_router(router48)
-app.include_router(router49)
+
+
 app.include_router(router50)
 app.include_router(router51)
 app.include_router(router52)

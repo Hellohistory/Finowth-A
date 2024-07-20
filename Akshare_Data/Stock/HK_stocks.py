@@ -8,7 +8,7 @@ router = APIRouter()
 
 
 # 东方财富网-港股-实时行情
-@router.get("/stock_hk_spot_em", operation_id="get_stock_zh_ah_spot")
+@router.get("/stock_hk_spot_em", operation_id="get_stock_hk_spot_em")
 def get_stock_hk_spot_em():
     """
     接口: stock_hk_spot_em
@@ -31,7 +31,7 @@ def get_stock_hk_spot_em():
 
 
 # 港股主板实时行情数据-东财
-@router.get("/stock_hk_main_board_spot_em", operation_id="get_stock_zh_ah_spot")
+@router.get("/stock_hk_main_board_spot_em", operation_id="get_stock_hk_main_board_spot_em")
 def get_stock_hk_main_board_spot_em():
     """
     接口: stock_hk_main_board_spot_em
@@ -104,7 +104,7 @@ async def post_stock_hk_hist_min_em(request: StockMinuteRequest):
 
 
 # 东方财富网-港股-历史行情数据
-@router.post("/stock_hk_hist", operation_id="post_stock_zh_ah_spot")
+@router.post("/stock_hk_hist", operation_id="post_stock_hk_hist")
 async def post_stock_hk_hist(request: StockHistoryRequest):
     """
     接口: stock_hk_hist
@@ -131,7 +131,7 @@ async def post_stock_hk_hist(request: StockHistoryRequest):
 
 
 # 新浪财经-港股-历史行情数据
-@router.post("/stock_hk_daily", operation_id="post_stock_zh_ah_spot")
+@router.post("/stock_hk_daily", operation_id="post_stock_hk_daily")
 async def post_stock_hk_daily(request: StockDailyRequest):
     """
     接口: stock_hk_daily

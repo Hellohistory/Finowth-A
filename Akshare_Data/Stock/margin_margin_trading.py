@@ -1,6 +1,5 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
 
 from Akshare_Data.request_model import SingleDateRequest, DateRangeRequest
 

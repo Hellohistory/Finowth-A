@@ -132,6 +132,7 @@ def get_stock_rank_cxsl_ths():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+
 # 向上突破
 @router.post("/stock_rank_xstp_ths", operation_id="post_stock_rank_xstp_ths")
 async def post_stock_rank_xstp_ths(request: SymbolRequest):

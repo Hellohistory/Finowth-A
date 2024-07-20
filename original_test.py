@@ -11,6 +11,7 @@ openapi_doc = response.json()
 # 提取并打印 API 地址、函数名称、请求类型、API 描述以及参数信息
 print("API 文档：")
 
+
 def resolve_ref(ref, components):
     ref_path = ref.split('/')
     schema = components
@@ -19,6 +20,7 @@ def resolve_ref(ref, components):
             return None
         schema = schema.get(part)
     return schema
+
 
 components = openapi_doc.get('components', {})
 
@@ -48,4 +50,4 @@ for path, path_item in openapi_doc['paths'].items():
                             print(f"请求参数示例:")
                             print(json.dumps(schema, indent=2, ensure_ascii=False))
 
-        print("\n" + "="*50 + "\n")
+        print("\n" + "=" * 50 + "\n")

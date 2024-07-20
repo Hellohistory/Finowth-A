@@ -91,8 +91,9 @@ async def post_stock_financial_hk_analysis_indicator_em(request: SymolIndicatorR
     请求类型: `POST`
     """
     try:
-        stock_financial_hk_analysis_indicator_em_df = ak.stock_financial_hk_analysis_indicator_em(symbol=request.symbol,
-                                                                                                  indicator=request.indicator)
+        stock_financial_hk_analysis_indicator_em_df = (
+            ak.stock_financial_hk_analysis_indicator_em(symbol=request.symbol,
+                                                        indicator=request.indicator))
         stock_financial_hk_analysis_indicator_em_df = sanitize_data_pandas(stock_financial_hk_analysis_indicator_em_df)
 
         return stock_financial_hk_analysis_indicator_em_df.to_dict(orient="records")

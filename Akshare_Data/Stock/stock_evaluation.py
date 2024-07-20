@@ -1,14 +1,10 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import SymbolRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
-
-
-class SymbolRequest(BaseModel):
-    symbol: str
 
 
 # 东方财富网-数据中心-特色数据-千股千评

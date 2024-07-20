@@ -2,7 +2,8 @@
 
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+
+from Akshare_Data.request_model import SymbolDateRequest, DateRangeRequest, SymbolRequest
 
 router = APIRouter()
 
@@ -19,21 +20,6 @@ def get_stock_dzjy_sctj():
         return stock_dzjy_sctj_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
-class SymbolDateRequest(BaseModel):
-    symbol: str
-    start_date: str
-    end_date: str
-
-
-class DateRangeRequest(BaseModel):
-    start_date: str
-    end_date: str
-
-
-class SymbolRequest(BaseModel):
-    symbol: str
 
 
 @router.post("/stock_dzjy_mrmx", operation_id="post_stock_dzjy_mrmx")

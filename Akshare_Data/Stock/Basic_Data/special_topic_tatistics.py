@@ -1,29 +1,15 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import SymbolDateRangeRequest, DateRequest, SymbolRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
 
-class SymbolRequest(BaseModel):
-    symbol: str
-
-
-class SymbolDateRangeRequest(BaseModel):
-    symbol: str
-    start_date: str
-    end_date: str
-
-
-class DateRequest(BaseModel):
-    date: str
-
-
 # 巨潮资讯-数据中心-专题统计-公司治理-对外担保
 @router.post("/stock_cg_guarantee_cninfo", operation_id="post_stock_cg_guarantee_cninfo")
-def get_stock_cg_guarantee_cninfo(request: SymbolDateRangeRequest):
+async def post_stock_cg_guarantee_cninfo(request: SymbolDateRangeRequest):
     """
     描述: 巨潮资讯-数据中心-专题统计-公司治理-对外担保
     限量: 单次指定 symbol 和起始日期的对外担保数据
@@ -39,7 +25,7 @@ def get_stock_cg_guarantee_cninfo(request: SymbolDateRangeRequest):
 
 # 巨潮资讯-数据中心-专题统计-公司治理-公司诉讼
 @router.post("/stock_cg_lawsuit_cninfo", operation_id="post_stock_cg_lawsuit_cninfo")
-def get_stock_cg_lawsuit_cninfo(request: SymbolDateRangeRequest):
+async def post_stock_cg_lawsuit_cninfo(request: SymbolDateRangeRequest):
     """
     描述: 巨潮资讯-数据中心-专题统计-公司治理-公司诉讼
     限量: 单次指定 symbol 和起始日期的公司诉讼数据
@@ -55,7 +41,7 @@ def get_stock_cg_lawsuit_cninfo(request: SymbolDateRangeRequest):
 
 # 巨潮资讯-数据中心-专题统计-公司治理-股权质押
 @router.post("/stock_cg_equity_mortgage_cninfo", operation_id="post_stock_cg_equity_mortgage_cninfo")
-def get_stock_cg_equity_mortgage_cninfo(request: DateRequest):
+async def post_stock_cg_equity_mortgage_cninfo(request: DateRequest):
     """
     描述: 巨潮资讯-数据中心-专题统计-公司治理-股权质押
     限量: 单次指定 symbol 的股权质押数据
@@ -71,7 +57,7 @@ def get_stock_cg_equity_mortgage_cninfo(request: DateRequest):
 
 # 东方财富网-数据中心-特色数据-券商业绩月报
 @router.post("/stock_qsjy_em", operation_id="post_stock_qsjy_em")
-def get_stock_qsjy_em(request: DateRequest):
+async def post_stock_qsjy_em(request: DateRequest):
     """
     描述: 东方财富网-数据中心-特色数据-券商业绩月报
     限量: 单次获取所有数据, 数据从 201006-202007, 月频率
@@ -85,7 +71,7 @@ def get_stock_qsjy_em(request: DateRequest):
 
 # 巨潮资讯-数据中心-专题统计-股东股本-实际控制人持股变动
 @router.post("/stock_hold_control_cninfo", operation_id="post_stock_hold_control_cninfo")
-def get_stock_hold_control_cninfo(request: SymbolRequest):
+async def post_stock_hold_control_cninfo(request: SymbolRequest):
     """
     描述: 巨潮资讯-数据中心-专题统计-股东股本-实际控制人持股变动
     限量: 单次指定 symbol 的实际控制人持股变动数据, 从 2010 开始

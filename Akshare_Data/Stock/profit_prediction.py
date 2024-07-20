@@ -2,7 +2,8 @@
 
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+
+from Akshare_Data.request_model import SymbolIndicatorRequest
 
 router = APIRouter()
 
@@ -17,11 +18,6 @@ def get_stock_profit_forecast_em():
         return stock_profit_forecast_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
-class SymbolIndicatorRequest(BaseModel):
-    symbol: str
-    indicator: str
 
 
 @router.post("/stock_hk_profit_forecast_et", operation_id="post_stock_hk_profit_forecast_et")

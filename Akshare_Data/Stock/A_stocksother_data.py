@@ -1,19 +1,15 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import DateRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
 
 
-class DateRequest(BaseModel):
-    date: str
-
-
 # 东方财富网-数据中心-股市日历-公司动态
 @router.post("/stock_gsrl_gsdt_em", operation_id="post_stock_gsrl_gsdt_em")
-def get_stock_gsrl_gsdt_em(request: DateRequest):
+async def post_stock_gsrl_gsdt_em(request: DateRequest):
     """
     描述: 东方财富网-数据中心-股市日历-公司动态
     限量: 单次返回指定交易日的数据

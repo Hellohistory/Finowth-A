@@ -1,14 +1,10 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import SymbolRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
-
-
-class SymbolRequest(BaseModel):
-    symbol: str
 
 
 # 东方财富-行情中心-盘口异动数据
@@ -30,7 +26,7 @@ async def post_stock_changes_em(request: SymbolRequest):
 
 
 @router.get("/stock_board_change_em", operation_id="get_stock_hsgt_fund_flow_summary_em")
-async def get_stock_hsgt_fund_flow_summary_em():
+def get_stock_hsgt_fund_flow_summary_em():
     """
     描述: 东方财富-行情中心-当日板块异动详情
     限量: 返回最近交易日的数据

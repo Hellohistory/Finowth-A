@@ -2,21 +2,14 @@ import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
+from Akshare_Data.request_model import SymbolRequest
 from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
 
 router = APIRouter()
 
 
-class StockSymbolRequest(BaseModel):
-    symbol: str
-
-
-class SymbolRequest(BaseModel):
-    symbol: str
-
-
 @router.post("/stock_hot_follow_xq", operation_id="post_stock_hot_follow_xq")
-async def post_stock_hot_follow_xq(request: StockSymbolRequest):
+async def post_stock_hot_follow_xq(request: SymbolRequest):
     """
     雪球-沪深股市-热度排行榜-关注排行榜
     """
@@ -30,7 +23,7 @@ async def post_stock_hot_follow_xq(request: StockSymbolRequest):
 
 
 @router.post("/stock_hot_tweet_xq", operation_id="post_stock_hot_tweet_xq")
-async def post_stock_hot_tweet_xq(request: StockSymbolRequest):
+async def post_stock_hot_tweet_xq(request: SymbolRequest):
     """
     雪球-沪深股市-热度排行榜-讨论排行榜
     """

@@ -1,19 +1,15 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import SymbolRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
 
-class SymbolRequest(BaseModel):
-    symbol: str
-
-
 # 东方财富网-数据中心-特色数据-高管持股
 @router.post("/stock_ggcg_em", operation_id="post_stock_ggcg_em")
-def post_stock_ggcg_em(request: SymbolRequest):
+async def post_stock_ggcg_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-特色数据-高管持股
     限量: 单次获取所有高管持股数据数据
@@ -29,7 +25,7 @@ def post_stock_ggcg_em(request: SymbolRequest):
 
 # 东方财富网-概念板-行情中心-日K-筹码分布
 @router.post("/stock_cyq_em", operation_id="post_stock_cyq_em")
-def post_stock_cyq_em(request: SymbolRequest):
+async def post_stock_cyq_em(request: SymbolRequest):
     """
     描述: 东方财富网-概念板-行情中心-日K-筹码分布
     限量: 单次返回指定 symbol 和 adjust 的近 90 个交易日数据

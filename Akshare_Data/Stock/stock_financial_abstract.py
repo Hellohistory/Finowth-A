@@ -1,28 +1,14 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import SymbolRequest, SymbolIndicatorRequest, FinancialAnalysis
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
 
-class StockRequest(BaseModel):
-    symbol: str
-
-
-class SymbolRequest(BaseModel):
-    symbol: str
-    indicator: str
-
-
-class FinancialAnalysis(BaseModel):
-    symbol: str
-    start_year: str
-
-
 @router.post("/stock_financial_abstract", operation_id="post_stock_financial_abstract")
-async def post_stock_financial_abstract(request: StockRequest):
+async def post_stock_financial_abstract(request: SymbolRequest):
     """
     获取股票的财务摘要数据
     :param request: 包含股票代码的请求体
@@ -39,7 +25,7 @@ async def post_stock_financial_abstract(request: StockRequest):
 
 
 @router.post("/stock_financial_abstract_ths", operation_id="post_stock_financial_abstract_ths")
-async def post_stock_financial_abstract_ths(request: SymbolRequest):
+async def post_stock_financial_abstract_ths(request: SymbolIndicatorRequest):
     """
     获取股票的财务摘要数据（包含指标）
     :param request: 包含股票代码和指标的请求体

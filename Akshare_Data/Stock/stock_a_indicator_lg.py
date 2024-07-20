@@ -1,18 +1,14 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import SymbolRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
 
-class IndicatorLg(BaseModel):
-    symbol: str
-
-
 @router.post("/stock_a_indicator_lg", operation_id="post_stock_a_indicator_lg")
-async def post_stock_a_indicator_lg(request: IndicatorLg):
+async def post_stock_a_indicator_lg(request: SymbolRequest):
     """
     描述: 乐咕乐股-A 股个股指标: 市盈率, 市净率, 股息率
     限量: 单次获取指定 symbol 的所有历史数据

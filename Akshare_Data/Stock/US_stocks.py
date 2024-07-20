@@ -1,31 +1,10 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import SymbolRequest, StockHistoryRequest, StockDailyRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
-
-
-class StockHistoryRequest(BaseModel):
-    symbol: str
-    period: str
-    start_date: str
-    end_date: str
-    adjust: str = ""
-
-
-class StockMinuteRequest(BaseModel):
-    symbol: str
-
-
-class StockDailyRequest(BaseModel):
-    symbol: str
-    adjust: str = ""
-
-
-class StockFamousRequest(BaseModel):
-    symbol: str
 
 
 # 东方财富网-美股-实时行情
@@ -81,7 +60,7 @@ async def post_stock_us_hist(request: StockHistoryRequest):
 
 # 东方财富网-美股-每日分时行情
 @router.post("/stock_us_hist_min_em", operation_id="post_stock_us_hist_min_em")
-async def post_stock_us_hist_min_em(request: StockMinuteRequest):
+async def post_stock_us_hist_min_em(request: SymbolRequest):
     """
     描述: 东方财富网-行情首页-美股-每日分时行情
     限量: 单次返回指定上市公司最近 5 个交易日分钟数据
@@ -126,7 +105,7 @@ def get_stock_us_pink_spot_em():
 
 # 美股-知名美股的实时行情数据
 @router.post("/stock_us_famous_spot_em", operation_id="post_stock_us_famous_spot_em")
-async def post_stock_us_famous_spot_em(request: StockFamousRequest):
+async def post_stock_us_famous_spot_em(request: SymbolRequest):
     """
     描述: 美股-知名美股的实时行情数据
     限量: 单次返回指定 symbol 的行情数据

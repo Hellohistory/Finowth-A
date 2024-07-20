@@ -1,28 +1,15 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import SymbolRequest, StockQuarterRequest, DateRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
 
-class SymbolRequest(BaseModel):
-    symbol: str
-
-
-class StockQuarterRequest(BaseModel):
-    stock: str
-    quarter: str
-
-
-class DateRequest(BaseModel):
-    date: str
-
-
 # 新浪财经-机构持股-机构持股一览表
 @router.post("/stock_institute_hold", operation_id="post_stock_institute_hold")
-def get_stock_institute_hold(request: SymbolRequest):
+async def post_stock_institute_hold(request: SymbolRequest):
     """
     描述: 新浪财经-机构持股-机构持股一览表
     限量: 单次获取所有历史数据
@@ -36,7 +23,7 @@ def get_stock_institute_hold(request: SymbolRequest):
 
 # 新浪财经-机构持股-机构持股详情
 @router.post("/stock_institute_hold_detail", operation_id="post_stock_institute_hold_detail")
-def get_stock_institute_hold_detail(request: StockQuarterRequest):
+async def post_stock_institute_hold_detail(request: StockQuarterRequest):
     """
     描述: 新浪财经-机构持股-机构持股详情
     限量: 单次获取所有历史数据
@@ -50,7 +37,7 @@ def get_stock_institute_hold_detail(request: StockQuarterRequest):
 
 # 新浪财经-机构推荐池-具体指标的数据
 @router.post("/stock_institute_recommend", operation_id="post_stock_institute_recommend")
-def get_stock_institute_recommend(request: SymbolRequest):
+async def post_stock_institute_recommend(request: SymbolRequest):
     """
     描述: 新浪财经-机构推荐池-具体指标的数据
     限量: 单次获取新浪财经-机构推荐池-具体指标的所有数据
@@ -64,7 +51,7 @@ def get_stock_institute_recommend(request: SymbolRequest):
 
 # 新浪财经-机构推荐池-股票评级记录
 @router.post("/stock_institute_recommend_detail", operation_id="post_stock_institute_recommend_detail")
-def get_stock_institute_recommend_detail(request: SymbolRequest):
+async def post_stock_institute_recommend_detail(request: SymbolRequest):
     """
     描述: 新浪财经-机构推荐池-股票评级记录
     限量: 单次获取新浪财经-机构推荐池-股票评级记录的所有数据
@@ -80,7 +67,7 @@ def get_stock_institute_recommend_detail(request: SymbolRequest):
 
 # 巨潮资讯-数据中心-评级预测-投资评级
 @router.post("/stock_rank_forecast_cninfo", operation_id="post_stock_rank_forecast_cninfo")
-def get_stock_rank_forecast_cninfo(request: DateRequest):
+async def post_stock_rank_forecast_cninfo(request: DateRequest):
     """
     描述: 巨潮资讯-数据中心-评级预测-投资评级
     限量: 单次获取指定交易日的所有数据

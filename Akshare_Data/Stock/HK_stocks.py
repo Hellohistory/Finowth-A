@@ -1,31 +1,10 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import StockHistoryRequest, StockDailyRequest, StockMinuteRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
-
-
-class StockHistoryRequest(BaseModel):
-    symbol: str
-    period: str
-    start_date: str
-    end_date: str
-    adjust: str = ""
-
-
-class StockMinuteRequest(BaseModel):
-    symbol: str
-    period: str
-    adjust: str
-    start_date: str
-    end_date: str
-
-
-class StockDailyRequest(BaseModel):
-    symbol: str
-    adjust: str = ""
 
 
 # 东方财富网-港股-实时行情
@@ -76,7 +55,7 @@ def get_stock_hk_spot():
 
 # 东方财富网-港股-每日分时行情
 @router.post("/stock_hk_hist_min_em", operation_id="post_stock_zh_ah_spot")
-def get_stock_hk_hist_min_em(request: StockMinuteRequest):
+async def post_stock_hk_hist_min_em(request: StockMinuteRequest):
     """
     描述: 东方财富网-行情首页-港股-每日分时行情
     限量: 单次返回指定上市公司最近 5 个交易日分钟数据
@@ -96,7 +75,7 @@ def get_stock_hk_hist_min_em(request: StockMinuteRequest):
 
 # 东方财富网-港股-历史行情数据
 @router.post("/stock_hk_hist", operation_id="post_stock_zh_ah_spot")
-def get_stock_hk_hist(request: StockHistoryRequest):
+async def post_stock_hk_hist(request: StockHistoryRequest):
     """
     描述: 港股-历史行情数据, 可以选择返回复权后数据, 更新频率为日频
     限量: 单次返回指定上市公司的历史行情数据
@@ -116,7 +95,7 @@ def get_stock_hk_hist(request: StockHistoryRequest):
 
 # 新浪财经-港股-历史行情数据
 @router.post("/stock_hk_daily", operation_id="post_stock_zh_ah_spot")
-def get_stock_hk_daily(request: StockDailyRequest):
+async def post_stock_hk_daily(request: StockDailyRequest):
     """
     描述: 港股-历史行情数据, 可以选择返回复权后数据, 更新频率为日频
     限量: 单次返回指定上市公司的历史行情数据

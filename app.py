@@ -1,3 +1,5 @@
+from typing import List
+
 import uvicorn
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
@@ -73,14 +75,9 @@ app.add_middleware(
 )
 
 
-# 示例API
-@app.get("/openapi.json")
-async def get_open_api_endpoint():
-    return get_openapi(
-        title="FinData API",
-        version="0.0.1",
-        routes=app.routes,  # 使用app.routes而不是router.routes
-    )
+class APIParameter(BaseModel):
+    name: str
+    type: str
 
 
 class APIInfo(BaseModel):
@@ -88,7 +85,7 @@ class APIInfo(BaseModel):
     path: str
     method: str
     description: str
-    parameters: list
+    parameters: List[APIParameter]
 
 
 def process_api_info():
@@ -100,21 +97,43 @@ def process_api_info():
     api_info_list = []
     for path, methods in openapi_schema['paths'].items():
         for method, info in methods.items():
+            parameters = []
+            if method.upper() == 'POST':  # 处理POST请求的参数
+                request_body = info.get('requestBody', {}).get('content', {}).get('application/json', {}).get('schema',
+                                                                                                              {}).get(
+                    'properties', {})
+                parameters = [APIParameter(name=k, type=v.get('type', 'unknown')) for k, v in request_body.items()]
+            elif method.upper() == 'GET':  # 处理GET请求的参数
+                query_parameters = info.get('parameters', [])
+                for param in query_parameters:
+                    param_name = param.get('name')
+                    param_type = param.get('schema', {}).get('type', 'unknown')
+                    parameters.append(APIParameter(name=param_name, type=param_type))
+
             api_info = APIInfo(
                 name=info.get('summary', 'No summary'),
                 path=path,
                 method=method.upper(),
                 description=info.get('description', 'No description'),
-                parameters=info.get('parameters', [])
+                parameters=parameters
             )
             api_info_list.append(api_info)
     return api_info_list
 
 
-@app.get("/api_info")
+@app.get("/api_info", response_model=List[APIInfo])
 async def get_api_info():
     api_info = process_api_info()
     return api_info
+
+
+@app.get("/openapi.json")
+async def get_open_api_endpoint():
+    return get_openapi(
+        title="FinData API",
+        version="0.0.1",
+        routes=app.routes,
+    )
 
 
 app.include_router(router1)

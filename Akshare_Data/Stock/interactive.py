@@ -1,12 +1,9 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+
+from Akshare_Data.request_model import SymbolRequest
 
 router = APIRouter()
-
-
-class SymbolRequest(BaseModel):
-    symbol: str
 
 
 @router.post("/stock_irm_cninfo", operation_id="post_stock_irm_cninfo")

@@ -1,25 +1,9 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+
+from Akshare_Data.request_model import ConceptHistRequest, ConceptHistMinRequest, SymbolRequest
 
 router = APIRouter()
-
-
-class ConceptConsRequest(BaseModel):
-    symbol: str
-
-
-class ConceptHistRequest(BaseModel):
-    symbol: str
-    period: str
-    start_date: str
-    end_date: str
-    adjust: str
-
-
-class ConceptHistMinRequest(BaseModel):
-    symbol: str
-    period: str
 
 
 @router.get("/stock_board_concept_name_em", operation_id="get_stock_board_concept_name_em")
@@ -36,7 +20,7 @@ def get_stock_board_concept_name_em():
 
 # 东方财富-沪深板块-概念板块-板块成份
 @router.post("/stock_board_concept_cons_em", operation_id="post_stock_board_concept_cons_em")
-def get_stock_board_concept_cons_em(request: ConceptConsRequest):
+async def post_stock_board_concept_cons_em(request: SymbolRequest):
     """
     东方财富-沪深板块-概念板块-板块成份
     """
@@ -49,7 +33,7 @@ def get_stock_board_concept_cons_em(request: ConceptConsRequest):
 
 # 东方财富-沪深板块-概念板块-历史行情数据
 @router.post("/stock_board_concept_hist_em", operation_id="post_stock_board_concept_hist_em")
-def get_stock_board_concept_hist_em(request: ConceptHistRequest):
+async def post_stock_board_concept_hist_em(request: ConceptHistRequest):
     """
     东方财富-沪深板块-概念板块-历史行情数据
     """
@@ -68,7 +52,7 @@ def get_stock_board_concept_hist_em(request: ConceptHistRequest):
 
 # 东方财富-沪深板块-概念板块-分时历史行情数据
 @router.post("/stock_board_concept_hist_min_em", operation_id="post_stock_board_concept_hist_min_em")
-def get_stock_board_concept_hist_min_em(request: ConceptHistMinRequest):
+async def post_stock_board_concept_hist_min_em(request: ConceptHistMinRequest):
     """
     东方财富-沪深板块-概念板块-分时历史行情数据
     """

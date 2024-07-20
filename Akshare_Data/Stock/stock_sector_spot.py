@@ -1,14 +1,10 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import SectorSpotRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
-
-
-class SectorSpotRequest(BaseModel):
-    indicator: str
 
 
 # 东方财富网-数据中心-限售股解禁-解禁详情一览

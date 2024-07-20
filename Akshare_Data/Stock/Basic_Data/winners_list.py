@@ -1,39 +1,15 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import DateRangeRequest, SymbolRequest, SymbolFlagDateRequest, DateRequest
 from Akshare_Data.utility_function import sanitize_data_pandas, sanitize_data, sanitize_data_numpy
 
 router = APIRouter()
 
 
-class DateRangeRequest(BaseModel):
-    start_date: str
-    end_date: str
-
-
-class SymbolDateRequest(BaseModel):
-    symbol: str
-    date: str
-
-
-class SymbolFlagDateRequest(BaseModel):
-    symbol: str
-    date: str
-    flag: str
-
-
-class SymbolRequest(BaseModel):
-    symbol: str
-
-
-class DateRequest(BaseModel):
-    date: str
-
-
 # 东方财富网-龙虎榜单-龙虎榜详情
 @router.post("/stock_lhb_detail_em", operation_id="post_stock_lhb_detail_em")
-def get_stock_lhb_detail_em(request: DateRangeRequest):
+async def post_stock_lhb_detail_em(request: DateRangeRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-龙虎榜详情
     限量: 单次返回所有历史数据
@@ -49,7 +25,7 @@ def get_stock_lhb_detail_em(request: DateRangeRequest):
 
 # 东方财富网-龙虎榜单-个股上榜统计
 @router.post("/stock_lhb_stock_statistic_em", operation_id="post_stock_lhb_stock_statistic_em")
-def get_stock_lhb_stock_statistic_em(request: SymbolRequest):
+async def post_stock_lhb_stock_statistic_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-个股上榜统计
     限量: 单次返回所有历史数据
@@ -63,7 +39,7 @@ def get_stock_lhb_stock_statistic_em(request: SymbolRequest):
 
 # 东方财富网-龙虎榜单-机构买卖每日统计
 @router.post("/stock_lhb_jgmmtj_em", operation_id="post_stock_lhb_jgmmtj_em")
-def get_stock_lhb_jgmmtj_em(request: DateRangeRequest):
+async def post_stock_lhb_jgmmtj_em(request: DateRangeRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-机构买卖每日统计
     限量: 单次返回所有历史数据
@@ -77,7 +53,7 @@ def get_stock_lhb_jgmmtj_em(request: DateRangeRequest):
 
 # 东方财富网-龙虎榜单-机构席位追踪
 @router.post("/stock_lhb_jgstatistic_em", operation_id="post_stock_lhb_jgstatistic_em")
-def get_stock_lhb_jgstatistic_em(request: SymbolRequest):
+async def post_stock_lhb_jgstatistic_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-机构席位追踪
     限量: 单次返回所有历史数据
@@ -93,7 +69,7 @@ def get_stock_lhb_jgstatistic_em(request: SymbolRequest):
 
 # 东方财富网-龙虎榜单-每日活跃营业部
 @router.post("/stock_lhb_hyyyb_em", operation_id="post_stock_lhb_hyyyb_em")
-def get_stock_lhb_hyyyb_em(request: DateRangeRequest):
+async def post_stock_lhb_hyyyb_em(request: DateRangeRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-每日活跃营业部
     限量: 单次返回所有历史数据
@@ -109,7 +85,7 @@ def get_stock_lhb_hyyyb_em(request: DateRangeRequest):
 
 # 东方财富网-龙虎榜单-营业部排行
 @router.post("/stock_lhb_yybph_em", operation_id="post_stock_lhb_yybph_em")
-def get_stock_lhb_yybph_em(request: SymbolRequest):
+async def post_stock_lhb_yybph_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-营业部排行
     限量: 单次返回所有历史数据
@@ -123,7 +99,7 @@ def get_stock_lhb_yybph_em(request: SymbolRequest):
 
 # 东方财富网-龙虎榜单-营业部统计
 @router.post("/stock_lhb_traderstatistic_em", operation_id="post_stock_lhb_traderstatistic_em")
-def get_stock_lhb_traderstatistic_em(request: SymbolRequest):
+async def post_stock_lhb_traderstatistic_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-营业部统计
     限量: 单次返回所有历史数据
@@ -137,7 +113,7 @@ def get_stock_lhb_traderstatistic_em(request: SymbolRequest):
 
 # 东方财富网-龙虎榜单-个股龙虎榜详情
 @router.post("/stock_lhb_stock_detail_em", operation_id="post_stock_lhb_stock_detail_em")
-def get_stock_lhb_stock_detail_em(request: SymbolFlagDateRequest):
+async def post_stock_lhb_stock_detail_em(request: SymbolFlagDateRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-个股龙虎榜详情
     限量: 单次返回所有历史数据
@@ -196,7 +172,7 @@ def get_stock_lh_yyb_control():
 
 # 新浪财经-龙虎榜-每日详情
 @router.post("/stock_lhb_detail_daily_sina", operation_id="post_stock_lhb_detail_daily_sina")
-def get_stock_lhb_detail_daily_sina(request: DateRequest):
+async def post_stock_lhb_detail_daily_sina(request: DateRequest):
     """
     描述: 新浪财经-龙虎榜-每日详情
     限量: 单次返回指定 symbol 的所有数据
@@ -212,7 +188,7 @@ def get_stock_lhb_detail_daily_sina(request: DateRequest):
 
 # 新浪财经-龙虎榜-个股上榜统计
 @router.post("/stock_lhb_ggtj_sina", operation_id="post_stock_lhb_ggtj_sina")
-def get_stock_lhb_ggtj_sina(request: SymbolRequest):
+async def post_stock_lhb_ggtj_sina(request: SymbolRequest):
     """
     描述: 新浪财经-龙虎榜-个股上榜统计
     限量: 单次返回指定 symbol 的所有历史数据
@@ -226,7 +202,7 @@ def get_stock_lhb_ggtj_sina(request: SymbolRequest):
 
 # 新浪财经-龙虎榜-营业上榜统计
 @router.post("/stock_lhb_yytj_sina", operation_id="post_stock_lhb_yytj_sina")
-def get_stock_lhb_yytj_sina(request: SymbolRequest):
+async def post_stock_lhb_yytj_sina(request: SymbolRequest):
     """
     描述: 新浪财经-龙虎榜-营业上榜统计
     限量: 单次返回指定 symbol 的所有历史数据
@@ -240,7 +216,7 @@ def get_stock_lhb_yytj_sina(request: SymbolRequest):
 
 # 新浪财经-龙虎榜-机构席位追踪
 @router.post("/stock_lhb_jgzz_sina", operation_id="post_stock_lhb_jgzz_sina")
-def get_stock_lhb_jgzz_sina(request: SymbolRequest):
+async def post_stock_lhb_jgzz_sina(request: SymbolRequest):
     """
     描述: 新浪财经-龙虎榜-机构席位追踪
     限量: 单次返回指定 symbol 的所有历史数据

@@ -1,47 +1,16 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import SymbolRequest, DateRequest, SymbolDateRequest, MarketPeriodRequest, \
+    DisclosureRequest, SymbolDateRangeRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
 
-class SymbolRequest(BaseModel):
-    symbol: str
-
-
-class DateRequest(BaseModel):
-    date: str
-
-
-class SymbolDateRequest(BaseModel):
-    symbol: str
-    date: str
-
-
-class SymbolDateRangeRequest(BaseModel):
-    symbol: str
-    start_date: str
-    end_date: str
-
-
-class MarketPeriodRequest(BaseModel):
-    market: str
-    period: str
-
-
-class DisclosureRequest(BaseModel):
-    symbol: str
-    market: str
-    category: str
-    start_date: str
-    end_date: str
-
-
 # 东方财富指定个股的新闻资讯数据
 @router.post("/stock_news_em", operation_id="post_stock_news_em")
-def get_stock_news_em(request: SymbolRequest):
+async def post_stock_news_em(request: SymbolRequest):
     """
     描述: 东方财富指定个股的新闻资讯数据
     限量: 指定 symbol 当日最近 100 条新闻资讯数据
@@ -55,7 +24,7 @@ def get_stock_news_em(request: SymbolRequest):
 
 # 百度股市通-财报发行
 @router.post("/news_report_time_baidu", operation_id="post_news_report_time_baidu")
-def get_news_report_time_baidu(request: DateRequest):
+async def post_news_report_time_baidu(request: DateRequest):
     """
     描述: 百度股市通-财报发行
     限量: 单次获取指定 symbol 的财报发行, 提供港股的财报发行数据
@@ -69,7 +38,7 @@ def get_news_report_time_baidu(request: DateRequest):
 
 # 东方财富-数据中心-年报季报-业绩报表
 @router.post("/stock_yjbb_em", operation_id="post_stock_yjbb_em")
-def get_stock_yjbb_em(request: DateRequest):
+async def post_stock_yjbb_em(request: DateRequest):
     """
     描述: 东方财富-数据中心-年报季报-业绩报表
     限量: 单次获取指定 symbol 的业绩报告数据
@@ -85,7 +54,7 @@ def get_stock_yjbb_em(request: DateRequest):
 
 # 东方财富-数据中心-年报季报-业绩快报
 @router.post("/stock_yjkb_em", operation_id="post_stock_yjkb_em")
-def get_stock_yjkb_em(request: DateRequest):
+async def post_stock_yjkb_em(request: DateRequest):
     """
     描述: 东方财富-数据中心-年报季报-业绩快报
     限量: 单次获取指定 symbol 的业绩快报数据
@@ -101,7 +70,7 @@ def get_stock_yjkb_em(request: DateRequest):
 
 # 东方财富-数据中心-年报季报-业绩预告
 @router.post("/stock_yjyg_em", operation_id="post_stock_yjyg_em")
-def get_stock_yjyg_em(request: DateRequest):
+async def post_stock_yjyg_em(request: DateRequest):
     """
     描述: 东方财富-数据中心-年报季报-业绩预告
     限量: 单次获取指定 symbol 的业绩预告数据
@@ -117,7 +86,7 @@ def get_stock_yjyg_em(request: DateRequest):
 
 # 东方财富-数据中心-年报季报-预约披露时间
 @router.post("/stock_yysj_em", operation_id="stock_yysj_em")
-def get_stock_yysj_em(request: SymbolDateRequest):
+async def post_stock_yysj_em(request: SymbolDateRequest):
     """
     描述: 东方财富-数据中心-年报季报-预约披露时间
     限量: 单次获取指定 symbol 和 symbol 的预约披露时间数据
@@ -131,7 +100,7 @@ def get_stock_yysj_em(request: SymbolDateRequest):
 
 # 巨潮资讯-数据-预约披露的数据
 @router.post("/stock_report_disclosure", operation_id="post_stock_report_disclosure")
-def get_stock_report_disclosure(request: MarketPeriodRequest):
+async def post_stock_report_disclosure(request: MarketPeriodRequest):
     """
     描述: 巨潮资讯-数据-预约披露的数据
     限量: 单次获取指定 market 和 period 的预约披露数据
@@ -146,7 +115,7 @@ def get_stock_report_disclosure(request: MarketPeriodRequest):
 # 巨潮资讯-首页-公告查询-信息披露公告-沪深京
 @router.post("/stock_zh_a_disclosure_report_cninfo",
              operation_id="post_stock_zh_a_disclosure_report_cninfo")
-def get_stock_zh_a_disclosure_report_cninfo(request: DisclosureRequest):
+async def post_stock_zh_a_disclosure_report_cninfo(request: DisclosureRequest):
     """
     描述: 巨潮资讯-首页-公告查询-信息披露公告-沪深京
     限量: 单次获取指定 symbol 的信息披露公告数据
@@ -163,7 +132,7 @@ def get_stock_zh_a_disclosure_report_cninfo(request: DisclosureRequest):
 # 巨潮资讯-首页-公告查询-信息披露调研-沪深京
 @router.post("/stock_zh_a_disclosure_relation_cninfo",
              operation_id="post_stock_zh_a_disclosure_relation_cninfo")
-def get_stock_zh_a_disclosure_relation_cninfo(request: SymbolDateRangeRequest):
+async def post_stock_zh_a_disclosure_relation_cninfo(request: SymbolDateRangeRequest):
     """
     描述: 巨潮资讯-首页-公告查询-信息披露调研-沪深京
     限量: 单次获取指定 symbol 的信息披露调研数据
@@ -178,7 +147,7 @@ def get_stock_zh_a_disclosure_relation_cninfo(request: SymbolDateRangeRequest):
 
 # 巨潮资讯-数据-行业分类数据
 @router.post("/stock_industry_category_cninfo", operation_id="post_stock_industry_category_cninfo")
-def get_stock_industry_category_cninfo(request: SymbolRequest):
+async def post_stock_industry_category_cninfo(request: SymbolRequest):
     """
     描述: 巨潮资讯-数据-行业分类数据
     限量: 单次获取指定 symbol 的行业分类数据
@@ -192,7 +161,7 @@ def get_stock_industry_category_cninfo(request: SymbolRequest):
 
 # 巨潮资讯-数据-上市公司行业归属的变动情况
 @router.post("/stock_industry_change_cninfo", operation_id="post_stock_industry_change_cninfo")
-def get_stock_industry_change_cninfo(request: SymbolDateRangeRequest):
+async def post_stock_industry_change_cninfo(request: SymbolDateRangeRequest):
     """
     描述: 巨潮资讯-数据-上市公司行业归属的变动情况
     限量: 单次获取指定 symbol 在 start_date 和 indicator 之间的上市公司行业归属的变动情况数据
@@ -213,7 +182,7 @@ def get_stock_industry_change_cninfo(request: SymbolDateRangeRequest):
 
 # 巨潮资讯-数据-公司股本变动
 @router.post("/stock_share_change_cninfo", operation_id="post_stock_share_change_cninfo")
-def get_stock_share_change_cninfo(request: SymbolDateRangeRequest):
+async def post_stock_share_change_cninfo(request: SymbolDateRangeRequest):
     """
     描述: 巨潮资讯-数据-公司股本变动
     限量: 单次获取指定 symbol 在 start_date 和 indicator 之间的公司股本变动数据
@@ -233,7 +202,7 @@ def get_stock_share_change_cninfo(request: SymbolDateRangeRequest):
 
 # 巨潮资讯-个股-配股实施方案
 @router.post("/stock_allotment_cninfo", operation_id="post_stock_allotment_cninfo")
-def get_stock_allotment_cninfo(request: SymbolDateRangeRequest):
+async def post_stock_allotment_cninfo(request: SymbolDateRangeRequest):
     """
     描述: 巨潮资讯-个股-配股实施方案
     限量: 单次获取指定 symbol 在 start_date 和 indicator 之间的公司股本变动数据
@@ -252,7 +221,7 @@ def get_stock_allotment_cninfo(request: SymbolDateRangeRequest):
 
 # 东方财富-数据中心-年报季报-业绩快报-资产负债表
 @router.post("/stock_zcfz_em", operation_id="post_stock_zcfz_em")
-def get_stock_zcfz_em(request: DateRequest):
+async def post_stock_zcfz_em(request: DateRequest):
     """
     描述: 东方财富-数据中心-年报季报-业绩快报-资产负债表
     限量: 单次获取指定 symbol 的资产负债表数据
@@ -267,7 +236,7 @@ def get_stock_zcfz_em(request: DateRequest):
 
 # 东方财富-数据中心-年报季报-业绩快报-利润表
 @router.post("/stock_lrb_em", operation_id="post_stock_lrb_em")
-def get_stock_lrb_em(request: DateRequest):
+async def post_stock_lrb_em(request: DateRequest):
     """
     描述: 东方财富-数据中心-年报季报-业绩快报-利润表
     限量: 单次获取指定 symbol 的利润表数据
@@ -283,7 +252,7 @@ def get_stock_lrb_em(request: DateRequest):
 
 # 东方财富-数据中心-年报季报-业绩快报-现金流量表
 @router.post("/stock_xjll_em", operation_id="post_stock_xjll_em")
-def get_stock_xjll_em(request: DateRequest):
+async def post_stock_xjll_em(request: DateRequest):
     """
     描述: 东方财富-数据中心-年报季报-业绩快报-现金流量表
     限量: 单次获取指定 symbol 的现金流量表数据

@@ -1,18 +1,13 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
+
+from Akshare_Data.request_model import SymolIndicatorRequest
 
 router = APIRouter()
 
 
-# 定义请求体的数据结构
-class StockRequest(BaseModel):
-    symbol: str
-    indicator: str
-
-
 @router.post("/stock_hk_indicator_eniu", operation_id="post_stock_hk_indicator_eniu")
-async def post_stock_hk_indicator_eniu(request: StockRequest):
+async def post_stock_hk_indicator_eniu(request: SymolIndicatorRequest):
     """
     获取香港股票某一指标的数据
     单次获取指定 symbol 和 indicator 的所有历史数据

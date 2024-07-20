@@ -1,30 +1,15 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import SymbolRequest, StockZhVoteBaiduRequest, SymbolIndicatorPeriodRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
 
 
-class SymbolRequest(BaseModel):
-    symbol: str
-
-
-class StockZhVoteBaiduRequest(BaseModel):
-    symbol: str
-    indicator: str
-
-
-class StockHkValuationBaiduRequest(BaseModel):
-    symbol: str
-    indicator: str
-    period: str
-
-
 # 股票增发
 @router.post("/stock_add_stock", operation_id="post_stock_add_stock")
-def get_stock_add_stock(request: SymbolRequest):
+async def post_stock_add_stock(request: SymbolRequest):
     """
     新浪财经-发行与分配-增发
     单次指定 symbol 的股票增发详情数据
@@ -38,7 +23,7 @@ def get_stock_add_stock(request: SymbolRequest):
 
 # 涨跌投票
 @router.post("/stock_zh_vote_baidu", operation_id="post_stock_zh_vote_baidu")
-def get_stock_zh_vote_baidu(request: StockZhVoteBaiduRequest):
+async def post_stock_zh_vote_baidu(request: StockZhVoteBaiduRequest):
     """
     百度股市通- A 股或指数-股评-投票
     单次获取指定 symbol 和 indicator 的所有数据
@@ -52,7 +37,7 @@ def get_stock_zh_vote_baidu(request: StockZhVoteBaiduRequest):
 
 # 港股估值指标
 @router.post("/stock_hk_valuation_baidu", operation_id="post_stock_hk_valuation_baidu")
-def get_stock_hk_valuation_baidu(request: StockHkValuationBaiduRequest):
+async def post_stock_hk_valuation_baidu(request: SymbolIndicatorPeriodRequest):
     """
     百度股市通-港股-财务报表-估值数据
     单次获取指定 symbol 的指定 indicator 的特定 period 的历史数据
@@ -67,7 +52,7 @@ def get_stock_hk_valuation_baidu(request: StockHkValuationBaiduRequest):
 
 # 创新高和新低的股票数量
 @router.post("/stock_a_high_low_statistics", operation_id="post_stock_a_high_low_statistics")
-def get_stock_a_high_low_statistics(request: SymbolRequest):
+async def post_stock_a_high_low_statistics(request: SymbolRequest):
     """
     不同市场的创新高和新低的股票数量
     单次获取指定 market 的近两年的历史数据
@@ -92,7 +77,7 @@ def get_stock_a_high_low_statistics(request: SymbolRequest):
 
 # 破净股统计
 @router.post("/stock_a_below_net_asset_statistics", operation_id="post_stock_a_below_net_asset_statistics")
-def get_stock_a_below_net_asset_statistics(request: SymbolRequest):
+async def post_stock_a_below_net_asset_statistics(request: SymbolRequest):
     """
     乐咕乐股-A 股破净股统计数据
     单次获取指定 symbol 的所有历史数据

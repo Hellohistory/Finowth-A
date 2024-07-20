@@ -1,23 +1,15 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import SymbolRequest, SymbolMarketRequest, IndicatorRequest, SectorRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
 
-class FundFlowRequest(BaseModel):
-    symbol: str
-
-
-class SymbolRequest(BaseModel):
-    symbol: str
-
-
 # 同花顺-数据中心-资金流向-个股资金流
 @router.post("/stock_fund_flow_individual", operation_id="post_stock_fund_flow_individual")
-def get_stock_fund_flow_individual(request: SymbolRequest):
+async def post_stock_fund_flow_individual(request: SymbolRequest):
     """
     接口: stock_fund_flow_individual
     描述: 同花顺-数据中心-资金流向-个股资金流
@@ -32,7 +24,7 @@ def get_stock_fund_flow_individual(request: SymbolRequest):
 
 # 同花顺-数据中心-资金流向-概念资金流
 @router.post("/stock_fund_flow_concept", operation_id="post_stock_fund_flow_concept")
-def get_stock_fund_flow_concept(request: SymbolRequest):
+async def post_stock_fund_flow_concept(request: SymbolRequest):
     """
     接口: stock_fund_flow_concept
     描述: 同花顺-数据中心-资金流向-概念资金流
@@ -47,7 +39,7 @@ def get_stock_fund_flow_concept(request: SymbolRequest):
 
 # 同花顺-数据中心-资金流向-行业资金流
 @router.post("/stock_fund_flow_industry", operation_id="post_stock_fund_flow_industry")
-def get_stock_fund_flow_industry(request: SymbolRequest):
+async def post_stock_fund_flow_industry(request: SymbolRequest):
     """
     接口: stock_fund_flow_industry
     描述: 同花顺-数据中心-资金流向-行业资金流
@@ -75,28 +67,9 @@ def get_stock_fund_flow_big_deal():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富
-class SymbolMarketRequest(BaseModel):
-    stock: str
-    market: str
-
-
-class IndicatorRequest(BaseModel):
-    indicator: str
-
-
-class SectorRequest(BaseModel):
-    indicator: str
-    sector_type: str
-
-
-class SymbolRequest(BaseModel):
-    symbol: str
-
-
 # 东方财富网-数据中心-个股资金流向
 @router.post("/stock_individual_fund_flow", operation_id="post_stock_individual_fund_flow")
-def get_stock_individual_fund_flow(request: SymbolMarketRequest):
+async def post_stock_individual_fund_flow(request: SymbolMarketRequest):
     """
     接口: stock_individual_fund_flow
     描述: 东方财富网-数据中心-个股资金流向
@@ -111,7 +84,7 @@ def get_stock_individual_fund_flow(request: SymbolMarketRequest):
 
 # 东方财富网-数据中心-资金流向-排名
 @router.post("/stock_individual_fund_flow_rank", operation_id="post_stock_individual_fund_flow_rank")
-def get_stock_individual_fund_flow_rank(request: IndicatorRequest):
+async def post_stock_individual_fund_flow_rank(request: IndicatorRequest):
     """
     接口: stock_individual_fund_flow_rank
     描述: 东方财富网-数据中心-资金流向-排名
@@ -141,7 +114,7 @@ def get_stock_market_fund_flow():
 
 # 东方财富网-数据中心-资金流向-板块资金流-排名
 @router.post("/stock_sector_fund_flow_rank", operation_id="post_stock_sector_fund_flow_rank")
-def get_stock_sector_fund_flow_rank(request: SectorRequest):
+async def post_stock_sector_fund_flow_rank(request: SectorRequest):
     """
     接口: stock_sector_fund_flow_rank
     描述: 东方财富网-数据中心-资金流向-板块资金流-排名
@@ -160,7 +133,7 @@ def get_stock_sector_fund_flow_rank(request: SectorRequest):
 
 # 主力净流入排名
 @router.post("/stock_main_fund_flow", operation_id="post_stock_main_fund_flow")
-def get_stock_main_fund_flow(request: FundFlowRequest):
+async def post_stock_main_fund_flow(request: SymbolRequest):
     """
     接口: stock_main_fund_flow
     描述: 东方财富网-数据中心-资金流向-主力净流入排名
@@ -177,7 +150,7 @@ def get_stock_main_fund_flow(request: FundFlowRequest):
 
 # 东方财富网-数据中心-资金流向-行业资金流-xx行业个股资金流
 @router.post("/stock_sector_fund_flow_summary", operation_id="post_stock_sector_fund_flow_summary")
-def get_stock_sector_fund_flow_summary(request: SymbolRequest):
+async def post_stock_sector_fund_flow_summary(request: SymbolRequest):
     """
     接口: stock_sector_fund_flow_summary
     描述: 东方财富网-数据中心-资金流向-行业资金流-xx行业个股资金流
@@ -194,7 +167,7 @@ def get_stock_sector_fund_flow_summary(request: SymbolRequest):
 
 # 东方财富网-数据中心-资金流向-行业资金流-行业历史资金流
 @router.post("/stock_sector_fund_flow_hist", operation_id="post_stock_sector_fund_flow_hist")
-def get_stock_sector_fund_flow_hist(request: SymbolRequest):
+async def post_stock_sector_fund_flow_hist(request: SymbolRequest):
     """
     接口: stock_sector_fund_flow_hist
     描述: 东方财富网-数据中心-资金流向-行业资金流-行业历史资金流
@@ -209,7 +182,7 @@ def get_stock_sector_fund_flow_hist(request: SymbolRequest):
 
 # 东方财富网-数据中心-资金流向-概念资金流-概念历史资金流
 @router.post("/stock_concept_fund_flow_hist", operation_id="post_stock_concept_fund_flow_hist")
-def get_stock_concept_fund_flow_hist(request: SymbolRequest):
+async def post_stock_concept_fund_flow_hist(request: SymbolRequest):
     """
     接口: stock_concept_fund_flow_hist
     描述: 东方财富网-数据中心-资金流向-概念资金流-概念历史资金流

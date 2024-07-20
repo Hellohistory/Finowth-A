@@ -1,45 +1,16 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import SymbolStockRequest, DateRangeRequest, SymolIndicatorRequest, OnlyStockRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
 
-class SymbolRequest(BaseModel):
-    stock: str
-    symbol: str
-
-
-class DateRequest(BaseModel):
-    date: str
-
-
-class DateRangeRequest(BaseModel):
-    start_date: str
-    end_date: str
-
-
-class StockRequest(BaseModel):
-    stock: str
-    start_date: str
-    end_date: str
-
-
-class StockHSGTRequest(BaseModel):
-    stock: str
-
-
-class RequestModel(BaseModel):
-    symbol: str
-    indicator: str
-
-
 # 东方财富网-数据中心-资金流向-沪深港通资金流向
 @router.get("/stock_hsgt_fund_flow_summary_em",
             operation_id="get_stock_hsgt_fund_flow_summary_em")
-async def get_stock_hsgt_fund_flow_summary_em():
+def get_stock_hsgt_fund_flow_summary_em():
     """
     描述: 东方财富网-数据中心-资金流向-沪深港通资金流向
     限量: 单次获取沪深港通资金流向数据
@@ -54,7 +25,7 @@ async def get_stock_hsgt_fund_flow_summary_em():
 # 深港通-港股通业务信息-结算汇率
 @router.get("/stock_sgt_settlement_exchange_rate_szse",
             operation_id="get_stock_sgt_settlement_exchange_rate_szse")
-async def get_stock_sgt_settlement_exchange_rate_szse():
+def get_stock_sgt_settlement_exchange_rate_szse():
     """
     描述: 深港通-港股通业务信息-结算汇率
     限量: 单次获取所有深港通结算汇率数据
@@ -69,7 +40,7 @@ async def get_stock_sgt_settlement_exchange_rate_szse():
 # 沪港通-港股通信息披露-结算汇兑
 @router.get("/stock_sgt_settlement_exchange_rate_sse",
             operation_id="get_stock_sgt_settlement_exchange_rate_sse")
-async def get_stock_sgt_settlement_exchange_rate_sse():
+def get_stock_sgt_settlement_exchange_rate_sse():
     """
     描述: 沪港通-港股通信息披露-结算汇兑
     限量: 单次获取所有沪港通结算汇率数据
@@ -84,7 +55,7 @@ async def get_stock_sgt_settlement_exchange_rate_sse():
 # 深港通-港股通业务信息-参考汇率
 @router.get("/stock_sgt_reference_exchange_rate_szse",
             operation_id="get_stock_sgt_reference_exchange_rate_szse")
-async def get_stock_sgt_reference_exchange_rate_szse():
+def get_stock_sgt_reference_exchange_rate_szse():
     """
     描述: 深港通-港股通业务信息-参考汇率
     限量: 单次获取所有深港通参考汇率数据
@@ -99,7 +70,7 @@ async def get_stock_sgt_reference_exchange_rate_szse():
 # 沪港通-港股通信息披露-参考汇率
 @router.get("/stock_sgt_reference_exchange_rate_sse",
             operation_id="get_stock_sgt_reference_exchange_rate_sse")
-async def get_stock_sgt_reference_exchange_rate_sse():
+def get_stock_sgt_reference_exchange_rate_sse():
     """
     描述: 沪港通-港股通信息披露-参考汇率
     限量: 单次获取所有沪港通参考汇率数据
@@ -114,7 +85,7 @@ async def get_stock_sgt_reference_exchange_rate_sse():
 # 东方财富网-行情中心-港股市场-港股通成份股
 @router.get("/stock_hk_ggt_components_em",
             operation_id="get_stock_hk_ggt_components_em")
-async def get_stock_hk_ggt_components_em():
+def get_stock_hk_ggt_components_em():
     """
     描述: 东方财富网-行情中心-港股市场-港股通成份股
     限量: 单次获取所有港股通成份股数据
@@ -129,7 +100,7 @@ async def get_stock_hk_ggt_components_em():
 # 东方财富-数据中心-沪深港通-市场概括-分时数据
 @router.post("/stock_hsgt_fund_min_em",
              operation_id="post_stock_hsgt_fund_min_em")
-async def post_stock_hsgt_fund_min_em(request: SymbolRequest):
+async def post_stock_hsgt_fund_min_em(request: SymbolStockRequest):
     """
     描述: 东方财富-数据中心-沪深港通-市场概括-分时数据
     限量: 单次返回指定 symbol 的所有数据
@@ -144,7 +115,7 @@ async def post_stock_hsgt_fund_min_em(request: SymbolRequest):
 # 东方财富网-数据中心-沪深港通持股-板块排行
 @router.post("/stock_hsgt_board_rank_em",
              operation_id="post_stock_hsgt_board_rank_em")
-async def post_stock_hsgt_board_rank_em(data: RequestModel):
+async def post_stock_hsgt_board_rank_em(data: SymolIndicatorRequest):
     try:
         df = ak.stock_hsgt_board_rank_em(symbol=data.symbol, indicator=data.indicator)
         df.columns = [
@@ -212,7 +183,7 @@ async def post_stock_hsgt_institution_statistics_em(request: DateRangeRequest):
 # 东方财富网-数据中心-资金流向-沪深港通资金流向-沪深港通历史数据
 @router.post("/stock_hsgt_hist_em",
              operation_id="post_stock_hsgt_hist_em")
-async def post_stock_hsgt_hist_em(request: SymbolRequest):
+async def post_stock_hsgt_hist_em(request: SymbolStockRequest):
     """
     描述: 东方财富网-数据中心-资金流向-沪深港通资金流向-沪深港通历史数据
     限量: 单次获取指定 symbol 的所有数据
@@ -230,7 +201,7 @@ async def post_stock_hsgt_hist_em(request: SymbolRequest):
 # 东方财富网-数据中心-沪深港通-沪深港通持股-具体股票
 @router.post("/stock_hsgt_individual_em",
              operation_id="post_stock_hsgt_individual_em")
-async def post_stock_hsgt_individual_em(request: StockHSGTRequest):
+async def post_stock_hsgt_individual_em(request: OnlyStockRequest):
     """
     描述: 东方财富网-数据中心-沪深港通-沪深港通持股-具体股票
     限量: 单次获取指定 symbol 的近期数据
@@ -245,7 +216,7 @@ async def post_stock_hsgt_individual_em(request: StockHSGTRequest):
 # 东方财富网-数据中心-沪深港通-沪深港通持股-具体股票-个股详情
 @router.post("/stock_hsgt_individual_detail_em",
              operation_id="post_stock_hsgt_individual_detail_em")
-async def post_stock_hsgt_individual_detail_em(request: StockRequest):
+async def post_stock_hsgt_individual_detail_em(request: OnlyStockRequest):
     """
     描述: 东方财富网-数据中心-沪深港通-沪深港通持股-具体股票-个股详情
     限量: 单次获取指定 symbol 的在 start_date 和 indicator 之间的所有数据

@@ -1,17 +1,14 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+
+from Akshare_Data.request_model import SymbolRequest
 
 router = APIRouter()
 
 
-class SymbolRequest(BaseModel):
-    symbol: str
-
-
 # 上海证券交易所-董监高人员股份变动
 @router.post("/stock_share_hold_change_sse", operation_id="post_stock_share_hold_change_sse")
-def get_stock_share_hold_change_sse(request: SymbolRequest):
+async def post_stock_share_hold_change_sse(request: SymbolRequest):
     """
     描述: 上海证券交易所-披露-监管信息公开-公司监管-董董监高人员股份变动
     限量: 单次获取指定 symbol 的数据
@@ -25,7 +22,7 @@ def get_stock_share_hold_change_sse(request: SymbolRequest):
 
 # 深圳证券交易所-董监高人员股份变动
 @router.post("/stock_share_hold_change_szse", operation_id="post_stock_share_hold_change_szse")
-def get_stock_share_hold_change_szse(request: SymbolRequest):
+async def post_stock_share_hold_change_szse(request: SymbolRequest):
     """
     描述: 深圳证券交易所-信息披露-监管信息公开-董监高人员股份变动
     限量: 单次获取指定 symbol 的数据
@@ -39,7 +36,7 @@ def get_stock_share_hold_change_szse(request: SymbolRequest):
 
 # 北京证券交易所-董监高及相关人员持股变动
 @router.post("/stock_share_hold_change_bse", operation_id="post_stock_share_hold_change_bse")
-def get_stock_share_hold_change_bse(request: SymbolRequest):
+async def post_stock_share_hold_change_bse(request: SymbolRequest):
     """
     描述: 北京证券交易所-信息披露-监管信息-董监高及相关人员持股变动
     限量: 单次获取指定 symbol 的数据
@@ -53,7 +50,7 @@ def get_stock_share_hold_change_bse(request: SymbolRequest):
 
 # 巨潮资讯-高管持股变动明细
 @router.post("/stock_hold_management_detail_cninfo", operation_id="post_stock_hold_management_detail_cninfo")
-def get_stock_hold_management_detail_cninfo(request: SymbolRequest):
+async def post_stock_hold_management_detail_cninfo(request: SymbolRequest):
     """
     描述: 巨潮资讯-数据中心-专题统计-股东股本-高管持股变动明细
     限量: 单次指定 symbol 的高管持股变动明细数据, 返回近一年的数据

@@ -1,14 +1,10 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
 from Akshare_Data.Stock.stock_market_overview import sanitize_data
+from Akshare_Data.request_model import SymbolRequest
 
 router = APIRouter()
-
-
-class SymbolRequest(BaseModel):
-    symbol: str
 
 
 # 雪球-行情中心-个股
@@ -29,8 +25,15 @@ async def post_stock_individual_spot_xq(request: SymbolRequest):
 @router.post("/stock_individual_info_em", operation_id="post_stock_individual_info_em")
 async def post_stock_individual_info_em(request: SymbolRequest):
     """
+    接口: stock_individual_info_em
+
+    目标地址: http://quote.eastmoney.com/concept/sh603777.html?from=classic
+
     描述: 东方财富-个股-股票信息
-    限量: 单次返回指定的个股信息
+
+    限量: 单次返回指定个股的个股信息
+
+    请求类型: `POST`
     """
     try:
         stock_individual_info_em_df = ak.stock_individual_info_em(symbol=request.symbol)
@@ -43,8 +46,15 @@ async def post_stock_individual_info_em(request: SymbolRequest):
 @router.post("/stock_bid_ask_em", operation_id="post_stock_bid_ask_em")
 async def post_stock_bid_ask_em(request: SymbolRequest):
     """
+    接口: stock_bid_ask_em
+
+    目标地址: https://quote.eastmoney.com/sz000001.html
+
     描述: 东方财富-行情报价
+
     限量: 单次返回指定股票的行情报价数据
+
+    请求类型: `POST`
     """
     try:
         stock_bid_ask_em_df = ak.stock_bid_ask_em(symbol=request.symbol)

@@ -1,6 +1,7 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+
+from Akshare_Data.request_model import SymbolRequest, DateRequest
 
 router = APIRouter()
 
@@ -52,13 +53,6 @@ def get_stock_hk_hot_rank_em():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-
-class SymbolRequest(BaseModel):
-    symbol: str
-
-
-class DateRequest(BaseModel):
-    date: str
 
 
 @router.post("/stock_hot_follow_xq", operation_id="post_stock_hot_follow_xq")

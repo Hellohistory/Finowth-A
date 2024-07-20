@@ -1,14 +1,10 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import DateRequest
 from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
 
 router = APIRouter()
-
-
-class DateRequest(BaseModel):
-    date: str
 
 
 # 东方财富网-数据中心-特色数据-股权质押-股权质押市场概况

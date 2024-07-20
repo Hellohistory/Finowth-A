@@ -1,28 +1,14 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+
+from Akshare_Data.request_model import SymbolDateRequest, SymbolRequest, SymbolIndicatorPeriodRequest
 
 router = APIRouter()
 
 
-class SymbolDateRequest(BaseModel):
-    symbol: str
-    date: str
-
-
-class SymbolRequest(BaseModel):
-    symbol: str
-
-
-class SymbolIndicatorPeriodRequest(BaseModel):
-    symbol: str
-    indicator: str
-    period: str
-
-
 # 巨潮资讯-数据中心-行业分析-行业市盈率
 @router.post("/stock_industry_pe_ratio_cninfo", operation_id="post_stock_industry_pe_ratio_cninfo")
-def get_stock_industry_pe_ratio_cninfo(request: SymbolDateRequest):
+async def gpost_stock_industry_pe_ratio_cninfo(request: SymbolDateRequest):
     """
     描述: 巨潮资讯-数据中心-行业分析-行业市盈率
     限量: 单次获取指定 symbol 在指定交易日的所有数据; 只能获取近期的数据
@@ -36,7 +22,7 @@ def get_stock_industry_pe_ratio_cninfo(request: SymbolDateRequest):
 
 # 乐咕乐股-A 股个股指标: 市盈率, 市净率, 股息率
 @router.post("/stock_a_indicator_lg", operation_id="post_stock_a_indicator_lg")
-def get_stock_a_indicator_lg(request: SymbolRequest):
+async def post_stock_a_indicator_lg(request: SymbolRequest):
     """
     描述: 乐咕乐股-A 股个股指标: 市盈率, 市净率, 股息率
     限量: 单次获取指定 symbol 的所有历史数据
@@ -50,7 +36,7 @@ def get_stock_a_indicator_lg(request: SymbolRequest):
 
 # 乐咕乐股-股息率-A 股股息率
 @router.post("/stock_a_gxl_lg", operation_id="post_stock_a_gxl_lg")
-def get_stock_a_gxl_lg(request: SymbolRequest):
+async def post_stock_a_gxl_lg(request: SymbolRequest):
     """
     描述: 乐咕乐股-股息率-A 股股息率
     限量: 单次获取指定 symbol 的所有历史数据
@@ -153,7 +139,7 @@ def get_stock_a_all_pb():
 
 # 乐咕乐股-主板市盈率
 @router.post("/stock_market_pe_lg", operation_id="post_stock_market_pe_lg")
-def get_stock_market_pe_lg(request: SymbolRequest):
+async def post_stock_market_pe_lg(request: SymbolRequest):
     """
     描述: 乐咕乐股-主板市盈率
     限量: 单次获取指定 symbol 的所有数据
@@ -167,7 +153,7 @@ def get_stock_market_pe_lg(request: SymbolRequest):
 
 # 乐咕乐股-指数市盈率
 @router.post("/stock_index_pe_lg", operation_id="post_stock_index_pe_lg")
-def get_stock_index_pe_lg(request: SymbolRequest):
+async def post_stock_index_pe_lg(request: SymbolRequest):
     """
     描述: 乐咕乐股-指数市盈率
     限量: 单次获取指定 symbol 的所有数据
@@ -181,7 +167,7 @@ def get_stock_index_pe_lg(request: SymbolRequest):
 
 # 乐咕乐股-主板市净率
 @router.post("/stock_market_pb_lg", operation_id="post_stock_market_pb_lg")
-def get_stock_market_pb_lg(request: SymbolRequest):
+async def post_stock_market_pb_lg(request: SymbolRequest):
     """
     描述: 乐咕乐股-主板市净率
     限量: 单次获取指定 symbol 的所有数据
@@ -195,7 +181,7 @@ def get_stock_market_pb_lg(request: SymbolRequest):
 
 # 乐咕乐股-指数市净率
 @router.post("/stock_index_pb_lg", operation_id="post_stock_index_pb_lg")
-def get_stock_index_pb_lg(request: SymbolRequest):
+async def post_stock_index_pb_lg(request: SymbolRequest):
     """
     描述: 乐咕乐股-指数市净率
     限量: 单次获取指定 symbol 的所有数据
@@ -209,7 +195,7 @@ def get_stock_index_pb_lg(request: SymbolRequest):
 
 # 百度股市通-A 股-财务报表-估值数据
 @router.post("/stock_zh_valuation_baidu", operation_id="post_stock_zh_valuation_baidu")
-def get_stock_zh_valuation_baidu(request: SymbolIndicatorPeriodRequest):
+async def post_stock_zh_valuation_baidu(request: SymbolIndicatorPeriodRequest):
     """
     描述: 百度股市通-A 股-财务报表-估值数据
     限量: 单次获取指定 symbol 和 indicator 的所有历史数据

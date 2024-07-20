@@ -1,18 +1,14 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
+
+from Akshare_Data.request_model import DateRequest
 
 router = APIRouter()
 
 
-# 请求模型
-class DateRequest(BaseModel):
-    date: str
-
-
 # 涨停股池
 @router.post("/stock_zt_pool_em", operation_id="post_stock_zt_pool_em")
-def get_stock_zt_pool_em(request: DateRequest):
+async def post_stock_zt_pool_em(request: DateRequest):
     """
     接口: stock_zt_pool_em
     目标地址: https://quote.eastmoney.com/ztb/detail#type=ztgc
@@ -28,7 +24,7 @@ def get_stock_zt_pool_em(request: DateRequest):
 
 # 昨日涨停股池
 @router.post("/stock_zt_pool_previous_em", operation_id="post_stock_zt_pool_previous_em")
-def get_stock_zt_pool_previous_em(request: DateRequest):
+async def post_stock_zt_pool_previous_em(request: DateRequest):
     """
     接口: stock_zt_pool_previous_em
     目标地址: https://quote.eastmoney.com/ztb/detail#type=zrzt
@@ -44,7 +40,7 @@ def get_stock_zt_pool_previous_em(request: DateRequest):
 
 # 强势股池
 @router.post("/stock_zt_pool_strong_em", operation_id="post_stock_zt_pool_strong_em")
-def get_stock_zt_pool_strong_em(request: DateRequest):
+async def post_stock_zt_pool_strong_em(request: DateRequest):
     """
     接口: stock_zt_pool_strong_em
     目标地址: https://quote.eastmoney.com/ztb/detail#type=qsgc
@@ -60,7 +56,7 @@ def get_stock_zt_pool_strong_em(request: DateRequest):
 
 # 次新股池
 @router.post("/stock_zt_pool_sub_new_em", operation_id="post_stock_zt_pool_sub_new_em")
-def get_stock_zt_pool_sub_new_em(request: DateRequest):
+async def post_stock_zt_pool_sub_new_em(request: DateRequest):
     """
     接口: stock_zt_pool_sub_new_em
     目标地址: https://quote.eastmoney.com/ztb/detail#type=cxgc
@@ -76,7 +72,7 @@ def get_stock_zt_pool_sub_new_em(request: DateRequest):
 
 # 炸板股池
 @router.post("/stock_zt_pool_zbgc_em", operation_id="post_stock_zt_pool_zbgc_em")
-def get_stock_zt_pool_zbgc_em(request: DateRequest):
+async def post_stock_zt_pool_zbgc_em(request: DateRequest):
     """
     接口: stock_zt_pool_zbgc_em
     目标地址: https://quote.eastmoney.com/ztb/detail#type=zbgc
@@ -92,7 +88,7 @@ def get_stock_zt_pool_zbgc_em(request: DateRequest):
 
 # 跌停股池
 @router.post("/stock_zt_pool_dtgc_em", operation_id="post_stock_zt_pool_dtgc_em")
-def get_stock_zt_pool_dtgc_em(request: DateRequest):
+async def post_stock_zt_pool_dtgc_em(request: DateRequest):
     """
     接口: stock_zt_pool_dtgc_em
     目标地址: https://quote.eastmoney.com/ztb/detail#type=zbgc

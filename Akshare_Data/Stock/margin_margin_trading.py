@@ -2,11 +2,9 @@ import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
+from Akshare_Data.request_model import SingleDateRequest, DateRangeRequest
+
 router = APIRouter()
-
-
-class SingleDateRequest(BaseModel):
-    date: str
 
 
 @router.post("/stock_margin_ratio_pa", operation_id="post_stock_margin_ratio_pa")
@@ -32,15 +30,6 @@ async def post_stock_margin_ratio_pa(request: SingleDateRequest):
 #         return stock_margin_account_info_df.to_dict(orient="records")
 #     except Exception as e:
 #         raise HTTPException(status_code=500, detail=str(e))
-
-
-class DateRangeRequest(BaseModel):
-    start_date: str
-    end_date: str
-
-
-class SingleDateRequest(BaseModel):
-    date: str
 
 
 @router.post("/stock_margin_sse", operation_id="post_stock_margin_sse")

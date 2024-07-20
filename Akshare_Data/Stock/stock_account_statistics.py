@@ -1,25 +1,16 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import YearRequest, AnalystDetailRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
 
 
-class YearRequest(BaseModel):
-    year: str
-
-
-class AnalystDetailRequest(BaseModel):
-    analyst_id: str
-    indicator: str
-
-
 # 东方财富网-数据中心-特色数据-股票账户统计
 @router.get("/stock_account_statistics_em",
             operation_id="get_stock_account_statistics_em")
-async def get_stock_account_statistics_em():
+def get_stock_account_statistics_em():
     """
     描述: 东方财富网-数据中心-特色数据-股票账户统计
     限量: 单次返回从 201504 开始 202308 的所有历史数据

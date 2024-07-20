@@ -1,22 +1,10 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
 
+from Akshare_Data.request_model import DateRequest, StockRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
-
-
-class SymbolRequest(BaseModel):
-    symbol: str
-
-
-class DateRequest(BaseModel):
-    date: str
-
-
-class StockRequest(BaseModel):
-    stock: str
 
 
 # 新浪财经-发行与分配-新股发行
@@ -79,7 +67,7 @@ def get_stock_dxsyl_em():
 
 # 东方财富网-数据中心-新股数据-新股申购-新股申购与中签查询
 @router.post("/stock_xgsglb_em", operation_id="post_stock_xgsglb_em")
-def post_stock_xgsglb_em(request: DateRequest):
+async def post_stock_xgsglb_em(request: DateRequest):
     """
     描述: 东方财富网-数据中心-新股数据-新股申购-新股申购与中签查询
     限量: 单次获取指定 symbol 的新股申购与中签查询数据

@@ -1,15 +1,9 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
+
+from Akshare_Data.request_model import StockAHDailyRequest
 
 router = APIRouter()
-
-
-class StockAHDailyRequest(BaseModel):
-    symbol: str
-    start_year: str
-    end_year: str
-    adjust: str = ""
 
 
 # 腾讯财经-A+H 股实时行情数据
@@ -28,7 +22,7 @@ def get_stock_zh_ah_spot():
 
 # 腾讯财经-A+H 股历史行情数据
 @router.post("/stock_zh_ah_daily", operation_id="post_stock_zh_ah_daily")
-def get_stock_zh_ah_daily(request: StockAHDailyRequest):
+async def post_stock_zh_ah_daily(request: StockAHDailyRequest):
     """
     描述: 腾讯财经-A+H 股数据
     限量: 单次返回指定参数的 A+H 上市公司的历史行情数据

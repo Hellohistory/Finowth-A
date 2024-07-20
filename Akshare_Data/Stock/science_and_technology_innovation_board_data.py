@@ -1,18 +1,10 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
+
+from Akshare_Data.request_model import StockReportRequest
+from alone_test import StockDailyRequest
 
 router = APIRouter()
-
-
-class StockDailyRequest(BaseModel):
-    symbol: str
-    adjust: str = ""
-
-
-class StockReportRequest(BaseModel):
-    from_page: int
-    to_page: int
 
 
 # 新浪财经-科创板股票实时行情数据

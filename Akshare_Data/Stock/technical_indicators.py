@@ -2,13 +2,10 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel
 
+from Akshare_Data.request_model import SymbolRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
-
-
-class SymbolRequest(BaseModel):
-    symbol: str
 
 
 # 创新高

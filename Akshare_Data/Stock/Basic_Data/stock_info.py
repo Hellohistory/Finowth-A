@@ -1,25 +1,14 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-from pydantic import BaseModel
+
+from Akshare_Data.request_model import SectorRequest, SymbolRequest
 
 router = APIRouter()
 
 
-class SymbolRequest(BaseModel):
-    symbol: str
-
-
-class SectorRequest(BaseModel):
-    sector: str
-
-
-class StockInfoRequest(BaseModel):
-    symbol: str
-
-
 # 新浪行业-板块行情-成份详情
 @router.post("/stock_sector_detail", operation_id="post_stock_sector_detail")
-def get_stock_sector_detail(request: SectorRequest):
+async def post_stock_sector_detail(request: SectorRequest):
     """
     描述: 新浪行业-板块行情-成份详情
     限量: 单次获取指定的新浪行业-板块行情-成份详情
@@ -47,7 +36,7 @@ def get_stock_info_a_code_name():
 
 # 上海证券交易所股票代码和简称数据
 @router.post("/stock_info_sh_name_code", operation_id="post_stock_info_sh_name_code")
-def get_stock_info_sh_name_code(request: StockInfoRequest):
+async def post_stock_info_sh_name_code(request: SymbolRequest):
     """
     描述: 上海证券交易所股票代码和简称数据
     限量: 单次获取所有上海证券交易所股票代码和简称数据
@@ -61,7 +50,7 @@ def get_stock_info_sh_name_code(request: StockInfoRequest):
 
 # 深证证券交易所股票代码和股票简称数据
 @router.post("/stock_info_sz_name_code", operation_id="post_stock_info_sz_name_code")
-def get_stock_info_sz_name_code(request: StockInfoRequest):
+async def post_stock_info_sz_name_code(request: SymbolRequest):
     """
     描述: 深证证券交易所股票代码和股票简称数据
     限量: 单次获取深证证券交易所股票代码和简称数据
@@ -89,7 +78,7 @@ def get_stock_info_bj_name_code():
 
 # 深证证券交易所终止/暂停上市股票
 @router.post("/stock_info_sz_delist", operation_id="post_stock_info_sz_delist")
-def get_stock_info_sz_delist(request: StockInfoRequest):
+async def post_stock_info_sz_delist(request: SymbolRequest):
     """
     描述: 深证证券交易所终止/暂停上市股票
     限量: 单次获取深证证券交易所终止/暂停上市数据
@@ -117,7 +106,7 @@ def get_stock_staq_net_stop():
 
 # 上海证券交易所暂停/终止上市股票
 @router.post("/stock_info_sh_delist", operation_id="post_stock_info_sh_delist")
-def get_stock_info_sh_delist(request: StockInfoRequest):
+async def post_stock_info_sh_delist(request: SymbolRequest):
     """
     描述: 上海证券交易所暂停/终止上市股票
     限量: 单次获取上海证券交易所暂停/终止上市股票
@@ -131,7 +120,7 @@ def get_stock_info_sh_delist(request: StockInfoRequest):
 
 # 新浪财经-股票曾用名
 @router.post("/stock_info_change_name", operation_id="post_stock_info_change_name")
-def get_stock_info_change_name(request: SymbolRequest):
+async def post_stock_info_change_name(request: SymbolRequest):
     """
     描述: 新浪财经-股票曾用名
     限量: 单次指定 symbol 的所有历史曾用名称
@@ -145,7 +134,7 @@ def get_stock_info_change_name(request: SymbolRequest):
 
 # 深证证券交易所-市场数据-股票数据-名称变更
 @router.post("/stock_info_sz_change_name", operation_id="post_stock_info_sz_change_name")
-def get_stock_info_sz_change_name(request: StockInfoRequest):
+async def post_stock_info_sz_change_name(request: SymbolRequest):
     """
     描述: 深证证券交易所-市场数据-股票数据-名称变更
     限量: 单次获取所有历史数据

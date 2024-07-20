@@ -29,7 +29,7 @@ class StockDailyRequest(BaseModel):
 
 
 # 东方财富网-港股-实时行情
-@router.get("/stock_hk_spot_em")
+@router.get("/stock_hk_spot_em", operation_id="get_stock_zh_ah_spot")
 def get_stock_hk_spot_em():
     """
     描述: 所有港股的实时行情数据; 该数据有 15 分钟延时
@@ -45,7 +45,7 @@ def get_stock_hk_spot_em():
 
 
 # 港股主板实时行情数据-东财
-@router.get("/stock_hk_main_board_spot_em")
+@router.get("/stock_hk_main_board_spot_em", operation_id="get_stock_zh_ah_spot")
 def get_stock_hk_main_board_spot_em():
     """
     描述: 港股主板的实时行情数据; 该数据有 15 分钟延时
@@ -61,7 +61,7 @@ def get_stock_hk_main_board_spot_em():
 
 
 # 新浪财经-港股-实时行情
-@router.get("/stock_hk_spot")
+@router.get("/stock_hk_spot", operation_id="get_stock_zh_ah_spot")
 def get_stock_hk_spot():
     """
     描述: 获取所有港股的实时行情数据 15 分钟延时
@@ -75,7 +75,7 @@ def get_stock_hk_spot():
 
 
 # 东方财富网-港股-每日分时行情
-@router.post("/stock_hk_hist_min_em")
+@router.post("/stock_hk_hist_min_em", operation_id="post_stock_zh_ah_spot")
 def get_stock_hk_hist_min_em(request: StockMinuteRequest):
     """
     描述: 东方财富网-行情首页-港股-每日分时行情
@@ -95,7 +95,7 @@ def get_stock_hk_hist_min_em(request: StockMinuteRequest):
 
 
 # 东方财富网-港股-历史行情数据
-@router.post("/stock_hk_hist")
+@router.post("/stock_hk_hist", operation_id="post_stock_zh_ah_spot")
 def get_stock_hk_hist(request: StockHistoryRequest):
     """
     描述: 港股-历史行情数据, 可以选择返回复权后数据, 更新频率为日频
@@ -115,7 +115,7 @@ def get_stock_hk_hist(request: StockHistoryRequest):
 
 
 # 新浪财经-港股-历史行情数据
-@router.post("/stock_hk_daily")
+@router.post("/stock_hk_daily", operation_id="post_stock_zh_ah_spot")
 def get_stock_hk_daily(request: StockDailyRequest):
     """
     描述: 港股-历史行情数据, 可以选择返回复权后数据, 更新频率为日频

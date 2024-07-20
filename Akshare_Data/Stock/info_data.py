@@ -4,7 +4,7 @@ from fastapi import HTTPException, APIRouter
 router = APIRouter()
 
 
-@router.get("/stock_info_cjzc_em")
+@router.get("/stock_info_cjzc_em", operation_id="get_stock_info_cjzc_em")
 def get_stock_info_cjzc_em():
     """
     接口：stock_info_cjzc_em
@@ -20,7 +20,7 @@ def get_stock_info_cjzc_em():
 
 
 # 全球财经快讯-东财财富
-@router.get("/stock_info_global_em")
+@router.get("/stock_info_global_em", operation_id="get_stock_info_global_em")
 def get_stock_info_global_em():
     """
     接口：stock_info_global_em
@@ -36,7 +36,7 @@ def get_stock_info_global_em():
 
 
 # 全球财经快讯-新浪财经
-@router.get("/stock_info_global_sina")
+@router.get("/stock_info_global_sina", operation_id="get_stock_info_global_sina")
 def get_stock_info_global_sina():
     """
     接口：stock_info_global_sina
@@ -52,7 +52,7 @@ def get_stock_info_global_sina():
 
 
 # 快讯-富途牛牛
-@router.get("/stock_info_global_futu")
+@router.get("/stock_info_global_futu", operation_id="get_stock_info_global_futu")
 def get_stock_info_global_futu():
     """
     接口：stock_info_global_futu
@@ -68,7 +68,7 @@ def get_stock_info_global_futu():
 
 
 # 全球财经直播-同花顺财经
-@router.get("/stock_info_global_ths")
+@router.get("/stock_info_global_ths", operation_id="get_stock_info_global_ths")
 def get_stock_info_global_ths():
     """
     接口：stock_info_global_ths
@@ -84,7 +84,7 @@ def get_stock_info_global_ths():
 
 
 # 电报-财联社
-@router.get("/stock_info_global_cls/{symbol}")
+@router.get("/stock_info_global_cls/{symbol}", operation_id="get_stock_info_global_cls")
 def get_stock_info_global_cls(symbol: str):
     """
     接口：stock_info_global_cls
@@ -100,7 +100,7 @@ def get_stock_info_global_cls(symbol: str):
 
 
 # 证券原创-新浪财经
-@router.get("/stock_info_broker_sina/{page}")
+@router.get("/stock_info_broker_sina/{page}", operation_id="get_stock_info_broker_sina")
 def get_stock_info_broker_sina(page: str):
     """
     接口：stock_info_broker_sina

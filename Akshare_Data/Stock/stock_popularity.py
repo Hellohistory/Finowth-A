@@ -15,8 +15,8 @@ class SymbolRequest(BaseModel):
     symbol: str
 
 
-@router.post("/stock_hot_follow_xq")
-def post_stock_hot_follow_xq(request: StockSymbolRequest):
+@router.post("/stock_hot_follow_xq", operation_id="post_stock_hot_follow_xq")
+async def post_stock_hot_follow_xq(request: StockSymbolRequest):
     """
     雪球-沪深股市-热度排行榜-关注排行榜
     """
@@ -29,8 +29,8 @@ def post_stock_hot_follow_xq(request: StockSymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/stock_hot_tweet_xq")
-def get_stock_hot_tweet_xq(request: StockSymbolRequest):
+@router.post("/stock_hot_tweet_xq", operation_id="post_stock_hot_tweet_xq")
+async def post_stock_hot_tweet_xq(request: StockSymbolRequest):
     """
     雪球-沪深股市-热度排行榜-讨论排行榜
     """
@@ -43,7 +43,7 @@ def get_stock_hot_tweet_xq(request: StockSymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_hot_deal_xq")
+@router.get("/stock_hot_deal_xq", operation_id="get_stock_hot_deal_xq")
 def get_stock_hot_deal_xq(symbol: str):
     """
     雪球-沪深股市-热度排行榜-交易排行榜
@@ -55,7 +55,7 @@ def get_stock_hot_deal_xq(symbol: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_hot_rank_wc")
+@router.get("/stock_hot_rank_wc", operation_id="get_stock_hot_rank_wc")
 def get_stock_hot_rank_wc(date: str):
     """
     问财-热门股票排名数据
@@ -67,7 +67,7 @@ def get_stock_hot_rank_wc(date: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_hot_rank_em")
+@router.get("/stock_hot_rank_em", operation_id="get_stock_hot_rank_em")
 def get_stock_hot_rank_em():
     """
     东方财富网站-股票热度
@@ -79,7 +79,7 @@ def get_stock_hot_rank_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_hot_up_em")
+@router.get("/stock_hot_up_em", operation_id="get_stock_hot_up_em")
 def get_stock_hot_up_em():
     """
     东方财富-个股人气榜-飙升榜
@@ -91,7 +91,7 @@ def get_stock_hot_up_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_hk_hot_rank_em")
+@router.get("/stock_hk_hot_rank_em", operation_id="get_stock_hk_hot_rank_em")
 def get_stock_hk_hot_rank_em():
     """
     东方财富-个股人气榜-人气榜-港股市场
@@ -104,7 +104,7 @@ def get_stock_hk_hot_rank_em():
 
 
 # 内部交易
-@router.get("/stock_inner_trade_xq")
+@router.get("/stock_inner_trade_xq", operation_id="get_stock_inner_trade_xq")
 def get_stock_inner_trade_xq():
     """
     接口: stock_inner_trade_xq
@@ -123,8 +123,9 @@ def get_stock_inner_trade_xq():
 
 
 # 个股人气榜-实时变动
-@router.post("/stock_hot_rank_detail_realtime_em")
-def get_stock_hot_rank_detail_realtime_em(request: SymbolRequest):
+@router.post("/stock_hot_rank_detail_realtime_em",
+             operation_id="post_stock_hot_rank_detail_realtime_em")
+async def post_stock_hot_rank_detail_realtime_em(request: SymbolRequest):
     """
     接口: stock_hot_rank_detail_realtime_em
     目标地址: http://guba.eastmoney.com/rank/stock?code=000665
@@ -139,8 +140,9 @@ def get_stock_hot_rank_detail_realtime_em(request: SymbolRequest):
 
 
 # 港股-个股人气榜-实时变动
-@router.post("/stock_hk_hot_rank_detail_realtime_em")
-def get_stock_hk_hot_rank_detail_realtime_em(request: SymbolRequest):
+@router.post("/stock_hk_hot_rank_detail_realtime_em",
+             operation_id="post_stock_hk_hot_rank_detail_realtime_em")
+async def post_stock_hk_hot_rank_detail_realtime_em(request: SymbolRequest):
     """
     接口: stock_hk_hot_rank_detail_realtime_em
     目标地址: https://guba.eastmoney.com/rank/stock?code=HK_00700
@@ -155,8 +157,8 @@ def get_stock_hk_hot_rank_detail_realtime_em(request: SymbolRequest):
 
 
 # 热门关键词
-@router.post("/stock_hot_keyword_em")
-def get_stock_hot_keyword_em(request: SymbolRequest):
+@router.post("/stock_hot_keyword_em", operation_id="post_stock_hot_keyword_em")
+async def post_stock_hot_keyword_em(request: SymbolRequest):
     """
     接口: stock_hot_keyword_em
     目标地址: http://guba.eastmoney.com/rank/stock?code=000665
@@ -171,8 +173,8 @@ def get_stock_hot_keyword_em(request: SymbolRequest):
 
 
 # 个股人气榜-最新排名
-@router.post("/stock_hot_rank_latest_em")
-def get_stock_hot_rank_latest_em(request: SymbolRequest):
+@router.post("/stock_hot_rank_latest_em", operation_id="post_stock_hot_rank_latest_em")
+async def post_stock_hot_rank_latest_em(request: SymbolRequest):
     """
     接口: stock_hot_rank_latest_em
     目标地址: http://guba.eastmoney.com/rank/stock?code=000665
@@ -187,8 +189,8 @@ def get_stock_hot_rank_latest_em(request: SymbolRequest):
 
 
 # 港股-个股人气榜-最新排名
-@router.post("/stock_hk_hot_rank_latest_em")
-def get_stock_hk_hot_rank_latest_em(request: SymbolRequest):
+@router.post("/stock_hk_hot_rank_latest_em", operation_id="post_stock_hk_hot_rank_latest_em")
+async def post_stock_hk_hot_rank_latest_em(request: SymbolRequest):
     """
     接口: stock_hk_hot_rank_latest_em
     目标地址: https://guba.eastmoney.com/rank/stock?code=HK_00700
@@ -209,8 +211,8 @@ class HotSearchRequest(BaseModel):
     time: str
 
 
-@router.post("/stock_hot_search_baidu")
-def get_stock_hot_search_baidu(request: HotSearchRequest):
+@router.post("/stock_hot_search_baidu", operation_id="post_stock_hot_search_baidu")
+async def post_stock_hot_search_baidu(request: HotSearchRequest):
     """
     接口: stock_hot_search_baidu
     目标地址: https://gushitong.baidu.com/expressnews
@@ -228,8 +230,8 @@ def get_stock_hot_search_baidu(request: HotSearchRequest):
 
 
 # 相关股票
-@router.post("/stock_hot_rank_relate_em")
-def get_stock_hot_rank_relate_em(request: SymbolRequest):
+@router.post("/stock_hot_rank_relate_em", operation_id="post_stock_hot_rank_relate_em")
+async def post_stock_hot_rank_relate_em(request: SymbolRequest):
     """
     接口: stock_hot_rank_relate_em
     目标地址: http://guba.eastmoney.com/rank/stock?code=000665

@@ -40,7 +40,7 @@ class DisclosureRequest(BaseModel):
 
 
 # 东方财富指定个股的新闻资讯数据
-@router.post("/stock_news_em")
+@router.post("/stock_news_em", operation_id="post_stock_news_em")
 def get_stock_news_em(request: SymbolRequest):
     """
     描述: 东方财富指定个股的新闻资讯数据
@@ -54,7 +54,7 @@ def get_stock_news_em(request: SymbolRequest):
 
 
 # 百度股市通-财报发行
-@router.post("/news_report_time_baidu")
+@router.post("/news_report_time_baidu", operation_id="post_news_report_time_baidu")
 def get_news_report_time_baidu(request: DateRequest):
     """
     描述: 百度股市通-财报发行
@@ -68,7 +68,7 @@ def get_news_report_time_baidu(request: DateRequest):
 
 
 # 东方财富-数据中心-年报季报-业绩报表
-@router.post("/stock_yjbb_em")
+@router.post("/stock_yjbb_em", operation_id="post_stock_yjbb_em")
 def get_stock_yjbb_em(request: DateRequest):
     """
     描述: 东方财富-数据中心-年报季报-业绩报表
@@ -84,7 +84,7 @@ def get_stock_yjbb_em(request: DateRequest):
 
 
 # 东方财富-数据中心-年报季报-业绩快报
-@router.post("/stock_yjkb_em")
+@router.post("/stock_yjkb_em", operation_id="post_stock_yjkb_em")
 def get_stock_yjkb_em(request: DateRequest):
     """
     描述: 东方财富-数据中心-年报季报-业绩快报
@@ -100,7 +100,7 @@ def get_stock_yjkb_em(request: DateRequest):
 
 
 # 东方财富-数据中心-年报季报-业绩预告
-@router.post("/stock_yjyg_em")
+@router.post("/stock_yjyg_em", operation_id="post_stock_yjyg_em")
 def get_stock_yjyg_em(request: DateRequest):
     """
     描述: 东方财富-数据中心-年报季报-业绩预告
@@ -116,7 +116,7 @@ def get_stock_yjyg_em(request: DateRequest):
 
 
 # 东方财富-数据中心-年报季报-预约披露时间
-@router.post("/stock_yysj_em")
+@router.post("/stock_yysj_em", operation_id="stock_yysj_em")
 def get_stock_yysj_em(request: SymbolDateRequest):
     """
     描述: 东方财富-数据中心-年报季报-预约披露时间
@@ -130,7 +130,7 @@ def get_stock_yysj_em(request: SymbolDateRequest):
 
 
 # 巨潮资讯-数据-预约披露的数据
-@router.post("/stock_report_disclosure")
+@router.post("/stock_report_disclosure", operation_id="post_stock_report_disclosure")
 def get_stock_report_disclosure(request: MarketPeriodRequest):
     """
     描述: 巨潮资讯-数据-预约披露的数据
@@ -144,7 +144,8 @@ def get_stock_report_disclosure(request: MarketPeriodRequest):
 
 
 # 巨潮资讯-首页-公告查询-信息披露公告-沪深京
-@router.post("/stock_zh_a_disclosure_report_cninfo")
+@router.post("/stock_zh_a_disclosure_report_cninfo",
+             operation_id="post_stock_zh_a_disclosure_report_cninfo")
 def get_stock_zh_a_disclosure_report_cninfo(request: DisclosureRequest):
     """
     描述: 巨潮资讯-首页-公告查询-信息披露公告-沪深京
@@ -160,7 +161,8 @@ def get_stock_zh_a_disclosure_report_cninfo(request: DisclosureRequest):
 
 
 # 巨潮资讯-首页-公告查询-信息披露调研-沪深京
-@router.post("/stock_zh_a_disclosure_relation_cninfo")
+@router.post("/stock_zh_a_disclosure_relation_cninfo",
+             operation_id="post_stock_zh_a_disclosure_relation_cninfo")
 def get_stock_zh_a_disclosure_relation_cninfo(request: SymbolDateRangeRequest):
     """
     描述: 巨潮资讯-首页-公告查询-信息披露调研-沪深京
@@ -175,7 +177,7 @@ def get_stock_zh_a_disclosure_relation_cninfo(request: SymbolDateRangeRequest):
 
 
 # 巨潮资讯-数据-行业分类数据
-@router.post("/stock_industry_category_cninfo")
+@router.post("/stock_industry_category_cninfo", operation_id="post_stock_industry_category_cninfo")
 def get_stock_industry_category_cninfo(request: SymbolRequest):
     """
     描述: 巨潮资讯-数据-行业分类数据
@@ -189,7 +191,7 @@ def get_stock_industry_category_cninfo(request: SymbolRequest):
 
 
 # 巨潮资讯-数据-上市公司行业归属的变动情况
-@router.post("/stock_industry_change_cninfo")
+@router.post("/stock_industry_change_cninfo", operation_id="post_stock_industry_change_cninfo")
 def get_stock_industry_change_cninfo(request: SymbolDateRangeRequest):
     """
     描述: 巨潮资讯-数据-上市公司行业归属的变动情况
@@ -210,7 +212,7 @@ def get_stock_industry_change_cninfo(request: SymbolDateRangeRequest):
 
 
 # 巨潮资讯-数据-公司股本变动
-@router.post("/stock_share_change_cninfo")
+@router.post("/stock_share_change_cninfo", operation_id="post_stock_share_change_cninfo")
 def get_stock_share_change_cninfo(request: SymbolDateRangeRequest):
     """
     描述: 巨潮资讯-数据-公司股本变动
@@ -230,7 +232,7 @@ def get_stock_share_change_cninfo(request: SymbolDateRangeRequest):
 
 
 # 巨潮资讯-个股-配股实施方案
-@router.post("/stock_allotment_cninfo")
+@router.post("/stock_allotment_cninfo", operation_id="post_stock_allotment_cninfo")
 def get_stock_allotment_cninfo(request: SymbolDateRangeRequest):
     """
     描述: 巨潮资讯-个股-配股实施方案
@@ -249,7 +251,7 @@ def get_stock_allotment_cninfo(request: SymbolDateRangeRequest):
 
 
 # 东方财富-数据中心-年报季报-业绩快报-资产负债表
-@router.post("/stock_zcfz_em")
+@router.post("/stock_zcfz_em", operation_id="post_stock_zcfz_em")
 def get_stock_zcfz_em(request: DateRequest):
     """
     描述: 东方财富-数据中心-年报季报-业绩快报-资产负债表
@@ -264,7 +266,7 @@ def get_stock_zcfz_em(request: DateRequest):
 
 
 # 东方财富-数据中心-年报季报-业绩快报-利润表
-@router.post("/stock_lrb_em")
+@router.post("/stock_lrb_em", operation_id="post_stock_lrb_em")
 def get_stock_lrb_em(request: DateRequest):
     """
     描述: 东方财富-数据中心-年报季报-业绩快报-利润表
@@ -280,7 +282,7 @@ def get_stock_lrb_em(request: DateRequest):
 
 
 # 东方财富-数据中心-年报季报-业绩快报-现金流量表
-@router.post("/stock_xjll_em")
+@router.post("/stock_xjll_em", operation_id="post_stock_xjll_em")
 def get_stock_xjll_em(request: DateRequest):
     """
     描述: 东方财富-数据中心-年报季报-业绩快报-现金流量表

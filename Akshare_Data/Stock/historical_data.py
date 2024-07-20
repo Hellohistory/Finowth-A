@@ -16,7 +16,7 @@ class StockHistoryRequest(BaseModel):
 
 
 # 东方财富-沪深京 A 股日频率数据
-@router.post("/stock_zh_a_hist")
+@router.post("/stock_zh_a_hist", operation_id="post_stock_zh_a_hist")
 def get_stock_zh_a_hist(request: StockHistoryRequest):
     """
     描述: 东方财富-沪深京 A 股日频率数据
@@ -36,7 +36,7 @@ def get_stock_zh_a_hist(request: StockHistoryRequest):
 
 
 # 新浪财经-沪深京 A 股的数据
-@router.post("/stock_zh_a_daily")
+@router.post("/stock_zh_a_daily", operation_id="post_stock_zh_a_daily")
 def get_stock_zh_a_daily(request: StockHistoryRequest):
     """
     接口: stock_zh_a_daily
@@ -73,7 +73,7 @@ class StockAdjustFactorRequest(BaseModel):
 
 
 # 前复权因子
-@router.post("/stock_qfq_factor")
+@router.post("/stock_qfq_factor", operation_id="post_stock_qfq_factor")
 def get_stock_qfq_factor(request: StockAdjustFactorRequest):
     """
     前复权因子
@@ -86,7 +86,7 @@ def get_stock_qfq_factor(request: StockAdjustFactorRequest):
 
 
 # 后复权因子
-@router.post("/stock_hfq_factor")
+@router.post("/stock_hfq_factor", operation_id="post_stock_hfq_factor")
 def get_stock_hfq_factor(request: StockAdjustFactorRequest):
     """
     后复权因子
@@ -99,7 +99,7 @@ def get_stock_hfq_factor(request: StockAdjustFactorRequest):
 
 
 # 腾讯证券-日频-股票历史数据
-@router.post("/stock_zh_a_hist_tx")
+@router.post("/stock_zh_a_hist_tx", operation_id="post_stock_zh_a_hist_tx")
 def get_stock_zh_a_hist_tx(request: StockHistoryRequest):
     """
     描述: 腾讯证券-日频-股票历史数据
@@ -122,7 +122,7 @@ class StockTickRequest(BaseModel):
 
 
 # 历史分笔数据
-@router.post("/stock_zh_a_tick_tx_js")
+@router.post("/stock_zh_a_tick_tx_js", operation_id="post_stock_zh_a_tick_tx_js")
 def get_stock_zh_a_tick_tx_js(request: StockTickRequest):
     """
     描述: 每个交易日 16:00 提供当日数据; 如遇到数据缺失, 请使用 ak.stock_zh_a_tick_163() 接口(注意数据会有一定差异)
@@ -155,7 +155,7 @@ class StockMinuteRequest(BaseModel):
 
 
 # B 股行情数据-上海证券交易所-科创板-CDR
-@router.post("/stock_zh_a_cdr_daily")
+@router.post("/stock_zh_a_cdr_daily", operation_id="post_stock_zh_a_cdr_daily")
 def get_stock_zh_a_cdr_daily(request: StockCDRDailyRequest):
     """
     描述: 上海证券交易所-科创板-CDR
@@ -175,7 +175,7 @@ def get_stock_zh_a_cdr_daily(request: StockCDRDailyRequest):
 
 
 # B 股行情数据-东方财富网-实时行情数据
-@router.get("/stock_zh_b_spot_em")
+@router.get("/stock_zh_b_spot_em", operation_id="get_stock_zh_b_spot_em")
 def get_stock_zh_b_spot_em():
     """
     描述: 东方财富网-实时行情数据
@@ -192,7 +192,7 @@ def get_stock_zh_b_spot_em():
 
 
 # B 股行情数据-新浪财经-实时行情数据
-@router.get("/stock_zh_b_spot")
+@router.get("/stock_zh_b_spot", operation_id="get_stock_zh_b_spot")
 def get_stock_zh_b_spot():
     """
     描述: B 股数据是从新浪财经获取的数据, 重复运行本函数会被新浪暂时封 IP
@@ -206,7 +206,7 @@ def get_stock_zh_b_spot():
 
 
 # B 股历史行情数据
-@router.post("/stock_zh_b_daily")
+@router.post("/stock_zh_b_daily", operation_id="post_stock_zh_b_daily")
 def get_stock_zh_b_daily(request: StockDailyRequest):
     """
     描述: B 股数据是从新浪财经获取的数据, 历史数据按日频率更新
@@ -225,7 +225,7 @@ def get_stock_zh_b_daily(request: StockDailyRequest):
 
 
 # B 股历史行情数据-前复权因子
-@router.post("/stock_qfq_factor_b")
+@router.post("/stock_qfq_factor_b", operation_id="post_stock_qfq_factor_b")
 def get_stock_qfq_factor_b(request: StockMinuteRequest):
     """
     前复权因子
@@ -240,7 +240,7 @@ def get_stock_qfq_factor_b(request: StockMinuteRequest):
 
 
 # B 股历史行情数据-后复权因子
-@router.post("/stock_hfq_factor_b")
+@router.post("/stock_hfq_factor_b", operation_id="post_stock_hfq_factor_b")
 def get_stock_hfq_factor_b(request: StockMinuteRequest):
     """
     后复权因子
@@ -255,7 +255,7 @@ def get_stock_hfq_factor_b(request: StockMinuteRequest):
 
 
 # 新浪财经 B 股股票或者指数的分时数据
-@router.post("/stock_zh_b_minute")
+@router.post("/stock_zh_b_minute", operation_id="post_stock_zh_b_minute")
 def get_stock_zh_b_minute(request: StockMinuteRequest):
     """
     描述: 新浪财经 B 股股票或者指数的分时数据
@@ -285,7 +285,7 @@ field_mapping = {
 }
 
 
-@router.get("/stock_zh_a_new")
+@router.get("/stock_zh_a_new", operation_id="get_stock_zh_a_new")
 def get_stock_zh_a_new():
     """
     描述: 新浪财经-行情中心-沪深股市-次新股

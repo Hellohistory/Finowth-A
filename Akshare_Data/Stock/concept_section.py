@@ -22,7 +22,7 @@ class ConceptHistMinRequest(BaseModel):
     period: str
 
 
-@router.get("/stock_board_concept_name_em")
+@router.get("/stock_board_concept_name_em", operation_id="get_stock_board_concept_name_em")
 def get_stock_board_concept_name_em():
     """
     东方财富网-行情中心-沪深京板块-概念板块
@@ -35,7 +35,7 @@ def get_stock_board_concept_name_em():
 
 
 # 东方财富-沪深板块-概念板块-板块成份
-@router.post("/stock_board_concept_cons_em")
+@router.post("/stock_board_concept_cons_em", operation_id="post_stock_board_concept_cons_em")
 def get_stock_board_concept_cons_em(request: ConceptConsRequest):
     """
     东方财富-沪深板块-概念板块-板块成份
@@ -48,7 +48,7 @@ def get_stock_board_concept_cons_em(request: ConceptConsRequest):
 
 
 # 东方财富-沪深板块-概念板块-历史行情数据
-@router.post("/stock_board_concept_hist_em")
+@router.post("/stock_board_concept_hist_em", operation_id="post_stock_board_concept_hist_em")
 def get_stock_board_concept_hist_em(request: ConceptHistRequest):
     """
     东方财富-沪深板块-概念板块-历史行情数据
@@ -67,7 +67,7 @@ def get_stock_board_concept_hist_em(request: ConceptHistRequest):
 
 
 # 东方财富-沪深板块-概念板块-分时历史行情数据
-@router.post("/stock_board_concept_hist_min_em")
+@router.post("/stock_board_concept_hist_min_em", operation_id="post_stock_board_concept_hist_min_em")
 def get_stock_board_concept_hist_min_em(request: ConceptHistMinRequest):
     """
     东方财富-沪深板块-概念板块-分时历史行情数据

@@ -28,7 +28,7 @@ class IndustryHistMinRequest(BaseModel):
     period: str
 
 
-@router.get("/stock_board_industry_name_em")
+@router.get("/stock_board_industry_name_em", operation_id="get_stock_board_industry_name_em")
 def get_stock_board_industry_name_em():
     """
     东方财富-沪深京板块-行业板块
@@ -40,7 +40,7 @@ def get_stock_board_industry_name_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_board_industry_summary_ths")
+@router.get("/stock_board_industry_summary_ths", operation_id="get_stock_board_industry_summary_ths")
 def get_stock_board_industry_summary_ths():
     """
     同花顺-同花顺行业一览表
@@ -53,7 +53,7 @@ def get_stock_board_industry_summary_ths():
 
 
 # 同花顺-板块-行业板块-指数日频率数据
-@router.post("/stock_board_industry_index_ths")
+@router.post("/stock_board_industry_index_ths", operation_id="post_stock_board_industry_index_ths")
 def get_stock_board_industry_index_ths(request: IndustryIndexRequest):
     try:
         stock_board_industry_index_ths_df = ak.stock_board_industry_index_ths(
@@ -67,7 +67,7 @@ def get_stock_board_industry_index_ths(request: IndustryIndexRequest):
 
 
 # 东方财富-沪深板块-行业板块-板块成份
-@router.post("/stock_board_industry_cons_em")
+@router.post("/stock_board_industry_cons_em", operation_id="post_stock_board_industry_cons_em")
 def get_stock_board_industry_cons_em(request: IndustryConsRequest):
     try:
         stock_board_industry_cons_em_df = ak.stock_board_industry_cons_em(symbol=request.symbol)
@@ -77,7 +77,7 @@ def get_stock_board_industry_cons_em(request: IndustryConsRequest):
 
 
 # 东方财富-沪深板块-行业板块-历史行情数据
-@router.post("/stock_board_industry_hist_em")
+@router.post("/stock_board_industry_hist_em", operation_id="post_stock_board_industry_hist_em")
 def get_stock_board_industry_hist_em(request: IndustryHistRequest):
     try:
         stock_board_industry_hist_em_df = ak.stock_board_industry_hist_em(
@@ -93,7 +93,7 @@ def get_stock_board_industry_hist_em(request: IndustryHistRequest):
 
 
 # 东方财富-沪深板块-行业板块-分时历史行情数据
-@router.post("/stock_board_industry_hist_min_em")
+@router.post("/stock_board_industry_hist_min_em", operation_id="post_stock_board_industry_hist_min_em")
 def get_stock_board_industry_hist_min_em(request: IndustryHistMinRequest):
     try:
         stock_board_industry_hist_min_em_df = ak.stock_board_industry_hist_min_em(

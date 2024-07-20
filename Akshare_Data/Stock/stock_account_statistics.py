@@ -17,8 +17,9 @@ class AnalystDetailRequest(BaseModel):
 
 
 # 东方财富网-数据中心-特色数据-股票账户统计
-@router.get("/stock_account_statistics_em")
-def get_stock_account_statistics_em():
+@router.get("/stock_account_statistics_em",
+            operation_id="get_stock_account_statistics_em")
+async def get_stock_account_statistics_em():
     """
     描述: 东方财富网-数据中心-特色数据-股票账户统计
     限量: 单次返回从 201504 开始 202308 的所有历史数据
@@ -33,8 +34,9 @@ def get_stock_account_statistics_em():
 
 
 # 东方财富网-数据中心-研究报告-东方财富分析师指数
-@router.post("/stock_analyst_rank_em")
-def get_stock_analyst_rank_em(request: YearRequest):
+@router.post("/stock_analyst_rank_em",
+             operation_id="post_stock_analyst_rank_em")
+async def post_stock_analyst_rank_em(request: YearRequest):
     """
     描述: 东方财富网-数据中心-研究报告-东方财富分析师指数
     限量: 单次获取指定年份的所有数据
@@ -47,8 +49,9 @@ def get_stock_analyst_rank_em(request: YearRequest):
 
 
 # 东方财富网-数据中心-研究报告-东方财富分析师指数-分析师详情
-@router.post("/stock_analyst_detail_em")
-def get_stock_analyst_detail_em(request: AnalystDetailRequest):
+@router.post("/stock_analyst_detail_em",
+             operation_id="post_stock_analyst_detail_em")
+async def post_stock_analyst_detail_em(request: AnalystDetailRequest):
     """
     描述: 东方财富网-数据中心-研究报告-东方财富分析师指数-分析师详情
     限量: 单次获取指定 indicator 指定的数据

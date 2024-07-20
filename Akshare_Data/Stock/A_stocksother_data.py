@@ -12,7 +12,7 @@ class DateRequest(BaseModel):
 
 
 # 东方财富网-数据中心-股市日历-公司动态
-@router.post("/stock_gsrl_gsdt_em")
+@router.post("/stock_gsrl_gsdt_em", operation_id="post_stock_gsrl_gsdt_em")
 def get_stock_gsrl_gsdt_em(request: DateRequest):
     """
     描述: 东方财富网-数据中心-股市日历-公司动态
@@ -26,7 +26,7 @@ def get_stock_gsrl_gsdt_em(request: DateRequest):
 
 
 # 东方财富网-行情中心-沪深个股-风险警示板
-@router.get("/stock_zh_a_st_em")
+@router.get("/stock_zh_a_st_em", operation_id="get_stock_zh_a_st_em")
 def get_stock_zh_a_st_em():
     """
     描述: 东方财富网-行情中心-沪深个股-风险警示板
@@ -43,7 +43,7 @@ def get_stock_zh_a_st_em():
 
 
 # 东方财富网-行情中心-沪深个股-新股
-@router.get("/stock_zh_a_new_em")
+@router.get("/stock_zh_a_new_em", operation_id="get_stock_zh_a_new_em")
 def get_stock_zh_a_new_em():
     """
     描述: 东方财富网-行情中心-沪深个股-新股
@@ -57,7 +57,7 @@ def get_stock_zh_a_new_em():
 
 
 # 同花顺-数据中心-新股数据-IPO受益股
-@router.get("/stock_ipo_benefit_ths")
+@router.get("/stock_ipo_benefit_ths", operation_id="get_stock_ipo_benefit_ths")
 def get_stock_ipo_benefit_ths():
     """
     描述: 同花顺-数据中心-新股数据-IPO受益股
@@ -78,7 +78,7 @@ def get_stock_ipo_benefit_ths():
 
 
 # 东方财富网-行情中心-沪深个股-两网及退市
-@router.get("/stock_zh_a_stop_em")
+@router.get("/stock_zh_a_stop_em", operation_id="get_stock_zh_a_stop_em")
 def get_stock_zh_a_stop_em():
     """
     描述: 东方财富网-行情中心-沪深个股-两网及退市

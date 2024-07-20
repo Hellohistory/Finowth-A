@@ -12,8 +12,8 @@ class SymbolRequest(BaseModel):
 
 
 # 雪球-行情中心-个股
-@router.post("/stock_individual_spot_xq")
-def get_stock_individual_spot_xq(request: SymbolRequest):
+@router.post("/stock_individual_spot_xq", operation_id="post_stock_individual_spot_xq")
+async def post_stock_individual_spot_xq(request: SymbolRequest):
     """
     描述: 雪球-行情中心-个股
     限量: 单次获取指定个股的最新行情数据
@@ -26,8 +26,8 @@ def get_stock_individual_spot_xq(request: SymbolRequest):
 
 
 # 东方财富-个股-股票信息
-@router.post("/stock_individual_info_em")
-def get_stock_individual_info_em(request: SymbolRequest):
+@router.post("/stock_individual_info_em", operation_id="post_stock_individual_info_em")
+async def post_stock_individual_info_em(request: SymbolRequest):
     """
     描述: 东方财富-个股-股票信息
     限量: 单次返回指定的个股信息
@@ -40,8 +40,8 @@ def get_stock_individual_info_em(request: SymbolRequest):
 
 
 # 东方财富-行情报价
-@router.post("/stock_bid_ask_em")
-def get_stock_bid_ask_em(request: SymbolRequest):
+@router.post("/stock_bid_ask_em", operation_id="post_stock_bid_ask_em")
+async def post_stock_bid_ask_em(request: SymbolRequest):
     """
     描述: 东方财富-行情报价
     限量: 单次返回指定股票的行情报价数据
@@ -53,7 +53,7 @@ def get_stock_bid_ask_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_zh_a_spot_em")
+@router.get("/stock_zh_a_spot_em", operation_id="get_stock_zh_a_spot_em")
 def get_stock_zh_a_spot_em():
     """
     描述: 东方财富网-沪深京 A 股-实时行情数据
@@ -79,7 +79,7 @@ def get_stock_zh_a_spot_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_sh_a_spot_em")
+@router.get("/stock_sh_a_spot_em", operation_id="get_stock_sh_a_spot_em")
 def get_stock_sh_a_spot_em():
     """
     描述: 东方财富网-沪 A 股-实时行情数据
@@ -96,7 +96,7 @@ def get_stock_sh_a_spot_em():
 
 
 # 东方财富网-深 A 股-实时行情数据
-@router.get("/stock_sz_a_spot_em")
+@router.get("/stock_sz_a_spot_em", operation_id="get_stock_sz_a_spot_em")
 def get_stock_sz_a_spot_em():
     """
     描述: 东方财富网-深 A 股-实时行情数据
@@ -113,7 +113,7 @@ def get_stock_sz_a_spot_em():
 
 
 # 东方财富网-京 A 股-实时行情数据
-@router.get("/stock_bj_a_spot_em")
+@router.get("/stock_bj_a_spot_em", operation_id="get_stock_bj_a_spot_em")
 def get_stock_bj_a_spot_em():
     """
     描述: 东方财富网-京 A 股-实时行情数据
@@ -130,7 +130,7 @@ def get_stock_bj_a_spot_em():
 
 
 # 东方财富网-新股-实时行情数据
-@router.get("/stock_new_a_spot_em")
+@router.get("/stock_new_a_spot_em", operation_id="get_stock_new_a_spot_em")
 def get_stock_new_a_spot_em():
     """
     描述: 东方财富网-新股-实时行情数据
@@ -147,7 +147,7 @@ def get_stock_new_a_spot_em():
 
 
 # 东方财富网-创业板-实时行情
-@router.get("/stock_cy_a_spot_em")
+@router.get("/stock_cy_a_spot_em", operation_id="get_stock_cy_a_spot_em")
 def get_stock_cy_a_spot_em():
     """
     描述: 东方财富网-创业板-实时行情
@@ -164,7 +164,7 @@ def get_stock_cy_a_spot_em():
 
 
 # 东方财富网-科创板-实时行情
-@router.get("/stock_kc_a_spot_em")
+@router.get("/stock_kc_a_spot_em", operation_id="get_stock_kc_a_spot_em")
 def get_stock_kc_a_spot_em():
     """
     描述: 东方财富网-科创板-实时行情
@@ -181,7 +181,7 @@ def get_stock_kc_a_spot_em():
 
 
 # 新浪财经-沪深京 A 股数据
-@router.get("/stock_zh_a_spot")
+@router.get("/stock_zh_a_spot", operation_id="get_stock_zh_a_spot")
 def get_stock_zh_a_spot():
     """
     描述: 新浪财经-沪深京 A 股数据, 重复运行本函数会被新浪暂时封 IP, 建议增加时间间隔

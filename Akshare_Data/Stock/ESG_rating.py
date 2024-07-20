@@ -5,7 +5,7 @@ router = APIRouter()
 
 
 # ESG 评级数据
-@router.get("/stock_esg_rate_sina")
+@router.get("/stock_esg_rate_sina", operation_id="get_stock_esg_rate_sina")
 def get_stock_esg_rate_sina():
     """
     接口: stock_esg_rate_sina
@@ -21,7 +21,7 @@ def get_stock_esg_rate_sina():
 
 
 # MSCI
-@router.get("/stock_esg_msci_sina")
+@router.get("/stock_esg_msci_sina", operation_id="get_stock_esg_msci_sina")
 def get_stock_esg_msci_sina():
     """
     接口: stock_esg_msci_sina
@@ -37,7 +37,7 @@ def get_stock_esg_msci_sina():
 
 
 # 路孚特
-@router.get("/stock_esg_rft_sina")
+@router.get("/stock_esg_rft_sina", operation_id="get_stock_esg_rft_sina")
 def get_stock_esg_rft_sina():
     """
     接口: stock_esg_rft_sina
@@ -53,7 +53,7 @@ def get_stock_esg_rft_sina():
 
 
 # 秩鼎
-@router.get("/stock_esg_zd_sina")
+@router.get("/stock_esg_zd_sina", operation_id="get_stock_esg_zd_sina")
 def get_stock_esg_zd_sina():
     """
     接口: stock_esg_zd_sina
@@ -69,7 +69,7 @@ def get_stock_esg_zd_sina():
 
 
 # 华证指数
-@router.get("/stock_esg_hz_sina")
+@router.get("/stock_esg_hz_sina", operation_id="get_stock_esg_hz_sina")
 def get_stock_esg_hz_sina():
     """
     接口: stock_esg_hz_sina

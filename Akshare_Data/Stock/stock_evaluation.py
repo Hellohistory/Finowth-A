@@ -12,7 +12,7 @@ class SymbolRequest(BaseModel):
 
 
 # 东方财富网-数据中心-特色数据-千股千评
-@router.get("/stock_comment_em")
+@router.get("/stock_comment_em", operation_id="get_stock_comment_em")
 def get_stock_comment_em():
     """
     描述: 东方财富网-数据中心-特色数据-千股千评
@@ -28,8 +28,9 @@ def get_stock_comment_em():
 
 
 # 东方财富网-数据中心-特色数据-千股千评-主力控盘-机构参与度
-@router.post("/stock_comment_detail_zlkp_jgcyd_em")
-def get_stock_comment_detail_zlkp_jgcyd_em(request: SymbolRequest):
+@router.post("/stock_comment_detail_zlkp_jgcyd_em",
+             operation_id="post_stock_comment_detail_zlkp_jgcyd_em")
+async def post_stock_comment_detail_zlkp_jgcyd_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-特色数据-千股千评-主力控盘-机构参与度
     限量: 单次获取所有数据
@@ -42,8 +43,9 @@ def get_stock_comment_detail_zlkp_jgcyd_em(request: SymbolRequest):
 
 
 # 东方财富网-数据中心-特色数据-千股千评-综合评价-历史评分
-@router.post("/stock_comment_detail_zhpj_lspf_em")
-def get_stock_comment_detail_zhpj_lspf_em(request: SymbolRequest):
+@router.post("/stock_comment_detail_zhpj_lspf_em",
+             operation_id="post_stock_comment_detail_zhpj_lspf_em")
+async def post_stock_comment_detail_zhpj_lspf_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-特色数据-千股千评-综合评价-历史评分
     限量: 单次获取所有数据
@@ -56,8 +58,9 @@ def get_stock_comment_detail_zhpj_lspf_em(request: SymbolRequest):
 
 
 # 东方财富网-数据中心-特色数据-千股千评-市场热度-用户关注指数
-@router.post("/stock_comment_detail_scrd_focus_em")
-def get_stock_comment_detail_scrd_focus_em(request: SymbolRequest):
+@router.post("/stock_comment_detail_scrd_focus_em",
+             operation_id="post_stock_comment_detail_scrd_focus_em")
+async def post_stock_comment_detail_scrd_focus_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-特色数据-千股千评-市场热度-用户关注指数
     限量: 单次获取所有数据
@@ -70,8 +73,9 @@ def get_stock_comment_detail_scrd_focus_em(request: SymbolRequest):
 
 
 # 东方财富网-数据中心-特色数据-千股千评-市场热度-市场参与意愿
-@router.post("/stock_comment_detail_scrd_desire_em")
-def get_stock_comment_detail_scrd_desire_em(request: SymbolRequest):
+@router.post("/stock_comment_detail_scrd_desire_em",
+             operation_id="post_stock_comment_detail_scrd_desire_em")
+async def post_stock_comment_detail_scrd_desire_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-特色数据-千股千评-市场热度-市场参与意愿
     限量: 单次获取所有数据
@@ -84,8 +88,9 @@ def get_stock_comment_detail_scrd_desire_em(request: SymbolRequest):
 
 
 # 东方财富网-数据中心-特色数据-千股千评-市场热度-日度市场参与意愿
-@router.post("/stock_comment_detail_scrd_desire_daily_em")
-def get_stock_comment_detail_scrd_desire_daily_em(request: SymbolRequest):
+@router.post("/stock_comment_detail_scrd_desire_daily_em",
+             operation_id="post_stock_comment_detail_scrd_desire_daily_em")
+async def post_stock_comment_detail_scrd_desire_daily_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-特色数据-千股千评-市场热度-日度市场参与意愿
     限量: 单次获取所有数据
@@ -99,8 +104,9 @@ def get_stock_comment_detail_scrd_desire_daily_em(request: SymbolRequest):
 
 
 # 东方财富网-数据中心-特色数据-千股千评-市场热度-市场成本
-@router.post("/stock_comment_detail_scrd_cost_em")
-def get_stock_comment_detail_scrd_cost_em(request: SymbolRequest):
+@router.post("/stock_comment_detail_scrd_cost_em",
+             operation_id="post_stock_comment_detail_scrd_cost_em")
+async def post_stock_comment_detail_scrd_cost_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-特色数据-千股千评-市场热度-市场成本
     限量: 单次获取所有数据

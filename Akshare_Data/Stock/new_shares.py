@@ -20,8 +20,8 @@ class StockRequest(BaseModel):
 
 
 # 新浪财经-发行与分配-新股发行
-@router.post("/stock_ipo_info")
-def get_stock_ipo_info(request: StockRequest):
+@router.post("/stock_ipo_info", operation_id="post_stock_ipo_info")
+def post_stock_ipo_info(request: StockRequest):
     """
     描述: 新浪财经-发行与分配-新股发行
     限量: 单次获取新股发行的基本信息数据
@@ -34,7 +34,7 @@ def get_stock_ipo_info(request: StockRequest):
 
 
 # 巨潮资讯-数据中心-新股数据-新股过会
-@router.get("/stock_new_gh_cninfo")
+@router.get("/stock_new_gh_cninfo", operation_id="get_stock_new_gh_cninfo")
 def get_stock_new_gh_cninfo():
     """
     描述: 巨潮资讯-数据中心-新股数据-新股过会
@@ -48,7 +48,7 @@ def get_stock_new_gh_cninfo():
 
 
 # 巨潮资讯-数据中心-新股数据-新股发行
-@router.get("/stock_new_ipo_cninfo")
+@router.get("/stock_new_ipo_cninfo", operation_id="get_stock_new_ipo_cninfo")
 def get_stock_new_ipo_cninfo():
     """
     描述: 巨潮资讯-数据中心-新股数据-新股发行
@@ -62,7 +62,7 @@ def get_stock_new_ipo_cninfo():
 
 
 # 东方财富网-数据中心-新股申购-打新收益率
-@router.get("/stock_dxsyl_em")
+@router.get("/stock_dxsyl_em", operation_id="get_stock_dxsyl_em")
 def get_stock_dxsyl_em():
     """
     描述: 东方财富网-数据中心-新股申购-打新收益率
@@ -78,8 +78,8 @@ def get_stock_dxsyl_em():
 
 
 # 东方财富网-数据中心-新股数据-新股申购-新股申购与中签查询
-@router.post("/stock_xgsglb_em")
-def get_stock_xgsglb_em(request: DateRequest):
+@router.post("/stock_xgsglb_em", operation_id="post_stock_xgsglb_em")
+def post_stock_xgsglb_em(request: DateRequest):
     """
     描述: 东方财富网-数据中心-新股数据-新股申购-新股申购与中签查询
     限量: 单次获取指定 symbol 的新股申购与中签查询数据

@@ -10,7 +10,7 @@ class SymbolRequest(BaseModel):
 
 
 # 上海证券交易所-董监高人员股份变动
-@router.post("/stock_share_hold_change_sse")
+@router.post("/stock_share_hold_change_sse", operation_id="post_stock_share_hold_change_sse")
 def get_stock_share_hold_change_sse(request: SymbolRequest):
     """
     描述: 上海证券交易所-披露-监管信息公开-公司监管-董董监高人员股份变动
@@ -24,7 +24,7 @@ def get_stock_share_hold_change_sse(request: SymbolRequest):
 
 
 # 深圳证券交易所-董监高人员股份变动
-@router.post("/stock_share_hold_change_szse")
+@router.post("/stock_share_hold_change_szse", operation_id="post_stock_share_hold_change_szse")
 def get_stock_share_hold_change_szse(request: SymbolRequest):
     """
     描述: 深圳证券交易所-信息披露-监管信息公开-董监高人员股份变动
@@ -38,7 +38,7 @@ def get_stock_share_hold_change_szse(request: SymbolRequest):
 
 
 # 北京证券交易所-董监高及相关人员持股变动
-@router.post("/stock_share_hold_change_bse")
+@router.post("/stock_share_hold_change_bse", operation_id="post_stock_share_hold_change_bse")
 def get_stock_share_hold_change_bse(request: SymbolRequest):
     """
     描述: 北京证券交易所-信息披露-监管信息-董监高及相关人员持股变动
@@ -52,7 +52,7 @@ def get_stock_share_hold_change_bse(request: SymbolRequest):
 
 
 # 巨潮资讯-高管持股变动明细
-@router.post("/stock_hold_management_detail_cninfo")
+@router.post("/stock_hold_management_detail_cninfo", operation_id="post_stock_hold_management_detail_cninfo")
 def get_stock_hold_management_detail_cninfo(request: SymbolRequest):
     """
     描述: 巨潮资讯-数据中心-专题统计-股东股本-高管持股变动明细
@@ -66,7 +66,7 @@ def get_stock_hold_management_detail_cninfo(request: SymbolRequest):
 
 
 # 东方财富网-董监高及相关人员持股变动明细
-@router.get("/stock_hold_management_detail_em")
+@router.get("/stock_hold_management_detail_em", operation_id="get_stock_hold_management_detail_em")
 def get_stock_hold_management_detail_em():
     """
     描述: 东方财富网-数据中心-特色数据-高管持股-董监高及相关人员持股变动明细

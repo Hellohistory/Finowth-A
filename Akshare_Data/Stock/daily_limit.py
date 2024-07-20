@@ -11,7 +11,7 @@ class DateRequest(BaseModel):
 
 
 # 涨停股池
-@router.post("/stock_zt_pool_em")
+@router.post("/stock_zt_pool_em", operation_id="post_stock_zt_pool_em")
 def get_stock_zt_pool_em(request: DateRequest):
     """
     接口: stock_zt_pool_em
@@ -27,7 +27,7 @@ def get_stock_zt_pool_em(request: DateRequest):
 
 
 # 昨日涨停股池
-@router.post("/stock_zt_pool_previous_em")
+@router.post("/stock_zt_pool_previous_em", operation_id="post_stock_zt_pool_previous_em")
 def get_stock_zt_pool_previous_em(request: DateRequest):
     """
     接口: stock_zt_pool_previous_em
@@ -43,7 +43,7 @@ def get_stock_zt_pool_previous_em(request: DateRequest):
 
 
 # 强势股池
-@router.post("/stock_zt_pool_strong_em")
+@router.post("/stock_zt_pool_strong_em", operation_id="post_stock_zt_pool_strong_em")
 def get_stock_zt_pool_strong_em(request: DateRequest):
     """
     接口: stock_zt_pool_strong_em
@@ -59,7 +59,7 @@ def get_stock_zt_pool_strong_em(request: DateRequest):
 
 
 # 次新股池
-@router.post("/stock_zt_pool_sub_new_em")
+@router.post("/stock_zt_pool_sub_new_em", operation_id="post_stock_zt_pool_sub_new_em")
 def get_stock_zt_pool_sub_new_em(request: DateRequest):
     """
     接口: stock_zt_pool_sub_new_em
@@ -75,7 +75,7 @@ def get_stock_zt_pool_sub_new_em(request: DateRequest):
 
 
 # 炸板股池
-@router.post("/stock_zt_pool_zbgc_em")
+@router.post("/stock_zt_pool_zbgc_em", operation_id="post_stock_zt_pool_zbgc_em")
 def get_stock_zt_pool_zbgc_em(request: DateRequest):
     """
     接口: stock_zt_pool_zbgc_em
@@ -91,7 +91,7 @@ def get_stock_zt_pool_zbgc_em(request: DateRequest):
 
 
 # 跌停股池
-@router.post("/stock_zt_pool_dtgc_em")
+@router.post("/stock_zt_pool_dtgc_em", operation_id="post_stock_zt_pool_dtgc_em")
 def get_stock_zt_pool_dtgc_em(request: DateRequest):
     """
     接口: stock_zt_pool_dtgc_em

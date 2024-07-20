@@ -1,12 +1,10 @@
 import requests
 import json
 
-url = 'http://127.0.0.1:36925/stock_zh_b_daily'
+url = 'http://127.0.0.1:36925/stock_intraday_sina'
 data = {
-    "symbol": "sh900901",
-    "start_date": "20101103",
-    "end_date": "20201116",
-    "adjust": "qfq"
+    "symbol": "sz000001",
+    "date": "20240719"
 }
 response = requests.post(url, json=data)
 if response.status_code == 200:

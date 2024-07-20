@@ -32,7 +32,7 @@ class DateRequest(BaseModel):
 
 
 # 东方财富网-龙虎榜单-龙虎榜详情
-@router.post("/stock_lhb_detail_em")
+@router.post("/stock_lhb_detail_em", operation_id="post_stock_lhb_detail_em")
 def get_stock_lhb_detail_em(request: DateRangeRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-龙虎榜详情
@@ -48,7 +48,7 @@ def get_stock_lhb_detail_em(request: DateRangeRequest):
 
 
 # 东方财富网-龙虎榜单-个股上榜统计
-@router.post("/stock_lhb_stock_statistic_em")
+@router.post("/stock_lhb_stock_statistic_em", operation_id="post_stock_lhb_stock_statistic_em")
 def get_stock_lhb_stock_statistic_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-个股上榜统计
@@ -62,7 +62,7 @@ def get_stock_lhb_stock_statistic_em(request: SymbolRequest):
 
 
 # 东方财富网-龙虎榜单-机构买卖每日统计
-@router.post("/stock_lhb_jgmmtj_em")
+@router.post("/stock_lhb_jgmmtj_em", operation_id="post_stock_lhb_jgmmtj_em")
 def get_stock_lhb_jgmmtj_em(request: DateRangeRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-机构买卖每日统计
@@ -76,7 +76,7 @@ def get_stock_lhb_jgmmtj_em(request: DateRangeRequest):
 
 
 # 东方财富网-龙虎榜单-机构席位追踪
-@router.post("/stock_lhb_jgstatistic_em")
+@router.post("/stock_lhb_jgstatistic_em", operation_id="post_stock_lhb_jgstatistic_em")
 def get_stock_lhb_jgstatistic_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-机构席位追踪
@@ -92,7 +92,7 @@ def get_stock_lhb_jgstatistic_em(request: SymbolRequest):
 
 
 # 东方财富网-龙虎榜单-每日活跃营业部
-@router.post("/stock_lhb_hyyyb_em")
+@router.post("/stock_lhb_hyyyb_em", operation_id="post_stock_lhb_hyyyb_em")
 def get_stock_lhb_hyyyb_em(request: DateRangeRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-每日活跃营业部
@@ -108,7 +108,7 @@ def get_stock_lhb_hyyyb_em(request: DateRangeRequest):
 
 
 # 东方财富网-龙虎榜单-营业部排行
-@router.post("/stock_lhb_yybph_em")
+@router.post("/stock_lhb_yybph_em", operation_id="post_stock_lhb_yybph_em")
 def get_stock_lhb_yybph_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-营业部排行
@@ -122,7 +122,7 @@ def get_stock_lhb_yybph_em(request: SymbolRequest):
 
 
 # 东方财富网-龙虎榜单-营业部统计
-@router.post("/stock_lhb_traderstatistic_em")
+@router.post("/stock_lhb_traderstatistic_em", operation_id="post_stock_lhb_traderstatistic_em")
 def get_stock_lhb_traderstatistic_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-营业部统计
@@ -136,7 +136,7 @@ def get_stock_lhb_traderstatistic_em(request: SymbolRequest):
 
 
 # 东方财富网-龙虎榜单-个股龙虎榜详情
-@router.post("/stock_lhb_stock_detail_em")
+@router.post("/stock_lhb_stock_detail_em", operation_id="post_stock_lhb_stock_detail_em")
 def get_stock_lhb_stock_detail_em(request: SymbolFlagDateRequest):
     """
     描述: 东方财富网-数据中心-龙虎榜单-个股龙虎榜详情
@@ -153,7 +153,7 @@ def get_stock_lhb_stock_detail_em(request: SymbolFlagDateRequest):
 
 
 # 龙虎榜-营业部排行-上榜次数最多
-@router.get("/stock_lh_yyb_most")
+@router.get("/stock_lh_yyb_most", operation_id="get_stock_lh_yyb_most")
 def get_stock_lh_yyb_most():
     """
     描述: 龙虎榜-营业部排行-上榜次数最多
@@ -167,7 +167,7 @@ def get_stock_lh_yyb_most():
 
 
 # 龙虎榜-营业部排行-资金实力最强
-@router.get("/stock_lh_yyb_capital")
+@router.get("/stock_lh_yyb_capital", operation_id="get_stock_lh_yyb_capital")
 def get_stock_lh_yyb_capital():
     """
     描述: 龙虎榜-营业部排行-资金实力最强
@@ -181,7 +181,7 @@ def get_stock_lh_yyb_capital():
 
 
 # 龙虎榜-营业部排行-抱团操作实力
-@router.get("/stock_lh_yyb_control")
+@router.get("/stock_lh_yyb_control", operation_id="get_stock_lh_yyb_control")
 def get_stock_lh_yyb_control():
     """
     描述: 龙虎榜-营业部排行-抱团操作实力
@@ -195,7 +195,7 @@ def get_stock_lh_yyb_control():
 
 
 # 新浪财经-龙虎榜-每日详情
-@router.post("/stock_lhb_detail_daily_sina")
+@router.post("/stock_lhb_detail_daily_sina", operation_id="post_stock_lhb_detail_daily_sina")
 def get_stock_lhb_detail_daily_sina(request: DateRequest):
     """
     描述: 新浪财经-龙虎榜-每日详情
@@ -211,7 +211,7 @@ def get_stock_lhb_detail_daily_sina(request: DateRequest):
 
 
 # 新浪财经-龙虎榜-个股上榜统计
-@router.post("/stock_lhb_ggtj_sina")
+@router.post("/stock_lhb_ggtj_sina", operation_id="post_stock_lhb_ggtj_sina")
 def get_stock_lhb_ggtj_sina(request: SymbolRequest):
     """
     描述: 新浪财经-龙虎榜-个股上榜统计
@@ -225,7 +225,7 @@ def get_stock_lhb_ggtj_sina(request: SymbolRequest):
 
 
 # 新浪财经-龙虎榜-营业上榜统计
-@router.post("/stock_lhb_yytj_sina")
+@router.post("/stock_lhb_yytj_sina", operation_id="post_stock_lhb_yytj_sina")
 def get_stock_lhb_yytj_sina(request: SymbolRequest):
     """
     描述: 新浪财经-龙虎榜-营业上榜统计
@@ -239,7 +239,7 @@ def get_stock_lhb_yytj_sina(request: SymbolRequest):
 
 
 # 新浪财经-龙虎榜-机构席位追踪
-@router.post("/stock_lhb_jgzz_sina")
+@router.post("/stock_lhb_jgzz_sina", operation_id="post_stock_lhb_jgzz_sina")
 def get_stock_lhb_jgzz_sina(request: SymbolRequest):
     """
     描述: 新浪财经-龙虎榜-机构席位追踪
@@ -253,7 +253,7 @@ def get_stock_lhb_jgzz_sina(request: SymbolRequest):
 
 
 # 新浪财经-龙虎榜-机构席位成交明细
-@router.get("/stock_lhb_jgmx_sina")
+@router.get("/stock_lhb_jgmx_sina", operation_id="get_stock_lhb_jgmx_sina")
 def get_stock_lhb_jgmx_sina():
     """
     描述: 新浪财经-龙虎榜-机构席位成交明细

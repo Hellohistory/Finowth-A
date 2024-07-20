@@ -18,7 +18,7 @@ class StockInfoRequest(BaseModel):
 
 
 # 新浪行业-板块行情-成份详情
-@router.post("/stock_sector_detail")
+@router.post("/stock_sector_detail", operation_id="post_stock_sector_detail")
 def get_stock_sector_detail(request: SectorRequest):
     """
     描述: 新浪行业-板块行情-成份详情
@@ -32,7 +32,7 @@ def get_stock_sector_detail(request: SectorRequest):
 
 
 # 沪深京 A 股股票代码和股票简称数据
-@router.get("/stock_info_a_code_name")
+@router.get("/stock_info_a_code_name", operation_id="post_stock_info_a_code_name")
 def get_stock_info_a_code_name():
     """
     描述: 沪深京 A 股股票代码和股票简称数据
@@ -46,7 +46,7 @@ def get_stock_info_a_code_name():
 
 
 # 上海证券交易所股票代码和简称数据
-@router.post("/stock_info_sh_name_code")
+@router.post("/stock_info_sh_name_code", operation_id="post_stock_info_sh_name_code")
 def get_stock_info_sh_name_code(request: StockInfoRequest):
     """
     描述: 上海证券交易所股票代码和简称数据
@@ -60,7 +60,7 @@ def get_stock_info_sh_name_code(request: StockInfoRequest):
 
 
 # 深证证券交易所股票代码和股票简称数据
-@router.post("/stock_info_sz_name_code")
+@router.post("/stock_info_sz_name_code", operation_id="post_stock_info_sz_name_code")
 def get_stock_info_sz_name_code(request: StockInfoRequest):
     """
     描述: 深证证券交易所股票代码和股票简称数据
@@ -74,7 +74,7 @@ def get_stock_info_sz_name_code(request: StockInfoRequest):
 
 
 # 北京证券交易所股票代码和简称数据
-@router.get("/stock_info_bj_name_code")
+@router.get("/stock_info_bj_name_code", operation_id="post_stock_info_bj_name_code")
 def get_stock_info_bj_name_code():
     """
     描述: 北京证券交易所股票代码和简称数据
@@ -88,7 +88,7 @@ def get_stock_info_bj_name_code():
 
 
 # 深证证券交易所终止/暂停上市股票
-@router.post("/stock_info_sz_delist")
+@router.post("/stock_info_sz_delist", operation_id="post_stock_info_sz_delist")
 def get_stock_info_sz_delist(request: StockInfoRequest):
     """
     描述: 深证证券交易所终止/暂停上市股票
@@ -102,7 +102,7 @@ def get_stock_info_sz_delist(request: StockInfoRequest):
 
 
 # 东方财富网-行情中心-沪深个股-两网及退市
-@router.get("/stock_staq_net_stop")
+@router.get("/stock_staq_net_stop", operation_id="post_stock_staq_net_stop")
 def get_stock_staq_net_stop():
     """
     描述: 东方财富网-行情中心-沪深个股-两网及退市
@@ -116,7 +116,7 @@ def get_stock_staq_net_stop():
 
 
 # 上海证券交易所暂停/终止上市股票
-@router.post("/stock_info_sh_delist")
+@router.post("/stock_info_sh_delist", operation_id="post_stock_info_sh_delist")
 def get_stock_info_sh_delist(request: StockInfoRequest):
     """
     描述: 上海证券交易所暂停/终止上市股票
@@ -130,7 +130,7 @@ def get_stock_info_sh_delist(request: StockInfoRequest):
 
 
 # 新浪财经-股票曾用名
-@router.post("/stock_info_change_name")
+@router.post("/stock_info_change_name", operation_id="post_stock_info_change_name")
 def get_stock_info_change_name(request: SymbolRequest):
     """
     描述: 新浪财经-股票曾用名
@@ -144,7 +144,7 @@ def get_stock_info_change_name(request: SymbolRequest):
 
 
 # 深证证券交易所-市场数据-股票数据-名称变更
-@router.post("/stock_info_sz_change_name")
+@router.post("/stock_info_sz_change_name", operation_id="post_stock_info_sz_change_name")
 def get_stock_info_sz_change_name(request: StockInfoRequest):
     """
     描述: 深证证券交易所-市场数据-股票数据-名称变更

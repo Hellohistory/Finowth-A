@@ -21,8 +21,8 @@ class FinancialAnalysis(BaseModel):
     start_year: str
 
 
-@router.post("/stock_financial_abstract")
-async def get_stock_financial_abstract(request: StockRequest):
+@router.post("/stock_financial_abstract", operation_id="post_stock_financial_abstract")
+async def post_stock_financial_abstract(request: StockRequest):
     """
     获取股票的财务摘要数据
     :param request: 包含股票代码的请求体
@@ -38,8 +38,8 @@ async def get_stock_financial_abstract(request: StockRequest):
         raise HTTPException(status_code=500, detail=f"获取财务摘要数据失败: {str(e)}")
 
 
-@router.post("/stock_financial_abstract_ths")
-async def get_stock_financial_abstract_ths(request: SymbolRequest):
+@router.post("/stock_financial_abstract_ths", operation_id="post_stock_financial_abstract_ths")
+async def post_stock_financial_abstract_ths(request: SymbolRequest):
     """
     获取股票的财务摘要数据（包含指标）
     :param request: 包含股票代码和指标的请求体
@@ -55,8 +55,9 @@ async def get_stock_financial_abstract_ths(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=f"获取财务摘要数据失败: {str(e)}")
 
 
-@router.post("/stock_financial_analysis_indicator")
-async def get_stock_financial_analysis_indicator(request: FinancialAnalysis):
+@router.post("/stock_financial_analysis_indicator",
+             operation_id="post_stock_financial_analysis_indicator")
+async def post_stock_financial_analysis_indicator(request: FinancialAnalysis):
     """
     获取股票的财务摘要数据（包含起始年份）
     :param request: 包含股票代码和起始年份的请求体

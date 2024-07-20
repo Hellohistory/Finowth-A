@@ -21,7 +21,7 @@ class SymbolIndicatorPeriodRequest(BaseModel):
 
 
 # 巨潮资讯-数据中心-行业分析-行业市盈率
-@router.post("/stock_industry_pe_ratio_cninfo")
+@router.post("/stock_industry_pe_ratio_cninfo", operation_id="post_stock_industry_pe_ratio_cninfo")
 def get_stock_industry_pe_ratio_cninfo(request: SymbolDateRequest):
     """
     描述: 巨潮资讯-数据中心-行业分析-行业市盈率
@@ -35,7 +35,7 @@ def get_stock_industry_pe_ratio_cninfo(request: SymbolDateRequest):
 
 
 # 乐咕乐股-A 股个股指标: 市盈率, 市净率, 股息率
-@router.post("/stock_a_indicator_lg")
+@router.post("/stock_a_indicator_lg", operation_id="post_stock_a_indicator_lg")
 def get_stock_a_indicator_lg(request: SymbolRequest):
     """
     描述: 乐咕乐股-A 股个股指标: 市盈率, 市净率, 股息率
@@ -49,7 +49,7 @@ def get_stock_a_indicator_lg(request: SymbolRequest):
 
 
 # 乐咕乐股-股息率-A 股股息率
-@router.post("/stock_a_gxl_lg")
+@router.post("/stock_a_gxl_lg", operation_id="post_stock_a_gxl_lg")
 def get_stock_a_gxl_lg(request: SymbolRequest):
     """
     描述: 乐咕乐股-股息率-A 股股息率
@@ -63,7 +63,7 @@ def get_stock_a_gxl_lg(request: SymbolRequest):
 
 
 # 乐咕乐股-股息率-恒生指数股息率
-@router.get("/stock_hk_gxl_lg")
+@router.get("/stock_hk_gxl_lg", operation_id="get_stock_hk_gxl_lg")
 def get_stock_hk_gxl_lg():
     """
     描述: 乐咕乐股-股息率-恒生指数股息率
@@ -77,7 +77,7 @@ def get_stock_hk_gxl_lg():
 
 
 # 乐咕乐股-大盘拥挤度
-@router.get("/stock_a_congestion_lg")
+@router.get("/stock_a_congestion_lg", operation_id="get_stock_a_congestion_lg")
 def get_stock_a_congestion_lg():
     """
     描述: 乐咕乐股-大盘拥挤度
@@ -96,7 +96,7 @@ def get_stock_a_congestion_lg():
 
 
 # 乐咕乐股-股债利差
-@router.get("/stock_ebs_lg")
+@router.get("/stock_ebs_lg", operation_id="get_stock_ebs_lg")
 def get_stock_ebs_lg():
     """
     描述: 乐咕乐股-股债利差
@@ -110,7 +110,7 @@ def get_stock_ebs_lg():
 
 
 # 乐估乐股-底部研究-巴菲特指标
-@router.get("/stock_buffett_index_lg")
+@router.get("/stock_buffett_index_lg", operation_id="get_stock_buffett_index_lg")
 def get_stock_buffett_index_lg():
     """
     描述: 乐估乐股-底部研究-巴菲特指标
@@ -124,7 +124,7 @@ def get_stock_buffett_index_lg():
 
 
 # 乐咕乐股-A 股等权重市盈率与中位数市盈率
-@router.get("/stock_a_ttm_lyr")
+@router.get("/stock_a_ttm_lyr", operation_id="get_stock_a_ttm_lyr")
 def get_stock_a_ttm_lyr():
     """
     描述: 乐咕乐股-A 股等权重市盈率与中位数市盈率
@@ -138,7 +138,7 @@ def get_stock_a_ttm_lyr():
 
 
 # 乐咕乐股-A 股等权重与中位数市净率
-@router.get("/stock_a_all_pb")
+@router.get("/stock_a_all_pb", operation_id="get_stock_a_all_pb")
 def get_stock_a_all_pb():
     """
     描述: 乐咕乐股-A 股等权重与中位数市净率
@@ -152,7 +152,7 @@ def get_stock_a_all_pb():
 
 
 # 乐咕乐股-主板市盈率
-@router.post("/stock_market_pe_lg")
+@router.post("/stock_market_pe_lg", operation_id="post_stock_market_pe_lg")
 def get_stock_market_pe_lg(request: SymbolRequest):
     """
     描述: 乐咕乐股-主板市盈率
@@ -166,7 +166,7 @@ def get_stock_market_pe_lg(request: SymbolRequest):
 
 
 # 乐咕乐股-指数市盈率
-@router.post("/stock_index_pe_lg")
+@router.post("/stock_index_pe_lg", operation_id="post_stock_index_pe_lg")
 def get_stock_index_pe_lg(request: SymbolRequest):
     """
     描述: 乐咕乐股-指数市盈率
@@ -180,7 +180,7 @@ def get_stock_index_pe_lg(request: SymbolRequest):
 
 
 # 乐咕乐股-主板市净率
-@router.post("/stock_market_pb_lg")
+@router.post("/stock_market_pb_lg", operation_id="post_stock_market_pb_lg")
 def get_stock_market_pb_lg(request: SymbolRequest):
     """
     描述: 乐咕乐股-主板市净率
@@ -194,7 +194,7 @@ def get_stock_market_pb_lg(request: SymbolRequest):
 
 
 # 乐咕乐股-指数市净率
-@router.post("/stock_index_pb_lg")
+@router.post("/stock_index_pb_lg", operation_id="post_stock_index_pb_lg")
 def get_stock_index_pb_lg(request: SymbolRequest):
     """
     描述: 乐咕乐股-指数市净率
@@ -208,7 +208,7 @@ def get_stock_index_pb_lg(request: SymbolRequest):
 
 
 # 百度股市通-A 股-财务报表-估值数据
-@router.post("/stock_zh_valuation_baidu")
+@router.post("/stock_zh_valuation_baidu", operation_id="post_stock_zh_valuation_baidu")
 def get_stock_zh_valuation_baidu(request: SymbolIndicatorPeriodRequest):
     """
     描述: 百度股市通-A 股-财务报表-估值数据

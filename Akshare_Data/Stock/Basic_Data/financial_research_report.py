@@ -32,7 +32,8 @@ class FinancialDebt(BaseModel):
 
 
 # 东方财富网-数据中心-研究报告-个股研报
-@router.post("/stock_research_report_em")
+@router.post("/stock_research_report_em",
+             operation_id="post_post_stock_research_report_em")
 def get_stock_research_report_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-研究报告-个股研报
@@ -48,7 +49,8 @@ def get_stock_research_report_em(request: SymbolRequest):
 
 
 # 东方财富网-数据中心-公告大全-沪深京 A 股公告
-@router.post("/stock_notice_report")
+@router.post("/stock_notice_report",
+             operation_id="post_stock_notice_report")
 def get_stock_notice_report(request: DateRequest):
     """
     描述: 东方财富网-数据中心-公告大全-沪深京 A 股公告
@@ -62,7 +64,8 @@ def get_stock_notice_report(request: DateRequest):
 
 
 # 新浪财经-财务报表-三大报表
-@router.post("/stock_financial_report_sina")
+@router.post("/stock_financial_report_sina",
+             operation_id="post_stock_financial_report_sina")
 def get_stock_financial_report_sina(request: StockRequest):
     """
     描述: 新浪财经-财务报表-三大报表
@@ -78,7 +81,8 @@ def get_stock_financial_report_sina(request: StockRequest):
 
 
 # 东方财富-股票-财务分析-资产负债表-按报告期
-@router.post("/stock_balance_sheet_by_report_em")
+@router.post("/stock_balance_sheet_by_report_em",
+             operation_id="post_stock_balance_sheet_by_report_em")
 def get_stock_balance_sheet_by_report_em(request: SymbolRequest):
     """
     描述: 东方财富-股票-财务分析-资产负债表-按报告期
@@ -94,7 +98,8 @@ def get_stock_balance_sheet_by_report_em(request: SymbolRequest):
 
 
 # 东方财富-股票-财务分析-资产负债表-按年度
-@router.post("/stock_balance_sheet_by_yearly_em")
+@router.post("/stock_balance_sheet_by_yearly_em",
+             operation_id="post_stock_balance_sheet_by_yearly_em")
 def get_stock_balance_sheet_by_yearly_em(request: SymbolRequest):
     """
     描述: 东方财富-股票-财务分析-资产负债表-按年度
@@ -110,7 +115,8 @@ def get_stock_balance_sheet_by_yearly_em(request: SymbolRequest):
 
 
 # 东方财富-股票-财务分析-利润表-报告期
-@router.post("/stock_profit_sheet_by_report_em")
+@router.post("/stock_profit_sheet_by_report_em",
+             operation_id="post_stock_profit_sheet_by_report_em")
 def get_stock_profit_sheet_by_report_em(request: SymbolRequest):
     """
     描述: 东方财富-股票-财务分析-利润表-报告期
@@ -126,7 +132,8 @@ def get_stock_profit_sheet_by_report_em(request: SymbolRequest):
 
 
 # 东方财富-股票-财务分析-利润表-按年度
-@router.post("/stock_profit_sheet_by_yearly_em")
+@router.post("/stock_profit_sheet_by_yearly_em",
+             operation_id="post_stock_profit_sheet_by_yearly_em")
 def get_stock_profit_sheet_by_yearly_em(request: SymbolRequest):
     """
     描述: 东方财富-股票-财务分析-利润表-按年度
@@ -142,7 +149,8 @@ def get_stock_profit_sheet_by_yearly_em(request: SymbolRequest):
 
 
 # 东方财富-股票-财务分析-利润表-按单季度
-@router.post("/stock_profit_sheet_by_quarterly_em")
+@router.post("/stock_profit_sheet_by_quarterly_em",
+             operation_id="post_stock_profit_sheet_by_quarterly_em")
 def get_stock_profit_sheet_by_quarterly_em(request: SymbolRequest):
     """
     描述: 东方财富-股票-财务分析-利润表-按单季度
@@ -158,7 +166,8 @@ def get_stock_profit_sheet_by_quarterly_em(request: SymbolRequest):
 
 
 # 东方财富-股票-财务分析-现金流量表-按报告期
-@router.post("/stock_cash_flow_sheet_by_report_em")
+@router.post("/stock_cash_flow_sheet_by_report_em",
+             operation_id="post_stock_cash_flow_sheet_by_report_em")
 def get_stock_cash_flow_sheet_by_report_em(request: SymbolRequest):
     """
     描述: 东方财富-股票-财务分析-现金流量表-按报告期
@@ -172,7 +181,8 @@ def get_stock_cash_flow_sheet_by_report_em(request: SymbolRequest):
 
 
 # 东方财富-股票-财务分析-现金流量表-按年度
-@router.post("/stock_cash_flow_sheet_by_yearly_em")
+@router.post("/stock_cash_flow_sheet_by_yearly_em",
+             operation_id="post_stock_cash_flow_sheet_by_yearly_em")
 def get_stock_cash_flow_sheet_by_yearly_em(request: SymbolRequest):
     """
     描述: 东方财富-股票-财务分析-现金流量表-按年度
@@ -189,7 +199,8 @@ def get_stock_cash_flow_sheet_by_yearly_em(request: SymbolRequest):
 
 
 # 东方财富-股票-财务分析-现金流量表-按单季度
-@router.post("/stock_cash_flow_sheet_by_quarterly_em")
+@router.post("/stock_cash_flow_sheet_by_quarterly_em",
+             operation_id="post_stock_cash_flow_sheet_by_quarterly_em")
 def get_stock_cash_flow_sheet_by_quarterly_em(request: SymbolRequest):
     """
     描述: 东方财富-股票-财务分析-现金流量表-按单季度
@@ -203,7 +214,8 @@ def get_stock_cash_flow_sheet_by_quarterly_em(request: SymbolRequest):
 
 
 # 同花顺-财务指标-资产负债表
-@router.post("/stock_financial_debt_ths")
+@router.post("/stock_financial_debt_ths",
+             operation_id="post_stock_financial_debt_ths")
 def get_stock_financial_debt_ths(request: FinancialDebt):
     """
     描述: 同花顺-财务指标-资产负债表
@@ -217,7 +229,8 @@ def get_stock_financial_debt_ths(request: FinancialDebt):
 
 
 # 同花顺-财务指标-利润表
-@router.post("/stock_financial_benefit_ths")
+@router.post("/stock_financial_benefit_ths",
+             operation_id="post_stock_financial_benefit_ths")
 def get_stock_financial_benefit_ths(request: FinancialDebt):
     """
     描述: 同花顺-财务指标-利润表
@@ -232,7 +245,8 @@ def get_stock_financial_benefit_ths(request: FinancialDebt):
 
 
 # 同花顺-财务指标-现金流量表
-@router.post("/stock_financial_cash_ths")
+@router.post("/stock_financial_cash_ths",
+             operation_id="post_stock_financial_cash_ths")
 def get_stock_financial_cash_ths(request: FinancialDebt):
     """
     描述: 同花顺-财务指标-现金流量表
@@ -246,7 +260,8 @@ def get_stock_financial_cash_ths(request: FinancialDebt):
 
 
 # 东方财富-股票-财务分析-资产负债表-已退市股票-按报告期
-@router.post("/stock_balance_sheet_by_report_delisted_em")
+@router.post("/stock_balance_sheet_by_report_delisted_em",
+             operation_id="stock_balance_sheet_by_report_delisted_em")
 def get_stock_balance_sheet_by_report_delisted_em(request: SymbolRequest):
     """
     描述: 东方财富-股票-财务分析-资产负债表-已退市股票-按报告期
@@ -264,7 +279,8 @@ def get_stock_balance_sheet_by_report_delisted_em(request: SymbolRequest):
 
 
 # 东方财富-股票-财务分析-利润表-已退市股票-按报告期
-@router.post("/stock_profit_sheet_by_report_delisted_em")
+@router.post("/stock_profit_sheet_by_report_delisted_em",
+             operation_id="post_stock_profit_sheet_by_report_delisted_em")
 def get_stock_profit_sheet_by_report_delisted_em(request: SymbolRequest):
     """
     描述: 东方财富-股票-财务分析-利润表-已退市股票-按报告期
@@ -278,7 +294,8 @@ def get_stock_profit_sheet_by_report_delisted_em(request: SymbolRequest):
 
 
 # 东方财富-股票-财务分析-现金流量表-已退市股票-按报告期
-@router.post("/stock_cash_flow_sheet_by_report_delisted_em")
+@router.post("/stock_cash_flow_sheet_by_report_delisted_em",
+             operation_id="post_stock_cash_flow_sheet_by_report_delisted_em")
 def get_stock_cash_flow_sheet_by_report_delisted_em(request: SymbolRequest):
     """
     描述: 东方财富-股票-财务分析-现金流量表-已退市股票-按报告期
@@ -293,7 +310,8 @@ def get_stock_cash_flow_sheet_by_report_delisted_em(request: SymbolRequest):
 
 
 # 东方财富-港股-财务报表-三大报表
-@router.post("/stock_financial_hk_report_em")
+@router.post("/stock_financial_hk_report_em",
+             operation_id="post_stock_financial_hk_report_em")
 def get_stock_financial_hk_report_em(request: FinancialRequest):
     """
     描述: 东方财富-港股-财务报表-三大报表

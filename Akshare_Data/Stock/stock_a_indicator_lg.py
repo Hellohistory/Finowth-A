@@ -11,8 +11,8 @@ class IndicatorLg(BaseModel):
     symbol: str
 
 
-@router.post("/stock_a_indicator_lg")
-def get_stock_a_indicator_lg(request: IndicatorLg):
+@router.post("/stock_a_indicator_lg", operation_id="post_stock_a_indicator_lg")
+async def post_stock_a_indicator_lg(request: IndicatorLg):
     """
     描述: 乐咕乐股-A 股个股指标: 市盈率, 市净率, 股息率
     限量: 单次获取指定 symbol 的所有历史数据

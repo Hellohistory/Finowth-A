@@ -12,7 +12,7 @@ class DateRequest(BaseModel):
 
 
 # 东方财富网-数据中心-特色数据-停复牌信息
-@router.post("/stock_tfp_em")
+@router.post("/stock_tfp_em", operation_id="post_stock_tfp_em")
 def get_stock_tfp_em(request: DateRequest):
     """
     描述: 东方财富网-数据中心-特色数据-停复牌信息
@@ -26,7 +26,7 @@ def get_stock_tfp_em(request: DateRequest):
 
 
 # 百度股市通-交易提醒-停复牌
-@router.post("/news_trade_notify_suspend_baidu")
+@router.post("/news_trade_notify_suspend_baidu", operation_id="post_news_trade_notify_suspend_baidu")
 def get_news_trade_notify_suspend_baidu(request: DateRequest):
     """
     描述: 百度股市通-交易提醒-停复牌
@@ -40,7 +40,7 @@ def get_news_trade_notify_suspend_baidu(request: DateRequest):
 
 
 # 百度股市通-交易提醒-分红派息
-@router.post("/news_trade_notify_dividend_baidu")
+@router.post("/news_trade_notify_dividend_baidu", operation_id="post_news_trade_notify_dividend_baidu")
 def get_news_trade_notify_dividend_baidu(request: DateRequest):
     """
     描述: 百度股市通-交易提醒-分红派息

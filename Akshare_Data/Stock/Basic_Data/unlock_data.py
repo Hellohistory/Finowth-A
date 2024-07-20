@@ -28,7 +28,7 @@ class RestrictedReleaseSummaryRequest(BaseModel):
 
 
 # 新浪财经-发行分配-限售解禁
-@router.post("/stock_restricted_release_queue_sina")
+@router.post("/stock_restricted_release_queue_sina", operation_id="post_stock_restricted_release_queue_sina")
 def get_stock_restricted_release_queue_sina(request: SymbolRequest):
     """
     描述: 新浪财经-发行分配-限售解禁
@@ -42,7 +42,7 @@ def get_stock_restricted_release_queue_sina(request: SymbolRequest):
 
 
 # 东方财富网-数据中心-特色数据-限售股解禁
-@router.post("/stock_restricted_release_summary_em")
+@router.post("/stock_restricted_release_summary_em", operation_id="post_stock_restricted_release_summary_em")
 def get_stock_restricted_release_summary_em(request: RestrictedReleaseSummaryRequest):
     """
     描述: 东方财富网-数据中心-特色数据-限售股解禁
@@ -58,7 +58,7 @@ def get_stock_restricted_release_summary_em(request: RestrictedReleaseSummaryReq
 
 
 # 东方财富网-数据中心-限售股解禁-解禁详情一览
-@router.post("/stock_restricted_release_detail_em")
+@router.post("/stock_restricted_release_detail_em", operation_id="post_stock_restricted_release_detail_em")
 def get_stock_restricted_release_detail_em(request: DateRangeRequest):
     """
     描述: 东方财富网-数据中心-限售股解禁-解禁详情一览
@@ -75,7 +75,7 @@ def get_stock_restricted_release_detail_em(request: DateRangeRequest):
 
 
 # 东方财富网-数据中心-个股限售解禁-解禁批次
-@router.post("/stock_restricted_release_queue_em")
+@router.post("/stock_restricted_release_queue_em", operation_id="post_stock_restricted_release_queue_em")
 def get_stock_restricted_release_queue_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-个股限售解禁-解禁批次
@@ -89,7 +89,7 @@ def get_stock_restricted_release_queue_em(request: SymbolRequest):
 
 
 # 东方财富网-数据中心-个股限售解禁-解禁股东
-@router.post("/stock_restricted_release_stockholder_em")
+@router.post("/stock_restricted_release_stockholder_em", operation_id="post_stock_restricted_release_stockholder_em")
 def get_stock_restricted_release_stockholder_em(request: SymbolDateRequest):
     """
     描述: 东方财富网-数据中心-个股限售解禁-解禁股东

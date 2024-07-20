@@ -12,8 +12,8 @@ class SymbolRequest(BaseModel):
 
 
 # 创新高
-@router.post("/stock_rank_cxg_ths")
-def get_stock_rank_cxg_ths(request: SymbolRequest):
+@router.post("/stock_rank_cxg_ths", operation_id="post_stock_rank_cxg_ths")
+async def post_stock_rank_cxg_ths(request: SymbolRequest):
     """
     接口：stock_rank_cxg_ths
     目标地址：https://data.10jqka.com.cn/rank/cxg/
@@ -28,8 +28,8 @@ def get_stock_rank_cxg_ths(request: SymbolRequest):
 
 
 # 创新低
-@router.post("/stock_rank_cxd_ths")
-def get_stock_rank_cxd_ths(request: SymbolRequest):
+@router.post("/stock_rank_cxd_ths", operation_id="post_stock_rank_cxd_ths")
+async def post_stock_rank_cxd_ths(request: SymbolRequest):
     """
     接口：stock_rank_cxd_ths
     目标地址：https://data.10jqka.com.cn/rank/cxd/
@@ -44,7 +44,7 @@ def get_stock_rank_cxd_ths(request: SymbolRequest):
 
 
 # 连续上涨
-@router.get("/stock_rank_lxsz_ths")
+@router.get("/stock_rank_lxsz_ths", operation_id="get_stock_rank_lxsz_ths")
 def get_stock_rank_lxsz_ths():
     """
     接口：stock_rank_lxsz_ths
@@ -60,7 +60,7 @@ def get_stock_rank_lxsz_ths():
 
 
 # 连续下跌
-@router.get("/stock_rank_lxxd_ths")
+@router.get("/stock_rank_lxxd_ths", operation_id="get_stock_rank_lxxd_ths")
 def get_stock_rank_lxxd_ths():
     """
     接口：stock_rank_lxxd_ths
@@ -76,7 +76,7 @@ def get_stock_rank_lxxd_ths():
 
 
 # 持续放量
-@router.get("/stock_rank_cxfl_ths")
+@router.get("/stock_rank_cxfl_ths", operation_id="get_stock_rank_cxfl_ths")
 def get_stock_rank_cxfl_ths():
     """
     接口: stock_rank_cxfl_ths
@@ -92,7 +92,7 @@ def get_stock_rank_cxfl_ths():
 
 
 # 持续缩量
-@router.get("/stock_rank_cxsl_ths")
+@router.get("/stock_rank_cxsl_ths", operation_id="get_stock_rank_cxsl_ths")
 def get_stock_rank_cxsl_ths():
     """
     接口: stock_rank_cxsl_ths
@@ -112,8 +112,8 @@ class SymbolRequest(BaseModel):
 
 
 # 向上突破
-@router.post("/stock_rank_xstp_ths")
-def get_stock_rank_xstp_ths(request: SymbolRequest):
+@router.post("/stock_rank_xstp_ths", operation_id="post_stock_rank_xstp_ths")
+async def post_stock_rank_xstp_ths(request: SymbolRequest):
     """
     接口: stock_rank_xstp_ths
     目标地址: https://data.10jqka.com.cn/rank/xstp/
@@ -128,8 +128,8 @@ def get_stock_rank_xstp_ths(request: SymbolRequest):
 
 
 # 向下突破
-@router.post("/stock_rank_xxtp_ths")
-def get_stock_rank_xxtp_ths(request: SymbolRequest):
+@router.post("/stock_rank_xxtp_ths", operation_id="post_stock_rank_xxtp_ths")
+async def post_stock_rank_xxtp_ths(request: SymbolRequest):
     """
     接口: stock_rank_xxtp_ths
     目标地址: https://data.10jqka.com.cn/rank/xxtp/
@@ -144,7 +144,7 @@ def get_stock_rank_xxtp_ths(request: SymbolRequest):
 
 
 # 量价齐升
-@router.get("/stock_rank_ljqs_ths")
+@router.get("/stock_rank_ljqs_ths", operation_id="get_stock_rank_ljqs_ths")
 def get_stock_rank_ljqs_ths():
     """
     接口: stock_rank_ljqs_ths
@@ -160,7 +160,7 @@ def get_stock_rank_ljqs_ths():
 
 
 # 量价齐跌
-@router.get("/stock_rank_ljqd_ths")
+@router.get("/stock_rank_ljqd_ths", operation_id="get_stock_rank_ljqd_ths")
 def get_stock_rank_ljqd_ths():
     """
     接口: stock_rank_ljqd_ths
@@ -179,7 +179,7 @@ def get_stock_rank_ljqd_ths():
 
 
 # 险资举牌
-@router.get("/stock_rank_xzjp_ths")
+@router.get("/stock_rank_xzjp_ths", operation_id="get_stock_rank_xzjp_ths")
 def get_stock_rank_xzjp_ths():
     """
     接口: stock_rank_xzjp_ths

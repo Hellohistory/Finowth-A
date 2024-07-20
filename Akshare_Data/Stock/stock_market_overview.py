@@ -74,8 +74,8 @@ def get_stock_sse_deal_daily(date):
     return stock_sse_deal_daily_df
 
 
-@router.get("/stock_sse_summary")
-def api_get_stock_sse_summary():
+@router.get("/stock_sse_summary", operation_id="get_stock_sse_summary")
+def get_stock_sse_summary():
     """
     获取上海证券交易所的股票数据总貌
     """
@@ -87,8 +87,8 @@ def api_get_stock_sse_summary():
         raise HTTPException(status_code=500, detail=f"Error retrieving SSE summary: {str(e)}")
 
 
-@router.post("/stock_szse_summary")
-def api_get_stock_szse_summary(request: DateRequest):
+@router.post("/stock_szse_summary", operation_id="post_stock_szse_summary")
+async def post_stock_szse_summary(request: DateRequest):
     """
     获取深圳证券交易所的证券类别统计
     """
@@ -100,8 +100,8 @@ def api_get_stock_szse_summary(request: DateRequest):
         raise HTTPException(status_code=500, detail=f"Error retrieving SZSE summary: {str(e)}")
 
 
-@router.post("/stock_szse_sector_summary")
-def api_get_stock_szse_sector_summary(request: SectorSummaryRequest):
+@router.post("/stock_szse_sector_summary", operation_id="post_stock_szse_sector_summary")
+async def post_stock_szse_sector_summary(request: SectorSummaryRequest):
     """
     获取深圳证券交易所的股票行业成交数据
     """
@@ -113,8 +113,8 @@ def api_get_stock_szse_sector_summary(request: SectorSummaryRequest):
         raise HTTPException(status_code=500, detail=f"Error retrieving SZSE sector summary: {str(e)}")
 
 
-@router.post("/stock_sse_deal_daily")
-def api_get_stock_sse_deal_daily(request: DateRequest):
+@router.post("/stock_sse_deal_daily", operation_id="post_stock_sse_deal_daily")
+async def post_stock_sse_deal_daily(request: DateRequest):
     """
     获取上海证券交易所的每日概况
     """

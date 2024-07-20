@@ -12,8 +12,8 @@ class DateRequest(BaseModel):
 
 
 # 东方财富网-数据中心-特色数据-机构调研-机构调研详细
-@router.post("/stock_jgdy_detail_em")
-async def get_stock_jgdy_detail_em(request: DateRequest):
+@router.post("/stock_jgdy_detail_em", operation_id="post_stock_jgdy_detail_em")
+async def post_stock_jgdy_detail_em(request: DateRequest):
     """
     描述: 东方财富网-数据中心-特色数据-机构调研-机构调研详细
     限量: 单次所有历史数据, 由于数据量比较大需要等待一定时间

@@ -12,8 +12,8 @@ class SymbolRequest(BaseModel):
 
 
 # 东方财富网-数据中心-特色数据-高管持股
-@router.post("/stock_ggcg_em")
-def get_stock_ggcg_em(request: SymbolRequest):
+@router.post("/stock_ggcg_em", operation_id="post_stock_ggcg_em")
+def post_stock_ggcg_em(request: SymbolRequest):
     """
     描述: 东方财富网-数据中心-特色数据-高管持股
     限量: 单次获取所有高管持股数据数据
@@ -28,8 +28,8 @@ def get_stock_ggcg_em(request: SymbolRequest):
 
 
 # 东方财富网-概念板-行情中心-日K-筹码分布
-@router.post("/stock_cyq_em")
-def get_stock_cyq_em(request: SymbolRequest):
+@router.post("/stock_cyq_em", operation_id="post_stock_cyq_em")
+def post_stock_cyq_em(request: SymbolRequest):
     """
     描述: 东方财富网-概念板-行情中心-日K-筹码分布
     限量: 单次返回指定 symbol 和 adjust 的近 90 个交易日数据
@@ -42,7 +42,7 @@ def get_stock_cyq_em(request: SymbolRequest):
 
 
 # 一致行动人
-@router.get("/stock_yzxdr_em")
+@router.get("/stock_yzxdr_em", operation_id="get_stock_yzxdr_em")
 def get_stock_yzxdr_em(date: str):
     """
     东方财富网-数据中心-特色数据-一致行动人
@@ -56,7 +56,7 @@ def get_stock_yzxdr_em(date: str):
 
 
 # 赚钱效应分析
-@router.get("/stock_market_activity_legu")
+@router.get("/stock_market_activity_legu", operation_id="get_stock_market_activity_legu")
 def get_stock_market_activity_legu():
     """
     接口: stock_market_activity_legu

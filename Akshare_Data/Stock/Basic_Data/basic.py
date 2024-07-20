@@ -23,7 +23,7 @@ class StockHkValuationBaiduRequest(BaseModel):
 
 
 # 股票增发
-@router.post("/stock_add_stock")
+@router.post("/stock_add_stock", operation_id="post_stock_add_stock")
 def get_stock_add_stock(request: SymbolRequest):
     """
     新浪财经-发行与分配-增发
@@ -37,7 +37,7 @@ def get_stock_add_stock(request: SymbolRequest):
 
 
 # 涨跌投票
-@router.post("/stock_zh_vote_baidu")
+@router.post("/stock_zh_vote_baidu", operation_id="post_stock_zh_vote_baidu")
 def get_stock_zh_vote_baidu(request: StockZhVoteBaiduRequest):
     """
     百度股市通- A 股或指数-股评-投票
@@ -51,7 +51,7 @@ def get_stock_zh_vote_baidu(request: StockZhVoteBaiduRequest):
 
 
 # 港股估值指标
-@router.post("/stock_hk_valuation_baidu")
+@router.post("/stock_hk_valuation_baidu", operation_id="post_stock_hk_valuation_baidu")
 def get_stock_hk_valuation_baidu(request: StockHkValuationBaiduRequest):
     """
     百度股市通-港股-财务报表-估值数据
@@ -66,7 +66,7 @@ def get_stock_hk_valuation_baidu(request: StockHkValuationBaiduRequest):
 
 
 # 创新高和新低的股票数量
-@router.post("/stock_a_high_low_statistics")
+@router.post("/stock_a_high_low_statistics", operation_id="post_stock_a_high_low_statistics")
 def get_stock_a_high_low_statistics(request: SymbolRequest):
     """
     不同市场的创新高和新低的股票数量
@@ -91,7 +91,7 @@ def get_stock_a_high_low_statistics(request: SymbolRequest):
 
 
 # 破净股统计
-@router.post("/stock_a_below_net_asset_statistics")
+@router.post("/stock_a_below_net_asset_statistics", operation_id="post_stock_a_below_net_asset_statistics")
 def get_stock_a_below_net_asset_statistics(request: SymbolRequest):
     """
     乐咕乐股-A 股破净股统计数据
@@ -112,7 +112,7 @@ def get_stock_a_below_net_asset_statistics(request: SymbolRequest):
 
 
 # 首发申报信息
-@router.get("/stock_ipo_declare")
+@router.get("/stock_ipo_declare", operation_id="get_stock_ipo_declare")
 def get_stock_ipo_declare():
     """
     东方财富网-数据中心-新股申购-首发申报信息-首发申报企业信息
@@ -129,7 +129,7 @@ def get_stock_ipo_declare():
 
 
 # 增发
-@router.get("/stock_qbzf_em")
+@router.get("/stock_qbzf_em", operation_id="get_stock_qbzf_em")
 def get_stock_qbzf_em():
     """
     东方财富网-数据中心-新股数据-增发-全部增发
@@ -143,7 +143,7 @@ def get_stock_qbzf_em():
 
 
 # 配股
-@router.get("/stock_pg_em")
+@router.get("/stock_pg_em", operation_id="get_stock_pg_em")
 def get_stock_pg_em():
     """
     东方财富网-数据中心-新股数据-配股
@@ -157,7 +157,7 @@ def get_stock_pg_em():
 
 
 # 股票回购数据
-@router.get("/stock_repurchase_em")
+@router.get("/stock_repurchase_em", operation_id="get_stock_repurchase_em")
 def get_stock_repurchase_em():
     """
     东方财富网-数据中心-股票回购-股票回购数据

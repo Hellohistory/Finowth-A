@@ -17,7 +17,7 @@ class SymbolDateRequest(BaseModel):
 
 
 # 新浪财经-股本股东-基金持股
-@router.post("/stock_fund_stock_holder")
+@router.post("/stock_fund_stock_holder", operation_id="post_stock_fund_stock_holder")
 def get_stock_fund_stock_holder(request: SymbolRequest):
     """
     描述: 新浪财经-股本股东-基金持股
@@ -31,7 +31,7 @@ def get_stock_fund_stock_holder(request: SymbolRequest):
 
 
 # 东方财富网-数据中心-主力数据-基金持仓
-@router.post("/stock_report_fund_hold")
+@router.post("/stock_report_fund_hold", operation_id="post_stock_report_fund_hold")
 def get_stock_report_fund_hold(request: SymbolDateRequest):
     """
     描述: 东方财富网-数据中心-主力数据-基金持仓
@@ -45,7 +45,7 @@ def get_stock_report_fund_hold(request: SymbolDateRequest):
 
 
 # 东方财富网-数据中心-主力数据-基金持仓-基金持仓明细表
-@router.post("/stock_report_fund_hold_detail")
+@router.post("/stock_report_fund_hold_detail", operation_id="post_stock_report_fund_hold_detail")
 def get_stock_report_fund_hold_detail(request: SymbolDateRequest):
     """
     描述: 东方财富网-数据中心-主力数据-基金持仓-基金持仓明细表

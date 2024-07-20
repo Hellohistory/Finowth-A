@@ -29,7 +29,7 @@ class StockFamousRequest(BaseModel):
 
 
 # 东方财富网-美股-实时行情
-@router.get("/stock_us_spot_em")
+@router.get("/stock_us_spot_em", operation_id="get_stock_us_spot_em")
 def get_stock_us_spot_em():
     """
     描述: 东方财富网-美股-实时行情
@@ -46,7 +46,7 @@ def get_stock_us_spot_em():
 
 
 # 新浪财经-美股-实时行情
-@router.get("/stock_us_spot")
+@router.get("/stock_us_spot", operation_id="get_stock_us_spot")
 def get_stock_us_spot():
     """
     描述: 新浪财经-美股; 获取的数据有 15 分钟延迟
@@ -60,8 +60,8 @@ def get_stock_us_spot():
 
 
 # 东方财富网-美股-每日行情
-@router.post("/stock_us_hist")
-def get_stock_us_hist(request: StockHistoryRequest):
+@router.post("/stock_us_hist", operation_id="post_stock_us_hist")
+async def post_stock_us_hist(request: StockHistoryRequest):
     """
     描述: 东方财富网-行情-美股-每日行情
     限量: 单次返回指定上市公司的指定 adjust 后的所有历史行情数据
@@ -80,8 +80,8 @@ def get_stock_us_hist(request: StockHistoryRequest):
 
 
 # 东方财富网-美股-每日分时行情
-@router.post("/stock_us_hist_min_em")
-def get_stock_us_hist_min_em(request: StockMinuteRequest):
+@router.post("/stock_us_hist_min_em", operation_id="post_stock_us_hist_min_em")
+async def post_stock_us_hist_min_em(request: StockMinuteRequest):
     """
     描述: 东方财富网-行情首页-美股-每日分时行情
     限量: 单次返回指定上市公司最近 5 个交易日分钟数据
@@ -94,8 +94,8 @@ def get_stock_us_hist_min_em(request: StockMinuteRequest):
 
 
 # 新浪财经-美股-历史行情数据
-@router.post("/stock_us_daily")
-def get_stock_us_daily(request: StockDailyRequest):
+@router.post("/stock_us_daily", operation_id="post_stock_us_daily")
+async def post_stock_us_daily(request: StockDailyRequest):
     """
     描述: 美股历史行情数据
     限量: 单次返回指定上市公司的指定 adjust 后的所有历史行情数据
@@ -108,7 +108,7 @@ def get_stock_us_daily(request: StockDailyRequest):
 
 
 # 美股粉单市场的实时行情数据
-@router.get("/stock_us_pink_spot_em")
+@router.get("/stock_us_pink_spot_em", operation_id="get_stock_us_pink_spot_em")
 def get_stock_us_pink_spot_em():
     """
     描述: 美股粉单市场的实时行情数据
@@ -125,8 +125,8 @@ def get_stock_us_pink_spot_em():
 
 
 # 美股-知名美股的实时行情数据
-@router.post("/stock_us_famous_spot_em")
-def get_stock_us_famous_spot_em(request: StockFamousRequest):
+@router.post("/stock_us_famous_spot_em", operation_id="post_stock_us_famous_spot_em")
+async def post_stock_us_famous_spot_em(request: StockFamousRequest):
     """
     描述: 美股-知名美股的实时行情数据
     限量: 单次返回指定 symbol 的行情数据

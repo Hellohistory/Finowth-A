@@ -16,7 +16,7 @@ class DateRequest(BaseModel):
 
 
 # 东方财富-数据中心-年报季报-分红配送
-@router.post("/stock_fhps_em")
+@router.post("/stock_fhps_em", operation_id="post_stock_fhps_em")
 def get_stock_fhps_em(request: DateRequest):
     """
     接口: stock_fhps_em
@@ -34,7 +34,7 @@ def get_stock_fhps_em(request: DateRequest):
 
 
 # 东方财富网-数据中心-分红送配-分红送配详情
-@router.post("/stock_fhps_detail_em")
+@router.post("/stock_fhps_detail_em", operation_id="post_stock_fhps_detail_em")
 def get_stock_fhps_detail_em(request: SymbolRequest):
     """
     接口: stock_fhps_detail_em
@@ -52,7 +52,7 @@ def get_stock_fhps_detail_em(request: SymbolRequest):
 
 
 # 同花顺-分红情况
-@router.post("/stock_fhps_detail_ths")
+@router.post("/stock_fhps_detail_ths", operation_id="post_stock_fhps_detail_ths")
 def get_stock_fhps_detail_ths(request: SymbolRequest):
     """
     接口: stock_fhps_detail_ths
@@ -68,7 +68,7 @@ def get_stock_fhps_detail_ths(request: SymbolRequest):
 
 
 # 同花顺-港股-分红派息
-@router.post("/stock_hk_fhpx_detail_ths")
+@router.post("/stock_hk_fhpx_detail_ths", operation_id="post_stock_hk_fhpx_detail_ths")
 def get_stock_hk_fhpx_detail_ths(request: SymbolRequest):
     """
     接口: stock_hk_fhpx_detail_ths
@@ -99,7 +99,7 @@ class DividendDetailRequest(BaseModel):
 
 
 # 新浪财经-发行与分配-历史分红
-@router.get("/stock_history_dividend")
+@router.get("/stock_history_dividend", operation_id="post_stock_history_dividend")
 def get_stock_history_dividend():
     """
     描述: 新浪财经-发行与分配-历史分红
@@ -113,7 +113,7 @@ def get_stock_history_dividend():
 
 
 # 新浪财经-发行与分配-分红配股
-@router.post("/stock_history_dividend_detail")
+@router.post("/stock_history_dividend_detail", operation_id="post_stock_history_dividend_detail")
 def get_stock_history_dividend_detail(request: DividendDetailRequest):
     """
     描述: 新浪财经-发行与分配-分红配股
@@ -133,7 +133,7 @@ def get_stock_history_dividend_detail(request: DividendDetailRequest):
 
 
 # 巨潮资讯-个股-历史分红
-@router.post("/stock_dividend_cninfo")
+@router.post("/stock_dividend_cninfo", operation_id="post_stock_dividend_cninfo")
 def get_stock_dividend_cninfo(request: SymbolRequest):
     """
     描述: 巨潮资讯-个股-历史分红

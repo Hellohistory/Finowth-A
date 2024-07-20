@@ -12,8 +12,8 @@ class DateRequest(BaseModel):
 
 
 # 东方财富网-数据中心-特色数据-机构调研-机构调研统计
-@router.post("/stock_jgdy_tj_em")
-def get_stock_jgdy_tj_em(request: DateRequest):
+@router.post("/stock_jgdy_tj_em", operation_id="post_stock_jgdy_tj_em")
+async def post_stock_jgdy_tj_em(request: DateRequest):
     """
     描述: 东方财富网-数据中心-特色数据-机构调研-机构调研统计
     限量: 单次返回所有历史数据
@@ -26,9 +26,3 @@ def get_stock_jgdy_tj_em(request: DateRequest):
         return stock_jgdy_tj_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
-if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run(router, host="127.0.0.1", port=36925)

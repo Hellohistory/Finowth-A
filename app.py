@@ -1,58 +1,121 @@
 import uvicorn
 from fastapi import FastAPI
+from fastapi.openapi.utils import get_openapi
+from pydantic import BaseModel
+
 from Akshare_Data.Stock.AH_data import router as router1
 from Akshare_Data.Stock.A_stocksother_data import router as router2
-from Akshare_Data.Stock.stock_market_overview import router as router3
-from Akshare_Data.Stock.time_sharing_data import router as router4
-from Akshare_Data.Stock.real_time_quotes import router as router5
-from Akshare_Data.Stock.historical_data import router as router6
-from Akshare_Data.Stock.science_and_technology_innovation_board_data import router as router7
-from Akshare_Data.Stock.US_stocks import router as router8
-from Akshare_Data.Stock.HK_stocks import router as router9
-from Akshare_Data.Stock.basic_market import router as router11
-from Akshare_Data.Stock.goodwill import router as router12
-from Akshare_Data.Stock.stock_account_statistics import router as router13
-from Akshare_Data.Stock.stock_pledge import router as router14
-from Akshare_Data.Stock.stock_evaluation import router as router15
-from Akshare_Data.Stock.SHK_stock_connect import router as router16
-from Akshare_Data.Stock.featured_data import router as router17
-from Akshare_Data.Stock.new_shares import router as router18
-from Akshare_Data.Stock.financial_report_issuance import router as router19
-from Akshare_Data.Stock.dividend import router as router20
-from Akshare_Data.Stock.capital_flows import router as router21
-from Akshare_Data.Stock.other import router as router22
-from Akshare_Data.Stock.Basic_Data.financial_research_report import router as router23
-from Akshare_Data.Stock.Basic_Data.shareholder_info import router as router24
-from Akshare_Data.Stock.Basic_Data.unlock_data import router as router25
-from Akshare_Data.Stock.Basic_Data.stock_info import router as router26
-from Akshare_Data.Stock.Basic_Data.institutional_info import router as router27
-from Akshare_Data.Stock.Basic_Data.executive_info import router as router28
-from Akshare_Data.Stock.Basic_Data.special_topic_tatistics import router as router29
-from Akshare_Data.Stock.Basic_Data.fund import router as router30
-from Akshare_Data.Stock.Basic_Data.winners_list import router as router31
+from Akshare_Data.Stock.Basic_Data.AUH_index import router as router50
+from Akshare_Data.Stock.Basic_Data.IPO_review import router as router52
 from Akshare_Data.Stock.Basic_Data.basic import router as router32
+from Akshare_Data.Stock.Basic_Data.executive_info import router as router28
+from Akshare_Data.Stock.Basic_Data.financial_research_report import router as router23
+from Akshare_Data.Stock.Basic_Data.fund import router as router30
+from Akshare_Data.Stock.Basic_Data.institutional_info import router as router27
+from Akshare_Data.Stock.Basic_Data.shareholder_info import router as router24
+from Akshare_Data.Stock.Basic_Data.special_topic_tatistics import router as router29
+from Akshare_Data.Stock.Basic_Data.stock_info import router as router26
+from Akshare_Data.Stock.Basic_Data.unlock_data import router as router25
+from Akshare_Data.Stock.Basic_Data.winners_list import router as router31
+from Akshare_Data.Stock.ESG_rating import router as router42
+from Akshare_Data.Stock.HK_stocks import router as router9
+from Akshare_Data.Stock.SHK_stock_connect import router as router16
+from Akshare_Data.Stock.US_stocks import router as router8
+from Akshare_Data.Stock.basic_market import router as router11
+from Akshare_Data.Stock.capital_flows import router as router21
+from Akshare_Data.Stock.concept_section import router as router36
+from Akshare_Data.Stock.daily_limit import router as router40
+from Akshare_Data.Stock.dividend import router as router20
+from Akshare_Data.Stock.featured_data import router as router17
+from Akshare_Data.Stock.financial_report_issuance import router as router19
+from Akshare_Data.Stock.goodwill import router as router12
+from Akshare_Data.Stock.his_trends_fan_char import router as router39
+from Akshare_Data.Stock.historical_data import router as router6
+from Akshare_Data.Stock.industry_sector import router as router37
+from Akshare_Data.Stock.info_data import router as router45
 from Akshare_Data.Stock.large_transactions import router as router33
 from Akshare_Data.Stock.margin_margin_trading import router as router34
+from Akshare_Data.Stock.new_shares import router as router18
+from Akshare_Data.Stock.other import router as router22
 from Akshare_Data.Stock.profit_prediction import router as router35
-from Akshare_Data.Stock.concept_section import router as router36
-from Akshare_Data.Stock.industry_sector import router as router37
-from Akshare_Data.Stock.stock_popularity import router as router38
-from Akshare_Data.Stock.his_trends_fan_char import router as router39
-from Akshare_Data.Stock.daily_limit import router as router40
-from Akshare_Data.Stock.technical_indicators import router as router41
-from Akshare_Data.Stock.ESG_rating import router as router42
-from Akshare_Data.Stock.stock_institutional_survey_statisticsj import router as router43
-from Akshare_Data.Stock.stock_changes_em import router as router44
-from Akshare_Data.Stock.info_data import router as router45
-from Akshare_Data.Stock.stock_financial_abstract import router as router46
-from Akshare_Data.Stock.stock_sector_spot import router as router47
+from Akshare_Data.Stock.real_time_quotes import router as router5
+from Akshare_Data.Stock.science_and_technology_innovation_board_data import router as router7
 from Akshare_Data.Stock.stock_a_indicator_lg import router as router48
-from Akshare_Data.doc import router as router49
-from Akshare_Data.Stock.Basic_Data.AUH_index import router as router50
+from Akshare_Data.Stock.stock_account_statistics import router as router13
+from Akshare_Data.Stock.stock_changes_em import router as router44
+from Akshare_Data.Stock.stock_evaluation import router as router15
+from Akshare_Data.Stock.stock_financial_abstract import router as router46
 from Akshare_Data.Stock.stock_hk_indicator_eniu import router as router51
-from Akshare_Data.Stock.Basic_Data.IPO_review import router as router52
+from Akshare_Data.Stock.stock_institutional_survey_statisticsj import router as router43
+from Akshare_Data.Stock.stock_market_overview import router as router3
+from Akshare_Data.Stock.stock_pledge import router as router14
+from Akshare_Data.Stock.stock_popularity import router as router38
+from Akshare_Data.Stock.stock_sector_spot import router as router47
+from Akshare_Data.Stock.technical_indicators import router as router41
+from Akshare_Data.Stock.time_sharing_data import router as router4
+from Akshare_Data.doc import router as router49
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+# 配置CORS
+origins = [
+    "http://localhost:36924",
+    "http://localhost:36925",
+    "http://192.168.1.16:36926"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+# 示例API
+@app.get("/openapi.json")
+async def get_open_api_endpoint():
+    return get_openapi(
+        title="FinData API",
+        version="0.0.1",
+        routes=app.routes,  # 使用app.routes而不是router.routes
+    )
+
+
+class APIInfo(BaseModel):
+    name: str
+    path: str
+    method: str
+    description: str
+    parameters: list
+
+
+def process_api_info():
+    openapi_schema = get_openapi(
+        title="FinData API",
+        version="0.0.1",
+        routes=app.routes,  # 使用app.routes而不是router.routes
+    )
+    api_info_list = []
+    for path, methods in openapi_schema['paths'].items():
+        for method, info in methods.items():
+            api_info = APIInfo(
+                name=info.get('summary', 'No summary'),
+                path=path,
+                method=method.upper(),
+                description=info.get('description', 'No description'),
+                parameters=info.get('parameters', [])
+            )
+            api_info_list.append(api_info)
+    return api_info_list
+
+
+@app.get("/api_info")
+async def get_api_info():
+    api_info = process_api_info()
+    return api_info
+
 
 app.include_router(router1)
 app.include_router(router2)

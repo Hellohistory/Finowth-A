@@ -13,7 +13,7 @@ class StockAHDailyRequest(BaseModel):
 
 
 # 腾讯财经-A+H 股实时行情数据
-@router.get("/stock_zh_ah_spot")
+@router.get("/stock_zh_ah_spot", operation_id="get_stock_zh_ah_spot")
 def get_stock_zh_ah_spot():
     """
     描述: A+H 股数据是从腾讯财经获取的数据, 延迟 15 分钟更新
@@ -27,7 +27,7 @@ def get_stock_zh_ah_spot():
 
 
 # 腾讯财经-A+H 股历史行情数据
-@router.post("/stock_zh_ah_daily")
+@router.post("/stock_zh_ah_daily", operation_id="post_stock_zh_ah_daily")
 def get_stock_zh_ah_daily(request: StockAHDailyRequest):
     """
     描述: 腾讯财经-A+H 股数据
@@ -46,7 +46,7 @@ def get_stock_zh_ah_daily(request: StockAHDailyRequest):
 
 
 # A+H 股票字典
-@router.get("/stock_zh_ah_name")
+@router.get("/stock_zh_ah_name", operation_id="get_stock_zh_ah_name")
 def get_stock_zh_ah_name():
     """
     描述: A+H 股数据是从腾讯财经获取的数据, 历史数据按日频率更新

@@ -11,8 +11,8 @@ class StockRequest(BaseModel):
     indicator: str
 
 
-@router.post("/stock_hk_indicator_eniu")
-def get_stock_hk_indicator_eniu(request: StockRequest):
+@router.post("/stock_hk_indicator_eniu", operation_id="post_stock_hk_indicator_eniu")
+async def post_stock_hk_indicator_eniu(request: StockRequest):
     """
     获取香港股票某一指标的数据
     单次获取指定 symbol 和 indicator 的所有历史数据

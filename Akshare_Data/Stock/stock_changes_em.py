@@ -12,8 +12,8 @@ class SymbolRequest(BaseModel):
 
 
 # 东方财富-行情中心-盘口异动数据
-@router.post("/stock_changes_em")
-async def get_stock_changes_em(request: SymbolRequest):
+@router.post("/stock_changes_em", operation_id="post_stock_changes_em")
+async def post_stock_changes_em(request: SymbolRequest):
     """
     描述: 东方财富-行情中心-盘口异动数据
     限量: 单次所有历史数据, 由于数据量比较大需要等待一定时间
@@ -29,8 +29,8 @@ async def get_stock_changes_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_board_change_em")
-def get_stock_hsgt_fund_flow_summary_em():
+@router.get("/stock_board_change_em", operation_id="get_stock_hsgt_fund_flow_summary_em")
+async def get_stock_hsgt_fund_flow_summary_em():
     """
     描述: 东方财富-行情中心-当日板块异动详情
     限量: 返回最近交易日的数据

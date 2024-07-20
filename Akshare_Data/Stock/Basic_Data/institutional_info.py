@@ -21,7 +21,7 @@ class DateRequest(BaseModel):
 
 
 # 新浪财经-机构持股-机构持股一览表
-@router.post("/stock_institute_hold")
+@router.post("/stock_institute_hold", operation_id="post_stock_institute_hold")
 def get_stock_institute_hold(request: SymbolRequest):
     """
     描述: 新浪财经-机构持股-机构持股一览表
@@ -35,7 +35,7 @@ def get_stock_institute_hold(request: SymbolRequest):
 
 
 # 新浪财经-机构持股-机构持股详情
-@router.post("/stock_institute_hold_detail")
+@router.post("/stock_institute_hold_detail", operation_id="post_stock_institute_hold_detail")
 def get_stock_institute_hold_detail(request: StockQuarterRequest):
     """
     描述: 新浪财经-机构持股-机构持股详情
@@ -49,7 +49,7 @@ def get_stock_institute_hold_detail(request: StockQuarterRequest):
 
 
 # 新浪财经-机构推荐池-具体指标的数据
-@router.post("/stock_institute_recommend")
+@router.post("/stock_institute_recommend", operation_id="post_stock_institute_recommend")
 def get_stock_institute_recommend(request: SymbolRequest):
     """
     描述: 新浪财经-机构推荐池-具体指标的数据
@@ -63,7 +63,7 @@ def get_stock_institute_recommend(request: SymbolRequest):
 
 
 # 新浪财经-机构推荐池-股票评级记录
-@router.post("/stock_institute_recommend_detail")
+@router.post("/stock_institute_recommend_detail", operation_id="post_stock_institute_recommend_detail")
 def get_stock_institute_recommend_detail(request: SymbolRequest):
     """
     描述: 新浪财经-机构推荐池-股票评级记录
@@ -79,7 +79,7 @@ def get_stock_institute_recommend_detail(request: SymbolRequest):
 
 
 # 巨潮资讯-数据中心-评级预测-投资评级
-@router.post("/stock_rank_forecast_cninfo")
+@router.post("/stock_rank_forecast_cninfo", operation_id="post_stock_rank_forecast_cninfo")
 def get_stock_rank_forecast_cninfo(request: DateRequest):
     """
     描述: 巨潮资讯-数据中心-评级预测-投资评级

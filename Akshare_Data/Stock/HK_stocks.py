@@ -54,7 +54,7 @@ def get_stock_hk_main_board_spot_em():
 
 
 # 新浪财经-港股-实时行情
-@router.get("/stock_hk_spot", operation_id="get_stock_zh_ah_spot")
+@router.get("/stock_hk_spot", operation_id="get_stock_hk_spot")
 def get_stock_hk_spot():
     """
     港股-实时行情数据是从新浪财经获取的数据, 更新频率为实时, 由于新浪服务器因素行情延时 15 分钟

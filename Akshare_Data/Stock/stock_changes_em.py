@@ -32,8 +32,8 @@ async def post_stock_changes_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_board_change_em", operation_id="get_stock_hsgt_fund_flow_summary_em")
-def get_stock_hsgt_fund_flow_summary_em():
+@router.get("/stock_board_change_em", operation_id="get_stock_board_change_em")
+def get_stock_board_change_em():
     """
     接口: stock_board_change_em
 

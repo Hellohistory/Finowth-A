@@ -58,6 +58,7 @@ from Akshare_Data.Stock.time_sharing_data import router as router4
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
 # 配置CORS
 origins = [
     "http://localhost:36924",
@@ -91,18 +92,18 @@ def process_api_info():
     openapi_schema = get_openapi(
         title="FinData API",
         version="0.0.1",
-        routes=app.routes,  # 使用app.routes而不是router.routes
+        routes=app.routes,
     )
     api_info_list = []
     for path, methods in openapi_schema['paths'].items():
         for method, info in methods.items():
             parameters = []
-            if method.upper() == 'POST':  # 处理POST请求的参数
+            if method.upper() == 'POST':
                 request_body = info.get('requestBody', {}).get('content', {}).get('application/json', {}).get('schema',
                                                                                                               {}).get(
                     'properties', {})
                 parameters = [APIParameter(name=k, type=v.get('type', 'unknown')) for k, v in request_body.items()]
-            elif method.upper() == 'GET':  # 处理GET请求的参数
+            elif method.upper() == 'GET':
                 query_parameters = info.get('parameters', [])
                 for param in query_parameters:
                     param_name = param.get('name')

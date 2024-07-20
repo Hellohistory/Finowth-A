@@ -152,30 +152,6 @@ def get_stock_hk_hot_rank_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/stock_hot_follow_xq", operation_id="post_stock_hot_follow_xq")
-async def post_stock_hot_follow_xq(request: SymbolRequest):
-    """
-    雪球-沪深股市-热度排行榜-关注排行榜
-    """
-    try:
-        stock_hot_follow_xq_df = ak.stock_hot_follow_xq(symbol=request.symbol)
-        return stock_hot_follow_xq_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@router.post("/stock_hot_tweet_xq", operation_id="post_stock_hot_tweet_xq")
-async def post_stock_hot_tweet_xq(request: SymbolRequest):
-    """
-    雪球-沪深股市-热度排行榜-讨论排行榜
-    """
-    try:
-        stock_hot_tweet_xq_df = ak.stock_hot_tweet_xq(symbol=request.symbol)
-        return stock_hot_tweet_xq_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
 @router.post("/stock_hot_deal_xq", operation_id="post_stock_hot_deal_xq")
 async def post_stock_hot_deal_xq(request: SymbolRequest):
     """

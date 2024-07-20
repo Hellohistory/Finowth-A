@@ -53,9 +53,15 @@ async def post_stock_szse_area_summary(request: AreaSummaryRequest):
 
 def get_stock_szse_sector_summary(symbol, ym_date):
     """
-    股票行业成交
+    接口: stock_szse_sector_summary
+
+    目标地址: http://docs.static.szse.cn/www/market/periodical/month/W020220511355248518608.html
+
     描述: 深圳证券交易所-统计资料-股票行业成交数据
-    限量: 单次返回指定 symbol 和 ym_date 的统计资料-股票行业成交数据
+
+    限量: 单次返回指定个股和 date 的统计资料-股票行业成交数据
+
+    请求类型: `POST`
     """
     stock_szse_sector_summary_df = ak.stock_szse_sector_summary(symbol=symbol, date=ym_date)
     return stock_szse_sector_summary_df
@@ -63,9 +69,15 @@ def get_stock_szse_sector_summary(symbol, ym_date):
 
 def get_stock_sse_deal_daily(date):
     """
-    上海证券交易所-每日概况
+    接口: stock_sse_deal_daily
+
+    目标地址: http://www.sse.com.cn/market/stockdata/overview/day/
+
     描述: 上海证券交易所-数据-股票数据-成交概况-股票成交概况-每日股票情况
+
     限量: 单次返回指定日期的每日概况数据, 当前交易日数据需要在收盘后获取; 注意在 20211227（包含）之后输出格式变化
+
+    请求类型: `POST`
     """
     stock_sse_deal_daily_df = ak.stock_sse_deal_daily(date=date.strftime('%Y%m%d'))
     return stock_sse_deal_daily_df

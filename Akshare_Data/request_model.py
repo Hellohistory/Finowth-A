@@ -51,6 +51,11 @@ class RequestModel(BaseModel):
     indicator: str
 
 
+class StockAdjustFactorRequest(BaseModel):
+    symbol: str
+    adjust: str
+
+
 class StockReportRequest(BaseModel):
     from_page: int
     to_page: int
@@ -161,7 +166,7 @@ class StockAHDailyRequest(BaseModel):
     symbol: str
     start_year: str
     end_year: str
-    adjust: str = ""
+    adjust: str
 
 
 class SymbolFlagDateRequest(BaseModel):
@@ -186,7 +191,7 @@ class StockHistoryRequest(BaseModel):
     period: str
     start_date: str
     end_date: str
-    adjust: str = ""
+    adjust: str
 
 
 class StockMinuteRequest(BaseModel):
@@ -199,7 +204,7 @@ class StockMinuteRequest(BaseModel):
 
 class StockDailyRequest(BaseModel):
     symbol: str
-    adjust: str = ""
+    adjust: str
 
 
 class FinancialRequest(BaseModel):
@@ -222,7 +227,7 @@ class SymbolIndicatorPeriodRequest(BaseModel):
 class SymbolPeriodAdjust(BaseModel):
     symbol: str
     period: str
-    adjust: str = ""
+    adjust: str
 
 
 class StockZhVoteBaiduRequest(BaseModel):

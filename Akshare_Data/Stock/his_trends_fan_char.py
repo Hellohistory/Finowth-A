@@ -106,7 +106,15 @@ async def post_stock_hot_rank_wc(request: DateRequest):
 @router.post("/stock_hk_hot_rank_detail_em", operation_id="post_stock_hot_rank_em")
 async def post_stock_hk_hot_rank_detail_em(request: SymbolRequest):
     """
-    东方财富网-股票热度-历史趋势
+    接口: stock_hot_rank_detail_em
+
+    目标地址: http://guba.eastmoney.com/rank/stock?code=000665
+
+    描述: 东方财富网-股票热度-历史趋势及粉丝特征
+
+    限量: 单次返回指定个股的股票近期历史数据
+
+    请求类型: `POST`
     """
     try:
         stock_hk_hot_rank_detail_em_df = ak.stock_hk_hot_rank_detail_em(symbol=request.symbol)

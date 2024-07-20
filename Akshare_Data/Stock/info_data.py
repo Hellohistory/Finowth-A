@@ -8,9 +8,14 @@ router = APIRouter()
 def get_stock_info_cjzc_em():
     """
     接口：stock_info_cjzc_em
+
     目标地址：https://stock.eastmoney.com/a/czpnc.html
+
     描述：东方财富-财经早餐
+
     限量：单次返回全部历史数据
+
+    请求类型: `GET`
     """
     try:
         stock_info_cjzc_em_df = ak.stock_info_cjzc_em()
@@ -24,9 +29,14 @@ def get_stock_info_cjzc_em():
 def get_stock_info_global_em():
     """
     接口：stock_info_global_em
+
     目标地址：https://kuaixun.eastmoney.com/7_24.html
+
     描述：东方财富-全球财经快讯
+
     限量：单次返回最近 200 条新闻数据
+
+    请求类型: `GET`
     """
     try:
         stock_info_global_em_df = ak.stock_info_global_em()
@@ -40,9 +50,14 @@ def get_stock_info_global_em():
 def get_stock_info_global_sina():
     """
     接口：stock_info_global_sina
+
     目标地址：https://finance.sina.com.cn/7x24
+
     描述：新浪财经-全球财经快讯
+
     限量：单次返回最近 20 条新闻数据
+
+    请求类型: `GET`
     """
     try:
         stock_info_global_sina_df = ak.stock_info_global_sina()
@@ -56,9 +71,14 @@ def get_stock_info_global_sina():
 def get_stock_info_global_futu():
     """
     接口：stock_info_global_futu
+
     目标地址：https://news.futunn.com/main/live
+
     描述：富途牛牛-快讯
+
     限量：单次返回最近 50 条新闻数据
+
+    请求类型: `GET`
     """
     try:
         stock_info_global_futu_df = ak.stock_info_global_futu()
@@ -72,9 +92,14 @@ def get_stock_info_global_futu():
 def get_stock_info_global_ths():
     """
     接口：stock_info_global_ths
+
     目标地址：https://news.10jqka.com.cn/realtimenews.html
+
     描述：同花顺财经-全球财经直播
+
     限量：单次返回最近 20 条新闻数据
+
+    请求类型: `GET`
     """
     try:
         stock_info_global_ths_df = ak.stock_info_global_ths()
@@ -88,9 +113,14 @@ def get_stock_info_global_ths():
 def get_stock_info_global_cls(symbol: str):
     """
     接口：stock_info_global_cls
+
     目标地址：https://www.cls.cn/telegraph
+
     描述：财联社-电报
-    限量：单次返回指定 symbol 的最近 300 条财联社-电报的数据
+
+    限量：单次返回指定个股的最近 300 条财联社-电报的数据
+
+    请求类型: `GET`
     """
     try:
         stock_info_global_cls_df = ak.stock_info_global_cls(symbol=symbol)
@@ -104,9 +134,14 @@ def get_stock_info_global_cls(symbol: str):
 def get_stock_info_broker_sina(page: str):
     """
     接口：stock_info_broker_sina
+
     目标地址：https://finance.sina.com.cn/roll/index.d.html?cid=221431
+
     描述：新浪财经-证券-证券原创
-    限量：单次返回指定 page 的数据
+
+    限量：单次返回指定页面的数据
+
+    请求类型: `GET`
     """
     try:
         stock_info_broker_sina_df = ak.stock_info_broker_sina(page=page)

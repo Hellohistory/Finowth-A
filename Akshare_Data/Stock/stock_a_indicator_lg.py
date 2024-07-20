@@ -10,8 +10,15 @@ router = APIRouter()
 @router.post("/stock_a_indicator_lg", operation_id="post_stock_a_indicator_lg")
 async def post_stock_a_indicator_lg(request: SymbolRequest):
     """
+    接口: stock_a_indicator_lg
+
+    目标地址: https://www.legulegu.com/stocklist
+
     描述: 乐咕乐股-A 股个股指标: 市盈率, 市净率, 股息率
-    限量: 单次获取指定 symbol 的所有历史数据
+
+    限量: 单次获取指定个股的所有历史数据
+
+    请求类型: `POST`
     """
     try:
         stock_a_indicator_lg_df = ak.stock_a_indicator_lg(symbol=request.symbol)

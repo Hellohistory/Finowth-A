@@ -11,8 +11,15 @@ router = APIRouter()
 @router.get("/stock_zh_kcb_spot", operation_id="get_stock_zh_kcb_spot")
 async def get_stock_zh_kcb_spot():
     """
+    接口: stock_zh_kcb_spot
+
+    目标地址: http://vip.stock.finance.sina.com.cn/mkt/#kcb
+
     描述: 新浪财经-科创板股票实时行情数据
-    限量: 单次返回所有科创板上市公司的实时行情数据
+
+    限量: 单次返回所有科创板上市公司的实时行情数据; 请控制采集的频率, 大量抓取容易封IP
+
+    请求类型: `GET`
     """
     try:
         stock_zh_kcb_spot_df = ak.stock_zh_kcb_spot()
@@ -25,8 +32,15 @@ async def get_stock_zh_kcb_spot():
 @router.post("/stock_zh_kcb_daily", operation_id="post_stock_zh_kcb_daily")
 async def post_stock_zh_kcb_daily(request: StockDailyRequest):
     """
+    接口: stock_zh_kcb_daily
+
+    目标地址: https://finance.sina.com.cn/realstock/company/sh688001/nc.shtml(示例)
+
     描述: 新浪财经-科创板股票历史行情数据
-    限量: 单次返回指定 symbol 和 adjust 的所有历史行情数据
+
+    限量: 单次返回指定个股和 adjust 的所有历史行情数据; 请控制采集的频率, 大量抓取容易封IP
+
+    请求类型: `POST`
     """
     try:
         stock_zh_kcb_daily_df = ak.stock_zh_kcb_daily(symbol=request.symbol, adjust=request.adjust)

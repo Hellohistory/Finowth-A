@@ -11,8 +11,15 @@ router = APIRouter()
 @router.post("/stock_ggcg_em", operation_id="post_stock_ggcg_em")
 async def post_stock_ggcg_em(request: SymbolRequest):
     """
+    接口: stock_ggcg_em
+
+    目标地址: http://data.eastmoney.com/executive/gdzjc.html
+
     描述: 东方财富网-数据中心-特色数据-高管持股
+
     限量: 单次获取所有高管持股数据数据
+
+    请求类型: `POST`
     """
     try:
         stock_ggcg_em_df = ak.stock_ggcg_em(symbol=request.symbol)
@@ -27,8 +34,15 @@ async def post_stock_ggcg_em(request: SymbolRequest):
 @router.post("/stock_cyq_em", operation_id="post_stock_cyq_em")
 async def post_stock_cyq_em(request: SymbolRequest):
     """
+    接口: stock_cyq_em
+
+    目标地址: https://quote.eastmoney.com/concept/sz000001.html
+
     描述: 东方财富网-概念板-行情中心-日K-筹码分布
-    限量: 单次返回指定 symbol 和 adjust 的近 90 个交易日数据
+
+    限量: 单次返回指定个股和指定复权种类的近 90 个交易日数据
+
+    请求类型: `POST`
     """
     try:
         stock_cyq_em_df = ak.stock_cyq_em(symbol=request.symbol, adjust="")
@@ -41,8 +55,15 @@ async def post_stock_cyq_em(request: SymbolRequest):
 @router.get("/stock_yzxdr_em", operation_id="get_stock_yzxdr_em")
 def get_stock_yzxdr_em(date: str):
     """
-    东方财富网-数据中心-特色数据-一致行动人
-    单次返回所有历史数据
+    接口: stock_yzxdr_em
+
+    目标地址: http://data.eastmoney.com/yzxdr/
+
+    描述: 东方财富网-数据中心-特色数据-一致行动人
+
+    限量: 单次返回所有历史数据
+
+    请求类型: `POST`
     """
     try:
         stock_yzxdr_em_df = ak.stock_yzxdr_em(date=date)
@@ -56,9 +77,14 @@ def get_stock_yzxdr_em(date: str):
 def get_stock_market_activity_legu():
     """
     接口: stock_market_activity_legu
+
     目标地址: https://www.legulegu.com/stockdata/market-activity
+
     描述: 乐咕乐股网-赚钱效应分析数据
+
     限量: 单次返回当前赚钱效应分析数据
+
+    请求类型: `GET`
     """
     try:
         stock_market_activity_legu_df = ak.stock_market_activity_legu()

@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = 'http://127.0.0.1:36925/stock_sse_summary'
+url = 'http://127.0.0.1:36925/stock_repurchase_em'
 
 response = requests.get(url)
 if response.status_code == 200:

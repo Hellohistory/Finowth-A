@@ -10,8 +10,15 @@ router = APIRouter()
 @router.get("/stock_zh_ah_spot", operation_id="get_stock_zh_ah_spot")
 def get_stock_zh_ah_spot():
     """
+    接口: stock_zh_ah_spot
+
+    目标地址: https://stockapp.finance.qq.com/mstats/#mod=list&id=hk_ah&module=HK&type=AH
+
     描述: A+H 股数据是从腾讯财经获取的数据, 延迟 15 分钟更新
+
     限量: 单次返回所有 A+H 上市公司的实时行情数据
+
+    请求类型: `GET`
     """
     try:
         stock_zh_ah_spot_df = ak.stock_zh_ah_spot()
@@ -24,8 +31,15 @@ def get_stock_zh_ah_spot():
 @router.post("/stock_zh_ah_daily", operation_id="post_stock_zh_ah_daily")
 async def post_stock_zh_ah_daily(request: StockAHDailyRequest):
     """
+    接口: stock_zh_ah_daily
+
+    目标地址: https://gu.qq.com/hk02359/gp
+
     描述: 腾讯财经-A+H 股数据
+
     限量: 单次返回指定参数的 A+H 上市公司的历史行情数据
+
+    请求类型: `POST`
     """
     try:
         stock_zh_ah_daily_df = ak.stock_zh_ah_daily(
@@ -43,8 +57,15 @@ async def post_stock_zh_ah_daily(request: StockAHDailyRequest):
 @router.get("/stock_zh_ah_name", operation_id="get_stock_zh_ah_name")
 def get_stock_zh_ah_name():
     """
+    接口: stock_zh_ah_name
+
+    目标地址: https://stockapp.finance.qq.com/mstats/#mod=list&id=hk_ah&module=HK&type=AH
+
     描述: A+H 股数据是从腾讯财经获取的数据, 历史数据按日频率更新
+
     限量: 单次返回所有 A+H 上市公司的代码和名称
+
+    请求类型: `GET`
     """
     try:
         stock_zh_ah_name_df = ak.stock_zh_ah_name()

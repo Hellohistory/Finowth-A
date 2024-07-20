@@ -11,8 +11,15 @@ router = APIRouter()
 @router.post("/stock_changes_em", operation_id="post_stock_changes_em")
 async def post_stock_changes_em(request: SymbolRequest):
     """
+    接口: stock_changes_em
+
+    目标地址: http://quote.eastmoney.com/changes/
+
     描述: 东方财富-行情中心-盘口异动数据
-    限量: 单次所有历史数据, 由于数据量比较大需要等待一定时间
+
+    限量: 单次指定个股的最近交易日的盘口异动数据
+
+    请求类型: `POST`
     """
     try:
 
@@ -28,8 +35,15 @@ async def post_stock_changes_em(request: SymbolRequest):
 @router.get("/stock_board_change_em", operation_id="get_stock_hsgt_fund_flow_summary_em")
 def get_stock_hsgt_fund_flow_summary_em():
     """
+    接口: stock_board_change_em
+
+    目标地址: https://quote.eastmoney.com/changes/
+
     描述: 东方财富-行情中心-当日板块异动详情
+
     限量: 返回最近交易日的数据
+
+    请求类型: `GET`
     """
     try:
         stock_board_change_em_df = ak.stock_hsgt_fund_flow_summary_em()

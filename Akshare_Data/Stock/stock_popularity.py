@@ -11,7 +11,15 @@ router = APIRouter()
 @router.post("/stock_hot_follow_xq", operation_id="post_stock_hot_follow_xq")
 async def post_stock_hot_follow_xq(request: SymbolRequest):
     """
-    雪球-沪深股市-热度排行榜-关注排行榜
+    接口: stock_hot_follow_xq
+
+    目标地址: https://xueqiu.com/hq
+
+    描述: 雪球-沪深股市-热度排行榜-关注排行榜
+
+    限量: 单次返回指定个股的排行数据
+
+    请求类型: `POST`
     """
     try:
         stock_hot_follow_xq_df = ak.stock_hot_follow_xq(symbol=request.symbol)
@@ -25,7 +33,15 @@ async def post_stock_hot_follow_xq(request: SymbolRequest):
 @router.post("/stock_hot_tweet_xq", operation_id="post_stock_hot_tweet_xq")
 async def post_stock_hot_tweet_xq(request: SymbolRequest):
     """
-    雪球-沪深股市-热度排行榜-讨论排行榜
+    接口: stock_hot_tweet_xq
+
+    目标地址: https://xueqiu.com/hq
+
+    描述: 雪球-沪深股市-热度排行榜-讨论排行榜
+
+    限量: 单次返回指定个股的排行数据
+
+    请求类型: `POST`
     """
     try:
         stock_hot_tweet_xq_df = ak.stock_hot_tweet_xq(symbol=request.symbol)
@@ -39,7 +55,15 @@ async def post_stock_hot_tweet_xq(request: SymbolRequest):
 @router.get("/stock_hot_deal_xq", operation_id="get_stock_hot_deal_xq")
 def get_stock_hot_deal_xq(symbol: str):
     """
-    雪球-沪深股市-热度排行榜-交易排行榜
+    接口: stock_hot_deal_xq
+
+    目标地址: https://xueqiu.com/hq
+
+    描述: 雪球-沪深股市-热度排行榜-交易排行榜
+
+    限量: 单次返回指定个股的排行数据
+
+    请求类型: `POST`
     """
     try:
         stock_hot_deal_xq_df = ak.stock_hot_deal_xq(symbol=symbol)
@@ -51,7 +75,15 @@ def get_stock_hot_deal_xq(symbol: str):
 @router.get("/stock_hot_rank_wc", operation_id="get_stock_hot_rank_wc")
 def get_stock_hot_rank_wc(date: str):
     """
-    问财-热门股票排名数据
+    接口: stock_hot_rank_wc
+
+    目标地址: https://www.iwencai.com/unifiedwap/home/index
+
+    描述: 问财-热门股票排名数据; 请注意访问的频率
+
+    限量: 单次返回近 5000 个股票的热门排名数据, 当前交易日的数据请在收盘后访问
+
+    请求类型: `POST`
     """
     try:
         stock_hot_rank_wc_df = ak.stock_hot_rank_wc(date=date)
@@ -63,7 +95,15 @@ def get_stock_hot_rank_wc(date: str):
 @router.get("/stock_hot_rank_em", operation_id="get_stock_hot_rank_em")
 def get_stock_hot_rank_em():
     """
-    东方财富网站-股票热度
+    接口: stock_hot_rank_em
+
+    目标地址: http://guba.eastmoney.com/rank/
+
+    描述: 东方财富网站-股票热度
+
+    限量: 单次返回当前交易日前 100 个股票的人气排名数据
+
+    请求类型: `GET`
     """
     try:
         stock_hot_rank_em_df = ak.stock_hot_rank_em()
@@ -75,7 +115,15 @@ def get_stock_hot_rank_em():
 @router.get("/stock_hot_up_em", operation_id="get_stock_hot_up_em")
 def get_stock_hot_up_em():
     """
-    东方财富-个股人气榜-飙升榜
+    接口: stock_hot_up_em
+
+    目标地址: http://guba.eastmoney.com/rank/
+
+    描述: 东方财富-个股人气榜-飙升榜
+
+    限量: 单次返回当前交易日前 100 个股票的飙升榜排名数据
+
+    请求类型: `GET`
     """
     try:
         stock_hot_up_em_df = ak.stock_hot_up_em()
@@ -87,7 +135,15 @@ def get_stock_hot_up_em():
 @router.get("/stock_hk_hot_rank_em", operation_id="get_stock_hk_hot_rank_em")
 def get_stock_hk_hot_rank_em():
     """
-    东方财富-个股人气榜-人气榜-港股市场
+    接口: stock_hk_hot_rank_em
+
+    目标地址: https://guba.eastmoney.com/rank/
+
+    描述: 东方财富-个股人气榜-人气榜-港股市场
+
+    限量: 单次返回当前交易日前 100 个股票的人气排名数据
+
+    请求类型: `GET`
     """
     try:
         stock_hk_hot_rank_em_df = ak.stock_hk_hot_rank_em()
@@ -101,9 +157,14 @@ def get_stock_hk_hot_rank_em():
 def get_stock_inner_trade_xq():
     """
     接口: stock_inner_trade_xq
+
     目标地址: https://xueqiu.com/hq/insider
+
     描述: 雪球-行情中心-沪深股市-内部交易
+
     限量: 单次返回所有历史数据
+
+    请求类型: `GET`
     """
     try:
         stock_inner_trade_xq_df = ak.stock_inner_trade_xq()
@@ -121,9 +182,14 @@ def get_stock_inner_trade_xq():
 async def post_stock_hot_rank_detail_realtime_em(request: SymbolRequest):
     """
     接口: stock_hot_rank_detail_realtime_em
+
     目标地址: http://guba.eastmoney.com/rank/stock?code=000665
+
     描述: 东方财富网-个股人气榜-实时变动
-    限量: 单次返回指定个股近期历史数据
+
+    限量: 单次返回指定个股的股票近期历史数据
+
+    请求类型: `POST`
     """
     try:
         stock_hot_rank_detail_realtime_em_df = ak.stock_hot_rank_detail_realtime_em(symbol=request.symbol)
@@ -138,9 +204,14 @@ async def post_stock_hot_rank_detail_realtime_em(request: SymbolRequest):
 async def post_stock_hk_hot_rank_detail_realtime_em(request: SymbolRequest):
     """
     接口: stock_hk_hot_rank_detail_realtime_em
+
     目标地址: https://guba.eastmoney.com/rank/stock?code=HK_00700
+
     描述: 东方财富网-个股人气榜-实时变动
-    限量: 单次返回指定个股近期历史数据
+
+    限量: 单次返回指定个股的股票近期历史数据
+
+    请求类型: `POST`
     """
     try:
         stock_hk_hot_rank_detail_realtime_em_df = ak.stock_hk_hot_rank_detail_realtime_em(symbol=request.symbol)
@@ -154,9 +225,14 @@ async def post_stock_hk_hot_rank_detail_realtime_em(request: SymbolRequest):
 async def post_stock_hot_keyword_em(request: SymbolRequest):
     """
     接口: stock_hot_keyword_em
+
     目标地址: http://guba.eastmoney.com/rank/stock?code=000665
+
     描述: 东方财富-个股人气榜-热门关键词
+
     限量: 单次返回指定个股的最近交易日时点数据
+
+    请求类型: `POST`
     """
     try:
         stock_hot_keyword_em_df = ak.stock_hot_keyword_em(symbol=request.symbol)
@@ -170,9 +246,14 @@ async def post_stock_hot_keyword_em(request: SymbolRequest):
 async def post_stock_hot_rank_latest_em(request: SymbolRequest):
     """
     接口: stock_hot_rank_latest_em
+
     目标地址: http://guba.eastmoney.com/rank/stock?code=000665
+
     描述: 东方财富-个股人气榜-最新排名
-    限量: 单次返回指定个股近期历史数据
+
+    限量: 单次返回指定个股的股票近期历史数据
+
+    请求类型: `POST`
     """
     try:
         stock_hot_rank_latest_em_df = ak.stock_hot_rank_latest_em(symbol=request.symbol)
@@ -186,9 +267,14 @@ async def post_stock_hot_rank_latest_em(request: SymbolRequest):
 async def post_stock_hk_hot_rank_latest_em(request: SymbolRequest):
     """
     接口: stock_hk_hot_rank_latest_em
+
     目标地址: https://guba.eastmoney.com/rank/stock?code=HK_00700
+
     描述: 东方财富-个股人气榜-最新排名
-    限量: 单次返回指定个股近期历史数据
+
+    限量: 单次返回指定个股的股票近期历史数据
+
+    请求类型: `POST`
     """
     try:
         stock_hk_hot_rank_latest_em_df = ak.stock_hk_hot_rank_latest_em(symbol=request.symbol)
@@ -208,9 +294,14 @@ class HotSearchRequest(BaseModel):
 async def post_stock_hot_search_baidu(request: HotSearchRequest):
     """
     接口: stock_hot_search_baidu
+
     目标地址: https://gushitong.baidu.com/expressnews
+
     描述: 百度股市通-热搜股票
-    限量: 单次返回指定 symbol, symbol 和 time 的热搜股票数据
+
+    限量: 单次返回指定类型, 日期和时段的热搜股票数据
+
+    请求类型: `POST`
     """
     try:
         stock_hot_search_baidu_df = ak.stock_hot_search_baidu(symbol=request.symbol, date=request.date,
@@ -227,9 +318,14 @@ async def post_stock_hot_search_baidu(request: HotSearchRequest):
 async def post_stock_hot_rank_relate_em(request: SymbolRequest):
     """
     接口: stock_hot_rank_relate_em
+
     目标地址: http://guba.eastmoney.com/rank/stock?code=000665
+
     描述: 东方财富-个股人气榜-相关股票
-    限量: 单次返回指定个股近期历史数据
+
+    限量: 单次返回指定个股的股票近期历史数据
+
+    请求类型: `POST`
     """
     try:
         stock_hot_rank_relate_em_df = ak.stock_hot_rank_relate_em(symbol=request.symbol)

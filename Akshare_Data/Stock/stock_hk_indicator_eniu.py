@@ -18,8 +18,6 @@ async def post_stock_hk_indicator_eniu(request: SymolIndicatorRequest):
     描述: 亿牛网-港股个股指标: 市盈率, 市净率, 股息率, ROE, 市值
 
     限量: 单次获取指定个股和指定时间段的所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_hk_indicator_eniu_df = ak.stock_hk_indicator_eniu(symbol=request.symbol, indicator=request.indicator)

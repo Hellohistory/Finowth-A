@@ -19,8 +19,6 @@ async def post_stock_restricted_release_queue_sina(request: SymbolRequest):
     描述: 新浪财经-发行分配-限售解禁
 
     限量: 单次获取指定个股的限售解禁数据
-
-    请求类型: `POST`
     """
     try:
         stock_restricted_release_queue_sina_df = ak.stock_restricted_release_queue_sina(symbol=request.symbol)
@@ -40,8 +38,6 @@ async def post_stock_restricted_release_summary_em(request: RestrictedReleaseSum
     描述: 东方财富网-数据中心-特色数据-限售股解禁
 
     限量: 单次获取指定个股在近期限售股解禁数据
-
-    请求类型: `POST`
     """
     try:
         stock_restricted_release_summary_em_df = ak.stock_restricted_release_summary_em(symbol=request.symbol,
@@ -63,8 +59,6 @@ async def post_stock_restricted_release_detail_em(request: DateRangeRequest):
     描述: 东方财富网-数据中心-限售股解禁-解禁详情一览
 
     限量: 单次获取指定时间段限售股解禁数据
-
-    请求类型: `POST`
     """
     try:
         stock_restricted_release_detail_em_df = ak.stock_restricted_release_detail_em(start_date=request.start_date,
@@ -87,8 +81,6 @@ async def post_stock_sector_spot(request: SectorSpotRequest):
     描述: 新浪行业-板块行情
 
     限量: 单次获取指定的板块行情实时数据
-
-    请求类型: `POST`
     """
     try:
         stock_sector_spot_df = ak.stock_sector_spot(indicator=request.indicator)
@@ -110,8 +102,6 @@ async def post_stock_restricted_release_queue_em(request: SymbolRequest):
     描述: 东方财富网-数据中心-个股限售解禁-解禁批次
 
     限量: 单次获取指定个股的解禁批次数据
-
-    请求类型: `POST`
     """
     try:
         stock_restricted_release_queue_em_df = ak.stock_restricted_release_queue_em(symbol=request.symbol)
@@ -131,8 +121,6 @@ async def post_stock_restricted_release_stockholder_em(request: SymbolDateReques
     描述: 东方财富网-数据中心-个股限售解禁-解禁股东
 
     限量: 单次获取指定个股的解禁批次数据
-
-    请求类型: `POST`
     """
     try:
         stock_restricted_release_stockholder_em_df = ak.stock_restricted_release_stockholder_em(symbol=request.symbol,

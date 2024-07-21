@@ -17,8 +17,6 @@ def get_stock_zh_ah_spot():
     描述: A+H 股数据是从腾讯财经获取的数据, 延迟 15 分钟更新
 
     限量: 单次返回所有 A+H 上市公司的实时行情数据
-
-    请求类型: `GET`
     """
     try:
         stock_zh_ah_spot_df = ak.stock_zh_ah_spot()
@@ -38,8 +36,6 @@ async def post_stock_zh_ah_daily(request: StockAHDailyRequest):
     描述: 腾讯财经-A+H 股数据
 
     限量: 单次返回指定参数的 A+H 上市公司的历史行情数据
-
-    请求类型: `POST`
     """
     try:
         stock_zh_ah_daily_df = ak.stock_zh_ah_daily(
@@ -64,8 +60,6 @@ def get_stock_zh_ah_name():
     描述: A+H 股数据是从腾讯财经获取的数据, 历史数据按日频率更新
 
     限量: 单次返回所有 A+H 上市公司的代码和名称
-
-    请求类型: `GET`
     """
     try:
         stock_zh_ah_name_df = ak.stock_zh_ah_name()

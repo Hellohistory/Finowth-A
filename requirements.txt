@@ -1,4 +1,4 @@
-AKShare>=1.14.33
+AKShare>=1.14.36
 uvicorn>=0.30.1
 fastapi>=0.111.1
 pydantic>=2.8.2

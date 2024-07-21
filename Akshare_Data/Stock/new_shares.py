@@ -18,8 +18,6 @@ def post_stock_ipo_info(request: StockRequest):
     描述: 新浪财经-发行与分配-新股发行
 
     限量: 单次获取新股发行的基本信息数据
-
-    请求类型: `POST`
     """
     try:
         stock_ipo_info_df = ak.stock_ipo_info(stock=request.stock)
@@ -39,8 +37,6 @@ def get_stock_new_gh_cninfo():
     描述: 巨潮资讯-数据中心-新股数据-新股过会
 
     限量: 单次获取近一年所有新股过会的数据
-
-    请求类型: `GET`
     """
     try:
         stock_new_gh_cninfo_df = ak.stock_new_gh_cninfo()
@@ -74,8 +70,6 @@ def get_stock_dxsyl_em():
     描述: 东方财富网-数据中心-新股申购-打新收益率
 
     限量: 单次获取所有打新收益率数据
-
-    请求类型: `GET`
     """
     try:
         stock_dxsyl_em_df = ak.stock_dxsyl_em()
@@ -97,8 +91,6 @@ async def post_stock_xgsglb_em(request: DateRequest):
     描述: 东方财富网-数据中心-新股数据-新股申购-新股申购与中签查询
 
     限量: 单次获取指定市场的新股申购与中签查询数据
-
-    请求类型: `POST`
     """
     try:
         stock_xgsglb_em_df = ak.stock_xgsglb_em(symbol=request.symbol)

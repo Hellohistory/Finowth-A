@@ -19,8 +19,6 @@ def get_stock_dzjy_sctj():
     描述: 东方财富网-数据中心-大宗交易-市场统计
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_dzjy_sctj_df = ak.stock_dzjy_sctj()
@@ -39,8 +37,6 @@ async def post_stock_dzjy_mrmx(request: SymbolDateRequest):
     描述: 东方财富网-数据中心-大宗交易-每日明细
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_dzjy_mrmx_df = ak.stock_dzjy_mrmx(symbol=request.symbol, start_date=request.start_date,
@@ -60,8 +56,6 @@ async def post_stock_dzjy_mrtj(request: DateRangeRequest):
     描述: 东方财富网-数据中心-大宗交易-每日统计
 
     限量: 单次返回所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_dzjy_mrtj_df = ak.stock_dzjy_mrtj(start_date=request.start_date, end_date=request.end_date)
@@ -80,8 +74,6 @@ async def post_stock_dzjy_hygtj(request: SymbolRequest):
     描述: 东方财富网-数据中心-大宗交易-活跃 A 股统计
 
     限量: 单次返回所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_dzjy_hygtj_df = ak.stock_dzjy_hygtj(symbol=request.symbol)
@@ -100,8 +92,6 @@ async def post_stock_dzjy_hyyybtj(request: SymbolRequest):
     描述: 东方财富网-数据中心-大宗交易-活跃营业部统计
 
     限量: 单次返回所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_dzjy_hyyybtj_df = ak.stock_dzjy_hyyybtj(symbol=request.symbol)
@@ -120,8 +110,6 @@ async def post_stock_dzjy_yybph(request: SymbolRequest):
     描述: 东方财富网-数据中心-大宗交易-营业部排行
 
     限量: 单次返回所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_dzjy_yybph_df = ak.stock_dzjy_yybph(symbol=request.symbol)

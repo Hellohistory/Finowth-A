@@ -19,8 +19,6 @@ async def post_stock_zh_a_hist(request: StockHistoryRequest):
     描述: 东方财富-沪深京 A 股日频率数据; 历史数据按日频率更新, 当日收盘价请在收盘后获取
 
     限量: 单次返回指定沪深京 A 股上市公司、指定周期和指定日期间的历史行情日频率数据
-
-    请求类型: `POST`
     """
     try:
         stock_zh_a_hist_df = ak.stock_zh_a_hist(
@@ -48,8 +46,6 @@ async def post_stock_zh_a_daily(request: StockHistoryRequest):
     描述: 新浪财经-沪深京 A 股的数据, 历史数据按日频率更新; 注意其中的 **sh689009** 为 CDR, 请 通过 **ak.stock_zh_a_cdr_daily** 接口获取
 
     限量: 单次返回指定沪深京 A 股上市公司指定日期间的历史行情日频率数据, 多次获取容易封禁 IP
-
-    请求类型: `POST`
     """
     try:
         stock_zh_a_daily_df = ak.stock_zh_a_daily(
@@ -111,8 +107,6 @@ async def post_stock_zh_a_hist_tx(request: StockHistoryRequest):
     描述: 腾讯证券-日频-股票历史数据; 历史数据按日频率更新, 当日收盘价请在收盘后获取
 
     限量: 单次返回指定沪深京 A 股上市公司、指定周期和指定日期间的历史行情日频率数据
-
-    请求类型: `POST`
     """
     try:
         stock_zh_a_hist_tx_df = ak.stock_zh_a_hist_tx(
@@ -151,8 +145,6 @@ async def post_stock_zh_a_cdr_daily(request: RestrictedReleaseSummaryRequest):
     描述: 上海证券交易所-科创板-CDR
 
     限量: 单次返回指定 CDR 的日频率数据, 分钟历史行情数据可以通过 stock_zh_a_minute 获取
-
-    请求类型: `POST`
     """
     try:
         stock_zh_a_cdr_daily_df = ak.stock_zh_a_cdr_daily(
@@ -178,8 +170,6 @@ def get_stock_zh_b_spot_em():
     描述: 东方财富网-实时行情数据
 
     限量: 单次返回所有 B 股上市公司的实时行情数据
-
-    请求类型: `GET`
     """
     try:
         stock_zh_b_spot_em_df = ak.stock_zh_b_spot_em()
@@ -202,8 +192,6 @@ def get_stock_zh_b_spot():
     描述: B 股数据是从新浪财经获取的数据, 重复运行本函数会被新浪暂时封 IP, 建议增加时间间隔
 
     限量: 单次返回所有 B 股上市公司的实时行情数据
-
-    请求类型: `GET`
     """
     try:
         stock_zh_b_spot_df = ak.stock_zh_b_spot()
@@ -302,8 +290,6 @@ def get_stock_zh_a_new():
     描述: 新浪财经-行情中心-沪深股市-次新股
 
     限量: 单次返回所有次新股行情数据, 由于次新股名单随着交易日变化而变化，只能获取最近交易日的数据
-
-    请求类型: `GET`
     """
     try:
         stock_zh_a_new_df = ak.stock_zh_a_new()

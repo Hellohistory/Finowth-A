@@ -18,8 +18,6 @@ def get_stock_gpzy_profile_em():
     描述: 东方财富网-数据中心-特色数据-股权质押-股权质押市场概况
 
     限量: 单次所有历史数据, 由于数据量比较大需要等待一定时间
-
-    请求类型: `GET`
     """
     try:
         stock_gpzy_profile_em_df = ak.stock_gpzy_profile_em()
@@ -39,8 +37,6 @@ async def post_stock_gpzy_pledge_ratio_em(request: DateRequest):
     描述: 东方财富网-数据中心-特色数据-股权质押-上市公司质押比例
 
     限量: 单次返回指定交易日的所有历史数据; 其中的交易日需要根据网站提供的为准; 请访问 http://data.eastmoney.com/gpzy/pledgeRatio.aspx 查询具体交易日
-
-    请求类型: `POST`
     """
     try:
         stock_gpzy_pledge_ratio_em_df = ak.stock_gpzy_pledge_ratio_em(date=request.date)
@@ -61,8 +57,6 @@ def get_stock_gpzy_pledge_ratio_detail_em():
     描述: 东方财富网-数据中心-特色数据-股权质押-重要股东股权质押明细
 
     限量: 单次所有历史数据, 由于数据量比较大需要等待一定时间，一定时间未返回内容属正常现象，请稍作等待
-
-    请求类型: `GET`
     """
     try:
         stock_gpzy_pledge_ratio_detail_em_df = ak.stock_gpzy_pledge_ratio_detail_em()
@@ -85,8 +79,6 @@ def get_stock_gpzy_distribute_statistics_company_em():
     描述: 东方财富网-数据中心-特色数据-股权质押-质押机构分布统计-证券公司
 
     限量: 单次返回当前时点所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_gpzy_distribute_statistics_company_em_df = ak.stock_gpzy_distribute_statistics_company_em()
@@ -107,8 +99,6 @@ def get_stock_gpzy_distribute_statistics_bank_em():
     描述: 东方财富网-数据中心-特色数据-股权质押-质押机构分布统计-银行
 
     限量: 单次返回当前时点所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_gpzy_distribute_statistics_bank_em_df = ak.stock_gpzy_distribute_statistics_bank_em()
@@ -128,8 +118,6 @@ def get_stock_gpzy_industry_data_em():
     描述: 东方财富网-数据中心-特色数据-股权质押-上市公司质押比例-行业数据
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_gpzy_industry_data_em_df = ak.stock_gpzy_industry_data_em()

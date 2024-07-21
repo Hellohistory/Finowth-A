@@ -18,8 +18,6 @@ async def post_stock_hot_follow_xq(request: SymbolRequest):
     描述: 雪球-沪深股市-热度排行榜-关注排行榜
 
     限量: 单次返回指定个股的排行数据
-
-    请求类型: `POST`
     """
     try:
         stock_hot_follow_xq_df = ak.stock_hot_follow_xq(symbol=request.symbol)
@@ -40,8 +38,6 @@ async def post_stock_hot_tweet_xq(request: SymbolRequest):
     描述: 雪球-沪深股市-热度排行榜-讨论排行榜
 
     限量: 单次返回指定个股的排行数据
-
-    请求类型: `POST`
     """
     try:
         stock_hot_tweet_xq_df = ak.stock_hot_tweet_xq(symbol=request.symbol)
@@ -62,8 +58,6 @@ def get_stock_hot_deal_xq(symbol: str):
     描述: 雪球-沪深股市-热度排行榜-交易排行榜
 
     限量: 单次返回指定个股的排行数据
-
-    请求类型: `POST`
     """
     try:
         stock_hot_deal_xq_df = ak.stock_hot_deal_xq(symbol=symbol)
@@ -82,8 +76,6 @@ def get_stock_hot_rank_wc(date: str):
     描述: 问财-热门股票排名数据; 请注意访问的频率
 
     限量: 单次返回近 5000 个股票的热门排名数据, 当前交易日的数据请在收盘后访问
-
-    请求类型: `POST`
     """
     try:
         stock_hot_rank_wc_df = ak.stock_hot_rank_wc(date=date)
@@ -102,8 +94,6 @@ def get_stock_hot_rank_em():
     描述: 东方财富网站-股票热度
 
     限量: 单次返回当前交易日前 100 个股票的人气排名数据
-
-    请求类型: `GET`
     """
     try:
         stock_hot_rank_em_df = ak.stock_hot_rank_em()
@@ -122,8 +112,6 @@ def get_stock_hot_up_em():
     描述: 东方财富-个股人气榜-飙升榜
 
     限量: 单次返回当前交易日前 100 个股票的飙升榜排名数据
-
-    请求类型: `GET`
     """
     try:
         stock_hot_up_em_df = ak.stock_hot_up_em()
@@ -142,8 +130,6 @@ def get_stock_hk_hot_rank_em():
     描述: 东方财富-个股人气榜-人气榜-港股市场
 
     限量: 单次返回当前交易日前 100 个股票的人气排名数据
-
-    请求类型: `GET`
     """
     try:
         stock_hk_hot_rank_em_df = ak.stock_hk_hot_rank_em()
@@ -186,8 +172,6 @@ async def post_stock_hk_hot_rank_detail_em(request: SymbolRequest):
     描述: 东方财富网-股票热度-历史趋势及粉丝特征
 
     限量: 单次返回指定个股的股票近期历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_hk_hot_rank_detail_em_df = ak.stock_hk_hot_rank_detail_em(symbol=request.symbol)
@@ -207,8 +191,6 @@ def get_stock_inner_trade_xq():
     描述: 雪球-行情中心-沪深股市-内部交易
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_inner_trade_xq_df = ak.stock_inner_trade_xq()
@@ -232,8 +214,6 @@ async def post_stock_hot_rank_detail_realtime_em(request: SymbolRequest):
     描述: 东方财富网-个股人气榜-实时变动
 
     限量: 单次返回指定个股的股票近期历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_hot_rank_detail_realtime_em_df = ak.stock_hot_rank_detail_realtime_em(symbol=request.symbol)
@@ -254,8 +234,6 @@ async def post_stock_hk_hot_rank_detail_realtime_em(request: SymbolRequest):
     描述: 东方财富网-个股人气榜-实时变动
 
     限量: 单次返回指定个股的股票近期历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_hk_hot_rank_detail_realtime_em_df = ak.stock_hk_hot_rank_detail_realtime_em(symbol=request.symbol)
@@ -275,8 +253,6 @@ async def post_stock_hot_keyword_em(request: SymbolRequest):
     描述: 东方财富-个股人气榜-热门关键词
 
     限量: 单次返回指定个股的最近交易日时点数据
-
-    请求类型: `POST`
     """
     try:
         stock_hot_keyword_em_df = ak.stock_hot_keyword_em(symbol=request.symbol)
@@ -296,8 +272,6 @@ async def post_stock_hot_rank_latest_em(request: SymbolRequest):
     描述: 东方财富-个股人气榜-最新排名
 
     限量: 单次返回指定个股的股票近期历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_hot_rank_latest_em_df = ak.stock_hot_rank_latest_em(symbol=request.symbol)
@@ -317,8 +291,6 @@ async def post_stock_hk_hot_rank_latest_em(request: SymbolRequest):
     描述: 东方财富-个股人气榜-最新排名
 
     限量: 单次返回指定个股的股票近期历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_hk_hot_rank_latest_em_df = ak.stock_hk_hot_rank_latest_em(symbol=request.symbol)
@@ -344,8 +316,6 @@ async def post_stock_hot_search_baidu(request: HotSearchRequest):
     描述: 百度股市通-热搜股票
 
     限量: 单次返回指定类型, 日期和时段的热搜股票数据
-
-    请求类型: `POST`
     """
     try:
         stock_hot_search_baidu_df = ak.stock_hot_search_baidu(symbol=request.symbol, date=request.date,
@@ -368,8 +338,6 @@ async def post_stock_hot_rank_relate_em(request: SymbolRequest):
     描述: 东方财富-个股人气榜-相关股票
 
     限量: 单次返回指定个股的股票近期历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_hot_rank_relate_em_df = ak.stock_hot_rank_relate_em(symbol=request.symbol)

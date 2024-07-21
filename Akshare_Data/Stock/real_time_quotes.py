@@ -18,8 +18,6 @@ async def post_stock_individual_spot_xq(request: SymbolRequest):
     描述: 雪球-行情中心-个股
 
     限量: 单次获取指定个股的最新行情数据
-
-    请求类型: `POST`
     """
     try:
         stock_individual_spot_xq_df = ak.stock_individual_spot_xq(symbol=request.symbol)
@@ -39,8 +37,6 @@ async def post_stock_individual_info_em(request: SymbolRequest):
     描述: 东方财富-个股-股票信息
 
     限量: 单次返回指定个股的个股信息
-
-    请求类型: `POST`
     """
     try:
         stock_individual_info_em_df = ak.stock_individual_info_em(symbol=request.symbol)
@@ -60,8 +56,6 @@ async def post_stock_bid_ask_em(request: SymbolRequest):
     描述: 东方财富-行情报价
 
     限量: 单次返回指定股票的行情报价数据
-
-    请求类型: `POST`
     """
     try:
         stock_bid_ask_em_df = ak.stock_bid_ask_em(symbol=request.symbol)
@@ -80,8 +74,6 @@ def get_stock_zh_a_spot_em():
     描述: 东方财富网-沪深京 A 股-实时行情数据
 
     限量: 单次返回所有沪深京 A 股上市公司的实时行情数据
-
-    请求类型: `GET`
     """
     try:
         stock_zh_a_spot_em_data = ak.stock_zh_a_spot_em().to_dict(orient="records")
@@ -113,8 +105,6 @@ def get_stock_sh_a_spot_em():
     描述: 东方财富网-沪 A 股-实时行情数据
 
     限量: 单次返回所有沪 A 股上市公司的实时行情数据
-
-    请求类型: `GET`
     """
     try:
         stock_sh_a_spot_em_df = ak.stock_sh_a_spot_em()
@@ -137,8 +127,6 @@ def get_stock_sz_a_spot_em():
     描述: 东方财富网-深 A 股-实时行情数据
 
     限量: 单次返回所有深 A 股上市公司的实时行情数据
-
-    请求类型: `GET`
     """
     try:
         stock_sz_a_spot_em_df = ak.stock_sz_a_spot_em()
@@ -161,8 +149,6 @@ def get_stock_bj_a_spot_em():
     描述: 东方财富网-京 A 股-实时行情数据
 
     限量: 单次返回所有京 A 股上市公司的实时行情数据
-
-    请求类型: `GET`
     """
     try:
         stock_bj_a_spot_em_df = ak.stock_bj_a_spot_em()
@@ -185,8 +171,6 @@ def get_stock_new_a_spot_em():
     描述: 东方财富网-新股-实时行情数据
 
     限量: 单次返回所有新股上市公司的实时行情数据
-
-    请求类型: `GET`
     """
     try:
         stock_new_a_spot_em_df = ak.stock_new_a_spot_em()
@@ -209,8 +193,6 @@ def get_stock_cy_a_spot_em():
     描述: 东方财富网-创业板-实时行情
 
     限量: 单次返回所有创业板的实时行情数据
-
-    请求类型: `GET`
     """
     try:
         stock_cy_a_spot_em_df = ak.stock_cy_a_spot_em()
@@ -233,8 +215,6 @@ def get_stock_kc_a_spot_em():
     描述: 东方财富网-科创板-实时行情
 
     限量: 单次返回所有科创板的实时行情数据
-
-    请求类型: `GET`
     """
     try:
         stock_kc_a_spot_em_df = ak.stock_kc_a_spot_em()
@@ -257,8 +237,6 @@ def get_stock_zh_a_spot():
     描述: 新浪财经-沪深京 A 股数据, 重复运行本函数会被新浪暂时封 IP, 建议增加时间间隔
 
     限量: 单次返回沪深京 A 股上市公司的实时行情数据
-
-    请求类型: `GET`
     """
     try:
         stock_zh_a_spot_df = ak.stock_zh_a_spot()

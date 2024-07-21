@@ -18,8 +18,6 @@ async def post_stock_ggcg_em(request: SymbolRequest):
     描述: 东方财富网-数据中心-特色数据-高管持股
 
     限量: 单次获取所有高管持股数据数据
-
-    请求类型: `POST`
     """
     try:
         stock_ggcg_em_df = ak.stock_ggcg_em(symbol=request.symbol)
@@ -41,8 +39,6 @@ async def post_stock_cyq_em(request: SymbolRequest):
     描述: 东方财富网-概念板-行情中心-日K-筹码分布
 
     限量: 单次返回指定个股和指定复权种类的近 90 个交易日数据
-
-    请求类型: `POST`
     """
     try:
         stock_cyq_em_df = ak.stock_cyq_em(symbol=request.symbol, adjust="")
@@ -62,8 +58,6 @@ def get_stock_yzxdr_em(date: str):
     描述: 东方财富网-数据中心-特色数据-一致行动人
 
     限量: 单次返回所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_yzxdr_em_df = ak.stock_yzxdr_em(date=date)
@@ -83,8 +77,6 @@ def get_stock_market_activity_legu():
     描述: 乐咕乐股网-赚钱效应分析数据
 
     限量: 单次返回当前赚钱效应分析数据
-
-    请求类型: `GET`
     """
     try:
         stock_market_activity_legu_df = ak.stock_market_activity_legu()

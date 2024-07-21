@@ -16,8 +16,6 @@ def get_stock_register_kcb():
     描述: 东方财富网-数据中心-新股数据-IPO审核信息-科创板
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_register_kcb_df = ak.stock_register_kcb()
@@ -37,8 +35,6 @@ def get_stock_register_cyb():
     描述: 东方财富网-数据中心-新股数据-IPO审核信息-创业板
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_register_cyb_df = ak.stock_register_cyb()
@@ -58,8 +54,6 @@ def get_stock_register_sh():
     描述: 东方财富网-数据中心-新股数据-IPO审核信息-上海主板
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_register_sh_df = ak.stock_register_sh()
@@ -79,8 +73,6 @@ def get_stock_register_sz():
     描述: 东方财富网-数据中心-新股数据-IPO审核信息-深圳主板
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_register_sz_df = ak.stock_register_sz()
@@ -100,8 +92,6 @@ def get_stock_register_bj():
     描述: 东方财富网-数据中心-新股数据-IPO审核信息-北交所
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_register_bj_df = ak.stock_register_bj()
@@ -120,8 +110,6 @@ def get_stock_register_db():
     描述: 东方财富网-数据中心-新股数据-注册制审核-达标企业
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_register_db_df = ak.stock_register_db()

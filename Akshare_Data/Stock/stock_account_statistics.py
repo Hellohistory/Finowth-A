@@ -19,8 +19,6 @@ def get_stock_account_statistics_em():
     描述: 东方财富网-数据中心-特色数据-股票账户统计
 
     限量: 单次返回从 201504 开始 202308 的所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_account_statistics_em_df = ak.stock_account_statistics_em()
@@ -43,8 +41,6 @@ async def post_stock_analyst_rank_em(request: YearRequest):
     描述: 东方财富网-数据中心-研究报告-东方财富分析师指数
 
     限量: 单次获取指定年份的所有数据
-
-    请求类型: `POST`
     """
     try:
         stock_analyst_rank_em_df = ak.stock_analyst_rank_em(year=request.year)
@@ -65,8 +61,6 @@ async def post_stock_analyst_detail_em(request: AnalystDetailRequest):
     描述: 东方财富网-数据中心-研究报告-东方财富分析师指数-分析师详情
 
     限量: 单次获取指定 indicator 指定的数据
-
-    请求类型: `POST`
     """
     try:
         stock_analyst_detail_em_df = ak.stock_analyst_detail_em(analyst_id=request.analyst_id,

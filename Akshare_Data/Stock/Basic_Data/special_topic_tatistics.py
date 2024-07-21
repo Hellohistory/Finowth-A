@@ -18,8 +18,6 @@ async def post_stock_cg_guarantee_cninfo(request: SymbolDateRangeRequest):
     描述: 巨潮资讯-数据中心-专题统计-公司治理-对外担保
 
     限量: 单次指定个股和起始日期的对外担保数据
-
-    请求类型: `POST`
     """
     try:
         stock_corporate_governance_guarantee_df = ak.stock_cg_guarantee_cninfo(
@@ -41,8 +39,6 @@ async def post_stock_cg_lawsuit_cninfo(request: SymbolDateRangeRequest):
     描述: 巨潮资讯-数据中心-专题统计-公司治理-公司诉讼
 
     限量: 单次指定个股和起始日期的公司诉讼数据
-
-    请求类型: `POST`
     """
     try:
         stock_cg_lawsuit_cninfo_df = ak.stock_cg_lawsuit_cninfo(
@@ -64,8 +60,6 @@ async def post_stock_cg_equity_mortgage_cninfo(request: DateRequest):
     描述: 巨潮资讯-数据中心-专题统计-公司治理-股权质押
 
     限量: 单次指定时间的股权质押数据
-
-    请求类型: `POST`
     """
     try:
         stock_cg_equity_mortgage_cninfo_df = ak.stock_cg_equity_mortgage_cninfo(date=request.date)
@@ -87,8 +81,6 @@ async def post_stock_qsjy_em(request: DateRequest):
     描述: 东方财富网-数据中心-特色数据-券商业绩月报
 
     限量: 单次获取所有数据, 数据从 201006-202007, 月频率
-
-    请求类型: `POST`
     """
     try:
         stock_qsjy_em_df = ak.stock_qsjy_em(date=request.date)
@@ -109,8 +101,6 @@ async def post_stock_hold_control_cninfo(request: SymbolRequest):
     描述: 巨潮资讯-数据中心-专题统计-股东股本-实际控制人持股变动
 
     限量: 单次指定个股的实际控制人持股变动数据, 从 2010 开始
-
-    请求类型: `POST`
     """
     try:
         stock_hold_control_cninfo_df = ak.stock_hold_control_cninfo(symbol=request.symbol)

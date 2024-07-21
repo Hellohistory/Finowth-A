@@ -18,8 +18,6 @@ async def post_stock_rank_cxg_ths(request: SymbolRequest):
     描述：同花顺-数据中心-技术选股-创新高
 
     限量：单次指定个股的所有数据
-
-    请求类型: `POST`
     """
     try:
         stock_rank_cxg_ths_df = ak.stock_rank_cxg_ths(symbol=request.symbol)
@@ -39,8 +37,6 @@ async def post_stock_rank_cxd_ths(request: SymbolRequest):
     描述：同花顺-数据中心-技术选股-创新低
 
     限量：单次指定个股的所有数据
-
-    请求类型: `POST`
     """
     try:
         stock_rank_cxd_ths_df = ak.stock_rank_cxd_ths(symbol=request.symbol)
@@ -60,8 +56,6 @@ def get_stock_rank_lxsz_ths():
     描述：同花顺-数据中心-技术选股-连续上涨
 
     限量：单次返回所有数据
-
-    请求类型: `GET`
     """
     try:
         stock_rank_lxsz_ths_df = ak.stock_rank_lxsz_ths()
@@ -81,8 +75,6 @@ def get_stock_rank_lxxd_ths():
     描述：同花顺-数据中心-技术选股-连续下跌
 
     限量：单次返回所有数据
-
-    请求类型: `GET`
     """
     try:
         stock_rank_lxxd_ths_df = ak.stock_rank_lxxd_ths()
@@ -102,8 +94,6 @@ def get_stock_rank_cxfl_ths():
     描述: 同花顺-数据中心-技术选股-持续放量
 
     限量: 单次返回所有数据
-
-    请求类型: `GET`
     """
     try:
         stock_rank_cxfl_ths_df = ak.stock_rank_cxfl_ths()
@@ -123,8 +113,6 @@ def get_stock_rank_cxsl_ths():
     描述: 同花顺-数据中心-技术选股-持续缩量
 
     限量: 单次返回所有数据
-
-    请求类型: `GET`
     """
     try:
         stock_rank_cxsl_ths_df = ak.stock_rank_cxsl_ths()
@@ -144,8 +132,6 @@ async def post_stock_rank_xstp_ths(request: SymbolRequest):
     描述: 同花顺-数据中心-技术选股-向上突破
 
     限量: 单次返回所有数据
-
-    请求类型: `POST`
     """
     try:
         stock_rank_xstp_ths_df = ak.stock_rank_xstp_ths(symbol=request.symbol)
@@ -165,8 +151,6 @@ async def post_stock_rank_xxtp_ths(request: SymbolRequest):
     描述: 同花顺-数据中心-技术选股-向下突破
 
     限量: 单次返回所有数据
-
-    请求类型: `POST`
     """
     try:
         stock_rank_xxtp_ths_df = ak.stock_rank_xxtp_ths(symbol=request.symbol)
@@ -186,8 +170,6 @@ def get_stock_rank_ljqs_ths():
     描述: 同花顺-数据中心-技术选股-量价齐升
 
     限量: 单次返回所有数据
-
-    请求类型: `GET`
     """
     try:
         stock_rank_ljqs_ths_df = ak.stock_rank_ljqs_ths()
@@ -207,8 +189,6 @@ def get_stock_rank_ljqd_ths():
     描述: 同花顺-数据中心-技术选股-量价齐跌
 
     限量: 单次返回所有数据
-
-    请求类型: `GET`
     """
     try:
         stock_rank_ljqd_ths_df = ak.stock_rank_ljqd_ths()
@@ -231,8 +211,6 @@ def get_stock_rank_xzjp_ths():
     描述: 同花顺-数据中心-技术选股-险资举牌
 
     限量: 单次返回所有数据
-
-    请求类型: `GET`
     """
     try:
         stock_rank_xzjp_ths_df = ak.stock_rank_xzjp_ths()

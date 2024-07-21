@@ -17,8 +17,6 @@ async def post_stock_financial_abstract(request: SymbolRequest):
     描述: 新浪财经-财务报表-关键指标
 
     限量: 单次获取关键指标所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_financial_abstract_df = ak.stock_financial_abstract(symbol=request.symbol)
@@ -39,8 +37,6 @@ async def post_stock_financial_abstract_ths(request: SymbolIndicatorRequest):
     描述: 同花顺-财务指标-主要指标
 
     限量: 单次获取主要指标所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_financial_abstract_ths_df = ak.stock_financial_abstract_ths(symbol=request.symbol,
@@ -63,8 +59,6 @@ async def post_stock_financial_analysis_indicator(request: FinancialAnalysis):
     描述: 新浪财经-财务分析-财务指标
 
     限量: 单次获取指定个股和指定年份的所有财务指标历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_financial_analysis_indicator_df = ak.stock_financial_analysis_indicator(symbol=request.symbol,
@@ -87,8 +81,6 @@ async def post_stock_financial_hk_analysis_indicator_em(request: SymolIndicatorR
     描述: 东方财富-港股-财务分析-主要指标
 
     限量: 单次获取财务指标所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_financial_hk_analysis_indicator_em_df = (

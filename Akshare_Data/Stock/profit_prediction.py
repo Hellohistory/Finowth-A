@@ -18,8 +18,6 @@ def get_stock_profit_forecast_em():
     描述: 东方财富网-数据中心-研究报告-盈利预测; 该数据源网页端返回数据有异常, 本接口已修复该异常
 
     限量: 单次返回指定个股的数据
-
-    请求类型: `POST`
     """
     try:
         stock_profit_forecast_em_df = ak.stock_profit_forecast_em()
@@ -38,8 +36,6 @@ async def post_stock_hk_profit_forecast_et(request: SymbolIndicatorRequest):
     描述: 经济通-公司资料-盈利预测
 
     限量: 单次返回指定个股和指定时间段的数据
-
-    请求类型: `POST`
     """
     try:
         stock_hk_profit_forecast_et_df = ak.stock_hk_profit_forecast_et(symbol=request.symbol,
@@ -59,8 +55,6 @@ async def post_stock_profit_forecast_ths(request: SymbolIndicatorRequest):
     描述: 同花顺-盈利预测
 
     限量: 单次返回指定个股和指定时间段的数据
-
-    请求类型: `POST`
     """
     try:
         stock_profit_forecast_ths_df = ak.stock_profit_forecast_ths(symbol=request.symbol, indicator=request.indicator)

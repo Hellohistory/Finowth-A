@@ -16,8 +16,6 @@ def get_stock_board_concept_name_em():
     描述: 东方财富网-行情中心-沪深京板块-概念板块
 
     限量: 单次返回当前时刻所有概念板块数据
-
-    请求类型: `GET`
     """
     try:
         stock_board_concept_name_em_df = ak.stock_board_concept_name_em()
@@ -37,8 +35,6 @@ async def post_stock_board_concept_cons_em(request: SymbolRequest):
     描述: 东方财富-沪深板块-概念板块-板块成份
 
     限量: 单次返回当前时刻所有成份股
-
-    请求类型: `POST`
     """
     try:
         stock_board_concept_cons_em_df = ak.stock_board_concept_cons_em(symbol=request.symbol)
@@ -58,8 +54,6 @@ async def post_stock_board_concept_hist_em(request: ConceptHistRequest):
     描述: 东方财富-沪深板块-概念板块-历史行情数据
 
     限量: 单次返回指定个股和 adjust 的历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_board_concept_hist_em_df = ak.stock_board_concept_hist_em(
@@ -85,8 +79,6 @@ async def post_stock_board_concept_hist_min_em(request: ConceptHistMinRequest):
     描述: 东方财富-沪深板块-概念板块-分时历史行情数据
 
     限量: 单次返回指定个股和 period 的历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_board_concept_hist_min_em_df = ak.stock_board_concept_hist_min_em(

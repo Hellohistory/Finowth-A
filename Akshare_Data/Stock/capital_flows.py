@@ -18,8 +18,6 @@ async def post_stock_fund_flow_individual(request: SymbolRequest):
     描述: 同花顺-数据中心-资金流向-个股资金流
 
     限量: 单次获取指定个股的概念资金流数据
-
-    请求类型: `POST`
     """
     try:
         stock_fund_flow_individual_df = ak.stock_fund_flow_individual(symbol=request.symbol)
@@ -39,8 +37,6 @@ async def post_stock_fund_flow_concept(request: SymbolRequest):
     描述: 同花顺-数据中心-资金流向-概念资金流
 
     限量: 单次获取指定个股的概念资金流数据
-
-    请求类型: `POST`
     """
     try:
         stock_fund_flow_concept_df = ak.stock_fund_flow_concept(symbol=request.symbol)
@@ -60,8 +56,6 @@ async def post_stock_fund_flow_industry(request: SymbolRequest):
     描述: 同花顺-数据中心-资金流向-行业资金流
 
     限量: 单次获取指定个股的行业资金流数据
-
-    请求类型: `POST`
     """
     try:
         stock_fund_flow_industry_df = ak.stock_fund_flow_industry(symbol=request.symbol)
@@ -81,8 +75,6 @@ def get_stock_fund_flow_big_deal():
     描述: 同花顺-数据中心-资金流向-大单追踪
 
     限量: 单次获取当前时点的所有大单追踪数据
-
-    请求类型: `GET`
     """
     try:
         stock_fund_flow_big_deal_df = ak.stock_fund_flow_big_deal()
@@ -102,8 +94,6 @@ async def post_stock_individual_fund_flow(request: SymbolMarketRequest):
     描述: 东方财富网-数据中心-个股资金流向
 
     限量: 单次获取指定市场和股票的近 100 个交易日的资金流数据
-
-    请求类型: `POST`
     """
     try:
         stock_individual_fund_flow_df = ak.stock_individual_fund_flow(stock=request.stock, market=request.market)
@@ -123,8 +113,6 @@ async def post_stock_individual_fund_flow_rank(request: IndicatorRequest):
     描述: 东方财富网-数据中心-资金流向-排名
 
     限量: 单次获取指定类型的个股资金流排名数据
-
-    请求类型: `POST`
     """
     try:
         stock_individual_fund_flow_rank_df = ak.stock_individual_fund_flow_rank(indicator=request.indicator)
@@ -144,8 +132,6 @@ def get_stock_market_fund_flow():
     描述: 东方财富网-数据中心-资金流向-大盘
 
     限量: 单次获取大盘资金流向历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_market_fund_flow_df = ak.stock_market_fund_flow()
@@ -165,8 +151,6 @@ async def post_stock_sector_fund_flow_rank(request: SectorRequest):
     描述: 东方财富网-数据中心-资金流向-板块资金流-排名
 
     限量: 单次获取指定板块的指定期限的资金流排名数据
-
-    请求类型: `POST`
     """
     try:
         stock_sector_fund_flow_rank_df = ak.stock_sector_fund_flow_rank(indicator=request.indicator,
@@ -190,8 +174,6 @@ async def post_stock_main_fund_flow(request: SymbolRequest):
     描述: 东方财富网-数据中心-资金流向-主力净流入排名
 
     限量: 单次获取指定板块的主力净流入排名数据
-
-    请求类型: `POST`
     """
     try:
         stock_main_fund_flow_df = ak.stock_main_fund_flow(symbol=request.symbol)
@@ -213,8 +195,6 @@ async def post_stock_sector_fund_flow_summary(request: SymbolRequest):
     描述: 东方财富网-数据中心-资金流向-行业资金流-xx行业个股资金流
 
     限量: 单次获取指定行业的个股资金流
-
-    请求类型: `POST`
     """
     try:
         stock_sector_fund_flow_summary_df = ak.stock_sector_fund_flow_summary(symbol=request.symbol, indicator="今日")
@@ -236,8 +216,6 @@ async def post_stock_sector_fund_flow_hist(request: SymbolRequest):
     描述: 东方财富网-数据中心-资金流向-行业资金流-行业历史资金流
 
     限量: 单次获取指定行业的行业历史资金流数据
-
-    请求类型: `POST`
     """
     try:
         stock_sector_fund_flow_hist_df = ak.stock_sector_fund_flow_hist(symbol=request.symbol)
@@ -257,8 +235,6 @@ async def post_stock_concept_fund_flow_hist(request: SymbolRequest):
     描述: 东方财富网-数据中心-资金流向-概念资金流-概念历史资金流
 
     限量: 单次获取指定个股的近期概念历史资金流数据
-
-    请求类型: `POST`
     """
     try:
         stock_concept_fund_flow_hist_df = ak.stock_concept_fund_flow_hist(symbol=request.symbol)

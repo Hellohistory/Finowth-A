@@ -18,8 +18,6 @@ async def post_stock_fhps_em(request: DateRequest):
     描述: 东方财富-数据中心-年报季报-分红配送
 
     限量: 单次获取指定日期的分红配送数据
-
-    请求类型: `POST`
     """
     try:
         stock_fhps_em_df = ak.stock_fhps_em(date=request.date)
@@ -41,8 +39,6 @@ async def post_stock_fhps_detail_em(request: SymbolRequest):
     描述: 东方财富网-数据中心-分红送配-分红送配详情
 
     限量: 单次获取指定个股的分红配送详情数据
-
-    请求类型: `POST`
     """
     try:
         stock_fhps_detail_em_df = ak.stock_fhps_detail_em(symbol=request.symbol)
@@ -64,8 +60,6 @@ async def post_stock_fhps_detail_ths(request: SymbolRequest):
     描述: 同花顺-分红情况
 
     限量: 单次获取指定个股的分红情况数据
-
-    请求类型: `POST`
     """
     try:
         stock_fhps_detail_ths_df = ak.stock_fhps_detail_ths(symbol=request.symbol)
@@ -85,8 +79,6 @@ async def post_stock_hk_fhpx_detail_ths(request: SymbolRequest):
     描述: 同花顺-港股-分红派息
 
     限量: 单次获取指定股票的分红派息数据
-
-    请求类型: `POST`
     """
     try:
         stock_hk_fhpx_detail_ths_df = ak.stock_hk_fhpx_detail_ths(symbol=request.symbol)
@@ -106,8 +98,6 @@ def get_stock_history_dividend():
     描述: 新浪财经-发行与分配-历史分红
 
     限量: 单次获取所有股票的历史分红数据
-
-    请求类型: `GET`
     """
     try:
         stock_history_dividend_df = ak.stock_history_dividend()
@@ -127,8 +117,6 @@ async def post_stock_history_dividend_detail(request: DividendDetailRequest):
     描述: 新浪财经-发行与分配-分红配股
 
     限量: 单次获取指定股票的新浪财经-发行与分配-分红配股详情
-
-    请求类型: `POST`
     """
     try:
         if request.date:
@@ -154,8 +142,6 @@ async def post_stock_dividend_cninfo(request: SymbolRequest):
     描述: 巨潮资讯-个股-历史分红
 
     限量: 单次获取指定股票的历史分红数据
-
-    请求类型: `POST`
     """
     try:
         stock_dividend_cninfo_df = ak.stock_dividend_cninfo(symbol=request.symbol)

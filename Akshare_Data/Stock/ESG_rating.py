@@ -15,8 +15,6 @@ def get_stock_esg_rate_sina():
     描述: 新浪财经-ESG评级中心-ESG评级-ESG评级数据
 
     限量: 单次返回所有数据，数据量较大，获取时间较长，如未返回任何内容请耐心等待
-
-    请求类型: `GET`
     """
     try:
         stock_esg_rate_sina_df = ak.stock_esg_rate_sina()
@@ -36,8 +34,6 @@ def get_stock_esg_msci_sina():
     描述: 新浪财经-ESG评级中心-ESG评级-MSCI
 
     限量: 单次返回所有数据
-
-    请求类型: `GET`
     """
     try:
         stock_esg_msci_sina_df = ak.stock_esg_msci_sina()
@@ -57,8 +53,6 @@ def get_stock_esg_rft_sina():
     描述: 新浪财经-ESG评级中心-ESG评级-路孚特
 
     限量: 单次返回所有数据
-
-    请求类型: `GET`
     """
     try:
         stock_esg_rft_sina_df = ak.stock_esg_rft_sina()
@@ -78,8 +72,6 @@ def get_stock_esg_zd_sina():
     描述: 新浪财经-ESG评级中心-ESG评级-秩鼎
 
     限量: 单次返回所有数据
-
-    请求类型: `GET`
     """
     try:
         stock_esg_zd_sina_df = ak.stock_esg_zd_sina()
@@ -99,8 +91,6 @@ def get_stock_esg_hz_sina():
     描述: 新浪财经-ESG评级中心-ESG评级-华证指数
 
     限量: 单次返回所有数据
-
-    请求类型: `GET`
     """
     try:
         stock_esg_hz_sina_df = ak.stock_esg_hz_sina()

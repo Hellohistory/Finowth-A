@@ -18,8 +18,6 @@ async def post_stock_jgdy_tj_em(request: DateRequest):
     描述: 东方财富网-数据中心-特色数据-机构调研-机构调研统计
 
     限量: 单次返回所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_jgdy_tj_em_df = ak.stock_jgdy_tj_em(date=request.date)

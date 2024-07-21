@@ -19,8 +19,6 @@ async def post_stock_research_report_em(request: SymbolRequest):
     描述: 东方财富网-数据中心-研究报告-个股研报
 
     限量: 单次返回指定个股的所有数据
-
-    请求类型: `POST`
     """
     try:
         stock_research_report_em_df = ak.stock_research_report_em(symbol=request.symbol)
@@ -43,8 +41,6 @@ async def post_stock_notice_report(request: DateRequest):
     描述: 东方财富网-数据中心-公告大全-沪深京 A 股公告
 
     限量: 单次获取指定个股和指定日期的数据
-
-    请求类型: `POST`
     """
     try:
         stock_notice_report_df = ak.stock_notice_report(symbol='财务报告', date=request.date)
@@ -67,8 +63,6 @@ async def post_stock_financial_report_sina(request: SymbolRequest):
     限量: 单次获取指定报表的所有年份数据的历史数据
 
     注意: 原始数据中有 `国内票证结算` 和 `内部应收款` 字段重, 返回数据中已经剔除
-
-    请求类型: `POST`
     """
     try:
         stock_financial_report_sina_df = ak.stock_financial_report_sina(stock=request.stock, symbol=request.symbol)
@@ -91,8 +85,6 @@ async def post_stock_balance_sheet_by_report_em(request: SymbolRequest):
     描述: 东方财富-股票-财务分析-资产负债表-按报告期
 
     限量: 单次获取指定个股的资产负债表-按报告期数据
-
-    请求类型: `POST`
     """
     try:
         stock_balance_sheet_by_report_em_df = ak.stock_balance_sheet_by_report_em(symbol=request.symbol)
@@ -115,8 +107,6 @@ async def post_stock_balance_sheet_by_yearly_em(request: SymbolRequest):
     描述: 东方财富-股票-财务分析-资产负债表-按年度
 
     限量: 单次获取指定个股的资产负债表-按年度数据
-
-    请求类型: `POST`
     """
     try:
         stock_balance_sheet_by_yearly_em_df = ak.stock_balance_sheet_by_yearly_em(symbol=request.symbol)
@@ -139,8 +129,6 @@ async def post_stock_profit_sheet_by_report_em(request: SymbolRequest):
     描述: 东方财富-股票-财务分析-利润表-报告期
 
     限量: 单次获取指定个股的利润表-报告期数据
-
-    请求类型: `POST`
     """
     try:
         stock_profit_sheet_by_report_em_df = ak.stock_profit_sheet_by_report_em(symbol=request.symbol)
@@ -163,8 +151,6 @@ async def post_stock_profit_sheet_by_yearly_em(request: SymbolRequest):
     描述: 东方财富-股票-财务分析-利润表-按年度
 
     限量: 单次获取指定个股的利润表-按年度数据
-
-    请求类型: `POST`
     """
     try:
         stock_profit_sheet_by_yearly_em_df = ak.stock_profit_sheet_by_yearly_em(symbol=request.symbol)
@@ -187,8 +173,6 @@ async def post_stock_profit_sheet_by_quarterly_em(request: SymbolRequest):
     描述: 东方财富-股票-财务分析-利润表-按单季度
 
     限量: 单次获取指定个股的利润表-按单季度数据
-
-    请求类型: `POST`
     """
     try:
         stock_profit_sheet_by_quarterly_em_df = ak.stock_profit_sheet_by_quarterly_em(symbol=request.symbol)
@@ -211,8 +195,6 @@ async def post_stock_cash_flow_sheet_by_report_em(request: SymbolRequest):
     描述: 东方财富-股票-财务分析-现金流量表-按报告期
 
     限量: 单次获取指定个股的现金流量表-按报告期数据
-
-    请求类型: `POST`
     """
     try:
         stock_cash_flow_sheet_by_report_em_df = ak.stock_cash_flow_sheet_by_report_em(symbol=request.symbol)
@@ -233,8 +215,6 @@ async def post_stock_cash_flow_sheet_by_yearly_em(request: SymbolRequest):
     描述: 东方财富-股票-财务分析-现金流量表-按年度
 
     限量: 单次获取指定个股的现金流量表-按年度数据
-
-    请求类型: `POST`
     """
     try:
         stock_cash_flow_sheet_by_yearly_em_df = ak.stock_cash_flow_sheet_by_yearly_em(symbol=request.symbol)
@@ -258,8 +238,6 @@ async def post_stock_cash_flow_sheet_by_quarterly_em(request: SymbolRequest):
     描述: 东方财富-股票-财务分析-现金流量表-按单季度
 
     限量: 单次获取指定个股的现金流量表-按单季度数据
-
-    请求类型: `POST`
     """
     try:
         stock_cash_flow_sheet_by_quarterly_em_df = ak.stock_cash_flow_sheet_by_quarterly_em(symbol=request.symbol)
@@ -280,8 +258,6 @@ async def post_stock_financial_debt_ths(request: FinancialDebt):
     描述: 同花顺-财务指标-资产负债表
 
     限量: 单次获取资产负债表所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_financial_debt_ths_df = ak.stock_financial_debt_ths(symbol=request.symbol, indicator=request.indicator)
@@ -302,8 +278,6 @@ async def post_stock_financial_benefit_ths(request: FinancialDebt):
     描述: 同花顺-财务指标-利润表
 
     限量: 单次获取利润表所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_financial_benefit_ths_df = ak.stock_financial_benefit_ths(symbol=request.symbol,
@@ -325,8 +299,6 @@ async def post_stock_financial_cash_ths(request: FinancialDebt):
     描述: 同花顺-财务指标-现金流量表
 
     限量: 单次获取现金流量表所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_financial_cash_ths_df = ak.stock_financial_cash_ths(symbol=request.symbol, indicator=request.indicator)
@@ -347,8 +319,6 @@ async def post_stock_balance_sheet_by_report_delisted_em(request: SymbolRequest)
     描述: 东方财富-股票-财务分析-资产负债表-已退市股票-按报告期
 
     限量: 单次获取指定个股的资产负债表-按报告期数据
-
-    请求类型: `POST`
     """
     try:
         stock_balance_sheet_by_report_delisted_em_df = ak.stock_balance_sheet_by_report_delisted_em(
@@ -373,8 +343,6 @@ async def post_stock_profit_sheet_by_report_delisted_em(request: SymbolRequest):
     描述: 东方财富-股票-财务分析-利润表-已退市股票-按报告期
 
     限量: 单次获取指定个股的利润表-按报告期数据
-
-    请求类型: `POST`
     """
     try:
         stock_profit_sheet_by_report_delisted_em_df = ak.stock_profit_sheet_by_report_delisted_em(symbol=request.symbol)
@@ -395,8 +363,6 @@ async def post_stock_cash_flow_sheet_by_report_delisted_em(request: SymbolReques
     描述: 东方财富-股票-财务分析-现金流量表-已退市股票-按报告期
 
     限量: 单次获取指定个股的现金流量表-按报告期数据
-
-    请求类型: `POST`
     """
     try:
         stock_cash_flow_sheet_by_report_delisted_em_df = ak.stock_cash_flow_sheet_by_report_delisted_em(
@@ -418,8 +384,6 @@ async def post_stock_financial_hk_report_em(request: FinancialRequest):
     描述: 东方财富-港股-财务报表-三大报表
 
     限量: 单次获取指定报表的所有年份数据
-
-    请求类型: `POST`
     """
     try:
         stock_financial_hk_report_em_df = ak.stock_financial_hk_report_em(stock=request.stock, symbol=request.symbol,

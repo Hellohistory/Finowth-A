@@ -16,8 +16,6 @@ async def post_stock_margin_ratio_pa(request: SingleDateRequest):
     描述: 融资融券-标的证券名单及保证金比例查询
 
     限量: 单次返回指定交易日的所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_margin_ratio_pa_df = ak.stock_margin_ratio_pa(date=request.date)
@@ -36,8 +34,6 @@ def get_stock_margin_account_info():
     描述: 东方财富网-数据中心-融资融券-融资融券账户统计-两融账户信息
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_margin_account_info_df = ak.stock_margin_account_info()
@@ -56,8 +52,6 @@ async def post_stock_margin_sse(request: DateRangeRequest):
     描述: 上海证券交易所-融资融券数据-融资融券汇总数据
 
     限量: 单次返回指定时间段内的所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_margin_sse_df = ak.stock_margin_sse(start_date=request.start_date, end_date=request.end_date)
@@ -76,8 +70,6 @@ async def post_stock_margin_detail_sse(request: SingleDateRequest):
     描述: 上海证券交易所-融资融券数据-融资融券明细数据
 
     限量: 单次返回交易日的所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_margin_detail_sse_df = ak.stock_margin_detail_sse(date=request.date)
@@ -96,8 +88,6 @@ async def post_stock_margin_szse(request: SingleDateRequest):
     描述: 深圳证券交易所-融资融券数据-融资融券汇总数据
 
     限量: 单次返回指定时间内的所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_margin_szse_df = ak.stock_margin_szse(date=request.date)
@@ -116,8 +106,6 @@ async def post_stock_margin_detail_szse(request: SingleDateRequest):
     描述: 深证证券交易所-融资融券数据-融资融券交易明细数据
 
     限量: 单次返回指定时间的所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_margin_detail_szse_df = ak.stock_margin_detail_szse(date=request.date)
@@ -136,8 +124,6 @@ async def post_stock_margin_underlying_info_szse(request: SingleDateRequest):
     描述: 深圳证券交易所-融资融券数据-标的证券信息
 
     限量: 单次返回交易日的所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_margin_underlying_info_szse_df = ak.stock_margin_underlying_info_szse(date=request.date)

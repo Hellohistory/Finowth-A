@@ -18,8 +18,6 @@ async def post_stock_fund_stock_holder(request: SymbolRequest):
     描述: 新浪财经-股本股东-基金持股
 
     限量: 新浪财经-股本股东-基金持股所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_fund_stock_holder_df = ak.stock_fund_stock_holder(symbol=request.symbol)
@@ -53,8 +51,6 @@ async def post_stock_report_fund_hold_detail(request: SymbolDateRequest):
     描述: 东方财富网-数据中心-主力数据-基金持仓-基金持仓明细表
 
     限量: 单次返回指定个股和指定财报发布日期的所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_report_fund_hold_detail_df = ak.stock_report_fund_hold_detail(symbol=request.symbol, date=request.date)

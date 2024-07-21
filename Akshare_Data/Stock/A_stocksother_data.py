@@ -18,8 +18,6 @@ async def post_stock_gsrl_gsdt_em(request: DateRequest):
     描述: 东方财富网-数据中心-股市日历-公司动态
 
     限量: 单次返回指定交易日的数据
-
-    请求类型: `POST`
     """
     try:
         stock_gsrl_gsdt_em_df = ak.stock_gsrl_gsdt_em(date=request.date)
@@ -39,8 +37,6 @@ def get_stock_zh_a_st_em():
     描述: 东方财富网-行情中心-沪深个股-风险警示板
 
     限量: 单次返回当前交易日风险警示板的所有股票的行情数据
-
-    请求类型: `GET`
     """
     try:
         stock_zh_a_st_em_df = ak.stock_zh_a_st_em()
@@ -63,8 +59,6 @@ def get_stock_zh_a_new_em():
     描述: 东方财富网-行情中心-沪深个股-新股
 
     限量: 单次返回当前交易日新股板块的所有股票的行情数据
-
-    请求类型: `GET`
     """
     try:
         stock_zh_a_new_em_df = ak.stock_zh_a_new_em()
@@ -86,8 +80,6 @@ def get_stock_ipo_benefit_ths():
     限量: 单次返回当前交易日的所有数据; 该数据每周更新一次, 返回最近一周的数据 ，对于本周没有
 
     IPO信息时会返回提示信息
-
-    请求类型: `GET`
     """
     try:
         result = ak.stock_ipo_benefit_ths()
@@ -114,8 +106,6 @@ def get_stock_zh_a_stop_em():
     描述: 东方财富网-行情中心-沪深个股-两网及退市
 
     限量: 单次返回当前交易日两网及退市的所有股票的行情数据
-
-    请求类型: `GET`
     """
     try:
         stock_zh_a_stop_em_df = ak.stock_zh_a_stop_em()

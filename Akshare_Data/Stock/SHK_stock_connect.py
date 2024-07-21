@@ -19,8 +19,6 @@ def get_stock_hsgt_fund_flow_summary_em():
     描述: 东方财富网-数据中心-资金流向-沪深港通资金流向
 
     限量: 单次获取沪深港通资金流向数据
-
-    请求类型: `GET`
     """
     try:
         stock_hsgt_fund_flow_summary_em_df = ak.stock_hsgt_fund_flow_summary_em()
@@ -41,8 +39,6 @@ def get_stock_sgt_settlement_exchange_rate_szse():
     描述: 深港通-港股通业务信息-结算汇率
 
     限量: 单次获取所有深港通结算汇率数据
-
-    请求类型: `GET`
     """
     try:
         stock_sgt_settlement_exchange_rate_szse_df = ak.stock_sgt_settlement_exchange_rate_szse()
@@ -63,8 +59,6 @@ def get_stock_sgt_settlement_exchange_rate_sse():
     描述: 沪港通-港股通信息披露-结算汇兑
 
     限量: 单次获取所有沪港通结算汇率数据
-
-    请求类型: `GET`
     """
     try:
         stock_sgt_settlement_exchange_rate_sse_df = ak.stock_sgt_settlement_exchange_rate_sse()
@@ -85,8 +79,6 @@ def get_stock_sgt_reference_exchange_rate_szse():
     描述: 深港通-港股通业务信息-参考汇率
 
     限量: 单次获取所有深港通参考汇率数据
-
-    请求类型: `GET`
     """
     try:
         stock_sgt_reference_exchange_rate_szse_df = ak.stock_sgt_reference_exchange_rate_szse()
@@ -107,8 +99,6 @@ def get_stock_sgt_reference_exchange_rate_sse():
     描述: 沪港通-港股通信息披露-参考汇率
 
     限量: 单次获取所有沪港通参考汇率数据
-
-    请求类型: `GET`
     """
     try:
         stock_sgt_reference_exchange_rate_sse_df = ak.stock_sgt_reference_exchange_rate_sse()
@@ -129,8 +119,6 @@ def get_stock_hk_ggt_components_em():
     描述: 东方财富网-行情中心-港股市场-港股通成份股
 
     限量: 单次获取所有港股通成份股数据
-
-    请求类型: `GET`
     """
     try:
         stock_hk_ggt_components_em_df = ak.stock_hk_ggt_components_em()
@@ -151,8 +139,6 @@ async def post_stock_hsgt_fund_min_em(request: SymbolStockRequest):
     描述: 东方财富-数据中心-沪深港通-市场概括-分时数据
 
     限量: 单次返回指定个股的所有数据
-
-    请求类型: `POST`
     """
     try:
         stock_hsgt_fund_min_em_df = ak.stock_hsgt_fund_min_em(symbol=request.symbol)
@@ -173,8 +159,6 @@ async def post_stock_hsgt_board_rank_em(data: SymolIndicatorRequest):
     描述: 东方财富网-数据中心-沪深港通持股-板块排行
 
     限量: 单次获取指定个股和指定时间段的所有数据
-
-    请求类型: `POST`
     """
     try:
         df = ak.stock_hsgt_board_rank_em(symbol=data.symbol, indicator=data.indicator)
@@ -203,8 +187,6 @@ def post_stock_hsgt_hold_stock_em():
     描述: 东方财富网-数据中心-沪深港通持股-个股排行
 
     限量: 单次获取指定市场和指定时间段的所有数据
-
-    请求类型: `POST`
     """
     try:
         stock_em_hsgt_hold_stock_df = ak.stock_hsgt_hold_stock_em(market="北向", indicator="今日排行")
@@ -225,8 +207,6 @@ async def post_stock_hsgt_stock_statistics_em(request: DateRangeRequest):
     描述: 东方财富网-数据中心-沪深港通-沪深港通持股-每日个股统计
 
     限量: 单次获取指定市场的起始时间和终止时间之间的所有数据, 该接口只能获取近期的数据
-
-    请求类型: `POST`
     """
     try:
         stock_hsgt_stock_statistics_em_df = ak.stock_hsgt_stock_statistics_em(symbol="北向持股",
@@ -249,8 +229,6 @@ async def post_stock_hsgt_institution_statistics_em(request: DateRangeRequest):
     描述: 东方财富网-数据中心-沪深港通-沪深港通持股-机构排行
 
     限量: 单次获取指定市场的所有数据, 该接口只能获取近期的数据
-
-    请求类型: `POST`
     """
     try:
         stock_hsgt_institution_statistics_em_df = ak.stock_hsgt_institution_statistics_em(market="北向持股",
@@ -273,8 +251,6 @@ async def post_stock_hsgt_hist_em(request: SymbolStockRequest):
     描述: 东方财富网-数据中心-资金流向-沪深港通资金流向-沪深港通历史数据
 
     限量: 单次获取指定个股的所有数据
-
-    请求类型: `POST`
     """
     try:
 
@@ -297,8 +273,6 @@ async def post_stock_hsgt_individual_em(request: OnlyStockRequest):
     描述: 东方财富网-数据中心-沪深港通-沪深港通持股-具体股票
 
     限量: 单次获取指定个股的近期数据
-
-    请求类型: `POST`
     """
     try:
         stock_hsgt_individual_em_df = ak.stock_hsgt_individual_em(stock=request.stock)
@@ -319,8 +293,6 @@ async def post_stock_hsgt_individual_detail_em(request: OnlyStockRequest):
     描述: 东方财富网-数据中心-沪深港通-沪深港通持股-具体股票-个股详情
 
     限量: 单次获取指定个股的在起始时间和终止时间之间的所有数据; 注意只能返回 90 个交易日内的数据
-
-    请求类型: `POST`
     """
     try:
         stock_hsgt_individual_detail_em_df = ak.stock_hsgt_individual_detail_em(symbol=request.stock,

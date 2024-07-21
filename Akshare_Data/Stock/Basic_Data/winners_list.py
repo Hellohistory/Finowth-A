@@ -18,8 +18,6 @@ async def post_stock_lhb_detail_em(request: DateRangeRequest):
     描述: 东方财富网-数据中心-龙虎榜单-龙虎榜详情
 
     限量: 单次返回所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_lhb_detail_em_df = ak.stock_lhb_detail_em(start_date=request.start_date, end_date=request.end_date)
@@ -41,8 +39,6 @@ async def post_stock_lhb_stock_statistic_em(request: SymbolRequest):
     描述: 东方财富网-数据中心-龙虎榜单-个股上榜统计
 
     限量: 单次返回所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_lhb_stock_statistic_em_df = ak.stock_lhb_stock_statistic_em(symbol=request.symbol)
@@ -62,8 +58,6 @@ async def post_stock_lhb_jgmmtj_em(request: DateRangeRequest):
     描述: 东方财富网-数据中心-龙虎榜单-机构买卖每日统计
 
     限量: 单次返回所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_lhb_jgmmtj_em_df = ak.stock_lhb_jgmmtj_em(start_date=request.start_date, end_date=request.end_date)
@@ -83,8 +77,6 @@ async def post_stock_lhb_jgstatistic_em(request: SymbolRequest):
     描述: 东方财富网-数据中心-龙虎榜单-机构席位追踪
 
     限量: 单次返回所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_lhb_jgstatistic_em_df = ak.stock_lhb_jgstatistic_em(symbol=request.symbol)
@@ -106,8 +98,6 @@ async def post_stock_lhb_hyyyb_em(request: DateRangeRequest):
     描述: 东方财富网-数据中心-龙虎榜单-每日活跃营业部
 
     限量: 单次返回所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_lhb_hyyyb_em_df = ak.stock_lhb_hyyyb_em(start_date=request.start_date, end_date=request.end_date)
@@ -129,8 +119,6 @@ async def post_stock_lhb_yybph_em(request: SymbolRequest):
     描述: 东方财富网-数据中心-龙虎榜单-营业部排行
 
     限量: 单次返回所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_lhb_yybph_em_df = ak.stock_lhb_yybph_em(symbol=request.symbol)
@@ -150,8 +138,6 @@ async def post_stock_lhb_traderstatistic_em(request: SymbolRequest):
     描述: 东方财富网-数据中心-龙虎榜单-营业部统计
 
     限量: 单次返回所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_lhb_traderstatistic_em_df = ak.stock_lhb_traderstatistic_em(symbol=request.symbol)
@@ -171,8 +157,6 @@ async def post_stock_lhb_stock_detail_em(request: SymbolFlagDateRequest):
     描述: 东方财富网-数据中心-龙虎榜单-个股龙虎榜详情
 
     限量: 单次返回所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_lhb_stock_detail_em_df = ak.stock_lhb_stock_detail_em(symbol=request.symbol, date=request.date,
@@ -195,8 +179,6 @@ def get_stock_lh_yyb_most():
     描述: 龙虎榜-营业部排行-上榜次数最多
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_lh_yyb_most_df = ak.stock_lh_yyb_most()
@@ -216,8 +198,6 @@ def get_stock_lh_yyb_capital():
     描述: 龙虎榜-营业部排行-资金实力最强
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_lh_yyb_capital_df = ak.stock_lh_yyb_capital()
@@ -237,8 +217,6 @@ def get_stock_lh_yyb_control():
     描述: 龙虎榜-营业部排行-抱团操作实力
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_lh_yyb_control_df = ak.stock_lh_yyb_control()
@@ -258,8 +236,6 @@ async def post_stock_lhb_detail_daily_sina(request: DateRequest):
     描述: 新浪财经-龙虎榜-每日详情
 
     限量: 单次返回指定时间的所有数据
-
-    请求类型: `POST`
     """
     try:
         stock_lhb_detail_daily_sina_df = ak.stock_lhb_detail_daily_sina(date=request.date)
@@ -281,8 +257,6 @@ async def post_stock_lhb_ggtj_sina(request: SymbolRequest):
     描述: 新浪财经-龙虎榜-个股上榜统计
 
     限量: 单次返回指定个股的所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_lhb_ggtj_sina_df = ak.stock_lhb_ggtj_sina(symbol=request.symbol)
@@ -302,8 +276,6 @@ async def post_stock_lhb_yytj_sina(request: SymbolRequest):
     描述: 新浪财经-龙虎榜-营业上榜统计
 
     限量: 单次返回指定个股的所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_lhb_yytj_sina_df = ak.stock_lhb_yytj_sina(symbol=request.symbol)
@@ -323,8 +295,6 @@ async def post_stock_lhb_jgzz_sina(request: SymbolRequest):
     描述: 新浪财经-龙虎榜-机构席位追踪
 
     限量: 单次返回指定个股的所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_lhb_jgzz_sina_df = ak.stock_lhb_jgzz_sina(symbol=request.symbol)
@@ -344,8 +314,6 @@ def get_stock_lhb_jgmx_sina():
     描述: 新浪财经-龙虎榜-机构席位成交明细
 
     限量: 单次返回所有历史数据
-
-    请求类型: `GET`
     """
     try:
         stock_lhb_jgmx_sina_df = ak.stock_lhb_jgmx_sina()

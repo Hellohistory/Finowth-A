@@ -1,9 +1,10 @@
-from typing import List
+from typing import List, Dict, Any
 
 import uvicorn
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from pydantic import BaseModel
+from starlette.middleware.cors import CORSMiddleware
 
 from Akshare_Data.Stock.AH_data import router as router1
 from Akshare_Data.Stock.A_stocksother_data import router as router2
@@ -31,7 +32,6 @@ from Akshare_Data.Stock.dividend import router as router20
 from Akshare_Data.Stock.featured_data import router as router17
 from Akshare_Data.Stock.financial_report_issuance import router as router19
 from Akshare_Data.Stock.goodwill import router as router12
-
 from Akshare_Data.Stock.historical_data import router as router6
 from Akshare_Data.Stock.industry_sector import router as router37
 from Akshare_Data.Stock.info_data import router as router45
@@ -52,13 +52,10 @@ from Akshare_Data.Stock.stock_institutional_survey_statisticsj import router as 
 from Akshare_Data.Stock.stock_market_overview import router as router3
 from Akshare_Data.Stock.stock_pledge import router as router14
 from Akshare_Data.Stock.stock_popularity import router as router38
-
 from Akshare_Data.Stock.technical_indicators import router as router41
 from Akshare_Data.Stock.time_sharing_data import router as router4
-from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
-
 # 配置CORS
 origins = [
     "http://localhost:36924",
@@ -75,49 +72,68 @@ app.add_middleware(
 )
 
 
-class APIParameter(BaseModel):
-    name: str
-    type: str
-
-
 class APIInfo(BaseModel):
-    name: str
-    path: str
+    api_name: str
+    api_path: str
     method: str
     description: str
-    parameters: List[APIParameter]
+    parameters: List[Dict[str, Any]]
 
 
-def process_api_info():
-    openapi_schema = get_openapi(
-        title="FinData API",
+def process_api_info() -> List[APIInfo]:
+    openapi_json = get_openapi(
+        title="FinDataAPI",
         version="0.0.1",
         routes=app.routes,
     )
+
+    def resolve_ref(ref, spec):
+        """解析$ref引用"""
+        parts = ref.lstrip('#/').split('/')
+        result = spec
+        for part in parts:
+            result = result.get(part, {})
+        return result
+
     api_info_list = []
-    for path, methods in openapi_schema['paths'].items():
-        for method, info in methods.items():
+
+    for path, path_item in openapi_json.get('paths', {}).items():
+        for method, operation in path_item.items():
+            api_name = operation.get('operationId', '无操作ID')
+            api_summary = operation.get('summary', '无描述信息')
+            api_description = operation.get('description', '无详细描述')
+
             parameters = []
-            if method.upper() == 'POST':
-                request_body = info.get('requestBody', {}).get('content', {}).get('application/json', {}).get('schema',
-                                                                                                              {}).get(
-                    'properties', {})
-                parameters = [APIParameter(name=k, type=v.get('type', 'unknown')) for k, v in request_body.items()]
-            elif method.upper() == 'GET':
-                query_parameters = info.get('parameters', [])
-                for param in query_parameters:
-                    param_name = param.get('name')
-                    param_type = param.get('schema', {}).get('type', 'unknown')
-                    parameters.append(APIParameter(name=param_name, type=param_type))
+
+            if method == 'post':
+                request_body = operation.get('requestBody', {})
+                content = request_body.get('content', {})
+                for media_type, media_type_object in content.items():
+                    schema = media_type_object.get('schema', {})
+                    if '$ref' in schema:
+                        schema = resolve_ref(schema['$ref'], openapi_json)
+                    properties = schema.get('properties', {})
+                    required = schema.get('required', [])
+                    for param_name, param_info in properties.items():
+                        param_type = param_info.get('type', '未知类型')
+                        param_description = param_info.get('description', '无描述')
+                        is_required = param_name in required
+                        parameters.append({
+                            "name": param_name,
+                            "type": param_type,
+                            "required": is_required,
+                            "description": param_description
+                        })
 
             api_info = APIInfo(
-                name=info.get('summary', 'No summary'),
-                path=path,
-                method=method.upper(),
-                description=info.get('description', 'No description'),
+                api_name=api_name,
+                api_path=path,
+                method=method,
+                description=f"{api_summary} - {api_description}",
                 parameters=parameters
             )
             api_info_list.append(api_info)
+
     return api_info_list
 
 
@@ -129,11 +145,12 @@ async def get_api_info():
 
 @app.get("/openapi.json")
 async def get_open_api_endpoint():
-    return get_openapi(
-        title="FinData API",
+    openapi_schema = get_openapi(
+        title="FinDataAPI",
         version="0.0.1",
         routes=app.routes,
     )
+    return openapi_schema
 
 
 app.include_router(router1)
@@ -183,9 +200,7 @@ app.include_router(router44)
 app.include_router(router45)
 app.include_router(router46)
 
-
 app.include_router(router48)
-
 
 app.include_router(router50)
 app.include_router(router51)

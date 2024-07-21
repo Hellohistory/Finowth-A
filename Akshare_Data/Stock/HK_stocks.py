@@ -18,8 +18,6 @@ def get_stock_hk_spot_em():
     描述: 所有港股的实时行情数据; 该数据有 15 分钟延时
 
     限量: 单次返回最近交易日的所有港股的数据
-
-    请求类型: `GET`
     """
     try:
         stock_hk_spot_em_df = ak.stock_hk_spot_em()
@@ -41,8 +39,6 @@ def get_stock_hk_main_board_spot_em():
     描述: 港股主板的实时行情数据; 该数据有 15 分钟延时
 
     限量: 单次返回港股主板的数据
-
-    请求类型: `GET`
     """
     try:
         stock_hk_main_board_spot_em_df = ak.stock_hk_main_board_spot_em()
@@ -66,8 +62,6 @@ def get_stock_hk_spot():
     描述: 获取所有港股的实时行情数据 15 分钟延时
 
     限量: 单次返回当前时间戳的所有港股的数据
-
-    请求类型: `GET`
     """
     try:
         stock_hk_spot_df = ak.stock_hk_spot()
@@ -87,8 +81,6 @@ async def post_stock_hk_hist_min_em(request: StockMinuteRequest):
     描述: 东方财富网-行情首页-港股-每日分时行情
 
     限量: 单次返回指定上市公司最近 5 个交易日分钟数据, 注意港股有延时
-
-    请求类型: `POST`
     """
     try:
         stock_hk_hist_min_em_df = ak.stock_hk_hist_min_em(
@@ -114,8 +106,6 @@ async def post_stock_hk_hist(request: StockHistoryRequest):
     描述: 港股-历史行情数据, 可以选择返回复权后数据, 更新频率为日频
 
     限量: 单次返回指定上市公司的历史行情数据
-
-    请求类型: `POST`
     """
     try:
         stock_hk_hist_df = ak.stock_hk_hist(
@@ -142,8 +132,6 @@ async def post_stock_hk_daily(request: StockDailyRequest):
 
     限量: 单次返回指定上市公司的历史行情数据(包括前后复权因子), 提供新浪财经拥有的该股票的所有数据(
     并不等于该股票从上市至今的数据)
-
-    请求类型: `POST`
     """
     try:
         stock_hk_daily_df = ak.stock_hk_daily(symbol=request.symbol, adjust=request.adjust)

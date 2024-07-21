@@ -18,8 +18,6 @@ async def post_stock_changes_em(request: SymbolRequest):
     描述: 东方财富-行情中心-盘口异动数据
 
     限量: 单次指定个股的最近交易日的盘口异动数据
-
-    请求类型: `POST`
     """
     try:
 
@@ -42,8 +40,6 @@ def get_stock_board_change_em():
     描述: 东方财富-行情中心-当日板块异动详情
 
     限量: 返回最近交易日的数据
-
-    请求类型: `GET`
     """
     try:
         stock_board_change_em_df = ak.stock_hsgt_fund_flow_summary_em()

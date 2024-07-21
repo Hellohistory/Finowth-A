@@ -18,8 +18,6 @@ async def post_stock_tfp_em(request: DateRequest):
     描述: 东方财富网-数据中心-特色数据-停复牌信息
 
     限量: 单次获取指定时间的停复牌数据, 具体更新逻辑跟目标网页统一
-
-    请求类型: `POST`
     """
     try:
         stock_tfp_em_df = ak.stock_tfp_em(date=request.date)
@@ -39,8 +37,6 @@ async def post_news_trade_notify_suspend_baidu(request: DateRequest):
     描述: 百度股市通-交易提醒-停复牌
 
     限量: 单次获取指定时间的停复牌数据, 提供港股的停复牌数据
-
-    请求类型: `POST`
     """
     try:
         news_trade_notify_suspend_baidu_df = ak.news_trade_notify_suspend_baidu(date=request.date)
@@ -60,8 +56,6 @@ async def post_news_trade_notify_dividend_baidu(request: DateRequest):
     描述: 百度股市通-交易提醒-分红派息
 
     限量: 单次获取指定时间的分红派息数据, 提供港股的分红派息数据
-
-    请求类型: `POST`
     """
     try:
         news_trade_notify_dividend_baidu_df = ak.news_trade_notify_dividend_baidu(date=request.date)

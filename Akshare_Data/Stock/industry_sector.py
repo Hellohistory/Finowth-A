@@ -17,8 +17,6 @@ def get_stock_board_industry_name_em():
     描述: 东方财富-沪深京板块-行业板块
 
     限量: 单次返回当前时刻所有行业板块数据
-
-    请求类型: `GET`
     """
     try:
         stock_board_industry_name_em_df = ak.stock_board_industry_name_em()
@@ -37,8 +35,6 @@ def get_stock_board_industry_summary_ths():
     描述: 同花顺-同花顺行业一览表
 
     限量: 单次返回当前时刻同花顺行业一览表
-
-    请求类型: `GET`
     """
     try:
         stock_board_industry_summary_ths_df = ak.stock_board_industry_summary_ths()
@@ -75,8 +71,6 @@ async def post_stock_board_industry_cons_em(request: SymbolRequest):
     描述: 东方财富-沪深板块-行业板块-板块成份
 
     限量: 单次返回指定个股的所有成份股
-
-    请求类型: `POST`
     """
     try:
         stock_board_industry_cons_em_df = ak.stock_board_industry_cons_em(symbol=request.symbol)
@@ -96,8 +90,6 @@ async def post_stock_board_industry_hist_em(request: IndustryHistRequest):
     描述: 东方财富-沪深板块-行业板块-历史行情数据
 
     限量: 单次返回指定个股和 adjust 的所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_board_industry_hist_em_df = ak.stock_board_industry_hist_em(
@@ -123,8 +115,6 @@ async def post_stock_board_industry_hist_min_em(request: IndustryHistMinRequest)
     描述: 东方财富-沪深板块-行业板块-分时历史行情数据
 
     限量: 单次返回指定个股和 period 的所有历史数据
-
-    请求类型: `POST`
     """
     try:
         stock_board_industry_hist_min_em_df = ak.stock_board_industry_hist_min_em(

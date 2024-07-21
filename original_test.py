@@ -1,53 +1,63 @@
-import requests
 import json
 
-# 定义 OpenAPI 文档的 URL
-url = "http://0.0.0.0:36925/openapi.json"
+import requests
+from requests.exceptions import RequestException
 
-# 获取 OpenAPI 文档
-response = requests.get(url)
-openapi_doc = response.json()
+# 请求OpenAPI文档
+url = 'http://0.0.0.0:36925/openapi.json'
+try:
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+    openapi_json = response.json()
+except RequestException as e:
+    print(f"请求失败: {e}")
+    exit(1)
+except ValueError as e:
+    print(f"解析JSON失败: {e}")
+    exit(1)
 
-# 提取并打印 API 地址、函数名称、请求类型、API 描述以及参数信息
-print("API 文档：")
+# 保存OpenAPI文档到本地文件（可选）
+with open('openapi.json', 'w') as file:
+    json.dump(openapi_json, file, indent=2)
 
 
-def resolve_ref(ref, components):
-    ref_path = ref.split('/')
-    schema = components
-    for part in ref_path[1:]:
-        if schema is None:
-            return None
-        schema = schema.get(part)
-    return schema
+# 解析并提取信息
+def resolve_ref(ref, spec):
+    """解析$ref引用"""
+    parts = ref.lstrip('#/').split('/')
+    result = spec
+    for part in parts:
+        result = result.get(part, {})
+    return result
 
 
-components = openapi_doc.get('components', {})
-
-for path, path_item in openapi_doc['paths'].items():
+for path, path_item in openapi_json.get('paths', {}).items():
+    print(f"处理路径: {path}")  # 调试信息
     for method, operation in path_item.items():
-        print(f"API 地址: {path}")
-        print(f"函数名称: {operation.get('operationId')}")
-        print(f"请求类型: {method.upper()}")
-        print(f"API 描述: {operation.get('description', '')}")
+        api_name = operation.get('operationId', '无操作ID')
+        api_summary = operation.get('summary', '无描述信息')
+        api_description = operation.get('description', '无详细描述')
 
-        # 如果是 POST 请求，则打印请求参数
+        print(f"API名称: {api_name}")
+        print(f"API地址: {path}")
+        print(f"描述信息: {api_summary} - {api_description}")
+
         if method == 'post':
-            request_body = operation.get('requestBody')
-            if request_body:
-                content = request_body.get('content')
-                for media_type, media_schema in content.items():
-                    schema = media_schema.get('schema')
-                    if schema:
-                        if '$ref' in schema:
-                            resolved_schema = resolve_ref(schema['$ref'], components)
-                            if resolved_schema:
-                                print(f"请求参数示例:")
-                                print(json.dumps(resolved_schema, indent=2, ensure_ascii=False))
-                            else:
-                                print(f"未找到引用的组件：{schema['$ref']}")
-                        else:
-                            print(f"请求参数示例:")
-                            print(json.dumps(schema, indent=2, ensure_ascii=False))
-
-        print("\n" + "=" * 50 + "\n")
+            print("POST请求参数:")
+            request_body = operation.get('requestBody', {})
+            content = request_body.get('content', {})
+            for media_type, media_type_object in content.items():
+                schema = media_type_object.get('schema', {})
+                if '$ref' in schema:
+                    schema = resolve_ref(schema['$ref'], openapi_json)
+                properties = schema.get('properties', {})
+                required = schema.get('required', [])
+                for param_name, param_info in properties.items():
+                    param_type = param_info.get('type', '未知类型')
+                    param_description = param_info.get('description', '无描述')
+                    is_required = param_name in required
+                    print(f"  参数名称: {param_name}")
+                    print(f"  类型: {param_type}")
+                    print(f"  必需: {is_required}")
+                    print(f"  描述: {param_description}")
+        print()

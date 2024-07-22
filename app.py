@@ -60,7 +60,7 @@ app = FastAPI()
 origins = [
     "http://localhost:36924",
     "http://localhost:36925",
-    "http://192.168.1.16:36926"
+    "http://192.168.1.16:36928"
 ]
 
 app.add_middleware(
@@ -117,12 +117,14 @@ def process_api_info() -> List[APIInfo]:
                     for param_name, param_info in properties.items():
                         param_type = param_info.get('type', '未知类型')
                         param_description = param_info.get('description', '无描述')
+                        param_title = param_info.get('title', '无标题')
                         is_required = param_name in required
                         parameters.append({
                             "name": param_name,
                             "type": param_type,
                             "required": is_required,
-                            "description": param_description
+                            "description": param_description,
+                            "title": param_title
                         })
 
             api_info = APIInfo(
@@ -139,12 +141,29 @@ def process_api_info() -> List[APIInfo]:
 
 @app.get("/api_info", response_model=List[APIInfo])
 async def get_api_info():
+    """
+    获取API信息
+
+    这个接口用于获取所有API的相关信息。返回值是一个包含多个API信息对象的列表。
+
+    :return: 包含API信息对象的列表
+    :rtype: List[APIInfo]
+    """
     api_info = process_api_info()
     return api_info
 
 
 @app.get("/openapi.json")
 async def get_open_api_endpoint():
+    """
+    获取OpenAPI模式定义
+
+    这个接口用于获取当前应用的OpenAPI模式定义。OpenAPI模式定义包含了应用中所有API的详细信息，
+    包括路径、请求方法、请求参数、响应格式等。
+
+    :return: 包含应用中所有API详细信息的OpenAPI模式定义
+    :rtype: dict
+    """
     openapi_schema = get_openapi(
         title="FinDataAPI",
         version="0.0.1",
@@ -192,11 +211,9 @@ app.include_router(router36)
 app.include_router(router37)
 app.include_router(router38)
 
-
 app.include_router(router40)
 app.include_router(router41)
 app.include_router(router42)
-
 
 app.include_router(router44)
 app.include_router(router45)

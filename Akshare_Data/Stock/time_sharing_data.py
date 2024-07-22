@@ -6,7 +6,7 @@ router = APIRouter()
 
 
 class XinLangMinuteStock(BaseModel):
-    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例如sh000300")
+    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例如sh600900")
     period: str = Field(..., title="时间频率", description="可选值: 1, 5, 15, 30, 60")
     adjust: str = Field(..., title="复权形式", description="默认为空: 返回不复权的数据; "
                                                            "qfq: 返回前复权后的数据; "
@@ -26,20 +26,24 @@ async def post_stock_zh_a_minute(request: XinLangMinuteStock):
     限量: 单次返回指定股票或指数的指定频率的最近交易日的历史分时行情数据; 注意调用频率
     """
     try:
-        # 获取分时数据
         stock_zh_a_minute_df = ak.stock_zh_a_minute(symbol=request.symbol, period=request.period, adjust=request.adjust)
-
-        # 返回数据的JSON格式
+        stock_zh_a_minute_df.rename(columns={
+            "day": "日期",
+            "open": "开盘价",
+            "high": "最高价",
+            "low": "最低价",
+            "close": "收盘价",
+            "volume": "成交量"
+        }, inplace=True)
         return stock_zh_a_minute_df.to_dict(orient="records")
     except Exception as e:
-        # 提供更详细的错误信息给用户
         raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
 
 class DongCaiMinuteRequest(BaseModel):
-    symbol: str = Field(..., title="个股代码", description="例如000300")
-    start_date: str = Field(..., title="开始日期", description="例如20230701")
-    end_date: str = Field(..., title="结束日期", description="例如20230701")
+    symbol: str = Field(..., title="个股代码", description="例如000001")
+    start_date: str = Field(..., title="开始日期(需精确到分钟)", description="例：2024-07-22 09:30:00")
+    end_date: str = Field(..., title="结束日期(需精确到分钟)", description="例：2024-07-22 15:00:00")
     period: str = Field(..., title="时间周期", description="可选值: 1, 5, 15, 30, 60，"
                                                            "其中 1 分钟数据返回近 5 个交易日数据且不复权")
     adjust: str = Field(..., title="复权形式", description="默认为空: 返回不复权的数据; "
@@ -73,7 +77,7 @@ async def post_stock_zh_a_hist_min_em(request: DongCaiMinuteRequest):
 
 
 class DongCaiDayMinute(BaseModel):
-    symbol: str = Field(..., title="个股代码", description="例如000300")
+    symbol: str = Field(..., title="个股代码", description="例如000001")
 
 
 # 日内分时数据-东财
@@ -96,7 +100,7 @@ async def post_stock_intraday_em(request: DongCaiDayMinute):
 
 
 class XinLangDayMinute(BaseModel):
-    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例如sh000300")
+    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例如sh600900")
     date: str = Field(..., title="指定交易日", description="例如20230701，只能获取近期的数据")
 
 
@@ -120,7 +124,7 @@ async def post_stock_intraday_sina(request: XinLangDayMinute):
 
 
 class DongCaiPanQianRequest(BaseModel):
-    symbol: str = Field(..., title="个股代码", description="例如000300")
+    symbol: str = Field(..., title="个股代码", description="例如600900")
     start_time: str = Field(..., title="开始时间", description="例如09:30,默认返回所有数据")
     end_time: str = Field(..., title="结束时间", description="例如09:35,默认返回所有数据")
 

@@ -8,7 +8,8 @@ router = APIRouter()
 
 
 class ASymbolRequest(BaseModel):
-    symbol: str = Field(..., title="个股代码", description="例如603777")
+    symbol: str = Field(..., title="证券代码",
+                        description="可以是A股个股代码(需带市场标识，例如SH600000)，A股场内基金代码，A股指数，美股代码, 美股指数")
 
 
 # 雪球-行情中心-个股
@@ -238,7 +239,7 @@ def get_stock_zh_a_spot():
 
     目标地址: https://vip.stock.finance.sina.com.cn/mkt/#hs_a
 
-    描述: 新浪财经-沪深京 A 股数据, 重复运行本函数会被新浪暂时封 IP, 建议增加时间间隔
+    描述: 新浪财经-沪深京 A 股数据, 重复运行本接口会被新浪暂时封 IP, 建议增加时间间隔
 
     限量: 单次返回沪深京 A 股上市公司的实时行情数据
     """

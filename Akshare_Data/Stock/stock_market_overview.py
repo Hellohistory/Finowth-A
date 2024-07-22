@@ -12,14 +12,20 @@ from Akshare_Data.utility_function import sanitize_data
 router = APIRouter()
 
 
-def get_stock_sse_summary():
+@router.get("/stock_sse_summary", operation_id="get_stock_sse_summary")
+async def get_stock_sse_summary():
     """
-    上海证券交易所
+    接口: stock_sse_summary
+
+    目标地址: http://www.sse.com.cn/market/stockdata/statistic/
+
     描述: 上海证券交易所-股票数据总貌
+
     限量: 单次返回最近交易日的股票数据总貌(当前交易日的数据需要交易所收盘后统计)
     """
     stock_sse_summary_df = ak.stock_sse_summary()
-    return stock_sse_summary_df
+    stock_sse_summary_list = stock_sse_summary_df.to_dict(orient="records")
+    return stock_sse_summary_list
 
 
 def get_stock_szse_summary(date):
@@ -81,25 +87,6 @@ def get_stock_sse_deal_daily(date):
     """
     stock_sse_deal_daily_df = ak.stock_sse_deal_daily(date=date.strftime('%Y%m%d'))
     return stock_sse_deal_daily_df
-
-
-@router.get("/stock_sse_summary", operation_id="get_stock_sse_summary")
-def get_stock_sse_summary():
-    """
-    接口: stock_sse_summary
-
-    目标地址: http://www.sse.com.cn/market/stockdata/statistic/
-
-    描述: 上海证券交易所-股票数据总貌
-
-    限量: 单次返回最近交易日的股票数据总貌(当前交易日的数据需要交易所收盘后统计)
-    """
-    try:
-        stock_sse_summary_df = get_stock_sse_summary()
-        sanitized_data = sanitize_data(stock_sse_summary_df.to_dict(orient="records"))
-        return sanitized_data
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error retrieving SSE summary: {str(e)}")
 
 
 class DtDateRequest(BaseModel):

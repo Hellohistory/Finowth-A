@@ -59,7 +59,7 @@
 import axios from 'axios';
 import { generateCodeSample } from './CodeSamples';
 import hljs from 'highlight.js';
-import 'highlight.js/styles/default.css'; // 引入highlight.js的CSS样式
+import 'highlight.js/styles/default.css';
 
 export default {
   data() {
@@ -81,12 +81,12 @@ export default {
   computed: {
     filteredApiInfo() {
       return this.apiInfo.filter(api =>
-        api.api_path.includes(this.searchQuery) ||
-        api.description.includes(this.searchQuery)
+          api.api_path.includes(this.searchQuery) ||
+          api.description.includes(this.searchQuery)
       );
     },
     highlightedCodeSample() {
-      return hljs.highlight(this.codeSample, { language: this.selectedLanguage.toLowerCase() }).value;
+      return hljs.highlight(this.codeSample, {language: this.selectedLanguage.toLowerCase()}).value;
     },
     highlightedResponse() {
       const response = this.responseData[this.selectedApi?.api_path];
@@ -108,15 +108,26 @@ export default {
       this.error = null;
     },
     updateCodeSample(api) {
-      this.codeSample = generateCodeSample(api, this.selectedLanguage, this.postParams);
+      // 为所有参数创建示例代码，包括空值的参数
+      const params = {};
+      api.parameters.forEach(param => {
+        params[param.name] = this.postParams[param.name] || '';
+      });
+      this.codeSample = generateCodeSample(api, this.selectedLanguage, params);
     },
     async runApi(api) {
       this.loading = true;
       try {
+        // 为所有参数创建请求体，包括空值的参数
+        const params = {};
+        api.parameters.forEach(param => {
+          params[param.name] = this.postParams[param.name] || '';
+        });
+
         const response = await axios({
           method: api.method.toLowerCase(),
           url: `http://localhost:36925${api.api_path}`,
-          data: api.method.toUpperCase() === 'POST' ? this.postParams : {}
+          data: api.method.toUpperCase() === 'POST' ? params : {}
         });
         this.responseData = {...this.responseData, [api.api_path]: response.data};
         this.error = null;

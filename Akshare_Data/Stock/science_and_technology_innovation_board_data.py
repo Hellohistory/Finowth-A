@@ -38,7 +38,7 @@ async def post_stock_zh_kcb_daily(request: StockDailyRequest):
     """
     接口: stock_zh_kcb_daily
 
-    目标地址: https://finance.sina.com.cn/realstock/company/sh688001/nc.shtml(示例)
+    目标地址: https://finance.sina.com.cn/realstock/company/sh688001/nc.shtml (示例)
 
     描述: 新浪财经-科创板股票历史行情数据
 
@@ -48,6 +48,20 @@ async def post_stock_zh_kcb_daily(request: StockDailyRequest):
     """
     try:
         stock_zh_kcb_daily_df = ak.stock_zh_kcb_daily(symbol=request.symbol, adjust=request.adjust)
+
+        stock_zh_kcb_daily_df.rename(columns={
+            "date": "日期",
+            "open": "开盘价",
+            "high": "最高价",
+            "low": "最低价",
+            "close": "收盘价",
+            "volume": "成交量",
+            "after_volume": "盘后成交量",
+            "after_amount": "盘后成交金额",
+            "outstanding_share": "流通股本",
+            "turnover": "换手率"
+        }, inplace=True)
+
         return stock_zh_kcb_daily_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -62,7 +62,7 @@ async def post_stock_zh_a_daily(request: XinLangStockHistoryRequest):
 
     P.S. 建议切换为 stock_zh_a_hist 接口使用(该接口数据质量高, 访问无限制)
 
-    目标地址: https://finance.sina.com.cn/realstock/company/sh600006/nc.shtml(示例)
+    目标地址: https://finance.sina.com.cn/realstock/company/sh600006/nc.shtml (示例)
 
     描述: 新浪财经-沪深京 A 股的数据, 历史数据按日频率更新; 注意其中的 **sh689009** 为 CDR, 请 通过 **ak.stock_zh_a_cdr_daily** 接口获取
 
@@ -76,6 +76,7 @@ async def post_stock_zh_a_daily(request: XinLangStockHistoryRequest):
             adjust=request.adjust
         )
         stock_zh_a_daily_df.rename(columns={
+            "date": "交易日",
             "symbol": "日期",
             "open": "开盘价",
             "high": "最高价",
@@ -159,6 +160,20 @@ async def post_stock_zh_a_cdr_daily(request: KCBCDRDayRequest):
             start_date=request.start_date,
             end_date=request.end_date
         )
+
+        stock_zh_a_cdr_daily_df.rename(columns={
+            "date": "日期",
+            "prevclose": "前收盘价",
+            "open": "开盘价",
+            "high": "最高价",
+            "low": "最低价",
+            "close": "收盘价",
+            "volume": "成交量",
+            "amount": "成交金额",
+            "postVol": "盘后成交量",
+            "postAmt": "盘后成交金额"
+        }, inplace=True)
+
         stock_zh_a_cdr_daily_df = sanitize_data_pandas(stock_zh_a_cdr_daily_df)
 
         return stock_zh_a_cdr_daily_df.to_dict(orient="records")
@@ -196,7 +211,7 @@ def get_stock_zh_b_spot():
 
     目标地址: http://vip.stock.finance.sina.com.cn/mkt/#hs_b
 
-    描述: B 股数据是从新浪财经获取的数据, 重复运行本函数会被新浪暂时封 IP, 建议增加时间间隔
+    描述: B 股数据是从新浪财经获取的数据, 重复运行本接口会被新浪暂时封 IP, 建议增加时间间隔
 
     限量: 单次返回所有 B 股上市公司的实时行情数据
     """

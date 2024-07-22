@@ -1,15 +1,20 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import SymbolRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
 
 
+class THSCXGSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="时间周期",
+                        description="可选择'创月新高','半年新高','一年新高','历史新高'")
+
+
 # 创新高
 @router.post("/stock_rank_cxg_ths", operation_id="post_stock_rank_cxg_ths")
-async def post_stock_rank_cxg_ths(request: SymbolRequest):
+async def post_stock_rank_cxg_ths(request: THSCXGSymbolRequest):
     """
     接口：stock_rank_cxg_ths
 
@@ -26,9 +31,14 @@ async def post_stock_rank_cxg_ths(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class THSCXDSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="时间周期",
+                        description="可选择'创月新低','半年新低','一年新低','历史新低'")
+
+
 # 创新低
 @router.post("/stock_rank_cxd_ths", operation_id="post_stock_rank_cxd_ths")
-async def post_stock_rank_cxd_ths(request: SymbolRequest):
+async def post_stock_rank_cxd_ths(request: THSCXDSymbolRequest):
     """
     接口：stock_rank_cxd_ths
 
@@ -121,9 +131,14 @@ def get_stock_rank_cxsl_ths():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class THSCXDSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="时间周期",
+                        description="可选择'5日均线', '10日均线','20日均线','30日均线','60日均线','90日均线','250日均线','500日均线'")
+
+
 # 向上突破
 @router.post("/stock_rank_xstp_ths", operation_id="post_stock_rank_xstp_ths")
-async def post_stock_rank_xstp_ths(request: SymbolRequest):
+async def post_stock_rank_xstp_ths(request: THSCXDSymbolRequest):
     """
     接口: stock_rank_xstp_ths
 
@@ -142,7 +157,7 @@ async def post_stock_rank_xstp_ths(request: SymbolRequest):
 
 # 向下突破
 @router.post("/stock_rank_xxtp_ths", operation_id="post_stock_rank_xxtp_ths")
-async def post_stock_rank_xxtp_ths(request: SymbolRequest):
+async def post_stock_rank_xxtp_ths(request: THSCXDSymbolRequest):
     """
     接口: stock_rank_xxtp_ths
 

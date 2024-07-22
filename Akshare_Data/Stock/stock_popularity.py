@@ -1,8 +1,7 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import SymbolRequest, DateRequest
 from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
 
 router = APIRouter()
@@ -28,6 +27,7 @@ async def post_stock_hot_follow_xq(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 雪球-沪深股市-热度排行榜-讨论排行榜
 @router.post("/stock_hot_tweet_xq", operation_id="post_stock_hot_tweet_xq")
 async def post_stock_hot_tweet_xq(request: SymbolRequest):
     """
@@ -48,8 +48,12 @@ async def post_stock_hot_tweet_xq(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_hot_deal_xq", operation_id="get_stock_hot_deal_xq")
-def get_stock_hot_deal_xq(symbol: str):
+class StockHotDealXQRequest(BaseModel):
+    symbol: str = Field(..., title="请求类型", description="可选择'本周新增', '最热门'")
+
+
+@router.post("/stock_hot_deal_xq", operation_id="post_stock_hot_deal_xq")
+def post_stock_hot_deal_xq(request: StockHotDealXQRequest):
     """
     接口: stock_hot_deal_xq
 
@@ -60,14 +64,18 @@ def get_stock_hot_deal_xq(symbol: str):
     限量: 单次返回指定个股的排行数据
     """
     try:
-        stock_hot_deal_xq_df = ak.stock_hot_deal_xq(symbol=symbol)
+        stock_hot_deal_xq_df = ak.stock_hot_deal_xq(symbol=request.symbol)
         return stock_hot_deal_xq_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_hot_rank_wc", operation_id="get_stock_hot_rank_wc")
-def get_stock_hot_rank_wc(date: str):
+class StockHotRankWCRequest(BaseModel):
+    date: str = Field(..., title="查询日期", description="例：20230129")
+
+
+@router.post("/stock_hot_rank_wc", operation_id="post_stock_hot_rank_wc")
+def post_stock_hot_rank_wc(request: StockHotRankWCRequest):
     """
     接口: stock_hot_rank_wc
 
@@ -78,7 +86,7 @@ def get_stock_hot_rank_wc(date: str):
     限量: 单次返回近 5000 个股票的热门排名数据, 当前交易日的数据请在收盘后访问
     """
     try:
-        stock_hot_rank_wc_df = ak.stock_hot_rank_wc(date=date)
+        stock_hot_rank_wc_df = ak.stock_hot_rank_wc(date=request.date)
         return stock_hot_rank_wc_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -138,32 +146,12 @@ def get_stock_hk_hot_rank_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/stock_hot_deal_xq", operation_id="post_stock_hot_deal_xq")
-async def post_stock_hot_deal_xq(request: SymbolRequest):
-    """
-    雪球-沪深股市-热度排行榜-交易排行榜
-    """
-    try:
-        stock_hot_deal_xq_df = ak.stock_hot_deal_xq(symbol=request.symbol)
-        return stock_hot_deal_xq_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@router.post("/stock_hot_rank_wc", operation_id="post_stock_hot_rank_wc")
-async def post_stock_hot_rank_wc(request: DateRequest):
-    """
-    问财-热门股票排名数据
-    """
-    try:
-        stock_hot_rank_wc_df = ak.stock_hot_rank_wc(date=request.date)
-        return stock_hot_rank_wc_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+class StockHKHotRankDetailEMRequest(BaseModel):
+    symbol: str = Field(..., title="港股代码", description="例：00700")
 
 
 @router.post("/stock_hk_hot_rank_detail_em", operation_id="post_stock_hot_rank_em")
-async def post_stock_hk_hot_rank_detail_em(request: SymbolRequest):
+async def post_stock_hk_hot_rank_detail_em(request: StockHKHotRankDetailEMRequest):
     """
     接口: stock_hot_rank_detail_em
 
@@ -202,10 +190,14 @@ def get_stock_inner_trade_xq():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class StockHotRankDetailEMRequest(BaseModel):
+    symbol: str = Field(..., title="需带有市场标识个股", description="例：SZ000665")
+
+
 # 个股人气榜-实时变动
 @router.post("/stock_hot_rank_detail_realtime_em",
              operation_id="post_stock_hot_rank_detail_realtime_em")
-async def post_stock_hot_rank_detail_realtime_em(request: SymbolRequest):
+async def post_stock_hot_rank_detail_realtime_em(request: StockHotRankDetailEMRequest):
     """
     接口: stock_hot_rank_detail_realtime_em
 
@@ -222,10 +214,14 @@ async def post_stock_hot_rank_detail_realtime_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class StockHotRankHKDetailEMRequest(BaseModel):
+    symbol: str = Field(..., title="港股代码", description="例：00700")
+
+
 # 港股-个股人气榜-实时变动
 @router.post("/stock_hk_hot_rank_detail_realtime_em",
              operation_id="post_stock_hk_hot_rank_detail_realtime_em")
-async def post_stock_hk_hot_rank_detail_realtime_em(request: SymbolRequest):
+async def post_stock_hk_hot_rank_detail_realtime_em(request: StockHotRankHKDetailEMRequest):
     """
     接口: stock_hk_hot_rank_detail_realtime_em
 
@@ -242,9 +238,13 @@ async def post_stock_hk_hot_rank_detail_realtime_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class StockHotKeywordRequest(BaseModel):
+    symbol: str = Field(..., title="需带有市场标识个股", description="例：SZ000665")
+
+
 # 热门关键词
 @router.post("/stock_hot_keyword_em", operation_id="post_stock_hot_keyword_em")
-async def post_stock_hot_keyword_em(request: SymbolRequest):
+async def post_stock_hot_keyword_em(request: StockHotKeywordRequest):
     """
     接口: stock_hot_keyword_em
 
@@ -263,7 +263,7 @@ async def post_stock_hot_keyword_em(request: SymbolRequest):
 
 # 个股人气榜-最新排名
 @router.post("/stock_hot_rank_latest_em", operation_id="post_stock_hot_rank_latest_em")
-async def post_stock_hot_rank_latest_em(request: SymbolRequest):
+async def post_stock_hot_rank_latest_em(request: StockHotKeywordRequest):
     """
     接口: stock_hot_rank_latest_em
 
@@ -282,7 +282,7 @@ async def post_stock_hot_rank_latest_em(request: SymbolRequest):
 
 # 港股-个股人气榜-最新排名
 @router.post("/stock_hk_hot_rank_latest_em", operation_id="post_stock_hk_hot_rank_latest_em")
-async def post_stock_hk_hot_rank_latest_em(request: SymbolRequest):
+async def post_stock_hk_hot_rank_latest_em(request: StockHotRankHKDetailEMRequest):
     """
     接口: stock_hk_hot_rank_latest_em
 
@@ -301,9 +301,10 @@ async def post_stock_hk_hot_rank_latest_em(request: SymbolRequest):
 
 # 热搜股票
 class HotSearchRequest(BaseModel):
-    symbol: str
-    date: str
-    time: str
+    symbol: str = Field(..., title="数据类型",
+                        description="可选择'全部','A股','港股','美股'")
+    date: str = Field(..., title="指定时间", description="例：20230421")
+    time: str = Field(..., title="时间周期", description="可选择'今日','1小时'")
 
 
 @router.post("/stock_hot_search_baidu", operation_id="post_stock_hot_search_baidu")
@@ -327,9 +328,13 @@ async def post_stock_hot_search_baidu(request: HotSearchRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class StockHotRankSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="需带有市场标识个股", description="例：SZ000665")
+
+
 # 相关股票
 @router.post("/stock_hot_rank_relate_em", operation_id="post_stock_hot_rank_relate_em")
-async def post_stock_hot_rank_relate_em(request: SymbolRequest):
+async def post_stock_hot_rank_relate_em(request: StockHotRankSymbolRequest):
     """
     接口: stock_hot_rank_relate_em
 

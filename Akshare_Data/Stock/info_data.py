@@ -1,5 +1,6 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
 router = APIRouter()
 
@@ -98,9 +99,12 @@ def get_stock_info_global_ths():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 电报-财联社
-@router.get("/stock_info_global_cls/{symbol}", operation_id="get_stock_info_global_cls")
-def get_stock_info_global_cls(symbol: str):
+class StockInfoGlobalCLSRequest(BaseModel):
+    symbol: str = Field(..., title="类型", description="可选择'全部', '重点'")
+
+
+@router.post("/stock_info_global_cls", operation_id="post_stock_info_global_cls")
+def post_stock_info_global_cls(request: StockInfoGlobalCLSRequest):
     """
     接口：stock_info_global_cls
 
@@ -111,15 +115,18 @@ def get_stock_info_global_cls(symbol: str):
     限量：单次返回指定个股的最近 300 条财联社-电报的数据
     """
     try:
-        stock_info_global_cls_df = ak.stock_info_global_cls(symbol=symbol)
+        stock_info_global_cls_df = ak.stock_info_global_cls(symbol=request.symbol)
         return stock_info_global_cls_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 证券原创-新浪财经
-@router.get("/stock_info_broker_sina/{page}", operation_id="get_stock_info_broker_sina")
-def get_stock_info_broker_sina(page: str):
+class StockInfoBrokerSinaRequest(BaseModel):
+    page: str = Field(..., title="获取指定页面的数据", description="例：1")
+
+
+@router.post("/stock_info_broker_sina", operation_id="post_stock_info_broker_sina")
+def post_stock_info_broker_sina(request: StockInfoBrokerSinaRequest):
     """
     接口：stock_info_broker_sina
 
@@ -130,7 +137,7 @@ def get_stock_info_broker_sina(page: str):
     限量：单次返回指定页面的数据
     """
     try:
-        stock_info_broker_sina_df = ak.stock_info_broker_sina(page=page)
+        stock_info_broker_sina_df = ak.stock_info_broker_sina(page=request.page)
         return stock_info_broker_sina_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

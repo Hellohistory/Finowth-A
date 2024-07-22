@@ -1,13 +1,17 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-
-from Akshare_Data.request_model import SymbolRequest
+from pydantic import BaseModel, Field
 
 router = APIRouter()
 
 
+class IrmSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股代码", description="例：002594")
+
+
+# 互动易-提问
 @router.post("/stock_irm_cninfo", operation_id="post_stock_irm_cninfo")
-async def post_stock_irm_cninfo(request: SymbolRequest):
+async def post_stock_irm_cninfo(request: IrmSymbolRequest):
     """
     接口: stock_irm_cninfo
 
@@ -24,8 +28,14 @@ async def post_stock_irm_cninfo(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class IrmAnsSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="提问者编号",
+                        description="通过stock_irm_cninfo来获取具体的提问者编号")
+
+
+# 互动易-回答
 @router.post("/stock_irm_ans_cninfo", operation_id="post_stock_irm_ans_cninfo")
-async def post_stock_irm_ans_cninfo(request: SymbolRequest):
+async def post_stock_irm_ans_cninfo(request: IrmAnsSymbolRequest):
     """
     接口: stock_irm_ans_cninfo
 
@@ -42,8 +52,13 @@ async def post_stock_irm_ans_cninfo(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class ShESymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股代码", description="例：603119")
+
+
+# 上证e互动-提问与回答
 @router.post("/stock_sns_sseinfo", operation_id="post_stock_sns_sseinfo")
-async def post_stock_sns_sseinfo(request: SymbolRequest):
+async def post_stock_sns_sseinfo(request: ShESymbolRequest):
     """
     接口: stock_sns_sseinfo
 

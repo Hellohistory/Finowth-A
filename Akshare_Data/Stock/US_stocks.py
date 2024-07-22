@@ -1,8 +1,8 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import SymbolRequest, StockHistoryRequest, StockDailyRequest
-from Akshare_Data.utility_function import sanitize_data
+from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
 
 router = APIRouter()
 
@@ -48,9 +48,20 @@ def get_stock_us_spot():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class UStockDayHistoryRequest(BaseModel):
+    symbol: str = Field(..., title="美股代码(可请求stock_us_spot_em获取)",
+                        description="例如106.TTE")
+    period: str = Field(..., title="时间周期",
+                        description="例如daily; 所有可选参数为：daily(日), weekly(周), monthly(月)")
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    adjust: str = Field(..., title="复权形式",
+                        description="默认返回不复权的数据，即此参数为空; qfq: 返回前复权后的数据; hfq: 返回后复权后的数据")
+
+
 # 东方财富网-美股-每日行情
 @router.post("/stock_us_hist", operation_id="post_stock_us_hist")
-async def post_stock_us_hist(request: StockHistoryRequest):
+async def post_stock_us_hist(request: UStockDayHistoryRequest):
     """
     接口: stock_us_hist
 
@@ -73,9 +84,18 @@ async def post_stock_us_hist(request: StockHistoryRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiUDayMinRequest(BaseModel):
+    symbol: str = Field(..., title="美股代码(可请求stock_us_spot_em获取)",
+                        description="例如106.TTE")
+    start_date: str = Field(..., title="起始日期时间",
+                            description="例2024-07-01 09:32:00，不填写则默认返回所有数据")
+    end_date: str = Field(..., title="终止日期时间",
+                          description="例2024-07-15 09:32:00，不填写则默认返回所有数据")
+
+
 # 东方财富网-美股-每日分时行情
 @router.post("/stock_us_hist_min_em", operation_id="post_stock_us_hist_min_em")
-async def post_stock_us_hist_min_em(request: SymbolRequest):
+async def post_stock_us_hist_min_em(request: DongCaiUDayMinRequest):
     """
     接口: stock_us_hist_min_em
 
@@ -92,9 +112,15 @@ async def post_stock_us_hist_min_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 新浪财经-美股-历史行情数据
+class XinLangUStockHistoryRequest(BaseModel):
+    symbol: str = Field(..., title="指定美股代码(可请求stock_us_spot_em获取)",
+                        description="例如106.TTE")
+    adjust: str = Field(..., title="复权类型",
+                        description="默认 adjust=""返回未复权的数据;qfq: 返回前复权后的数据;qfq-factor: 返回前复权因子")
+
+
 @router.post("/stock_us_daily", operation_id="post_stock_us_daily")
-async def post_stock_us_daily(request: StockDailyRequest):
+async def post_stock_us_daily(request: XinLangUStockHistoryRequest):
     """
     接口: stock_us_daily
 
@@ -106,6 +132,18 @@ async def post_stock_us_daily(request: StockDailyRequest):
     """
     try:
         stock_us_daily_df = ak.stock_us_daily(symbol=request.symbol, adjust=request.adjust)
+
+        stock_us_daily_df.rename(columns={
+            "date": "时间",
+            "open": "开盘价",
+            "high": "最高价",
+            "low": "最低价",
+            "close": "收盘价",
+            "volume": "成交量",
+            "qfq_factor": "前复权因子",
+            "adjust": "调整因子"
+        }, inplace=True)
+
         return stock_us_daily_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -133,9 +171,14 @@ def get_stock_us_pink_spot_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class USFamouSpot(BaseModel):
+    symbol: str = Field(..., title="指定种类知名美股",
+                        description="可从'科技类', '金融类', '医药食品类', '媒体类', '汽车能源类', '制造零售类'选择请求")
+
+
 # 美股-知名美股的实时行情数据
 @router.post("/stock_us_famous_spot_em", operation_id="post_stock_us_famous_spot_em")
-async def post_stock_us_famous_spot_em(request: SymbolRequest):
+async def post_stock_us_famous_spot_em(request: USFamouSpot):
     """
     接口: stock_us_famous_spot_em
 
@@ -148,7 +191,7 @@ async def post_stock_us_famous_spot_em(request: SymbolRequest):
     try:
         stock_us_famous_spot_em_df = ak.stock_us_famous_spot_em(symbol=request.symbol)
 
-        stock_us_famous_spot_em_df = sanitize_data(stock_us_famous_spot_em_df)
+        stock_us_famous_spot_em_df = sanitize_data_pandas(stock_us_famous_spot_em_df)
 
         return stock_us_famous_spot_em_df.to_dict(orient="records")
 

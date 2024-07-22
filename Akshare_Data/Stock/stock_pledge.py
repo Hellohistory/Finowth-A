@@ -1,5 +1,6 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
 from Akshare_Data.request_model import DateRequest
 from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
@@ -26,9 +27,13 @@ def get_stock_gpzy_profile_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongcaiCDateRequest(BaseModel):
+    date: str = Field(..., title="查询后具体交易日", description="例如20230808")
+
+
 # 东方财富网-数据中心-特色数据-股权质押-上市公司质押比例
 @router.post("/stock_gpzy_pledge_ratio_em", operation_id="post_stock_gpzy_pledge_ratio_em")
-async def post_stock_gpzy_pledge_ratio_em(request: DateRequest):
+async def post_stock_gpzy_pledge_ratio_em(request: DongcaiCDateRequest):
     """
     接口: stock_gpzy_pledge_ratio_em
 

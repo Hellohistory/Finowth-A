@@ -1,15 +1,19 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
 from Akshare_Data.Stock.stock_market_overview import sanitize_data
-from Akshare_Data.request_model import SymbolRequest
 
 router = APIRouter()
 
 
+class ASymbolRequest(BaseModel):
+    symbol: str = Field(..., title="个股代码", description="例如603777")
+
+
 # 雪球-行情中心-个股
 @router.post("/stock_individual_spot_xq", operation_id="post_stock_individual_spot_xq")
-async def post_stock_individual_spot_xq(request: SymbolRequest):
+async def post_stock_individual_spot_xq(request: ASymbolRequest):
     """
     接口: stock_individual_spot_xq
 
@@ -28,7 +32,7 @@ async def post_stock_individual_spot_xq(request: SymbolRequest):
 
 # 东方财富-个股-股票信息
 @router.post("/stock_individual_info_em", operation_id="post_stock_individual_info_em")
-async def post_stock_individual_info_em(request: SymbolRequest):
+async def post_stock_individual_info_em(request: ASymbolRequest):
     """
     接口: stock_individual_info_em
 
@@ -47,7 +51,7 @@ async def post_stock_individual_info_em(request: SymbolRequest):
 
 # 东方财富-行情报价
 @router.post("/stock_bid_ask_em", operation_id="post_stock_bid_ask_em")
-async def post_stock_bid_ask_em(request: SymbolRequest):
+async def post_stock_bid_ask_em(request: ASymbolRequest):
     """
     接口: stock_bid_ask_em
 

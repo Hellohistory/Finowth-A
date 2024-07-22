@@ -1,5 +1,6 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import Field, BaseModel
 
 from Akshare_Data.request_model import SymbolRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
@@ -7,9 +8,13 @@ from Akshare_Data.utility_function import sanitize_data_pandas
 router = APIRouter()
 
 
+class ExecutiveSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="请求类型", description="从以下选择: '全部', '股东增持', '股东减持'")
+
+
 # 东方财富网-数据中心-特色数据-高管持股
 @router.post("/stock_ggcg_em", operation_id="post_stock_ggcg_em")
-async def post_stock_ggcg_em(request: SymbolRequest):
+async def post_stock_ggcg_em(request: ExecutiveSymbolRequest):
     """
     接口: stock_ggcg_em
 

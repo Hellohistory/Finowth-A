@@ -1,7 +1,7 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import DateRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
@@ -26,6 +26,10 @@ def get_stock_sy_profile_em():
         return sanitized_data.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class DateRequest(BaseModel):
+    date: str = Field(..., title="指定日期", description="例如20230808")
 
 
 # 东方财富网-数据中心-特色数据-商誉-商誉减值预期明细

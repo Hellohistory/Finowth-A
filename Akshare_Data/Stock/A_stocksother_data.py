@@ -1,10 +1,14 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import DateRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
+
+
+class DateRequest(BaseModel):
+    date: str = Field(..., title="指定交易日", description="例如20230808")
 
 
 # 东方财富网-数据中心-股市日历-公司动态

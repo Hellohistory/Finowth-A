@@ -1,15 +1,21 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-
-from Akshare_Data.request_model import SymbolRequest, SymbolDateRequest, RestrictedReleaseSummaryRequest, \
-    SymbolPeriodAdjust, StockMinuteRequest
+from pydantic import Field, BaseModel
 
 router = APIRouter()
 
 
+class XinLangMinuteStock(BaseModel):
+    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例如sh000300")
+    period: str = Field(..., title="时间频率", description="可选值: 1, 5, 15, 30, 60")
+    adjust: str = Field(..., title="复权形式", description="默认为空: 返回不复权的数据; "
+                                                           "qfq: 返回前复权后的数据; "
+                                                           "hfq: 返回后复权后的数据;")
+
+
 # 新浪财经-沪深京 A 股股票或者指数的分时数据
 @router.post("/stock_zh_a_minute", operation_id="post_stock_zh_a_minute")
-async def post_stock_zh_a_minute(request: SymbolPeriodAdjust):
+async def post_stock_zh_a_minute(request: XinLangMinuteStock):
     """
     接口: stock_zh_a_minute
 
@@ -30,9 +36,20 @@ async def post_stock_zh_a_minute(request: SymbolPeriodAdjust):
         raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
 
+class DongCaiMinuteRequest(BaseModel):
+    symbol: str = Field(..., title="个股代码", description="例如000300")
+    start_date: str = Field(..., title="开始日期", description="例如20230701")
+    end_date: str = Field(..., title="结束日期", description="例如20230701")
+    period: str = Field(..., title="时间周期", description="可选值: 1, 5, 15, 30, 60，"
+                                                           "其中 1 分钟数据返回近 5 个交易日数据且不复权")
+    adjust: str = Field(..., title="复权形式", description="默认为空: 返回不复权的数据; "
+                                                           "qfq: 返回前复权后的数据; "
+                                                           "hfq: 返回后复权后的数据;其中 1 分钟数据返回近 5 个交易日数据且不复权")
+
+
 # 东方财富网-沪深京 A 股-每日分时行情
 @router.post("/stock_zh_a_hist_min_em", operation_id="post_stock_zh_a_hist_min_em")
-async def post_stock_zh_a_hist_min_em(request: StockMinuteRequest):
+async def post_stock_zh_a_hist_min_em(request: DongCaiMinuteRequest):
     """
     接口: stock_zh_a_hist_min_em
 
@@ -55,15 +72,19 @@ async def post_stock_zh_a_hist_min_em(request: StockMinuteRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东财财富-分时数据
+class DongCaiDayMinute(BaseModel):
+    symbol: str = Field(..., title="个股代码", description="例如000300")
+
+
+# 日内分时数据-东财
 @router.post("/stock_intraday_em", operation_id="post_stock_intraday_em")
-async def post_stock_intraday_em(request: SymbolDateRequest):
+async def post_stock_intraday_em(request: DongCaiDayMinute):
     """
     接口: stock_intraday_em
 
     目标地址: https://quote.eastmoney.com/f1.html?newcode=0.000001
 
-    描述: 东财财富-分时数据
+    描述: 东财财富-日内分时数据
 
     限量: 单次返回指定股票最近一个交易日的分时数据, 包含盘前数据
     """
@@ -74,9 +95,14 @@ async def post_stock_intraday_em(request: SymbolDateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class XinLangDayMinute(BaseModel):
+    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例如sh000300")
+    date: str = Field(..., title="指定交易日", description="例如20230701，只能获取近期的数据")
+
+
 # 新浪财经-日内分时数据
 @router.post("/stock_intraday_sina", operation_id="post_stock_intraday_sina")
-async def post_stock_intraday_sina(request: SymbolDateRequest):
+async def post_stock_intraday_sina(request: XinLangDayMinute):
     """
     接口: stock_intraday_sina
 
@@ -93,9 +119,15 @@ async def post_stock_intraday_sina(request: SymbolDateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiPanQianRequest(BaseModel):
+    symbol: str = Field(..., title="个股代码", description="例如000300")
+    start_time: str = Field(..., title="开始时间", description="例如09:30,默认返回所有数据")
+    end_time: str = Field(..., title="结束时间", description="例如09:35,默认返回所有数据")
+
+
 # 东方财富-股票行情-盘前数据
 @router.post("/stock_zh_a_hist_pre_min_em", operation_id="post_stock_zh_a_hist_pre_min_em")
-async def post_stock_zh_a_hist_pre_min_em(request: RestrictedReleaseSummaryRequest):
+async def post_stock_zh_a_hist_pre_min_em(request: DongCaiPanQianRequest):
     """
     接口: stock_zh_a_hist_pre_min_em
 
@@ -116,8 +148,12 @@ async def post_stock_zh_a_hist_pre_min_em(request: RestrictedReleaseSummaryReque
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class TXTickHistoryRequest(BaseModel):
+    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例如sz300494")
+
+
 @router.post("/stock_zh_a_tick_tx", operation_id="post_stock_zh_a_tick_tx")
-async def post_stock_zh_a_tick_tx(request: SymbolRequest):
+async def post_stock_zh_a_tick_tx(request: TXTickHistoryRequest):
     """
     接口: stock_zh_a_tick_tx
 

@@ -1,10 +1,14 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import SymbolRequest
 from Akshare_Data.utility_function import sanitize_data_numpy
 
 router = APIRouter()
+
+
+class SymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股代码", description="例：000066")
 
 
 # 同花顺-主营介绍

@@ -48,7 +48,7 @@ from Akshare_Data.Stock.stock_changes_em import router as router44
 from Akshare_Data.Stock.stock_evaluation import router as router15
 from Akshare_Data.Stock.stock_financial_abstract import router as router46
 from Akshare_Data.Stock.stock_hk_indicator_eniu import router as router51
-from Akshare_Data.Stock.stock_institutional_survey_statisticsj import router as router43
+from Akshare_Data.Stock.research import router as router10
 from Akshare_Data.Stock.stock_market_overview import router as router3
 from Akshare_Data.Stock.stock_pledge import router as router14
 from Akshare_Data.Stock.stock_popularity import router as router38
@@ -162,6 +162,7 @@ app.include_router(router6)
 app.include_router(router7)
 app.include_router(router8)
 app.include_router(router9)
+app.include_router(router10)
 app.include_router(router11)
 app.include_router(router12)
 app.include_router(router13)
@@ -195,7 +196,8 @@ app.include_router(router38)
 app.include_router(router40)
 app.include_router(router41)
 app.include_router(router42)
-app.include_router(router43)
+
+
 app.include_router(router44)
 app.include_router(router45)
 app.include_router(router46)

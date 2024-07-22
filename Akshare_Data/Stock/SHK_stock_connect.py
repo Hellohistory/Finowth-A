@@ -1,7 +1,7 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import SymbolStockRequest, DateRangeRequest, SymolIndicatorRequest, OnlyStockRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
@@ -127,10 +127,14 @@ def get_stock_hk_ggt_components_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiSHKSymbolRequest(BaseModel):
+    stock: str = Field(..., title="资金类型", description="可选择'北向资金', '南向资金'")
+
+
 # 东方财富-数据中心-沪深港通-市场概括-分时数据
 @router.post("/stock_hsgt_fund_min_em",
              operation_id="post_stock_hsgt_fund_min_em")
-async def post_stock_hsgt_fund_min_em(request: SymbolStockRequest):
+async def post_stock_hsgt_fund_min_em(request: DongCaiSHKSymbolRequest):
     """
     接口: stock_hsgt_fund_min_em
 
@@ -147,10 +151,17 @@ async def post_stock_hsgt_fund_min_em(request: SymbolStockRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiSHKSymolIndicatorRequest(BaseModel):
+    symbol: str = Field(..., title="类型",
+                        description="可选择'北向资金增持行业板块排行', '北向资金增持概念板块排行', '北向资金增持地域板块排行'")
+    indicator: str = Field(..., title="时间周期",
+                           description="可选择'今日', '3日', '5日', '10日', '1月', '1季', '1年'")
+
+
 # 东方财富网-数据中心-沪深港通持股-板块排行
 @router.post("/stock_hsgt_board_rank_em",
              operation_id="post_stock_hsgt_board_rank_em")
-async def post_stock_hsgt_board_rank_em(data: SymolIndicatorRequest):
+async def post_stock_hsgt_board_rank_em(data: DongCaiSHKSymolIndicatorRequest):
     """
     接口: stock_hsgt_board_rank_em
 
@@ -175,10 +186,16 @@ async def post_stock_hsgt_board_rank_em(data: SymolIndicatorRequest):
         raise HTTPException(status_code=400, detail=str(e))
 
 
+class DongCaiSHKMarketRequest(BaseModel):
+    market: str = Field(..., title="市场", description="可选择'北向', '沪股通', '深股通'")
+    indicator: str = Field(..., title="时间周期",
+                           description="可选择'今日排行', '3日排行', '5日排行', '10日排行', '月排行', '季排行', '年排行'")
+
+
 # 东方财富网-数据中心-沪深港通持股-个股排行
 @router.post("/stock_hsgt_hold_stock_em",
              operation_id="post_stock_hsgt_hold_stock_em")
-def post_stock_hsgt_hold_stock_em():
+def post_stock_hsgt_hold_stock_em(data: DongCaiSHKMarketRequest):
     """
     接口: stock_hsgt_hold_stock_em
 
@@ -189,16 +206,22 @@ def post_stock_hsgt_hold_stock_em():
     限量: 单次获取指定市场和指定时间段的所有数据
     """
     try:
-        stock_em_hsgt_hold_stock_df = ak.stock_hsgt_hold_stock_em(market="北向", indicator="今日排行")
+        stock_em_hsgt_hold_stock_df = ak.stock_hsgt_hold_stock_em(market=data.market, indicator=data.indicator)
         return stock_em_hsgt_hold_stock_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiSymbolDateRangeRequest(BaseModel):
+    symbol: str = Field(..., title="市场", description="'北向持股', '沪股通持股', '深股通持股', '南向持股'")
+    start_date: str = Field(..., title="起始时间(需近期交易日)", description="例：20240701")
+    end_date: str = Field(..., title="终止时间(需近期交易日)", description="例：20240701")
+
+
 # 东方财富网-数据中心-沪深港通-沪深港通持股-每日个股统计
 @router.post("/stock_hsgt_stock_statistics_em",
              operation_id="post_stock_hsgt_stock_statistics_em")
-async def post_stock_hsgt_stock_statistics_em(request: DateRangeRequest):
+async def post_stock_hsgt_stock_statistics_em(request: DongCaiSymbolDateRangeRequest):
     """
     接口: stock_hsgt_stock_statistics_em
 
@@ -209,7 +232,7 @@ async def post_stock_hsgt_stock_statistics_em(request: DateRangeRequest):
     限量: 单次获取指定市场的起始时间和终止时间之间的所有数据, 该接口只能获取近期的数据
     """
     try:
-        stock_hsgt_stock_statistics_em_df = ak.stock_hsgt_stock_statistics_em(symbol="北向持股",
+        stock_hsgt_stock_statistics_em_df = ak.stock_hsgt_stock_statistics_em(symbol=request.symbol,
                                                                               start_date=request.start_date,
                                                                               end_date=request.end_date)
         return stock_hsgt_stock_statistics_em_df.to_dict(orient="records")
@@ -217,10 +240,16 @@ async def post_stock_hsgt_stock_statistics_em(request: DateRangeRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiMarketDateRangeRequest(BaseModel):
+    symbol: str = Field(..., title="市场", description="'北向持股', '沪股通持股', '深股通持股', '南向持股'")
+    start_date: str = Field(..., title="起始时间(需近期交易日)", description="例：20240701")
+    end_date: str = Field(..., title="终止时间(需近期交易日)", description="例：20240701")
+
+
 # 东方财富网-数据中心-沪深港通-沪深港通持股-机构排行
 @router.post("/stock_hsgt_institution_statistics_em",
              operation_id="post_stock_hsgt_institution_statistics_em")
-async def post_stock_hsgt_institution_statistics_em(request: DateRangeRequest):
+async def post_stock_hsgt_institution_statistics_em(request: DongCaiMarketDateRangeRequest):
     """
     接口: stock_hsgt_institution_statistics_em
 
@@ -231,7 +260,7 @@ async def post_stock_hsgt_institution_statistics_em(request: DateRangeRequest):
     限量: 单次获取指定市场的所有数据, 该接口只能获取近期的数据
     """
     try:
-        stock_hsgt_institution_statistics_em_df = ak.stock_hsgt_institution_statistics_em(market="北向持股",
+        stock_hsgt_institution_statistics_em_df = ak.stock_hsgt_institution_statistics_em(market=request.market,
                                                                                           start_date=request.start_date,
                                                                                           end_date=request.end_date)
         return stock_hsgt_institution_statistics_em_df.to_dict(orient="records")
@@ -239,10 +268,15 @@ async def post_stock_hsgt_institution_statistics_em(request: DateRangeRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiSHKHistorySymbolRequest(BaseModel):
+    symbol: str = Field(..., title="市场",
+                        description="'北向资金', '沪股通', '深股通', '南向资金', '港股通沪', '港股通深'")
+
+
 # 东方财富网-数据中心-资金流向-沪深港通资金流向-沪深港通历史数据
 @router.post("/stock_hsgt_hist_em",
              operation_id="post_stock_hsgt_hist_em")
-async def post_stock_hsgt_hist_em(request: SymbolStockRequest):
+async def post_stock_hsgt_hist_em(request: DongCaiSHKHistorySymbolRequest):
     """
     接口: stock_hsgt_hist_em
 
@@ -261,6 +295,10 @@ async def post_stock_hsgt_hist_em(request: SymbolStockRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class OnlyStockRequest(BaseModel):
+    stock: str = Field(..., title="个股", description="例：002008")
+
+
 # 东方财富网-数据中心-沪深港通-沪深港通持股-具体股票
 @router.post("/stock_hsgt_individual_em",
              operation_id="post_stock_hsgt_individual_em")
@@ -268,7 +306,7 @@ async def post_stock_hsgt_individual_em(request: OnlyStockRequest):
     """
     接口: stock_hsgt_individual_em
 
-    目标地址: https://data.eastmoney.com/hsgtcg/StockHdStatistics/002008.html(示例)
+    目标地址: https://data.eastmoney.com/hsgtcg/StockHdStatistics/002008.html
 
     描述: 东方财富网-数据中心-沪深港通-沪深港通持股-具体股票
 
@@ -281,14 +319,20 @@ async def post_stock_hsgt_individual_em(request: OnlyStockRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiStockRequest(BaseModel):
+    stock: str = Field(..., title="个股", description="例：002008")
+    start_date: str = Field(..., title="起始时间(需近90个交易日内)", description="例：20240701")
+    end_date: str = Field(..., title="终止时间(需近90个交易日内)", description="例：20240715")
+
+
 # 东方财富网-数据中心-沪深港通-沪深港通持股-具体股票-个股详情
 @router.post("/stock_hsgt_individual_detail_em",
              operation_id="post_stock_hsgt_individual_detail_em")
-async def post_stock_hsgt_individual_detail_em(request: OnlyStockRequest):
+async def post_stock_hsgt_individual_detail_em(request: DongCaiStockRequest):
     """
     接口: stock_hsgt_individual_detail_em
 
-    目标地址: http://data.eastmoney.com/hsgtcg/StockHdStatistics/002008.html(示例)
+    目标地址: http://data.eastmoney.com/hsgtcg/StockHdStatistics/002008.html
 
     描述: 东方财富网-数据中心-沪深港通-沪深港通持股-具体股票-个股详情
 

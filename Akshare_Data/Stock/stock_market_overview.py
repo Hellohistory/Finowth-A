@@ -3,8 +3,10 @@
 
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from datetime import date as dt_date
 
-from Akshare_Data.request_model import AreaSummaryRequest, SectorSummaryRequest, DtDateRequest
+from pydantic import BaseModel, Field
+
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
@@ -29,6 +31,10 @@ def get_stock_szse_summary(date):
     """
     stock_szse_summary_df = ak.stock_szse_summary(date=date.strftime('%Y%m%d'))
     return stock_szse_summary_df
+
+
+class AreaSummaryRequest(BaseModel):
+    ym_date: str = Field(..., title="指定交易日", description="例如202406")
 
 
 @router.post("/stock_szse_area_summary", operation_id="post_stock_szse_area_summary")
@@ -96,6 +102,10 @@ def get_stock_sse_summary():
         raise HTTPException(status_code=500, detail=f"Error retrieving SSE summary: {str(e)}")
 
 
+class DtDateRequest(BaseModel):
+    date: dt_date = Field(..., title="指定交易日", description="例如2024-07-12; 当前交易日的数据需要交易所收盘后统计")
+
+
 @router.post("/stock_szse_summary", operation_id="post_stock_szse_summary")
 async def post_stock_szse_summary(request: DtDateRequest):
     """
@@ -105,7 +115,7 @@ async def post_stock_szse_summary(request: DtDateRequest):
 
     描述: 深圳证券交易所-市场总貌-证券类别统计
 
-    限量: 单次返回指定 date 的市场总貌数据-证券类别统计(当前交易日的数据需要交易所收盘后统计)
+    限量: 单次返回指定时间的市场总貌数据-证券类别统计(当前交易日的数据需要交易所收盘后统计)
     """
     try:
         stock_szse_summary_df = get_stock_szse_summary(date=request.date)
@@ -113,6 +123,11 @@ async def post_stock_szse_summary(request: DtDateRequest):
         return sanitized_data
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error retrieving SZSE summary: {str(e)}")
+
+
+class SectorSummaryRequest(BaseModel):
+    symbol: str = Field(..., title="指定时间段", description="例如当月; 可选择当月与当年两个时间段")
+    ym_date: str = Field(..., title="指定年月", description="例如202203")
 
 
 @router.post("/stock_szse_sector_summary", operation_id="post_stock_szse_sector_summary")

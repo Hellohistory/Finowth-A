@@ -1,10 +1,15 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import DateRequest, SymbolRequest, DividendDetailRequest
+from Akshare_Data.request_model import DividendDetailRequest
 from Akshare_Data.utility_function import sanitize_data_numpy, sanitize_data_pandas
 
 router = APIRouter()
+
+
+class DateRequest(BaseModel):
+    date: str = Field(..., title="指定日期", description="数据从19901231开始，从'XXXX0630', 'XXXX1231'选择")
 
 
 # 东方财富-数据中心-年报季报-分红配送
@@ -26,6 +31,10 @@ async def post_stock_fhps_em(request: DateRequest):
         return stock_us_famous_spot_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class SymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股代码", description="例：000066")
 
 
 # 东方财富网-数据中心-分红送配-分红送配详情

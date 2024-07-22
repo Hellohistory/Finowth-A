@@ -1,7 +1,7 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import YearRequest, AnalystDetailRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
@@ -29,6 +29,10 @@ def get_stock_account_statistics_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class YearRequest(BaseModel):
+    year: str = Field(..., title="指定年份", description="例：2022，数据从 2013 年至今")
+
+
 # 东方财富网-数据中心-研究报告-东方财富分析师指数
 @router.post("/stock_analyst_rank_em",
              operation_id="post_stock_analyst_rank_em")
@@ -47,6 +51,13 @@ async def post_stock_analyst_rank_em(request: YearRequest):
         return stock_analyst_rank_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class AnalystDetailRequest(BaseModel):
+    analyst_id: str = Field(..., title="分析师ID(从stock_analyst_rank_em获取)",
+                            description="例：11000257131")
+    indicator: str = Field(..., title="报告类型",
+                           description="从'最新跟踪成分股', '历史跟踪成分股', '历史指数'当中选择")
 
 
 # 东方财富网-数据中心-研究报告-东方财富分析师指数-分析师详情

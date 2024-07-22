@@ -1,8 +1,6 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-
-from Akshare_Data.request_model import StockReportRequest
-from alone_test import StockDailyRequest
+from pydantic import BaseModel, Field
 
 router = APIRouter()
 
@@ -26,6 +24,14 @@ async def get_stock_zh_kcb_spot():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class StockDailyRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股(需带市场标识)", description="例如sh688008")
+    adjust: str = Field(..., title="复权类型", description="qfq: 返回前复权后的数据; "
+                                                           "hfq: 返回后复权后的数据; "
+                                                           "hfq-factor: 返回后复权因子; "
+                                                           "hfq-factor: 返回前复权因子")
+
+
 # 新浪财经-科创板股票历史行情数据
 @router.post("/stock_zh_kcb_daily", operation_id="post_stock_zh_kcb_daily")
 async def post_stock_zh_kcb_daily(request: StockDailyRequest):
@@ -37,12 +43,19 @@ async def post_stock_zh_kcb_daily(request: StockDailyRequest):
     描述: 新浪财经-科创板股票历史行情数据
 
     限量: 单次返回指定个股和 adjust 的所有历史行情数据; 请控制采集的频率, 大量抓取容易封IP
+
+    补充描述：API返回的“公告代码”一项可以用来获取公告详情: http://data.eastmoney.com/notices/detail/688595/{替换到此处}.html
     """
     try:
         stock_zh_kcb_daily_df = ak.stock_zh_kcb_daily(symbol=request.symbol, adjust=request.adjust)
         return stock_zh_kcb_daily_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class StockReportRequest(BaseModel):
+    from_page: int = Field(..., title="开始获取的页码", description="例如1")
+    to_page: int = Field(..., title="结束获取的页码", description="例如100")
 
 
 # 东方财富-科创板报告数据

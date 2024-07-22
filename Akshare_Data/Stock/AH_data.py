@@ -1,7 +1,6 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
-
-from Akshare_Data.request_model import StockAHDailyRequest
+from pydantic import BaseModel, Field
 
 router = APIRouter()
 
@@ -23,6 +22,13 @@ def get_stock_zh_ah_spot():
         return stock_zh_ah_spot_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class StockAHDailyRequest(BaseModel):
+    symbol: str = Field(..., title="港股股票代码(可通过stock_zh_ah_name获取)", description="02318")
+    start_year: str = Field(..., title="开始年份", description="例如2000")
+    end_year: str = Field(..., title="结束年份", description="例如2019")
+    adjust: str = Field(..., title="复权形式", description="默认为空不复权; 'qfq': 前复权, 'hfq': 后复权")
 
 
 # 腾讯财经-A+H 股历史行情数据

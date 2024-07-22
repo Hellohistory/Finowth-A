@@ -1,5 +1,4 @@
-from pydantic import BaseModel
-from datetime import date as dt_date
+from pydantic import BaseModel, Field
 
 
 class IndustryIndexRequest(BaseModel):
@@ -8,18 +7,14 @@ class IndustryIndexRequest(BaseModel):
     end_date: str
 
 
-class DtDateRequest(BaseModel):
-    date: dt_date
-
-
 class SymbolStockRequest(BaseModel):
     stock: str
     symbol: str
 
 
 class SectorSummaryRequest(BaseModel):
-    symbol: str
-    ym_date: str
+    symbol: str = Field(..., title="指定个股", description="例如2024-07-12; 当前交易日的数据需要交易所收盘后统计")
+    ym_date: str = Field(..., title="指定交易日", description="例如2024-07-12; 当前交易日的数据需要交易所收盘后统计")
 
 
 class AreaSummaryRequest(BaseModel):
@@ -57,12 +52,12 @@ class StockAdjustFactorRequest(BaseModel):
 
 
 class StockReportRequest(BaseModel):
-    from_page: int
-    to_page: int
+    from_page: int = Field(..., title="开始获取的页码", description="例如1")
+    to_page: int = Field(..., title="结束获取的页码", description="例如100")
 
 
 class DateRequest(BaseModel):
-    date: str
+    date: str = Field(..., title="指定交易日", description="例：20230808")
 
 
 class IndustryHistRequest(BaseModel):
@@ -146,7 +141,7 @@ class AnalystDetailRequest(BaseModel):
 
 
 class SymbolRequest(BaseModel):
-    symbol: str
+    symbol: str = Field(..., title="指定个股代码", description="例：000066")
 
 
 class MarketPeriodRequest(BaseModel):
@@ -187,11 +182,13 @@ class StockQuarterRequest(BaseModel):
 
 
 class StockHistoryRequest(BaseModel):
-    symbol: str
-    period: str
-    start_date: str
-    end_date: str
-    adjust: str
+    symbol: str = Field(..., title="指定个股", description="例如2024-07-12; 当前交易日的数据需要交易所收盘后统计")
+    period: str = Field(..., title="时间周期",
+                        description="例如daily; 所有可选参数为：daily(日), weekly(周), monthly(月)")
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    adjust: str = Field(..., title="复权形式",
+                        description="默认返回不复权的数据，即此参数为空; qfq: 返回前复权后的数据; hfq: 返回后复权后的数据")
 
 
 class StockMinuteRequest(BaseModel):
@@ -203,25 +200,28 @@ class StockMinuteRequest(BaseModel):
 
 
 class StockDailyRequest(BaseModel):
-    symbol: str
-    adjust: str
+    symbol: str = Field(..., title="指定个股(需带市场标识)", description="例如sh688008")
+    adjust: str = Field(..., title="复权类型", description="qfq: 返回前复权后的数据; "
+                                                           "hfq: 返回后复权后的数据; "
+                                                           "hfq-factor: 返回后复权因子; "
+                                                           "qfq-factor: 返回前复权因子")
 
 
 class FinancialRequest(BaseModel):
-    stock: str
-    symbol: str
-    indicator: str
+    stock: str = Field(..., title="", description="")
+    symbol: str = Field(..., title="", description="")
+    indicator: str = Field(..., title="", description="")
 
 
 class FinancialDebt(BaseModel):
-    symbol: str
-    indicator: str
+    symbol: str = Field(..., title="", description="")
+    indicator: str = Field(..., title="", description="")
 
 
 class SymbolIndicatorPeriodRequest(BaseModel):
-    symbol: str
-    indicator: str
-    period: str
+    symbol: str = Field(..., title="", description="")
+    indicator: str = Field(..., title="", description="")
+    period: str = Field(..., title="", description="")
 
 
 class SymbolPeriodAdjust(BaseModel):

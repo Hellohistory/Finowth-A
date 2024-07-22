@@ -1,5 +1,6 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
 from Akshare_Data.request_model import DateRequest, StockRequest
 from Akshare_Data.utility_function import sanitize_data
@@ -80,9 +81,14 @@ def get_stock_dxsyl_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="市场类型",
+                        description="可选择：'全部股票', '沪市主板', '科创板', '深市主板', '创业板', '北交所'")
+
+
 # 东方财富网-数据中心-新股数据-新股申购-新股申购与中签查询
 @router.post("/stock_xgsglb_em", operation_id="post_stock_xgsglb_em")
-async def post_stock_xgsglb_em(request: DateRequest):
+async def post_stock_xgsglb_em(request: DongCaiSymbolRequest):
     """
     接口: stock_xgsglb_em
 

@@ -1,11 +1,20 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import StockHistoryRequest, StockAdjustFactorRequest, SymbolPeriodAdjust, \
-    RestrictedReleaseSummaryRequest, StockAHDailyRequest, SymbolRequest
 from Akshare_Data.utility_function import sanitize_data_pandas, sanitize_data
 
 router = APIRouter()
+
+
+class StockHistoryRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股", description="例如000001")
+    period: str = Field(..., title="时间周期",
+                        description="例如daily; 所有可选参数为：daily(日), weekly(周), monthly(月)")
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    adjust: str = Field(..., title="复权形式",
+                        description="默认返回不复权的数据，即此参数为空; qfq: 返回前复权后的数据; hfq: 返回后复权后的数据")
 
 
 # 东方财富-沪深京 A 股日频率数据
@@ -33,9 +42,21 @@ async def post_stock_zh_a_hist(request: StockHistoryRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class XinLangStockHistoryRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股(需携带市场标识)", description="例如sh600000")
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    adjust: str = Field(..., title="复权形式",
+                        description="默认返回不复权的数据，即此参数为空; "
+                                    "qfq: 返回前复权后的数据; "
+                                    "hfq: 返回后复权后的数据; "
+                                    "hfq-factor: 返回后复权因子; "
+                                    "qfq-factor: 返回前复权因子")
+
+
 # 新浪财经-沪深京 A 股的数据
 @router.post("/stock_zh_a_daily", operation_id="post_stock_zh_a_daily")
-async def post_stock_zh_a_daily(request: StockHistoryRequest):
+async def post_stock_zh_a_daily(request: XinLangStockHistoryRequest):
     """
     接口: stock_zh_a_daily
 
@@ -70,35 +91,18 @@ async def post_stock_zh_a_daily(request: StockHistoryRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 前复权因子
-@router.post("/stock_qfq_factor", operation_id="post_stock_qfq_factor")
-async def post_stock_qfq_factor(request: StockAdjustFactorRequest):
-    """
-    前复权因子
-    """
-    try:
-        qfq_factor_df = ak.stock_zh_a_daily(symbol=request.symbol, adjust=request.adjust)
-        return qfq_factor_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+class TXStockHistoryRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股(需携带市场标识)", description="例如sz000001")
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    adjust: str = Field(..., title="复权形式",
+                        description="默认返回不复权的数据，即此参数为空; "
+                                    "qfq: 返回前复权后的数据; "
+                                    "hfq: 返回后复权后的数据")
 
 
-# 后复权因子
-@router.post("/stock_hfq_factor", operation_id="post_stock_hfq_factor")
-async def post_stock_hfq_factor(request: StockAdjustFactorRequest):
-    """
-    后复权因子
-    """
-    try:
-        hfq_factor_df = ak.stock_zh_a_daily(symbol=request.symbol, adjust=request.adjust)
-        return hfq_factor_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-# 腾讯证券-日频-股票历史数据
 @router.post("/stock_zh_a_hist_tx", operation_id="post_stock_zh_a_hist_tx")
-async def post_stock_zh_a_hist_tx(request: StockHistoryRequest):
+async def post_stock_zh_a_hist_tx(request: TXStockHistoryRequest):
     """
     接口: stock_zh_a_hist_tx
 
@@ -115,28 +119,31 @@ async def post_stock_zh_a_hist_tx(request: StockHistoryRequest):
             end_date=request.end_date,
             adjust=request.adjust
         )
+
+        # 重命名列名称
+        stock_zh_a_hist_tx_df.rename(columns={
+            'date': '交易日',
+            'open': '开盘价',
+            'close': '收盘价',
+            'high': '最高价',
+            'low': '最低价',
+            'amount': '交易量'
+        }, inplace=True)
+
         return stock_zh_a_hist_tx_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 历史分笔数据
-@router.post("/stock_zh_a_tick_tx_js", operation_id="post_stock_zh_a_tick_tx_js")
-async def post_stock_zh_a_tick_tx_js(request: SymbolRequest):
-    """
-    描述: 每个交易日 16:00 提供当日数据; 如遇到数据缺失, 请使用 ak.stock_zh_a_tick_163() 接口(注意数据会有一定差异)
-    限量: 单次返回最近交易日的历史分笔行情数据
-    """
-    try:
-        stock_zh_a_tick_tx_js_df = ak.stock_zh_a_tick_tx_js(symbol=request.symbol)
-        return stock_zh_a_tick_tx_js_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+class KCBCDRDayRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股(需携带市场标识)", description="例如sh689009")
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
 
 
-# B 股行情数据-上海证券交易所-科创板-CDR
+# A 股行情数据-上海证券交易所-科创板-CDR
 @router.post("/stock_zh_a_cdr_daily", operation_id="post_stock_zh_a_cdr_daily")
-async def post_stock_zh_a_cdr_daily(request: RestrictedReleaseSummaryRequest):
+async def post_stock_zh_a_cdr_daily(request: KCBCDRDayRequest):
     """
     接口: stock_zh_a_cdr_daily
 
@@ -200,71 +207,6 @@ def get_stock_zh_b_spot():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# B 股历史行情数据
-@router.post("/stock_zh_b_daily", operation_id="post_stock_zh_b_daily")
-async def post_stock_zh_b_daily(request: StockAHDailyRequest):
-    """
-    描述: B 股数据是从新浪财经获取的数据, 历史数据按日频率更新
-    限量: 单次返回指定 B 股上市公司指定日期间的历史行情日频率数据
-    """
-    try:
-        stock_zh_b_daily_df = ak.stock_zh_b_daily(
-            symbol=request.symbol,
-            start_date=request.start_date,
-            end_date=request.end_date,
-            adjust=request.adjust
-        )
-        return stock_zh_b_daily_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-# B 股历史行情数据-前复权因子
-@router.post("/stock_qfq_factor_b", operation_id="post_stock_qfq_factor_b")
-async def post_stock_qfq_factor_b(request: SymbolPeriodAdjust):
-    """
-    前复权因子
-    """
-    try:
-        qfq_factor_df = ak.stock_zh_b_daily(
-            symbol=request.symbol, adjust="qfq-factor"
-        )
-        return qfq_factor_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-# B 股历史行情数据-后复权因子
-@router.post("/stock_hfq_factor_b", operation_id="post_stock_hfq_factor_b")
-async def post_stock_hfq_factor_b(request: SymbolPeriodAdjust):
-    """
-    后复权因子
-    """
-    try:
-        hfq_factor_df = ak.stock_zh_b_daily(
-            symbol=request.symbol, adjust="hfq-factor"
-        )
-        return hfq_factor_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-# 新浪财经 B 股股票或者指数的分时数据
-@router.post("/stock_zh_b_minute", operation_id="post_stock_zh_b_minute")
-async def post_stock_zh_b_minute(request: SymbolPeriodAdjust):
-    """
-    描述: 新浪财经 B 股股票或者指数的分时数据
-    限量: 单次返回指定股票或指数的指定频率的最近交易日的历史分时行情数据
-    """
-    try:
-        stock_zh_b_minute_df = ak.stock_zh_b_minute(
-            symbol=request.symbol, period=request.period, adjust=request.adjust
-        )
-        return stock_zh_b_minute_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
 # 字段名称映射
 field_mapping = {
     "symbol": "新浪代码",
@@ -294,7 +236,6 @@ def get_stock_zh_a_new():
     try:
         stock_zh_a_new_df = ak.stock_zh_a_new()
 
-        # 重命名字段为中文名称
         stock_zh_a_new_df.rename(columns=field_mapping, inplace=True)
 
         return stock_zh_a_new_df.to_dict(orient="records")

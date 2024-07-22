@@ -1,7 +1,7 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import StockHistoryRequest, StockDailyRequest, StockMinuteRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
@@ -70,9 +70,22 @@ def get_stock_hk_spot():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiHKStockMinuteRequest(BaseModel):
+    symbol: str = Field(..., title="指定港股代码(可通过stock_hk_spot_em获取)",
+                        description="例：01611")
+    period: str = Field(..., title="时间周期",
+                        description="可选择'1', '5', '15', '30', '60'; 其中 1 分钟数据返回近 5 个交易日数据且不复权")
+    adjust: str = Field(..., title="复权形式",
+                        description="可选择'', 'qfq', 'hfq'; "
+                                    "'': 不复权, 'qfq': 前复权, 'hfq': 后复权, "
+                                    "其中 1 分钟数据返回近 5 个交易日数据且不复权")
+    start_date: str = Field(..., title="开始时间", description="例：2024-07-01 09:32:00，默认返回所有数据")
+    end_date: str = Field(..., title="结束时间", description="2024-07-15 09:32:00，默认返回所有数据")
+
+
 # 东方财富网-港股-每日分时行情
 @router.post("/stock_hk_hist_min_em", operation_id="post_stock_zh_ah_spot")
-async def post_stock_hk_hist_min_em(request: StockMinuteRequest):
+async def post_stock_hk_hist_min_em(request: DongCaiHKStockMinuteRequest):
     """
     接口: stock_hk_hist_min_em
 
@@ -95,9 +108,20 @@ async def post_stock_hk_hist_min_em(request: StockMinuteRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiHKStockHistoryRequest(BaseModel):
+    symbol: str = Field(..., title="指定港股代码(可通过stock_hk_spot_em获取)",
+                        description="例：01611")
+    period: str = Field(..., title="时间周期",
+                        description="例如daily; 所有可选参数为：daily(日), weekly(周), monthly(月)")
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    adjust: str = Field(..., title="复权形式",
+                        description="默认返回不复权的数据，即此参数为空; qfq: 返回前复权后的数据; hfq: 返回后复权后的数据")
+
+
 # 东方财富网-港股-历史行情数据
 @router.post("/stock_hk_hist", operation_id="post_stock_hk_hist")
-async def post_stock_hk_hist(request: StockHistoryRequest):
+async def post_stock_hk_hist(request: DongCaiHKStockHistoryRequest):
     """
     接口: stock_hk_hist
 
@@ -120,6 +144,15 @@ async def post_stock_hk_hist(request: StockHistoryRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class StockDailyRequest(BaseModel):
+    symbol: str = Field(..., title="指定港股代码(可通过stock_hk_spot_em获取)", description="例如01611")
+    adjust: str = Field(..., title="复权类型", description="默认返回不复权的数据，即此参数为空;"
+                                                           "qfq: 返回前复权后的数据; "
+                                                           "hfq: 返回后复权后的数据; "
+                                                           "hfq-factor: 返回后复权因子和调整因子; "
+                                                           "qfq-factor: 返回前复权因子和调整因子")
+
+
 # 新浪财经-港股-历史行情数据
 @router.post("/stock_hk_daily", operation_id="post_stock_hk_daily")
 async def post_stock_hk_daily(request: StockDailyRequest):
@@ -128,13 +161,26 @@ async def post_stock_hk_daily(request: StockDailyRequest):
 
     目标地址: http://stock.finance.sina.com.cn/hkstock/quotes/01336.html(个例)
 
-    描述:港股-历史行情数据, 可以选择返回复权后数据,更新频率为日频
+    描述: 港股-历史行情数据, 可以选择返回复权后数据,更新频率为日频
 
     限量: 单次返回指定上市公司的历史行情数据(包括前后复权因子), 提供新浪财经拥有的该股票的所有数据(
     并不等于该股票从上市至今的数据)
     """
     try:
         stock_hk_daily_df = ak.stock_hk_daily(symbol=request.symbol, adjust=request.adjust)
+
+        # 重命名字段
+        stock_hk_daily_df.rename(columns={
+            "date": "日期",
+            "open": "开盘价",
+            "high": "最高价",
+            "low": "最低价",
+            "close": "收盘价",
+            "volume": "成交量",
+            "hfq_factor": "后复权因子",
+            "cash": "现金分红"
+        }, inplace=True)
+
         return stock_hk_daily_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

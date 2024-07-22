@@ -1,7 +1,7 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import Field, BaseModel
 
-from Akshare_Data.request_model import SymbolRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
@@ -26,6 +26,10 @@ def get_stock_comment_em():
         return sanitized_data.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class SymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股代码", description="例：000066")
 
 
 # 东方财富网-数据中心-特色数据-千股千评-主力控盘-机构参与度

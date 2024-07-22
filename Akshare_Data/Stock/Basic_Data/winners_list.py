@@ -1,15 +1,20 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import DateRangeRequest, SymbolRequest, SymbolFlagDateRequest, DateRequest
 from Akshare_Data.utility_function import sanitize_data_pandas, sanitize_data, sanitize_data_numpy
 
 router = APIRouter()
 
 
+class DongCaiWinnerListDateRangeRequest(BaseModel):
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+
+
 # 东方财富网-龙虎榜单-龙虎榜详情
 @router.post("/stock_lhb_detail_em", operation_id="post_stock_lhb_detail_em")
-async def post_stock_lhb_detail_em(request: DateRangeRequest):
+async def post_stock_lhb_detail_em(request: DongCaiWinnerListDateRangeRequest):
     """
     接口: stock_lhb_detail_em
 
@@ -28,9 +33,13 @@ async def post_stock_lhb_detail_em(request: DateRangeRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiWinnerListSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="时间周期", description="可选择'近一月', '近三月', '近六月', '近一年'")
+
+
 # 东方财富网-龙虎榜单-个股上榜统计
 @router.post("/stock_lhb_stock_statistic_em", operation_id="post_stock_lhb_stock_statistic_em")
-async def post_stock_lhb_stock_statistic_em(request: SymbolRequest):
+async def post_stock_lhb_stock_statistic_em(request: DongCaiWinnerListSymbolRequest):
     """
     接口: stock_lhb_stock_statistic_em
 
@@ -68,7 +77,7 @@ async def post_stock_lhb_jgmmtj_em(request: DateRangeRequest):
 
 # 东方财富网-龙虎榜单-机构席位追踪
 @router.post("/stock_lhb_jgstatistic_em", operation_id="post_stock_lhb_jgstatistic_em")
-async def post_stock_lhb_jgstatistic_em(request: SymbolRequest):
+async def post_stock_lhb_jgstatistic_em(request: DongCaiWinnerListSymbolRequest):
     """
     接口: stock_lhb_jgstatistic_em
 
@@ -89,7 +98,7 @@ async def post_stock_lhb_jgstatistic_em(request: SymbolRequest):
 
 # 东方财富网-龙虎榜单-每日活跃营业部
 @router.post("/stock_lhb_hyyyb_em", operation_id="post_stock_lhb_hyyyb_em")
-async def post_stock_lhb_hyyyb_em(request: DateRangeRequest):
+async def post_stock_lhb_hyyyb_em(request: DongCaiWinnerListDateRangeRequest):
     """
     接口: stock_lhb_hyyyb_em
 
@@ -110,7 +119,7 @@ async def post_stock_lhb_hyyyb_em(request: DateRangeRequest):
 
 # 东方财富网-龙虎榜单-营业部排行
 @router.post("/stock_lhb_yybph_em", operation_id="post_stock_lhb_yybph_em")
-async def post_stock_lhb_yybph_em(request: SymbolRequest):
+async def post_stock_lhb_yybph_em(request: DongCaiWinnerListSymbolRequest):
     """
     接口: stock_lhb_yybph_em
 
@@ -129,7 +138,7 @@ async def post_stock_lhb_yybph_em(request: SymbolRequest):
 
 # 东方财富网-龙虎榜单-营业部统计
 @router.post("/stock_lhb_traderstatistic_em", operation_id="post_stock_lhb_traderstatistic_em")
-async def post_stock_lhb_traderstatistic_em(request: SymbolRequest):
+async def post_stock_lhb_traderstatistic_em(request: DongCaiWinnerListSymbolRequest):
     """
     接口: stock_lhb_traderstatistic_em
 
@@ -146,9 +155,16 @@ async def post_stock_lhb_traderstatistic_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiWinnerListSymbolFlagDateRequest(BaseModel):
+    symbol: str = Field(..., title="股票代码", description="例：600077")
+    date: str = Field(..., title="相应股票的有龙虎榜详情数据的日期",
+                      description="需要通过stock_lhb_stock_detail_date_em接口获取")
+    flag: str = Field(..., title="资金行为", description="可选择'买入', '卖出'")
+
+
 # 东方财富网-龙虎榜单-个股龙虎榜详情
 @router.post("/stock_lhb_stock_detail_em", operation_id="post_stock_lhb_stock_detail_em")
-async def post_stock_lhb_stock_detail_em(request: SymbolFlagDateRequest):
+async def post_stock_lhb_stock_detail_em(request: DongCaiWinnerListSymbolFlagDateRequest):
     """
     接口: stock_lhb_stock_detail_em
 
@@ -225,9 +241,13 @@ def get_stock_lh_yyb_control():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class XinLangWinnerListDateRequest(BaseModel):
+    date: str = Field(..., title="指定交易日", description="例：20240222")
+
+
 # 新浪财经-龙虎榜-每日详情
 @router.post("/stock_lhb_detail_daily_sina", operation_id="post_stock_lhb_detail_daily_sina")
-async def post_stock_lhb_detail_daily_sina(request: DateRequest):
+async def post_stock_lhb_detail_daily_sina(request: XinLangWinnerListDateRequest):
     """
     接口: stock_lhb_detail_daily_sina
 
@@ -248,7 +268,7 @@ async def post_stock_lhb_detail_daily_sina(request: DateRequest):
 
 # 新浪财经-龙虎榜-个股上榜统计
 @router.post("/stock_lhb_ggtj_sina", operation_id="post_stock_lhb_ggtj_sina")
-async def post_stock_lhb_ggtj_sina(request: SymbolRequest):
+async def post_stock_lhb_ggtj_sina(request: XinLangWinnerListDateRequest):
     """
     接口: stock_lhb_ggtj_sina
 
@@ -265,9 +285,14 @@ async def post_stock_lhb_ggtj_sina(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class XinLangSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="时间周期",
+                        description="可选择'5': 最近 5 天; '10': 最近 10 天; '30': 最近 30 天; '60': 最近 60 天")
+
+
 # 新浪财经-龙虎榜-营业上榜统计
 @router.post("/stock_lhb_yytj_sina", operation_id="post_stock_lhb_yytj_sina")
-async def post_stock_lhb_yytj_sina(request: SymbolRequest):
+async def post_stock_lhb_yytj_sina(request: XinLangSymbolRequest):
     """
     接口: stock_lhb_yytj_sina
 
@@ -286,7 +311,7 @@ async def post_stock_lhb_yytj_sina(request: SymbolRequest):
 
 # 新浪财经-龙虎榜-机构席位追踪
 @router.post("/stock_lhb_jgzz_sina", operation_id="post_stock_lhb_jgzz_sina")
-async def post_stock_lhb_jgzz_sina(request: SymbolRequest):
+async def post_stock_lhb_jgzz_sina(request: XinLangSymbolRequest):
     """
     接口: stock_lhb_jgzz_sina
 

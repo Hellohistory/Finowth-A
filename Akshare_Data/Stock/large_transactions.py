@@ -2,8 +2,7 @@
 
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-
-from Akshare_Data.request_model import SymbolDateRequest, DateRangeRequest, SymbolRequest
+from pydantic import BaseModel, Field
 
 router = APIRouter()
 
@@ -46,6 +45,11 @@ async def post_stock_dzjy_mrmx(request: SymbolDateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DateRangeRequest(BaseModel):
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+
+
 @router.post("/stock_dzjy_mrtj", operation_id="post_stock_dzjy_mrtj")
 async def post_stock_dzjy_mrtj(request: DateRangeRequest):
     """
@@ -64,8 +68,13 @@ async def post_stock_dzjy_mrtj(request: DateRangeRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiASymbolRequest(BaseModel):
+    symbol: str = Field(..., title="时间周期", description="可选择'近一月', '近三月', '近六月', '近一年'")
+
+
+# 东方财富网-数据中心-大宗交易-活跃 A 股统计
 @router.post("/stock_dzjy_hygtj", operation_id="post_stock_dzjy_hygtj")
-async def post_stock_dzjy_hygtj(request: SymbolRequest):
+async def post_stock_dzjy_hygtj(request: DongCaiASymbolRequest):
     """
     接口: stock_dzjy_hygtj
 
@@ -82,8 +91,14 @@ async def post_stock_dzjy_hygtj(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiYingSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="时间周期",
+                        description="可选择'当前交易日', '近3日', '近5日', '近10日', '近30日'")
+
+
+# 东方财富网-数据中心-大宗交易-活跃营业部统计
 @router.post("/stock_dzjy_hyyybtj", operation_id="post_stock_dzjy_hyyybtj")
-async def post_stock_dzjy_hyyybtj(request: SymbolRequest):
+async def post_stock_dzjy_hyyybtj(request: DongCaiYingSymbolRequest):
     """
     接口: stock_dzjy_hyyybtj
 
@@ -101,7 +116,7 @@ async def post_stock_dzjy_hyyybtj(request: SymbolRequest):
 
 
 @router.post("/stock_dzjy_yybph", operation_id="post_stock_dzjy_yybph")
-async def post_stock_dzjy_yybph(request: SymbolRequest):
+async def post_stock_dzjy_yybph(request: DongCaiASymbolRequest):
     """
     接口: stock_dzjy_yybph
 

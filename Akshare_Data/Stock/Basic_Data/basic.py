@@ -30,9 +30,14 @@ async def post_stock_add_stock(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class BaiDuStockZhVoteBaiduRequest(BaseModel):
+    symbol: str = Field(..., title="A 股股票或指数代码", description="例：000001")
+    indicator: str = Field(..., title="指数或股票", description="可选择'指数', '股票'")
+
+
 # 涨跌投票
 @router.post("/stock_zh_vote_baidu", operation_id="post_stock_zh_vote_baidu")
-async def post_stock_zh_vote_baidu(request: StockZhVoteBaiduRequest):
+async def post_stock_zh_vote_baidu(request: BaiDuStockZhVoteBaiduRequest):
     """
     接口: stock_zh_vote_baidu
 
@@ -49,9 +54,16 @@ async def post_stock_zh_vote_baidu(request: StockZhVoteBaiduRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class BaiDuHKSymbolIndicatorPeriodRequest(BaseModel):
+    symbol: str = Field(..., title="港股代码", description="例：02358")
+    indicator: str = Field(..., title="估值类型",
+                           description="可选择'总市值', '市盈率(TTM)', '市盈率(静)', '市净率', '市现率'")
+    period: str = Field(..., title="时间类型", description="可选择'近一年', '近三年', '近五年', '近十年', '全部'")
+
+
 # 港股估值指标
 @router.post("/stock_hk_valuation_baidu", operation_id="post_stock_hk_valuation_baidu")
-async def post_stock_hk_valuation_baidu(request: SymbolIndicatorPeriodRequest):
+async def post_stock_hk_valuation_baidu(request: BaiDuHKSymbolIndicatorPeriodRequest):
     """
     接口: stock_hk_valuation_baidu
 
@@ -69,9 +81,14 @@ async def post_stock_hk_valuation_baidu(request: SymbolIndicatorPeriodRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class XSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定查询代码",
+                        description="可选择'all': '全部A股', 'sz50': '上证50', 'hs300': '沪深300', 'zz500': '中证500'")
+
+
 # 创新高和新低的股票数量
 @router.post("/stock_a_high_low_statistics", operation_id="post_stock_a_high_low_statistics")
-async def post_stock_a_high_low_statistics(request: SymbolRequest):
+async def post_stock_a_high_low_statistics(request: XSymbolRequest):
     """
     接口: stock_a_high_low_statistics
 
@@ -99,9 +116,14 @@ async def post_stock_a_high_low_statistics(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class PSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定查询代码",
+                        description="可选择'全部A股', '沪深300', '上证50', '中证500'")
+
+
 # 破净股统计
 @router.post("/stock_a_below_net_asset_statistics", operation_id="post_stock_a_below_net_asset_statistics")
-async def post_stock_a_below_net_asset_statistics(request: SymbolRequest):
+async def post_stock_a_below_net_asset_statistics(request: PSymbolRequest):
     """
     接口: stock_a_below_net_asset_statistics
 

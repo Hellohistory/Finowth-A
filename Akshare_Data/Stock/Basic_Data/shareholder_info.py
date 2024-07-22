@@ -7,9 +7,14 @@ from Akshare_Data.utility_function import sanitize_data_pandas
 router = APIRouter()
 
 
+class JuChaoGuDongDateRequest(BaseModel):
+    date: str = Field(..., title="指定披露时间",
+                      description="数据从20170331开始。可选择'XXXX0331', 'XXXX0630', 'XXXX0930', 'XXXX1231'")
+
+
 # 巨潮资讯-数据中心-专题统计-股东股本-股东人数及持股集中度
 @router.post("/stock_hold_num_cninfo", operation_id="post_stock_hold_num_cninfo")
-async def post_stock_hold_num_cninfo(request: DateRequest):
+async def post_stock_hold_num_cninfo(request: JuChaoGuDongDateRequest):
     """
     接口: stock_hold_num_cninfo
 
@@ -26,9 +31,14 @@ async def post_stock_hold_num_cninfo(request: DateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiSymbolAndNameRequest(BaseModel):
+    symbol: str = Field(..., title="股票代码", description="例：001308")
+    name: str = Field(..., title="高管名称", description="例：吴远")
+
+
 # 东方财富网-数据中心-特色数据-高管持股-人员增减持股变动明细
 @router.post("/stock_hold_management_person_em", operation_id="post_stock_hold_management_person_em")
-async def post_stock_hold_management_person_em(request: SymbolAndNameRequest):
+async def post_stock_hold_management_person_em(request: DongCaiSymbolAndNameRequest):
     """
     接口: stock_hold_management_person_em
 

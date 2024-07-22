@@ -30,9 +30,16 @@ async def post_stock_fund_stock_holder(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiSymbolDateRequest(BaseModel):
+    symbol: str = Field(..., title="数据类型",
+                        description="可选择'基金持仓', 'QFII持仓', '社保持仓', '券商持仓', '保险持仓', '信托持仓'")
+    date: str = Field(..., title="财报发布日期",
+                      description="可选择'xxxx-03-31', 'xxxx-06-30', 'xxxx-09-30', 'xxxx-12-31'")
+
+
 # 东方财富网-数据中心-主力数据-基金持仓
 @router.post("/stock_report_fund_hold", operation_id="post_stock_report_fund_hold")
-async def post_report_fund_hold(request: SymbolDateRequest):
+async def post_report_fund_hold(request: DongCaiSymbolDateRequest):
     """
     描述: 东方财富网-数据中心-主力数据-基金持仓
     限量: 单次返回指定 symbol 和 symbol 的所有历史数据
@@ -44,9 +51,15 @@ async def post_report_fund_hold(request: SymbolDateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiChiCangSymbolDateRequest(BaseModel):
+    symbol: str = Field(..., title="基金代码", description="例：005827")
+    date: str = Field(..., title="财报发布日期",
+                      description="可选择'xxxx-03-31', 'xxxx-06-30', 'xxxx-09-30', 'xxxx-12-31'")
+
+
 # 东方财富网-数据中心-主力数据-基金持仓-基金持仓明细表
 @router.post("/stock_report_fund_hold_detail", operation_id="post_stock_report_fund_hold_detail")
-async def post_stock_report_fund_hold_detail(request: SymbolDateRequest):
+async def post_stock_report_fund_hold_detail(request: DongCaiChiCangSymbolDateRequest):
     """
     接口: stock_report_fund_hold_detail
 

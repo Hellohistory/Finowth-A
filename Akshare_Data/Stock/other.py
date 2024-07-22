@@ -57,9 +57,13 @@ async def post_stock_cyq_em(request: ChouMaSymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class StockYzxdrRequest(BaseModel):
+    date: str = Field(..., title="每年的季度末时间点", description="例：20200930")
+
+
 # 一致行动人
-@router.get("/stock_yzxdr_em", operation_id="get_stock_yzxdr_em")
-def get_stock_yzxdr_em(date: str):
+@router.post("/stock_yzxdr_em", operation_id="post_stock_yzxdr_em")
+def post_stock_yzxdr_em(request: StockYzxdrRequest):
     """
     接口: stock_yzxdr_em
 
@@ -70,7 +74,7 @@ def get_stock_yzxdr_em(date: str):
     限量: 单次返回所有历史数据
     """
     try:
-        stock_yzxdr_em_df = ak.stock_yzxdr_em(date=date)
+        stock_yzxdr_em_df = ak.stock_yzxdr_em(date=request.date)
         return stock_yzxdr_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

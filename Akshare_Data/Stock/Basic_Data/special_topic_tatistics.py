@@ -1,15 +1,21 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import SymbolDateRangeRequest, DateRequest, SymbolRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
 
+class JuChaoSymbolDateRangeRequest(BaseModel):
+    symbol: str = Field(..., title="指定获取类型", description="可选择'全部', '深市主板', '沪市', '创业板', '科创板'")
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+
+
 # 巨潮资讯-数据中心-专题统计-公司治理-对外担保
 @router.post("/stock_cg_guarantee_cninfo", operation_id="post_stock_cg_guarantee_cninfo")
-async def post_stock_cg_guarantee_cninfo(request: SymbolDateRangeRequest):
+async def post_stock_cg_guarantee_cninfo(request: JuChaoSymbolDateRangeRequest):
     """
     接口: stock_cg_guarantee_cninfo
 
@@ -30,7 +36,7 @@ async def post_stock_cg_guarantee_cninfo(request: SymbolDateRangeRequest):
 
 # 巨潮资讯-数据中心-专题统计-公司治理-公司诉讼
 @router.post("/stock_cg_lawsuit_cninfo", operation_id="post_stock_cg_lawsuit_cninfo")
-async def post_stock_cg_lawsuit_cninfo(request: SymbolDateRangeRequest):
+async def post_stock_cg_lawsuit_cninfo(request: JuChaoSymbolDateRangeRequest):
     """
     接口: stock_cg_lawsuit_cninfo
 
@@ -70,9 +76,13 @@ async def post_stock_cg_equity_mortgage_cninfo(request: DateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiTeSeDateRequest(BaseModel):
+    date: str = Field(..., title="输入需要查询月份的最后一天的日期", description="例：20200430")
+
+
 # 东方财富网-数据中心-特色数据-券商业绩月报
 @router.post("/stock_qsjy_em", operation_id="post_stock_qsjy_em")
-async def post_stock_qsjy_em(request: DateRequest):
+async def post_stock_qsjy_em(request: DongCaiTeSeDateRequest):
     """
     接口: stock_qsjy_em
 
@@ -90,9 +100,14 @@ async def post_stock_qsjy_em(request: DateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class JuChaoSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定获取类型",
+                        description="数据从2010开始，可选择'单独控制', '实际控制人', '一致行动人', '家族控制', '全部'")
+
+
 # 巨潮资讯-数据中心-专题统计-股东股本-实际控制人持股变动
 @router.post("/stock_hold_control_cninfo", operation_id="post_stock_hold_control_cninfo")
-async def post_stock_hold_control_cninfo(request: SymbolRequest):
+async def post_stock_hold_control_cninfo(request: JuChaoSymbolRequest):
     """
     接口: stock_hold_control_cninfo
 

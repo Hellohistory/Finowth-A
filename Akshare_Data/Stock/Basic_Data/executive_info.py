@@ -1,14 +1,17 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
-
-from Akshare_Data.request_model import SymbolRequest
+from pydantic import BaseModel, Field
 
 router = APIRouter()
 
 
+class ShSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股代码或全部", description="可输入全部或者指定个股代码, 例如600000")
+
+
 # 上海证券交易所-董监高人员股份变动
 @router.post("/stock_share_hold_change_sse", operation_id="post_stock_share_hold_change_sse")
-async def post_stock_share_hold_change_sse(request: SymbolRequest):
+async def post_stock_share_hold_change_sse(request: ShSymbolRequest):
     """
     接口: stock_share_hold_change_sse
 
@@ -27,7 +30,7 @@ async def post_stock_share_hold_change_sse(request: SymbolRequest):
 
 # 深圳证券交易所-董监高人员股份变动
 @router.post("/stock_share_hold_change_szse", operation_id="post_stock_share_hold_change_szse")
-async def post_stock_share_hold_change_szse(request: SymbolRequest):
+async def post_stock_share_hold_change_szse(request: ShSymbolRequest):
     """
     接口: stock_share_hold_change_szse
 
@@ -46,7 +49,7 @@ async def post_stock_share_hold_change_szse(request: SymbolRequest):
 
 # 北京证券交易所-董监高及相关人员持股变动
 @router.post("/stock_share_hold_change_bse", operation_id="post_stock_share_hold_change_bse")
-async def post_stock_share_hold_change_bse(request: SymbolRequest):
+async def post_stock_share_hold_change_bse(request: ShSymbolRequest):
     """
     接口: stock_share_hold_change_bse
 
@@ -63,9 +66,13 @@ async def post_stock_share_hold_change_bse(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class JuChaoGaoGuanSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="获取指定类型", description="可选择'增持', '减持'")
+
+
 # 巨潮资讯-高管持股变动明细
 @router.post("/stock_hold_management_detail_cninfo", operation_id="post_stock_hold_management_detail_cninfo")
-async def post_stock_hold_management_detail_cninfo(request: SymbolRequest):
+async def post_stock_hold_management_detail_cninfo(request: JuChaoGaoGuanSymbolRequest):
     """
     描述: 巨潮资讯-数据中心-专题统计-股东股本-高管持股变动明细
     限量: 单次指定 symbol 的高管持股变动明细数据, 返回近一年的数据

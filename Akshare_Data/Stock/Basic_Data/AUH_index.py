@@ -1,15 +1,20 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import SymbolDateRequest, SymbolRequest, SymbolIndicatorPeriodRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
 
+class JuChaoSymbolDateRequest(BaseModel):
+    symbol: str = Field(..., title="分类类别", description="可选择'证监会行业分类', '国证行业分类'")
+    date: str = Field(..., title="指定交易日", description="例：20210910")
+
+
 # 巨潮资讯-数据中心-行业分析-行业市盈率
 @router.post("/stock_industry_pe_ratio_cninfo", operation_id="post_stock_industry_pe_ratio_cninfo")
-async def gpost_stock_industry_pe_ratio_cninfo(request: SymbolDateRequest):
+async def gpost_stock_industry_pe_ratio_cninfo(request: JuChaoSymbolDateRequest):
     """
     接口: stock_industry_pe_ratio_cninfo
 
@@ -28,9 +33,13 @@ async def gpost_stock_industry_pe_ratio_cninfo(request: SymbolDateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class LeGuSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="市场类型", description="可选择'上证A股', '深证A股', '创业板', '科创板'")
+
+
 # 乐咕乐股-股息率-A 股股息率
 @router.post("/stock_a_gxl_lg", operation_id="post_stock_a_gxl_lg")
-async def post_stock_a_gxl_lg(request: SymbolRequest):
+async def post_stock_a_gxl_lg(request: LeGuSymbolRequest):
     """
     接口: stock_a_gxl_lg
 
@@ -128,7 +137,6 @@ def get_stock_buffett_index_lg():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 乐咕乐股-A 股等权重市盈率与中位数市盈率
 @router.get("/stock_a_ttm_lyr", operation_id="get_stock_a_ttm_lyr")
 def get_stock_a_ttm_lyr():
     """
@@ -142,6 +150,24 @@ def get_stock_a_ttm_lyr():
     """
     try:
         stock_a_ttm_lyr_df = ak.stock_a_ttm_lyr()
+
+        stock_a_ttm_lyr_df.rename(columns={
+            "date": "日期",
+            "middlePETTM": "全A股滚动市盈率(TTM)中位数",
+            "averagePETTM": "全A股滚动市盈率(TTM)等权平均",
+            "middlePELYR": "全A股静态市盈率(LYR)中位数",
+            "averagePELYR": "全A股静态市盈率(LYR)等权平均",
+            "quantileInAllHistoryMiddlePeTtm": "当前TTM中位数在历史数据上的分位数",
+            "quantileInRecent10YearsMiddlePeTtm": "当前TTM中位数在最近10年数据上的分位数",
+            "quantileInAllHistoryAveragePeTtm": "当前TTM等权平均在历史数据上的分位数",
+            "quantileInRecent10YearsAveragePeTtm": "当前TTM等权平均在最近10年数据上的分位数",
+            "quantileInAllHistoryMiddlePeLyr": "当前LYR中位数在历史数据上的分位数",
+            "quantileInRecent10YearsMiddlePeLyr": "当前LYR中位数在最近10年数据上的分位数",
+            "quantileInAllHistoryAveragePeLyr": "当前LYR等权平均在历史数据上的分位数",
+            "quantileInRecent10YearsAveragePeLyr": "当前LYR等权平均在最近10年数据上的分位数",
+            "close": "沪深300指数"
+        }, inplace=True)
+
         return stock_a_ttm_lyr_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -161,14 +187,31 @@ def get_stock_a_all_pb():
     """
     try:
         stock_a_all_pb_df = ak.stock_a_all_pb()
+
+        # 重命名字段
+        stock_a_all_pb_df.rename(columns={
+            "date": "日期",
+            "middlePB": "全部A股市净率中位数",
+            "equalWeightAveragePB": "全部A股市净率等权平均",
+            "close": "上证指数",
+            "quantileInAllHistoryMiddlePB": "当前市净率中位数在历史数据上的分位数",
+            "quantileInRecent10YearsMiddlePB": "当前市净率中位数在最近10年数据上的分位数",
+            "quantileInAllHistoryEqualWeightAveragePB": "当前市净率等权平均在历史数据上的分位数",
+            "quantileInRecent10YearsEqualWeightAveragePB": "当前市净率等权平均在最近10年数据上的分位数"
+        }, inplace=True)
+
         return stock_a_all_pb_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class LeGuZhuBanSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="市场类型", description="可选择'上证', '深证', '创业板', '科创版'")
+
+
 # 乐咕乐股-主板市盈率
 @router.post("/stock_market_pe_lg", operation_id="post_stock_market_pe_lg")
-async def post_stock_market_pe_lg(request: SymbolRequest):
+async def post_stock_market_pe_lg(request: LeGuZhuBanSymbolRequest):
     """
     接口: stock_market_pe_lg
 
@@ -185,9 +228,15 @@ async def post_stock_market_pe_lg(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class LeGuZhiShuSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指数类型",
+                        description="可选择'上证50', '沪深300', '上证380', '创业板50', '中证500', '上证180', "
+                                    "'深证红利', '深证100', '中证1000', '上证红利', '中证100', '中证800'")
+
+
 # 乐咕乐股-指数市盈率
 @router.post("/stock_index_pe_lg", operation_id="post_stock_index_pe_lg")
-async def post_stock_index_pe_lg(request: SymbolRequest):
+async def post_stock_index_pe_lg(request: LeGuZhiShuSymbolRequest):
     """
     接口: stock_index_pe_lg
 
@@ -206,7 +255,7 @@ async def post_stock_index_pe_lg(request: SymbolRequest):
 
 # 乐咕乐股-主板市净率
 @router.post("/stock_market_pb_lg", operation_id="post_stock_market_pb_lg")
-async def post_stock_market_pb_lg(request: SymbolRequest):
+async def post_stock_market_pb_lg(request: LeGuZhuBanSymbolRequest):
     """
     接口: stock_market_pb_lg
 
@@ -225,7 +274,7 @@ async def post_stock_market_pb_lg(request: SymbolRequest):
 
 # 乐咕乐股-指数市净率
 @router.post("/stock_index_pb_lg", operation_id="post_stock_index_pb_lg")
-async def post_stock_index_pb_lg(request: SymbolRequest):
+async def post_stock_index_pb_lg(request: LeGuZhiShuSymbolRequest):
     """
     接口: stock_index_pb_lg
 
@@ -240,6 +289,13 @@ async def post_stock_index_pb_lg(request: SymbolRequest):
         return stock_index_pb_lg_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class SymbolIndicatorPeriodRequest(BaseModel):
+    symbol: str = Field(..., title="股票代码", description="例：002044")
+    indicator: str = Field(..., title="数据类型",
+                           description="可选择'总市值', '市盈率(TTM)', '市盈率(静)', '市净率', '市现率'")
+    period: str = Field(..., title="时间类型", description="可选择'近一年', '近三年', '近五年', '近十年', '全部'")
 
 
 # 百度股市通-A 股-财务报表-估值数据

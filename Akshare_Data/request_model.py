@@ -3,8 +3,8 @@ from pydantic import BaseModel, Field
 
 class IndustryIndexRequest(BaseModel):
     symbol: str
-    start_date: str
-    end_date: str
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
 
 
 class SymbolStockRequest(BaseModel):
@@ -37,18 +37,15 @@ class StockRequest(BaseModel):
     end_date: str
 
 
-class OnlyStockRequest(BaseModel):
-    stock: str
-
 
 class RequestModel(BaseModel):
-    symbol: str
-    indicator: str
+    symbol: str = Field(..., title="", description="")
+    indicator: str = Field(..., title="", description="")
 
 
 class StockAdjustFactorRequest(BaseModel):
-    symbol: str
-    adjust: str
+    symbol: str = Field(..., title="", description="")
+    adjust: str = Field(..., title="", description="")
 
 
 class StockReportRequest(BaseModel):
@@ -61,83 +58,83 @@ class DateRequest(BaseModel):
 
 
 class IndustryHistRequest(BaseModel):
-    symbol: str
-    start_date: str
-    end_date: str
-    period: str
-    adjust: str
+    symbol: str = Field(..., title="", description="")
+    start_date: str = Field(..., title="", description="")
+    end_date: str = Field(..., title="", description="")
+    period: str = Field(..., title="", description="")
+    adjust: str = Field(..., title="", description="")
 
 
 class IndustryHistMinRequest(BaseModel):
-    symbol: str
-    period: str
+    symbol: str = Field(..., title="", description="")
+    period: str = Field(..., title="", description="")
 
 
 class SymbolDateRequest(BaseModel):
-    symbol: str
-    date: str
+    symbol: str = Field(..., title="", description="")
+    date: str = Field(..., title="", description="")
 
 
 class DateRangeRequest(BaseModel):
-    start_date: str
-    end_date: str
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
 
 
 class SymbolIndicatorRequest(BaseModel):
-    symbol: str
-    indicator: str
+    symbol: str = Field(..., title="", description="")
+    indicator: str = Field(..., title="", description="")
 
 
 class DividendDetailRequest(BaseModel):
-    symbol: str
-    indicator: str
-    date: str = None
+    symbol: str = Field(..., title="", description="")
+    indicator: str = Field(..., title="", description="")
+    date: str = Field(..., title="", description="")
 
 
 class ConceptHistRequest(BaseModel):
-    symbol: str
-    period: str
-    start_date: str
-    end_date: str
-    adjust: str
+    symbol: str = Field(..., title="", description="")
+    period: str = Field(..., title="", description="")
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    adjust: str = Field(..., title="", description="")
 
 
 class ConceptHistMinRequest(BaseModel):
-    symbol: str
-    period: str
+    symbol: str = Field(..., title="", description="")
+    period: str = Field(..., title="", description="")
 
 
 class SingleDateRequest(BaseModel):
-    date: str
+    date: str = Field(..., title="", description="")
 
 
 class SymbolMarketRequest(BaseModel):
-    stock: str
-    market: str
+    stock: str = Field(..., title="", description="")
+    market: str = Field(..., title="", description="")
 
 
 class IndicatorRequest(BaseModel):
-    indicator: str
+    indicator: str = Field(..., title="", description="")
 
 
 class SectorRequest(BaseModel):
-    indicator: str
-    sector_type: str
+    indicator: str = Field(..., title="", description="")
+    sector_type: str = Field(..., title="", description="")
 
 
 class SymbolDateRangeRequest(BaseModel):
-    symbol: str
-    start_date: str
-    end_date: str
+    symbol: str = Field(..., title="", description="")
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
 
 
 class YearRequest(BaseModel):
-    year: str
+    year: str = Field(..., title="", description="")
 
 
 class AnalystDetailRequest(BaseModel):
-    analyst_id: str
-    indicator: str
+    analyst_id: str = Field(..., title="", description="")
+    indicator: str = Field(..., title="", description="")
 
 
 class SymbolRequest(BaseModel):
@@ -145,40 +142,40 @@ class SymbolRequest(BaseModel):
 
 
 class MarketPeriodRequest(BaseModel):
-    market: str
-    period: str
+    market: str = Field(..., title="", description="")
+    period: str = Field(..., title="", description="")
 
 
 class DisclosureRequest(BaseModel):
-    symbol: str
-    market: str
-    category: str
-    start_date: str
-    end_date: str
+    symbol: str = Field(..., title="", description="")
+    market: str = Field(..., title="", description="")
+    category: str = Field(..., title="", description="")
+    start_date: str = Field(..., title="", description="")
+    end_date: str = Field(..., title="", description="")
 
 
 class StockAHDailyRequest(BaseModel):
-    symbol: str
-    start_year: str
-    end_year: str
-    adjust: str
+    symbol: str = Field(..., title="", description="")
+    start_year: str = Field(..., title="", description="")
+    end_year: str = Field(..., title="", description="")
+    adjust: str = Field(..., title="", description="")
 
 
 class SymbolFlagDateRequest(BaseModel):
-    symbol: str
-    date: str
-    flag: str
+    symbol: str = Field(..., title="", description="")
+    date: str = Field(..., title="", description="")
+    flag: str = Field(..., title="", description="")
 
 
 class RestrictedReleaseSummaryRequest(BaseModel):
-    symbol: str
-    start_date: str
-    end_date: str
+    symbol: str = Field(..., title="", description="")
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
 
 
 class StockQuarterRequest(BaseModel):
-    stock: str
-    quarter: str
+    stock: str = Field(..., title="", description="")
+    quarter: str = Field(..., title="", description="")
 
 
 class StockHistoryRequest(BaseModel):
@@ -192,11 +189,11 @@ class StockHistoryRequest(BaseModel):
 
 
 class StockMinuteRequest(BaseModel):
-    symbol: str
-    period: str
-    adjust: str
-    start_date: str
-    end_date: str
+    symbol: str = Field(..., title="", description="")
+    period: str = Field(..., title="", description="")
+    adjust: str = Field(..., title="", description="")
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
 
 
 class StockDailyRequest(BaseModel):
@@ -225,26 +222,26 @@ class SymbolIndicatorPeriodRequest(BaseModel):
 
 
 class SymbolPeriodAdjust(BaseModel):
-    symbol: str
-    period: str
-    adjust: str
+    symbol: str = Field(..., title="", description="")
+    period: str = Field(..., title="", description="")
+    adjust: str = Field(..., title="", description="")
 
 
 class StockZhVoteBaiduRequest(BaseModel):
-    symbol: str
-    indicator: str
+    symbol: str = Field(..., title="", description="")
+    indicator: str = Field(..., title="", description="")
 
 
 class HoldingDetailRequest(BaseModel):
-    date: str
-    indicator: str
-    symbol: str
+    date: str = Field(..., title="", description="")
+    indicator: str = Field(..., title="", description="")
+    symbol: str = Field(..., title="", description="")
 
 
 class SymbolAndNameRequest(BaseModel):
-    symbol: str
-    name: str
+    symbol: str = Field(..., title="", description="")
+    name: str = Field(..., title="", description="")
 
 
 class SectorSpotRequest(BaseModel):
-    indicator: str
+    indicator: str = Field(..., title="", description="")

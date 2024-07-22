@@ -1,10 +1,14 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import SymbolRequest, StockZhVoteBaiduRequest, SymbolIndicatorPeriodRequest
 from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
 
 router = APIRouter()
+
+
+class SymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股代码", description="例：000066")
 
 
 # 股票增发

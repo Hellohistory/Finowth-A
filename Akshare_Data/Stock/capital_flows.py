@@ -204,9 +204,14 @@ async def post_stock_main_fund_flow(request: DongCaiZhuLiSymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiZiJinSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="查询行业种类", description="例：电源设备")
+    indicator: str = Field(..., title="时间周期", description="可选择'今日', '5日', '10日'")
+
+
 # 东方财富网-数据中心-资金流向-行业资金流-xx行业个股资金流
 @router.post("/stock_sector_fund_flow_summary", operation_id="post_stock_sector_fund_flow_summary")
-async def post_stock_sector_fund_flow_summary(request: SymbolRequest):
+async def post_stock_sector_fund_flow_summary(request: DongCaiZiJinSymbolRequest):
     """
     接口: stock_sector_fund_flow_summary
 
@@ -225,9 +230,13 @@ async def post_stock_sector_fund_flow_summary(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiZiJinHistorySymbolRequest(BaseModel):
+    symbol: str = Field(..., title="查询行业种类", description="例：电源设备")
+
+
 # 东方财富网-数据中心-资金流向-行业资金流-行业历史资金流
 @router.post("/stock_sector_fund_flow_hist", operation_id="post_stock_sector_fund_flow_hist")
-async def post_stock_sector_fund_flow_hist(request: SymbolRequest):
+async def post_stock_sector_fund_flow_hist(request: DongCaiZiJinHistorySymbolRequest):
     """
     接口: stock_sector_fund_flow_hist
 
@@ -244,9 +253,13 @@ async def post_stock_sector_fund_flow_hist(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiZiJinGaiNianHistorySymbolRequest(BaseModel):
+    symbol: str = Field(..., title="查询概念种类", description="例：锂电池")
+
+
 # 东方财富网-数据中心-资金流向-概念资金流-概念历史资金流
 @router.post("/stock_concept_fund_flow_hist", operation_id="post_stock_concept_fund_flow_hist")
-async def post_stock_concept_fund_flow_hist(request: SymbolRequest):
+async def post_stock_concept_fund_flow_hist(request: DongCaiZiJinGaiNianHistorySymbolRequest):
     """
     接口: stock_concept_fund_flow_hist
 

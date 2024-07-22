@@ -1,8 +1,7 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import DateRequest, SymbolAndNameRequest, DateRangeRequest, SymbolRequest, \
-    SymbolDateRequest, HoldingDetailRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
@@ -68,9 +67,14 @@ def get_stock_gddh_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiDateRangeRequest(BaseModel):
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+
+
 # 东方财富网-数据中心-重大合同-重大合同明细
 @router.post("/stock_zdhtmx_em", operation_id="post_stock_zdhtmx_em")
-async def post_stock_zdhtmx_em(request: DateRangeRequest):
+async def post_stock_zdhtmx_em(request: DongCaiDateRangeRequest):
     """
     描述: 东方财富网-数据中心-重大合同-重大合同明细
     限量: 单次返回指定 start_date 和 indicator 的所有数据
@@ -82,6 +86,10 @@ async def post_stock_zdhtmx_em(request: DateRangeRequest):
         return stock_zdhtmx_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class SymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股代码", description="例：000066")
 
 
 # 新浪财经-股本股东-主要股东
@@ -124,9 +132,14 @@ async def post_stock_circulate_stock_holder(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiSymbolDateRequest(BaseModel):
+    symbol: str = Field(..., title="带市场标识的股票代码", description="例：sh688686")
+    date: str = Field(..., title="财报发布季度最后日", description="例：20210630")
+
+
 # 东方财富网-个股-十大流通股东
 @router.post("/stock_gdfx_free_top_10_em", operation_id="post_stock_gdfx_free_top_10_em")
-async def post_stock_gdfx_free_top_10_em(request: SymbolDateRequest):
+async def post_stock_gdfx_free_top_10_em(request: DongCaiSymbolDateRequest):
     """
     接口: stock_gdfx_free_top_10_em
 
@@ -148,7 +161,7 @@ async def post_stock_gdfx_free_top_10_em(request: SymbolDateRequest):
 
 # 东方财富网-个股-十大股东
 @router.post("/stock_gdfx_top_10_em", operation_id="post_stock_gdfx_top_10_em")
-async def post_stock_gdfx_top_10_em(request: SymbolDateRequest):
+async def post_stock_gdfx_top_10_em(request: DongCaiSymbolDateRequest):
     """
     接口: stock_gdfx_top_10_em
 
@@ -167,9 +180,13 @@ async def post_stock_gdfx_top_10_em(request: SymbolDateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiDateRequest(BaseModel):
+    date: str = Field(..., title="财报发布季度最后日", description="例：20210930")
+
+
 # 东方财富网-数据中心-股东分析-股东持股变动统计-十大流通股东
 @router.post("/stock_gdfx_free_holding_change_em", operation_id="post_stock_gdfx_free_holding_change_em")
-async def post_stock_gdfx_free_holding_change_em(request: DateRequest):
+async def post_stock_gdfx_free_holding_change_em(request: DongCaiDateRequest):
     """
     接口: stock_gdfx_free_holding_change_em
 
@@ -190,7 +207,7 @@ async def post_stock_gdfx_free_holding_change_em(request: DateRequest):
 
 # 东方财富网-数据中心-股东分析-股东持股变动统计-十大股东
 @router.post("/stock_gdfx_holding_change_em", operation_id="post_stock_gdfx_holding_change_em")
-async def post_stock_gdfx_holding_change_em(request: DateRequest):
+async def post_stock_gdfx_holding_change_em(request: DongCaiDateRequest):
     """
     接口: stock_gdfx_holding_change_em
 
@@ -211,7 +228,7 @@ async def post_stock_gdfx_holding_change_em(request: DateRequest):
 
 # 东方财富网-数据中心-股东分析-股东持股分析-十大流通股东
 @router.post("/stock_gdfx_free_holding_analyse_em", operation_id="post_stock_gdfx_free_holding_analyse_em")
-async def post_stock_gdfx_free_holding_analyse_em(request: DateRequest):
+async def post_stock_gdfx_free_holding_analyse_em(request: DongCaiDateRequest):
     """
     接口: stock_gdfx_free_holding_analyse_em
 
@@ -232,7 +249,7 @@ async def post_stock_gdfx_free_holding_analyse_em(request: DateRequest):
 
 # 东方财富网-数据中心-股东分析-股东持股分析-十大股东
 @router.post("/stock_gdfx_holding_analyse_em", operation_id="post_stock_gdfx_holding_analyse_em")
-async def post_stock_gdfx_holding_analyse_em(request: DateRequest):
+async def post_stock_gdfx_holding_analyse_em(request: DongCaiDateRequest):
     """
     接口: stock_gdfx_holding_analyse_em
 
@@ -253,7 +270,7 @@ async def post_stock_gdfx_holding_analyse_em(request: DateRequest):
 
 # 东方财富网-数据中心-股东分析-股东持股明细-十大流通股东
 @router.post("/stock_gdfx_free_holding_detail_em", operation_id="post_stock_gdfx_free_holding_detail_em")
-async def post_stock_gdfx_free_holding_detail_em(request: DateRequest):
+async def post_stock_gdfx_free_holding_detail_em(request: DongCaiDateRequest):
     """
     接口: stock_gdfx_free_holding_detail_em
 
@@ -272,9 +289,15 @@ async def post_stock_gdfx_free_holding_detail_em(request: DateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiHoldingDetailRequest(BaseModel):
+    date: str = Field(..., title="财报发布季度最后日", description="例：20230331")
+    indicator: str = Field(..., title="数据类型", description="可选择'个人', '基金', 'QFII', '社保', '券商', '信托'")
+    symbol: str = Field(..., title="转变类型", description="可选择'新进', '增加', '不变', '减少'")
+
+
 # 东方财富网-数据中心-股东分析-股东持股明细-十大股东
 @router.post("/stock_gdfx_holding_detail_em", operation_id="post_stock_gdfx_holding_detail_em")
-async def post_stock_gdfx_holding_detail_em(request: HoldingDetailRequest):
+async def post_stock_gdfx_holding_detail_em(request: DongCaiHoldingDetailRequest):
     """
     接口: stock_gdfx_holding_detail_em
 
@@ -297,7 +320,7 @@ async def post_stock_gdfx_holding_detail_em(request: HoldingDetailRequest):
 
 # 东方财富网-数据中心-股东分析-股东持股统计-十大流通股东
 @router.post("/stock_gdfx_free_holding_statistics_em", operation_id="post_stock_gdfx_free_holding_statistics_em")
-async def post_stock_gdfx_free_holding_statistics_em(request: DateRequest):
+async def post_stock_gdfx_free_holding_statistics_em(request: DongCaiDateRequest):
     """
     接口: stock_gdfx_free_holding_statistics_em
 
@@ -318,7 +341,7 @@ async def post_stock_gdfx_free_holding_statistics_em(request: DateRequest):
 
 # 东方财富网-数据中心-股东分析-股东持股统计-十大股东
 @router.post("/stock_gdfx_holding_statistics_em", operation_id="post_stock_gdfx_holding_statistics_em")
-async def post_stock_gdfx_holding_statistics_em(request: DateRequest):
+async def post_stock_gdfx_holding_statistics_em(request: DongCaiDateRequest):
     """
     接口: stock_gdfx_holding_statistics_em
 
@@ -337,9 +360,14 @@ async def post_stock_gdfx_holding_statistics_em(request: DateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiGuDongSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="数据类型",
+                        description="可选择'全部','个人', '基金', 'QFII', '社保', '券商', '信托'")
+
+
 # 东方财富网-数据中心-股东分析-股东协同-十大流通股东
 @router.post("/stock_gdfx_free_holding_teamwork_em", operation_id="post_stock_gdfx_free_holding_teamwork_em")
-async def post_stock_gdfx_free_holding_teamwork_em(request: SymbolRequest):
+async def post_stock_gdfx_free_holding_teamwork_em(request: DongCaiGuDongSymbolRequest):
     """
     接口: stock_gdfx_free_holding_teamwork_em
 
@@ -360,7 +388,7 @@ async def post_stock_gdfx_free_holding_teamwork_em(request: SymbolRequest):
 
 # 东方财富网-数据中心-股东分析-股东协同-十大股东
 @router.post("/stock_gdfx_holding_teamwork_em", operation_id="post_stock_gdfx_holding_teamwork_em")
-async def post_stock_gdfx_holding_teamwork_em(request: SymbolRequest):
+async def post_stock_gdfx_holding_teamwork_em(request: DongCaiGuDongSymbolRequest):
     """
     接口: stock_gdfx_holding_teamwork_em
 
@@ -379,9 +407,14 @@ async def post_stock_gdfx_holding_teamwork_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiGuDongDateRequest(BaseModel):
+    date: str = Field(..., title="数据时间",
+                      description="可选择'最新', '每个季度末', 其中每个季度末需要写成 `20230930` 格式")
+
+
 # 东方财富网-数据中心-特色数据-股东户数数据
 @router.post("/stock_zh_a_gdhs", operation_id="post_stock_zh_a_gdhs")
-async def post_stock_zh_a_gdhs(request: DateRequest):
+async def post_stock_zh_a_gdhs(request: DongCaiGuDongDateRequest):
     """
     接口: stock_zh_a_gdhs
 

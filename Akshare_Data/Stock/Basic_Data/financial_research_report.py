@@ -1,10 +1,14 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import DateRequest, SymbolRequest, FinancialDebt, FinancialRequest
 from Akshare_Data.utility_function import sanitize_data_pandas, sanitize_data
 
 router = APIRouter()
+
+
+class SymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股代码", description="例：000066")
 
 
 # 东方财富网-数据中心-研究报告-个股研报
@@ -29,10 +33,17 @@ async def post_stock_research_report_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiSymbolDateRequest(BaseModel):
+    symbol: str = Field(..., title="数据种类",
+                        description="可选择'全部', '重大事项', '财务报告', '融资公告', '风险提示', '资产重组', "
+                                    "'信息变更', '持股变动'")
+    date: str = Field(..., title="指定日期", description="例：20220511")
+
+
 # 东方财富网-数据中心-公告大全-沪深京 A 股公告
 @router.post("/stock_notice_report",
              operation_id="post_stock_notice_report")
-async def post_stock_notice_report(request: DateRequest):
+async def post_stock_notice_report(request: DongCaiSymbolDateRequest):
     """
     接口: stock_notice_report
 
@@ -43,16 +54,21 @@ async def post_stock_notice_report(request: DateRequest):
     限量: 单次获取指定个股和指定日期的数据
     """
     try:
-        stock_notice_report_df = ak.stock_notice_report(symbol='财务报告', date=request.date)
+        stock_notice_report_df = ak.stock_notice_report(symbol=request.symbol, date=request.date)
         return stock_notice_report_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class XinLangStockSymbolRequest(BaseModel):
+    stock: str = Field(..., title="指定个股代码(需带市场标识)", description="例：sh600600")
+    symbol: str = Field(..., title="报表类型", description="可选择'资产负债表', '利润表', '现金流量表'")
+
+
 # 新浪财经-财务报表-三大报表
 @router.post("/stock_financial_report_sina",
              operation_id="post_stock_financial_report_sina")
-async def post_stock_financial_report_sina(request: SymbolRequest):
+async def post_stock_financial_report_sina(request: XinLangStockSymbolRequest):
     """
     接口: stock_financial_report_sina
 
@@ -73,10 +89,14 @@ async def post_stock_financial_report_sina(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiZiChanSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股代码(需带市场标识)", description="例：SH600519")
+
+
 # 东方财富-股票-财务分析-资产负债表-按报告期
 @router.post("/stock_balance_sheet_by_report_em",
              operation_id="post_stock_balance_sheet_by_report_em")
-async def post_stock_balance_sheet_by_report_em(request: SymbolRequest):
+async def post_stock_balance_sheet_by_report_em(request: DongCaiZiChanSymbolRequest):
     """
     接口: stock_balance_sheet_by_report_em
 
@@ -98,7 +118,7 @@ async def post_stock_balance_sheet_by_report_em(request: SymbolRequest):
 # 东方财富-股票-财务分析-资产负债表-按年度
 @router.post("/stock_balance_sheet_by_yearly_em",
              operation_id="post_stock_balance_sheet_by_yearly_em")
-async def post_stock_balance_sheet_by_yearly_em(request: SymbolRequest):
+async def post_stock_balance_sheet_by_yearly_em(request: DongCaiZiChanSymbolRequest):
     """
     接口: stock_balance_sheet_by_yearly_em
 
@@ -120,7 +140,7 @@ async def post_stock_balance_sheet_by_yearly_em(request: SymbolRequest):
 # 东方财富-股票-财务分析-利润表-报告期
 @router.post("/stock_profit_sheet_by_report_em",
              operation_id="post_stock_profit_sheet_by_report_em")
-async def post_stock_profit_sheet_by_report_em(request: SymbolRequest):
+async def post_stock_profit_sheet_by_report_em(request: DongCaiZiChanSymbolRequest):
     """
     接口: stock_profit_sheet_by_report_em
 
@@ -142,7 +162,7 @@ async def post_stock_profit_sheet_by_report_em(request: SymbolRequest):
 # 东方财富-股票-财务分析-利润表-按年度
 @router.post("/stock_profit_sheet_by_yearly_em",
              operation_id="post_stock_profit_sheet_by_yearly_em")
-async def post_stock_profit_sheet_by_yearly_em(request: SymbolRequest):
+async def post_stock_profit_sheet_by_yearly_em(request: DongCaiZiChanSymbolRequest):
     """
     接口: stock_profit_sheet_by_yearly_em
 
@@ -164,7 +184,7 @@ async def post_stock_profit_sheet_by_yearly_em(request: SymbolRequest):
 # 东方财富-股票-财务分析-利润表-按单季度
 @router.post("/stock_profit_sheet_by_quarterly_em",
              operation_id="post_stock_profit_sheet_by_quarterly_em")
-async def post_stock_profit_sheet_by_quarterly_em(request: SymbolRequest):
+async def post_stock_profit_sheet_by_quarterly_em(request: DongCaiZiChanSymbolRequest):
     """
     接口: stock_profit_sheet_by_quarterly_em
 
@@ -186,7 +206,7 @@ async def post_stock_profit_sheet_by_quarterly_em(request: SymbolRequest):
 # 东方财富-股票-财务分析-现金流量表-按报告期
 @router.post("/stock_cash_flow_sheet_by_report_em",
              operation_id="post_stock_cash_flow_sheet_by_report_em")
-async def post_stock_cash_flow_sheet_by_report_em(request: SymbolRequest):
+async def post_stock_cash_flow_sheet_by_report_em(request: DongCaiZiChanSymbolRequest):
     """
     接口: stock_cash_flow_sheet_by_report_em
 
@@ -206,7 +226,7 @@ async def post_stock_cash_flow_sheet_by_report_em(request: SymbolRequest):
 # 东方财富-股票-财务分析-现金流量表-按年度
 @router.post("/stock_cash_flow_sheet_by_yearly_em",
              operation_id="post_stock_cash_flow_sheet_by_yearly_em")
-async def post_stock_cash_flow_sheet_by_yearly_em(request: SymbolRequest):
+async def post_stock_cash_flow_sheet_by_yearly_em(request: DongCaiZiChanSymbolRequest):
     """
     接口: stock_cash_flow_sheet_by_yearly_em
 
@@ -229,7 +249,7 @@ async def post_stock_cash_flow_sheet_by_yearly_em(request: SymbolRequest):
 # 东方财富-股票-财务分析-现金流量表-按单季度
 @router.post("/stock_cash_flow_sheet_by_quarterly_em",
              operation_id="post_stock_cash_flow_sheet_by_quarterly_em")
-async def post_stock_cash_flow_sheet_by_quarterly_em(request: SymbolRequest):
+async def post_stock_cash_flow_sheet_by_quarterly_em(request: DongCaiZiChanSymbolRequest):
     """
     接口: stock_cash_flow_sheet_by_quarterly_em
 
@@ -246,10 +266,15 @@ async def post_stock_cash_flow_sheet_by_quarterly_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class TongHuaShunFinancialDebt(BaseModel):
+    symbol: str = Field(..., title="股票代码", description="例：000063")
+    indicator: str = Field(..., title="报告类型", description="可选择'按报告期', '按年度', '按单季度'")
+
+
 # 同花顺-财务指标-资产负债表
 @router.post("/stock_financial_debt_ths",
              operation_id="post_stock_financial_debt_ths")
-async def post_stock_financial_debt_ths(request: FinancialDebt):
+async def post_stock_financial_debt_ths(request: TongHuaShunFinancialDebt):
     """
     接口: stock_financial_debt_ths
 
@@ -269,7 +294,7 @@ async def post_stock_financial_debt_ths(request: FinancialDebt):
 # 同花顺-财务指标-利润表
 @router.post("/stock_financial_benefit_ths",
              operation_id="post_stock_financial_benefit_ths")
-async def post_stock_financial_benefit_ths(request: FinancialDebt):
+async def post_stock_financial_benefit_ths(request: TongHuaShunFinancialDebt):
     """
     接口: stock_financial_benefit_ths
 
@@ -290,7 +315,7 @@ async def post_stock_financial_benefit_ths(request: FinancialDebt):
 # 同花顺-财务指标-现金流量表
 @router.post("/stock_financial_cash_ths",
              operation_id="post_stock_financial_cash_ths")
-async def post_stock_financial_cash_ths(request: FinancialDebt):
+async def post_stock_financial_cash_ths(request: TongHuaShunFinancialDebt):
     """
     接口: stock_financial_cash_ths
 
@@ -307,10 +332,14 @@ async def post_stock_financial_cash_ths(request: FinancialDebt):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class TuiShiSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="带市场标识的已退市股票代码", description="例：SZ000013")
+
+
 # 东方财富-股票-财务分析-资产负债表-已退市股票-按报告期
 @router.post("/stock_balance_sheet_by_report_delisted_em",
              operation_id="stock_balance_sheet_by_report_delisted_em")
-async def post_stock_balance_sheet_by_report_delisted_em(request: SymbolRequest):
+async def post_stock_balance_sheet_by_report_delisted_em(request: TuiShiSymbolRequest):
     """
     接口: stock_balance_sheet_by_report_delisted_em
 
@@ -334,7 +363,7 @@ async def post_stock_balance_sheet_by_report_delisted_em(request: SymbolRequest)
 # 东方财富-股票-财务分析-利润表-已退市股票-按报告期
 @router.post("/stock_profit_sheet_by_report_delisted_em",
              operation_id="post_stock_profit_sheet_by_report_delisted_em")
-async def post_stock_profit_sheet_by_report_delisted_em(request: SymbolRequest):
+async def post_stock_profit_sheet_by_report_delisted_em(request: TuiShiSymbolRequest):
     """
     接口: stock_profit_sheet_by_report_delisted_em
 
@@ -354,7 +383,7 @@ async def post_stock_profit_sheet_by_report_delisted_em(request: SymbolRequest):
 # 东方财富-股票-财务分析-现金流量表-已退市股票-按报告期
 @router.post("/stock_cash_flow_sheet_by_report_delisted_em",
              operation_id="post_stock_cash_flow_sheet_by_report_delisted_em")
-async def post_stock_cash_flow_sheet_by_report_delisted_em(request: SymbolRequest):
+async def post_stock_cash_flow_sheet_by_report_delisted_em(request: TuiShiSymbolRequest):
     """
     接口: stock_cash_flow_sheet_by_report_delisted_em
 
@@ -372,10 +401,16 @@ async def post_stock_cash_flow_sheet_by_report_delisted_em(request: SymbolReques
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiHKFinancialRequest(BaseModel):
+    stock: str = Field(..., title="港股代码", description="例：00700")
+    symbol: str = Field(..., title="报表类型", description="可选择'资产负债表', '利润表', '现金流量表'")
+    indicator: str = Field(..., title="报告周期", description="可选择'年度', '报告期'")
+
+
 # 东方财富-港股-财务报表-三大报表
 @router.post("/stock_financial_hk_report_em",
              operation_id="post_stock_financial_hk_report_em")
-async def post_stock_financial_hk_report_em(request: FinancialRequest):
+async def post_stock_financial_hk_report_em(request: DongCaiHKFinancialRequest):
     """
     接口: stock_financial_hk_report_em
 

@@ -2,7 +2,6 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import Field, BaseModel
 
-from Akshare_Data.request_model import SymbolRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
@@ -33,9 +32,15 @@ async def post_stock_ggcg_em(request: ExecutiveSymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class ChouMaSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股代码", description="例：000066")
+    adjust: str = Field(..., title="复权种类",
+                        description="可选择: 'qfq': '前复权', 'hfq': '后复权', "": '不复权'")
+
+
 # 东方财富网-概念板-行情中心-日K-筹码分布
 @router.post("/stock_cyq_em", operation_id="post_stock_cyq_em")
-async def post_stock_cyq_em(request: SymbolRequest):
+async def post_stock_cyq_em(request: ChouMaSymbolRequest):
     """
     接口: stock_cyq_em
 
@@ -46,7 +51,7 @@ async def post_stock_cyq_em(request: SymbolRequest):
     限量: 单次返回指定个股和指定复权种类的近 90 个交易日数据
     """
     try:
-        stock_cyq_em_df = ak.stock_cyq_em(symbol=request.symbol, adjust="")
+        stock_cyq_em_df = ak.stock_cyq_em(symbol=request.symbol, adjust=request.adjust)
         return stock_cyq_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

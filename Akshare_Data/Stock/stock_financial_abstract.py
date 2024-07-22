@@ -1,12 +1,17 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import SymbolRequest, SymbolIndicatorRequest, FinancialAnalysis, SymolIndicatorRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
 
+class SymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股代码", description="例：600004")
+
+
+# 新浪财经-财务报表-关键指标
 @router.post("/stock_financial_abstract", operation_id="post_stock_financial_abstract")
 async def post_stock_financial_abstract(request: SymbolRequest):
     """
@@ -27,8 +32,14 @@ async def post_stock_financial_abstract(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=f"获取关键指标数据失败: {str(e)}")
 
 
+class TongHuaShunSymbolIndicatorRequest(BaseModel):
+    symbol: str = Field(..., title="股票代码", description="例：000063")
+    indicator: str = Field(..., title="报表周期", description="'按报告期', '按年度', '按单季度'")
+
+
+# 同花顺-财务指标-主要指标
 @router.post("/stock_financial_abstract_ths", operation_id="post_stock_financial_abstract_ths")
-async def post_stock_financial_abstract_ths(request: SymbolIndicatorRequest):
+async def post_stock_financial_abstract_ths(request: TongHuaShunSymbolIndicatorRequest):
     """
     接口: stock_financial_abstract_ths
 
@@ -48,9 +59,15 @@ async def post_stock_financial_abstract_ths(request: SymbolIndicatorRequest):
         raise HTTPException(status_code=500, detail=f"获取财务摘要数据失败: {str(e)}")
 
 
+class XinLangFinancialAnalysis(BaseModel):
+    symbol: str = Field(..., title="股票代码", description="例：600004")
+    start_year: str = Field(..., title="开始查询的年份", description="例：2020")
+
+
+# 新浪财经-财务分析-财务指标
 @router.post("/stock_financial_analysis_indicator",
              operation_id="post_stock_financial_analysis_indicator")
-async def post_stock_financial_analysis_indicator(request: FinancialAnalysis):
+async def post_stock_financial_analysis_indicator(request: XinLangFinancialAnalysis):
     """
     接口: stock_financial_analysis_indicator
 
@@ -70,9 +87,15 @@ async def post_stock_financial_analysis_indicator(request: FinancialAnalysis):
         raise HTTPException(status_code=500, detail=f"获取财务分析指标数据失败: {str(e)}")
 
 
+class DongCaiSymolIndicatorRequest(BaseModel):
+    symbol: str = Field(..., title="股票代码", description="例：00700")
+    indicator: str = Field(..., title="报告类型", description="可选择'年度', '报告期'")
+
+
+# 东方财富-港股-财务分析-主要指标
 @router.post("/stock_financial_hk_analysis_indicator_em",
              operation_id="post_stock_financial_hk_analysis_indicator_em")
-async def post_stock_financial_hk_analysis_indicator_em(request: SymolIndicatorRequest):
+async def post_stock_financial_hk_analysis_indicator_em(request: DongCaiSymolIndicatorRequest):
     """
     接口: stock_financial_hk_analysis_indicator_em
 

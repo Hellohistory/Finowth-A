@@ -1,11 +1,14 @@
 import akshare as ak
 from fastapi import HTTPException, APIRouter
+from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import SymbolDateRequest, SymbolRequest, DateRangeRequest, \
-    RestrictedReleaseSummaryRequest, SectorSpotRequest
 from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
+
+
+class SymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定个股代码", description="例：000066")
 
 
 # 新浪财经-发行分配-限售解禁
@@ -25,6 +28,13 @@ async def post_stock_restricted_release_queue_sina(request: SymbolRequest):
         return stock_restricted_release_queue_sina_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class RestrictedReleaseSummaryRequest(BaseModel):
+    symbol: str = Field(..., title="市场类型",
+                        description="可选择'全部股票', '沪市A股', '科创板', '深市A股', '创业板', '京市A股'")
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
 
 
 # 东方财富网-数据中心-特色数据-限售股解禁
@@ -48,6 +58,11 @@ async def post_stock_restricted_release_summary_em(request: RestrictedReleaseSum
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DateRangeRequest(BaseModel):
+    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+
+
 # 东方财富网-数据中心-限售股解禁-解禁详情一览
 @router.post("/stock_restricted_release_detail_em", operation_id="post_stock_restricted_release_detail_em")
 async def post_stock_restricted_release_detail_em(request: DateRangeRequest):
@@ -68,6 +83,10 @@ async def post_stock_restricted_release_detail_em(request: DateRangeRequest):
         return stock_restricted_release_detail_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class SectorSpotRequest(BaseModel):
+    indicator: str = Field(..., title="概念类型", description="可选择'新浪行业', '启明星行业', '概念', '地域', '行业'")
 
 
 # 东方财富网-数据中心-限售股解禁-解禁详情一览
@@ -108,6 +127,11 @@ async def post_stock_restricted_release_queue_em(request: SymbolRequest):
         return stock_restricted_release_queue_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class SymbolDateRequest(BaseModel):
+    symbol: str = Field(..., title="个股代码", description="例：600000")
+    date: str = Field(..., title="时间", description="通过请求stock_restricted_release_queue_em获取")
 
 
 # 东方财富网-数据中心-个股限售解禁-解禁股东

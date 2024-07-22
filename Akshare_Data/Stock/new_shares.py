@@ -2,10 +2,13 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import DateRequest, StockRequest
 from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
+
+
+class StockRequest(BaseModel):
+    stock: str = Field(..., title="指定个股代码", description="例：000066")
 
 
 # 新浪财经-发行与分配-新股发行

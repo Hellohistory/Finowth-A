@@ -7,8 +7,12 @@ from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
 router = APIRouter()
 
 
+class StockHotXQRequest(BaseModel):
+    symbol: str = Field(..., title="数据类型", description="可选择'本周新增', '最热门'")
+
+
 @router.post("/stock_hot_follow_xq", operation_id="post_stock_hot_follow_xq")
-async def post_stock_hot_follow_xq(request: SymbolRequest):
+async def post_stock_hot_follow_xq(request: StockHotXQRequest):
     """
     接口: stock_hot_follow_xq
 
@@ -29,7 +33,7 @@ async def post_stock_hot_follow_xq(request: SymbolRequest):
 
 # 雪球-沪深股市-热度排行榜-讨论排行榜
 @router.post("/stock_hot_tweet_xq", operation_id="post_stock_hot_tweet_xq")
-async def post_stock_hot_tweet_xq(request: SymbolRequest):
+async def post_stock_hot_tweet_xq(request: StockHotXQRequest):
     """
     接口: stock_hot_tweet_xq
 
@@ -48,12 +52,8 @@ async def post_stock_hot_tweet_xq(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-class StockHotDealXQRequest(BaseModel):
-    symbol: str = Field(..., title="请求类型", description="可选择'本周新增', '最热门'")
-
-
 @router.post("/stock_hot_deal_xq", operation_id="post_stock_hot_deal_xq")
-def post_stock_hot_deal_xq(request: StockHotDealXQRequest):
+def post_stock_hot_deal_xq(request: StockHotXQRequest):
     """
     接口: stock_hot_deal_xq
 

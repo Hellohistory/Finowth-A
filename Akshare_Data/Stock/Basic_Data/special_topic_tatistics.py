@@ -55,9 +55,13 @@ async def post_stock_cg_lawsuit_cninfo(request: JuChaoSymbolDateRangeRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class JuChaoDateRequest(BaseModel):
+    date: str = Field(..., title="指定时间", description="例：20210930")
+
+
 # 巨潮资讯-数据中心-专题统计-公司治理-股权质押
 @router.post("/stock_cg_equity_mortgage_cninfo", operation_id="post_stock_cg_equity_mortgage_cninfo")
-async def post_stock_cg_equity_mortgage_cninfo(request: DateRequest):
+async def post_stock_cg_equity_mortgage_cninfo(request: JuChaoDateRequest):
     """
     接口: stock_cg_equity_mortgage_cninfo
 

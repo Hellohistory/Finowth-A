@@ -1,5 +1,5 @@
-from fastapi import FastAPI, APIRouter, HTTPException
 import akshare as ak
+from fastapi import FastAPI, APIRouter, HTTPException
 
 app = FastAPI()
 router = APIRouter()

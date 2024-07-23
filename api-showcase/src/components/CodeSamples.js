@@ -112,8 +112,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
     const params = Object.entries(postParams)
       .map(([key, value]) => `        "${key}": ${JSON.stringify(value)}`)
       .join(',\n');
-    return `use reqwest::{Client, Response, Error};
+    return `use reqwest::{Client, Response};
 use serde_json::json;
+use std::error::Error;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
@@ -138,7 +139,7 @@ ${params}
 
     Ok(())
 }`;
-  }
+}
 };
 
 const generateCppSample = (api, postParams) => {

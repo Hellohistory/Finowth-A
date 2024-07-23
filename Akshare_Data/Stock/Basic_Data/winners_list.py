@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data_pandas, sanitize_data, sanitize_data_numpy
+from Akshare_Data.utility_function import sanitize_data_pandas, sanitize_data
 
 router = APIRouter()
 
@@ -26,7 +26,7 @@ async def post_stock_lhb_detail_em(request: DongCaiWinnerListDateRangeRequest):
     """
     try:
         stock_lhb_detail_em_df = ak.stock_lhb_detail_em(start_date=request.start_date, end_date=request.end_date)
-        stock_lhb_detail_em_df = sanitize_data_numpy(stock_lhb_detail_em_df)
+        stock_lhb_detail_em_df = sanitize_data_pandas(stock_lhb_detail_em_df)
 
         return stock_lhb_detail_em_df.to_dict(orient="records")
     except Exception as e:

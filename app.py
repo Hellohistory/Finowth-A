@@ -131,7 +131,7 @@ def process_api_info() -> List[APIInfo]:
                 api_name=api_name,
                 api_path=path,
                 method=method,
-                description=f"{api_summary} - {api_description}",
+                description=api_description,
                 parameters=parameters
             )
             api_info_list.append(api_info)

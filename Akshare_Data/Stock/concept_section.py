@@ -25,7 +25,7 @@ def get_stock_board_concept_name_em():
 
 
 class DongCaiBankuaiSymbolRequest(BaseModel):
-    symbol: str = Field(..., title="板块类型",
+    symbol: str = Field(..., title="概念名称",
                         description="例：'车联网'; 可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有行业名称")
 
 
@@ -49,7 +49,7 @@ async def post_stock_board_concept_cons_em(request: DongCaiBankuaiSymbolRequest)
 
 
 class ConceptHistRequest(BaseModel):
-    symbol: str = Field(..., title="板块类型",
+    symbol: str = Field(..., title="概念名称",
                         description="例：'车联网'; 可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有行业名称")
     period: str = Field(..., title="时间周期", description="'daily(天)', 'weekly(周)', 'monthly(月)'")
     start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
@@ -61,6 +61,8 @@ class ConceptHistRequest(BaseModel):
 @router.post("/stock_board_concept_hist_em", operation_id="post_stock_board_concept_hist_em")
 async def post_stock_board_concept_hist_em(request: ConceptHistRequest):
     """
+    接口暂时损坏，等待修复
+
     接口: stock_board_concept_hist_em
 
     目标地址: http://quote.eastmoney.com/bk/90.BK0715.html(示例)
@@ -83,8 +85,8 @@ async def post_stock_board_concept_hist_em(request: ConceptHistRequest):
 
 
 class ConceptHistMinRequest(BaseModel):
-    symbol: str = Field(..., title="板块类型",
-                        description="可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有概念代码")
+    symbol: str = Field(..., title="概念名称",
+                        description="例：长寿药，可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有概念名称")
     period: str = Field(..., title="时间周期",
                         description="可选择1分钟:'1',5分钟:'5',15分钟:'15',30分钟:'30',60分钟:'60'")
 
@@ -99,7 +101,7 @@ async def post_stock_board_concept_hist_min_em(request: ConceptHistMinRequest):
 
     描述: 东方财富-沪深板块-概念板块-分时历史行情数据
 
-    限量: 单次返回指定个股和 period 的历史数据
+    限量: 单次返回指定个股和时间周期的历史数据
     """
     try:
         stock_board_concept_hist_min_em_df = ak.stock_board_concept_hist_min_em(

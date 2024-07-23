@@ -42,7 +42,8 @@ def get_stock_board_industry_summary_ths():
 
 
 class IndustryIndexRequest(BaseModel):
-    symbol: str = Field(..., title="", description="")
+    symbol: str = Field(..., title="概念名称",
+                        description="例：元件，可以通过调用stock_board_industry_name_ths查看同花顺的所有行业名称")
     start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
     end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
 
@@ -65,8 +66,8 @@ async def post_stock_board_industry_index_ths(request: IndustryIndexRequest):
 
 
 class SymbolRequest(BaseModel):
-    symbol: str = Field(..., title="板块类型",
-                        description="可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有概念代码")
+    symbol: str = Field(..., title="概念名称",
+                        description="例：小金属，可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有概念名称")
 
 
 # 东方财富-沪深板块-行业板块-板块成份
@@ -79,7 +80,7 @@ async def post_stock_board_industry_cons_em(request: SymbolRequest):
 
     描述: 东方财富-沪深板块-行业板块-板块成份
 
-    限量: 单次返回指定个股的所有成份股
+    限量: 单次返回指定概念板块的所有成份股
     """
     try:
         stock_board_industry_cons_em_df = ak.stock_board_industry_cons_em(symbol=request.symbol)
@@ -89,8 +90,8 @@ async def post_stock_board_industry_cons_em(request: SymbolRequest):
 
 
 class IndustryHistRequest(BaseModel):
-    symbol: str = Field(..., title="板块类型",
-                        description="可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有概念代码")
+    symbol: str = Field(..., title="概念名称",
+                        description="例：小金属，可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有概念名称")
     start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
     end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
     period: str = Field(..., title="时间周期", description="可选择'日k', '周k', '月k'")
@@ -124,8 +125,8 @@ async def post_stock_board_industry_hist_em(request: IndustryHistRequest):
 
 
 class IndustryHistMinRequest(BaseModel):
-    symbol: str = Field(..., title="板块类型",
-                        description="可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有概念代码")
+    symbol: str = Field(..., title="概念名称",
+                        description="例：小金属，可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有概念名称")
     period: str = Field(..., title="时间周期",
                         description="可选择1分钟:'1',5分钟:'5',15分钟:'15',30分钟:'30',60分钟:'60'")
 

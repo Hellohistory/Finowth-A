@@ -2,7 +2,6 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.request_model import DateRequest
 from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
 
 router = APIRouter()

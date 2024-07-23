@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data_numpy
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -30,9 +30,13 @@ async def post_stock_zyjs_ths(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="携带市场标识的股票代码", description="例：SH688041")
+
+
 # 东方财富网-个股-主营构成
 @router.post("/stock_zygc_em", operation_id="post_stock_zygc_em")
-async def post_stock_zygc_em(request: SymbolRequest):
+async def post_stock_zygc_em(request: DongCaiSymbolRequest):
     """
     接口: stock_zygc_em
 
@@ -44,9 +48,9 @@ async def post_stock_zygc_em(request: SymbolRequest):
     """
     try:
         stock_zygc_em_df = ak.stock_zygc_em(symbol=request.symbol)
-        sanitized_data = stock_zygc_em_df.applymap(sanitize_data_numpy)
+        stock_zygc_em_df = sanitize_data_pandas(stock_zygc_em_df)
 
-        return sanitized_data.to_dict(orient="records")
+        return stock_zygc_em_df.to_dict(orient="records")
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

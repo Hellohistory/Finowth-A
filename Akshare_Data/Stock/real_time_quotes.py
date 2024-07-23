@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.Stock.stock_market_overview import sanitize_data
+from Akshare_Data.utility_function import sanitize_data
 
 router = APIRouter()
 

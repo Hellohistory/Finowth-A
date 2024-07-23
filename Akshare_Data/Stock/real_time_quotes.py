@@ -31,9 +31,13 @@ async def post_stock_individual_spot_xq(request: ASymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class DongCaiASymbolRequest(BaseModel):
+    symbol: str = Field(..., title="股票代码", description="例：000001")
+
+
 # 东方财富-个股-股票信息
 @router.post("/stock_individual_info_em", operation_id="post_stock_individual_info_em")
-async def post_stock_individual_info_em(request: ASymbolRequest):
+async def post_stock_individual_info_em(request: DongCaiASymbolRequest):
     """
     接口: stock_individual_info_em
 
@@ -52,7 +56,7 @@ async def post_stock_individual_info_em(request: ASymbolRequest):
 
 # 东方财富-行情报价
 @router.post("/stock_bid_ask_em", operation_id="post_stock_bid_ask_em")
-async def post_stock_bid_ask_em(request: ASymbolRequest):
+async def post_stock_bid_ask_em(request: DongCaiASymbolRequest):
     """
     接口: stock_bid_ask_em
 

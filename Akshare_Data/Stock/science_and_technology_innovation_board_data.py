@@ -26,7 +26,8 @@ async def get_stock_zh_kcb_spot():
 
 class StockDailyRequest(BaseModel):
     symbol: str = Field(..., title="指定个股(需带市场标识)", description="例如sh688008")
-    adjust: str = Field(..., title="复权类型", description="qfq: 返回前复权后的数据; "
+    adjust: str = Field(..., title="复权类型", description="默认为空: 返回不复权的数据;"
+                                                           "qfq: 返回前复权后的数据; "
                                                            "hfq: 返回后复权后的数据; "
                                                            "hfq-factor: 返回后复权因子; "
                                                            "hfq-factor: 返回前复权因子")
@@ -76,7 +77,14 @@ class StockReportRequest(BaseModel):
 @router.post("/stock_zh_kcb_report_em", operation_id="post_stock_zh_kcb_report_em")
 async def post_stock_zh_kcb_report_em(request: StockReportRequest):
     """
+    有概率能获取，有概率无法获取，需排查问题
+
+    接口: stock_zh_kcb_report_em
+
+    目标地址: https://data.eastmoney.com/notices/kcb.html
+
     描述: 东方财富-科创板报告数据
+
     限量: 单次返回所有科创板上市公司的报告数据
     """
     try:

@@ -108,6 +108,8 @@ class XinLangDayMinute(BaseModel):
 @router.post("/stock_intraday_sina", operation_id="post_stock_intraday_sina")
 async def post_stock_intraday_sina(request: XinLangDayMinute):
     """
+    接口损坏，暂无法使用
+
     接口: stock_intraday_sina
 
     目标地址: https://vip.stock.finance.sina.com.cn/quotes_service/view/cn_bill.php?symbol=sz000001

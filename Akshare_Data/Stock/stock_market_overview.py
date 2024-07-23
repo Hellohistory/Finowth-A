@@ -87,7 +87,7 @@ def get_stock_sse_deal_daily(data: SseDealStockDataRequest) -> list[dict]:
 
 
 class SectorSummaryRequest(BaseModel):
-    symbol: str = Field(..., title="指定个股", description="股票代码")
+    symbol: str = Field(..., title="指定时间类型", description="可选择'当月', '当年'")
     ym_date: str = Field(..., title="指定年月", description="例如202203")
 
 
@@ -111,7 +111,7 @@ async def post_stock_szse_sector_summary(request: SectorSummaryRequest):
 
 
 class AreaSummaryRequest(BaseModel):
-    ym_date: str = Field(..., title="指定交易日", description="例如202406")
+    ym_date: str = Field(..., title="指定交易月", description="例如202406")
 
 
 @router.post("/stock_szse_area_summary", operation_id="post_stock_szse_area_summary")

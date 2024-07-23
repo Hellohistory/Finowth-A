@@ -2,6 +2,7 @@
 
 
 import akshare as ak
+import pandas as pd
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
@@ -50,8 +51,22 @@ async def post_stock_szse_summary(request: DateRequest):
         raise HTTPException(status_code=500, detail=f"Error retrieving SZSE summary: {str(e)}")
 
 
-@router.post("/stock_sse_deal_daily", operation_id="post_stock_sse_deal_daily")
-async def post_stock_sse_deal_daily(request: DateRequest):
+class SseDealStockDataRequest(BaseModel):
+    date: str = Field(..., title="指定时间", description="例：20240717")
+
+
+def sanitize_data_sse_deal(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    清洗数据：标准化列名等
+    """
+    for col in df.select_dtypes(include=['category', 'object']).columns:
+        df[col] = df[col].astype(str)
+    df.columns = df.columns.str.strip()
+    return df
+
+
+@router.post("/stock_sse_deal_daily")
+def get_stock_sse_deal_daily(data: SseDealStockDataRequest) -> list[dict]:
     """
     接口: stock_sse_deal_daily
 
@@ -62,11 +77,13 @@ async def post_stock_sse_deal_daily(request: DateRequest):
     限量: 单次返回指定日期的每日概况数据, 当前交易日数据需要在收盘后获取; 注意在 20211227（包含）之后输出格式变化
     """
     try:
-        stock_sse_deal_daily_df = ak.stock_sse_deal_daily(date=request.date)
-        sanitized_data = stock_sse_deal_daily_df.to_dict(orient="records")
-        return sanitized_data
+        stock_sse_deal_daily_df = ak.stock_sse_deal_daily(date=data.date)
+        cleaned_data = sanitize_data_sse_deal(stock_sse_deal_daily_df)
+        data_dict = cleaned_data.to_dict(orient="records")
+        return data_dict
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error retrieving SSE daily deal: {str(e)}")
+        print(f"错误信息: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 class SectorSummaryRequest(BaseModel):

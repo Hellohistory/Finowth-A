@@ -57,7 +57,7 @@
 
 <script>
 import axios from 'axios';
-import { generateCodeSample } from './CodeSamples';
+import {generateCodeSample} from './CodeSamples';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/default.css';
 
@@ -81,8 +81,9 @@ export default {
   computed: {
     filteredApiInfo() {
       return this.apiInfo.filter(api =>
-          api.api_path.includes(this.searchQuery) ||
-          api.description.includes(this.searchQuery)
+          this.searchFields(api).some(field =>
+              field.toLowerCase().includes(this.searchQuery.toLowerCase())
+          )
       );
     },
     highlightedCodeSample() {
@@ -101,6 +102,13 @@ export default {
     this.apiInfo = response.data;
   },
   methods: {
+    searchFields(api) {
+      return [api.api_path, api.description, api.api_name || ''];
+    },
+    searchApi() {
+      // 触发重新计算过滤的API列表
+      this.$forceUpdate();
+    },
     selectApi(api) {
       this.selectedApi = api;
       this.postParams = {};
@@ -108,7 +116,6 @@ export default {
       this.error = null;
     },
     updateCodeSample(api) {
-      // 为所有参数创建示例代码，包括空值的参数
       const params = {};
       api.parameters.forEach(param => {
         params[param.name] = this.postParams[param.name] || '';
@@ -118,7 +125,6 @@ export default {
     async runApi(api) {
       this.loading = true;
       try {
-        // 为所有参数创建请求体，包括空值的参数
         const params = {};
         api.parameters.forEach(param => {
           params[param.name] = this.postParams[param.name] || '';

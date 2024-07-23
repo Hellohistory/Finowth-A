@@ -87,6 +87,8 @@ def post_stock_hot_rank_wc(request: StockHotRankWCRequest):
     """
     try:
         stock_hot_rank_wc_df = ak.stock_hot_rank_wc(date=request.date)
+        stock_hot_rank_wc_df = sanitize_data_pandas(stock_hot_rank_wc_df)
+
         return stock_hot_rank_wc_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -141,6 +143,8 @@ def get_stock_hk_hot_rank_em():
     """
     try:
         stock_hk_hot_rank_em_df = ak.stock_hk_hot_rank_em()
+        stock_hk_hot_rank_em_df = sanitize_data_pandas(stock_hk_hot_rank_em_df)
+
         return stock_hk_hot_rank_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

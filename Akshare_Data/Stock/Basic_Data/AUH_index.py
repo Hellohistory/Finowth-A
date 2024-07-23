@@ -9,7 +9,7 @@ router = APIRouter()
 
 class JuChaoSymbolDateRequest(BaseModel):
     symbol: str = Field(..., title="分类类别", description="可选择'证监会行业分类', '国证行业分类'")
-    date: str = Field(..., title="指定交易日", description="例：20210910")
+    date: str = Field(..., title="指定交易日(只能获取近一年内的数据)", description="例：20240617")
 
 
 # 巨潮资讯-数据中心-行业分析-行业市盈率

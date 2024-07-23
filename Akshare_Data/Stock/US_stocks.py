@@ -43,6 +43,31 @@ def get_stock_us_spot():
     """
     try:
         us_stock_current_df = ak.stock_us_spot()
+
+        # 字段映射
+        columns_mapping = {
+            "name": "公司名称",
+            "cname": "中文名称",
+            "category": "行业类别",
+            "symbol": "股票代码",
+            "price": "当前价格",
+            "diff": "价格变动",
+            "chg": "涨跌幅",
+            "preclose": "前收盘价",
+            "open": "开盘价",
+            "high": "最高价",
+            "low": "最低价",
+            "amplitude": "振幅",
+            "volume": "成交量",
+            "mktcap": "市值",
+            "pe": "市盈率",
+            "market": "市场",
+            "category_id": "行业类别ID"
+        }
+
+        # 重命名列
+        us_stock_current_df.rename(columns=columns_mapping, inplace=True)
+
         return us_stock_current_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

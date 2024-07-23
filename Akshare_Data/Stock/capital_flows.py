@@ -222,7 +222,8 @@ async def post_stock_sector_fund_flow_summary(request: DongCaiZiJinSymbolRequest
     限量: 单次获取指定行业的个股资金流
     """
     try:
-        stock_sector_fund_flow_summary_df = ak.stock_sector_fund_flow_summary(symbol=request.symbol, indicator="今日")
+        stock_sector_fund_flow_summary_df = ak.stock_sector_fund_flow_summary(symbol=request.symbol,
+                                                                              indicator=request.indicator)
         stock_sector_fund_flow_summary_df = sanitize_data_pandas(stock_sector_fund_flow_summary_df)
 
         return stock_sector_fund_flow_summary_df.to_dict(orient="records")

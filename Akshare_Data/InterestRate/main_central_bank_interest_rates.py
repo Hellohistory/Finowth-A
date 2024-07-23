@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # 美联储利率决议报告
-@router.get("/macro_bank_usa_interest_rate", operation_id="get_macro_bank_usa_interest_rate")
-async def get_macro_bank_usa_interest_rate():
+@router.get("/interest_macro_bank_usa_interest_rate", operation_id="get_macro_bank_usa_interest_rate")
+async def get_interest_macro_bank_usa_interest_rate():
     """
     接口: macro_bank_usa_interest_rate
 
@@ -18,15 +18,15 @@ async def get_macro_bank_usa_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    macro_bank_usa_interest_rate = ak.macro_bank_usa_interest_rate()
-    macro_bank_usa_interest_rate_df = sanitize_data_pandas(macro_bank_usa_interest_rate)
+    interest_macro_bank_usa_interest_rate = ak.macro_bank_usa_interest_rate()
+    interest_macro_bank_usa_interest_rate_df = sanitize_data_pandas(interest_macro_bank_usa_interest_rate)
 
-    return macro_bank_usa_interest_rate_df.to_dict(orient="records")
+    return interest_macro_bank_usa_interest_rate_df.to_dict(orient="records")
 
 
 # 欧洲央行决议报告
-@router.get("/macro_bank_euro_interest_rate", operation_id="get_macro_bank_euro_interest_rate")
-async def get_macro_bank_euro_interest_rate():
+@router.get("/interest_macro_bank_euro_interest_rate", operation_id="get_macro_bank_euro_interest_rate")
+async def get_interest_macro_bank_euro_interest_rate():
     """
     接口: macro_bank_euro_interest_rate
 
@@ -36,15 +36,15 @@ async def get_macro_bank_euro_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    macro_bank_euro_interest_rate = ak.macro_bank_euro_interest_rate()
-    macro_bank_euro_interest_rate_df = sanitize_data_pandas(macro_bank_euro_interest_rate)
+    interest_macro_bank_euro_interest_rate = ak.macro_bank_euro_interest_rate()
+    interest_macro_bank_euro_interest_rate_df = sanitize_data_pandas(interest_macro_bank_euro_interest_rate)
 
-    return macro_bank_euro_interest_rate_df.to_dict(orient="records")
+    return interest_macro_bank_euro_interest_rate_df.to_dict(orient="records")
 
 
 # 新西兰联储决议报告
-@router.get("/macro_bank_newzealand_interest_rate", operation_id="get_macro_bank_newzealand_interest_rate")
-async def get_macro_bank_newzealand_interest_rate():
+@router.get("/interest_macro_bank_newzealand_interest_rate", operation_id="get_macro_bank_newzealand_interest_rate")
+async def get_interest_macro_bank_newzealand_interest_rate():
     """
     接口: macro_bank_newzealand_interest_rate
 
@@ -54,15 +54,15 @@ async def get_macro_bank_newzealand_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    macro_bank_newzealand_interest_rate = ak.macro_bank_newzealand_interest_rate()
-    macro_bank_newzealand_interest_rate_df = sanitize_data_pandas(macro_bank_newzealand_interest_rate)
+    interest_macro_bank_newzealand_interest_rate = ak.macro_bank_newzealand_interest_rate()
+    interest_macro_bank_newzealand_interest_rate_df = sanitize_data_pandas(interest_macro_bank_newzealand_interest_rate)
 
-    return macro_bank_newzealand_interest_rate_df.to_dict(orient="records")
+    return interest_macro_bank_newzealand_interest_rate_df.to_dict(orient="records")
 
 
 # 瑞士央行利率决议报告
-@router.get("/macro_bank_switzerland_interest_rate", operation_id="get_macro_bank_euro_interest_rate")
-async def get_macro_bank_switzerland_interest_rate():
+@router.get("/interest_macro_bank_switzerland_interest_rate", operation_id="get_macro_bank_euro_interest_rate")
+async def get_interest_macro_bank_switzerland_interest_rate():
     """
     接口: macro_bank_switzerland_interest_rate
 
@@ -72,15 +72,15 @@ async def get_macro_bank_switzerland_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    macro_bank_switzerland_interest_rate = ak.macro_bank_switzerland_interest_rate()
-    macro_bank_switzerland_interest_rate_df = sanitize_data_pandas(macro_bank_switzerland_interest_rate)
+    interest_macro_bank_switzerland_interest_rate = ak.macro_bank_switzerland_interest_rate()
+    interest_macro_bank_switzerland_interest_rate_df = sanitize_data_pandas(interest_macro_bank_switzerland_interest_rate)
 
-    return macro_bank_switzerland_interest_rate_df.to_dict(orient="records")
+    return interest_macro_bank_switzerland_interest_rate_df.to_dict(orient="records")
 
 
 # 英国央行决议报告
-@router.get("/macro_bank_english_interest_rate", operation_id="get_macro_bank_english_interest_rate")
-async def get_macro_bank_english_interest_rate():
+@router.get("/interest_macro_bank_english_interest_rate", operation_id="get_macro_bank_english_interest_rate")
+async def get_interest_macro_bank_english_interest_rate():
     """
     接口: macro_bank_english_interest_rate
 
@@ -90,15 +90,15 @@ async def get_macro_bank_english_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    macro_bank_english_interest_rate = ak.macro_bank_english_interest_rate()
-    macro_bank_english_interest_rate_df = sanitize_data_pandas(macro_bank_english_interest_rate)
+    interest_macro_bank_english_interest_rate = ak.macro_bank_english_interest_rate()
+    interest_macro_bank_english_interest_rate_df = sanitize_data_pandas(interest_macro_bank_english_interest_rate)
 
-    return macro_bank_english_interest_rate_df.to_dict(orient="records")
+    return interest_macro_bank_english_interest_rate_df.to_dict(orient="records")
 
 
 # 澳洲联储决议报告
-@router.get("/macro_bank_australia_interest_rate", operation_id="get_macro_bank_australia_interest_rate")
-async def get_macro_bank_australia_interest_rate():
+@router.get("/interest_macro_bank_australia_interest_rate", operation_id="get_macro_bank_australia_interest_rate")
+async def get_interest_macro_bank_australia_interest_rate():
     """
     接口: macro_bank_australia_interest_rate
 
@@ -108,15 +108,15 @@ async def get_macro_bank_australia_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    macro_bank_australia_interest_rate = ak.macro_bank_australia_interest_rate()
-    macro_bank_australia_interest_rate_df = sanitize_data_pandas(macro_bank_australia_interest_rate)
+    interest_macro_bank_australia_interest_rate = ak.macro_bank_australia_interest_rate()
+    interest_macro_bank_australia_interest_rate_df = sanitize_data_pandas(interest_macro_bank_australia_interest_rate)
 
-    return macro_bank_australia_interest_rate_df.to_dict(orient="records")
+    return interest_macro_bank_australia_interest_rate_df.to_dict(orient="records")
 
 
 # 日本利率决议报告
-@router.get("/macro_bank_japan_interest_rate", operation_id="get_macro_bank_japan_interest_rate")
-async def get_macro_bank_japan_interest_rate():
+@router.get("/interest_macro_bank_japan_interest_rate", operation_id="get_macro_bank_japan_interest_rate")
+async def get_interest_macro_bank_japan_interest_rate():
     """
     接口: macro_bank_japan_interest_rate
 
@@ -126,15 +126,15 @@ async def get_macro_bank_japan_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    macro_bank_japan_interest_rate = ak.macro_bank_japan_interest_rate()
-    macro_bank_japan_interest_rate_df = sanitize_data_pandas(macro_bank_japan_interest_rate)
+    interest_macro_bank_japan_interest_rate = ak.macro_bank_japan_interest_rate()
+    interest_macro_bank_japan_interest_rate_df = sanitize_data_pandas(interest_macro_bank_japan_interest_rate)
 
-    return macro_bank_japan_interest_rate_df.to_dict(orient="records")
+    return interest_macro_bank_japan_interest_rate_df.to_dict(orient="records")
 
 
 # 俄罗斯利率决议报告
-@router.get("/macro_bank_russia_interest_rate", operation_id="get_macro_bank_russia_interest_rate")
-async def get_macro_bank_russia_interest_rate():
+@router.get("/interest_macro_bank_russia_interest_rate", operation_id="get_macro_bank_russia_interest_rate")
+async def get_interest_macro_bank_russia_interest_rate():
     """
     接口: macro_bank_russia_interest_rate
 
@@ -144,15 +144,15 @@ async def get_macro_bank_russia_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    macro_bank_russia_interest_rate = ak.macro_bank_russia_interest_rate()
-    macro_bank_russia_interest_rate_df = sanitize_data_pandas(macro_bank_russia_interest_rate)
+    interest_macro_bank_russia_interest_rate = ak.macro_bank_russia_interest_rate()
+    interest_macro_bank_russia_interest_rate_df = sanitize_data_pandas(interest_macro_bank_russia_interest_rate)
 
-    return macro_bank_russia_interest_rate_df.to_dict(orient="records")
+    return interest_macro_bank_russia_interest_rate_df.to_dict(orient="records")
 
 
 # 印度利率决议报告
-@router.get("/macro_bank_india_interest_rate", operation_id="get_macro_bank_euro_interest_rate")
-async def get_macro_bank_india_interest_rate():
+@router.get("/interest_macro_bank_india_interest_rate", operation_id="get_macro_bank_euro_interest_rate")
+async def get_interest_macro_bank_india_interest_rate():
     """
     接口: macro_bank_india_interest_rate
 
@@ -162,15 +162,15 @@ async def get_macro_bank_india_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    macro_bank_india_interest_rate = ak.macro_bank_india_interest_rate()
-    macro_bank_india_interest_rate_df = sanitize_data_pandas(macro_bank_india_interest_rate)
+    interest_macro_bank_india_interest_rate = ak.macro_bank_india_interest_rate()
+    interest_macro_bank_india_interest_rate_df = sanitize_data_pandas(interest_macro_bank_india_interest_rate)
 
-    return macro_bank_india_interest_rate_df.to_dict(orient="records")
+    return interest_macro_bank_india_interest_rate_df.to_dict(orient="records")
 
 
 # 巴西利率决议报告
-@router.get("/macro_bank_brazil_interest_rate", operation_id="get_macro_bank_brazil_interest_rate")
-async def get_macro_bank_brazil_interest_rate():
+@router.get("/interest_macro_bank_brazil_interest_rate", operation_id="get_macro_bank_brazil_interest_rate")
+async def get_interest_macro_bank_brazil_interest_rate():
     """
     接口: macro_bank_brazil_interest_rate
 
@@ -180,7 +180,7 @@ async def get_macro_bank_brazil_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    macro_bank_brazil_interest_rate = ak.macro_bank_brazil_interest_rate()
-    macro_bank_brazil_interest_rate_df = sanitize_data_pandas(macro_bank_brazil_interest_rate)
+    interest_macro_bank_brazil_interest_rate = ak.macro_bank_brazil_interest_rate()
+    interest_macro_bank_brazil_interest_rate_df = sanitize_data_pandas(interest_macro_bank_brazil_interest_rate)
 
-    return macro_bank_brazil_interest_rate_df.to_dict(orient="records")
+    return interest_macro_bank_brazil_interest_rate_df.to_dict(orient="records")

@@ -6,6 +6,7 @@ from fastapi.openapi.utils import get_openapi
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
 
+# 股票
 from Akshare_Data.Stock.AH_data import router as router1
 from Akshare_Data.Stock.A_stocksother_data import router as router2
 from Akshare_Data.Stock.Basic_Data.AUH_index import router as router50
@@ -54,6 +55,9 @@ from Akshare_Data.Stock.stock_pledge import router as router14
 from Akshare_Data.Stock.stock_popularity import router as router38
 from Akshare_Data.Stock.technical_indicators import router as router41
 from Akshare_Data.Stock.time_sharing_data import router as router4
+# 现货
+from Akshare_Data.Spot.spot_trend import router as router53
+from Akshare_Data.Spot.variety_list import router as router39
 
 app = FastAPI()
 # 配置CORS
@@ -210,7 +214,7 @@ app.include_router(router35)
 app.include_router(router36)
 app.include_router(router37)
 app.include_router(router38)
-
+app.include_router(router39)
 app.include_router(router40)
 app.include_router(router41)
 app.include_router(router42)
@@ -224,6 +228,7 @@ app.include_router(router48)
 app.include_router(router50)
 app.include_router(router51)
 app.include_router(router52)
+app.include_router(router53)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

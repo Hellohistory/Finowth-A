@@ -375,6 +375,7 @@ async def post_stock_profit_sheet_by_report_delisted_em(request: TuiShiSymbolReq
     """
     try:
         stock_profit_sheet_by_report_delisted_em_df = ak.stock_profit_sheet_by_report_delisted_em(symbol=request.symbol)
+        stock_profit_sheet_by_report_delisted_em_df = sanitize_data_pandas(stock_profit_sheet_by_report_delisted_em_df)
         return stock_profit_sheet_by_report_delisted_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -396,6 +397,7 @@ async def post_stock_cash_flow_sheet_by_report_delisted_em(request: TuiShiSymbol
     try:
         stock_cash_flow_sheet_by_report_delisted_em_df = ak.stock_cash_flow_sheet_by_report_delisted_em(
             symbol=request.symbol)
+        stock_cash_flow_sheet_by_report_delisted_em_df = sanitize_data_pandas(stock_cash_flow_sheet_by_report_delisted_em_df)
         return stock_cash_flow_sheet_by_report_delisted_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -423,6 +425,7 @@ async def post_stock_financial_hk_report_em(request: DongCaiHKFinancialRequest):
     try:
         stock_financial_hk_report_em_df = ak.stock_financial_hk_report_em(stock=request.stock, symbol=request.symbol,
                                                                           indicator=request.indicator)
+        stock_financial_hk_report_em_df = sanitize_data_pandas(stock_financial_hk_report_em_df)
         return stock_financial_hk_report_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

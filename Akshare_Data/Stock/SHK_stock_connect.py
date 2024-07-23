@@ -241,7 +241,7 @@ async def post_stock_hsgt_stock_statistics_em(request: DongCaiSymbolDateRangeReq
 
 
 class DongCaiMarketDateRangeRequest(BaseModel):
-    symbol: str = Field(..., title="市场", description="'北向持股', '沪股通持股', '深股通持股', '南向持股'")
+    symbol: str = Field(..., title="市场类型", description="'北向持股', '沪股通持股', '深股通持股', '南向持股'")
     start_date: str = Field(..., title="起始时间(需近期交易日)", description="例：20240701")
     end_date: str = Field(..., title="终止时间(需近期交易日)", description="例：20240701")
 

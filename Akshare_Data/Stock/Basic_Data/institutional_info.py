@@ -78,6 +78,7 @@ async def post_stock_institute_recommend(request: XinLangJiGouSymbolRequest):
     """
     try:
         stock_institute_recommend_df = ak.stock_institute_recommend(symbol=request.symbol)
+        stock_institute_recommend_df = sanitize_data_pandas(stock_institute_recommend_df)
         return stock_institute_recommend_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

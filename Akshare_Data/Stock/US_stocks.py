@@ -141,12 +141,14 @@ class XinLangUStockHistoryRequest(BaseModel):
     symbol: str = Field(..., title="指定美股代码(可请求stock_us_spot_em获取)",
                         description="例如106.TTE")
     adjust: str = Field(..., title="复权类型",
-                        description="默认 adjust=""返回未复权的数据;qfq: 返回前复权后的数据;qfq-factor: 返回前复权因子")
+                        description="默认为空则返回未复权的数据;qfq: 返回前复权后的数据;qfq-factor: 返回前复权因子")
 
 
 @router.post("/stock_us_daily", operation_id="post_stock_us_daily")
 async def post_stock_us_daily(request: XinLangUStockHistoryRequest):
     """
+    出现500错误待修复
+
     接口: stock_us_daily
 
     目标地址: http://finance.sina.com.cn/stock/usstock/sector.shtml

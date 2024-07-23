@@ -49,7 +49,6 @@ def get_stock_hk_main_board_spot_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 新浪财经-港股-实时行情
 @router.get("/stock_hk_spot", operation_id="get_stock_hk_spot")
 def get_stock_hk_spot():
     """
@@ -65,7 +64,32 @@ def get_stock_hk_spot():
     """
     try:
         stock_hk_spot_df = ak.stock_hk_spot()
-        return stock_hk_spot_df.to_dict(orient="records")
+        stock_hk_spot_list = stock_hk_spot_df.to_dict(orient="records")
+
+        # 将字段名转换为中文
+        translated_list = []
+        for item in stock_hk_spot_list:
+            translated_item = {
+                "股票代码": item.get("symbol"),
+                "股票名称": item.get("name"),
+                "英文名称": item.get("engname"),
+                "交易类型": item.get("tradetype"),
+                "最新成交价": item.get("lasttrade"),
+                "前收盘价": item.get("prevclose"),
+                "开盘价": item.get("open"),
+                "最高价": item.get("high"),
+                "最低价": item.get("low"),
+                "成交量": item.get("volume"),
+                "成交额": item.get("amount"),
+                "时间戳": item.get("ticktime"),
+                "买入价": item.get("buy"),
+                "卖出价": item.get("sell"),
+                "价格变动": item.get("pricechange"),
+                "涨跌幅": item.get("changepercent")
+            }
+            translated_list.append(translated_item)
+
+        return translated_list
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -76,9 +100,7 @@ class DongCaiHKStockMinuteRequest(BaseModel):
     period: str = Field(..., title="时间周期",
                         description="可选择'1', '5', '15', '30', '60'; 其中 1 分钟数据返回近 5 个交易日数据且不复权")
     adjust: str = Field(..., title="复权形式",
-                        description="可选择'', 'qfq', 'hfq'; "
-                                    "'': 不复权, 'qfq': 前复权, 'hfq': 后复权, "
-                                    "其中 1 分钟数据返回近 5 个交易日数据且不复权")
+                        description="可选择为空返回不复权信息,'qfq': 前复权, 'hfq': 后复权, 其中 1 分钟数据返回近 5 个交易日数据且不复权")
     start_date: str = Field(..., title="开始时间", description="例：2024-07-01 09:32:00，默认返回所有数据")
     end_date: str = Field(..., title="结束时间", description="2024-07-15 09:32:00，默认返回所有数据")
 

@@ -50,7 +50,7 @@ async def post_stock_board_concept_cons_em(request: DongCaiBankuaiSymbolRequest)
 
 class ConceptHistRequest(BaseModel):
     symbol: str = Field(..., title="概念名称",
-                        description="例：'车联网'; 可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有行业名称")
+                        description="例：'网络安全'; 可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有行业名称")
     period: str = Field(..., title="时间周期", description="'daily(天)', 'weekly(周)', 'monthly(月)'")
     start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
     end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
@@ -61,8 +61,6 @@ class ConceptHistRequest(BaseModel):
 @router.post("/stock_board_concept_hist_em", operation_id="post_stock_board_concept_hist_em")
 async def post_stock_board_concept_hist_em(request: ConceptHistRequest):
     """
-    接口暂时损坏，等待修复
-
     接口: stock_board_concept_hist_em
 
     目标地址: http://quote.eastmoney.com/bk/90.BK0715.html(示例)
@@ -80,6 +78,8 @@ async def post_stock_board_concept_hist_em(request: ConceptHistRequest):
             adjust=request.adjust
         )
         return stock_board_concept_hist_em_df.to_dict(orient="records")
+    except IndexError as e:
+        raise HTTPException(status_code=404, detail="暂无该概念，请通过调用stock_board_concept_name_em接口检索")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

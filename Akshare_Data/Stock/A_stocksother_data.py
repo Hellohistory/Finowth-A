@@ -8,7 +8,7 @@ router = APIRouter()
 
 
 class DateRequest(BaseModel):
-    date: str = Field(..., title="指定交易日", description="例如20230808")
+    date: str = Field(..., title="指定交易日", description="例：20230808")
 
 
 # 东方财富网-数据中心-股市日历-公司动态

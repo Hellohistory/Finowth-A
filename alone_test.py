@@ -1,41 +1,53 @@
+import logging
+
 import akshare as ak
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
 app = FastAPI()
 
-
-# B 股行情数据-新浪财经-实时行情数据
-class IndustryHistMinRequest(BaseModel):
-    symbol: str = Field(..., title="板块类型",
-                        description="可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有概念代码")
-    period: str = Field(..., title="时间周期",
-                        description="可选择1分钟:'1',5分钟:'5',15分钟:'15',30分钟:'30',60分钟:'60'")
+# 配置日志记录
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
-# 东方财富-沪深板块-行业板块-分时历史行情数据
-@app.post("/stock_board_industry_hist_min_em", operation_id="post_stock_board_industry_hist_min_em")
-async def post_stock_board_industry_hist_min_em(request: IndustryHistMinRequest):
+class DongCaiMarketDateRangeRequest(BaseModel):
+    symbol: str = Field(..., title="市场类型", description="'北向持股', '沪股通持股', '深股通持股', '南向持股'")
+    start_date: str = Field(..., title="起始时间(需近期交易日)", description="例：20240701")
+    end_date: str = Field(..., title="终止时间(需近期交易日)", description="例：20240701")
+
+
+# 东方财富网-数据中心-沪深港通-沪深港通持股-机构排行
+@app.post("/stock_hsgt_institution_statistics_em", operation_id="post_stock_hsgt_institution_statistics_em")
+async def post_stock_hsgt_institution_statistics_em(request: DongCaiMarketDateRangeRequest):
     """
-    接口: stock_board_industry_hist_min_em
+    接口: stock_hsgt_institution_statistics_em
 
-    目标地址: http://quote.eastmoney.com/bk/90.BK1027.html
+    目标地址: http://data.eastmoney.com/hsgtcg/InstitutionStatistics.aspx
 
-    描述: 东方财富-沪深板块-行业板块-分时历史行情数据
+    描述: 东方财富网-数据中心-沪深港通-沪深港通持股-机构排行
 
-    限量: 单次返回指定个股和 period 的所有历史数据
+    限量: 单次获取指定市场的所有数据, 该接口只能获取近期的数据
     """
+    logger.info(f"Received request: {request}")
     try:
-        stock_board_industry_hist_min_em_df = ak.stock_board_industry_hist_min_em(
-            symbol=request.symbol,
-            period=request.period
+        stock_hsgt_institution_statistics_em_df = ak.stock_hsgt_institution_statistics_em(
+            market=request.symbol,
+            start_date=request.start_date,
+            end_date=request.end_date
         )
-        return stock_board_industry_hist_min_em_df.to_dict(orient="records")
+
+        if stock_hsgt_institution_statistics_em_df is None or stock_hsgt_institution_statistics_em_df.empty:
+            logger.error("Received empty dataframe")
+            raise HTTPException(status_code=404, detail="未找到相关数据")
+
+        logger.info("Data retrieved successfully")
+        return stock_hsgt_institution_statistics_em_df.to_dict(orient="records")
     except Exception as e:
+        logger.error(f"Error occurred: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 运行 FastAPI 应用
 if __name__ == "__main__":
     import uvicorn
 

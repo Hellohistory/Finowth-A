@@ -58,6 +58,10 @@ from Akshare_Data.Stock.time_sharing_data import router as router4
 # 现货
 from Akshare_Data.Spot.spot_trend import router as router53
 from Akshare_Data.Spot.variety_list import router as router39
+# 利率
+from Akshare_Data.InterestRate.main_central_bank_interest_rates import router as router43
+from Akshare_Data.InterestRate.interbank_lending_rate import router as router47
+from Akshare_Data.InterestRate.fixing_repo_rate import router as router49
 
 app = FastAPI()
 # 配置CORS
@@ -218,13 +222,13 @@ app.include_router(router39)
 app.include_router(router40)
 app.include_router(router41)
 app.include_router(router42)
-
+app.include_router(router43)
 app.include_router(router44)
 app.include_router(router45)
 app.include_router(router46)
-
+app.include_router(router47)
 app.include_router(router48)
-
+app.include_router(router49)
 app.include_router(router50)
 app.include_router(router51)
 app.include_router(router52)

@@ -55,13 +55,19 @@ from Akshare_Data.Stock.stock_pledge import router as router14
 from Akshare_Data.Stock.stock_popularity import router as router38
 from Akshare_Data.Stock.technical_indicators import router as router41
 from Akshare_Data.Stock.time_sharing_data import router as router4
+
 # 现货
 from Akshare_Data.Spot.spot_trend import router as router53
 from Akshare_Data.Spot.variety_list import router as router39
+
 # 利率
 from Akshare_Data.InterestRate.main_central_bank_interest_rates import router as router43
 from Akshare_Data.InterestRate.interbank_lending_rate import router as router47
 from Akshare_Data.InterestRate.fixing_repo_rate import router as router49
+
+# 基金
+# # 私募基金
+from Akshare_Data.Fund.private_equity_funds import router as router54
 
 app = FastAPI()
 # 配置CORS
@@ -233,6 +239,7 @@ app.include_router(router50)
 app.include_router(router51)
 app.include_router(router52)
 app.include_router(router53)
+app.include_router(router54)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

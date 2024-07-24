@@ -116,3 +116,35 @@ def get_stock_ipo_benefit_ths():
             raise HTTPException(status_code=500, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# 东方财富网-行情中心-沪深个股-两网及退市
+@router.get("/stock_zh_a_stop_em", operation_id="get_stock_zh_a_stop_em")
+def get_stock_zh_a_stop_em():
+    """
+    接口: stock_zh_a_stop_em
+
+    目标地址: http://quote.eastmoney.com/center/gridlist.html#staq_net_board
+
+    描述: 东方财富网-行情中心-沪深个股-两网及退市
+
+    限量: 单次返回当前交易日两网及退市的所有股票的行情数据
+    """
+    try:
+        stock_zh_a_stop_em_df = ak.stock_zh_a_stop_em()
+        data = stock_zh_a_stop_em_df.to_dict(orient="records")
+        sanitized_data = sanitize_data(data)
+
+        current_date = datetime.now().strftime("%Y-%m-%d")
+
+        for record in sanitized_data:
+            temp_record = record.copy()
+            record.clear()
+            for key, value in temp_record.items():
+                record[key] = value
+                if key == "序号":
+                    record["日期"] = current_date
+
+        return sanitized_data
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

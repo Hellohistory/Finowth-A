@@ -84,8 +84,8 @@ def get_stock_gddh_em():
 
 
 class DongCaiDateRangeRequest(BaseModel):
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
 
 
 # 东方财富-数据中心-重大合同-重大合同明细

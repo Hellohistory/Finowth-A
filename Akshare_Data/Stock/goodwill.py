@@ -31,7 +31,7 @@ def get_stock_sy_profile_em():
 
 
 class DateRequest(BaseModel):
-    date: str = Field(..., title="指定日期", description="例如20230808")
+    date: str = Field(..., title="指定日期", description="例：20230808")
 
 
 # 东方财富-数据中心-特色数据-商誉-商誉减值预期明细

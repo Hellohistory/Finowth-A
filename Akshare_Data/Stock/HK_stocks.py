@@ -143,9 +143,9 @@ class DongCaiHKStockHistoryRequest(BaseModel):
     symbol: str = Field(..., title="指定港股代码(可通过stock_hk_spot_em获取)",
                         description="例：01611")
     period: str = Field(..., title="时间周期",
-                        description="例如daily; 所有可选参数为：daily(日), weekly(周), monthly(月)")
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+                        description="例：daily; 所有可选参数为：daily(日), weekly(周), monthly(月)")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
     adjust: str = Field(..., title="复权形式",
                         description="默认返回不复权的数据，即此参数为空; qfq: 返回前复权后的数据; hfq: 返回后复权后的数据")
 
@@ -178,7 +178,7 @@ async def post_stock_hk_hist(request: DongCaiHKStockHistoryRequest):
 
 
 class StockDailyRequest(BaseModel):
-    symbol: str = Field(..., title="指定港股代码(可通过stock_hk_spot_em获取)", description="例如01611")
+    symbol: str = Field(..., title="指定港股代码(可通过stock_hk_spot_em获取)", description="例：01611")
     adjust: str = Field(..., title="复权类型", description="默认返回不复权的数据，即此参数为空;"
                                                            "qfq: 返回前复权后的数据; "
                                                            "hfq: 返回后复权后的数据; "

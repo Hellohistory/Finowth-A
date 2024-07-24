@@ -8,11 +8,11 @@ router = APIRouter()
 
 
 class StockHistoryRequest(BaseModel):
-    symbol: str = Field(..., title="指定个股", description="例如000001")
+    symbol: str = Field(..., title="指定个股", description="例：000001")
     period: str = Field(..., title="时间周期",
-                        description="例如daily; 所有可选参数为：daily(日), weekly(周), monthly(月)")
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+                        description="例：daily; 所有可选参数为：daily(日), weekly(周), monthly(月)")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
     adjust: str = Field(..., title="复权形式",
                         description="默认返回不复权的数据，即此参数为空; qfq: 返回前复权后的数据; hfq: 返回后复权后的数据")
 
@@ -45,9 +45,9 @@ async def post_stock_zh_a_hist(request: StockHistoryRequest):
 
 
 class XinLangStockHistoryRequest(BaseModel):
-    symbol: str = Field(..., title="指定个股(需携带市场标识)", description="例如sh600000")
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    symbol: str = Field(..., title="指定个股(需携带市场标识)", description="例：sh600000")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
     adjust: str = Field(..., title="复权形式",
                         description="默认返回不复权的数据，即此参数为空; "
                                     "qfq: 返回前复权后的数据; "
@@ -97,9 +97,9 @@ async def post_stock_zh_a_daily(request: XinLangStockHistoryRequest):
 
 
 class TXStockHistoryRequest(BaseModel):
-    symbol: str = Field(..., title="指定个股(需携带市场标识)", description="例如sz000001")
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    symbol: str = Field(..., title="指定个股(需携带市场标识)", description="例：sz000001")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
     adjust: str = Field(..., title="复权形式",
                         description="默认返回不复权的数据，即此参数为空; "
                                     "qfq: 返回前复权后的数据; "
@@ -143,9 +143,9 @@ async def post_stock_zh_a_hist_tx(request: TXStockHistoryRequest):
 
 
 class KCBCDRDayRequest(BaseModel):
-    symbol: str = Field(..., title="指定个股(需携带市场标识)", description="例如sh689009")
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    symbol: str = Field(..., title="指定个股(需携带市场标识)", description="例：sh689009")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
 
 
 # A 股行情数据-上海证券交易所-科创板-CDR

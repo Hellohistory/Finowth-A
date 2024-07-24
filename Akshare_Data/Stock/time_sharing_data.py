@@ -6,7 +6,7 @@ router = APIRouter()
 
 
 class XinLangMinuteStock(BaseModel):
-    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例如sh600900")
+    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例：sh600900")
     period: str = Field(..., title="时间频率", description="可选值: 1, 5, 15, 30, 60")
     adjust: str = Field(..., title="复权形式", description="默认为空: 返回不复权的数据; "
                                                            "qfq: 返回前复权后的数据; "
@@ -43,7 +43,7 @@ async def post_stock_zh_a_minute(request: XinLangMinuteStock):
 
 
 class DongCaiMinuteRequest(BaseModel):
-    symbol: str = Field(..., title="个股代码", description="例如000001")
+    symbol: str = Field(..., title="个股代码", description="例：000001")
     start_date: str = Field(..., title="开始日期(需精确到分钟)", description="例：2024-07-22 09:30:00")
     end_date: str = Field(..., title="结束日期(需精确到分钟)", description="例：2024-07-22 15:00:00")
     period: str = Field(..., title="时间周期", description="可选值: 1, 5, 15, 30, 60，"
@@ -81,7 +81,7 @@ async def post_stock_zh_a_hist_min_em(request: DongCaiMinuteRequest):
 
 
 class DongCaiDayMinute(BaseModel):
-    symbol: str = Field(..., title="个股代码", description="例如000001")
+    symbol: str = Field(..., title="个股代码", description="例：000001")
 
 
 # 日内分时数据-东财
@@ -106,8 +106,8 @@ async def post_stock_intraday_em(request: DongCaiDayMinute):
 
 
 class XinLangDayMinute(BaseModel):
-    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例如sh600900")
-    date: str = Field(..., title="指定交易日", description="例如20230701，只能获取近期的数据")
+    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例：sh600900")
+    date: str = Field(..., title="指定交易日", description="例：20230701，只能获取近期的数据")
 
 
 # 新浪财经-日内分时数据
@@ -134,9 +134,9 @@ async def post_stock_intraday_sina(request: XinLangDayMinute):
 
 
 class DongCaiPanQianRequest(BaseModel):
-    symbol: str = Field(..., title="个股代码", description="例如600900")
-    start_time: str = Field(..., title="开始时间", description="例如09:30,默认返回所有数据")
-    end_time: str = Field(..., title="结束时间", description="例如09:35,默认返回所有数据")
+    symbol: str = Field(..., title="个股代码", description="例：600900")
+    start_time: str = Field(..., title="开始时间", description="例：09:30,默认返回所有数据")
+    end_time: str = Field(..., title="结束时间", description="例：09:35,默认返回所有数据")
 
 
 # 东方财富-股票行情-盘前数据
@@ -165,7 +165,7 @@ async def post_stock_zh_a_hist_pre_min_em(request: DongCaiPanQianRequest):
 
 
 class TXTickHistoryRequest(BaseModel):
-    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例如sz300494")
+    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例：sz300494")
 
 
 # 腾讯-分笔数据

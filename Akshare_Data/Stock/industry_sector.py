@@ -48,8 +48,8 @@ def get_stock_board_industry_summary_ths():
 class IndustryIndexRequest(BaseModel):
     symbol: str = Field(..., title="概念名称",
                         description="例：元件，可以通过调用stock_board_industry_name_ths查看同花顺的所有行业名称")
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
 
 
 # 同花顺-板块-行业板块-指数日频率数据
@@ -106,8 +106,8 @@ async def post_stock_board_industry_cons_em(request: SymbolRequest):
 class IndustryHistRequest(BaseModel):
     symbol: str = Field(..., title="概念名称",
                         description="例：小金属，可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有概念名称")
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
     period: str = Field(..., title="时间周期", description="可选择'日k', '周k', '月k'")
     adjust: str = Field(..., title="复权形式",
                         description="默认返回不复权的数据，即此参数为空; qfq: 返回前复权后的数据; hfq: 返回后复权后的数据")

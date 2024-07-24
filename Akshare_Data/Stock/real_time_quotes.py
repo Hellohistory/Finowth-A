@@ -9,7 +9,7 @@ router = APIRouter()
 
 class ASymbolRequest(BaseModel):
     symbol: str = Field(..., title="证券代码",
-                        description="可以是A股个股代码(需带市场标识，例如SH600000)，A股场内基金代码，A股指数，美股代码, 美股指数")
+                        description="可以是A股个股代码(需带市场标识，例：SH600000)，A股场内基金代码，A股指数，美股代码, 美股指数")
 
 
 # 雪球-行情中心-个股

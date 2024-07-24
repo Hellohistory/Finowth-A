@@ -6,7 +6,7 @@ router = APIRouter()
 
 
 class SymolIndicatorRequest(BaseModel):
-    symbol: str = Field(..., title="需带市场标识的港股代码", description="例如hk01093")
+    symbol: str = Field(..., title="需带市场标识的港股代码", description="例：hk01093")
     indicator: str = Field(..., title="查询类型",
                            description="可选择'港股', '市盈率', '市净率', '股息率', 'ROE', '市值'")
 

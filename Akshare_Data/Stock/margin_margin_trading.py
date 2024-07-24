@@ -50,8 +50,8 @@ def get_stock_margin_account_info():
 
 
 class DateRangeRequest(BaseModel):
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
 
 
 @router.post("/stock_margin_sse", operation_id="post_stock_margin_sse")

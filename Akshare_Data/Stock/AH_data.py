@@ -28,8 +28,8 @@ def get_stock_zh_ah_spot():
 
 class StockAHDailyRequest(BaseModel):
     symbol: str = Field(..., title="港股股票代码", description="例：02318，可通过stock_zh_ah_name获取")
-    start_year: str = Field(..., title="开始年份", description="例如2000")
-    end_year: str = Field(..., title="结束年份", description="例如2019")
+    start_year: str = Field(..., title="开始年份", description="例：2000")
+    end_year: str = Field(..., title="结束年份", description="例：2019")
     adjust: str = Field(..., title="复权形式", description="默认为空不复权; 'qfq': 前复权, 'hfq': 后复权")
 
 

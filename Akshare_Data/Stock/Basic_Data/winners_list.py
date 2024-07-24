@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 class DongCaiWinnerListDateRangeRequest(BaseModel):
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
 
 
 # 东方财富-龙虎榜单-龙虎榜详情
@@ -61,8 +61,8 @@ async def post_stock_lhb_stock_statistic_em(request: DongCaiWinnerListSymbolRequ
 
 
 class DongCaiWinnerListDateRangeRequest(BaseModel):
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
 
 
 # 东方财富-龙虎榜单-机构买卖每日统计

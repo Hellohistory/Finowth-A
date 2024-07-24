@@ -29,7 +29,7 @@ def get_stock_gpzy_profile_em():
 
 
 class DongcaiCDateRequest(BaseModel):
-    date: str = Field(..., title="查询后具体交易日", description="例如20230808")
+    date: str = Field(..., title="查询后具体交易日", description="例：20230808")
 
 
 # 东方财富-数据中心-特色数据-股权质押-上市公司质押比例

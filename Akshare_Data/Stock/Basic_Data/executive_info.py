@@ -6,7 +6,7 @@ router = APIRouter()
 
 
 class ShSymbolRequest(BaseModel):
-    symbol: str = Field(..., title="指定个股代码或全部", description="可输入全部或者指定个股代码, 例如600000")
+    symbol: str = Field(..., title="指定个股代码或全部", description="可输入全部或者指定个股代码, 例：600000")
 
 
 # 上海证券交易所-董监高人员股份变动

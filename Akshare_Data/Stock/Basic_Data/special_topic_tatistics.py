@@ -9,8 +9,8 @@ router = APIRouter()
 
 class JuChaoSymbolDateRangeRequest(BaseModel):
     symbol: str = Field(..., title="指定获取类型", description="可选择'全部', '深市主板', '沪市', '创业板', '科创板'")
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
 
 
 # 巨潮资讯-数据中心-专题统计-公司治理-对外担保

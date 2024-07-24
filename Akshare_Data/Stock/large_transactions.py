@@ -30,8 +30,8 @@ def get_stock_dzjy_sctj():
 
 class SymbolDateRequest(BaseModel):
     symbol: str = Field(..., title="市场类型", description="可选择'A股', 'B股', '基金', '债券'")
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
 
 
 # 东方财富-数据中心-大宗交易-每日明细
@@ -57,8 +57,8 @@ async def post_stock_dzjy_mrmx(request: SymbolDateRequest):
 
 
 class DateRangeRequest(BaseModel):
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
 
 
 @router.post("/stock_dzjy_mrtj", operation_id="post_stock_dzjy_mrtj")

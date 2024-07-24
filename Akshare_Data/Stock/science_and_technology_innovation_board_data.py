@@ -27,7 +27,7 @@ async def get_stock_zh_kcb_spot():
 
 
 class StockDailyRequest(BaseModel):
-    symbol: str = Field(..., title="指定个股(需带市场标识)", description="例如sh688008")
+    symbol: str = Field(..., title="指定个股(需带市场标识)", description="例：sh688008")
     adjust: str = Field(..., title="复权类型", description="默认为空: 返回不复权的数据;"
                                                            "qfq: 返回前复权后的数据; "
                                                            "hfq: 返回后复权后的数据; "
@@ -73,8 +73,8 @@ async def post_stock_zh_kcb_daily(request: StockDailyRequest):
 
 
 class StockReportRequest(BaseModel):
-    from_page: int = Field(..., title="开始获取的页码", description="例如1")
-    to_page: int = Field(..., title="结束获取的页码", description="例如100")
+    from_page: int = Field(..., title="开始获取的页码", description="例：1")
+    to_page: int = Field(..., title="结束获取的页码", description="例：100")
 
 
 # 东方财富-科创板报告数据

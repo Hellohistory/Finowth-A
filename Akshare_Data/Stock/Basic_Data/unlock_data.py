@@ -35,8 +35,8 @@ async def post_stock_restricted_release_queue_sina(request: SymbolRequest):
 class RestrictedReleaseSummaryRequest(BaseModel):
     symbol: str = Field(..., title="市场类型",
                         description="可选择' 全部股票 ', ' 沪市A股 ', ' 科创板 ', ' 深市A股 ', ' 创业板 ', ' 京市A股 '")
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
 
 
 # 东方财富-数据中心-特色数据-限售股解禁
@@ -63,8 +63,8 @@ async def post_stock_restricted_release_summary_em(request: RestrictedReleaseSum
 
 
 class DateRangeRequest(BaseModel):
-    start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
-    end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
+    start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
+    end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
 
 
 # 东方财富-数据中心-限售股解禁-解禁详情一览

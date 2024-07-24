@@ -140,8 +140,8 @@ async def get_fund_amac_member_sub_info():
 
 
 class StartEndRequest(BaseModel):
-    start_page: str = Field(..., title="起始页码", description="例如1")
-    end_page: str = Field(..., title="结束页码", description="例如100")
+    start_page: str = Field(..., title="起始页码", description="例：1")
+    end_page: str = Field(..., title="结束页码", description="例：100")
 
 
 # 基金从业人员资格注册信息

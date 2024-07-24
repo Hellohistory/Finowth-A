@@ -11,15 +11,17 @@ class ExecutiveSymbolRequest(BaseModel):
     symbol: str = Field(..., title="请求类型", description="从以下选择: '全部', '股东增持', '股东减持'")
 
 
-# 东方财富网-数据中心-特色数据-高管持股
+# 东方财富-数据中心-特色数据-高管持股
 @router.post("/stock_ggcg_em", operation_id="post_stock_ggcg_em")
 async def post_stock_ggcg_em(request: ExecutiveSymbolRequest):
     """
+    东方财富-高管持股
+
     接口: stock_ggcg_em
 
     目标地址: http://data.eastmoney.com/executive/gdzjc.html
 
-    描述: 东方财富网-数据中心-特色数据-高管持股
+    描述: 东方财富-数据中心-特色数据-高管持股
 
     限量: 单次获取所有高管持股数据数据
     """
@@ -38,15 +40,17 @@ class ChouMaSymbolRequest(BaseModel):
                         description="可选择: 'qfq': '前复权', 'hfq': '后复权', "": '不复权'")
 
 
-# 东方财富网-概念板-行情中心-日K-筹码分布
+# 东方财富-概念板-行情中心-日K-筹码分布
 @router.post("/stock_cyq_em", operation_id="post_stock_cyq_em")
 async def post_stock_cyq_em(request: ChouMaSymbolRequest):
     """
+    东方财富-概念板-日K-筹码分布
+
     接口: stock_cyq_em
 
     目标地址: https://quote.eastmoney.com/concept/sz000001.html
 
-    描述: 东方财富网-概念板-行情中心-日K-筹码分布
+    描述: 东方财富-概念板-行情中心-日K-筹码分布
 
     限量: 单次返回指定个股和指定复权种类的近 90 个交易日数据
     """
@@ -65,11 +69,13 @@ class StockYzxdrRequest(BaseModel):
 @router.post("/stock_yzxdr_em", operation_id="post_stock_yzxdr_em")
 def post_stock_yzxdr_em(request: StockYzxdrRequest):
     """
+    东方财富-一致行动人
+
     接口: stock_yzxdr_em
 
     目标地址: http://data.eastmoney.com/yzxdr/
 
-    描述: 东方财富网-数据中心-特色数据-一致行动人
+    描述: 东方财富-数据中心-特色数据-一致行动人
 
     限量: 单次返回所有历史数据
     """
@@ -84,11 +90,13 @@ def post_stock_yzxdr_em(request: StockYzxdrRequest):
 @router.get("/stock_market_activity_legu", operation_id="get_stock_market_activity_legu")
 def get_stock_market_activity_legu():
     """
+    乐咕乐股-赚钱效应分析数据
+
     接口: stock_market_activity_legu
 
     目标地址: https://www.legulegu.com/stockdata/market-activity
 
-    描述: 乐咕乐股网-赚钱效应分析数据
+    描述: 乐咕乐股-赚钱效应分析数据
 
     限量: 单次返回当前赚钱效应分析数据
     """

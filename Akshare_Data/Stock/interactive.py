@@ -13,6 +13,8 @@ class IrmSymbolRequest(BaseModel):
 @router.post("/stock_irm_cninfo", operation_id="post_stock_irm_cninfo")
 async def post_stock_irm_cninfo(request: IrmSymbolRequest):
     """
+    互动易-提问
+
     接口: stock_irm_cninfo
 
     目标地址: https://irm.cninfo.com.cn/
@@ -37,6 +39,8 @@ class IrmAnsSymbolRequest(BaseModel):
 @router.post("/stock_irm_ans_cninfo", operation_id="post_stock_irm_ans_cninfo")
 async def post_stock_irm_ans_cninfo(request: IrmAnsSymbolRequest):
     """
+    互动易-回答
+
     接口: stock_irm_ans_cninfo
 
     目标地址: https://irm.cninfo.com.cn/
@@ -60,6 +64,8 @@ class ShESymbolRequest(BaseModel):
 @router.post("/stock_sns_sseinfo", operation_id="post_stock_sns_sseinfo")
 async def post_stock_sns_sseinfo(request: ShESymbolRequest):
     """
+    上证e互动-提问与回答
+
     接口: stock_sns_sseinfo
 
     目标地址: https://sns.sseinfo.com/company.do?uid=65

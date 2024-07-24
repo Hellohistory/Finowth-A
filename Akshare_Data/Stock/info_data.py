@@ -8,6 +8,8 @@ router = APIRouter()
 @router.get("/stock_info_cjzc_em", operation_id="get_stock_info_cjzc_em")
 def get_stock_info_cjzc_em():
     """
+    东方财富-财经早餐
+
     接口：stock_info_cjzc_em
 
     目标地址：https://stock.eastmoney.com/a/czpnc.html
@@ -27,6 +29,8 @@ def get_stock_info_cjzc_em():
 @router.get("/stock_info_global_em", operation_id="get_stock_info_global_em")
 def get_stock_info_global_em():
     """
+    东方财富-全球财经快讯
+
     接口：stock_info_global_em
 
     目标地址：https://kuaixun.eastmoney.com/7_24.html
@@ -46,6 +50,8 @@ def get_stock_info_global_em():
 @router.get("/stock_info_global_sina", operation_id="get_stock_info_global_sina")
 def get_stock_info_global_sina():
     """
+    新浪财经-全球财经快讯
+
     接口：stock_info_global_sina
 
     目标地址：https://finance.sina.com.cn/7x24
@@ -65,6 +71,8 @@ def get_stock_info_global_sina():
 @router.get("/stock_info_global_futu", operation_id="get_stock_info_global_futu")
 def get_stock_info_global_futu():
     """
+    富途牛牛-快讯
+
     接口：stock_info_global_futu
 
     目标地址：https://news.futunn.com/main/live
@@ -84,6 +92,8 @@ def get_stock_info_global_futu():
 @router.get("/stock_info_global_ths", operation_id="get_stock_info_global_ths")
 def get_stock_info_global_ths():
     """
+    同花顺财经-全球财经直播
+
     接口：stock_info_global_ths
 
     目标地址：https://news.10jqka.com.cn/realtimenews.html
@@ -106,6 +116,8 @@ class StockInfoGlobalCLSRequest(BaseModel):
 @router.post("/stock_info_global_cls", operation_id="post_stock_info_global_cls")
 def post_stock_info_global_cls(request: StockInfoGlobalCLSRequest):
     """
+    财联社-电报
+
     接口：stock_info_global_cls
 
     目标地址：https://www.cls.cn/telegraph
@@ -125,9 +137,12 @@ class StockInfoBrokerSinaRequest(BaseModel):
     page: str = Field(..., title="获取指定页面的数据", description="例：1")
 
 
+# 证券原创-新浪财经
 @router.post("/stock_info_broker_sina", operation_id="post_stock_info_broker_sina")
 def post_stock_info_broker_sina(request: StockInfoBrokerSinaRequest):
     """
+    新浪财经-证券-证券原创
+
     接口：stock_info_broker_sina
 
     目标地址：https://finance.sina.com.cn/roll/index.d.html?cid=221431

@@ -15,6 +15,8 @@ class SymbolRequest(BaseModel):
 @router.post("/stock_zyjs_ths", operation_id="post_stock_zyjs_ths")
 async def post_stock_zyjs_ths(request: SymbolRequest):
     """
+    同花顺-主营介绍
+
     接口: stock_zyjs_ths
 
     目标地址: https://basic.10jqka.com.cn/new/000066/operate.html
@@ -34,15 +36,17 @@ class DongCaiSymbolRequest(BaseModel):
     symbol: str = Field(..., title="携带市场标识的股票代码", description="例：SH688041")
 
 
-# 东方财富网-个股-主营构成
+# 东方财富-个股-主营构成
 @router.post("/stock_zygc_em", operation_id="post_stock_zygc_em")
 async def post_stock_zygc_em(request: DongCaiSymbolRequest):
     """
+    东方财富-主营构成
+
     接口: stock_zygc_em
 
     目标地址: https://emweb.securities.eastmoney.com/PC_HSF10/BusinessAnalysis/Index?type=web&code=SH688041#
 
-    描述: 东方财富网-个股-主营构成
+    描述: 东方财富-个股-主营构成
 
     限量: 单次返回所有历史数据
     """
@@ -60,6 +64,8 @@ async def post_stock_zygc_em(request: DongCaiSymbolRequest):
 @router.post("/stock_zygc_ym", operation_id="post_stock_zygc_ym")
 async def post_stock_zygc_ym(request: SymbolRequest):
     """
+    益盟-主营构成
+
     接口: stock_zygc_ym
 
     目标地址: http://f10.emoney.cn/f10/zbyz/1000001
@@ -79,6 +85,8 @@ async def post_stock_zygc_ym(request: SymbolRequest):
 @router.post("/stock_mda_ym", operation_id="post_stock_mda_ym")
 async def post_stock_mda_ym(request: SymbolRequest):
     """
+    益盟-管理层讨论与分析
+
     接口: stock_mda_ym
 
     目标地址: https://f10.emoney.cn/f10/zbyz/1000001
@@ -98,6 +106,8 @@ async def post_stock_mda_ym(request: SymbolRequest):
 @router.post("/stock_profile_cninfo", operation_id="post_stock_profile_cninfo")
 async def post_stock_profile_cninfo(request: SymbolRequest):
     """
+    巨潮资讯-公司概况
+
     接口: stock_profile_cninfo
 
     目标地址: http://webapi.cninfo.com.cn/#/company
@@ -117,6 +127,8 @@ async def post_stock_profile_cninfo(request: SymbolRequest):
 @router.post("/stock_ipo_summary_cninfo", operation_id="post_stock_ipo_summary_cninfo")
 async def post_stock_ipo_summary_cninfo(request: SymbolRequest):
     """
+    巨潮资讯-上市相关
+
     接口: stock_ipo_summary_cninfo
 
     目标地址: https://webapi.cninfo.com.cn/#/company

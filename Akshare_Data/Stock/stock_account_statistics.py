@@ -7,16 +7,18 @@ from Akshare_Data.utility_function import sanitize_data
 router = APIRouter()
 
 
-# 东方财富网-数据中心-特色数据-股票账户统计
+# 东方财富-数据中心-特色数据-股票账户统计
 @router.get("/stock_account_statistics_em",
             operation_id="get_stock_account_statistics_em")
 def get_stock_account_statistics_em():
     """
+    东方财富-特色数据-股票账户统计
+
     接口: stock_account_statistics_em
 
     目标地址: https://data.eastmoney.com/cjsj/gpkhsj.html
 
-    描述: 东方财富网-数据中心-特色数据-股票账户统计
+    描述: 东方财富-数据中心-特色数据-股票账户统计
 
     限量: 单次返回从 201504 开始 202308 的所有历史数据
     """
@@ -33,16 +35,18 @@ class YearRequest(BaseModel):
     year: str = Field(..., title="指定年份", description="例：2022，数据从 2013 年至今")
 
 
-# 东方财富网-数据中心-研究报告-东方财富分析师指数
+# 东方财富-数据中心-研究报告-东方财富分析师指数
 @router.post("/stock_analyst_rank_em",
              operation_id="post_stock_analyst_rank_em")
 async def post_stock_analyst_rank_em(request: YearRequest):
     """
+    东方财富-研究报告-东方财富分析师指数
+
     接口: stock_analyst_rank_em
 
     目标地址: https://data.eastmoney.com/invest/invest/list.html
 
-    描述: 东方财富网-数据中心-研究报告-东方财富分析师指数
+    描述: 东方财富-数据中心-研究报告-东方财富分析师指数
 
     限量: 单次获取指定年份的所有数据
     """
@@ -60,16 +64,18 @@ class AnalystDetailRequest(BaseModel):
                            description="从'最新跟踪成分股', '历史跟踪成分股', '历史指数'当中选择")
 
 
-# 东方财富网-数据中心-研究报告-东方财富分析师指数-分析师详情
+# 东方财富-数据中心-研究报告-东方财富分析师指数-分析师详情
 @router.post("/stock_analyst_detail_em",
              operation_id="post_stock_analyst_detail_em")
 async def post_stock_analyst_detail_em(request: AnalystDetailRequest):
     """
+    东方财富-研究报告-东方财富分析师指数-分析师详情
+
     接口: stock_analyst_detail_em
 
     目标地址: https://data.eastmoney.com/invest/invest/11000257131.html
 
-    描述: 东方财富网-数据中心-研究报告-东方财富分析师指数-分析师详情
+    描述: 东方财富-数据中心-研究报告-东方财富分析师指数-分析师详情
 
     限量: 单次获取指定 indicator 指定的数据
     """

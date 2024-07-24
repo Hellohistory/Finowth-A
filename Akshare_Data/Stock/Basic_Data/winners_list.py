@@ -12,15 +12,17 @@ class DongCaiWinnerListDateRangeRequest(BaseModel):
     end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
 
 
-# 东方财富网-龙虎榜单-龙虎榜详情
+# 东方财富-龙虎榜单-龙虎榜详情
 @router.post("/stock_lhb_detail_em", operation_id="post_stock_lhb_detail_em")
 async def post_stock_lhb_detail_em(request: DongCaiWinnerListDateRangeRequest):
     """
+    东方财富-龙虎榜单-龙虎榜详情
+
     接口: stock_lhb_detail_em
 
     目标地址: https://data.eastmoney.com/stock/tradedetail.html
 
-    描述: 东方财富网-数据中心-龙虎榜单-龙虎榜详情
+    描述: 东方财富-数据中心-龙虎榜单-龙虎榜详情
 
     限量: 单次返回所有历史数据
     """
@@ -37,15 +39,17 @@ class DongCaiWinnerListSymbolRequest(BaseModel):
     symbol: str = Field(..., title="时间周期", description="可选择'近一月', '近三月', '近六月', '近一年'")
 
 
-# 东方财富网-龙虎榜单-个股上榜统计
+# 东方财富-龙虎榜单-个股上榜统计
 @router.post("/stock_lhb_stock_statistic_em", operation_id="post_stock_lhb_stock_statistic_em")
 async def post_stock_lhb_stock_statistic_em(request: DongCaiWinnerListSymbolRequest):
     """
+    东方财富-龙虎榜单-个股上榜统计
+
     接口: stock_lhb_stock_statistic_em
 
     目标地址: https://data.eastmoney.com/stock/tradedetail.html
 
-    描述: 东方财富网-数据中心-龙虎榜单-个股上榜统计
+    描述: 东方财富-数据中心-龙虎榜单-个股上榜统计
 
     限量: 单次返回所有历史数据
     """
@@ -61,15 +65,17 @@ class DongCaiWinnerListDateRangeRequest(BaseModel):
     end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
 
 
-# 东方财富网-龙虎榜单-机构买卖每日统计
+# 东方财富-龙虎榜单-机构买卖每日统计
 @router.post("/stock_lhb_jgmmtj_em", operation_id="post_stock_lhb_jgmmtj_em")
 async def post_stock_lhb_jgmmtj_em(request: DongCaiWinnerListDateRangeRequest):
     """
+    东方财富-龙虎榜单-机构买卖每日统计
+
     接口: stock_lhb_jgmmtj_em
 
     目标地址: https://data.eastmoney.com/stock/jgmmtj.html
 
-    描述: 东方财富网-数据中心-龙虎榜单-机构买卖每日统计
+    描述: 东方财富-数据中心-龙虎榜单-机构买卖每日统计
 
     限量: 单次返回所有历史数据
     """
@@ -80,15 +86,17 @@ async def post_stock_lhb_jgmmtj_em(request: DongCaiWinnerListDateRangeRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-龙虎榜单-机构席位追踪
+# 东方财富-龙虎榜单-机构席位追踪
 @router.post("/stock_lhb_jgstatistic_em", operation_id="post_stock_lhb_jgstatistic_em")
 async def post_stock_lhb_jgstatistic_em(request: DongCaiWinnerListSymbolRequest):
     """
+    东方财富-龙虎榜单-机构席位追踪
+
     接口: stock_lhb_jgstatistic_em
 
     目标地址: https://data.eastmoney.com/stock/jgstatistic.html
 
-    描述: 东方财富网-数据中心-龙虎榜单-机构席位追踪
+    描述: 东方财富-数据中心-龙虎榜单-机构席位追踪
 
     限量: 单次返回所有历史数据
     """
@@ -101,15 +109,17 @@ async def post_stock_lhb_jgstatistic_em(request: DongCaiWinnerListSymbolRequest)
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-龙虎榜单-每日活跃营业部
+# 东方财富-龙虎榜单-每日活跃营业部
 @router.post("/stock_lhb_hyyyb_em", operation_id="post_stock_lhb_hyyyb_em")
 async def post_stock_lhb_hyyyb_em(request: DongCaiWinnerListDateRangeRequest):
     """
+    东方财富-龙虎榜单-每日活跃营业部
+
     接口: stock_lhb_hyyyb_em
 
     目标地址: https://data.eastmoney.com/stock/hyyyb.html
 
-    描述: 东方财富网-数据中心-龙虎榜单-每日活跃营业部
+    描述: 东方财富-数据中心-龙虎榜单-每日活跃营业部
 
     限量: 单次返回所有历史数据
     """
@@ -122,15 +132,17 @@ async def post_stock_lhb_hyyyb_em(request: DongCaiWinnerListDateRangeRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-龙虎榜单-营业部排行
+# 东方财富-龙虎榜单-营业部排行
 @router.post("/stock_lhb_yybph_em", operation_id="post_stock_lhb_yybph_em")
 async def post_stock_lhb_yybph_em(request: DongCaiWinnerListSymbolRequest):
     """
+    东方财富-龙虎榜单-营业部排行
+
     接口: stock_lhb_yybph_em
 
     目标地址: https://data.eastmoney.com/stock/yybph.html
 
-    描述: 东方财富网-数据中心-龙虎榜单-营业部排行
+    描述: 东方财富-数据中心-龙虎榜单-营业部排行
 
     限量: 单次返回所有历史数据
     """
@@ -141,15 +153,17 @@ async def post_stock_lhb_yybph_em(request: DongCaiWinnerListSymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-龙虎榜单-营业部统计
+# 东方财富-龙虎榜单-营业部统计
 @router.post("/stock_lhb_traderstatistic_em", operation_id="post_stock_lhb_traderstatistic_em")
 async def post_stock_lhb_traderstatistic_em(request: DongCaiWinnerListSymbolRequest):
     """
+    东方财富-龙虎榜单-营业部统计
+
     接口: stock_lhb_traderstatistic_em
 
     目标地址: https://data.eastmoney.com/stock/traderstatistic.html
 
-    描述: 东方财富网-数据中心-龙虎榜单-营业部统计
+    描述: 东方财富-数据中心-龙虎榜单-营业部统计
 
     限量: 单次返回所有历史数据
     """
@@ -167,15 +181,17 @@ class DongCaiWinnerListSymbolFlagDateRequest(BaseModel):
     flag: str = Field(..., title="资金行为", description="可选择'买入', '卖出'")
 
 
-# 东方财富网-龙虎榜单-个股龙虎榜详情
+# 东方财富-龙虎榜单-个股龙虎榜详情
 @router.post("/stock_lhb_stock_detail_em", operation_id="post_stock_lhb_stock_detail_em")
 async def post_stock_lhb_stock_detail_em(request: DongCaiWinnerListSymbolFlagDateRequest):
     """
+    东方财富-龙虎榜单-个股龙虎榜详情
+
     接口: stock_lhb_stock_detail_em
 
     目标地址: https://data.eastmoney.com/stock/lhb/600077.html
 
-    描述: 东方财富网-数据中心-龙虎榜单-个股龙虎榜详情
+    描述: 东方财富-数据中心-龙虎榜单-个股龙虎榜详情
 
     限量: 单次返回所有历史数据
     """
@@ -193,6 +209,8 @@ async def post_stock_lhb_stock_detail_em(request: DongCaiWinnerListSymbolFlagDat
 @router.get("/stock_lh_yyb_most", operation_id="get_stock_lh_yyb_most")
 def get_stock_lh_yyb_most():
     """
+    龙虎榜-营业部排行-上榜次数最多
+
     接口: stock_lh_yyb_most
 
     目标地址: https://data.10jqka.com.cn/market/longhu/
@@ -212,6 +230,8 @@ def get_stock_lh_yyb_most():
 @router.get("/stock_lh_yyb_capital", operation_id="get_stock_lh_yyb_capital")
 def get_stock_lh_yyb_capital():
     """
+    龙虎榜-营业部排行-资金实力最强
+
     接口: stock_lh_yyb_capital
 
     目标地址: https://data.10jqka.com.cn/market/longhu/
@@ -231,6 +251,8 @@ def get_stock_lh_yyb_capital():
 @router.get("/stock_lh_yyb_control", operation_id="get_stock_lh_yyb_control")
 def get_stock_lh_yyb_control():
     """
+    龙虎榜-营业部排行-抱团操作实力
+
     接口: stock_lh_yyb_control
 
     目标地址: https://data.10jqka.com.cn/market/longhu/
@@ -254,6 +276,8 @@ class XinLangWinnerListDateRequest(BaseModel):
 @router.post("/stock_lhb_detail_daily_sina", operation_id="post_stock_lhb_detail_daily_sina")
 async def post_stock_lhb_detail_daily_sina(request: XinLangWinnerListDateRequest):
     """
+    新浪财经-龙虎榜-每日详情
+
     接口: stock_lhb_detail_daily_sina
 
     目标地址: https://vip.stock.finance.sina.com.cn/q/go.php/vInvestConsult/kind/lhb/index.phtml
@@ -275,6 +299,8 @@ async def post_stock_lhb_detail_daily_sina(request: XinLangWinnerListDateRequest
 @router.post("/stock_lhb_ggtj_sina", operation_id="post_stock_lhb_ggtj_sina")
 async def post_stock_lhb_ggtj_sina(request: XinLangWinnerListDateRequest):
     """
+    新浪财经-龙虎榜-个股上榜统计
+
     接口: stock_lhb_ggtj_sina
 
     目标地址: https://vip.stock.finance.sina.com.cn/q/go.php/vLHBData/kind/ggtj/index.phtml
@@ -299,6 +325,8 @@ class XinLangSymbolRequest(BaseModel):
 @router.post("/stock_lhb_yytj_sina", operation_id="post_stock_lhb_yytj_sina")
 async def post_stock_lhb_yytj_sina(request: XinLangSymbolRequest):
     """
+    新浪财经-龙虎榜-营业上榜统计
+
     接口: stock_lhb_yytj_sina
 
     目标地址: https://vip.stock.finance.sina.com.cn/q/go.php/vLHBData/kind/yytj/index.phtml
@@ -318,6 +346,8 @@ async def post_stock_lhb_yytj_sina(request: XinLangSymbolRequest):
 @router.post("/stock_lhb_jgzz_sina", operation_id="post_stock_lhb_jgzz_sina")
 async def post_stock_lhb_jgzz_sina(request: XinLangSymbolRequest):
     """
+    新浪财经-龙虎榜-机构席位追踪
+
     接口: stock_lhb_jgzz_sina
 
     目标地址: https://vip.stock.finance.sina.com.cn/q/go.php/vLHBData/kind/jgzz/index.phtml
@@ -337,6 +367,8 @@ async def post_stock_lhb_jgzz_sina(request: XinLangSymbolRequest):
 @router.get("/stock_lhb_jgmx_sina", operation_id="get_stock_lhb_jgmx_sina")
 def get_stock_lhb_jgmx_sina():
     """
+    新浪财经-龙虎榜-机构席位成交明细
+
     接口: stock_lhb_jgmx_sina
 
     目标地址: https://vip.stock.finance.sina.com.cn/q/go.php/vLHBData/kind/jgzz/index.phtml

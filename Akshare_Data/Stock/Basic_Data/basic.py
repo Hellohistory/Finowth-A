@@ -15,6 +15,8 @@ class SymbolRequest(BaseModel):
 @router.post("/stock_add_stock", operation_id="post_stock_add_stock")
 async def post_stock_add_stock(request: SymbolRequest):
     """
+    新浪财经-发行与分配-增发
+
     接口: stock_add_stock
 
     目标地址: https://vip.stock.finance.sina.com.cn/corp/go.php/vISSUE_AddStock/stockid/600004.phtml
@@ -39,6 +41,8 @@ class BaiDuStockZhVoteBaiduRequest(BaseModel):
 @router.post("/stock_zh_vote_baidu", operation_id="post_stock_zh_vote_baidu")
 async def post_stock_zh_vote_baidu(request: BaiDuStockZhVoteBaiduRequest):
     """
+    百度股市通- A 股或指数-股评-投票
+
     接口: stock_zh_vote_baidu
 
     目标地址: https://gushitong.baidu.com/index/ab-000001
@@ -65,6 +69,8 @@ class BaiDuHKSymbolIndicatorPeriodRequest(BaseModel):
 @router.post("/stock_hk_valuation_baidu", operation_id="post_stock_hk_valuation_baidu")
 async def post_stock_hk_valuation_baidu(request: BaiDuHKSymbolIndicatorPeriodRequest):
     """
+    百度股市通-港股-财务报表-估值数据
+
     接口: stock_hk_valuation_baidu
 
     目标地址: https://gushitong.baidu.com/stock/hk-06969
@@ -90,6 +96,8 @@ class XSymbolRequest(BaseModel):
 @router.post("/stock_a_high_low_statistics", operation_id="post_stock_a_high_low_statistics")
 async def post_stock_a_high_low_statistics(request: XSymbolRequest):
     """
+    不同市场的创新高和新低的股票数量
+
     接口: stock_a_high_low_statistics
 
     目标地址: https://www.legulegu.com/stockdata/high-low-statistics
@@ -125,6 +133,8 @@ class PSymbolRequest(BaseModel):
 @router.post("/stock_a_below_net_asset_statistics", operation_id="post_stock_a_below_net_asset_statistics")
 async def post_stock_a_below_net_asset_statistics(request: PSymbolRequest):
     """
+    乐咕乐股-A 股破净股统计数据
+
     接口: stock_a_below_net_asset_statistics
 
     目标地址: https://www.legulegu.com/stockdata/below-net-asset-statistics
@@ -151,11 +161,13 @@ async def post_stock_a_below_net_asset_statistics(request: PSymbolRequest):
 @router.get("/stock_ipo_declare", operation_id="get_stock_ipo_declare")
 def get_stock_ipo_declare():
     """
+    东方财富-首发申报信息-首发申报企业信息
+
     接口: stock_ipo_declare
 
     目标地址: https://data.eastmoney.com/xg/xg/sbqy.html
 
-    描述: 东方财富网-数据中心-新股申购-首发申报信息-首发申报企业信息
+    描述: 东方财富-数据中心-新股申购-首发申报信息-首发申报企业信息
 
     限量: 单次返回所有历史数据
     """
@@ -173,11 +185,13 @@ def get_stock_ipo_declare():
 @router.get("/stock_qbzf_em", operation_id="get_stock_qbzf_em")
 def get_stock_qbzf_em():
     """
+    东方财富-新股数据-增发-全部增发
+
     接口: stock_qbzf_em
 
     目标地址: https://data.eastmoney.com/other/gkzf.html
 
-    描述: 东方财富网-数据中心-新股数据-增发-全部增发
+    描述: 东方财富-数据中心-新股数据-增发-全部增发
 
     限量: 单次返回所有历史数据
     """
@@ -194,11 +208,13 @@ def get_stock_qbzf_em():
 @router.get("/stock_pg_em", operation_id="get_stock_pg_em")
 def get_stock_pg_em():
     """
+    东方财富-新股数据-配股
+
     接口: stock_pg_em
 
     目标地址: https://data.eastmoney.com/xg/pg/
 
-    描述: 东方财富网-数据中心-新股数据-配股
+    描述: 东方财富-数据中心-新股数据-配股
 
     限量: 单次返回所有历史数据
     """
@@ -215,11 +231,13 @@ def get_stock_pg_em():
 @router.get("/stock_repurchase_em", operation_id="get_stock_repurchase_em")
 def get_stock_repurchase_em():
     """
+    东方财富-股票回购-股票回购数据
+
     接口: stock_repurchase_em
 
     目标地址: https://data.eastmoney.com/gphg/hglist.html
 
-    描述: 东方财富网-数据中心-股票回购-股票回购数据
+    描述: 东方财富-数据中心-股票回购-股票回购数据
 
     限量: 单次返回所有历史数据
     """

@@ -9,6 +9,8 @@ router = APIRouter()
 @router.get("/stock_zh_ah_spot", operation_id="get_stock_zh_ah_spot")
 def get_stock_zh_ah_spot():
     """
+    腾讯财经-A+H 股数据
+
     接口: stock_zh_ah_spot
 
     目标地址: https://stockapp.finance.qq.com/mstats/#mod=list&id=hk_ah&module=HK&type=AH
@@ -35,6 +37,8 @@ class StockAHDailyRequest(BaseModel):
 @router.post("/stock_zh_ah_daily", operation_id="post_stock_zh_ah_daily")
 async def post_stock_zh_ah_daily(request: StockAHDailyRequest):
     """
+    腾讯财经-A+H 股数据
+
     接口: stock_zh_ah_daily
 
     目标地址: https://gu.qq.com/hk02359/gp
@@ -59,6 +63,8 @@ async def post_stock_zh_ah_daily(request: StockAHDailyRequest):
 @router.get("/stock_zh_ah_name", operation_id="get_stock_zh_ah_name")
 def get_stock_zh_ah_name():
     """
+    腾讯财经-A+H 股票字典
+
     接口: stock_zh_ah_name
 
     目标地址: https://stockapp.finance.qq.com/mstats/#mod=list&id=hk_ah&module=HK&type=AH

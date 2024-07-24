@@ -8,6 +8,8 @@ router = APIRouter()
 @router.get("/stock_esg_rate_sina", operation_id="get_stock_esg_rate_sina")
 def get_stock_esg_rate_sina():
     """
+    新浪财经-ESG评级中心-ESG评级-ESG评级数据
+
     接口: stock_esg_rate_sina
 
     目标地址: https://finance.sina.com.cn/esg/grade.shtml
@@ -27,6 +29,8 @@ def get_stock_esg_rate_sina():
 @router.get("/stock_esg_msci_sina", operation_id="get_stock_esg_msci_sina")
 def get_stock_esg_msci_sina():
     """
+    新浪财经-ESG评级中心-ESG评级-MSCI
+
     接口: stock_esg_msci_sina
 
     目标地址: https://finance.sina.com.cn/esg/grade.shtml
@@ -46,6 +50,8 @@ def get_stock_esg_msci_sina():
 @router.get("/stock_esg_rft_sina", operation_id="get_stock_esg_rft_sina")
 def get_stock_esg_rft_sina():
     """
+    新浪财经-ESG评级中心-ESG评级-路孚特
+
     接口: stock_esg_rft_sina
 
     目标地址: https://finance.sina.com.cn/esg/grade.shtml
@@ -65,6 +71,8 @@ def get_stock_esg_rft_sina():
 @router.get("/stock_esg_zd_sina", operation_id="get_stock_esg_zd_sina")
 def get_stock_esg_zd_sina():
     """
+    新浪财经-ESG评级中心-ESG评级-秩鼎
+
     接口: stock_esg_zd_sina
 
     目标地址: https://finance.sina.com.cn/esg/grade.shtml
@@ -84,6 +92,8 @@ def get_stock_esg_zd_sina():
 @router.get("/stock_esg_hz_sina", operation_id="get_stock_esg_hz_sina")
 def get_stock_esg_hz_sina():
     """
+    新浪财经-ESG评级中心-ESG评级-华证指数
+
     接口: stock_esg_hz_sina
 
     目标地址: https://finance.sina.com.cn/esg/grade.shtml

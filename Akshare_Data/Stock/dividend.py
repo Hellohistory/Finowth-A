@@ -15,6 +15,8 @@ class DateRequest(BaseModel):
 @router.post("/stock_fhps_em", operation_id="post_stock_fhps_em")
 async def post_stock_fhps_em(request: DateRequest):
     """
+    东方财富-年报季报-分红配送
+
     接口: stock_fhps_em
 
     目标地址: https://data.eastmoney.com/yjfp/
@@ -36,15 +38,17 @@ class SymbolRequest(BaseModel):
     symbol: str = Field(..., title="指定个股代码", description="例：000066")
 
 
-# 东方财富网-数据中心-分红送配-分红送配详情
+# 东方财富-数据中心-分红送配-分红送配详情
 @router.post("/stock_fhps_detail_em", operation_id="post_stock_fhps_detail_em")
 async def post_stock_fhps_detail_em(request: SymbolRequest):
     """
+    东方财富-分红送配-分红送配详情
+
     接口: stock_fhps_detail_em
 
     目标地址: https://data.eastmoney.com/yjfp/detail/300073.html
 
-    描述: 东方财富网-数据中心-分红送配-分红送配详情
+    描述: 东方财富-数据中心-分红送配-分红送配详情
 
     限量: 单次获取指定个股的分红配送详情数据
     """
@@ -61,6 +65,8 @@ async def post_stock_fhps_detail_em(request: SymbolRequest):
 @router.post("/stock_fhps_detail_ths", operation_id="post_stock_fhps_detail_ths")
 async def post_stock_fhps_detail_ths(request: SymbolRequest):
     """
+    同花顺-分红情况
+
     接口: stock_fhps_detail_ths
 
     目标地址: https://basic.10jqka.com.cn/new/603444/bonus.html
@@ -80,6 +86,8 @@ async def post_stock_fhps_detail_ths(request: SymbolRequest):
 @router.post("/stock_hk_fhpx_detail_ths", operation_id="post_stock_hk_fhpx_detail_ths")
 async def post_stock_hk_fhpx_detail_ths(request: SymbolRequest):
     """
+    同花顺-港股-分红派息
+
     接口: stock_hk_fhpx_detail_ths
 
     目标地址: https://stockpage.10jqka.com.cn/HK0700/bonus/
@@ -99,6 +107,8 @@ async def post_stock_hk_fhpx_detail_ths(request: SymbolRequest):
 @router.get("/stock_history_dividend", operation_id="post_stock_history_dividend")
 def get_stock_history_dividend():
     """
+    新浪财经-发行与分配-历史分红
+
     接口: stock_history_dividend
 
     目标地址: http://vip.stock.finance.sina.com.cn/q/go.php/vInvestConsult/kind/lsfh/index.phtml?p=1&num=5000
@@ -124,6 +134,8 @@ class DividendDetailRequest(BaseModel):
 @router.post("/stock_history_dividend_detail", operation_id="post_stock_history_dividend_detail")
 async def post_stock_history_dividend_detail(request: DividendDetailRequest):
     """
+    新浪财经-发行与分配-分红配股
+
     接口: stock_history_dividend_detail
 
     目标地址: https://vip.stock.finance.sina.com.cn/corp/go.php/vISSUE_ShareBonus/stockid/300670.phtml
@@ -149,6 +161,8 @@ async def post_stock_history_dividend_detail(request: DividendDetailRequest):
 @router.post("/stock_dividend_cninfo", operation_id="post_stock_dividend_cninfo")
 async def post_stock_dividend_cninfo(request: SymbolRequest):
     """
+    巨潮资讯-个股-历史分红
+
     接口: stock_dividend_cninfo
 
     目标地址: http://webapi.cninfo.com.cn/#/company?companyid=600009

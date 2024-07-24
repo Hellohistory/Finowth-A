@@ -13,10 +13,12 @@ class XinLangMinuteStock(BaseModel):
                                                            "hfq: 返回后复权后的数据;")
 
 
-# 新浪财经-沪深京 A 股股票或者指数的分时数据
+# 新浪财经-沪深京 A 股股票/指数-分时数据
 @router.post("/stock_zh_a_minute", operation_id="post_stock_zh_a_minute")
 async def post_stock_zh_a_minute(request: XinLangMinuteStock):
     """
+    新浪财经-沪深京 A 股股票/指数-分时数据
+
     接口: stock_zh_a_minute
 
     目标地址: http://finance.sina.com.cn/realstock/company/sh600519/nc.shtml
@@ -51,15 +53,17 @@ class DongCaiMinuteRequest(BaseModel):
                                                            "hfq: 返回后复权后的数据;其中 1 分钟数据返回近 5 个交易日数据且不复权")
 
 
-# 东方财富网-沪深京 A 股-每日分时行情
+# 东方财富-沪深京 A 股-每日分时行情
 @router.post("/stock_zh_a_hist_min_em", operation_id="post_stock_zh_a_hist_min_em")
 async def post_stock_zh_a_hist_min_em(request: DongCaiMinuteRequest):
     """
+    东方财富-沪深京 A 股-每日分时行情
+
     接口: stock_zh_a_hist_min_em
 
     目标地址: https://quote.eastmoney.com/concept/sh603777.html
 
-    描述: 东方财富网-行情首页-沪深京 A 股-每日分时行情; 该接口只能获取近期的分时数据，注意时间周期的设置
+    描述: 东方财富-行情首页-沪深京 A 股-每日分时行情; 该接口只能获取近期的分时数据，注意时间周期的设置
 
     限量: 单次返回指定股票、频率、复权调整和时间区间的分时数据, 其中 1 分钟数据只返回近 5 个交易日数据且不复权
     """
@@ -84,6 +88,8 @@ class DongCaiDayMinute(BaseModel):
 @router.post("/stock_intraday_em", operation_id="post_stock_intraday_em")
 async def post_stock_intraday_em(request: DongCaiDayMinute):
     """
+    东财财富-日内分时数据
+
     接口: stock_intraday_em
 
     目标地址: https://quote.eastmoney.com/f1.html?newcode=0.000001
@@ -108,6 +114,8 @@ class XinLangDayMinute(BaseModel):
 @router.post("/stock_intraday_sina", operation_id="post_stock_intraday_sina")
 async def post_stock_intraday_sina(request: XinLangDayMinute):
     """
+    新浪财经-日内分时数据
+
     接口损坏，暂无法使用
 
     接口: stock_intraday_sina
@@ -135,6 +143,8 @@ class DongCaiPanQianRequest(BaseModel):
 @router.post("/stock_zh_a_hist_pre_min_em", operation_id="post_stock_zh_a_hist_pre_min_em")
 async def post_stock_zh_a_hist_pre_min_em(request: DongCaiPanQianRequest):
     """
+    东方财富-股票行情-盘前数据
+
     接口: stock_zh_a_hist_pre_min_em
 
     目标地址: https://quote.eastmoney.com/concept/sh603777.html
@@ -158,21 +168,22 @@ class TXTickHistoryRequest(BaseModel):
     symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例如sz300494")
 
 
+# 腾讯-分笔数据
 @router.post("/stock_zh_a_tick_tx", operation_id="post_stock_zh_a_tick_tx")
 async def post_stock_zh_a_tick_tx(request: TXTickHistoryRequest):
     """
+    腾讯-分笔数据
+
     接口: stock_zh_a_tick_tx
 
     目标地址: http://gu.qq.com/sz300494/gp/detail(示例)
 
-    描述: 每个交易日 16:00 提供当日数据; 如遇到数据缺失, 请使用 **stock_zh_a_tick_163** 接口(注意数据会有一定差异)
+    描述: 每个交易日 16:00 提供当日数据; 如遇到数据缺失, 请使用stock_zh_a_tick_163接口(注意数据会有一定差异)
 
     限量: 单次返回最近交易日的历史分笔行情数据
     """
     try:
-        # 使用akshare获取分笔行情数据
         stock_zh_a_tick_tx_js_df = ak.stock_zh_a_tick_tx_js(symbol=request.symbol)
-        # 将DataFrame转换为字典格式
         data = stock_zh_a_tick_tx_js_df.to_dict(orient="records")
         return {"symbol": request.symbol, "data": data}
     except Exception as e:

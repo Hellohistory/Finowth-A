@@ -11,11 +11,13 @@ router = APIRouter()
 @router.get("/stock_dzjy_sctj", operation_id="get_stock_dzjy_sctj")
 def get_stock_dzjy_sctj():
     """
+    东方财富-大宗交易-市场统计
+
     接口: stock_dzjy_sctj
 
     目标地址: http://data.eastmoney.com/dzjy/dzjy_sctj.aspx
 
-    描述: 东方财富网-数据中心-大宗交易-市场统计
+    描述: 东方财富-数据中心-大宗交易-市场统计
 
     限量: 单次返回所有历史数据
     """
@@ -32,15 +34,17 @@ class SymbolDateRequest(BaseModel):
     end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
 
 
-# 东方财富网-数据中心-大宗交易-每日明细
+# 东方财富-数据中心-大宗交易-每日明细
 @router.post("/stock_dzjy_mrmx", operation_id="post_stock_dzjy_mrmx")
 async def post_stock_dzjy_mrmx(request: SymbolDateRequest):
     """
+    东方财富-大宗交易-每日明细
+
     接口: stock_dzjy_mrmx
 
     目标地址: http://data.eastmoney.com/dzjy/dzjy_mrmxa.aspx
 
-    描述: 东方财富网-数据中心-大宗交易-每日明细
+    描述: 东方财富-数据中心-大宗交易-每日明细
 
     限量: 单次返回所有历史数据
     """
@@ -60,11 +64,13 @@ class DateRangeRequest(BaseModel):
 @router.post("/stock_dzjy_mrtj", operation_id="post_stock_dzjy_mrtj")
 async def post_stock_dzjy_mrtj(request: DateRangeRequest):
     """
+    东方财富-大宗交易-每日统计
+
     接口: stock_dzjy_mrtj
 
     目标地址: http://data.eastmoney.com/dzjy/dzjy_mrtj.aspx
 
-    描述: 东方财富网-数据中心-大宗交易-每日统计
+    描述: 东方财富-数据中心-大宗交易-每日统计
 
     限量: 单次返回所有历史数据
     """
@@ -79,15 +85,17 @@ class DongCaiASymbolRequest(BaseModel):
     symbol: str = Field(..., title="时间周期", description="可选择'近一月', '近三月', '近六月', '近一年'")
 
 
-# 东方财富网-数据中心-大宗交易-活跃 A 股统计
+# 东方财富-数据中心-大宗交易-活跃 A 股统计
 @router.post("/stock_dzjy_hygtj", operation_id="post_stock_dzjy_hygtj")
 async def post_stock_dzjy_hygtj(request: DongCaiASymbolRequest):
     """
+    东方财富-大宗交易-活跃 A 股统计
+
     接口: stock_dzjy_hygtj
 
     目标地址: http://data.eastmoney.com/dzjy/dzjy_hygtj.aspx
 
-    描述: 东方财富网-数据中心-大宗交易-活跃 A 股统计
+    描述: 东方财富-数据中心-大宗交易-活跃 A 股统计
 
     限量: 单次返回所有历史数据
     """
@@ -103,15 +111,17 @@ class DongCaiYingSymbolRequest(BaseModel):
                         description="可选择'当前交易日', '近3日', '近5日', '近10日', '近30日'")
 
 
-# 东方财富网-数据中心-大宗交易-活跃营业部统计
+# 东方财富-数据中心-大宗交易-活跃营业部统计
 @router.post("/stock_dzjy_hyyybtj", operation_id="post_stock_dzjy_hyyybtj")
 async def post_stock_dzjy_hyyybtj(request: DongCaiYingSymbolRequest):
     """
+    东方财富-大宗交易-活跃营业部统计
+
     接口: stock_dzjy_hyyybtj
 
     目标地址: http://data.eastmoney.com/dzjy/dzjy_hyyybtj.aspx
 
-    描述: 东方财富网-数据中心-大宗交易-活跃营业部统计
+    描述: 东方财富-数据中心-大宗交易-活跃营业部统计
 
     限量: 单次返回所有历史数据
     """
@@ -125,11 +135,13 @@ async def post_stock_dzjy_hyyybtj(request: DongCaiYingSymbolRequest):
 @router.post("/stock_dzjy_yybph", operation_id="post_stock_dzjy_yybph")
 async def post_stock_dzjy_yybph(request: DongCaiASymbolRequest):
     """
+    东方财富-大宗交易-活跃营业部统计
+
     接口: stock_dzjy_yybph
 
     目标地址: http://data.eastmoney.com/dzjy/dzjy_yybph.aspx
 
-    描述: 东方财富网-数据中心-大宗交易-营业部排行
+    描述: 东方财富-数据中心-大宗交易-营业部排行
 
     限量: 单次返回所有历史数据
     """

@@ -11,15 +11,17 @@ class TFDateRequest(BaseModel):
     date: str = Field(..., title="指定交易日", description="例：20230808")
 
 
-# 东方财富网-数据中心-特色数据-停复牌信息
+# 东方财富-数据中心-特色数据-停复牌信息
 @router.post("/stock_tfp_em", operation_id="post_stock_tfp_em")
 async def post_stock_tfp_em(request: TFDateRequest):
     """
+    东方财富-特色数据-停复牌信息
+
     接口: stock_tfp_em
 
     目标地址: https://data.eastmoney.com/tfpxx/
 
-    描述: 东方财富网-数据中心-特色数据-停复牌信息
+    描述: 东方财富-数据中心-特色数据-停复牌信息
 
     限量: 单次获取指定时间的停复牌数据, 具体更新逻辑跟目标网页统一
     """
@@ -34,6 +36,8 @@ async def post_stock_tfp_em(request: TFDateRequest):
 @router.post("/news_trade_notify_suspend_baidu", operation_id="post_news_trade_notify_suspend_baidu")
 async def post_news_trade_notify_suspend_baidu(request: TFDateRequest):
     """
+    百度股市通-交易提醒-停复牌
+
     接口: news_trade_notify_suspend_baidu
 
     目标地址: https://gushitong.baidu.com/calendar
@@ -53,6 +57,8 @@ async def post_news_trade_notify_suspend_baidu(request: TFDateRequest):
 @router.post("/news_trade_notify_dividend_baidu", operation_id="post_news_trade_notify_dividend_baidu")
 async def post_news_trade_notify_dividend_baidu(request: TFDateRequest):
     """
+    百度股市通-交易提醒-分红派息
+
     接口: news_trade_notify_dividend_baidu
 
     目标地址: https://gushitong.baidu.com/calendar

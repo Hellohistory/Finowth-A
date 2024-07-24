@@ -5,15 +5,17 @@ from pydantic import BaseModel, Field
 router = APIRouter()
 
 
-# 东方财富网-行情中心-沪深京板块-概念板块
+# 东方财富-行情中心-沪深京板块-概念板块
 @router.get("/stock_board_concept_name_em", operation_id="get_stock_board_concept_name_em")
 def get_stock_board_concept_name_em():
     """
+    东方财富-沪深京板块-概念板块
+
     接口: stock_board_concept_name_em
 
     目标地址: https://quote.eastmoney.com/center/boardlist.html#concept_board
 
-    描述: 东方财富网-行情中心-沪深京板块-概念板块
+    描述: 东方财富-行情中心-沪深京板块-概念板块
 
     限量: 单次返回当前时刻所有概念板块数据
     """
@@ -33,6 +35,8 @@ class DongCaiBankuaiSymbolRequest(BaseModel):
 @router.post("/stock_board_concept_cons_em", operation_id="post_stock_board_concept_cons_em")
 async def post_stock_board_concept_cons_em(request: DongCaiBankuaiSymbolRequest):
     """
+    东方财富-沪深板块-概念板块-板块成份
+
     接口: stock_board_concept_cons_em
 
     目标地址: http://quote.eastmoney.com/center/boardlist.html#boards-BK06551(示例)
@@ -61,6 +65,8 @@ class ConceptHistRequest(BaseModel):
 @router.post("/stock_board_concept_hist_em", operation_id="post_stock_board_concept_hist_em")
 async def post_stock_board_concept_hist_em(request: ConceptHistRequest):
     """
+    东方财富-沪深板块-概念板块-历史行情数据
+
     接口: stock_board_concept_hist_em
 
     目标地址: http://quote.eastmoney.com/bk/90.BK0715.html(示例)
@@ -95,6 +101,8 @@ class ConceptHistMinRequest(BaseModel):
 @router.post("/stock_board_concept_hist_min_em", operation_id="post_stock_board_concept_hist_min_em")
 async def post_stock_board_concept_hist_min_em(request: ConceptHistMinRequest):
     """
+    东方财富-沪深板块-概念板块-分时历史行情数据
+
     接口: stock_board_concept_hist_min_em
 
     目标地址: http://quote.eastmoney.com/bk/90.BK0715.html

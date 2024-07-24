@@ -15,6 +15,8 @@ class SymbolRequest(BaseModel):
 @router.post("/stock_fund_stock_holder", operation_id="post_stock_fund_stock_holder")
 async def post_stock_fund_stock_holder(request: SymbolRequest):
     """
+    新浪财经-基金持股
+
     接口: stock_fund_stock_holder
 
     目标地址: https://vip.stock.finance.sina.com.cn/corp/go.php/vCI_FundStockHolder/stockid/600004.phtml
@@ -37,12 +39,19 @@ class DongCaiSymbolDateRequest(BaseModel):
                       description="可选择'xxxx-03-31', 'xxxx-06-30', 'xxxx-09-30', 'xxxx-12-31'")
 
 
-# 东方财富网-数据中心-主力数据-基金持仓
+# 东方财富-数据中心-主力数据-基金持仓
 @router.post("/stock_report_fund_hold", operation_id="post_stock_report_fund_hold")
 async def post_report_fund_hold(request: DongCaiSymbolDateRequest):
     """
-    描述: 东方财富网-数据中心-主力数据-基金持仓
-    限量: 单次返回指定 symbol 和 symbol 的所有历史数据
+    东方财富-主力数据-基金持仓
+
+    接口: stock_report_fund_hold
+
+    目标地址: http://data.eastmoney.com/zlsj/2020-06-30-1-2.html
+
+    描述: 东方财富-数据中心-主力数据-基金持仓
+
+    限量: 单次返回指定数据类型和财报发布日期的所有历史数据
     """
     try:
         stock_report_fund_hold_df = ak.stock_report_fund_hold(symbol=request.symbol, date=request.date)
@@ -57,15 +66,17 @@ class DongCaiChiCangSymbolDateRequest(BaseModel):
                       description="可选择'xxxx-03-31', 'xxxx-06-30', 'xxxx-09-30', 'xxxx-12-31'")
 
 
-# 东方财富网-数据中心-主力数据-基金持仓-基金持仓明细表
+# 东方财富-数据中心-主力数据-基金持仓-基金持仓明细表
 @router.post("/stock_report_fund_hold_detail", operation_id="post_stock_report_fund_hold_detail")
 async def post_stock_report_fund_hold_detail(request: DongCaiChiCangSymbolDateRequest):
     """
+    东方财富-基金持仓-基金持仓明细表
+
     接口: stock_report_fund_hold_detail
 
     目标地址: http://data.eastmoney.com/zlsj/ccjj/2020-12-31-008286.html
 
-    描述: 东方财富网-数据中心-主力数据-基金持仓-基金持仓明细表
+    描述: 东方财富-数据中心-主力数据-基金持仓-基金持仓明细表
 
     限量: 单次返回指定个股和指定财报发布日期的所有历史数据
     """

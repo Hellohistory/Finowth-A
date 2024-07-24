@@ -14,6 +14,8 @@ class StockHotXQRequest(BaseModel):
 @router.post("/stock_hot_follow_xq", operation_id="post_stock_hot_follow_xq")
 async def post_stock_hot_follow_xq(request: StockHotXQRequest):
     """
+    雪球-沪深股市-热度排行榜-关注排行榜
+
     接口: stock_hot_follow_xq
 
     目标地址: https://xueqiu.com/hq
@@ -35,6 +37,8 @@ async def post_stock_hot_follow_xq(request: StockHotXQRequest):
 @router.post("/stock_hot_tweet_xq", operation_id="post_stock_hot_tweet_xq")
 async def post_stock_hot_tweet_xq(request: StockHotXQRequest):
     """
+    雪球-沪深股市-热度排行榜-讨论排行榜
+
     接口: stock_hot_tweet_xq
 
     目标地址: https://xueqiu.com/hq
@@ -55,6 +59,8 @@ async def post_stock_hot_tweet_xq(request: StockHotXQRequest):
 @router.post("/stock_hot_deal_xq", operation_id="post_stock_hot_deal_xq")
 def post_stock_hot_deal_xq(request: StockHotXQRequest):
     """
+    雪球-沪深股市-热度排行榜-交易排行榜
+
     接口: stock_hot_deal_xq
 
     目标地址: https://xueqiu.com/hq
@@ -77,6 +83,8 @@ class StockHotRankWCRequest(BaseModel):
 @router.post("/stock_hot_rank_wc", operation_id="post_stock_hot_rank_wc")
 def post_stock_hot_rank_wc(request: StockHotRankWCRequest):
     """
+    问财-热门股票排名数据
+
     接口: stock_hot_rank_wc
 
     目标地址: https://www.iwencai.com/unifiedwap/home/index
@@ -97,11 +105,13 @@ def post_stock_hot_rank_wc(request: StockHotRankWCRequest):
 @router.get("/stock_hot_rank_em", operation_id="get_stock_hot_rank_em")
 def get_stock_hot_rank_em():
     """
+    东方财富站-股票热度
+
     接口: stock_hot_rank_em
 
     目标地址: http://guba.eastmoney.com/rank/
 
-    描述: 东方财富网站-股票热度
+    描述: 东方财富站-股票热度
 
     限量: 单次返回当前交易日前 100 个股票的人气排名数据
     """
@@ -115,6 +125,8 @@ def get_stock_hot_rank_em():
 @router.get("/stock_hot_up_em", operation_id="get_stock_hot_up_em")
 def get_stock_hot_up_em():
     """
+    东方财富-个股人气榜-飙升榜
+
     接口: stock_hot_up_em
 
     目标地址: http://guba.eastmoney.com/rank/
@@ -133,6 +145,8 @@ def get_stock_hot_up_em():
 @router.get("/stock_hk_hot_rank_em", operation_id="get_stock_hk_hot_rank_em")
 def get_stock_hk_hot_rank_em():
     """
+    东方财富-个股人气榜-人气榜-港股市场
+
     接口: stock_hk_hot_rank_em
 
     目标地址: https://guba.eastmoney.com/rank/
@@ -157,11 +171,13 @@ class StockHKHotRankDetailEMRequest(BaseModel):
 @router.post("/stock_hk_hot_rank_detail_em", operation_id="post_stock_hot_rank_em")
 async def post_stock_hk_hot_rank_detail_em(request: StockHKHotRankDetailEMRequest):
     """
+    东方财富-股票热度-历史趋势及粉丝特征
+
     接口: stock_hot_rank_detail_em
 
     目标地址: http://guba.eastmoney.com/rank/stock?code=000665
 
-    描述: 东方财富网-股票热度-历史趋势及粉丝特征
+    描述: 东方财富-股票热度-历史趋势及粉丝特征
 
     限量: 单次返回指定个股的股票近期历史数据
     """
@@ -176,6 +192,8 @@ async def post_stock_hk_hot_rank_detail_em(request: StockHKHotRankDetailEMReques
 @router.get("/stock_inner_trade_xq", operation_id="get_stock_inner_trade_xq")
 def get_stock_inner_trade_xq():
     """
+    雪球-沪深股市-内部交易
+
     接口: stock_inner_trade_xq
 
     目标地址: https://xueqiu.com/hq/insider
@@ -203,11 +221,13 @@ class StockHotRankDetailEMRequest(BaseModel):
              operation_id="post_stock_hot_rank_detail_realtime_em")
 async def post_stock_hot_rank_detail_realtime_em(request: StockHotRankDetailEMRequest):
     """
+    东方财富-个股人气榜-实时变动
+
     接口: stock_hot_rank_detail_realtime_em
 
     目标地址: http://guba.eastmoney.com/rank/stock?code=000665
 
-    描述: 东方财富网-个股人气榜-实时变动
+    描述: 东方财富-个股人气榜-实时变动
 
     限量: 单次返回指定个股的股票近期历史数据
     """
@@ -227,11 +247,13 @@ class StockHotRankHKDetailEMRequest(BaseModel):
              operation_id="post_stock_hk_hot_rank_detail_realtime_em")
 async def post_stock_hk_hot_rank_detail_realtime_em(request: StockHotRankHKDetailEMRequest):
     """
+    东方财富-个股人气榜-实时变动
+
     接口: stock_hk_hot_rank_detail_realtime_em
 
     目标地址: https://guba.eastmoney.com/rank/stock?code=HK_00700
 
-    描述: 东方财富网-个股人气榜-实时变动
+    描述: 东方财富-个股人气榜-实时变动
 
     限量: 单次返回指定个股的股票近期历史数据
     """
@@ -250,6 +272,8 @@ class StockHotKeywordRequest(BaseModel):
 @router.post("/stock_hot_keyword_em", operation_id="post_stock_hot_keyword_em")
 async def post_stock_hot_keyword_em(request: StockHotKeywordRequest):
     """
+    东方财富-个股人气榜-热门关键词
+
     接口: stock_hot_keyword_em
 
     目标地址: http://guba.eastmoney.com/rank/stock?code=000665
@@ -269,6 +293,8 @@ async def post_stock_hot_keyword_em(request: StockHotKeywordRequest):
 @router.post("/stock_hot_rank_latest_em", operation_id="post_stock_hot_rank_latest_em")
 async def post_stock_hot_rank_latest_em(request: StockHotKeywordRequest):
     """
+    东方财富-个股人气榜-最新排名
+
     接口: stock_hot_rank_latest_em
 
     目标地址: http://guba.eastmoney.com/rank/stock?code=000665
@@ -288,6 +314,8 @@ async def post_stock_hot_rank_latest_em(request: StockHotKeywordRequest):
 @router.post("/stock_hk_hot_rank_latest_em", operation_id="post_stock_hk_hot_rank_latest_em")
 async def post_stock_hk_hot_rank_latest_em(request: StockHotRankHKDetailEMRequest):
     """
+    东方财富-个股人气榜-最新排名
+
     接口: stock_hk_hot_rank_latest_em
 
     目标地址: https://guba.eastmoney.com/rank/stock?code=HK_00700
@@ -314,6 +342,8 @@ class HotSearchRequest(BaseModel):
 @router.post("/stock_hot_search_baidu", operation_id="post_stock_hot_search_baidu")
 async def post_stock_hot_search_baidu(request: HotSearchRequest):
     """
+    百度股市通-热搜股票
+
     接口: stock_hot_search_baidu
 
     目标地址: https://gushitong.baidu.com/expressnews
@@ -340,6 +370,8 @@ class StockHotRankSymbolRequest(BaseModel):
 @router.post("/stock_hot_rank_relate_em", operation_id="post_stock_hot_rank_relate_em")
 async def post_stock_hot_rank_relate_em(request: StockHotRankSymbolRequest):
     """
+    东方财富-个股人气榜-相关股票
+
     接口: stock_hot_rank_relate_em
 
     目标地址: http://guba.eastmoney.com/rank/stock?code=000665

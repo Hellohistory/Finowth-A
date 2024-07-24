@@ -16,6 +16,8 @@ class JuChaoSymbolDateRequest(BaseModel):
 @router.post("/stock_industry_pe_ratio_cninfo", operation_id="post_stock_industry_pe_ratio_cninfo")
 async def gpost_stock_industry_pe_ratio_cninfo(request: JuChaoSymbolDateRequest):
     """
+    巨潮资讯-行业市盈率
+
     接口: stock_industry_pe_ratio_cninfo
 
     目标地址: http://webapi.cninfo.com.cn/#/thematicStatistics
@@ -41,6 +43,8 @@ class LeGuSymbolRequest(BaseModel):
 @router.post("/stock_a_gxl_lg", operation_id="post_stock_a_gxl_lg")
 async def post_stock_a_gxl_lg(request: LeGuSymbolRequest):
     """
+    乐咕乐股-A 股股息率
+
     接口: stock_a_gxl_lg
 
     目标地址: https://legulegu.com/stockdata/guxilv
@@ -60,6 +64,8 @@ async def post_stock_a_gxl_lg(request: LeGuSymbolRequest):
 @router.get("/stock_hk_gxl_lg", operation_id="get_stock_hk_gxl_lg")
 def get_stock_hk_gxl_lg():
     """
+    乐咕乐股-股息率-恒生指数股息率
+
     接口: stock_hk_gxl_lg
 
     目标地址: https://legulegu.com/stockdata/market/hk/dv/hsi
@@ -79,6 +85,8 @@ def get_stock_hk_gxl_lg():
 @router.get("/stock_a_congestion_lg", operation_id="get_stock_a_congestion_lg")
 def get_stock_a_congestion_lg():
     """
+    乐咕乐股-大盘拥挤度
+
     接口: stock_a_congestion_lg
 
     目标地址: https://legulegu.com/stockdata/ashares-congestion
@@ -103,6 +111,8 @@ def get_stock_a_congestion_lg():
 @router.get("/stock_ebs_lg", operation_id="get_stock_ebs_lg")
 def get_stock_ebs_lg():
     """
+    乐咕乐股-股债利差
+
     接口: stock_ebs_lg
 
     目标地址: https://legulegu.com/stockdata/equity-bond-spread
@@ -122,6 +132,8 @@ def get_stock_ebs_lg():
 @router.get("/stock_buffett_index_lg", operation_id="get_stock_buffett_index_lg")
 def get_stock_buffett_index_lg():
     """
+    乐估乐股-底部研究-巴菲特指标
+
     接口: stock_buffett_index_lg
 
     目标地址: https://legulegu.com/stockdata/marketcap-gdp
@@ -140,6 +152,8 @@ def get_stock_buffett_index_lg():
 @router.get("/stock_a_ttm_lyr", operation_id="get_stock_a_ttm_lyr")
 def get_stock_a_ttm_lyr():
     """
+    乐咕乐股-A 股等权重市盈率与中位数市盈率
+
     接口: stock_a_ttm_lyr
 
     目标地址: https://www.legulegu.com/stockdata/a-ttm-lyr
@@ -177,6 +191,8 @@ def get_stock_a_ttm_lyr():
 @router.get("/stock_a_all_pb", operation_id="get_stock_a_all_pb")
 def get_stock_a_all_pb():
     """
+    乐咕乐股-A 股等权重与中位数市净率
+
     接口: stock_a_all_pb
 
     目标地址: https://www.legulegu.com/stockdata/all-pb
@@ -213,6 +229,8 @@ class LeGuZhuBanSymbolRequest(BaseModel):
 @router.post("/stock_market_pe_lg", operation_id="post_stock_market_pe_lg")
 async def post_stock_market_pe_lg(request: LeGuZhuBanSymbolRequest):
     """
+    乐咕乐股-主板市盈率
+
     接口: stock_market_pe_lg
 
     目标地址: https://legulegu.com/stockdata/shanghaiPE
@@ -238,6 +256,8 @@ class LeGuZhiShuSymbolRequest(BaseModel):
 @router.post("/stock_index_pe_lg", operation_id="post_stock_index_pe_lg")
 async def post_stock_index_pe_lg(request: LeGuZhiShuSymbolRequest):
     """
+    乐咕乐股-指数市盈率
+
     接口: stock_index_pe_lg
 
     目标地址: https://legulegu.com/stockdata/sz50-ttm-lyr
@@ -257,6 +277,8 @@ async def post_stock_index_pe_lg(request: LeGuZhiShuSymbolRequest):
 @router.post("/stock_market_pb_lg", operation_id="post_stock_market_pb_lg")
 async def post_stock_market_pb_lg(request: LeGuZhuBanSymbolRequest):
     """
+    乐咕乐股-主板市净率
+
     接口: stock_market_pb_lg
 
     目标地址: https://legulegu.com/stockdata/shanghaiPB
@@ -276,6 +298,8 @@ async def post_stock_market_pb_lg(request: LeGuZhuBanSymbolRequest):
 @router.post("/stock_index_pb_lg", operation_id="post_stock_index_pb_lg")
 async def post_stock_index_pb_lg(request: LeGuZhiShuSymbolRequest):
     """
+    乐咕乐股-指数市净率
+
     接口: stock_index_pb_lg
 
     目标地址: https://legulegu.com/stockdata/sz50-pb
@@ -302,6 +326,8 @@ class SymbolIndicatorPeriodRequest(BaseModel):
 @router.post("/stock_zh_valuation_baidu", operation_id="post_stock_zh_valuation_baidu")
 async def post_stock_zh_valuation_baidu(request: SymbolIndicatorPeriodRequest):
     """
+    百度股市通-A 股-财务报表-估值数据
+
     接口: stock_zh_valuation_baidu
 
     目标地址: https://gushitong.baidu.com/stock/ab-002044

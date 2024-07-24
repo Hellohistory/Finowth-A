@@ -17,6 +17,8 @@ class JuChaoSymbolDateRangeRequest(BaseModel):
 @router.post("/stock_cg_guarantee_cninfo", operation_id="post_stock_cg_guarantee_cninfo")
 async def post_stock_cg_guarantee_cninfo(request: JuChaoSymbolDateRangeRequest):
     """
+    巨潮资讯-公司治理-对外担保
+
     接口: stock_cg_guarantee_cninfo
 
     目标地址: https://webapi.cninfo.com.cn/#/thematicStatistics
@@ -38,6 +40,8 @@ async def post_stock_cg_guarantee_cninfo(request: JuChaoSymbolDateRangeRequest):
 @router.post("/stock_cg_lawsuit_cninfo", operation_id="post_stock_cg_lawsuit_cninfo")
 async def post_stock_cg_lawsuit_cninfo(request: JuChaoSymbolDateRangeRequest):
     """
+    巨潮资讯-公司治理-公司诉讼
+
     接口: stock_cg_lawsuit_cninfo
 
     目标地址: http://webapi.cninfo.com.cn/#/thematicStatistics
@@ -63,6 +67,8 @@ class JuChaoDateRequest(BaseModel):
 @router.post("/stock_cg_equity_mortgage_cninfo", operation_id="post_stock_cg_equity_mortgage_cninfo")
 async def post_stock_cg_equity_mortgage_cninfo(request: JuChaoDateRequest):
     """
+    巨潮资讯-公司治理-股权质押
+
     接口: stock_cg_equity_mortgage_cninfo
 
     目标地址: http://webapi.cninfo.com.cn/#/thematicStatistics
@@ -84,15 +90,17 @@ class DongCaiTeSeDateRequest(BaseModel):
     date: str = Field(..., title="输入需要查询月份的最后一天的日期", description="例：20200430")
 
 
-# 东方财富网-数据中心-特色数据-券商业绩月报
+# 东方财富-数据中心-特色数据-券商业绩月报
 @router.post("/stock_qsjy_em", operation_id="post_stock_qsjy_em")
 async def post_stock_qsjy_em(request: DongCaiTeSeDateRequest):
     """
+    东方财富-券商业绩月报
+
     接口: stock_qsjy_em
 
     目标地址: http://data.eastmoney.com/other/qsjy.html
 
-    描述: 东方财富网-数据中心-特色数据-券商业绩月报
+    描述: 东方财富-数据中心-特色数据-券商业绩月报
 
     限量: 单次获取所有数据, 数据从 201006-202007, 月频率
     """
@@ -113,6 +121,8 @@ class JuChaoSymbolRequest(BaseModel):
 @router.post("/stock_hold_control_cninfo", operation_id="post_stock_hold_control_cninfo")
 async def post_stock_hold_control_cninfo(request: JuChaoSymbolRequest):
     """
+    巨潮资讯-股东股本-实际控制人持股变动
+
     接口: stock_hold_control_cninfo
 
     目标地址: http://webapi.cninfo.com.cn/#/thematicStatistics

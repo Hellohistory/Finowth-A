@@ -7,15 +7,17 @@ from Akshare_Data.utility_function import sanitize_data
 router = APIRouter()
 
 
-# 东方财富网-数据中心-特色数据-千股千评
+# 东方财富-数据中心-特色数据-千股千评
 @router.get("/stock_comment_em", operation_id="get_stock_comment_em")
 def get_stock_comment_em():
     """
+    东方财富-千股千评
+
     接口: stock_comment_em
 
     目标地址: https://data.eastmoney.com/stockcomment/
 
-    描述: 东方财富网-数据中心-特色数据-千股千评
+    描述: 东方财富-数据中心-特色数据-千股千评
 
     限量: 单次获取所有数据
     """
@@ -32,16 +34,18 @@ class SymbolRequest(BaseModel):
     symbol: str = Field(..., title="指定个股代码", description="例：000066")
 
 
-# 东方财富网-数据中心-特色数据-千股千评-主力控盘-机构参与度
+# 东方财富-数据中心-特色数据-千股千评-主力控盘-机构参与度
 @router.post("/stock_comment_detail_zlkp_jgcyd_em",
              operation_id="post_stock_comment_detail_zlkp_jgcyd_em")
 async def post_stock_comment_detail_zlkp_jgcyd_em(request: SymbolRequest):
     """
+    东方财富-千股千评-主力控盘-机构参与度
+
     接口: stock_comment_detail_zlkp_jgcyd_em
 
     目标地址: https://data.eastmoney.com/stockcomment/stock/600000.html
 
-    描述: 东方财富网-数据中心-特色数据-千股千评-主力控盘-机构参与度
+    描述: 东方财富-数据中心-特色数据-千股千评-主力控盘-机构参与度
 
     限量: 单次获取所有数据
     """
@@ -52,16 +56,18 @@ async def post_stock_comment_detail_zlkp_jgcyd_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-数据中心-特色数据-千股千评-综合评价-历史评分
+# 东方财富-数据中心-特色数据-千股千评-综合评价-历史评分
 @router.post("/stock_comment_detail_zhpj_lspf_em",
              operation_id="post_stock_comment_detail_zhpj_lspf_em")
 async def post_stock_comment_detail_zhpj_lspf_em(request: SymbolRequest):
     """
+    东方财富-千股千评-综合评价-历史评分
+
     接口: stock_comment_detail_zhpj_lspf_em
 
     目标地址: https://data.eastmoney.com/stockcomment/stock/600000.html
 
-    描述: 东方财富网-数据中心-特色数据-千股千评-综合评价-历史评分
+    描述: 东方财富-数据中心-特色数据-千股千评-综合评价-历史评分
 
     限量: 单次获取所有数据
     """
@@ -72,16 +78,18 @@ async def post_stock_comment_detail_zhpj_lspf_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-数据中心-特色数据-千股千评-市场热度-用户关注指数
+# 东方财富-数据中心-特色数据-千股千评-市场热度-用户关注指数
 @router.post("/stock_comment_detail_scrd_focus_em",
              operation_id="post_stock_comment_detail_scrd_focus_em")
 async def post_stock_comment_detail_scrd_focus_em(request: SymbolRequest):
     """
+    东方财富-千股千评-市场热度-用户关注指数
+
     接口: stock_comment_detail_scrd_focus_em
 
     目标地址: https://data.eastmoney.com/stockcomment/stock/600000.html
 
-    描述: 东方财富网-数据中心-特色数据-千股千评-市场热度-用户关注指数
+    描述: 东方财富-数据中心-特色数据-千股千评-市场热度-用户关注指数
 
     限量: 单次获取所有数据
     """
@@ -92,16 +100,18 @@ async def post_stock_comment_detail_scrd_focus_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-数据中心-特色数据-千股千评-市场热度-市场参与意愿
+# 东方财富-数据中心-特色数据-千股千评-市场热度-市场参与意愿
 @router.post("/stock_comment_detail_scrd_desire_em",
              operation_id="post_stock_comment_detail_scrd_desire_em")
 async def post_stock_comment_detail_scrd_desire_em(request: SymbolRequest):
     """
+    东方财富-千股千评-市场热度-市场参与意愿
+
     接口: stock_comment_detail_scrd_desire_em
 
     目标地址: https://data.eastmoney.com/stockcomment/stock/600000.html
 
-    描述: 东方财富网-数据中心-特色数据-千股千评-市场热度-市场参与意愿
+    描述: 东方财富-数据中心-特色数据-千股千评-市场热度-市场参与意愿
 
     限量: 单次获取所有数据
     """
@@ -112,16 +122,18 @@ async def post_stock_comment_detail_scrd_desire_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-数据中心-特色数据-千股千评-市场热度-日度市场参与意愿
+# 东方财富-数据中心-特色数据-千股千评-市场热度-日度市场参与意愿
 @router.post("/stock_comment_detail_scrd_desire_daily_em",
              operation_id="post_stock_comment_detail_scrd_desire_daily_em")
 async def post_stock_comment_detail_scrd_desire_daily_em(request: SymbolRequest):
     """
+    东方财富-千股千评-市场热度-日度市场参与意愿
+
     接口: stock_comment_detail_scrd_desire_daily_em
 
     目标地址: https://data.eastmoney.com/stockcomment/stock/600000.html
 
-    描述: 东方财富网-数据中心-特色数据-千股千评-市场热度-日度市场参与意愿
+    描述: 东方财富-数据中心-特色数据-千股千评-市场热度-日度市场参与意愿
 
     限量: 单次获取所有数据
     """
@@ -133,16 +145,18 @@ async def post_stock_comment_detail_scrd_desire_daily_em(request: SymbolRequest)
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-数据中心-特色数据-千股千评-市场热度-市场成本
+# 东方财富-数据中心-特色数据-千股千评-市场热度-市场成本
 @router.post("/stock_comment_detail_scrd_cost_em",
              operation_id="post_stock_comment_detail_scrd_cost_em")
 async def post_stock_comment_detail_scrd_cost_em(request: SymbolRequest):
     """
+    东方财富-千股千评-市场热度-市场成本
+
     接口: stock_comment_detail_scrd_cost_em
 
     目标地址: https://data.eastmoney.com/stockcomment/stock/600000.html
 
-    描述: 东方财富网-数据中心-特色数据-千股千评-市场热度-市场成本
+    描述: 东方财富-数据中心-特色数据-千股千评-市场热度-市场成本
 
     限量: 单次获取所有数据
     """

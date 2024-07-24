@@ -7,10 +7,12 @@ from Akshare_Data.utility_function import sanitize_data
 router = APIRouter()
 
 
-# 东方财富网-港股-实时行情
+# 东方财富-港股-实时行情
 @router.get("/stock_hk_spot_em", operation_id="get_stock_hk_spot_em")
 def get_stock_hk_spot_em():
     """
+    东方财富-港股-实时行情
+
     接口: stock_hk_spot_em
 
     目标地址: http://quote.eastmoney.com/center/gridlist.html#hk_stocks
@@ -32,6 +34,8 @@ def get_stock_hk_spot_em():
 @router.get("/stock_hk_main_board_spot_em", operation_id="get_stock_hk_main_board_spot_em")
 def get_stock_hk_main_board_spot_em():
     """
+    东方财富-港股主板实时行情数据
+
     接口: stock_hk_main_board_spot_em
 
     目标地址: https://quote.eastmoney.com/center/gridlist.html#hk_mainboard
@@ -49,16 +53,19 @@ def get_stock_hk_main_board_spot_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 新浪财经-港股-历史行情数据
 @router.get("/stock_hk_spot", operation_id="get_stock_hk_spot")
 def get_stock_hk_spot():
     """
+    新浪财经-港股-历史行情数据
+
     港股-实时行情数据是从新浪财经获取的数据, 更新频率为实时, 由于新浪服务器因素行情延时 15 分钟
 
     接口: stock_hk_spot
 
     目标地址: http://vip.stock.finance.sina.com.cn/mkt/#qbgg_hk
 
-    描述: 获取所有港股的实时行情数据 15 分钟延时
+    描述: 数据源：新浪财经，获取所有港股的实时行情数据 15 分钟延时
 
     限量: 单次返回当前时间戳的所有港股的数据
     """
@@ -105,15 +112,17 @@ class DongCaiHKStockMinuteRequest(BaseModel):
     end_date: str = Field(..., title="结束时间", description="2024-07-15 09:32:00，默认返回所有数据")
 
 
-# 东方财富网-港股-每日分时行情
+# 东方财富-港股-每日分时行情
 @router.post("/stock_hk_hist_min_em", operation_id="post_stock_zh_ah_spot")
 async def post_stock_hk_hist_min_em(request: DongCaiHKStockMinuteRequest):
     """
+    东方财富-港股-每日分时行情
+
     接口: stock_hk_hist_min_em
 
     目标地址: http://quote.eastmoney.com/hk/00948.html
 
-    描述: 东方财富网-行情首页-港股-每日分时行情
+    描述: 东方财富-行情首页-港股-每日分时行情
 
     限量: 单次返回指定上市公司最近 5 个交易日分钟数据, 注意港股有延时
     """
@@ -141,10 +150,12 @@ class DongCaiHKStockHistoryRequest(BaseModel):
                         description="默认返回不复权的数据，即此参数为空; qfq: 返回前复权后的数据; hfq: 返回后复权后的数据")
 
 
-# 东方财富网-港股-历史行情数据
+# 东方财富-港股-历史行情数据
 @router.post("/stock_hk_hist", operation_id="post_stock_hk_hist")
 async def post_stock_hk_hist(request: DongCaiHKStockHistoryRequest):
     """
+    东方财富-港股-历史行情数据
+
     接口: stock_hk_hist
 
     目标地址: https://quote.eastmoney.com/hk/08367.html
@@ -179,6 +190,8 @@ class StockDailyRequest(BaseModel):
 @router.post("/stock_hk_daily", operation_id="post_stock_hk_daily")
 async def post_stock_hk_daily(request: StockDailyRequest):
     """
+    新浪财经-港股-历史行情数据
+
     接口: stock_hk_daily
 
     目标地址: http://stock.finance.sina.com.cn/hkstock/quotes/01336.html(个例)

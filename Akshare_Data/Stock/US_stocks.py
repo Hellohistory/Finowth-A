@@ -7,15 +7,17 @@ from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
 router = APIRouter()
 
 
-# 东方财富网-美股-实时行情
+# 东方财富-美股-实时行情
 @router.get("/stock_us_spot_em", operation_id="get_stock_us_spot_em")
 def get_stock_us_spot_em():
     """
+    东方财富-美股-实时行情
+
     接口: stock_us_spot_em
 
     目标地址: https://quote.eastmoney.com/center/gridlist.html#us_stocks
 
-    描述: 东方财富网-美股-实时行情
+    描述: 东方财富-美股-实时行情
 
     限量: 单次返回美股所有上市公司的实时行情数据
     """
@@ -33,6 +35,8 @@ def get_stock_us_spot_em():
 @router.get("/stock_us_spot", operation_id="get_stock_us_spot")
 def get_stock_us_spot():
     """
+    新浪财经-美股-实时行情
+
     接口: stock_us_spot
 
     目标地址: https://finance.sina.com.cn/stock/usstock/sector.shtml
@@ -84,17 +88,19 @@ class UStockDayHistoryRequest(BaseModel):
                         description="默认返回不复权的数据，即此参数为空; qfq: 返回前复权后的数据; hfq: 返回后复权后的数据")
 
 
-# 东方财富网-美股-每日行情
+# 东方财富-美股-每日行情
 @router.post("/stock_us_hist", operation_id="post_stock_us_hist")
 async def post_stock_us_hist(request: UStockDayHistoryRequest):
     """
+    东方财富-美股-每日行情
+
     接口: stock_us_hist
 
     目标地址: https://quote.eastmoney.com/us/ENTX.html#fullScreenChart
 
-    描述: 东方财富网-行情-美股-每日行情
+    描述: 东方财富-行情-美股-每日行情
 
-    限量: 单次返回指定上市公司的指定 adjust 后的所有历史行情数据
+    限量: 单次返回指定上市公司的指定复权类型的所有历史行情数据
     """
     try:
         stock_us_hist_df = ak.stock_us_hist(
@@ -118,15 +124,17 @@ class DongCaiUDayMinRequest(BaseModel):
                           description="例2024-07-15 09:32:00，不填写则默认返回所有数据")
 
 
-# 东方财富网-美股-每日分时行情
+# 东方财富-美股-每日分时行情
 @router.post("/stock_us_hist_min_em", operation_id="post_stock_us_hist_min_em")
 async def post_stock_us_hist_min_em(request: DongCaiUDayMinRequest):
     """
+    东方财富-美股-每日分时行情
+
     接口: stock_us_hist_min_em
 
     目标地址: https://quote.eastmoney.com/us/ATER.html
 
-    描述: 东方财富网-行情首页-美股-每日分时行情
+    描述: 东方财富-行情首页-美股-每日分时行情
 
     限量: 单次返回指定上市公司最近 5 个交易日分钟数据, 注意美股数据更新有延时
     """
@@ -144,9 +152,12 @@ class XinLangUStockHistoryRequest(BaseModel):
                         description="默认为空则返回未复权的数据;qfq: 返回前复权后的数据;qfq-factor: 返回前复权因子")
 
 
+# 新浪财经-美股-历史行情
 @router.post("/stock_us_daily", operation_id="post_stock_us_daily")
 async def post_stock_us_daily(request: XinLangUStockHistoryRequest):
     """
+    新浪财经-美股-历史行情
+
     出现500错误待修复
 
     接口: stock_us_daily
@@ -180,6 +191,8 @@ async def post_stock_us_daily(request: XinLangUStockHistoryRequest):
 @router.get("/stock_us_pink_spot_em", operation_id="get_stock_us_pink_spot_em")
 def get_stock_us_pink_spot_em():
     """
+    东方财富-美股粉单市场-实时行情数据
+
     接口: stock_us_pink_spot_em
 
     目标地址: http://quote.eastmoney.com/center/gridlist.html#us_pinksheet
@@ -203,15 +216,17 @@ class USFamouSpot(BaseModel):
                         description="可从'科技类', '金融类', '医药食品类', '媒体类', '汽车能源类', '制造零售类'选择请求")
 
 
-# 美股-知名美股的实时行情数据
+# 东方财富-美股-知名美股-实时行情数据
 @router.post("/stock_us_famous_spot_em", operation_id="post_stock_us_famous_spot_em")
 async def post_stock_us_famous_spot_em(request: USFamouSpot):
     """
+    东方财富-美股-知名美股-实时行情数据
+
     接口: stock_us_famous_spot_em
 
     目标地址: http://quote.eastmoney.com/center/gridlist.html#us_wellknown
 
-    描述: 美股-知名美股的实时行情数据
+    描述: 东方财富-美股-知名美股-实时行情数据
 
     限量: 单次返回指定个股的行情数据
     """
@@ -226,17 +241,17 @@ async def post_stock_us_famous_spot_em(request: USFamouSpot):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 知名港股
+# 东方财富-行情中心-港股市场-知名港股-实时行情数据
 @router.get("/stock_hk_famous_spot_em", operation_id="get_stock_hk_famous_spot_em")
 def get_stock_hk_famous_spot_em():
     """
-    知名港股
+    东方财富-行情中心-港股市场-知名港股-实时行情数据
 
     接口: stock_hk_famous_spot_em
 
     目标地址: https://quote.eastmoney.com/center/gridlist.html#hk_wellknown
 
-    描述: 东方财富网-行情中心-港股市场-知名港股实时行情数据
+    描述: 东方财富-行情中心-港股市场-知名港股-实时行情数据
 
     限量: 单次返回全部行情数据
     """

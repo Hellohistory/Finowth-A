@@ -14,6 +14,8 @@ router = APIRouter()
 @router.get("/stock_sse_summary", operation_id="get_stock_sse_summary")
 async def get_stock_sse_summary():
     """
+    上海证券交易所-股票数据总貌
+
     接口: stock_sse_summary
 
     目标地址: http://www.sse.com.cn/market/stockdata/statistic/
@@ -45,6 +47,8 @@ class DateRequest(BaseModel):
 @router.post("/stock_szse_summary", operation_id="post_stock_szse_summary")
 async def post_stock_szse_summary(request: DateRequest):
     """
+    深圳证券交易所-证券类别统计
+
     接口: stock_szse_summary
 
     目标地址: http://www.szse.cn/market/overview/index.html
@@ -76,9 +80,11 @@ def sanitize_data_sse_deal(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-@router.post("/stock_sse_deal_daily")
-def get_stock_sse_deal_daily(data: SseDealStockDataRequest) -> list[dict]:
+@router.post("/stock_sse_deal_daily", operation_id="post_stock_sse_deal_daily")
+def post_stock_sse_deal_daily(data: SseDealStockDataRequest) -> list[dict]:
     """
+    上海证券交易所-每日概况
+
     接口: stock_sse_deal_daily
 
     目标地址: http://www.sse.com.cn/market/stockdata/overview/day/
@@ -99,12 +105,14 @@ def get_stock_sse_deal_daily(data: SseDealStockDataRequest) -> list[dict]:
 
 class SectorSummaryRequest(BaseModel):
     symbol: str = Field(..., title="指定时间类型", description="可选择'当月', '当年'")
-    ym_date: str = Field(..., title="指定年月", description="例如202203")
+    ym_date: str = Field(..., title="指定年月", description="例：202203")
 
 
 @router.post("/stock_szse_sector_summary", operation_id="post_stock_szse_sector_summary")
 async def post_stock_szse_sector_summary(request: SectorSummaryRequest):
     """
+    深圳证券交易所-股票行业成交
+
     接口: stock_szse_sector_summary
 
     目标地址: http://docs.static.szse.cn/www/market/periodical/month/W020220511355248518608.html
@@ -122,12 +130,14 @@ async def post_stock_szse_sector_summary(request: SectorSummaryRequest):
 
 
 class AreaSummaryRequest(BaseModel):
-    ym_date: str = Field(..., title="指定交易月", description="例如202406")
+    ym_date: str = Field(..., title="指定交易月", description="例：202406")
 
 
 @router.post("/stock_szse_area_summary", operation_id="post_stock_szse_area_summary")
 async def post_stock_szse_area_summary(request: AreaSummaryRequest):
     """
+    深圳证券交易所-地区交易排序
+
     接口: stock_szse_area_summary
 
     目标地址: http://www.szse.cn/market/overview/index.html

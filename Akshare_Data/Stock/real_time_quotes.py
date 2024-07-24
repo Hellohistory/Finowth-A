@@ -16,6 +16,8 @@ class ASymbolRequest(BaseModel):
 @router.post("/stock_individual_spot_xq", operation_id="post_stock_individual_spot_xq")
 async def post_stock_individual_spot_xq(request: ASymbolRequest):
     """
+    实时行情数据-雪球
+
     接口: stock_individual_spot_xq
 
     目标地址: https://xueqiu.com/S/SH513520
@@ -39,6 +41,8 @@ class DongCaiASymbolRequest(BaseModel):
 @router.post("/stock_individual_info_em", operation_id="post_stock_individual_info_em")
 async def post_stock_individual_info_em(request: DongCaiASymbolRequest):
     """
+    东方财富-个股查询
+
     接口: stock_individual_info_em
 
     目标地址: http://quote.eastmoney.com/concept/sh603777.html?from=classic
@@ -58,6 +62,8 @@ async def post_stock_individual_info_em(request: DongCaiASymbolRequest):
 @router.post("/stock_bid_ask_em", operation_id="post_stock_bid_ask_em")
 async def post_stock_bid_ask_em(request: DongCaiASymbolRequest):
     """
+    东方财富-行情报价
+
     接口: stock_bid_ask_em
 
     目标地址: https://quote.eastmoney.com/sz000001.html
@@ -76,11 +82,13 @@ async def post_stock_bid_ask_em(request: DongCaiASymbolRequest):
 @router.get("/stock_zh_a_spot_em", operation_id="get_stock_zh_a_spot_em")
 def get_stock_zh_a_spot_em():
     """
+    东方财富-沪深京 A 股-实时行情数据
+
     接口: stock_zh_a_spot_em
 
     目标地址: https://quote.eastmoney.com/center/gridlist.html#hs_a_board
 
-    描述: 东方财富网-沪深京 A 股-实时行情数据
+    描述: 东方财富-沪深京 A 股-实时行情数据
 
     限量: 单次返回所有沪深京 A 股上市公司的实时行情数据
     """
@@ -107,11 +115,13 @@ def get_stock_zh_a_spot_em():
 @router.get("/stock_sh_a_spot_em", operation_id="get_stock_sh_a_spot_em")
 def get_stock_sh_a_spot_em():
     """
+    东方财富-沪 A 股-实时行情数据
+
     接口: stock_sh_a_spot_em
 
     目标地址: http://quote.eastmoney.com/center/gridlist.html#sh_a_board
 
-    描述: 东方财富网-沪 A 股-实时行情数据
+    描述: 东方财富-沪 A 股-实时行情数据
 
     限量: 单次返回所有沪 A 股上市公司的实时行情数据
     """
@@ -125,15 +135,17 @@ def get_stock_sh_a_spot_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-深 A 股-实时行情数据
+# 东方财富-深 A 股-实时行情数据
 @router.get("/stock_sz_a_spot_em", operation_id="get_stock_sz_a_spot_em")
 def get_stock_sz_a_spot_em():
     """
+    东方财富-深 A 股-实时行情数据
+
     接口: stock_sz_a_spot_em
 
     目标地址: http://quote.eastmoney.com/center/gridlist.html#sz_a_board
 
-    描述: 东方财富网-深 A 股-实时行情数据
+    描述: 东方财富-深 A 股-实时行情数据
 
     限量: 单次返回所有深 A 股上市公司的实时行情数据
     """
@@ -147,15 +159,17 @@ def get_stock_sz_a_spot_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-京 A 股-实时行情数据
+# 东方财富-京 A 股-实时行情数据
 @router.get("/stock_bj_a_spot_em", operation_id="get_stock_bj_a_spot_em")
 def get_stock_bj_a_spot_em():
     """
+    东方财富-京 A 股-实时行情数据
+
     接口: stock_bj_a_spot_em
 
     目标地址: http://quote.eastmoney.com/center/gridlist.html#bj_a_board
 
-    描述: 东方财富网-京 A 股-实时行情数据
+    描述: 东方财富-京 A 股-实时行情数据
 
     限量: 单次返回所有京 A 股上市公司的实时行情数据
     """
@@ -169,15 +183,17 @@ def get_stock_bj_a_spot_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-新股-实时行情数据
+# 东方财富-新股-实时行情数据
 @router.get("/stock_new_a_spot_em", operation_id="get_stock_new_a_spot_em")
 def get_stock_new_a_spot_em():
     """
+    东方财富-新股-实时行情数据
+
     接口: stock_new_a_spot_em
 
     目标地址: http://quote.eastmoney.com/center/gridlist.html#newshares
 
-    描述: 东方财富网-新股-实时行情数据
+    描述: 东方财富-新股-实时行情数据
 
     限量: 单次返回所有新股上市公司的实时行情数据
     """
@@ -191,15 +207,17 @@ def get_stock_new_a_spot_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-创业板-实时行情
+# 东方财富-创业板-实时行情
 @router.get("/stock_cy_a_spot_em", operation_id="get_stock_cy_a_spot_em")
 def get_stock_cy_a_spot_em():
     """
+    东方财富-创业板-实时行情
+
     接口: stock_cy_a_spot_em
 
     目标地址: https://quote.eastmoney.com/center/gridlist.html#gem_board
 
-    描述: 东方财富网-创业板-实时行情
+    描述: 东方财富-创业板-实时行情
 
     限量: 单次返回所有创业板的实时行情数据
     """
@@ -213,15 +231,17 @@ def get_stock_cy_a_spot_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-科创板-实时行情
+# 东方财富-科创板-实时行情
 @router.get("/stock_kc_a_spot_em", operation_id="get_stock_kc_a_spot_em")
 def get_stock_kc_a_spot_em():
     """
+    东方财富-科创板-实时行情
+
     接口: stock_kc_a_spot_em
 
     目标地址: http://quote.eastmoney.com/center/gridlist.html#kcb_board
 
-    描述: 东方财富网-科创板-实时行情
+    描述: 东方财富-科创板-实时行情
 
     限量: 单次返回所有科创板的实时行情数据
     """
@@ -239,6 +259,8 @@ def get_stock_kc_a_spot_em():
 @router.get("/stock_zh_a_spot", operation_id="get_stock_zh_a_spot")
 def get_stock_zh_a_spot():
     """
+    实时行情数据-东财-沪深京 A 股
+
     接口: stock_zh_a_spot
 
     目标地址: https://vip.stock.finance.sina.com.cn/mkt/#hs_a

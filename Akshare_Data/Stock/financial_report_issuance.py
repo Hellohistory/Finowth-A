@@ -15,6 +15,8 @@ class DongCaiNewsSymbolRequest(BaseModel):
 @router.post("/stock_news_em", operation_id="post_stock_news_em")
 async def post_stock_news_em(request: DongCaiNewsSymbolRequest):
     """
+    东方财富指定个股的新闻资讯数据
+
     接口: stock_news_em
 
     目标地址: https://so.eastmoney.com/news/s
@@ -38,6 +40,8 @@ class BaiduDateRequest(BaseModel):
 @router.post("/news_report_time_baidu", operation_id="post_news_report_time_baidu")
 async def post_news_report_time_baidu(request: BaiduDateRequest):
     """
+    百度股市通-财报发行
+
     接口: news_report_time_baidu
 
     目标地址: https://gushitong.baidu.com/calendar
@@ -62,6 +66,8 @@ class AnnualDateRequest(BaseModel):
 @router.post("/stock_yjbb_em", operation_id="post_stock_yjbb_em")
 async def post_stock_yjbb_em(request: AnnualDateRequest):
     """
+    东方财富-年报季报-业绩报表
+
     接口: stock_yjbb_em
 
     目标地址: http://data.eastmoney.com/bbsj/202003/yjbb.html
@@ -83,6 +89,8 @@ async def post_stock_yjbb_em(request: AnnualDateRequest):
 @router.post("/stock_yjkb_em", operation_id="post_stock_yjkb_em")
 async def post_stock_yjkb_em(request: AnnualDateRequest):
     """
+    东方财富-年报季报-业绩快报
+
     接口: stock_yjkb_em
 
     目标地址: https://data.eastmoney.com/bbsj/202003/yjkb.html
@@ -104,6 +112,8 @@ async def post_stock_yjkb_em(request: AnnualDateRequest):
 @router.post("/stock_yjyg_em", operation_id="post_stock_yjyg_em")
 async def post_stock_yjyg_em(request: AnnualDateRequest):
     """
+    东方财富-年报季报-业绩预告
+
     接口: stock_yjyg_em
 
     目标地址: https://data.eastmoney.com/bbsj/202003/yjyg.html
@@ -132,6 +142,8 @@ class DongCaiAnnualSymbolDateRequest(BaseModel):
 @router.post("/stock_yysj_em", operation_id="stock_yysj_em")
 async def post_stock_yysj_em(request: DongCaiAnnualSymbolDateRequest):
     """
+    东方财富-年报季报-预约披露时间
+
     接口: stock_yysj_em
 
     目标地址: https://data.eastmoney.com/bbsj/202003/yysj.html
@@ -158,6 +170,8 @@ class JuChaoMarketPeriodRequest(BaseModel):
 @router.post("/stock_report_disclosure", operation_id="post_stock_report_disclosure")
 async def post_stock_report_disclosure(request: JuChaoMarketPeriodRequest):
     """
+    巨潮资讯-预约披露的数据
+
     接口: stock_report_disclosure
 
     目标地址: http://www.cninfo.com.cn/new/commonUrl?url=data/yypl
@@ -194,6 +208,8 @@ class JuChaoDisclosureRequest(BaseModel):
              operation_id="post_stock_zh_a_disclosure_report_cninfo")
 async def post_stock_zh_a_disclosure_report_cninfo(request: JuChaoDisclosureRequest):
     """
+    巨潮资讯-信息披露公告-沪深京
+
     接口: stock_zh_a_disclosure_report_cninfo
 
     目标地址: http://www.cninfo.com.cn/new/commonUrl/pageOfSearch?url=disclosure/list/search
@@ -228,6 +244,8 @@ class JuChaoSymbolDateRangeRequest(BaseModel):
              operation_id="post_stock_zh_a_disclosure_relation_cninfo")
 async def post_stock_zh_a_disclosure_relation_cninfo(request: JuChaoSymbolDateRangeRequest):
     """
+    巨潮资讯-信息披露调研-沪深京
+
     接口: stock_zh_a_disclosure_relation_cninfo
 
     目标地址: http://www.cninfo.com.cn/new/commonUrl/pageOfSearch?url=disclosure/list/search
@@ -255,6 +273,8 @@ class JuChaoDataSymbolRequest(BaseModel):
 @router.post("/stock_industry_category_cninfo", operation_id="post_stock_industry_category_cninfo")
 async def post_stock_industry_category_cninfo(request: JuChaoDataSymbolRequest):
     """
+    巨潮资讯-行业分类数据
+
     接口: stock_industry_category_cninfo
 
     目标地址: https://webapi.cninfo.com.cn/#/apiDoc
@@ -280,6 +300,8 @@ class JuChaoDataSymbolDateRangeRequest(BaseModel):
 @router.post("/stock_industry_change_cninfo", operation_id="post_stock_industry_change_cninfo")
 async def post_stock_industry_change_cninfo(request: JuChaoDataSymbolDateRangeRequest):
     """
+    巨潮资讯-上市公司行业归属的变动情况
+
     接口: stock_industry_change_cninfo
 
     目标地址: http://webapi.cninfo.com.cn/#/apiDoc
@@ -289,14 +311,11 @@ async def post_stock_industry_change_cninfo(request: JuChaoDataSymbolDateRangeRe
     限量: 单次获取指定个股在指定起始时间和终止时间之间的上市公司行业归属的变动情况数据
     """
     try:
-        # 获取数据
         stock_industry_change_cninfo_df = ak.stock_industry_change_cninfo(symbol=request.symbol,
                                                                           start_date=request.start_date,
                                                                           end_date=request.end_date)
-        # 清洗数据
         sanitized_df = sanitize_data_pandas(stock_industry_change_cninfo_df)
 
-        # 返回清洗后的数据
         return sanitized_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -306,6 +325,8 @@ async def post_stock_industry_change_cninfo(request: JuChaoDataSymbolDateRangeRe
 @router.post("/stock_share_change_cninfo", operation_id="post_stock_share_change_cninfo")
 async def post_stock_share_change_cninfo(request: JuChaoDataSymbolDateRangeRequest):
     """
+    巨潮资讯-公司股本变动
+
     接口: stock_share_change_cninfo
 
     目标地址: http://webapi.cninfo.com.cn/#/apiDoc
@@ -331,6 +352,8 @@ async def post_stock_share_change_cninfo(request: JuChaoDataSymbolDateRangeReque
 @router.post("/stock_allotment_cninfo", operation_id="post_stock_allotment_cninfo")
 async def post_stock_allotment_cninfo(request: JuChaoDataSymbolDateRangeRequest):
     """
+    巨潮资讯-配股实施方案
+
     接口: stock_allotment_cninfo
 
     目标地址: http://webapi.cninfo.com.cn/#/dataBrowse
@@ -342,10 +365,8 @@ async def post_stock_allotment_cninfo(request: JuChaoDataSymbolDateRangeRequest)
     try:
         stock_allotment_cninfo_df = ak.stock_allotment_cninfo(symbol=request.symbol, start_date=request.start_date,
                                                               end_date=request.end_date)
-        # 清洗数据
         sanitized_df = sanitize_data_pandas(stock_allotment_cninfo_df)
 
-        # 返回清洗后的数据
         return sanitized_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -360,6 +381,8 @@ class DongCaiBalanceSheetRequest(BaseModel):
 @router.post("/stock_zcfz_em", operation_id="post_stock_zcfz_em")
 async def post_stock_zcfz_em(request: DongCaiBalanceSheetRequest):
     """
+    东方财富-年报季报-业绩快报-资产负债表
+
     接口: stock_zcfz_em
 
     目标地址: https://data.eastmoney.com/bbsj/202003/zcfz.html
@@ -385,6 +408,8 @@ class DongCaiIncomeStatementDateRequest(BaseModel):
 @router.post("/stock_lrb_em", operation_id="post_stock_lrb_em")
 async def post_stock_lrb_em(request: DongCaiIncomeStatementDateRequest):
     """
+    东方财富-年报季报-业绩快报-利润表
+
     接口: stock_lrb_em
 
     目标地址: http://data.eastmoney.com/bbsj/202003/lrb.html
@@ -406,6 +431,8 @@ async def post_stock_lrb_em(request: DongCaiIncomeStatementDateRequest):
 @router.post("/stock_xjll_em", operation_id="post_stock_xjll_em")
 async def post_stock_xjll_em(request: DongCaiBalanceSheetRequest):
     """
+    东方财富-年报季报-业绩快报-现金流量表
+
     接口: stock_xjll_em
 
     目标地址: http://data.eastmoney.com/bbsj/202003/xjll.html

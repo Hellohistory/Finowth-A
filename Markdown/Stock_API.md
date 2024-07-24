@@ -1404,7 +1404,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/center/gridlist.html#hs_a_board  
   
-描述: 东方财富网-沪深京 A 股-实时行情数据  
+描述: 东方财富-沪深京 A 股-实时行情数据  
   
 限量: 单次返回所有沪深京 A 股上市公司的实时行情数据  
 
@@ -1496,7 +1496,7 @@ else:
   
 目标地址: http://quote.eastmoney.com/center/gridlist.html#sh_a_board  
   
-描述: 东方财富网-沪 A 股-实时行情数据  
+描述: 东方财富-沪 A 股-实时行情数据  
   
 限量: 单次返回所有沪 A 股上市公司的实时行情数据  
 
@@ -1589,7 +1589,7 @@ else:
   
 目标地址: http://quote.eastmoney.com/center/gridlist.html#sz_a_board  
   
-描述: 东方财富网-深 A 股-实时行情数据  
+描述: 东方财富-深 A 股-实时行情数据  
   
 限量: 单次返回所有深 A 股上市公司的实时行情数据
 
@@ -1683,7 +1683,7 @@ else:
   
 目标地址: http://quote.eastmoney.com/center/gridlist.html#bj_a_board  
   
-描述: 东方财富网-京 A 股-实时行情数据  
+描述: 东方财富-京 A 股-实时行情数据  
   
 限量: 单次返回所有京 A 股上市公司的实时行情数据  
 
@@ -1776,7 +1776,7 @@ else:
   
 目标地址: http://quote.eastmoney.com/center/gridlist.html#newshares  
   
-描述: 东方财富网-新股-实时行情数据  
+描述: 东方财富-新股-实时行情数据  
   
 限量: 单次返回所有新股上市公司的实时行情数据  
 
@@ -1871,7 +1871,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/center/gridlist.html#gem_board  
   
-描述: 东方财富网-创业板-实时行情  
+描述: 东方财富-创业板-实时行情  
   
 限量: 单次返回所有创业板的实时行情数据
 
@@ -1964,7 +1964,7 @@ else:
   
 目标地址: http://quote.eastmoney.com/center/gridlist.html#kcb_board  
   
-描述: 东方财富网-科创板-实时行情  
+描述: 东方财富-科创板-实时行情  
   
 限量: 单次返回所有科创板的实时行情数据
 
@@ -3195,7 +3195,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/concept/sh603777.html  
   
-描述: 东方财富网-行情首页-沪深京 A 股-每日分时行情; 该接口只能获取近期的分时数据，注意时间周期的设置  
+描述: 东方财富-行情首页-沪深京 A 股-每日分时行情; 该接口只能获取近期的分时数据，注意时间周期的设置  
   
 限量: 单次返回指定股票、频率、复权调整和时间区间的分时数据, 其中 1 分钟数据只返回近 5 个交易日数据且不复权  
 
@@ -3673,7 +3673,7 @@ else:
   
 目标地址: http://quote.eastmoney.com/center/gridlist.html#hs_b_board  
   
-描述: 东方财富网-实时行情数据  
+描述: 东方财富-实时行情数据  
   
 限量: 单次返回所有 B 股上市公司的实时行情数据  
 
@@ -4105,7 +4105,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gsrl/gsdt.html  
   
-描述: 东方财富网-数据中心-股市日历-公司动态  
+描述: 东方财富-数据中心-股市日历-公司动态  
   
 限量: 单次返回指定交易日的数据  
 
@@ -4167,7 +4167,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/center/gridlist.html#st_board  
   
-描述: 东方财富网-行情中心-沪深个股-风险警示板  
+描述: 东方财富-行情中心-沪深个股-风险警示板  
   
 限量: 单次返回当前交易日风险警示板的所有股票的行情数据  
 
@@ -4248,7 +4248,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/center/gridlist.html#newshares  
   
-描述: 东方财富网-行情中心-沪深个股-新股  
+描述: 东方财富-行情中心-沪深个股-新股  
   
 限量: 单次返回当前交易日新股板块的所有股票的行情数据
 
@@ -4385,7 +4385,7 @@ print(stock_ipo_benefit_ths_df)
   
 目标地址: http://quote.eastmoney.com/center/gridlist.html#staq_net_board  
   
-描述: 东方财富网-行情中心-沪深个股-两网及退市  
+描述: 东方财富-行情中心-沪深个股-两网及退市  
   
 限量: 单次返回当前交易日两网及退市的所有股票的行情数据
 
@@ -4866,7 +4866,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/center/gridlist.html#us_stocks  
   
-描述: 东方财富网-美股-实时行情  
+描述: 东方财富-美股-实时行情  
   
 限量: 单次返回美股所有上市公司的实时行情数据  
 
@@ -4991,7 +4991,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/us/ENTX.html#fullScreenChart  
   
-描述: 东方财富网-行情-美股-每日行情  
+描述: 东方财富-行情-美股-每日行情  
   
 限量: 单次返回指定上市公司的指定 adjust 后的所有历史行情数据  
 
@@ -5044,7 +5044,7 @@ print(stock_us_hist_df)
   
 目标地址: https://quote.eastmoney.com/us/ATER.html  
   
-描述: 东方财富网-行情首页-美股-每日分时行情  
+描述: 东方财富-行情首页-美股-每日分时行情  
   
 限量: 单次返回指定上市公司最近 5 个交易日分钟数据, 注意美股数据更新有延时  
   
@@ -5530,7 +5530,7 @@ else:
   
 目标地址: http://quote.eastmoney.com/hk/00948.html  
   
-描述: 东方财富网-行情首页-港股-每日分时行情  
+描述: 东方财富-行情首页-港股-每日分时行情  
   
 限量: 单次返回指定上市公司最近 5 个交易日分钟数据, 注意港股有延时  
 
@@ -5901,7 +5901,7 @@ print(stock_hk_daily_hfq_factor_df)
   
 目标地址: http://data.eastmoney.com/jgdy/tj.html  
   
-描述: 东方财富网-数据中心-特色数据-机构调研-机构调研统计  
+描述: 东方财富-数据中心-特色数据-机构调研-机构调研统计  
   
 限量: 单次返回所有历史数据  
 
@@ -5976,7 +5976,7 @@ else:
   
 目标地址: http://data.eastmoney.com/jgdy/xx.html  
   
-描述: 东方财富网-数据中心-特色数据-机构调研-机构调研详细  
+描述: 东方财富-数据中心-特色数据-机构调研-机构调研详细  
   
 限量: 单次所有历史数据, 由于数据量比较大需要等待一定时间  
 
@@ -6093,7 +6093,7 @@ else:
   
 目标地址: https://emweb.securities.eastmoney.com/PC_HSF10/BusinessAnalysis/Index?type=web&code=SH688041#  
   
-描述: 东方财富网-个股-主营构成  
+描述: 东方财富-个股-主营构成  
   
 限量: 单次返回所有历史数据  
 
@@ -6296,7 +6296,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gpzy/marketProfile.aspx  
   
-描述: 东方财富网-数据中心-特色数据-股权质押-股权质押市场概况  
+描述: 东方财富-数据中心-特色数据-股权质押-股权质押市场概况  
   
 限量: 单次所有历史数据, 由于数据量比较大需要等待一定时间
 
@@ -6359,7 +6359,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gpzy/pledgeRatio.aspx  
   
-描述: 东方财富网-数据中心-特色数据-股权质押-上市公司质押比例  
+描述: 东方财富-数据中心-特色数据-股权质押-上市公司质押比例  
   
 限量: 单次返回指定交易日的所有历史数据; 其中的交易日需要根据网站提供的为准; 请访问 http://data.eastmoney.com/gpzy/pledgeRatio.aspx 查询具体交易日
 
@@ -6435,7 +6435,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gpzy/pledgeDetail.aspx  
   
-描述: 东方财富网-数据中心-特色数据-股权质押-重要股东股权质押明细
+描述: 东方财富-数据中心-特色数据-股权质押-重要股东股权质押明细
   
 限量: 单次所有历史数据, 由于数据量比较大需要等待一定时间，一定时间未返回内容属正常现象，请稍作等待
 
@@ -6508,7 +6508,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gpzy/distributeStatistics.aspx  
   
-描述: 东方财富网-数据中心-特色数据-股权质押-质押机构分布统计-证券公司  
+描述: 东方财富-数据中心-特色数据-股权质押-质押机构分布统计-证券公司  
   
 限量: 单次返回当前时点所有历史数据
 
@@ -6571,7 +6571,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gpzy/distributeStatistics.aspx  
   
-描述: 东方财富网-数据中心-特色数据-股权质押-质押机构分布统计-银行  
+描述: 东方财富-数据中心-特色数据-股权质押-质押机构分布统计-银行  
   
 限量: 单次返回当前时点所有历史数据
 
@@ -6634,7 +6634,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gpzy/industryData.aspx  
   
-描述: 东方财富网-数据中心-特色数据-股权质押-上市公司质押比例-行业数据  
+描述: 东方财富-数据中心-特色数据-股权质押-上市公司质押比例-行业数据  
   
 限量: 单次返回所有历史数据
 
@@ -6698,7 +6698,7 @@ else:
   
 目标地址:  https://data.eastmoney.com/sy/scgk.html  
   
-描述: 东方财富网-数据中心-特色数据-商誉-A股商誉市场概况  
+描述: 东方财富-数据中心-特色数据-商誉-A股商誉市场概况  
   
 限量: 单次所有历史数据
 
@@ -6761,7 +6761,7 @@ else:
   
 目标地址: https://data.eastmoney.com/sy/yqlist.html  
   
-描述: 东方财富网-数据中心-特色数据-商誉-商誉减值预期明细  
+描述: 东方财富-数据中心-特色数据-商誉-商誉减值预期明细  
   
 限量: 单次所有历史数据
 
@@ -6840,7 +6840,7 @@ else:
   
 目标地址: https://data.eastmoney.com/sy/jzlist.html  
   
-描述: 东方财富网-数据中心-特色数据-商誉-个股商誉减值明细  
+描述: 东方财富-数据中心-特色数据-商誉-个股商誉减值明细  
   
 限量: 单次返回所有历史数据
 
@@ -6913,7 +6913,7 @@ else:
   
 目标地址: https://data.eastmoney.com/sy/list.html  
   
-描述: 东方财富网-数据中心-特色数据-商誉-个股商誉明细  
+描述: 东方财富-数据中心-特色数据-商誉-个股商誉明细  
   
 限量: 单次返回所有历史数据  
 
@@ -6966,7 +6966,7 @@ print(stock_sy_em_df)
   
 目标地址: https://data.eastmoney.com/sy/hylist.html  
   
-描述: 东方财富网-数据中心-特色数据-商誉-行业商誉  
+描述: 东方财富-数据中心-特色数据-商誉-行业商誉  
   
 限量: 单次返回所有历史数据 
 
@@ -7030,7 +7030,7 @@ else:
   
 目标地址: https://data.eastmoney.com/cjsj/gpkhsj.html  
   
-描述: 东方财富网-数据中心-特色数据-股票账户统计  
+描述: 东方财富-数据中心-特色数据-股票账户统计  
   
 限量: 单次返回从 201504 开始 202308 的所有历史数据
 
@@ -7102,7 +7102,7 @@ else:
   
 目标地址: https://data.eastmoney.com/invest/invest/list.html  
   
-描述: 东方财富网-数据中心-研究报告-东方财富分析师指数  
+描述: 东方财富-数据中心-研究报告-东方财富分析师指数  
   
 限量: 单次获取指定年份的所有数据  
 
@@ -7184,7 +7184,7 @@ else:
   
 目标地址: https://data.eastmoney.com/invest/invest/11000257131.html  
   
-描述: 东方财富网-数据中心-研究报告-东方财富分析师指数-分析师详情  
+描述: 东方财富-数据中心-研究报告-东方财富分析师指数-分析师详情  
   
 限量: 单次获取指定 indicator 指定的数据  
 
@@ -7337,7 +7337,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stockcomment/  
   
-描述: 东方财富网-数据中心-特色数据-千股千评  
+描述: 东方财富-数据中心-特色数据-千股千评  
   
 限量: 单次获取所有数据
 
@@ -7415,7 +7415,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stockcomment/stock/600000.html  
   
-描述: 东方财富网-数据中心-特色数据-千股千评-主力控盘-机构参与度  
+描述: 东方财富-数据中心-特色数据-千股千评-主力控盘-机构参与度  
   
 限量: 单次获取所有数据
 
@@ -7471,7 +7471,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stockcomment/stock/600000.html  
   
-描述: 东方财富网-数据中心-特色数据-千股千评-综合评价-历史评分  
+描述: 东方财富-数据中心-特色数据-千股千评-综合评价-历史评分  
   
 限量: 单次获取所有数据
 
@@ -7529,7 +7529,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stockcomment/stock/600000.html  
   
-描述: 东方财富网-数据中心-特色数据-千股千评-市场热度-用户关注指数  
+描述: 东方财富-数据中心-特色数据-千股千评-市场热度-用户关注指数  
   
 限量: 单次获取所有数据
 
@@ -7585,7 +7585,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stockcomment/stock/600000.html  
   
-描述: 东方财富网-数据中心-特色数据-千股千评-市场热度-市场参与意愿  
+描述: 东方财富-数据中心-特色数据-千股千评-市场热度-市场参与意愿  
   
 限量: 单次获取所有数据
 
@@ -7643,7 +7643,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stockcomment/stock/600000.html  
   
-描述: 东方财富网-数据中心-特色数据-千股千评-市场热度-日度市场参与意愿  
+描述: 东方财富-数据中心-特色数据-千股千评-市场热度-日度市场参与意愿  
   
 限量: 单次获取所有数据
 
@@ -7699,7 +7699,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stockcomment/stock/600000.html  
   
-描述: 东方财富网-数据中心-特色数据-千股千评-市场热度-市场成本  
+描述: 东方财富-数据中心-特色数据-千股千评-市场热度-市场成本  
   
 限量: 单次获取所有数据
 
@@ -7755,7 +7755,7 @@ else:
   
 目标地址: https://data.eastmoney.com/hsgt/index.html#lssj  
   
-描述: 东方财富网-数据中心-资金流向-沪深港通资金流向  
+描述: 东方财富-数据中心-资金流向-沪深港通资金流向  
   
 限量: 单次获取沪深港通资金流向数据
 
@@ -8051,7 +8051,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/center/gridlist.html#hk_components  
   
-描述: 东方财富网-行情中心-港股市场-港股通成份股  
+描述: 东方财富-行情中心-港股市场-港股通成份股  
   
 限量: 单次获取所有港股通成份股数据  
 
@@ -8224,7 +8224,7 @@ else:
   
 目标地址: https://data.eastmoney.com/hsgtcg/bk.html  
   
-描述: 东方财富网-数据中心-沪深港通持股-板块排行  
+描述: 东方财富-数据中心-沪深港通持股-板块排行  
   
 限量: 单次获取指定个股和 indicator 的所有数据  
 
@@ -8310,7 +8310,7 @@ else:
   
 目标地址: https://data.eastmoney.com/hsgtcg/list.html  
   
-描述: 东方财富网-数据中心-沪深港通持股-个股排行  
+描述: 东方财富-数据中心-沪深港通持股-个股排行  
   
 限量: 单次获取指定 market 和 indicator 的所有数据  
 
@@ -8393,7 +8393,7 @@ else:
   
 目标地址: http://data.eastmoney.com/hsgtcg/StockStatistics.aspx  
   
-描述: 东方财富网-数据中心-沪深港通-沪深港通持股-每日个股统计  
+描述: 东方财富-数据中心-沪深港通-沪深港通持股-每日个股统计  
   
 限量: 单次获取指定 market 的 start_date 和 end_date 之间的所有数据, 该接口只能获取近期的数据 
 
@@ -8469,7 +8469,7 @@ else:
   
 目标地址: http://data.eastmoney.com/hsgtcg/InstitutionStatistics.aspx  
   
-描述: 东方财富网-数据中心-沪深港通-沪深港通持股-机构排行  
+描述: 东方财富-数据中心-沪深港通-沪深港通持股-机构排行  
   
 限量: 单次获取指定 market 的所有数据, 该接口只能获取近期的数据  
 
@@ -8537,7 +8537,7 @@ else:
   
 目标地址: https://data.eastmoney.com/hsgt/index.html  
   
-描述: 东方财富网-数据中心-资金流向-沪深港通资金流向-沪深港通历史数据  
+描述: 东方财富-数据中心-资金流向-沪深港通资金流向-沪深港通历史数据  
   
 限量: 单次获取指定个股的所有数据  
   
@@ -8668,7 +8668,7 @@ else:
   
 目标地址: https://data.eastmoney.com/hsgtcg/StockHdStatistics/002008.html(示例)  
   
-描述: 东方财富网-数据中心-沪深港通-沪深港通持股-具体股票  
+描述: 东方财富-数据中心-沪深港通-沪深港通持股-具体股票  
   
 限量: 单次获取指定 stock 的近期数据  
   
@@ -8733,7 +8733,7 @@ else:
   
 目标地址: http://data.eastmoney.com/hsgtcg/StockHdStatistics/002008.html(示例)  
   
-描述: 东方财富网-数据中心-沪深港通-沪深港通持股-具体股票-个股详情  
+描述: 东方财富-数据中心-沪深港通-沪深港通持股-具体股票-个股详情  
   
 限量: 单次获取指定个股的在 start_date 和 end_date 之间的所有数据; 注意只能返回 90 个交易日内的数据  
   
@@ -8805,7 +8805,7 @@ else:
   
 目标地址: https://data.eastmoney.com/tfpxx/  
   
-描述: 东方财富网-数据中心-特色数据-停复牌信息  
+描述: 东方财富-数据中心-特色数据-停复牌信息  
   
 限量: 单次获取指定 date 的停复牌数据, 具体更新逻辑跟目标网页统一  
   
@@ -9116,7 +9116,7 @@ else:
   
 目标地址: https://data.eastmoney.com/xg/xg/dxsyl.html  
   
-描述: 东方财富网-数据中心-新股申购-打新收益率  
+描述: 东方财富-数据中心-新股申购-打新收益率  
   
 限量: 单次获取所有打新收益率数据  
 
@@ -9197,7 +9197,7 @@ else:
   
 目标地址: https://data.eastmoney.com/xg/xg/default_2.html  
   
-描述: 东方财富网-数据中心-新股数据-新股申购-新股申购与中签查询  
+描述: 东方财富-数据中心-新股数据-新股申购-新股申购与中签查询  
   
 限量: 单次获取指定 market 的新股申购与中签查询数据  
 
@@ -10730,7 +10730,7 @@ else:
   
 目标地址: http://data.eastmoney.com/executive/gdzjc.html  
   
-描述: 东方财富网-数据中心-特色数据-高管持股  
+描述: 东方财富-数据中心-特色数据-高管持股  
   
 限量: 单次获取所有高管持股数据数据  
 
@@ -10899,7 +10899,7 @@ else:
   
 目标地址: https://data.eastmoney.com/yjfp/detail/300073.html  
   
-描述: 东方财富网-数据中心-分红送配-分红送配详情  
+描述: 东方财富-数据中心-分红送配-分红送配详情  
   
 限量: 单次获取指定个股的分红配送详情数据  
 
@@ -11588,7 +11588,7 @@ else:
   
 目标地址: https://data.eastmoney.com/zjlx/detail.html  
   
-描述: 东方财富网-数据中心-个股资金流向  
+描述: 东方财富-数据中心-个股资金流向  
   
 限量: 单次获取指定市场和股票的近 100 个交易日的资金流数据  
 
@@ -11667,7 +11667,7 @@ else:
   
 目标地址: http://data.eastmoney.com/zjlx/detail.html  
   
-描述: 东方财富网-数据中心-资金流向-排名  
+描述: 东方财富-数据中心-资金流向-排名  
   
 限量: 单次获取指定类型的个股资金流排名数据  
 
@@ -11929,7 +11929,7 @@ else:
   
 目标地址: https://data.eastmoney.com/zjlx/dpzjlx.html  
   
-描述: 东方财富网-数据中心-资金流向-大盘  
+描述: 东方财富-数据中心-资金流向-大盘  
   
 限量: 单次获取大盘资金流向历史数据  
 
@@ -12006,7 +12006,7 @@ else:
   
 目标地址: https://data.eastmoney.com/bkzj/hy.html  
   
-描述: 东方财富网-数据中心-资金流向-板块资金流-排名  
+描述: 东方财富-数据中心-资金流向-板块资金流-排名  
   
 限量: 单次获取指定板块的指定期限的资金流排名数据  
   
@@ -12083,7 +12083,7 @@ else:
   
 目标地址: https://data.eastmoney.com/zjlx/list.html  
   
-描述: 东方财富网-数据中心-资金流向-主力净流入排名  
+描述: 东方财富-数据中心-资金流向-主力净流入排名  
   
 限量: 单次获取指定板块的主力净流入排名数据  
   
@@ -12161,7 +12161,7 @@ else:
   
 目标地址: https://data.eastmoney.com/bkzj/BK1034.html  
   
-描述: 东方财富网-数据中心-资金流向-行业资金流-xx行业个股资金流  
+描述: 东方财富-数据中心-资金流向-行业资金流-xx行业个股资金流  
   
 限量: 单次获取指定行业的个股资金流  
 
@@ -12243,7 +12243,7 @@ else:
   
 目标地址: https://data.eastmoney.com/bkzj/BK1034.html  
   
-描述: 东方财富网-数据中心-资金流向-行业资金流-行业历史资金流  
+描述: 东方财富-数据中心-资金流向-行业资金流-行业历史资金流  
   
 限量: 单次获取指定行业的行业历史资金流数据  
 
@@ -12315,7 +12315,7 @@ else:
   
 目标地址: https://data.eastmoney.com/bkzj/BK0574.html  
   
-描述: 东方财富网-数据中心-资金流向-概念资金流-概念历史资金流  
+描述: 东方财富-数据中心-资金流向-概念资金流-概念历史资金流  
   
 限量: 单次获取指定个股的近期概念历史资金流数据  
 
@@ -12387,7 +12387,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/concept/sz000001.html  
   
-描述: 东方财富网-概念板-行情中心-日K-筹码分布  
+描述: 东方财富-概念板-行情中心-日K-筹码分布  
   
 限量: 单次返回指定个股和 adjust 的近 90 个交易日数据  
 
@@ -12459,7 +12459,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gddh/  
   
-描述: 东方财富网-数据中心-股东大会  
+描述: 东方财富-数据中心-股东大会  
   
 限量: 单次返回所有数据  
 
@@ -12531,7 +12531,7 @@ else:
   
 目标地址: https://data.eastmoney.com/zdht/mx.html  
   
-描述: 东方财富网-数据中心-重大合同-重大合同明细  
+描述: 东方财富-数据中心-重大合同-重大合同明细  
   
 限量: 单次返回指定 start_date 和 end_date 的所有数据  
 
@@ -12612,7 +12612,7 @@ else:
   
 目标地址: https://data.eastmoney.com/report/stock.jshtml  
   
-描述: 东方财富网-数据中心-研究报告-个股研报  
+描述: 东方财富-数据中心-研究报告-个股研报  
   
 限量: 单次返回指定个股的所有数据  
 
@@ -12687,7 +12687,7 @@ else:
   
 目标地址: https://data.eastmoney.com/notices/hsa/5.html  
   
-描述: 东方财富网-数据中心-公告大全-沪深京 A 股公告  
+描述: 东方财富-数据中心-公告大全-沪深京 A 股公告  
   
 限量: 单次获取指定个股和 date 的数据  
 
@@ -14607,7 +14607,7 @@ print(stock_history_dividend_df)
   
 目标地址: https://emweb.securities.eastmoney.com/PC_HSF10/ShareholderResearch/Index?type=web&code=SH688686#sdltgd-0  
   
-描述: 东方财富网-个股-十大流通股东  
+描述: 东方财富-个股-十大流通股东  
   
 限量: 单次返回指定个股和 date 的所有数据  
   
@@ -14657,7 +14657,7 @@ print(stock_gdfx_free_top_10_em_df)
   
 目标地址: https://emweb.securities.eastmoney.com/PC_HSF10/ShareholderResearch/Index?type=web&code=SH688686#sdltgd-0  
   
-描述: 东方财富网-个股-十大股东  
+描述: 东方财富-个股-十大股东  
   
 限量: 单次返回指定个股和 date 的所有数据  
 
@@ -14731,7 +14731,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gdfx/HoldingAnalyse.html  
   
-描述: 东方财富网-数据中心-股东分析-股东持股变动统计-十大流通股东  
+描述: 东方财富-数据中心-股东分析-股东持股变动统计-十大流通股东  
   
 限量: 单次返回指定 date 的所有数据  
 
@@ -14800,7 +14800,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gdfx/HoldingAnalyse.html  
   
-描述: 东方财富网-数据中心-股东分析-股东持股变动统计-十大股东  
+描述: 东方财富-数据中心-股东分析-股东持股变动统计-十大股东  
   
 限量: 单次返回指定 date 的所有数据  
 
@@ -14869,7 +14869,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gdfx/HoldingAnalyse.html  
   
-描述: 东方财富网-数据中心-股东分析-股东持股分析-十大流通股东  
+描述: 东方财富-数据中心-股东分析-股东持股分析-十大流通股东  
   
 限量: 单次获取返回所有数据  
   
@@ -14947,7 +14947,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gdfx/HoldingAnalyse.html  
   
-描述: 东方财富网-数据中心-股东分析-股东持股分析-十大股东  
+描述: 东方财富-数据中心-股东分析-股东持股分析-十大股东  
   
 限量: 单次获取返回所有数据  
   
@@ -15006,7 +15006,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gdfx/HoldingAnalyse.html  
   
-描述: 东方财富网-数据中心-股东分析-股东持股明细-十大流通股东  
+描述: 东方财富-数据中心-股东分析-股东持股明细-十大流通股东  
   
 限量: 单次返回指定 date 的所有数据  
   
@@ -15059,7 +15059,7 @@ print(stock_gdfx_free_holding_detail_em_df)
   
 目标地址: https://data.eastmoney.com/gdfx/HoldingAnalyse.html  
   
-描述: 东方财富网-数据中心-股东分析-股东持股明细-十大股东  
+描述: 东方财富-数据中心-股东分析-股东持股明细-十大股东  
   
 限量: 单次返回指定参数的所有数据  
   
@@ -15115,7 +15115,7 @@ print(stock_gdfx_holding_detail_em_df)
   
 目标地址: https://data.eastmoney.com/gdfx/HoldingAnalyse.html  
   
-描述: 东方财富网-数据中心-股东分析-股东持股统计-十大股东  
+描述: 东方财富-数据中心-股东分析-股东持股统计-十大股东  
   
 限量: 单次返回指定 date 的所有数据  
   
@@ -15188,7 +15188,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gdfx/HoldingAnalyse.html  
   
-描述: 东方财富网-数据中心-股东分析-股东持股统计-十大股东  
+描述: 东方财富-数据中心-股东分析-股东持股统计-十大股东  
   
 限量: 单次返回指定 date 的所有数据  
   
@@ -15262,7 +15262,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gdfx/HoldingAnalyse.html  
   
-描述: 东方财富网-数据中心-股东分析-股东协同-十大流通股东  
+描述: 东方财富-数据中心-股东分析-股东协同-十大流通股东  
   
 限量: 单次返回所有数据  
 
@@ -15334,7 +15334,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gdfx/HoldingAnalyse.html  
   
-描述: 东方财富网-数据中心-股东分析-股东协同-十大股东  
+描述: 东方财富-数据中心-股东分析-股东协同-十大股东  
   
 限量: 单次返回所有数据  
 
@@ -15407,7 +15407,7 @@ else:
   
 目标地址: http://data.eastmoney.com/gdhs/  
   
-描述: 东方财富网-数据中心-特色数据-股东户数数据  
+描述: 东方财富-数据中心-特色数据-股东户数数据  
   
 限量: 单次获取返回所有数据  
 
@@ -15489,7 +15489,7 @@ else:
   
 目标地址: https://data.eastmoney.com/gdhs/detail/000002.html  
   
-描述: 东方财富网-数据中心-特色数据-股东户数详情  
+描述: 东方财富-数据中心-特色数据-股东户数详情  
   
 限量: 单次获取指定个股的所有数据  
 
@@ -16002,7 +16002,7 @@ else:
   
 目标地址: https://data.eastmoney.com/dxf/marketStatistics.html?type=day&startdate=2022-11-08&enddate=2022-12-19  
   
-描述: 东方财富网-数据中心-特色数据-限售股解禁  
+描述: 东方财富-数据中心-特色数据-限售股解禁  
   
 限量: 单次获取指定个股在近期限售股解禁数据  
 
@@ -16081,7 +16081,7 @@ else:
   
 目标地址: https://data.eastmoney.com/dxf/detail.html  
   
-描述: 东方财富网-数据中心-限售股解禁-解禁详情一览  
+描述: 东方财富-数据中心-限售股解禁-解禁详情一览  
   
 限量: 单次获取指定时间段限售股解禁数据  
 
@@ -16156,7 +16156,7 @@ else:
   
 目标地址: https://data.eastmoney.com/dxf/q/600000.html  
   
-描述: 东方财富网-数据中心-个股限售解禁-解禁批次  
+描述: 东方财富-数据中心-个股限售解禁-解禁批次  
   
 限量: 单次获取指定个股的解禁批次数据  
 
@@ -16231,7 +16231,7 @@ else:
   
 目标地址: https://data.eastmoney.com/dxf/q/600000.html  
   
-描述: 东方财富网-数据中心-个股限售解禁-解禁股东  
+描述: 东方财富-数据中心-个股限售解禁-解禁股东  
   
 限量: 单次获取指定个股的解禁批次数据  
 
@@ -16993,7 +16993,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/center/gridlist.html#staq_net_board  
   
-描述: 东方财富网-行情中心-沪深个股-两网及退市  
+描述: 东方财富-行情中心-沪深个股-两网及退市  
   
 限量: 单次获取所有两网及退市的股票数据  
 
@@ -18353,7 +18353,7 @@ print(stock_hold_management_detail_cninfo_df)
   
 目标地址: https://data.eastmoney.com/executive/list.html  
   
-描述: 东方财富网-数据中心-特色数据-高管持股-董监高及相关人员持股变动明细  
+描述: 东方财富-数据中心-特色数据-高管持股-董监高及相关人员持股变动明细  
   
 限量: 单次返回所有数据  
 
@@ -18414,7 +18414,7 @@ else:
   
 目标地址: https://data.eastmoney.com/executive/personinfo.html?name=%E5%90%B4%E8%BF%9C&code=001308  
   
-描述: 东方财富网-数据中心-特色数据-高管持股-人员增减持股变动明细  
+描述: 东方财富-数据中心-特色数据-高管持股-人员增减持股变动明细  
   
 限量: 单次返回指定个股和 name 的数据  
 
@@ -18721,7 +18721,7 @@ print(stock_price_js_df)
   
 目标地址: http://data.eastmoney.com/other/qsjy.html  
   
-描述: 东方财富网-数据中心-特色数据-券商业绩月报  
+描述: 东方财富-数据中心-特色数据-券商业绩月报  
   
 限量: 单次获取所有数据, 数据从 201006-202007, 月频率  
   
@@ -20077,7 +20077,7 @@ else:
   
 目标地址: http://data.eastmoney.com/zlsj/2020-06-30-1-2.html  
   
-描述: 东方财富网-数据中心-主力数据-基金持仓  
+描述: 东方财富-数据中心-主力数据-基金持仓  
   
 限量: 单次返回指定个股和 date 的所有历史数据  
 
@@ -20131,7 +20131,7 @@ print(stock_report_fund_hold_df)
   
 目标地址: http://data.eastmoney.com/zlsj/ccjj/2020-12-31-008286.html  
   
-描述: 东方财富网-数据中心-主力数据-基金持仓-基金持仓明细表  
+描述: 东方财富-数据中心-主力数据-基金持仓-基金持仓明细表  
   
 限量: 单次返回指定个股和 date 的所有历史数据  
 
@@ -20209,7 +20209,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stock/tradedetail.html  
   
-描述: 东方财富网-数据中心-龙虎榜单-龙虎榜详情  
+描述: 东方财富-数据中心-龙虎榜单-龙虎榜详情  
   
 限量: 单次返回所有历史数据  
 
@@ -20302,7 +20302,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stock/tradedetail.html  
   
-描述: 东方财富网-数据中心-龙虎榜单-个股上榜统计  
+描述: 东方财富-数据中心-龙虎榜单-个股上榜统计  
   
 限量: 单次返回所有历史数据  
 
@@ -20391,7 +20391,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stock/jgmmtj.html  
   
-描述: 东方财富网-数据中心-龙虎榜单-机构买卖每日统计  
+描述: 东方财富-数据中心-龙虎榜单-机构买卖每日统计  
   
 限量: 单次返回所有历史数据  
 
@@ -20474,7 +20474,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stock/jgstatistic.html  
   
-描述: 东方财富网-数据中心-龙虎榜单-机构席位追踪  
+描述: 东方财富-数据中心-龙虎榜单-机构席位追踪  
   
 限量: 单次返回所有历史数据  
 
@@ -20555,7 +20555,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stock/hyyyb.html  
   
-描述: 东方财富网-数据中心-龙虎榜单-每日活跃营业部  
+描述: 东方财富-数据中心-龙虎榜单-每日活跃营业部  
   
 限量: 单次返回所有历史数据  
 
@@ -20625,7 +20625,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stock/yybph.html  
   
-描述: 东方财富网-数据中心-龙虎榜单-营业部排行  
+描述: 东方财富-数据中心-龙虎榜单-营业部排行  
   
 限量: 单次返回所有历史数据  
 
@@ -20709,7 +20709,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stock/traderstatistic.html  
   
-描述: 东方财富网-数据中心-龙虎榜单-营业部统计  
+描述: 东方财富-数据中心-龙虎榜单-营业部统计  
   
 限量: 单次返回所有历史数据  
 
@@ -20775,7 +20775,7 @@ else:
   
 目标地址: https://data.eastmoney.com/stock/lhb/600077.html  
   
-描述: 东方财富网-数据中心-龙虎榜单-个股龙虎榜详情  
+描述: 东方财富-数据中心-龙虎榜单-个股龙虎榜详情  
   
 限量: 单次返回所有历史数据  
 
@@ -21345,7 +21345,7 @@ else:
   
 目标地址: https://data.eastmoney.com/xg/xg/sbqy.html  
   
-描述: 东方财富网-数据中心-新股申购-首发申报信息-首发申报企业信息  
+描述: 东方财富-数据中心-新股申购-首发申报信息-首发申报企业信息  
   
 限量: 单次返回所有历史数据  
 
@@ -21400,7 +21400,7 @@ print(stock_ipo_declare_df)
   
 目标地址: https://data.eastmoney.com/xg/ipo/  
   
-描述: 东方财富网-数据中心-新股数据-IPO审核信息-科创板  
+描述: 东方财富-数据中心-新股数据-IPO审核信息-科创板  
   
 限量: 单次返回所有历史数据  
 
@@ -21485,7 +21485,7 @@ else:
   
 目标地址: https://data.eastmoney.com/xg/ipo/  
   
-描述: 东方财富网-数据中心-新股数据-IPO审核信息-创业板  
+描述: 东方财富-数据中心-新股数据-IPO审核信息-创业板  
   
 限量: 单次返回所有历史数据  
   
@@ -21568,7 +21568,7 @@ else:
   
 目标地址: https://data.eastmoney.com/xg/ipo/  
   
-描述: 东方财富网-数据中心-新股数据-IPO审核信息-上海主板  
+描述: 东方财富-数据中心-新股数据-IPO审核信息-上海主板  
   
 限量: 单次返回所有历史数据  
   
@@ -21651,7 +21651,7 @@ else:
   
 目标地址: https://data.eastmoney.com/xg/ipo/  
   
-描述: 东方财富网-数据中心-新股数据-IPO审核信息-深圳主板  
+描述: 东方财富-数据中心-新股数据-IPO审核信息-深圳主板  
   
 限量: 单次返回所有历史数据  
   
@@ -21734,7 +21734,7 @@ else:
   
 目标地址: https://data.eastmoney.com/xg/ipo/  
   
-描述: 东方财富网-数据中心-新股数据-IPO审核信息-北交所  
+描述: 东方财富-数据中心-新股数据-IPO审核信息-北交所  
   
 限量: 单次返回所有历史数据  
 
@@ -21819,7 +21819,7 @@ else:
   
 目标地址: https://data.eastmoney.com/xg/cyb/  
   
-描述: 东方财富网-数据中心-新股数据-注册制审核-达标企业  
+描述: 东方财富-数据中心-新股数据-注册制审核-达标企业  
   
 限量: 单次返回所有历史数据  
   
@@ -21874,7 +21874,7 @@ print(stock_register_db_df)
   
 目标地址: https://data.eastmoney.com/other/gkzf.html  
   
-描述: 东方财富网-数据中心-新股数据-增发-全部增发  
+描述: 东方财富-数据中心-新股数据-增发-全部增发  
   
 限量: 单次返回所有历史数据  
   
@@ -21927,7 +21927,7 @@ print(stock_qbzf_em_df)
   
 目标地址: https://data.eastmoney.com/xg/pg/  
   
-描述: 东方财富网-数据中心-新股数据-配股  
+描述: 东方财富-数据中心-新股数据-配股  
   
 限量: 单次返回所有历史数据  
   
@@ -21982,7 +21982,7 @@ print(stock_pg_em_df)
   
 目标地址: https://data.eastmoney.com/gphg/hglist.html  
   
-描述: 东方财富网-数据中心-股票回购-股票回购数据  
+描述: 东方财富-数据中心-股票回购-股票回购数据  
   
 限量: 单次返回所有历史数据  
   
@@ -22044,7 +22044,7 @@ print(stock_repurchase_em_df)
   
 目标地址: http://data.eastmoney.com/dzjy/dzjy_sctj.aspx  
   
-描述: 东方财富网-数据中心-大宗交易-市场统计  
+描述: 东方财富-数据中心-大宗交易-市场统计  
   
 限量: 单次返回所有历史数据  
   
@@ -22095,7 +22095,7 @@ print(stock_dzjy_sctj_df)
   
 目标地址: http://data.eastmoney.com/dzjy/dzjy_mrmxa.aspx  
   
-描述: 东方财富网-数据中心-大宗交易-每日明细  
+描述: 东方财富-数据中心-大宗交易-每日明细  
   
 限量: 单次返回所有历史数据  
   
@@ -22257,7 +22257,7 @@ print(stock_dzjy_mrmx_df)
   
 目标地址: http://data.eastmoney.com/dzjy/dzjy_mrtj.aspx  
   
-描述: 东方财富网-数据中心-大宗交易-每日统计  
+描述: 东方财富-数据中心-大宗交易-每日统计  
   
 限量: 单次返回所有历史数据  
   
@@ -22312,7 +22312,7 @@ print(stock_dzjy_mrtj_df)
   
 目标地址: http://data.eastmoney.com/dzjy/dzjy_hygtj.aspx  
   
-描述: 东方财富网-数据中心-大宗交易-活跃 A 股统计  
+描述: 东方财富-数据中心-大宗交易-活跃 A 股统计  
   
 限量: 单次返回所有历史数据  
   
@@ -22370,7 +22370,7 @@ print(stock_dzjy_hygtj_df)
   
 目标地址: http://data.eastmoney.com/dzjy/dzjy_hyyybtj.aspx  
   
-描述: 东方财富网-数据中心-大宗交易-活跃营业部统计  
+描述: 东方财富-数据中心-大宗交易-活跃营业部统计  
   
 限量: 单次返回所有历史数据  
   
@@ -22421,7 +22421,7 @@ print(stock_dzjy_hyyybtj_df)
   
 目标地址: http://data.eastmoney.com/dzjy/dzjy_yybph.aspx  
   
-描述: 东方财富网-数据中心-大宗交易-营业部排行  
+描述: 东方财富-数据中心-大宗交易-营业部排行  
   
 限量: 单次返回所有历史数据  
   
@@ -22473,7 +22473,7 @@ print(stock_dzjy_yybph_df)
   
 目标地址: http://data.eastmoney.com/yzxdr/  
   
-描述: 东方财富网-数据中心-特色数据-一致行动人  
+描述: 东方财富-数据中心-特色数据-一致行动人  
   
 限量: 单次返回所有历史数据  
   
@@ -22563,7 +22563,7 @@ print(stock_margin_ratio_pa_df)
   
 目标地址: https://data.eastmoney.com/rzrq/zhtjday.html  
   
-描述: 东方财富网-数据中心-融资融券-融资融券账户统计-两融账户信息  
+描述: 东方财富-数据中心-融资融券-融资融券账户统计-两融账户信息  
   
 限量: 单次返回所有历史数据  
   
@@ -22870,7 +22870,7 @@ print(stock_margin_underlying_info_szse_df)
   
 目标地址: http://data.eastmoney.com/report/profitforecast.jshtml  
   
-描述: 东方财富网-数据中心-研究报告-盈利预测; 该数据源网页端返回数据有异常, 本接口已修复该异常  
+描述: 东方财富-数据中心-研究报告-盈利预测; 该数据源网页端返回数据有异常, 本接口已修复该异常  
   
 限量: 单次返回指定个股的数据  
   
@@ -23114,7 +23114,7 @@ print(stock_profit_forecast_ths_df)
   
 目标地址: https://quote.eastmoney.com/center/boardlist.html#concept_board  
   
-描述: 东方财富网-行情中心-沪深京板块-概念板块  
+描述: 东方财富-行情中心-沪深京板块-概念板块  
   
 限量: 单次返回当前时刻所有概念板块数据  
   
@@ -24086,7 +24086,7 @@ print(stock_hot_rank_wc_df)
   
 目标地址: http://guba.eastmoney.com/rank/  
   
-描述: 东方财富网站-股票热度  
+描述: 东方财富站-股票热度  
   
 限量: 单次返回当前交易日前 100 个股票的人气排名数据  
   
@@ -24229,7 +24229,7 @@ print(stock_hk_hot_rank_em_df)
   
 目标地址: http://guba.eastmoney.com/rank/stock?code=000665  
   
-描述: 东方财富网-股票热度-历史趋势及粉丝特征  
+描述: 东方财富-股票热度-历史趋势及粉丝特征  
   
 限量: 单次返回指定个股的股票近期历史数据  
   
@@ -24275,7 +24275,7 @@ print(stock_hot_rank_detail_em_df)
   
 目标地址: https://guba.eastmoney.com/rank/stock?code=HK_00700  
   
-描述: 东方财富网-股票热度-历史趋势  
+描述: 东方财富-股票热度-历史趋势  
   
 限量: 单次返回指定个股的股票近期历史数据  
   
@@ -24476,7 +24476,7 @@ print(stock_sns_sseinfo_df)
   
 目标地址: http://guba.eastmoney.com/rank/stock?code=000665  
   
-描述: 东方财富网-个股人气榜-实时变动  
+描述: 东方财富-个股人气榜-实时变动  
   
 限量: 单次返回指定个股的股票近期历史数据  
   
@@ -24519,7 +24519,7 @@ print(stock_hot_rank_detail_realtime_em_df)
   
 目标地址: https://guba.eastmoney.com/rank/stock?code=HK_00700  
   
-描述: 东方财富网-个股人气榜-实时变动  
+描述: 东方财富-个股人气榜-实时变动  
   
 限量: 单次返回指定个股的股票近期历史数据  
   
@@ -25192,7 +25192,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/ztb/detail#type=ztgc  
   
-描述: 东方财富网-行情中心-涨停板行情-涨停股池  
+描述: 东方财富-行情中心-涨停板行情-涨停股池  
   
 限量: 单次返回指定 date 的涨停股池数据; 该接口只能获取近期的数据  
 
@@ -25273,7 +25273,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/ztb/detail#type=zrzt  
   
-描述: 东方财富网-行情中心-涨停板行情-昨日涨停股池  
+描述: 东方财富-行情中心-涨停板行情-昨日涨停股池  
   
 限量: 单次返回指定 date 的昨日涨停股池数据; 该接口只能获取近期的数据  
 
@@ -25355,7 +25355,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/ztb/detail#type=qsgc  
   
-描述: 东方财富网-行情中心-涨停板行情-强势股池  
+描述: 东方财富-行情中心-涨停板行情-强势股池  
   
 限量: 单次返回指定 date 的强势股池数据；该接口只能获取近期的数据  
 
@@ -25437,7 +25437,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/ztb/detail#type=cxgc  
   
-描述: 东方财富网-行情中心-涨停板行情-次新股池  
+描述: 东方财富-行情中心-涨停板行情-次新股池  
   
 限量: 单次返回指定 date 的次新股池数据；该接口只能获取近期的数据  
 
@@ -25519,7 +25519,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/ztb/detail#type=zbgc  
   
-描述: 东方财富网-行情中心-涨停板行情-炸板股池  
+描述: 东方财富-行情中心-涨停板行情-炸板股池  
   
 限量: 单次返回指定 date 的炸板股池数据；该接口只能获取近期的数据  
 
@@ -25601,7 +25601,7 @@ else:
   
 目标地址: https://quote.eastmoney.com/ztb/detail#type=zbgc  
   
-描述: 东方财富网-行情中心-涨停板行情-跌停股池  
+描述: 东方财富-行情中心-涨停板行情-跌停股池  
   
 限量: 单次返回指定 date 的跌停股池数据；该接口只能获取近期的数据  
 
@@ -25683,7 +25683,7 @@ else:
   
 目标地址: https://www.legulegu.com/stockdata/market-activity  
   
-描述: 乐咕乐股网-赚钱效应分析数据  
+描述: 乐咕乐股-赚钱效应分析数据  
   
 限量: 单次返回当前赚钱效应分析数据  
 

@@ -9,6 +9,8 @@ router = APIRouter()
 @router.get("/stock_zh_kcb_spot", operation_id="get_stock_zh_kcb_spot")
 async def get_stock_zh_kcb_spot():
     """
+    新浪财经-科创板股票实时行情数据
+
     接口: stock_zh_kcb_spot
 
     目标地址: http://vip.stock.finance.sina.com.cn/mkt/#kcb
@@ -37,6 +39,8 @@ class StockDailyRequest(BaseModel):
 @router.post("/stock_zh_kcb_daily", operation_id="post_stock_zh_kcb_daily")
 async def post_stock_zh_kcb_daily(request: StockDailyRequest):
     """
+    新浪财经-科创板股票历史行情数据
+
     接口: stock_zh_kcb_daily
 
     目标地址: https://finance.sina.com.cn/realstock/company/sh688001/nc.shtml (示例)
@@ -78,6 +82,8 @@ class StockReportRequest(BaseModel):
 async def post_stock_zh_kcb_report_em(request: StockReportRequest):
     """
     有概率能获取，有概率无法获取，需排查问题
+
+    东方财富-科创板报告数据
 
     接口: stock_zh_kcb_report_em
 

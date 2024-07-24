@@ -13,6 +13,8 @@ class ShSymbolRequest(BaseModel):
 @router.post("/stock_share_hold_change_sse", operation_id="post_stock_share_hold_change_sse")
 async def post_stock_share_hold_change_sse(request: ShSymbolRequest):
     """
+    上海证券交易所-公司监管-董董监高人员股份变动
+
     接口: stock_share_hold_change_sse
 
     目标地址: http://www.sse.com.cn/disclosure/credibility/supervision/change/
@@ -32,6 +34,8 @@ async def post_stock_share_hold_change_sse(request: ShSymbolRequest):
 @router.post("/stock_share_hold_change_szse", operation_id="post_stock_share_hold_change_szse")
 async def post_stock_share_hold_change_szse(request: ShSymbolRequest):
     """
+    深圳证券交易所-监管信息公开-董监高人员股份变动
+
     接口: stock_share_hold_change_szse
 
     目标地址: http://www.szse.cn/disclosure/supervision/change/index.html
@@ -51,6 +55,8 @@ async def post_stock_share_hold_change_szse(request: ShSymbolRequest):
 @router.post("/stock_share_hold_change_bse", operation_id="post_stock_share_hold_change_bse")
 async def post_stock_share_hold_change_bse(request: ShSymbolRequest):
     """
+    北京证券交易所-监管信息-董监高及相关人员持股变动
+
     接口: stock_share_hold_change_bse
 
     目标地址: https://www.bse.cn/disclosure/djg_sharehold_change.html
@@ -74,8 +80,15 @@ class JuChaoGaoGuanSymbolRequest(BaseModel):
 @router.post("/stock_hold_management_detail_cninfo", operation_id="post_stock_hold_management_detail_cninfo")
 async def post_stock_hold_management_detail_cninfo(request: JuChaoGaoGuanSymbolRequest):
     """
+    巨潮资讯-股东股本-高管持股变动明细
+
+    接口: stock_hold_management_detail_cninfo
+
+    目标地址: https://webapi.cninfo.com.cn/#/thematicStatistics
+
     描述: 巨潮资讯-数据中心-专题统计-股东股本-高管持股变动明细
-    限量: 单次指定 symbol 的高管持股变动明细数据, 返回近一年的数据
+
+    限量: 单次指定类型的高管持股变动明细数据, 返回近一年的数据
     """
     try:
         stock_hold_management_detail_cninfo_df = ak.stock_hold_management_detail_cninfo(symbol=request.symbol)
@@ -84,15 +97,17 @@ async def post_stock_hold_management_detail_cninfo(request: JuChaoGaoGuanSymbolR
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-董监高及相关人员持股变动明细
+# 东方财富-董监高及相关人员持股变动明细
 @router.get("/stock_hold_management_detail_em", operation_id="get_stock_hold_management_detail_em")
 def get_stock_hold_management_detail_em():
     """
+    东方财富-高管持股-董监高及相关人员持股变动明细
+
     接口: stock_hold_management_detail_em
 
     目标地址: https://data.eastmoney.com/executive/list.html
 
-    描述: 东方财富网-数据中心-特色数据-高管持股-董监高及相关人员持股变动明细
+    描述: 东方财富-数据中心-特色数据-高管持股-董监高及相关人员持股变动明细
 
     限量: 单次返回所有数据
     """

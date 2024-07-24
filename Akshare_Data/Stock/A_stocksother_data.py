@@ -13,15 +13,17 @@ class DateRequest(BaseModel):
     date: str = Field(..., title="指定交易日", description="例：20230808")
 
 
-# 东方财富网-数据中心-股市日历-公司动态
+# 东方财富-数据中心-股市日历-公司动态
 @router.post("/stock_gsrl_gsdt_em", operation_id="post_stock_gsrl_gsdt_em")
 async def post_stock_gsrl_gsdt_em(request: DateRequest):
     """
+    东方财富-股市日历-公司动态
+
     接口: stock_gsrl_gsdt_em
 
     目标地址: https://data.eastmoney.com/gsrl/gsdt.html
 
-    描述: 东方财富网-数据中心-股市日历-公司动态
+    描述: 东方财富-数据中心-股市日历-公司动态
 
     限量: 单次返回指定交易日的数据
     """
@@ -32,15 +34,17 @@ async def post_stock_gsrl_gsdt_em(request: DateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-行情中心-沪深个股-风险警示板
+# 东方财富-行情中心-沪深个股-风险警示板
 @router.get("/stock_zh_a_st_em", operation_id="get_stock_zh_a_st_em")
 def get_stock_zh_a_st_em():
     """
+    东方财富-沪深个股-风险警示板
+
     接口: stock_zh_a_st_em
 
     目标地址: https://quote.eastmoney.com/center/gridlist.html#st_board
 
-    描述: 东方财富网-行情中心-沪深个股-风险警示板
+    描述: 东方财富-行情中心-沪深个股-风险警示板
 
     限量: 单次返回当前交易日风险警示板的所有股票的行情数据
     """
@@ -54,15 +58,17 @@ def get_stock_zh_a_st_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-行情中心-沪深个股-新股
+# 东方财富-行情中心-沪深个股-新股
 @router.get("/stock_zh_a_new_em", operation_id="get_stock_zh_a_new_em")
 def get_stock_zh_a_new_em():
     """
+    东方财富-沪深个股-新股
+
     接口: stock_zh_a_new_em
 
     目标地址: https://quote.eastmoney.com/center/gridlist.html#newshares
 
-    描述: 东方财富网-行情中心-沪深个股-新股
+    描述: 东方财富-行情中心-沪深个股-新股
 
     限量: 单次返回当前交易日新股板块的所有股票的行情数据
     """
@@ -72,17 +78,12 @@ def get_stock_zh_a_new_em():
 
         stock_zh_a_new_em_list = stock_zh_a_new_em_df.to_dict(orient="records")
 
-        # 添加当前日期到每个记录的“序号”字段之后
         current_date = datetime.now().strftime("%Y-%m-%d")
         for record in stock_zh_a_new_em_list:
-            # 保存原始字典内容
             temp_record = record.copy()
             record.clear()
-            # 插入“序号”字段及其值
             record["序号"] = temp_record["序号"]
-            # 插入日期
             record["日期"] = current_date
-            # 插入剩余字段
             for key, value in temp_record.items():
                 if key != "序号":
                     record[key] = value
@@ -96,6 +97,8 @@ def get_stock_zh_a_new_em():
 @router.get("/stock_ipo_benefit_ths", operation_id="get_stock_ipo_benefit_ths")
 def get_stock_ipo_benefit_ths():
     """
+    同花顺-新股数据-IPO受益股
+
     接口: stock_ipo_benefit_ths
 
     目标地址: https://data.10jqka.com.cn/ipo/syg/
@@ -118,15 +121,17 @@ def get_stock_ipo_benefit_ths():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-行情中心-沪深个股-两网及退市
+# 东方财富-行情中心-沪深个股-两网及退市
 @router.get("/stock_zh_a_stop_em", operation_id="get_stock_zh_a_stop_em")
 def get_stock_zh_a_stop_em():
     """
+    东方财富-沪深个股-两网及退市
+
     接口: stock_zh_a_stop_em
 
     目标地址: http://quote.eastmoney.com/center/gridlist.html#staq_net_board
 
-    描述: 东方财富网-行情中心-沪深个股-两网及退市
+    描述: 东方财富-行情中心-沪深个股-两网及退市
 
     限量: 单次返回当前交易日两网及退市的所有股票的行情数据
     """

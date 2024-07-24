@@ -14,6 +14,8 @@ class SymbolRequest(BaseModel):
 @router.post("/stock_a_indicator_lg", operation_id="post_stock_a_indicator_lg")
 async def post_stock_a_indicator_lg(request: SymbolRequest):
     """
+    乐咕乐股-A 股个股指标: 市盈率, 市净率, 股息率
+
     接口: stock_a_indicator_lg
 
     目标地址: https://www.legulegu.com/stocklist

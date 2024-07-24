@@ -159,10 +159,18 @@ data = [
 ]
 
 
-@router.get("/interest_rate_interbank_market_data", response_model=List[MarketData])
+@router.get("/interest_rate_interbank_market_data",
+            response_model=List[MarketData],
+            operation_id="get_interest_rate_interbank_market_data"
+            )
 def get_market_data():
     """
-    获取市场数据
-    返回所有市场、符号和指标信息
+    接口: interest_rate_interbank_market_data
+
+    银行间拆借利率
+
+    描述: 返回市场-品种-指标  银行间拆借利率数据
+
+    限量: 单次返回所有历史数据
     """
     return data

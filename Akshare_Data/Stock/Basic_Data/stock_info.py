@@ -13,6 +13,8 @@ class XinLangSectorRequest(BaseModel):
 @router.post("/stock_sector_detail", operation_id="post_stock_sector_detail")
 async def post_stock_sector_detail(request: XinLangSectorRequest):
     """
+    新浪行业-板块行情-成份详情
+
     接口: stock_sector_detail
 
     目标地址: http://finance.sina.com.cn/stock/sl/#area_1
@@ -56,6 +58,8 @@ async def post_stock_sector_detail(request: XinLangSectorRequest):
 @router.get("/stock_info_a_code_name", operation_id="post_stock_info_a_code_name")
 def get_stock_info_a_code_name():
     """
+    沪深京 A 股股票代码和股票简称数据
+
     接口: stock_info_a_code_name
 
     目标地址: 沪深京三个交易所
@@ -79,6 +83,8 @@ class ShSymbolRequest(BaseModel):
 @router.post("/stock_info_sh_name_code", operation_id="post_stock_info_sh_name_code")
 async def post_stock_info_sh_name_code(request: ShSymbolRequest):
     """
+    上海证券交易所股票代码和简称数据
+
     接口: stock_info_sh_name_code
 
     目标地址: https://www.sse.com.cn/assortment/stock/list/share/
@@ -102,6 +108,8 @@ class SzSymbolRequest(BaseModel):
 @router.post("/stock_info_sz_name_code", operation_id="post_stock_info_sz_name_code")
 async def post_stock_info_sz_name_code(request: SzSymbolRequest):
     """
+    深证证券交易所股票代码和股票简称数据
+
     接口: stock_info_sz_name_code
 
     目标地址: https://www.szse.cn/market/product/stock/list/index.html
@@ -121,6 +129,8 @@ async def post_stock_info_sz_name_code(request: SzSymbolRequest):
 @router.get("/stock_info_bj_name_code", operation_id="post_stock_info_bj_name_code")
 def get_stock_info_bj_name_code():
     """
+    北京证券交易所股票代码和简称数据
+
     接口: stock_info_bj_name_code
 
     目标地址: https://www.bse.cn/nq/listedcompany.html
@@ -145,6 +155,8 @@ class SzTsSymbolRequest(BaseModel):
 @router.post("/stock_info_sz_delist", operation_id="post_stock_info_sz_delist")
 async def post_stock_info_sz_delist(request: SzTsSymbolRequest):
     """
+    深证证券交易所终止/暂停上市股票
+
     接口: stock_info_sz_delist
 
     目标地址: https://www.szse.cn/market/stock/suspend/index.html
@@ -160,15 +172,17 @@ async def post_stock_info_sz_delist(request: SzTsSymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-行情中心-沪深个股-两网及退市
+# 东方财富-行情中心-沪深个股-两网及退市
 @router.get("/stock_staq_net_stop", operation_id="post_stock_staq_net_stop")
 def get_stock_staq_net_stop():
     """
+    东方财富-沪深个股-两网及退市
+
     接口: stock_staq_net_stop
 
     目标地址: https://quote.eastmoney.com/center/gridlist.html#staq_net_board
 
-    描述: 东方财富网-行情中心-沪深个股-两网及退市
+    描述: 东方财富-行情中心-沪深个股-两网及退市
 
     限量: 单次获取所有两网及退市的股票数据
     """
@@ -188,6 +202,8 @@ class ShTsSymbolRequest(BaseModel):
 @router.post("/stock_info_sh_delist", operation_id="post_stock_info_sh_delist")
 async def post_stock_info_sh_delist(request: ShTsSymbolRequest):
     """
+    上海证券交易所暂停/终止上市股票
+
     接口: stock_info_sh_delist
 
     目标地址: https://www.sse.com.cn/assortment/stock/list/delisting/
@@ -211,6 +227,8 @@ class XinLangSymbolRequest(BaseModel):
 @router.post("/stock_info_change_name", operation_id="post_stock_info_change_name")
 async def post_stock_info_change_name(request: XinLangSymbolRequest):
     """
+    新浪财经-股票曾用名
+
     接口: stock_info_change_name
 
     目标地址: https://vip.stock.finance.sina.com.cn/corp/go.php/vCI_CorpInfo/stockid/300378.phtml
@@ -234,6 +252,8 @@ class SzSymbolRequest(BaseModel):
 @router.post("/stock_info_sz_change_name", operation_id="post_stock_info_sz_change_name")
 async def post_stock_info_sz_change_name(request: SzSymbolRequest):
     """
+    深证证券交易所-名称变更
+
     接口: stock_info_sz_change_name
 
     目标地址: https://www.szse.cn/www/market/stock/changename/index.html

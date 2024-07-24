@@ -21,6 +21,8 @@ class StockHistoryRequest(BaseModel):
 @router.post("/stock_zh_a_hist", operation_id="post_stock_zh_a_hist")
 async def post_stock_zh_a_hist(request: StockHistoryRequest):
     """
+    东方财富-沪深京 A 股日频率数据
+
     接口: stock_zh_a_hist
 
     目标地址: https://quote.eastmoney.com/concept/sh603777.html?from=classic(示例)
@@ -58,6 +60,8 @@ class XinLangStockHistoryRequest(BaseModel):
 @router.post("/stock_zh_a_daily", operation_id="post_stock_zh_a_daily")
 async def post_stock_zh_a_daily(request: XinLangStockHistoryRequest):
     """
+    新浪财经-沪深京 A 股日频率数据
+
     接口: stock_zh_a_daily
 
     P.S. 建议切换为 stock_zh_a_hist 接口使用(该接口数据质量高, 访问无限制)
@@ -105,6 +109,8 @@ class TXStockHistoryRequest(BaseModel):
 @router.post("/stock_zh_a_hist_tx", operation_id="post_stock_zh_a_hist_tx")
 async def post_stock_zh_a_hist_tx(request: TXStockHistoryRequest):
     """
+    腾讯证券-日频-股票历史数据
+
     接口: stock_zh_a_hist_tx
 
     目标地址: https://gu.qq.com/sh000919/zs
@@ -146,6 +152,8 @@ class KCBCDRDayRequest(BaseModel):
 @router.post("/stock_zh_a_cdr_daily", operation_id="post_stock_zh_a_cdr_daily")
 async def post_stock_zh_a_cdr_daily(request: KCBCDRDayRequest):
     """
+    上海证券交易所-科创板-CDR
+
     接口: stock_zh_a_cdr_daily
 
     目标地址: https://finance.sina.com.cn/realstock/company/sh689009/nc.shtml
@@ -181,15 +189,17 @@ async def post_stock_zh_a_cdr_daily(request: KCBCDRDayRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# B 股行情数据-东方财富网-实时行情数据
+# B 股行情数据-东方财富-实时行情数据
 @router.get("/stock_zh_b_spot_em", operation_id="get_stock_zh_b_spot_em")
 def get_stock_zh_b_spot_em():
     """
+    东方财富-实时行情数据
+
     接口: stock_zh_b_spot_em
 
     目标地址: http://quote.eastmoney.com/center/gridlist.html#hs_b_board
 
-    描述: 东方财富网-实时行情数据
+    描述: 东方财富-实时行情数据
 
     限量: 单次返回所有 B 股上市公司的实时行情数据
     """
@@ -207,6 +217,8 @@ def get_stock_zh_b_spot_em():
 @router.get("/stock_zh_b_spot", operation_id="get_stock_zh_b_spot")
 def get_stock_zh_b_spot():
     """
+    新浪财经-B 股行情数据
+
     接口: stock_zh_b_spot
 
     目标地址: http://vip.stock.finance.sina.com.cn/mkt/#hs_b
@@ -240,6 +252,8 @@ field_mapping = {
 @router.get("/stock_zh_a_new", operation_id="get_stock_zh_a_new")
 def get_stock_zh_a_new():
     """
+    新浪财经-沪深股市-次新股
+
     接口: stock_zh_a_new
 
     目标地址: http://vip.stock.finance.sina.com.cn/mkt/#new_stock

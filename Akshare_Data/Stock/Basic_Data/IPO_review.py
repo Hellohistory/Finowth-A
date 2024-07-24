@@ -9,11 +9,13 @@ router = APIRouter()
 @router.get("/stock_register_kcb", operation_id="get_stock_register_kcb")
 def get_stock_register_kcb():
     """
+    东方财富-IPO审核信息-科创板
+
     接口: stock_register_kcb
 
     目标地址: https://data.eastmoney.com/xg/ipo/
 
-    描述: 东方财富网-数据中心-新股数据-IPO审核信息-科创板
+    描述: 东方财富-数据中心-新股数据-IPO审核信息-科创板
 
     限量: 单次返回所有历史数据
     """
@@ -28,11 +30,13 @@ def get_stock_register_kcb():
 @router.get("/stock_register_cyb", operation_id="get_stock_register_cyb")
 def get_stock_register_cyb():
     """
+    东方财富-IPO审核信息-创业板
+
     接口: stock_register_cyb
 
     目标地址: https://data.eastmoney.com/xg/ipo/
 
-    描述: 东方财富网-数据中心-新股数据-IPO审核信息-创业板
+    描述: 东方财富-数据中心-新股数据-IPO审核信息-创业板
 
     限量: 单次返回所有历史数据
     """
@@ -47,11 +51,13 @@ def get_stock_register_cyb():
 @router.get("/stock_register_sh", operation_id="get_stock_register_sh")
 def get_stock_register_sh():
     """
+    东方财富-IPO审核信息-上海主板
+
     接口: stock_register_sh
 
     目标地址: https://data.eastmoney.com/xg/ipo/
 
-    描述: 东方财富网-数据中心-新股数据-IPO审核信息-上海主板
+    描述: 东方财富-数据中心-新股数据-IPO审核信息-上海主板
 
     限量: 单次返回所有历史数据
     """
@@ -66,11 +72,13 @@ def get_stock_register_sh():
 @router.get("/stock_register_sz", operation_id="get_stock_register_sz")
 def get_stock_register_sz():
     """
+    东方财富-IPO审核信息-深圳主板
+
     接口: stock_register_sz
 
     目标地址: https://data.eastmoney.com/xg/ipo/
 
-    描述: 东方财富网-数据中心-新股数据-IPO审核信息-深圳主板
+    描述: 东方财富-数据中心-新股数据-IPO审核信息-深圳主板
 
     限量: 单次返回所有历史数据
     """
@@ -85,11 +93,13 @@ def get_stock_register_sz():
 @router.get("/stock_register_bj", operation_id="get_stock_register_bj")
 def get_stock_register_bj():
     """
+    东方财富-IPO审核信息-北交所
+
     接口: stock_register_bj
 
     目标地址: https://data.eastmoney.com/xg/ipo/
 
-    描述: 东方财富网-数据中心-新股数据-IPO审核信息-北交所
+    描述: 东方财富-数据中心-新股数据-IPO审核信息-北交所
 
     限量: 单次返回所有历史数据
     """
@@ -103,11 +113,13 @@ def get_stock_register_bj():
 @router.get("/stock_register_db", operation_id="get_stock_register_db")
 def get_stock_register_db():
     """
+    东方财富-注册制审核-达标企业
+
     接口: stock_register_db
 
     目标地址: https://data.eastmoney.com/xg/cyb/
 
-    描述: 东方财富网-数据中心-新股数据-注册制审核-达标企业
+    描述: 东方财富-数据中心-新股数据-注册制审核-达标企业
 
     限量: 单次返回所有历史数据
     """

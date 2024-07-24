@@ -165,6 +165,7 @@ async def get_api_info():
     这个接口用于获取所有API的相关信息。返回值是一个包含多个API信息对象的列表。
 
     :return: 包含API信息对象的列表
+
     :rtype: List[APIInfo]
     """
     api_info = process_api_info()
@@ -176,10 +177,10 @@ async def get_open_api_endpoint():
     """
     获取OpenAPI模式定义
 
-    这个接口用于获取当前应用的OpenAPI模式定义。OpenAPI模式定义包含了应用中所有API的详细信息，
-    包括路径、请求方法、请求参数、响应格式等。
+    这个接口用于获取当前应用的OpenAPI模式定义。OpenAPI模式定义包含了应用中所有API的详细信息，包括路径、请求方法、请求参数、响应格式等。
 
     :return: 包含应用中所有API详细信息的OpenAPI模式定义
+
     :rtype: dict
     """
     openapi_schema = get_openapi(

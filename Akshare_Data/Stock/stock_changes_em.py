@@ -19,6 +19,8 @@ class SymbolRequest(BaseModel):
 @router.post("/stock_changes_em", operation_id="post_stock_changes_em")
 async def post_stock_changes_em(request: SymbolRequest):
     """
+    东方财富-盘口异动数据
+
     接口: stock_changes_em
 
     目标地址: http://quote.eastmoney.com/changes/
@@ -41,6 +43,8 @@ async def post_stock_changes_em(request: SymbolRequest):
 @router.get("/stock_board_change_em", operation_id="get_stock_board_change_em")
 def get_stock_board_change_em():
     """
+    东方财富-当日板块异动详情
+
     接口: stock_board_change_em
 
     目标地址: https://quote.eastmoney.com/changes/

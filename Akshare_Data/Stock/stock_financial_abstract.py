@@ -15,6 +15,8 @@ class SymbolRequest(BaseModel):
 @router.post("/stock_financial_abstract", operation_id="post_stock_financial_abstract")
 async def post_stock_financial_abstract(request: SymbolRequest):
     """
+    新浪财经-财务报表-关键指标
+
     接口: stock_financial_abstract
 
     目标地址: https://vip.stock.finance.sina.com.cn/corp/go.php/vFD_FinanceSummary/stockid/600004.phtml
@@ -41,6 +43,8 @@ class TongHuaShunSymbolIndicatorRequest(BaseModel):
 @router.post("/stock_financial_abstract_ths", operation_id="post_stock_financial_abstract_ths")
 async def post_stock_financial_abstract_ths(request: TongHuaShunSymbolIndicatorRequest):
     """
+    同花顺-财务指标-主要指标
+
     接口: stock_financial_abstract_ths
 
     目标地址: https://basic.10jqka.com.cn/new/000063/finance.html
@@ -69,6 +73,8 @@ class XinLangFinancialAnalysis(BaseModel):
              operation_id="post_stock_financial_analysis_indicator")
 async def post_stock_financial_analysis_indicator(request: XinLangFinancialAnalysis):
     """
+    新浪财经-财务分析-财务指标
+
     接口: stock_financial_analysis_indicator
 
     目标地址: https://money.finance.sina.com.cn/corp/go.php/vFD_FinancialGuideLine/stockid/600004/ctrl/2019/displaytype/4.phtml
@@ -97,6 +103,8 @@ class DongCaiSymolIndicatorRequest(BaseModel):
              operation_id="post_stock_financial_hk_analysis_indicator_em")
 async def post_stock_financial_hk_analysis_indicator_em(request: DongCaiSymolIndicatorRequest):
     """
+    东方财富-港股-财务分析-主要指标
+
     接口: stock_financial_hk_analysis_indicator_em
 
     目标地址: https://emweb.securities.eastmoney.com/PC_HKF10/NewFinancialAnalysis/index?type=web&code=00700

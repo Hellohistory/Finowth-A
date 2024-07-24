@@ -11,15 +11,17 @@ class DateRequest(BaseModel):
     date: str = Field(..., title="开始查询的时间", description="例如20230808")
 
 
-# 东方财富网-数据中心-特色数据-机构调研-机构调研统计
+# 东方财富-数据中心-特色数据-机构调研-机构调研统计
 @router.post("/stock_jgdy_tj_em", operation_id="post_stock_jgdy_tj_em")
 async def post_stock_jgdy_tj_em(request: DateRequest):
     """
+    东方财富-机构调研-机构调研统计
+
     接口: stock_jgdy_tj_em
 
     目标地址: http://data.eastmoney.com/jgdy/tj.html
 
-    描述: 东方财富网-数据中心-特色数据-机构调研-机构调研统计
+    描述: 东方财富-数据中心-特色数据-机构调研-机构调研统计
 
     限量: 单次返回所有历史数据
     """
@@ -33,15 +35,17 @@ async def post_stock_jgdy_tj_em(request: DateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 东方财富网-数据中心-特色数据-机构调研-机构调研详细
+# 东方财富-数据中心-特色数据-机构调研-机构调研详细
 @router.post("/stock_jgdy_detail_em", operation_id="post_stock_jgdy_detail_em")
 async def post_stock_jgdy_detail_em(request: DateRequest):
     """
+    东方财富-机构调研-机构调研详细
+
     接口: stock_jgdy_detail_em
 
     目标地址: http://data.eastmoney.com/jgdy/xx.html
 
-    描述: 东方财富网-数据中心-特色数据-机构调研-机构调研详细
+    描述: 东方财富-数据中心-特色数据-机构调研-机构调研详细
 
     限量: 单次所有历史数据, 由于数据量比较大需要等待一定时间
     """

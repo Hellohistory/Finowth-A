@@ -16,6 +16,8 @@ class THSCXGSymbolRequest(BaseModel):
 @router.post("/stock_rank_cxg_ths", operation_id="post_stock_rank_cxg_ths")
 async def post_stock_rank_cxg_ths(request: THSCXGSymbolRequest):
     """
+    同花顺-技术选股-创新高
+
     接口：stock_rank_cxg_ths
 
     目标地址：https://data.10jqka.com.cn/rank/cxg/
@@ -40,6 +42,8 @@ class THSCXDSymbolRequest(BaseModel):
 @router.post("/stock_rank_cxd_ths", operation_id="post_stock_rank_cxd_ths")
 async def post_stock_rank_cxd_ths(request: THSCXDSymbolRequest):
     """
+    同花顺-技术选股-创新低
+
     接口：stock_rank_cxd_ths
 
     目标地址：https://data.10jqka.com.cn/rank/cxd/
@@ -59,6 +63,8 @@ async def post_stock_rank_cxd_ths(request: THSCXDSymbolRequest):
 @router.get("/stock_rank_lxsz_ths", operation_id="get_stock_rank_lxsz_ths")
 def get_stock_rank_lxsz_ths():
     """
+    同花顺-技术选股-连续上涨
+
     接口：stock_rank_lxsz_ths
 
     目标地址：https://data.10jqka.com.cn/rank/lxsz/
@@ -78,7 +84,9 @@ def get_stock_rank_lxsz_ths():
 @router.get("/stock_rank_lxxd_ths", operation_id="get_stock_rank_lxxd_ths")
 def get_stock_rank_lxxd_ths():
     """
-     接口：stock_rank_lxxd_ths
+    同花顺-技术选股-连续下跌
+
+    接口：stock_rank_lxxd_ths
 
     目标地址：https://data.10jqka.com.cn/rank/lxxd/
 
@@ -97,6 +105,8 @@ def get_stock_rank_lxxd_ths():
 @router.get("/stock_rank_cxfl_ths", operation_id="get_stock_rank_cxfl_ths")
 def get_stock_rank_cxfl_ths():
     """
+    同花顺-技术选股-持续放量
+
     接口: stock_rank_cxfl_ths
 
     目标地址: https://data.10jqka.com.cn/rank/cxfl/
@@ -116,6 +126,8 @@ def get_stock_rank_cxfl_ths():
 @router.get("/stock_rank_cxsl_ths", operation_id="get_stock_rank_cxsl_ths")
 def get_stock_rank_cxsl_ths():
     """
+    同花顺-技术选股-持续缩量
+
     接口: stock_rank_cxsl_ths
 
     目标地址: https://data.10jqka.com.cn/rank/cxsl/
@@ -140,6 +152,8 @@ class THSCXDSymbolRequest(BaseModel):
 @router.post("/stock_rank_xstp_ths", operation_id="post_stock_rank_xstp_ths")
 async def post_stock_rank_xstp_ths(request: THSCXDSymbolRequest):
     """
+    同花顺-技术选股-向上突破
+
     接口: stock_rank_xstp_ths
 
     目标地址: https://data.10jqka.com.cn/rank/xstp/
@@ -159,6 +173,8 @@ async def post_stock_rank_xstp_ths(request: THSCXDSymbolRequest):
 @router.post("/stock_rank_xxtp_ths", operation_id="post_stock_rank_xxtp_ths")
 async def post_stock_rank_xxtp_ths(request: THSCXDSymbolRequest):
     """
+    同花顺-技术选股-向下突破
+
     接口: stock_rank_xxtp_ths
 
     目标地址: https://data.10jqka.com.cn/rank/xxtp/
@@ -178,6 +194,8 @@ async def post_stock_rank_xxtp_ths(request: THSCXDSymbolRequest):
 @router.get("/stock_rank_ljqs_ths", operation_id="get_stock_rank_ljqs_ths")
 def get_stock_rank_ljqs_ths():
     """
+    同花顺-技术选股-量价齐升
+
     接口: stock_rank_ljqs_ths
 
     目标地址: https://data.10jqka.com.cn/rank/ljqs/
@@ -199,6 +217,8 @@ def get_stock_rank_ljqs_ths():
 @router.get("/stock_rank_ljqd_ths", operation_id="get_stock_rank_ljqd_ths")
 def get_stock_rank_ljqd_ths():
     """
+    同花顺-技术选股-量价齐跌
+
     接口: stock_rank_ljqd_ths
 
     目标地址: https://data.10jqka.com.cn/rank/ljqd/
@@ -221,6 +241,8 @@ def get_stock_rank_ljqd_ths():
 @router.get("/stock_rank_xzjp_ths", operation_id="get_stock_rank_xzjp_ths")
 def get_stock_rank_xzjp_ths():
     """
+    同花顺-技术选股-险资举牌
+
     接口: stock_rank_xzjp_ths
 
     目标地址: https://data.10jqka.com.cn/financial/xzjp/

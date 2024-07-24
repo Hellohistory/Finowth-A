@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data_pandas, sanitize_data
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -11,16 +11,18 @@ class SymbolRequest(BaseModel):
     symbol: str = Field(..., title="指定个股代码", description="例：000066")
 
 
-# 东方财富网-数据中心-研究报告-个股研报
+# 东方财富-数据中心-研究报告-个股研报
 @router.post("/stock_research_report_em",
              operation_id="post_post_stock_research_report_em")
 async def post_stock_research_report_em(request: SymbolRequest):
     """
+    东方财富-研究报告-个股研报
+
     接口: stock_research_report_em
 
     目标地址: https://data.eastmoney.com/report/stock.jshtml
 
-    描述: 东方财富网-数据中心-研究报告-个股研报
+    描述: 东方财富-数据中心-研究报告-个股研报
 
     限量: 单次返回指定个股的所有数据
     """
@@ -40,16 +42,18 @@ class DongCaiSymbolDateRequest(BaseModel):
     date: str = Field(..., title="指定日期", description="例：20220511")
 
 
-# 东方财富网-数据中心-公告大全-沪深京 A 股公告
+# 东方财富-数据中心-公告大全-沪深京 A 股公告
 @router.post("/stock_notice_report",
              operation_id="post_stock_notice_report")
 async def post_stock_notice_report(request: DongCaiSymbolDateRequest):
     """
+    东方财富-沪深京 A 股公告
+
     接口: stock_notice_report
 
     目标地址: https://data.eastmoney.com/notices/hsa/5.html
 
-    描述: 东方财富网-数据中心-公告大全-沪深京 A 股公告
+    描述: 东方财富-数据中心-公告大全-沪深京 A 股公告
 
     限量: 单次获取指定个股和指定日期的数据
     """
@@ -70,6 +74,8 @@ class XinLangStockSymbolRequest(BaseModel):
              operation_id="post_stock_financial_report_sina")
 async def post_stock_financial_report_sina(request: XinLangStockSymbolRequest):
     """
+    新浪财经-财务报表-三大报表
+
     接口: stock_financial_report_sina
 
     目标地址: https://vip.stock.finance.sina.com.cn/corp/go.php/vFD_FinanceSummary/stockid/600600/displaytype/4.phtml?source=fzb&qq-pf-to=pcqq.group
@@ -98,6 +104,8 @@ class DongCaiZiChanSymbolRequest(BaseModel):
              operation_id="post_stock_balance_sheet_by_report_em")
 async def post_stock_balance_sheet_by_report_em(request: DongCaiZiChanSymbolRequest):
     """
+    东方财富-财务分析-资产负债表-按报告期
+
     接口: stock_balance_sheet_by_report_em
 
     目标地址: https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/Index?type=web&code=sh600519#lrb-0
@@ -120,6 +128,8 @@ async def post_stock_balance_sheet_by_report_em(request: DongCaiZiChanSymbolRequ
              operation_id="post_stock_balance_sheet_by_yearly_em")
 async def post_stock_balance_sheet_by_yearly_em(request: DongCaiZiChanSymbolRequest):
     """
+    东方财富-财务分析-资产负债表-按年度
+
     接口: stock_balance_sheet_by_yearly_em
 
     目标地址: https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/Index?type=web&code=sh600519#lrb-0
@@ -142,6 +152,8 @@ async def post_stock_balance_sheet_by_yearly_em(request: DongCaiZiChanSymbolRequ
              operation_id="post_stock_profit_sheet_by_report_em")
 async def post_stock_profit_sheet_by_report_em(request: DongCaiZiChanSymbolRequest):
     """
+    东方财富-财务分析-利润表-报告期
+
     接口: stock_profit_sheet_by_report_em
 
     目标地址: https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/Index?type=web&code=sh600519#lrb-0
@@ -164,6 +176,8 @@ async def post_stock_profit_sheet_by_report_em(request: DongCaiZiChanSymbolReque
              operation_id="post_stock_profit_sheet_by_yearly_em")
 async def post_stock_profit_sheet_by_yearly_em(request: DongCaiZiChanSymbolRequest):
     """
+    东方财富-财务分析-利润表-按年度
+
     接口: stock_profit_sheet_by_yearly_em
 
     目标地址: https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/Index?type=web&code=sh600519#lrb-0
@@ -186,6 +200,8 @@ async def post_stock_profit_sheet_by_yearly_em(request: DongCaiZiChanSymbolReque
              operation_id="post_stock_profit_sheet_by_quarterly_em")
 async def post_stock_profit_sheet_by_quarterly_em(request: DongCaiZiChanSymbolRequest):
     """
+    东方财富-财务分析-利润表-按单季度
+
     接口: stock_profit_sheet_by_quarterly_em
 
     目标地址: https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/Index?type=web&code=sh600519#lrb-0
@@ -208,6 +224,8 @@ async def post_stock_profit_sheet_by_quarterly_em(request: DongCaiZiChanSymbolRe
              operation_id="post_stock_cash_flow_sheet_by_report_em")
 async def post_stock_cash_flow_sheet_by_report_em(request: DongCaiZiChanSymbolRequest):
     """
+    东方财富-财务分析-现金流量表-按报告期
+
     接口: stock_cash_flow_sheet_by_report_em
 
     目标地址: https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/Index?type=web&code=sh600519#lrb-0
@@ -230,6 +248,8 @@ async def post_stock_cash_flow_sheet_by_report_em(request: DongCaiZiChanSymbolRe
              operation_id="post_stock_cash_flow_sheet_by_yearly_em")
 async def post_stock_cash_flow_sheet_by_yearly_em(request: DongCaiZiChanSymbolRequest):
     """
+    东方财富-财务分析-现金流量表-按年度
+
     接口: stock_cash_flow_sheet_by_yearly_em
 
     目标地址: https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/Index?type=web&code=sh600519#lrb-0
@@ -253,6 +273,8 @@ async def post_stock_cash_flow_sheet_by_yearly_em(request: DongCaiZiChanSymbolRe
              operation_id="post_stock_cash_flow_sheet_by_quarterly_em")
 async def post_stock_cash_flow_sheet_by_quarterly_em(request: DongCaiZiChanSymbolRequest):
     """
+    东方财富-财务分析-现金流量表-按单季度
+
     接口: stock_cash_flow_sheet_by_quarterly_em
 
     目标地址: https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/Index?type=web&code=sh600519#lrb-0
@@ -280,6 +302,8 @@ class TongHuaShunFinancialDebt(BaseModel):
              operation_id="post_stock_financial_debt_ths")
 async def post_stock_financial_debt_ths(request: TongHuaShunFinancialDebt):
     """
+    同花顺-财务指标-资产负债表
+
     接口: stock_financial_debt_ths
 
     目标地址: https://basic.10jqka.com.cn/new/000063/finance.html
@@ -300,6 +324,8 @@ async def post_stock_financial_debt_ths(request: TongHuaShunFinancialDebt):
              operation_id="post_stock_financial_benefit_ths")
 async def post_stock_financial_benefit_ths(request: TongHuaShunFinancialDebt):
     """
+    同花顺-财务指标-利润表
+
     接口: stock_financial_benefit_ths
 
     目标地址: https://basic.10jqka.com.cn/new/000063/finance.html
@@ -321,6 +347,8 @@ async def post_stock_financial_benefit_ths(request: TongHuaShunFinancialDebt):
              operation_id="post_stock_financial_cash_ths")
 async def post_stock_financial_cash_ths(request: TongHuaShunFinancialDebt):
     """
+    同花顺-财务指标-现金流量表
+
     接口: stock_financial_cash_ths
 
     目标地址: https://basic.10jqka.com.cn/new/000063/finance.html
@@ -345,6 +373,8 @@ class TuiShiSymbolRequest(BaseModel):
              operation_id="stock_balance_sheet_by_report_delisted_em")
 async def post_stock_balance_sheet_by_report_delisted_em(request: TuiShiSymbolRequest):
     """
+    东方财富-资产负债表-已退市股票-按报告期
+
     接口: stock_balance_sheet_by_report_delisted_em
 
     目标地址: https://emweb.securities.eastmoney.com/pc_hsf10/pages/index.html?type=web&code=SZ000013#/cwfx/zcfzb
@@ -369,6 +399,8 @@ async def post_stock_balance_sheet_by_report_delisted_em(request: TuiShiSymbolRe
              operation_id="post_stock_profit_sheet_by_report_delisted_em")
 async def post_stock_profit_sheet_by_report_delisted_em(request: TuiShiSymbolRequest):
     """
+    东方财富-利润表-已退市股票-按报告期
+
     接口: stock_profit_sheet_by_report_delisted_em
 
     目标地址: https://emweb.securities.eastmoney.com/pc_hsf10/pages/index.html?type=web&code=SZ000013#/cwfx/lrb
@@ -390,6 +422,8 @@ async def post_stock_profit_sheet_by_report_delisted_em(request: TuiShiSymbolReq
              operation_id="post_stock_cash_flow_sheet_by_report_delisted_em")
 async def post_stock_cash_flow_sheet_by_report_delisted_em(request: TuiShiSymbolRequest):
     """
+    东方财富-现金流量表-已退市股票-按报告期
+
     接口: stock_cash_flow_sheet_by_report_delisted_em
 
     目标地址: https://emweb.securities.eastmoney.com/pc_hsf10/pages/index.html?type=web&code=SZ000013#/cwfx/xjllb
@@ -418,6 +452,8 @@ class DongCaiHKFinancialRequest(BaseModel):
              operation_id="post_stock_financial_hk_report_em")
 async def post_stock_financial_hk_report_em(request: DongCaiHKFinancialRequest):
     """
+    东方财富-港股-财务报表-三大报表
+
     接口: stock_financial_hk_report_em
 
     目标地址: https://emweb.securities.eastmoney.com/PC_HKF10/FinancialAnalysis/index?type=web&code=00700

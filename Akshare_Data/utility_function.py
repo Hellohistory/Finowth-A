@@ -9,7 +9,7 @@ import pandas as pd
 
 def sanitize_data(data):
     """
-    递归处理数据，替换所有无效的浮点值（例：无穷大和 NaN）为 'null'
+    递归处理数据，替换所有无效的浮点值（无穷大和 NaN）为 'null'
     """
     if isinstance(data, dict):
         return {k: sanitize_data(v) for k, v in data.items()}
@@ -25,7 +25,7 @@ def sanitize_data(data):
 
 def sanitize_data_pandas(data):
     """
-    递归处理数据，替换所有无效的浮点值（例：无穷大和 NaN）为 'null'
+    递归处理数据，替换所有无效的浮点值（无穷大和 NaN）为 'null'
     """
     if isinstance(data, dict):
         return {k: sanitize_data_pandas(v) for k, v in data.items()}

@@ -92,7 +92,7 @@ class ExchangeSymbolRequest(BaseModel):
 
 
 # 库存数据-99期货网
-@router.post("/futures_inventory_99", operation_id="post_futures_rule")
+@router.post("/futures_inventory_99", operation_id="post_futures_inventory_99")
 def post_futures_inventory_99(request: ExchangeSymbolRequest):
     """
     库存数据-99期货网

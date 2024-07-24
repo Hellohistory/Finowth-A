@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
@@ -68,7 +70,24 @@ def get_stock_zh_a_new_em():
         stock_zh_a_new_em_df = ak.stock_zh_a_new_em()
         stock_zh_a_new_em_df = sanitize_data_pandas(stock_zh_a_new_em_df)
 
-        return stock_zh_a_new_em_df.to_dict(orient="records")
+        stock_zh_a_new_em_list = stock_zh_a_new_em_df.to_dict(orient="records")
+
+        # 添加当前日期到每个记录的“序号”字段之后
+        current_date = datetime.now().strftime("%Y-%m-%d")
+        for record in stock_zh_a_new_em_list:
+            # 保存原始字典内容
+            temp_record = record.copy()
+            record.clear()
+            # 插入“序号”字段及其值
+            record["序号"] = temp_record["序号"]
+            # 插入日期
+            record["日期"] = current_date
+            # 插入剩余字段
+            for key, value in temp_record.items():
+                if key != "序号":
+                    record[key] = value
+
+        return stock_zh_a_new_em_list
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -95,27 +114,5 @@ def get_stock_ipo_benefit_ths():
             return {"message": "当前没有数据，请稍后再试。"}
         else:
             raise HTTPException(status_code=500, detail=str(e))
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-# 东方财富网-行情中心-沪深个股-两网及退市
-@router.get("/stock_zh_a_stop_em", operation_id="get_stock_zh_a_stop_em")
-def get_stock_zh_a_stop_em():
-    """
-    接口: stock_zh_a_stop_em
-
-    目标地址: http://quote.eastmoney.com/center/gridlist.html#staq_net_board
-
-    描述: 东方财富网-行情中心-沪深个股-两网及退市
-
-    限量: 单次返回当前交易日两网及退市的所有股票的行情数据
-    """
-    try:
-        stock_zh_a_stop_em_df = ak.stock_zh_a_stop_em()
-        data = stock_zh_a_stop_em_df.to_dict(orient="records")
-        sanitized_data = sanitize_data(data)
-
-        return sanitized_data
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

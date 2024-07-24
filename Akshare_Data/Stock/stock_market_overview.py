@@ -1,5 +1,5 @@
 # 市场全貌获取模块
-
+from datetime import datetime
 
 import akshare as ak
 import pandas as pd
@@ -11,7 +11,7 @@ from Akshare_Data.utility_function import sanitize_data
 router = APIRouter()
 
 
-@router.get("/stock_sse_summary", operation_id="get_stock_sse_summary")
+@router.get("/stock_zh_a_stop_em", operation_id="get_stock_sse_summary")
 async def get_stock_sse_summary():
     """
     接口: stock_sse_summary
@@ -24,6 +24,22 @@ async def get_stock_sse_summary():
     """
     stock_sse_summary_df = ak.stock_sse_summary()
     stock_sse_summary_list = stock_sse_summary_df.to_dict(orient="records")
+
+    # 添加当前时间戳到每个记录的“项目”字段之后
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    for record in stock_sse_summary_list:
+        # 使用临时变量保存原始键值对
+        temp_record = record.copy()
+        record.clear()
+        # 先插入“项目”字段及其值
+        record["项目"] = temp_record["项目"]
+        # 插入日期
+        record["日期"] = current_date
+        # 插入剩余的字段
+        for key, value in temp_record.items():
+            if key != "项目":
+                record[key] = value
+
     return stock_sse_summary_list
 
 

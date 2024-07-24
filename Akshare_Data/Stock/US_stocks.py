@@ -224,3 +224,27 @@ async def post_stock_us_famous_spot_em(request: USFamouSpot):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# 知名港股
+@router.get("/stock_hk_famous_spot_em", operation_id="get_stock_hk_famous_spot_em")
+def get_stock_hk_famous_spot_em():
+    """
+    知名港股
+
+    接口: stock_hk_famous_spot_em
+
+    目标地址: https://quote.eastmoney.com/center/gridlist.html#hk_wellknown
+
+    描述: 东方财富网-行情中心-港股市场-知名港股实时行情数据
+
+    限量: 单次返回全部行情数据
+    """
+    try:
+        stock_hk_famous_spot_em = ak.stock_hk_famous_spot_em()
+        data = stock_hk_famous_spot_em.to_dict(orient="records")
+        sanitized_data = sanitize_data(data)
+
+        return sanitized_data
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

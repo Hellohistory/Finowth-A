@@ -204,7 +204,10 @@ async def post_stock_zh_a_disclosure_report_cninfo(request: JuChaoDisclosureRequ
     """
     try:
         stock_zh_a_disclosure_report_cninfo_df = ak.stock_zh_a_disclosure_report_cninfo(
-            symbol=request.symbol, market=request.market, keyword=request.keyword, category=request.category,
+            symbol=request.symbol,
+            market=request.market,
+            keyword=request.keyword,
+            category=request.category,
             start_date=request.start_date,
             end_date=request.end_date)
         return stock_zh_a_disclosure_report_cninfo_df.to_dict(orient="records")

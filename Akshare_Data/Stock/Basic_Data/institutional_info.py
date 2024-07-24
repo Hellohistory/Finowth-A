@@ -9,7 +9,7 @@ router = APIRouter()
 
 class XinLangSymbolRequest(BaseModel):
     symbol: str = Field(..., title="指定数据时间",
-                        description="数据从2005年开始, 其中'一季报':1, '中报':2 '三季报':3 '年报':4"
+                        description="数据从2005年开始, 其中'一季报':1, '中报':2 '三季报':3 '年报':4；"
                                     "示例: '20191', 其中的 1 表示一季报; '20193', 其中的 3 表示三季报;")
 
 

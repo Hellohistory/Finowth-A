@@ -53,7 +53,14 @@ def get_stock_new_gh_cninfo():
 @router.get("/stock_new_ipo_cninfo", operation_id="get_stock_new_ipo_cninfo")
 def get_stock_new_ipo_cninfo():
     """
+    新股发行
+
+    接口: stock_new_ipo_cninfo
+
+    目标地址: http://webapi.cninfo.com.cn/#/xinguList
+
     描述: 巨潮资讯-数据中心-新股数据-新股发行
+
     限量: 单次获取近三年所有新股发行的数据
     """
     try:

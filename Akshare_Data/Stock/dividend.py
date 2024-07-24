@@ -117,7 +117,7 @@ def get_stock_history_dividend():
 class DividendDetailRequest(BaseModel):
     symbol: str = Field(..., title="股票代码", description="例：600012")
     indicator: str = Field(..., title="分红配股", description="可选择'分红', '配股'")
-    date: str = Field(..., title="分红配股的具体日期", description="例：2019-06-14")
+    date: str = Field(..., title="分红配股的具体日期", description="例：2019-06-14，此为可选参数可不填")
 
 
 # 新浪财经-发行与分配-分红配股

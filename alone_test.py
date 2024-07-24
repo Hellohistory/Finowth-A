@@ -11,40 +11,45 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-class DongCaiMarketDateRangeRequest(BaseModel):
-    symbol: str = Field(..., title="市场类型", description="'北向持股', '沪股通持股', '深股通持股', '南向持股'")
-    start_date: str = Field(..., title="起始时间(需近期交易日)", description="例：20240701")
-    end_date: str = Field(..., title="终止时间(需近期交易日)", description="例：20240701")
+class JuChaoDisclosureRequest(BaseModel):
+    symbol: str = Field(..., title="股票代码", description="例：000001")
+    market: str = Field(..., title="市场类型",
+                        description="'沪深京', '港股', '三板', '基金', '债券', '监管', '预披露'")
+    keyword: str = Field(..., title="关键词", description="可选参数，默认为空")
+    category: str = Field(..., title="公告类型",
+                          description="'年报', '半年报', '一季报', '三季报', "
+                                      "'业绩预告', '权益分派', '董事会', '监事会', "
+                                      "'股东大会', '日常经营', '公司治理', '中介报告', "
+                                      "'首发', '增发', '股权激励', '配股', '解禁', '公司债', "
+                                      "'可转债', '其他融资', '股权变动', '补充更正', '澄清致歉', "
+                                      "'风险提示', '特别处理和退市', '退市整理期'")
+    start_date: str = Field(..., title="开始时间", description="例：20230618")
+    end_date: str = Field(..., title="终止时间", description="例：20231219")
 
 
-# 东方财富网-数据中心-沪深港通-沪深港通持股-机构排行
-@app.post("/stock_hsgt_institution_statistics_em", operation_id="post_stock_hsgt_institution_statistics_em")
-async def post_stock_hsgt_institution_statistics_em(request: DongCaiMarketDateRangeRequest):
+# 巨潮资讯-首页-公告查询-信息披露公告-沪深京
+@app.post("/stock_zh_a_disclosure_report_cninfo",
+          operation_id="post_stock_zh_a_disclosure_report_cninfo")
+async def post_stock_zh_a_disclosure_report_cninfo(request: JuChaoDisclosureRequest):
     """
-    接口: stock_hsgt_institution_statistics_em
+    接口: stock_zh_a_disclosure_report_cninfo
 
-    目标地址: http://data.eastmoney.com/hsgtcg/InstitutionStatistics.aspx
+    目标地址: http://www.cninfo.com.cn/new/commonUrl/pageOfSearch?url=disclosure/list/search
 
-    描述: 东方财富网-数据中心-沪深港通-沪深港通持股-机构排行
+    描述: 巨潮资讯-首页-公告查询-信息披露公告-沪深京
 
-    限量: 单次获取指定市场的所有数据, 该接口只能获取近期的数据
+    限量: 单次获取指定个股的信息披露公告数据
     """
-    logger.info(f"Received request: {request}")
     try:
-        stock_hsgt_institution_statistics_em_df = ak.stock_hsgt_institution_statistics_em(
-            market=request.symbol,
+        stock_zh_a_disclosure_report_cninfo_df = ak.stock_zh_a_disclosure_report_cninfo(
+            symbol=request.symbol,
+            market=request.market,
+            keyword=request.keyword,
+            category=request.category,
             start_date=request.start_date,
-            end_date=request.end_date
-        )
-
-        if stock_hsgt_institution_statistics_em_df is None or stock_hsgt_institution_statistics_em_df.empty:
-            logger.error("Received empty dataframe")
-            raise HTTPException(status_code=404, detail="未找到相关数据")
-
-        logger.info("Data retrieved successfully")
-        return stock_hsgt_institution_statistics_em_df.to_dict(orient="records")
+            end_date=request.end_date)
+        return stock_zh_a_disclosure_report_cninfo_df.to_dict(orient="records")
     except Exception as e:
-        logger.error(f"Error occurred: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 

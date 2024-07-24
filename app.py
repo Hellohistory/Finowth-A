@@ -69,12 +69,16 @@ from Akshare_Data.InterestRate.fixing_repo_rate import router as router49
 # # 私募基金
 from Akshare_Data.Fund.private_equity_funds import router as router54
 
+# 期货
+from Akshare_Data.Futures.basic_data import router as router55
+
 app = FastAPI()
+
 # 配置CORS
 origins = [
     "http://localhost:36924",
     "http://localhost:36925",
-    "http://192.168.1.16:36928"
+    "http://192.168.1.18:36929"
 ]
 
 app.add_middleware(
@@ -240,6 +244,7 @@ app.include_router(router51)
 app.include_router(router52)
 app.include_router(router53)
 app.include_router(router54)
+app.include_router(router55)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

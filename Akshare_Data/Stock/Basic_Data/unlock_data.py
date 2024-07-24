@@ -32,7 +32,7 @@ async def post_stock_restricted_release_queue_sina(request: SymbolRequest):
 
 class RestrictedReleaseSummaryRequest(BaseModel):
     symbol: str = Field(..., title="市场类型",
-                        description="可选择'全部股票', '沪市A股', '科创板', '深市A股', '创业板', '京市A股'")
+                        description="可选择' 全部股票 ', ' 沪市A股 ', ' 科创板 ', ' 深市A股 ', ' 创业板 ', ' 京市A股 '")
     start_date: str = Field(..., title="开始查询的日期", description="例如20240701")
     end_date: str = Field(..., title="结束查询的日期", description="例如20240716")
 

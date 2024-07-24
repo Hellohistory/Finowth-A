@@ -262,7 +262,7 @@ async def get_fund_amac_fund_abs():
 
     描述: 中国证券投资基金业协会-信息公示-产品公示-资产支持专项计划
 
-    限量: 单次返回当前时刻所有历史数据
+    限量: 单次返回当前时刻所有历史数据，数据量较大，获取时间较长，请耐心等待
     """
     fund_amac_fund_abs = ak.amac_fund_abs()
     fund_amac_fund_abs_df = sanitize_data_pandas(fund_amac_fund_abs)

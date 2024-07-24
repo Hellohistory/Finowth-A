@@ -1,11 +1,14 @@
 import requests
 import json
 
-url = 'http://localhost:36925/stock_hsgt_institution_statistics_em'
+url = 'http://localhost:36925/stock_zh_a_disclosure_report_cninfo'
 data = {
-    'symbol': "北向持股",
-    'start_date': "20240701",
-    'end_date': "20240701"
+    'symbol': "000001",
+    'market': "港股",
+    'keyword': "",
+    'category': "半年报",
+    'start_date': "20230618",
+    'end_date': "20231219"
 }
 headers = {'Content-Type': 'application/json'}
 

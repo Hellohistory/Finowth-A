@@ -217,7 +217,9 @@ async def post_stock_cash_flow_sheet_by_report_em(request: DongCaiZiChanSymbolRe
     限量: 单次获取指定个股的现金流量表-按报告期数据
     """
     try:
-        stock_cash_flow_sheet_by_report_em_df = ak.stock_cash_flow_sheet_by_report_em(symbol=request.symbol)
+        stock_cash_flow_sheet_by_report_em = ak.stock_cash_flow_sheet_by_report_em(symbol=request.symbol)
+        stock_cash_flow_sheet_by_report_em_df = sanitize_data_pandas(stock_cash_flow_sheet_by_report_em)
+
         return stock_cash_flow_sheet_by_report_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -237,9 +239,9 @@ async def post_stock_cash_flow_sheet_by_yearly_em(request: DongCaiZiChanSymbolRe
     限量: 单次获取指定个股的现金流量表-按年度数据
     """
     try:
-        stock_cash_flow_sheet_by_yearly_em_df = ak.stock_cash_flow_sheet_by_yearly_em(symbol=request.symbol)
+        stock_cash_flow_sheet_by_yearly_em = ak.stock_cash_flow_sheet_by_yearly_em(symbol=request.symbol)
 
-        stock_cash_flow_sheet_by_yearly_em_df = sanitize_data(stock_cash_flow_sheet_by_yearly_em_df)
+        stock_cash_flow_sheet_by_yearly_em_df = sanitize_data_pandas(stock_cash_flow_sheet_by_yearly_em)
 
         return stock_cash_flow_sheet_by_yearly_em_df.to_dict(orient="records")
     except Exception as e:
@@ -260,7 +262,9 @@ async def post_stock_cash_flow_sheet_by_quarterly_em(request: DongCaiZiChanSymbo
     限量: 单次获取指定个股的现金流量表-按单季度数据
     """
     try:
-        stock_cash_flow_sheet_by_quarterly_em_df = ak.stock_cash_flow_sheet_by_quarterly_em(symbol=request.symbol)
+        stock_cash_flow_sheet_by_quarterly_em = ak.stock_cash_flow_sheet_by_quarterly_em(symbol=request.symbol)
+        stock_cash_flow_sheet_by_quarterly_em_df = sanitize_data_pandas(stock_cash_flow_sheet_by_quarterly_em)
+
         return stock_cash_flow_sheet_by_quarterly_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

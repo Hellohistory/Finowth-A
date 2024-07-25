@@ -67,6 +67,8 @@ from Akshare_Data.Stock.stock_pledge import router as router14
 from Akshare_Data.Stock.stock_popularity import router as router38
 from Akshare_Data.Stock.technical_indicators import router as router41
 from Akshare_Data.Stock.time_sharing_data import router as router4
+# 迁徙数据
+from Akshare_Data.Migration.migration import router as router56
 
 app = FastAPI()
 
@@ -242,6 +244,7 @@ app.include_router(router52)
 app.include_router(router53)
 app.include_router(router54)
 app.include_router(router55)
+app.include_router(router56)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

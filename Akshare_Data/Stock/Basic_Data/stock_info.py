@@ -6,7 +6,7 @@ router = APIRouter()
 
 
 class XinLangSectorRequest(BaseModel):
-    sector: str = Field(..., title="行业代码", description="通过stock_sector_spot返回数据的 label 字段选择 sector")
+    sector: str = Field(..., title="行业代码", description="通过 stock_sector_spot 返回数据的 label 字段选择 sector")
 
 
 # 新浪行业-板块行情-成份详情

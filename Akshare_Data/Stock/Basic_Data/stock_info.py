@@ -70,6 +70,10 @@ def get_stock_info_a_code_name():
     """
     try:
         stock_info_a_code_name_df = ak.stock_info_a_code_name()
+        stock_info_a_code_name_df.rename(columns={
+            "code": "股票代码",
+            "name": "股票名称",
+        }, inplace=True)
         return stock_info_a_code_name_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

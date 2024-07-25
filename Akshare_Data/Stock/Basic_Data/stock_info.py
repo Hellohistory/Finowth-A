@@ -55,7 +55,7 @@ async def post_stock_sector_detail(request: XinLangSectorRequest):
 
 
 # 沪深京 A 股股票代码和股票简称数据
-@router.get("/stock_info_a_code_name", operation_id="post_stock_info_a_code_name")
+@router.get("/stock_info_a_code_name", operation_id="get_stock_info_a_code_name")
 def get_stock_info_a_code_name():
     """
     沪深京 A 股股票代码和股票简称数据

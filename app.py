@@ -6,6 +6,18 @@ from fastapi.openapi.utils import get_openapi
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
 
+# 基金
+# # 私募基金
+from Akshare_Data.Fund.private_equity_funds import router as router54
+# 期货
+from Akshare_Data.Futures.basic_data import router as router55
+from Akshare_Data.InterestRate.fixing_repo_rate import router as router49
+from Akshare_Data.InterestRate.interbank_lending_rate import router as router47
+# 利率
+from Akshare_Data.InterestRate.main_central_bank_interest_rates import router as router43
+# 现货
+from Akshare_Data.Spot.spot_trend import router as router53
+from Akshare_Data.Spot.variety_list import router as router39
 # 股票
 from Akshare_Data.Stock.AH_data import router as router1
 from Akshare_Data.Stock.A_stocksother_data import router as router2
@@ -42,6 +54,7 @@ from Akshare_Data.Stock.new_shares import router as router18
 from Akshare_Data.Stock.other import router as router22
 from Akshare_Data.Stock.profit_prediction import router as router35
 from Akshare_Data.Stock.real_time_quotes import router as router5
+from Akshare_Data.Stock.research import router as router10
 from Akshare_Data.Stock.science_and_technology_innovation_board_data import router as router7
 from Akshare_Data.Stock.stock_a_indicator_lg import router as router48
 from Akshare_Data.Stock.stock_account_statistics import router as router13
@@ -49,28 +62,11 @@ from Akshare_Data.Stock.stock_changes_em import router as router44
 from Akshare_Data.Stock.stock_evaluation import router as router15
 from Akshare_Data.Stock.stock_financial_abstract import router as router46
 from Akshare_Data.Stock.stock_hk_indicator_eniu import router as router51
-from Akshare_Data.Stock.research import router as router10
 from Akshare_Data.Stock.stock_market_overview import router as router3
 from Akshare_Data.Stock.stock_pledge import router as router14
 from Akshare_Data.Stock.stock_popularity import router as router38
 from Akshare_Data.Stock.technical_indicators import router as router41
 from Akshare_Data.Stock.time_sharing_data import router as router4
-
-# 现货
-from Akshare_Data.Spot.spot_trend import router as router53
-from Akshare_Data.Spot.variety_list import router as router39
-
-# 利率
-from Akshare_Data.InterestRate.main_central_bank_interest_rates import router as router43
-from Akshare_Data.InterestRate.interbank_lending_rate import router as router47
-from Akshare_Data.InterestRate.fixing_repo_rate import router as router49
-
-# 基金
-# # 私募基金
-from Akshare_Data.Fund.private_equity_funds import router as router54
-
-# 期货
-from Akshare_Data.Futures.basic_data import router as router55
 
 app = FastAPI()
 

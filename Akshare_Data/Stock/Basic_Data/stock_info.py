@@ -72,7 +72,7 @@ def get_stock_info_a_code_name():
         stock_info_a_code_name_df = ak.stock_info_a_code_name()
         stock_info_a_code_name_df.rename(columns={
             "code": "股票代码",
-            "name": "股票名称",
+            "name": "股票简称",
         }, inplace=True)
         return stock_info_a_code_name_df.to_dict(orient="records")
     except Exception as e:
@@ -130,7 +130,7 @@ async def post_stock_info_sz_name_code(request: SzSymbolRequest):
 
 
 # 北京证券交易所股票代码和简称数据
-@router.get("/stock_info_bj_name_code", operation_id="post_stock_info_bj_name_code")
+@router.get("/stock_info_bj_name_code", operation_id="get_stock_info_bj_name_code")
 def get_stock_info_bj_name_code():
     """
     北京证券交易所股票代码和简称数据
@@ -177,7 +177,7 @@ async def post_stock_info_sz_delist(request: SzTsSymbolRequest):
 
 
 # 东方财富-行情中心-沪深个股-两网及退市
-@router.get("/stock_staq_net_stop", operation_id="post_stock_staq_net_stop")
+@router.get("/stock_staq_net_stop", operation_id="get_stock_staq_net_stop")
 def get_stock_staq_net_stop():
     """
     东方财富-沪深个股-两网及退市

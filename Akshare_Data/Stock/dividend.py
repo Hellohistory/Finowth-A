@@ -104,7 +104,7 @@ async def post_stock_hk_fhpx_detail_ths(request: SymbolRequest):
 
 
 # 新浪财经-发行与分配-历史分红
-@router.get("/stock_history_dividend", operation_id="post_stock_history_dividend")
+@router.get("/stock_history_dividend", operation_id="get_stock_history_dividend")
 def get_stock_history_dividend():
     """
     新浪财经-发行与分配-历史分红

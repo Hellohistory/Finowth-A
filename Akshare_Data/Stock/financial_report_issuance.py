@@ -160,7 +160,7 @@ async def post_stock_yysj_em(request: DongCaiAnnualSymbolDateRequest):
 
 
 class JuChaoMarketPeriodRequest(BaseModel):
-    market: str = Field(..., title="市场",
+    market: str = Field(..., title="市场类型",
                         description="可选择'沪深京', '深市', '深主板', '创业板', '沪市', '沪主板', '科创板', '北交所'")
     period: str = Field(..., title="时间段",
                         description="可选择四个部分'XXXX一季', 'XXXX半年报', 'XXXX三季', 'XXXX年报'")

@@ -346,7 +346,7 @@ async def post_stock_hsgt_individual_em(request: OnlyStockRequest):
 
 
 class DongCaiStockRequest(BaseModel):
-    stock: str = Field(..., title="个股", description="例：002008")
+    stock: str = Field(..., title="个股代码", description="例：002008")
     start_date: str = Field(..., title="起始时间(需近90个交易日内)", description="例：20240701")
     end_date: str = Field(..., title="终止时间(需近90个交易日内)", description="例：20240715")
 

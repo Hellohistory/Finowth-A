@@ -79,7 +79,7 @@ async def post_stock_board_industry_index_ths(request: IndustryIndexRequest):
 
 class SymbolRequest(BaseModel):
     symbol: str = Field(..., title="概念名称",
-                        description="例：小金属，可以通过调用stock_board_concept_name_em接口查看东方财富-概念板块的所有概念名称")
+                        description="例：小金属，可以通过调用 stock_board_concept_name_em 接口查看东方财富-概念板块的所有概念名称")
 
 
 # 东方财富-沪深板块-行业板块-板块成份

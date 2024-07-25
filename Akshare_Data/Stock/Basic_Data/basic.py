@@ -141,7 +141,7 @@ async def post_stock_a_below_net_asset_statistics(request: PSymbolRequest):
 
     描述: 乐咕乐股-A 股破净股统计数据
 
-    限量: 单次获取指定个股的所有历史数据
+    限量: 单次获取指定类型的所有历史数据
     """
     try:
         stock_a_below_net_asset_statistics_df = ak.stock_a_below_net_asset_statistics(symbol=request.symbol)

@@ -1,14 +1,9 @@
 import requests
 import json
 
-url = 'http://localhost:36925/stock_zh_a_disclosure_report_cninfo'
+url = 'http://localhost:36925/stock_szse_summary'
 data = {
-    'symbol': "000001",
-    'market': "港股",
-    'keyword': "",
-    'category': "半年报",
-    'start_date': "20230618",
-    'end_date': "20231219"
+    'date': "20240717"
 }
 headers = {'Content-Type': 'application/json'}
 

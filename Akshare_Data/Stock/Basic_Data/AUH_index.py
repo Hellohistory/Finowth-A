@@ -51,7 +51,7 @@ async def post_stock_a_gxl_lg(request: LeGuSymbolRequest):
 
     描述: 乐咕乐股-股息率-A 股股息率
 
-    限量: 单次获取指定个股的所有历史数据
+    限量: 单次获取指定类型市场的所有历史数据
     """
     try:
         stock_a_gxl_lg_df = ak.stock_a_gxl_lg(symbol=request.symbol)
@@ -264,7 +264,7 @@ async def post_stock_index_pe_lg(request: LeGuZhiShuSymbolRequest):
 
     描述: 乐咕乐股-指数市盈率
 
-    限量: 单次获取指定个股的所有数据
+    限量: 单次获取指定类型的所有数据
     """
     try:
         stock_index_pe_lg_df = ak.stock_index_pe_lg(symbol=request.symbol)
@@ -285,7 +285,7 @@ async def post_stock_market_pb_lg(request: LeGuZhuBanSymbolRequest):
 
     描述: 乐咕乐股-主板市净率
 
-    限量: 单次获取指定个股的所有数据
+    限量: 单次获取指定类型的所有数据
     """
     try:
         stock_market_pb_lg_df = ak.stock_market_pb_lg(symbol=request.symbol)
@@ -306,7 +306,7 @@ async def post_stock_index_pb_lg(request: LeGuZhiShuSymbolRequest):
 
     描述: 乐咕乐股-指数市净率
 
-    限量: 单次获取指定个股的所有数据
+    限量: 单次获取指定类型的所有数据
     """
     try:
         stock_index_pb_lg_df = ak.stock_index_pb_lg(symbol=request.symbol)

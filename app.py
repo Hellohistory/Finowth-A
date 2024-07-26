@@ -89,11 +89,23 @@ from Akshare_Data.Macro.China.financing_and_securities_lending import router as 
 from Akshare_Data.Macro.China.other_indicators import router as router71
 from Akshare_Data.Macro.China.national_bureau_of_statistics import router as router72
 from Akshare_Data.Macro.China.financial_market import router as router73
-# # 中国宏观
+# # 中国香港宏观
 from Akshare_Data.Macro.HongKong.building_index import router as router74
 from Akshare_Data.Macro.HongKong.consumer_index import router as router75
 from Akshare_Data.Macro.HongKong.gdp_index import router as router76
 from Akshare_Data.Macro.HongKong.other_index import router as router77
+# # 美国
+from Akshare_Data.Macro.America.consumer_income_and_expenditure import router as router78
+from Akshare_Data.Macro.America.economic_situation import router as router79
+from Akshare_Data.Macro.America.industry_indicators_industry import router as router80
+from Akshare_Data.Macro.America.industry_indicators_manufacturing import router as router81
+from Akshare_Data.Macro.America.industry_indicators_real_estate import router as router82
+from Akshare_Data.Macro.America.industry_indicators_service_industry import router as router83
+from Akshare_Data.Macro.America.labour_market import router as router84
+from Akshare_Data.Macro.America.leading_indicators import router as router85
+from Akshare_Data.Macro.America.other import router as router86
+from Akshare_Data.Macro.America.price_level import router as router87
+from Akshare_Data.Macro.America.trade_situation import router as router88
 
 app = FastAPI()
 
@@ -291,6 +303,17 @@ app.include_router(router74)
 app.include_router(router75)
 app.include_router(router76)
 app.include_router(router77)
+app.include_router(router78)
+app.include_router(router79)
+app.include_router(router80)
+app.include_router(router81)
+app.include_router(router82)
+app.include_router(router83)
+app.include_router(router84)
+app.include_router(router85)
+app.include_router(router86)
+app.include_router(router87)
+app.include_router(router88)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

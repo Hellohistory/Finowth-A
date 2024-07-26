@@ -106,6 +106,10 @@ from Akshare_Data.Macro.America.leading_indicators import router as router85
 from Akshare_Data.Macro.America.other import router as router86
 from Akshare_Data.Macro.America.price_level import router as router87
 from Akshare_Data.Macro.America.trade_situation import router as router88
+# # 欧元区
+from Akshare_Data.Macro.Eurozone.economic_situation import router as router89
+from Akshare_Data.Macro.Eurozone.industry_indicators import router as router90
+from Akshare_Data.Macro.Eurozone.leading_indicators import router as router91
 
 app = FastAPI()
 
@@ -314,6 +318,9 @@ app.include_router(router85)
 app.include_router(router86)
 app.include_router(router87)
 app.include_router(router88)
+app.include_router(router89)
+app.include_router(router90)
+app.include_router(router91)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

@@ -100,8 +100,8 @@ async def get_macro_euro_ppi_mom():
 
 # 国民经济运行状况-物价水平-欧元区零售销售月率报告
 @router.get("/macro_euro_retail_sales_mom",
-            operation_id="get_macro_euro_ppi_mom")
-async def get_macro_euro_ppi_mom():
+            operation_id="get_macro_euro_retail_sales_mom")
+async def get_macro_euro_retail_sales_mom():
     """
     国民经济运行状况-物价水平-欧元区零售销售月率报告
 

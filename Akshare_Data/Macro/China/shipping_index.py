@@ -6,25 +6,25 @@ from Akshare_Data.utility_function import sanitize_data_pandas
 router = APIRouter()
 
 
-# 国民经济运行状况-行业指数-超灵便型船运价指数
-@router.get("/macro_china_bsi_index",
-            operation_id="get_macro_china_bsi_index")
-async def get_macro_china_bsi_index():
+# 国民经济运行状况-行业指数-海岬型运费指数
+@router.get("/macro_shipping_bci",
+            operation_id="get_macro_shipping_bci")
+async def get_macro_shipping_bci():
     """
-    国民经济运行状况-行业指数-超灵便型船运价指数
+    国民经济运行状况-行业指数-海岬型运费指数
 
-    接口: macro_china_bsi_index
+    接口: macro_shipping_bci
 
-    目标地址: https://data.eastmoney.com/cjsj/hyzs_list_EMI00107667.html
+    目标地址: https://data.eastmoney.com/cjsj/hyzs_list_EMI00107666.html
 
-    描述: 超灵便型船运价指数数据, 数据区间从 20060103-至今
+    描述: 海岬型运费指数, 数据区间从 19990430-至今
 
     限量: 单次返回所有历史数据
     """
     try:
-        macro_china_bsi_index = ak.macro_china_bsi_index()
-        macro_china_bsi_index_df = sanitize_data_pandas(macro_china_bsi_index)
-        return macro_china_bsi_index_df.to_dict(orient="records")
+        macro_shipping_bci = ak.macro_shipping_bci()
+        macro_shipping_bci_df = sanitize_data_pandas(macro_shipping_bci)
+        return macro_shipping_bci_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

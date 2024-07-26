@@ -164,8 +164,8 @@ async def get_macro_china_society_electricity():
 
 # 国民经济运行状况-宏观经济-全社会用电分类情况表
 @router.get("/macro_china_society_traffic_volume",
-            operation_id="get_macro_china_society_electricity")
-async def get_macro_china_society_electricity():
+            operation_id="get_macro_china_society_traffic_volume")
+async def get_macro_china_society_traffic_volume():
     """
     国民经济运行状况-宏观经济-全社会用电分类情况表
 

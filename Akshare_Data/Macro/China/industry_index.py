@@ -205,52 +205,6 @@ async def get_macro_china_construction_price_index():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 国民经济运行状况-行业指数-建材价格指数
-@router.get("/macro_china_construction_price_index",
-            operation_id="get_macro_china_construction_price_index")
-async def get_macro_china_construction_price_index():
-    """
-    国民经济运行状况-行业指数-建材价格指数
-
-    接口: macro_china_construction_index
-
-    目标地址: https://data.eastmoney.com/cjsj/hyzs_list_EMI00662541.html
-
-    描述: 建材指数数据, 数据区间从 20111205-至今
-
-    限量: 单次返回所有历史数据
-    """
-    try:
-        macro_china_construction_price_index = ak.macro_china_construction_price_index()
-        macro_china_construction_price_index_df = sanitize_data_pandas(macro_china_construction_price_index)
-        return macro_china_construction_price_index_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-# 国民经济运行状况-行业指数-建材价格指数
-@router.get("/macro_china_construction_price_index",
-            operation_id="get_macro_china_construction_price_index")
-async def get_macro_china_construction_price_index():
-    """
-    国民经济运行状况-行业指数-建材价格指数
-
-    接口: macro_china_construction_index
-
-    目标地址: https://data.eastmoney.com/cjsj/hyzs_list_EMI00662541.html
-
-    描述: 建材指数数据, 数据区间从 20111205-至今
-
-    限量: 单次返回所有历史数据
-    """
-    try:
-        macro_china_construction_price_index = ak.macro_china_construction_price_index()
-        macro_china_construction_price_index_df = sanitize_data_pandas(macro_china_construction_price_index)
-        return macro_china_construction_price_index_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
 # 国民经济运行状况-行业指数-物流景气指数
 @router.get("/macro_china_lpi_index",
             operation_id="get_macro_china_lpi_index")

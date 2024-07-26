@@ -277,3 +277,26 @@ async def get_macro_china_international_tourism_fx():
         return macro_china_international_tourism_fx_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# 国民经济运行状况-经济状况-保险业经营情况
+@router.get("/macro_china_insurance",
+            operation_id="get_macro_china_insurance")
+async def get_macro_china_insurance():
+    """
+    国民经济运行状况-经济状况-保险业经营情况
+
+    接口: macro_china_insurance
+
+    目标地址: http://finance.sina.com.cn/mac/#fininfo-19-0-31-3
+
+    描述: 新浪财经-中国宏观经济数据-保险业经营情况
+
+    限量: 单次返回所有历史数据
+    """
+    try:
+        macro_china_insurance = ak.macro_china_insurance()
+        macro_china_insurance_df = sanitize_data_pandas(macro_china_insurance)
+        return macro_china_insurance_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

@@ -69,6 +69,26 @@ from Akshare_Data.Stock.technical_indicators import router as router41
 from Akshare_Data.Stock.time_sharing_data import router as router4
 # 迁徙数据
 from Akshare_Data.Migration.migration import router as router56
+# 能源数据
+from Akshare_Data.Energy.carbon_emission_rights import router as router57
+from Akshare_Data.Energy.China_oil_price import router as router58
+# 宏观数据
+# # 中国宏观
+from Akshare_Data.Macro.China.China_macro_leverage_ratio import router as router59
+from Akshare_Data.Macro.China.economic_status import router as router60
+from Akshare_Data.Macro.China.financial_indicators import router as router61
+from Akshare_Data.Macro.China.industry_index import router as router62
+from Akshare_Data.Macro.China.industry_indicators import router as router63
+from Akshare_Data.Macro.China.oil_transportation import router as router64
+from Akshare_Data.Macro.China.price_level import router as router65
+from Akshare_Data.Macro.China.shipping_index import router as router66
+from Akshare_Data.Macro.China.trade_status import router as router67
+from Akshare_Data.Macro.China.transportation_index import router as router68
+from Akshare_Data.Macro.China.banking_industry_indicators import router as router69
+from Akshare_Data.Macro.China.financing_and_securities_lending import router as router70
+from Akshare_Data.Macro.China.other_indicators import router as router71
+from Akshare_Data.Macro.China.national_bureau_of_statistics import router as router72
+from Akshare_Data.Macro.China.financial_market import router as router73
 
 app = FastAPI()
 
@@ -245,6 +265,23 @@ app.include_router(router53)
 app.include_router(router54)
 app.include_router(router55)
 app.include_router(router56)
+app.include_router(router57)
+app.include_router(router58)
+app.include_router(router59)
+app.include_router(router60)
+app.include_router(router61)
+app.include_router(router62)
+app.include_router(router63)
+app.include_router(router64)
+app.include_router(router65)
+app.include_router(router66)
+app.include_router(router67)
+app.include_router(router68)
+app.include_router(router69)
+app.include_router(router70)
+app.include_router(router71)
+app.include_router(router72)
+app.include_router(router73)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

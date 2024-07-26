@@ -48,7 +48,7 @@ async def get_energy_carbon_bj():
 
     注意: 注意在 2017-08-08 日的数据有误 70.074.00（BEA）
 
-    限量: 全部历史数据
+    限量: 全部历史数据，数据量较多，需等待一会
     """
     energy_carbon_bj = ak.energy_carbon_bj()
     energy_carbon_bj_df = sanitize_data_pandas(energy_carbon_bj)

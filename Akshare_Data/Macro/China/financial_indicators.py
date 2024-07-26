@@ -1,5 +1,6 @@
 import akshare as ak
 from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel, Field
 
 from Akshare_Data.utility_function import sanitize_data_pandas
 
@@ -203,3 +204,104 @@ async def get_macro_china_gdzctz():
         return macro_china_gdzctz_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class MacroChinaSwapRate(BaseModel):
+    start_date: str = Field(..., title="开始日期", description="例：20231128")
+    end_date: str = Field(..., title="结束日期", description="例：20231130")
+
+
+# 国民经济运行状况-金融指标-FR007利率互换曲线历史数据
+@router.post("/macro_china_swap_rate", operation_id="post_macro_china_swap_rate")
+async def post_macro_china_swap_rate(request: MacroChinaSwapRate):
+    """
+    国民经济运行状况-金融指标-FR007利率互换曲线历史数据
+
+    接口: macro_china_swap_rate
+
+    目标地址: https://www.chinamoney.com.cn/chinese/bkcurvfxhis/?cfgItemType=72&curveType=FR007
+
+    描述: 国家统计局-FR007利率互换曲线历史数据
+
+    限量: 单次返回所有历史数据, 该接口只能获取近一年的数据的数据，其中每次只能获取一个月的数据
+    """
+    try:
+        macro_china_swap_rate = ak.macro_china_swap_rate(
+            start_date=request.start_date,
+            end_date=request.end_date
+        )
+        macro_china_swap_rate_df = sanitize_data_pandas(macro_china_swap_rate)
+
+        return macro_china_swap_rate_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 国民经济运行状况-金融指标-中国货币供应量
+@router.get("/macro_china_money_supply",
+            operation_id="get_macro_china_money_supply")
+async def get_macro_china_money_supply():
+    """
+    国民经济运行状况-金融指标-中国货币供应量
+
+    接口: macro_china_money_supply
+
+    目标地址: http://data.eastmoney.com/cjsj/hbgyl.html
+
+    描述: 东方财富-经济数据-中国宏观-中国货币供应量; 数据区间从 200801 至今, 月度数据
+
+    限量: 单次返回所有历史数据
+    """
+    try:
+        macro_china_money_supply = ak.macro_china_money_supply()
+        macro_china_money_supply_df = sanitize_data_pandas(macro_china_money_supply)
+        return macro_china_money_supply_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 国民经济运行状况-金融指标-全国股票交易统计表
+@router.get("/macro_china_money_supply",
+            operation_id="get_macro_china_stock_market_cap")
+async def get_macro_china_stock_market_cap():
+    """
+    国民经济运行状况-金融指标-全国股票交易统计表
+
+    接口: macro_china_stock_market_cap
+
+    目标地址: http://data.eastmoney.com/cjsj/gpjytj.html
+
+    描述: 全国股票交易统计表, 数据区间从 200801 至今, 月度数据
+
+    限量: 单次返回所有历史数据
+    """
+    try:
+        macro_china_stock_market_cap = ak.macro_china_stock_market_cap()
+        macro_china_stock_market_cap_df = sanitize_data_pandas(macro_china_stock_market_cap)
+        return macro_china_stock_market_cap_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 国民经济运行状况-金融指标-人民币汇率中间价报告
+@router.get("/macro_china_rmb",
+            operation_id="get_macro_china_rmb")
+async def get_macro_china_rmb():
+    """
+    国民经济运行状况-金融指标-人民币汇率中间价报告
+
+    接口: macro_china_rmb
+
+    目标地址: https://datacenter.jin10.com/reportType/dc_rmb_data
+
+    描述: 中国人民币汇率中间价报告, 数据区间从 20170103-20210513
+
+    限量: 单次返回所有历史数据
+    """
+    try:
+        macro_china_rmb = ak.macro_china_rmb()
+        macro_china_rmb_df = sanitize_data_pandas(macro_china_rmb)
+        return macro_china_rmb_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+

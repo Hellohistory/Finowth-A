@@ -272,3 +272,49 @@ async def get_macro_china_lpi_index():
         return macro_china_lpi_index_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# 国民经济运行状况-行业指数-商品零售价格指数
+@router.get("/macro_china_retail_price_index",
+            operation_id="get_macro_china_retail_price_index")
+async def get_macro_china_retail_price_index():
+    """
+    国民经济运行状况-行业指数-商品零售价格指数
+
+    接口: macro_china_retail_price_index
+
+    目标地址: http://finance.sina.com.cn/mac/#price-12-0-31-1
+
+    描述: 国家统计局-商品零售价格指数
+
+    限量: 单次返回所有历史数据
+    """
+    try:
+        macro_china_retail_price_index = ak.macro_china_retail_price_index()
+        macro_china_retail_price_index_df = sanitize_data_pandas(macro_china_retail_price_index)
+        return macro_china_retail_price_index_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 国民经济运行状况-行业指数-国房景气指数
+@router.get("/macro_china_real_estate",
+            operation_id="get_macro_china_real_estate")
+async def get_macro_china_real_estate():
+    """
+    国民经济运行状况-行业指数-国房景气指数
+
+    接口: macro_china_real_estate
+
+    目标地址: http://data.eastmoney.com/cjsj/hyzs_list_EMM00121987.html
+
+    描述: 国家统计局-国房景气指数
+
+    限量: 单次返回所有历史数据
+    """
+    try:
+        macro_china_real_estate = ak.macro_china_real_estate()
+        macro_china_real_estate_df = sanitize_data_pandas(macro_china_real_estate)
+        return macro_china_real_estate_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

@@ -229,3 +229,72 @@ async def get_macro_china_central_bank_balance():
         return macro_china_central_bank_balance_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# 国民经济运行状况-宏观经济-货币供应量
+@router.get("/macro_china_supply_of_money",
+            operation_id="get_macro_china_supply_of_money")
+async def get_macro_china_supply_of_money():
+    """
+    国民经济运行状况-宏观经济-货币供应量
+
+    接口: macro_china_supply_of_money
+
+    目标地址: http://finance.sina.com.cn/mac/#fininfo-1-0-31-1
+
+    描述: 新浪财经-中国宏观经济数据-货币供应量
+
+    限量: 单次返回所有历史数据
+    """
+    try:
+        macro_china_supply_of_money = ak.macro_china_supply_of_money()
+        macro_china_supply_of_money_df = sanitize_data_pandas(macro_china_supply_of_money)
+        return macro_china_supply_of_money_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 国民经济运行状况-宏观经济-央行黄金和外汇储备
+@router.get("/macro_china_foreign_exchange_gold",
+            operation_id="get_macro_china_foreign_exchange_gold")
+async def get_macro_china_foreign_exchange_gold():
+    """
+    国民经济运行状况-宏观经济-央行黄金和外汇储备
+
+    接口: macro_china_foreign_exchange_gold
+
+    目标地址: http://finance.sina.com.cn/mac/#fininfo-5-0-31-2
+
+    描述: 国家统计局-央行黄金和外汇储备, 比东财接口数据时间长
+
+    限量: 单次返回所有历史数据
+    """
+    try:
+        macro_china_foreign_exchange_gold = ak.macro_china_foreign_exchange_gold()
+        macro_china_foreign_exchange_gold_df = sanitize_data_pandas(macro_china_foreign_exchange_gold)
+        return macro_china_foreign_exchange_gold_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 国民经济运行状况-宏观经济-外汇和黄金储备
+@router.get("/macro_china_fx_gold",
+            operation_id="get_macro_china_fx_gold")
+async def get_macro_china_fx_gold():
+    """
+    国民经济运行状况-宏观经济-外汇和黄金储备
+
+    接口: macro_china_fx_gold
+
+    目标地址: http://data.eastmoney.com/cjsj/hjwh.html
+
+    描述: 中国外汇和黄金储备, 数据区间从 200801 至今, 月度数据
+
+    限量: 单次返回所有历史数据
+    """
+    try:
+        macro_china_fx_gold = ak.macro_china_fx_gold()
+        macro_china_fx_gold_df = sanitize_data_pandas(macro_china_fx_gold)
+        return macro_china_fx_gold_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

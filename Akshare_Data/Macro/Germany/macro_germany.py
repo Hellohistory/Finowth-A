@@ -169,7 +169,7 @@ async def get_macro_germany_retail_sale_yearly():
 
 # 德国宏观-ZEW 经济景气指数
 @router.get("/macro_germany_zew",
-            operation_id="get_macro_germany_retail_sale_yearly")
+            operation_id="get_macro_germany_zew")
 async def get_macro_germany_zew():
     """
     德国宏观-ZEW 经济景气指数

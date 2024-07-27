@@ -126,7 +126,10 @@ from Akshare_Data.Macro.Canada.macro_canada import router as router97
 from Akshare_Data.Macro.ImportantInstitutions.macro_important_institutions import router as router98
 # # 全球宏观
 from Akshare_Data.Macro.Global.macro_global import router as router99
-
+# 债券数据
+from Akshare_Data.Bond.bond_info import router as router100
+from Akshare_Data.Bond.bond_sh import router as router101
+from Akshare_Data.Bond.bond_basic_data import router as router102
 app = FastAPI()
 
 # 配置CORS
@@ -345,6 +348,9 @@ app.include_router(router96)
 app.include_router(router97)
 app.include_router(router98)
 app.include_router(router99)
+app.include_router(router100)
+app.include_router(router101)
+app.include_router(router102)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

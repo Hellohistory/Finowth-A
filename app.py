@@ -118,6 +118,10 @@ from Akshare_Data.Macro.Switzerland.macro_swiss import router as router93
 from Akshare_Data.Macro.Japan.macro_japan import router as router94
 # # 英国宏观
 from Akshare_Data.Macro.England.macro_england import router as router95
+# # 澳大利亚宏观
+from Akshare_Data.Macro.Australia.macro_australia import router as router96
+# # 加拿大宏观
+from Akshare_Data.Macro.Canada.macro_canada import router as router97
 
 app = FastAPI()
 
@@ -333,6 +337,8 @@ app.include_router(router92)
 app.include_router(router93)
 app.include_router(router94)
 app.include_router(router95)
+app.include_router(router96)
+app.include_router(router97)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

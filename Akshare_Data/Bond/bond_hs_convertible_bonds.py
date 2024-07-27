@@ -36,30 +36,6 @@ async def post_bond_cb_profile_sina(request: BondSymbolSpot):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 债券-沪深可转债-可转债-详情资料
-@router.post("/bond_cb_summary_sina",
-             operation_id="post_bond_cb_summary_sina")
-async def post_bond_cb_summary_sina(request: BondSymbolSpot):
-    """
-    债券-沪深可转债-可转债-债券概况
-
-    接口: bond_cb_summary_sina
-
-    目标地址: https://money.finance.sina.com.cn/bond/quotes/sh155255.html
-
-    描述: 新浪财经-债券-可转债-债券概况
-
-    限量: 单次返回指定 symbol 的可转债-债券概况数据
-    """
-    try:
-        bond_cb_summary_sina = ak.bond_cb_summary_sina(symbol=request.symbol)
-        bond_cb_summary_sina_df = sanitize_data_pandas(bond_cb_summary_sina)
-
-        return bond_cb_summary_sina_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
 # 债券-沪深可转债-实时行情数据
 @router.get("/bond_zh_hs_cov_spot",
             operation_id="get_bond_zh_hs_cov_spot")
@@ -120,8 +96,8 @@ class BondZHSCovMin(BaseModel):
 
 # 债券-沪深可转债-可转债-详情资料
 @router.post("/bond_zh_hs_cov_min",
-             operation_id="post_bond_cb_profile_sina")
-async def post_bond_cb_profile_sina(request: BondZHSCovMin):
+             operation_id="post_bond_zh_hs_cov_min")
+async def post_bond_zh_hs_cov_min(request: BondZHSCovMin):
     """
     债券-沪深可转债-可转债-详情资料
 

@@ -21,8 +21,11 @@ async def get_energy_oil_hist():
 
     限量: 单次返回中国油价的所有历史数据
     """
-    energy_oil_hist = ak.energy_oil_hist()
-    energy_oil_hist_df = sanitize_data_pandas(energy_oil_hist)
+    try:
+        energy_oil_hist = ak.energy_oil_hist()
+        energy_oil_hist_df = sanitize_data_pandas(energy_oil_hist)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return energy_oil_hist_df.to_dict(orient="records")
 

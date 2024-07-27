@@ -59,13 +59,13 @@ def post_fund_amac_person_fund_org_list(request: InterestSymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 会员机构综合查询
-@router.get("/fund_amac_person_bond_org_list", operation_id="get_fund_amac_person_bond_org_list")
+# 私募基金-从业人员信息-债券投资交易相关人员公示
+@router.get("/fund_amac_person_fund_org_list", operation_id="get_fund_amac_person_bond_org_list")
 async def get_fund_amac_person_bond_org_list():
     """
-    债券投资交易相关人员公示
+    私募基金-从业人员信息-债券投资交易相关人员公示
 
-    接口: fund_amac_person_bond_org_list
+    接口: fund_amac_person_fund_org_list
 
     目标地址: https://gs.amac.org.cn/amac-infodisc/res/pof/person/personOrgList.html
 
@@ -73,8 +73,11 @@ async def get_fund_amac_person_bond_org_list():
 
     限量: 单次返回当前时刻所有历史数据
     """
-    fund_amac_person_bond_org_list = ak.amac_person_bond_org_list()
-    fund_amac_person_bond_org_list_df = sanitize_data_pandas(fund_amac_person_bond_org_list)
+    try:
+        fund_amac_person_bond_org_list = ak.amac_person_bond_org_list()
+        fund_amac_person_bond_org_list_df = sanitize_data_pandas(fund_amac_person_bond_org_list)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return fund_amac_person_bond_org_list_df.to_dict(orient="records")
 
@@ -93,8 +96,11 @@ async def get_fund_amac_manager_info():
 
     限量: 单次返回当前时刻所有历史数据
     """
-    fund_amac_manager_info = ak.amac_manager_info()
-    fund_amac_manager_info_df = sanitize_data_pandas(fund_amac_manager_info)
+    try:
+        fund_amac_manager_info = ak.amac_manager_info()
+        fund_amac_manager_info_df = sanitize_data_pandas(fund_amac_manager_info)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return fund_amac_manager_info_df.to_dict(orient="records")
 
@@ -113,8 +119,11 @@ async def get_fund_amac_manager_classify_info():
 
     限量: 单次返回当前时刻所有历史数据
     """
-    fund_amac_manager_classify_info = ak.amac_manager_classify_info()
-    fund_amac_manager_classify_info_df = sanitize_data_pandas(fund_amac_manager_classify_info)
+    try:
+        fund_amac_manager_classify_info = ak.amac_manager_classify_info()
+        fund_amac_manager_classify_info_df = sanitize_data_pandas(fund_amac_manager_classify_info)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return fund_amac_manager_classify_info_df.to_dict(orient="records")
 
@@ -133,8 +142,11 @@ async def get_fund_amac_member_sub_info():
 
     限量: 单次返回当前时刻所有历史数据
     """
-    fund_amac_member_sub_info = ak.amac_member_sub_info()
-    fund_amac_member_sub_info_df = sanitize_data_pandas(fund_amac_member_sub_info)
+    try:
+        fund_amac_member_sub_info = ak.amac_member_sub_info()
+        fund_amac_member_sub_info_df = sanitize_data_pandas(fund_amac_member_sub_info)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return fund_amac_member_sub_info_df.to_dict(orient="records")
 
@@ -184,8 +196,11 @@ async def get_fund_amac_securities_info():
 
     限量: 单次返回当前时刻所有历史数据
     """
-    fund_amac_securities_info = ak.amac_securities_info()
-    fund_amac_securities_info_df = sanitize_data_pandas(fund_amac_securities_info)
+    try:
+        fund_amac_securities_info = ak.amac_securities_info()
+        fund_amac_securities_info_df = sanitize_data_pandas(fund_amac_securities_info)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return fund_amac_securities_info_df.to_dict(orient="records")
 
@@ -204,8 +219,11 @@ async def get_fund_amac_aoin_info():
 
     限量: 单次返回当前时刻所有历史数据
     """
-    fund_amac_aoin_info = ak.amac_aoin_info()
-    fund_amac_aoin_info_df = sanitize_data_pandas(fund_amac_aoin_info)
+    try:
+        fund_amac_aoin_info = ak.amac_aoin_info()
+        fund_amac_aoin_info_df = sanitize_data_pandas(fund_amac_aoin_info)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return fund_amac_aoin_info_df.to_dict(orient="records")
 
@@ -224,8 +242,11 @@ async def get_fund_amac_fund_sub_info():
 
     限量: 单次返回当前时刻所有历史数据
     """
-    fund_amac_fund_sub_info = ak.amac_fund_sub_info()
-    fund_amac_fund_sub_info_df = sanitize_data_pandas(fund_amac_fund_sub_info)
+    try:
+        fund_amac_fund_sub_info = ak.amac_fund_sub_info()
+        fund_amac_fund_sub_info_df = sanitize_data_pandas(fund_amac_fund_sub_info)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return fund_amac_fund_sub_info_df.to_dict(orient="records")
 
@@ -244,8 +265,11 @@ async def get_fund_amac_fund_account_info():
 
     限量: 单次返回当前时刻所有历史数据
     """
-    fund_amac_fund_account_info = ak.amac_fund_account_info()
-    fund_amac_fund_account_info_df = sanitize_data_pandas(fund_amac_fund_account_info)
+    try:
+        fund_amac_fund_account_info = ak.amac_fund_account_info()
+        fund_amac_fund_account_info_df = sanitize_data_pandas(fund_amac_fund_account_info)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return fund_amac_fund_account_info_df.to_dict(orient="records")
 
@@ -264,8 +288,11 @@ async def get_fund_amac_fund_abs():
 
     限量: 单次返回当前时刻所有历史数据，数据量较大，获取时间较长，请耐心等待
     """
-    fund_amac_fund_abs = ak.amac_fund_abs()
-    fund_amac_fund_abs_df = sanitize_data_pandas(fund_amac_fund_abs)
+    try:
+        fund_amac_fund_abs = ak.amac_fund_abs()
+        fund_amac_fund_abs_df = sanitize_data_pandas(fund_amac_fund_abs)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return fund_amac_fund_abs_df.to_dict(orient="records")
 
@@ -284,8 +311,11 @@ async def get_fund_amac_futures_info():
 
     限量: 单次返回当前时刻所有历史数据
     """
-    fund_amac_futures_info = ak.amac_futures_info()
-    fund_amac_futures_info_df = sanitize_data_pandas(fund_amac_futures_info)
+    try:
+        fund_amac_futures_info = ak.amac_futures_info()
+        fund_amac_futures_info_df = sanitize_data_pandas(fund_amac_futures_info)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return fund_amac_futures_info_df.to_dict(orient="records")
 
@@ -304,7 +334,8 @@ async def get_fund_amac_manager_cancelled_info():
 
     限量: 单次返回当前时刻所有历史数据
     """
-    fund_amac_manager_cancelled_info = ak.amac_manager_cancelled_info()
-    fund_amac_manager_cancelled_info_df = sanitize_data_pandas(fund_amac_manager_cancelled_info)
-
-    return fund_amac_manager_cancelled_info_df.to_dict(orient="records")
+    try:
+        fund_amac_manager_cancelled_info = ak.amac_manager_cancelled_info()
+        fund_amac_manager_cancelled_info_df = sanitize_data_pandas(fund_amac_manager_cancelled_info)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")

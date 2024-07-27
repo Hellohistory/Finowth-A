@@ -21,8 +21,11 @@ async def get_futures_fees_info():
 
     限量: 单次返回所有数据
     """
-    futures_fees_info = ak.futures_fees_info()
-    futures_fees_info_df = sanitize_data_pandas(futures_fees_info)
+    try:
+        futures_fees_info = ak.futures_fees_info()
+        futures_fees_info_df = sanitize_data_pandas(futures_fees_info)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return futures_fees_info_df.to_dict(orient="records")
 

@@ -1,5 +1,5 @@
 import akshare as ak
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 from Akshare_Data.utility_function import sanitize_data_pandas
 
@@ -19,8 +19,11 @@ async def get_interest_macro_bank_usa_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    interest_macro_bank_usa_interest_rate = ak.macro_bank_usa_interest_rate()
-    interest_macro_bank_usa_interest_rate_df = sanitize_data_pandas(interest_macro_bank_usa_interest_rate)
+    try:
+        interest_macro_bank_usa_interest_rate = ak.macro_bank_usa_interest_rate()
+        interest_macro_bank_usa_interest_rate_df = sanitize_data_pandas(interest_macro_bank_usa_interest_rate)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return interest_macro_bank_usa_interest_rate_df.to_dict(orient="records")
 
@@ -38,8 +41,11 @@ async def get_interest_macro_bank_euro_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    interest_macro_bank_euro_interest_rate = ak.macro_bank_euro_interest_rate()
-    interest_macro_bank_euro_interest_rate_df = sanitize_data_pandas(interest_macro_bank_euro_interest_rate)
+    try:
+        interest_macro_bank_euro_interest_rate = ak.macro_bank_euro_interest_rate()
+        interest_macro_bank_euro_interest_rate_df = sanitize_data_pandas(interest_macro_bank_euro_interest_rate)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return interest_macro_bank_euro_interest_rate_df.to_dict(orient="records")
 
@@ -57,8 +63,12 @@ async def get_interest_macro_bank_newzealand_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    interest_macro_bank_newzealand_interest_rate = ak.macro_bank_newzealand_interest_rate()
-    interest_macro_bank_newzealand_interest_rate_df = sanitize_data_pandas(interest_macro_bank_newzealand_interest_rate)
+    try:
+        interest_macro_bank_newzealand_interest_rate = ak.macro_bank_newzealand_interest_rate()
+        interest_macro_bank_newzealand_interest_rate_df = sanitize_data_pandas(
+            interest_macro_bank_newzealand_interest_rate)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return interest_macro_bank_newzealand_interest_rate_df.to_dict(orient="records")
 
@@ -76,8 +86,12 @@ async def get_interest_macro_bank_switzerland_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    interest_macro_bank_switzerland_interest_rate = ak.macro_bank_switzerland_interest_rate()
-    interest_macro_bank_switzerland_interest_rate_df = sanitize_data_pandas(interest_macro_bank_switzerland_interest_rate)
+    try:
+        interest_macro_bank_switzerland_interest_rate = ak.macro_bank_switzerland_interest_rate()
+        interest_macro_bank_switzerland_interest_rate_df = sanitize_data_pandas(
+            interest_macro_bank_switzerland_interest_rate)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return interest_macro_bank_switzerland_interest_rate_df.to_dict(orient="records")
 
@@ -94,8 +108,11 @@ async def get_interest_macro_bank_english_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    interest_macro_bank_english_interest_rate = ak.macro_bank_english_interest_rate()
-    interest_macro_bank_english_interest_rate_df = sanitize_data_pandas(interest_macro_bank_english_interest_rate)
+    try:
+        interest_macro_bank_english_interest_rate = ak.macro_bank_english_interest_rate()
+        interest_macro_bank_english_interest_rate_df = sanitize_data_pandas(interest_macro_bank_english_interest_rate)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return interest_macro_bank_english_interest_rate_df.to_dict(orient="records")
 
@@ -113,8 +130,12 @@ async def get_interest_macro_bank_australia_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    interest_macro_bank_australia_interest_rate = ak.macro_bank_australia_interest_rate()
-    interest_macro_bank_australia_interest_rate_df = sanitize_data_pandas(interest_macro_bank_australia_interest_rate)
+    try:
+        interest_macro_bank_australia_interest_rate = ak.macro_bank_australia_interest_rate()
+        interest_macro_bank_australia_interest_rate_df = sanitize_data_pandas(
+            interest_macro_bank_australia_interest_rate)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return interest_macro_bank_australia_interest_rate_df.to_dict(orient="records")
 
@@ -132,8 +153,11 @@ async def get_interest_macro_bank_japan_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    interest_macro_bank_japan_interest_rate = ak.macro_bank_japan_interest_rate()
-    interest_macro_bank_japan_interest_rate_df = sanitize_data_pandas(interest_macro_bank_japan_interest_rate)
+    try:
+        interest_macro_bank_japan_interest_rate = ak.macro_bank_japan_interest_rate()
+        interest_macro_bank_japan_interest_rate_df = sanitize_data_pandas(interest_macro_bank_japan_interest_rate)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return interest_macro_bank_japan_interest_rate_df.to_dict(orient="records")
 
@@ -151,8 +175,11 @@ async def get_interest_macro_bank_russia_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    interest_macro_bank_russia_interest_rate = ak.macro_bank_russia_interest_rate()
-    interest_macro_bank_russia_interest_rate_df = sanitize_data_pandas(interest_macro_bank_russia_interest_rate)
+    try:
+        interest_macro_bank_russia_interest_rate = ak.macro_bank_russia_interest_rate()
+        interest_macro_bank_russia_interest_rate_df = sanitize_data_pandas(interest_macro_bank_russia_interest_rate)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return interest_macro_bank_russia_interest_rate_df.to_dict(orient="records")
 
@@ -169,8 +196,11 @@ async def get_interest_macro_bank_india_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    interest_macro_bank_india_interest_rate = ak.macro_bank_india_interest_rate()
-    interest_macro_bank_india_interest_rate_df = sanitize_data_pandas(interest_macro_bank_india_interest_rate)
+    try:
+        interest_macro_bank_india_interest_rate = ak.macro_bank_india_interest_rate()
+        interest_macro_bank_india_interest_rate_df = sanitize_data_pandas(interest_macro_bank_india_interest_rate)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return interest_macro_bank_india_interest_rate_df.to_dict(orient="records")
 
@@ -188,7 +218,10 @@ async def get_interest_macro_bank_brazil_interest_rate():
 
     限量: 单次返回所有历史数据
     """
-    interest_macro_bank_brazil_interest_rate = ak.macro_bank_brazil_interest_rate()
-    interest_macro_bank_brazil_interest_rate_df = sanitize_data_pandas(interest_macro_bank_brazil_interest_rate)
+    try:
+        interest_macro_bank_brazil_interest_rate = ak.macro_bank_brazil_interest_rate()
+        interest_macro_bank_brazil_interest_rate_df = sanitize_data_pandas(interest_macro_bank_brazil_interest_rate)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return interest_macro_bank_brazil_interest_rate_df.to_dict(orient="records")

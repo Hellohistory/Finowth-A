@@ -94,7 +94,7 @@ from Akshare_Data.Macro.HongKong.building_index import router as router74
 from Akshare_Data.Macro.HongKong.consumer_index import router as router75
 from Akshare_Data.Macro.HongKong.gdp_index import router as router76
 from Akshare_Data.Macro.HongKong.other_index import router as router77
-# # 美国
+# # 美国宏观
 from Akshare_Data.Macro.America.consumer_income_and_expenditure import router as router78
 from Akshare_Data.Macro.America.economic_situation import router as router79
 from Akshare_Data.Macro.America.industry_indicators_industry import router as router80
@@ -106,12 +106,18 @@ from Akshare_Data.Macro.America.leading_indicators import router as router85
 from Akshare_Data.Macro.America.other import router as router86
 from Akshare_Data.Macro.America.price_level import router as router87
 from Akshare_Data.Macro.America.trade_situation import router as router88
-# # 欧元区
+# # 欧元区宏观
 from Akshare_Data.Macro.Eurozone.economic_situation import router as router89
 from Akshare_Data.Macro.Eurozone.industry_indicators import router as router90
 from Akshare_Data.Macro.Eurozone.leading_indicators import router as router91
-# # 德国
+# # 德国宏观
 from Akshare_Data.Macro.Germany.macro_germany import router as router92
+# # 瑞士宏观
+from Akshare_Data.Macro.Switzerland.macro_swiss import router as router93
+# # 日本宏观
+from Akshare_Data.Macro.Japan.macro_japan import router as router94
+# # 英国宏观
+from Akshare_Data.Macro.England.macro_england import router as router95
 
 app = FastAPI()
 
@@ -324,6 +330,9 @@ app.include_router(router89)
 app.include_router(router90)
 app.include_router(router91)
 app.include_router(router92)
+app.include_router(router93)
+app.include_router(router94)
+app.include_router(router95)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

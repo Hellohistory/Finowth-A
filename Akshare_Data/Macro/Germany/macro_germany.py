@@ -188,18 +188,3 @@ async def get_macro_germany_zew():
         return macro_germany_zew_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

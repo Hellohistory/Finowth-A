@@ -192,7 +192,7 @@ async def get_macro_usa_cftc_merchant_currency_holding():
 
 # 重要机构-美国商品期货交易委员会-商品类商业持仓报告
 @router.get("/macro_usa_cftc_merchant_goods_holding",
-            operation_id="get_macro_usa_cftc_merchant_currency_holding")
+            operation_id="get_macro_usa_cftc_merchant_goods_holding")
 async def get_macro_usa_cftc_merchant_goods_holding():
     """
     重要机构-美国商品期货交易委员会-商品类商业持仓报告
@@ -215,8 +215,8 @@ async def get_macro_usa_cftc_merchant_goods_holding():
 
 # 重要机构-芝加哥交易所-贵金属
 @router.get("/macro_usa_cme_merchant_goods_holding",
-            operation_id="get_macro_usa_cftc_merchant_currency_holding")
-async def get_macro_usa_cftc_merchant_goods_holding():
+            operation_id="get_macro_usa_cme_merchant_goods_holding")
+async def get_macro_usa_cme_merchant_goods_holding():
     """
     重要机构-芝加哥交易所-贵金属
 

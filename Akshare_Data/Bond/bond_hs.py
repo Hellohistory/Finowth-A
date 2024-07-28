@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 class BondZHSpot(BaseModel):
-    start_page: str = Field(..., title="开始获取的页面", description="")
-    end_page: str = Field(..., title="结束获取的页面", description="")
+    start_page: str = Field(..., title="开始获取的页面", description="例：1")
+    end_page: str = Field(..., title="结束获取的页面", description="例：10")
 
 
 # 债券-沪深债券-实时行情数据

@@ -164,3 +164,335 @@ async def get_bond_zh_cov():
         raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return bond_zh_cov_df.to_dict(orient="records")
+
+
+class BondZHSCovInfo(BaseModel):
+    symbol: str = Field(..., title="可转债代码", description="例：123121")
+    indicator: str = Field(..., title="数据周期",
+                           description="可选择：基本信息, 中签号, 筹资用途, 重要日期, 其 可转债重要条款 在 基本信息中")
+
+
+# 债券-沪深可转债-可转债详情
+@router.post("/bond_zh_cov_info",
+             operation_id="post_bond_zh_cov_info")
+async def post_bond_zh_cov_info(request: BondZHSCovInfo):
+    """
+    债券-沪深可转债-可转债详情
+
+    接口: bond_zh_cov_info
+
+    目标地址: https://data.eastmoney.com/kzz/detail/123121.html
+
+    描述: 东方财富网-数据中心-新股数据-可转债详情
+
+    限量: 单次返回指定 symbol 的可转债详情数据
+    """
+    try:
+        bond_zh_cov_info = ak.bond_zh_cov_info(
+            symbol=request.symbol,
+            indicator=request.indicator
+        )
+        bond_zh_cov_info_df = sanitize_data_pandas(bond_zh_cov_info)
+
+        return bond_zh_cov_info_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 债券-沪深可转债-可转债详情-同花顺
+@router.get("/bond_zh_cov_info_ths", operation_id="get_bond_zh_cov_info_ths")
+async def get_bond_zh_cov_info_ths():
+    """
+    债券-沪深可转债-可转债数据一览表
+
+    接口: bond_zh_cov_info_ths
+
+    目标地址: http://data.10jqka.com.cn/ipo/bond/
+
+    描述: 同花顺-数据中心-可转债
+
+    限量: 单次返回所有数据
+    """
+    try:
+        bond_zh_cov_info_ths = ak.bond_zh_cov_info_ths()
+        bond_zh_cov_info_ths_df = sanitize_data_pandas(bond_zh_cov_info_ths)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
+
+    return bond_zh_cov_info_ths_df.to_dict(orient="records")
+
+
+# 债券-沪深可转债-可转债比价表
+@router.get("/bond_cov_comparison", operation_id="get_bond_cov_comparison")
+async def get_bond_cov_comparison():
+    """
+    债券-沪深可转债-可转债比价表
+
+    接口: bond_cov_comparison
+
+    目标地址: https://quote.eastmoney.com/center/fullscreenlist.html#convertible_comparison
+
+    描述: 东方财富网-行情中心-债券市场-可转债比价表
+
+    限量: 单次返回当前交易时刻的所有可转债比价数据
+    """
+    try:
+        bond_cov_comparison = ak.bond_cov_comparison()
+        bond_cov_comparison_df = sanitize_data_pandas(bond_cov_comparison)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
+
+    return bond_cov_comparison_df.to_dict(orient="records")
+
+
+class BondZHSCoValueAnalysis(BaseModel):
+    symbol: str = Field(..., title="可转债代码", description="例：113527")
+
+
+# 债券-沪深可转债-可转债价值分析
+@router.post("/bond_zh_cov_value_analysis",
+             operation_id="post_bond_zh_cov_value_analysis")
+async def post_bond_zh_cov_value_analysis(request: BondZHSCoValueAnalysis):
+    """
+    债券-沪深可转债-可转债价值分析
+
+    接口: bond_zh_cov_value_analysis
+
+    目标地址: https://data.eastmoney.com/kzz/detail/113527.html
+
+    描述: 东方财富网-行情中心-新股数据-可转债数据-可转债价值分析
+
+    限量: 单次返回所有可转债价值分析数据
+    """
+    try:
+        bond_zh_cov_value_analysis = ak.bond_zh_cov_value_analysis(
+            symbol=request.symbol
+        )
+        bond_zh_cov_value_analysis_df = sanitize_data_pandas(bond_zh_cov_value_analysis)
+
+        return bond_zh_cov_value_analysis_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+class BondCBJsl(BaseModel):
+    cookie: str = Field(..., title="您的集思录 cookie",
+                        description="此处输入您的集思录 cookie 就可以获取完整数据，否则只能返回前 30 条")
+
+
+# 债券-沪深可转债-可转债实时数据-集思录
+@router.post("/bond_cb_jsl",
+             operation_id="post_bond_cb_jsl")
+async def post_bond_cb_jsl(request: BondCBJsl):
+    """
+    债券-沪深可转债-可转债实时数据-集思录
+
+    接口: bond_cb_jsl
+
+    目标地址: https://app.jisilu.cn/data/cbnew/#cb
+
+    描述: 集思录可转债实时数据，包含行情数据（涨跌幅，成交量和换手率等）及可转债基本信息（转股价，溢价率和到期收益率等）
+
+    限量: 单次返回当前交易时刻的所有数据
+    """
+    try:
+        bond_cb_jsl = ak.bond_cb_jsl(
+            cookie=request.cookie
+        )
+        bond_zh_cov_value_analysis_df = sanitize_data_pandas(bond_cb_jsl)
+
+        return bond_zh_cov_value_analysis_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 债券-沪深可转债-可转债强赎
+@router.get("/bond_cb_redeem_jsl", operation_id="get_bond_cb_redeem_jsl")
+async def get_bond_cb_redeem_jsl():
+    """
+    债券-沪深可转债-可转债强赎
+
+    接口: bond_cb_redeem_jsl
+
+    目标地址: https://www.jisilu.cn/data/cbnew/#redeem
+
+    描述: 集思录可转债-强赎
+
+    限量: 单次返回所有数据
+    """
+    try:
+        bond_cb_redeem_jsl = ak.bond_cb_redeem_jsl()
+        bond_cb_redeem_jsl_df = sanitize_data_pandas(bond_cb_redeem_jsl)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
+
+    return bond_cb_redeem_jsl_df.to_dict(orient="records")
+
+
+# 债券-沪深可转债-集思录可转债等权指数
+@router.get("/bond_cb_index_jsl", operation_id="get_bond_cb_index_jsl")
+async def get_bond_cb_index_jsl():
+    """
+    债券-沪深可转债-集思录可转债等权指数
+
+    接口: bond_cb_index_jsl
+
+    目标地址: https://www.jisilu.cn/web/data/cb/index
+
+    描述: 可转债-集思录可转债等权指数
+
+    限量: 单次返回所有历史数据数据
+    """
+    try:
+        bond_cb_index_jsl = ak.bond_cb_index_jsl()
+        bond_cb_index_jsl_df = sanitize_data_pandas(bond_cb_index_jsl)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
+
+    return bond_cb_index_jsl_df.to_dict(orient="records")
+
+
+# 债券-沪深可转债-可转债转股价格调整记录-集思录
+@router.post("/bond_cb_adj_logs_jsl",
+             operation_id="post_bond_cb_adj_logs_jsl")
+async def post_bond_cb_adj_logs_jsl(request: BondZHSCoValueAnalysis):
+    """
+    债券-沪深可转债-可转债转股价格调整记录-集思录
+
+    接口: bond_cb_adj_logs_jsl
+
+    目标地址: https://app.jisilu.cn/data/cbnew/#cb; 点击带红色星号的转股价会弹出转股价调整记录
+
+    描述: 集思录-单个可转债的转股价格-调整记录
+
+    限量: 返回当前时刻该可转债的所有转股价格调整记录
+    """
+    try:
+        bond_cb_adj_logs_jsl = ak.bond_cb_adj_logs_jsl(
+            symbol=request.symbol
+        )
+        bond_cb_adj_logs_jsl_df = sanitize_data_pandas(bond_cb_adj_logs_jsl)
+
+        return bond_cb_adj_logs_jsl_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+class FuturesDeliverableCoupons(BaseModel):
+    trade_date: str = Field(..., title="需查询日期", description="例：20200922")
+
+
+# 债券-沪深可转债-国债期货可交割券相关指标
+@router.post("/bond_futures_deliverable_coupons",
+             operation_id="post_bond_futures_deliverable_coupons")
+async def post_bond_futures_deliverable_coupons(request: FuturesDeliverableCoupons):
+    """
+    债券-沪深可转债-国债期货可交割券相关指标
+
+    接口: bond_futures_deliverable_coupons
+
+    目标地址: http://www.csindex.com.cn/zh-CN/bond-valuation/bond-futures-deliverable-coupons-related-indicators
+
+    描述: 国债期货可交割券相关指标
+
+    限量: 只能返回近一年的数据
+    """
+    try:
+        bond_futures_deliverable_coupons = ak.bond_futures_deliverable_coupons(
+            trade_date=request.trade_date
+        )
+        bond_futures_deliverable_coupons_df = sanitize_data_pandas(bond_futures_deliverable_coupons)
+
+        return bond_futures_deliverable_coupons_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+class FuturesDeliverableCoupons(BaseModel):
+    symbol: str = Field(..., title="查询债券名称",
+                        description="例：政策性金融债(进出口行)，可通过bond_china_close_return_map获取")
+    period: str = Field(..., title="期限间隔", description="可选择'0.1', '0.5', '1'")
+    start_date: str = Field(..., title="开始日期", description="结束日期和开始日期不要超过 1 个月")
+    end_date: str = Field(..., title="结束日期", description="结束日期和开始日期不要超过 1 个月")
+
+
+# 债券-沪深可转债-国债期货可交割券相关指标
+@router.post("/bond_china_close_return",
+             operation_id="post_bond_china_close_return")
+async def post_bond_china_close_return(request: FuturesDeliverableCoupons):
+    """
+    债券-沪深可转债-国债期货可交割券相关指标
+
+    接口: bond_china_close_return
+
+    目标地址: https://www.chinamoney.com.cn/chinese/bkcurvclosedyhis/?bondType=CYCC000&reference=1
+
+    描述: 收盘收益率曲线历史数据, 该接口只能获取近 3 个月的数据，且每次获取的数据不超过 1 个月
+    """
+    try:
+        bond_china_close_return = ak.bond_china_close_return(
+            symbol=request.symbol,
+            period=request.period,
+            start_date=request.start_date,
+            end_date=request.end_date
+        )
+        bond_china_close_return_df = sanitize_data_pandas(bond_china_close_return)
+
+        return bond_china_close_return_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+class BondZHUSRate(BaseModel):
+    start_date: str = Field(..., title="需查询起始日期", description="例：20200922")
+
+
+# 债券-沪深可转债-中美国债收益率
+@router.post("/bond_zh_us_rate",
+             operation_id="post_bond_zh_us_rate")
+async def post_bond_zh_us_rate(request: BondZHUSRate):
+    """
+    债券-沪深可转债-中美国债收益率
+
+    接口: bond_zh_us_rate
+
+    目标地址: https://data.eastmoney.com/cjsj/zmgzsyl.html
+
+    描述: 东方财富网-数据中心-经济数据-中美国债收益率历史数据
+
+    限量: 返回 start_date 开始后的所有交易日的数据; 数据从 19901219 开始
+    """
+    try:
+        bond_zh_us_rate = ak.bond_zh_us_rate(
+            start_date=request.start_date
+        )
+        bond_zh_us_rate_df = sanitize_data_pandas(bond_zh_us_rate)
+
+        return bond_zh_us_rate_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

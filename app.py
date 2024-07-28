@@ -132,6 +132,8 @@ from Akshare_Data.Bond.bond_sh import router as router101
 from Akshare_Data.Bond.bond_basic_data import router as router102
 from Akshare_Data.Bond.bond_hs import router as router103
 from Akshare_Data.Bond.bond_hs_convertible_bonds import router as router104
+from Akshare_Data.Bond.bond_issuance import router as router105
+from Akshare_Data.Bond.china_bond_index import router as router106
 
 app = FastAPI()
 
@@ -356,6 +358,8 @@ app.include_router(router101)
 app.include_router(router102)
 app.include_router(router103)
 app.include_router(router104)
+app.include_router(router105)
+app.include_router(router106)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

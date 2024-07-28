@@ -135,6 +135,16 @@ from Akshare_Data.Bond.bond_hs_convertible_bonds import router as router104
 from Akshare_Data.Bond.bond_issuance import router as router105
 from Akshare_Data.Bond.china_bond_index import router as router106
 from Akshare_Data.Bond.bond_china_close_return_map import router as router107
+# 期权数据
+from Akshare_Data.Option.exchange_commodity_info import router as router108
+# # 商品期权
+from Akshare_Data.Option.commodity_options.market_data import router as router109
+from Akshare_Data.Option.commodity_options.contract_info import router as router110
+# # 金融期权
+from Akshare_Data.Option.financial_options.market_data import router as router111
+from Akshare_Data.Option.financial_options.contract_info import router as router112
+from Akshare_Data.Option.financial_options.risk_indicators.zhong_jin_suo import router as router113
+from Akshare_Data.Option.financial_options.risk_indicators.three_major_exchanges import router as router114
 
 app = FastAPI()
 
@@ -362,6 +372,13 @@ app.include_router(router104)
 app.include_router(router105)
 app.include_router(router106)
 app.include_router(router107)
+app.include_router(router108)
+app.include_router(router109)
+app.include_router(router110)
+app.include_router(router111)
+app.include_router(router112)
+app.include_router(router113)
+app.include_router(router114)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

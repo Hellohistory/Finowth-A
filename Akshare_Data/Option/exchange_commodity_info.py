@@ -4,11 +4,11 @@ from fastapi import APIRouter, HTTPException
 
 router = APIRouter()
 
-JSON_FILE_PATH_1 = 'json/上期所商品期权品种.json'
-JSON_FILE_PATH_2 = 'json/大商所商品期权品种.json'
-JSON_FILE_PATH_3 = 'json/郑商所商品期权品种.json'
-JSON_FILE_PATH_4 = 'json/广商所商品期权品种.json'
-JSON_FILE_PATH_5 = 'json/金融期权合约名称一览表.json'
+JSON_FILE_PATH_1 = 'Akshare_Data/Option/json/上期所商品期权品种.json'
+JSON_FILE_PATH_2 = 'Akshare_Data/Option/json/大商所商品期权品种.json'
+JSON_FILE_PATH_3 = 'Akshare_Data/Option/json/郑商所商品期权品种.json'
+JSON_FILE_PATH_4 = 'Akshare_Data/Option/json/广商所商品期权品种.json'
+JSON_FILE_PATH_5 = 'Akshare_Data/Option/json/金融期权合约名称一览表.json'
 
 
 @router.get("/options_of_the_previous_stock_exchange",

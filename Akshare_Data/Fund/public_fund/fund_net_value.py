@@ -55,7 +55,7 @@ def post_fund_open_fund_info_em(request: FundETFSpotTHS):
     """
     try:
         fund_open_fund_info_em = ak.fund_open_fund_info_em(
-            symbol=request.date,
+            symbol=request.symbol,
             indicator=request.indicator,
             period=request.period,
         )

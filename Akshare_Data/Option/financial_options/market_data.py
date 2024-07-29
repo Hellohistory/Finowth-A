@@ -7,7 +7,6 @@ from Akshare_Data.utility_function import sanitize_data_pandas
 router = APIRouter()
 
 
-
 class InterestSymbolRequest(BaseModel):
     symbol: str = Field(..., title="合约名称",
                         description="例：华泰柏瑞沪深300ETF期权，请求option_list_of_financial_option_contract_names获取")

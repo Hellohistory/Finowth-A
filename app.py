@@ -6,6 +6,7 @@ from fastapi.openapi.utils import get_openapi
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
 
+# 数据来源：Akshare
 # 基金
 # # 私募基金
 from Akshare_Data.Fund.private_equity_funds import router as router54
@@ -147,6 +148,10 @@ from Akshare_Data.Option.financial_options.risk_indicators.zhong_jin_suo import 
 from Akshare_Data.Option.financial_options.risk_indicators.three_major_exchanges import router as router114
 # 外汇
 from Akshare_Data.ForeignExchange.foreign_exchange import router as router115
+
+# 数据来源：自编写
+# 新闻模块
+from News.xinwenlianbo import router as router116
 
 app = FastAPI()
 
@@ -382,6 +387,7 @@ app.include_router(router112)
 app.include_router(router113)
 app.include_router(router114)
 app.include_router(router115)
+app.include_router(router116)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

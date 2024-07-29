@@ -145,6 +145,8 @@ from Akshare_Data.Option.financial_options.market_data import router as router11
 from Akshare_Data.Option.financial_options.contract_info import router as router112
 from Akshare_Data.Option.financial_options.risk_indicators.zhong_jin_suo import router as router113
 from Akshare_Data.Option.financial_options.risk_indicators.three_major_exchanges import router as router114
+# 外汇
+from Akshare_Data.ForeignExchange.foreign_exchange import router as router115
 
 app = FastAPI()
 
@@ -379,6 +381,7 @@ app.include_router(router111)
 app.include_router(router112)
 app.include_router(router113)
 app.include_router(router114)
+app.include_router(router115)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

@@ -118,3 +118,49 @@ def post_futures_inventory_99(request: ExchangeSymbolRequest):
         return futures_inventory_99_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class ExchangeSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="指定交易品种",
+                        description="例： 豆一 ; http://data.eastmoney.com/ifdata/kcsj.html 对应的中文名称")
+
+
+# 东方财富-库存数据
+@router.post("/futures_inventory_em", operation_id="post_futures_inventory_em")
+def post_futures_inventory_em(request: ExchangeSymbolRequest):
+    """
+    东方财富-库存数据
+
+    接口: futures_inventory_em
+
+    目标地址: http://data.eastmoney.com/ifdata/kcsj.html
+
+    描述: 东方财富网-期货数据-库存数据; 近 60 个交易日的期货库存日频率数据
+
+    限量: 返回指定交易所指定品种的期货库存数据, 仓单日报数据
+    """
+    try:
+        futures_inventory_em = ak.futures_inventory_em(
+            symbol=request.symbol
+        )
+        futures_inventory_em_df = sanitize_data_pandas(futures_inventory_em)
+
+        return futures_inventory_em_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

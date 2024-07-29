@@ -10,6 +10,12 @@ from starlette.middleware.cors import CORSMiddleware
 # 基金
 # # 私募基金
 from Akshare_Data.Fund.private_equity_funds import router as router54
+# # 公募基金
+from Akshare_Data.Fund.public_fund.fund_market import router as router117
+from Akshare_Data.Fund.public_fund.fund_ranking import router as router118
+from Akshare_Data.Fund.public_fund.fund_net_value import router as router119
+from Akshare_Data.Fund.public_fund.basic_info import router as router120
+from Akshare_Data.Fund.public_fund.dividend_distribution import router as router121
 # 期货
 from Akshare_Data.Futures.basic_data import router as router55
 # 利率
@@ -388,6 +394,11 @@ app.include_router(router113)
 app.include_router(router114)
 app.include_router(router115)
 app.include_router(router116)
+app.include_router(router117)
+app.include_router(router118)
+app.include_router(router119)
+app.include_router(router120)
+app.include_router(router121)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

@@ -11,11 +11,21 @@ from starlette.middleware.cors import CORSMiddleware
 # # 私募基金
 from Akshare_Data.Fund.private_equity_funds import router as router54
 # # 公募基金
-from Akshare_Data.Fund.public_fund.fund_market import router as router117
-from Akshare_Data.Fund.public_fund.fund_ranking import router as router118
-from Akshare_Data.Fund.public_fund.fund_net_value import router as router119
-from Akshare_Data.Fund.public_fund.basic_info import router as router120
-from Akshare_Data.Fund.public_fund.dividend_distribution import router as router121
+from Akshare_Data.Fund.public_fund.basic_info import router as router117
+from Akshare_Data.Fund.public_fund.dividend_distribution import router as router118
+from Akshare_Data.Fund.public_fund.fund_announcement import router as router119
+from Akshare_Data.Fund.public_fund.fund_individual_achievement_xq import router as router120
+from Akshare_Data.Fund.public_fund.fund_market import router as router121
+from Akshare_Data.Fund.public_fund.fund_net_value import router as router122
+from Akshare_Data.Fund.public_fund.fund_position import router as router123
+from Akshare_Data.Fund.public_fund.fund_ranking import router as router124
+from Akshare_Data.Fund.public_fund.fund_rating import router as router131
+from Akshare_Data.Fund.public_fund.fund_report import router as router125
+from Akshare_Data.Fund.public_fund.fund_size import router as router126
+from Akshare_Data.Fund.public_fund.fund_value_estimation_em import router as router127
+from Akshare_Data.Fund.public_fund.reits_realtime_em import router as router128
+from Akshare_Data.Fund.public_fund.scale_of_fund_company import router as router129
+from Akshare_Data.Fund.public_fund.scale_share import router as router130
 # 期货
 from Akshare_Data.Futures.basic_data import router as router55
 # 利率
@@ -399,6 +409,16 @@ app.include_router(router118)
 app.include_router(router119)
 app.include_router(router120)
 app.include_router(router121)
+app.include_router(router122)
+app.include_router(router123)
+app.include_router(router124)
+app.include_router(router125)
+app.include_router(router126)
+app.include_router(router127)
+app.include_router(router128)
+app.include_router(router129)
+app.include_router(router130)
+app.include_router(router131)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

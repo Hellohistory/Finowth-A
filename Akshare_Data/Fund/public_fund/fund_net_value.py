@@ -233,8 +233,8 @@ class FundETFFundInfoEM(BaseModel):
 
 
 # 公募基金数据-基金行情-东方财富-场内交易基金-历史数据
-@router.post("/fund_etf_fund_info_em", operation_id="post_fund_graded_fund_info_em")
-def post_fund_graded_fund_info_em(request: FundETFFundInfoEM):
+@router.post("/fund_etf_fund_info_em", operation_id="post_fund_etf_fund_info_em")
+def post_fund_etf_fund_info_em(request: FundETFFundInfoEM):
     """
     公募基金数据-基金行情-东方财富-场内交易基金-历史数据
 

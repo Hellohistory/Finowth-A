@@ -11,10 +11,10 @@ from starlette.middleware.cors import CORSMiddleware
 from Akshare_Data.Fund.private_equity_funds import router as router54
 # 期货
 from Akshare_Data.Futures.basic_data import router as router55
-from Akshare_Data.InterestRate.fixing_repo_rate import router as router49
-from Akshare_Data.InterestRate.interbank_lending_rate import router as router47
 # 利率
 from Akshare_Data.InterestRate.main_central_bank_interest_rates import router as router43
+from Akshare_Data.InterestRate.fixing_repo_rate import router as router49
+from Akshare_Data.InterestRate.interbank_lending_rate import router as router47
 # 现货
 from Akshare_Data.Spot.spot_trend import router as router53
 from Akshare_Data.Spot.variety_list import router as router39

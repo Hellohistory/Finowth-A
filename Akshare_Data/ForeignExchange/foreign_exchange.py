@@ -19,8 +19,8 @@ class CurrencyBocSina(BaseModel):
 
 
 # 外汇数据-人民币牌价数据
-@router.post("/currency_boc_sina", operation_id="post_futures_comm_info")
-def post_futures_comm_info(request: CurrencyBocSina):
+@router.post("/currency_boc_sina", operation_id="post_currency_boc_sina")
+def post_currency_boc_sina(request: CurrencyBocSina):
     """
     外汇数据-人民币牌价数据
 

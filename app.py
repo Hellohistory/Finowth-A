@@ -181,6 +181,11 @@ from Akshare_Data.Index.shenwan_hongyuan_research import router as router144
 from Akshare_Data.Index.shenwan_industry_index import router as router145
 from Akshare_Data.Index.sugar_index import router as router146
 from Akshare_Data.Index.US_stock_index import router as router147
+# 其他数据
+# # 政策不确定性数据
+from Akshare_Data.Others.article_epu_index import router as router148
+# # 银行数据
+from Akshare_Data.Others.futures_czce_warehouse_receipt import router as router149
 # 数据来源：自编写
 # 新闻模块
 from News.xinwenlianbo import router as router116
@@ -451,6 +456,8 @@ app.include_router(router144)
 app.include_router(router145)
 app.include_router(router146)
 app.include_router(router147)
+app.include_router(router148)
+app.include_router(router149)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

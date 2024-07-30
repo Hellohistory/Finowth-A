@@ -148,19 +148,3 @@ def post_futures_inventory_em(request: ExchangeSymbolRequest):
         return futures_inventory_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

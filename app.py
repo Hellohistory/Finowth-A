@@ -164,7 +164,23 @@ from Akshare_Data.Option.financial_options.risk_indicators.zhong_jin_suo import 
 from Akshare_Data.Option.financial_options.risk_indicators.three_major_exchanges import router as router114
 # 外汇数据
 from Akshare_Data.ForeignExchange.foreign_exchange import router as router115
-
+# 指数数据
+from Akshare_Data.Index.actual_index import router as router132
+from Akshare_Data.Index.Ashare_stock_index_data import router as router133
+from Akshare_Data.Index.caixin_index import router as router134
+from Akshare_Data.Index.CH_stock_index import router as router135
+from Akshare_Data.Index.commodity_spot_price_index import router as router136
+from Akshare_Data.Index.guozheng_index import router as router137
+from Akshare_Data.Index.highway_logistics_index import router as router138
+from Akshare_Data.Index.historical_market_data import router as router139
+from Akshare_Data.Index.HK_stock_index import router as router140
+from Akshare_Data.Index.index_valuation import router as router141
+from Akshare_Data.Index.market_sentiment_index import router as router142
+from Akshare_Data.Index.option_volatility_index import router as router143
+from Akshare_Data.Index.shenwan_hongyuan_research import router as router144
+from Akshare_Data.Index.shenwan_industry_index import router as router145
+from Akshare_Data.Index.sugar_index import router as router146
+from Akshare_Data.Index.US_stock_index import router as router147
 # 数据来源：自编写
 # 新闻模块
 from News.xinwenlianbo import router as router116
@@ -419,6 +435,22 @@ app.include_router(router128)
 app.include_router(router129)
 app.include_router(router130)
 app.include_router(router131)
+app.include_router(router132)
+app.include_router(router133)
+app.include_router(router134)
+app.include_router(router135)
+app.include_router(router136)
+app.include_router(router137)
+app.include_router(router138)
+app.include_router(router139)
+app.include_router(router140)
+app.include_router(router141)
+app.include_router(router142)
+app.include_router(router143)
+app.include_router(router144)
+app.include_router(router145)
+app.include_router(router146)
+app.include_router(router147)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

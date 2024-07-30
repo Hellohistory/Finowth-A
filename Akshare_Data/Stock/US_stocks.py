@@ -47,8 +47,6 @@ def get_stock_us_spot():
     """
     try:
         us_stock_current_df = ak.stock_us_spot()
-
-        # 字段映射
         columns_mapping = {
             "name": "公司名称",
             "cname": "中文名称",
@@ -68,8 +66,6 @@ def get_stock_us_spot():
             "market": "市场",
             "category_id": "行业类别ID"
         }
-
-        # 重命名列
         us_stock_current_df.rename(columns=columns_mapping, inplace=True)
 
         return us_stock_current_df.to_dict(orient="records")

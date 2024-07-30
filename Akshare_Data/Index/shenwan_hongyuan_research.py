@@ -89,7 +89,7 @@ def post_index_realtime_sw(request: IndexRealtimeSW):
 
     描述: 申万宏源研究-指数系列; 注意其中大类风格指数和金创指数的字段
 
-    限量: 该接口返回指定 symbol 的数据
+    限量: 该接口返回指定类型的数据
     """
     try:
         index_realtime_sw = ak.index_realtime_sw(

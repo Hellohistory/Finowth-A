@@ -265,9 +265,7 @@ const generateJavaScriptSample = (api, postParams) => {
     headers: {
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-${params}
-    })
+    body: JSON.stringify(${params})
 })
     .then(response => {
         if (!response.ok) {

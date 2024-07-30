@@ -35,7 +35,7 @@ class DateRequest(BaseModel):
 
 
 # 东方财富-数据中心-特色数据-商誉-商誉减值预期明细
-@router.post("/stock_sy_yq_em", operation_id="get_stock_sy_yq_em")
+@router.post("/stock_sy_yq_em", operation_id="post_stock_sy_yq_em")
 async def post_stock_sy_yq_em(request: DateRequest):
     """
     东方财富-商誉-商誉减值预期明细
@@ -58,7 +58,7 @@ async def post_stock_sy_yq_em(request: DateRequest):
 
 
 # 东方财富-数据中心-特色数据-商誉-个股商誉减值明细
-@router.post("/stock_sy_jz_em", operation_id="get_stock_sy_jz_em")
+@router.post("/stock_sy_jz_em", operation_id="post_stock_sy_jz_em")
 async def post_stock_sy_jz_em(request: DateRequest):
     """
     东方财富-商誉-个股商誉减值明细
@@ -81,7 +81,7 @@ async def post_stock_sy_jz_em(request: DateRequest):
 
 
 # 东方财富-数据中心-特色数据-商誉-行业商誉
-@router.post("/stock_sy_hy_em", operation_id="get_stock_sy_hy_em")
+@router.post("/stock_sy_hy_em", operation_id="post_stock_sy_hy_em")
 async def post_stock_sy_hy_em(request: DateRequest):
     """
     东方财富-商誉-行业商誉

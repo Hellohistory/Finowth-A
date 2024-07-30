@@ -40,7 +40,7 @@ def post_option_sse_list_sina(request: OptionSseListSina):
 
 
 class OptionSseExpireDaySina(BaseModel):
-    trade_date: str = Field(..., title="选择时间", description="例：202002")
+    trade_date: str = Field(..., title="选择年月", description="例：202002")
     symbol: str = Field(..., title="选择期权类型", description="可选择 看涨期权, 看跌期权")
     underlying: str = Field(..., title="选择类型", description="例：510300")
 

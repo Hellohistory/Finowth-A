@@ -89,7 +89,7 @@ async def post_stock_hk_valuation_baidu(request: BaiDuHKSymbolIndicatorPeriodReq
 
 class XSymbolRequest(BaseModel):
     symbol: str = Field(..., title="指定查询代码",
-                        description="可选择'all': '全部A股', 'sz50': '上证50', 'hs300': '沪深300', 'zz500': '中证500'")
+                        description="可选择all : 全部A股, sz50 : 上证50, hs300 : 沪深300, zz500 : 中证500")
 
 
 # 创新高和新低的股票数量
@@ -126,7 +126,7 @@ async def post_stock_a_high_low_statistics(request: XSymbolRequest):
 
 class PSymbolRequest(BaseModel):
     symbol: str = Field(..., title="指定查询代码",
-                        description="可选择'全部A股', '沪深300', '上证50', '中证500'")
+                        description="可选择 全部A股,  沪深300,  上证50, 中证500")
 
 
 # 破净股统计
@@ -157,7 +157,7 @@ async def post_stock_a_below_net_asset_statistics(request: PSymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 首发申报信息
+# 东方财富-首发申报信息-首发申报企业信息
 @router.get("/stock_ipo_declare", operation_id="get_stock_ipo_declare")
 def get_stock_ipo_declare():
     """
@@ -242,7 +242,9 @@ def get_stock_repurchase_em():
     限量: 单次返回所有历史数据
     """
     try:
-        stock_repurchase_em_df = ak.stock_repurchase_em()
+        stock_repurchase_em = ak.stock_repurchase_em()
+        stock_repurchase_em_df = sanitize_data_pandas(stock_repurchase_em)
+
         return stock_repurchase_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

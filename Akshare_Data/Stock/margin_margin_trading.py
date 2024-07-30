@@ -29,7 +29,7 @@ async def post_stock_margin_ratio_pa(request: SingleDateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_margin_account_info")
+@router.get("/stock_margin_account_info", operation_id="get_stock_margin_account_info")
 def get_stock_margin_account_info():
     """
     东方财富-融资融券-融资融券账户统计-两融账户信息

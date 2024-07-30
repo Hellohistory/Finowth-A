@@ -29,7 +29,7 @@ def get_stock_dzjy_sctj():
 
 
 class SymbolDateRequest(BaseModel):
-    symbol: str = Field(..., title="市场类型", description="可选择'A股', 'B股', '基金', '债券'")
+    symbol: str = Field(..., title="市场类型", description="可选择 A股 , B股 , 基金 , 债券")
     start_date: str = Field(..., title="开始查询的日期", description="例：20240701")
     end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
 
@@ -82,7 +82,7 @@ async def post_stock_dzjy_mrtj(request: DateRangeRequest):
 
 
 class DongCaiASymbolRequest(BaseModel):
-    symbol: str = Field(..., title="时间周期", description="可选择'近一月', '近三月', '近六月', '近一年'")
+    symbol: str = Field(..., title="时间周期", description="可选择 近一月 , 近三月 , 近六月 , 近一年 ")
 
 
 # 东方财富-数据中心-大宗交易-活跃 A 股统计
@@ -108,7 +108,7 @@ async def post_stock_dzjy_hygtj(request: DongCaiASymbolRequest):
 
 class DongCaiYingSymbolRequest(BaseModel):
     symbol: str = Field(..., title="时间周期",
-                        description="可选择'当前交易日', '近3日', '近5日', '近10日', '近30日'")
+                        description="可选择 当前交易日 , 近3日 , 近5日 , 近10日 , 近30日 ")
 
 
 # 东方财富-数据中心-大宗交易-活跃营业部统计

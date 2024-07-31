@@ -36,7 +36,7 @@ async def post_stock_lhb_detail_em(request: DongCaiWinnerListDateRangeRequest):
 
 
 class DongCaiWinnerListSymbolRequest(BaseModel):
-    symbol: str = Field(..., title="时间周期", description="可选择'近一月', '近三月', '近六月', '近一年'")
+    symbol: str = Field(..., title="时间周期", description="可选择 近一月 , 近三月 , 近六月 , 近一年 ")
 
 
 # 东方财富-龙虎榜单-个股上榜统计

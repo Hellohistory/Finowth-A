@@ -35,8 +35,8 @@ async def post_stock_research_report_em(request: SymbolRequest):
 
 class DongCaiSymbolDateRequest(BaseModel):
     symbol: str = Field(..., title="数据种类",
-                        description="可选择'全部', '重大事项', '财务报告', '融资公告', '风险提示', '资产重组', "
-                                    "'信息变更', '持股变动'")
+                        description="可选择 全部 , 重大事项 , 财务报告 , 融资公告 , 风险提示 , 资产重组 , "
+                                    " 信息变更 , 持股变动")
     date: str = Field(..., title="指定日期", description="例：20220511")
 
 
@@ -64,7 +64,7 @@ async def post_stock_notice_report(request: DongCaiSymbolDateRequest):
 
 class XinLangStockSymbolRequest(BaseModel):
     stock: str = Field(..., title="指定个股代码(需带市场标识)", description="例：sh600600")
-    symbol: str = Field(..., title="报表类型", description="可选择'资产负债表', '利润表', '现金流量表'")
+    symbol: str = Field(..., title="报表类型", description="可选择 资产负债表 , 利润表 , 现金流量表 ")
 
 
 # 新浪财经-财务报表-三大报表

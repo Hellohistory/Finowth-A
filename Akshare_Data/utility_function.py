@@ -6,6 +6,8 @@ Desc: 清洗数据解决"ValueError: Out of range float values are not JSON comp
 import numpy as np
 import pandas as pd
 
+pd.set_option('future.no_silent_downcasting', True)
+
 
 def sanitize_data_pandas(data):
     """
@@ -16,9 +18,11 @@ def sanitize_data_pandas(data):
     elif isinstance(data, list):
         return [sanitize_data_pandas(item) for item in data]
     elif isinstance(data, pd.DataFrame):
+        # 替换无效值为 'null'，并使用 fillna 处理 NaN
         data.replace([np.inf, -np.inf], 'null', inplace=True)
         return data.fillna('null')
     elif isinstance(data, pd.Series):
+        # 替换无效值为 'null'，并使用 fillna 处理 NaN
         data.replace([np.inf, -np.inf], 'null', inplace=True)
         return data.fillna('null')
     elif isinstance(data, float) or isinstance(data, np.float64):

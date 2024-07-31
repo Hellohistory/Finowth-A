@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data_pandas, sanitize_data
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -385,9 +385,7 @@ def get_stock_lhb_jgmx_sina():
     """
     try:
         stock_lhb_jgmx_sina = ak.stock_lhb_jgmx_sina()
-        data = stock_lhb_jgmx_sina.to_dict(orient="records")
-        sanitized_data = sanitize_data(data)
-
-        return sanitized_data
+        stock_lhb_jgmx_sina_df = sanitize_data_pandas(stock_lhb_jgmx_sina)
+        return stock_lhb_jgmx_sina_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -52,7 +52,7 @@ async def post_stock_jgdy_detail_em(request: DateRequest):
     try:
         stock_jgdy_detail_em = ak.stock_jgdy_detail_em(date=request.date)
 
-        stock_jgdy_detail_em_df = sanitize_data(stock_jgdy_detail_em)
+        stock_jgdy_detail_em_df = sanitize_data_pandas(stock_jgdy_detail_em)
 
         return stock_jgdy_detail_em_df.to_dict(orient="records")
     except Exception as e:

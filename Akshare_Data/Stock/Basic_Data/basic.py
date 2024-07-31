@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -175,9 +175,8 @@ def get_stock_ipo_declare():
     """
     try:
         stock_ipo_declare = ak.stock_ipo_declare()
-        data = stock_ipo_declare.to_dict(orient="records")
-        sanitized_data = sanitize_data(data)
-        return sanitized_data
+        stock_ipo_declare_df = sanitize_data_pandas(stock_ipo_declare)
+        return stock_ipo_declare_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

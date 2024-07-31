@@ -6,7 +6,7 @@ import pandas as pd
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -94,10 +94,9 @@ def post_stock_sse_deal_daily(data: SseDealStockDataRequest) -> list[dict]:
     """
     try:
         stock_sse_deal_daily = ak.stock_sse_deal_daily(date=data.date)
-        stock_sse_deal_daily_df = sanitize_data_pandas(stock_sse_deal_daily)
+        stock_sse_deal_daily_df = sanitize_data_sse_deal(stock_sse_deal_daily)
         return stock_sse_deal_daily_df.to_dict(orient="records")
     except Exception as e:
-        print(f"错误信息: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 

@@ -2,6 +2,8 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
+from Akshare_Data.utility_function import sanitize_data_pandas
+
 router = APIRouter()
 
 
@@ -24,7 +26,8 @@ async def post_stock_zt_pool_em(request: DateRequest):
     限量: 单次返回指定时间的涨停股池数据; 该接口只能获取近期的数据
     """
     try:
-        stock_zt_pool_em_df = ak.stock_zt_pool_em(date=request.date)
+        stock_zt_pool_em = ak.stock_zt_pool_em(date=request.date)
+        stock_zt_pool_em_df = sanitize_data_pandas(stock_zt_pool_em)
         return stock_zt_pool_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -45,7 +48,8 @@ async def post_stock_zt_pool_previous_em(request: DateRequest):
     限量: 单次返回指定时间的昨日涨停股池数据; 该接口只能获取近期的数据
     """
     try:
-        stock_zt_pool_previous_em_df = ak.stock_zt_pool_previous_em(date=request.date)
+        stock_zt_pool_previous_em = ak.stock_zt_pool_previous_em(date=request.date)
+        stock_zt_pool_previous_em_df = sanitize_data_pandas(stock_zt_pool_previous_em)
         return stock_zt_pool_previous_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -66,7 +70,8 @@ async def post_stock_zt_pool_strong_em(request: DateRequest):
     限量: 单次返回指定时间的强势股池数据；该接口只能获取近期的数据
     """
     try:
-        stock_zt_pool_strong_em_df = ak.stock_zt_pool_strong_em(date=request.date)
+        stock_zt_pool_strong_em = ak.stock_zt_pool_strong_em(date=request.date)
+        stock_zt_pool_strong_em_df = sanitize_data_pandas(stock_zt_pool_strong_em)
         return stock_zt_pool_strong_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -87,7 +92,8 @@ async def post_stock_zt_pool_sub_new_em(request: DateRequest):
     限量: 单次返回指定时间的次新股池数据；该接口只能获取近期的数据
     """
     try:
-        stock_zt_pool_sub_new_em_df = ak.stock_zt_pool_sub_new_em(date=request.date)
+        stock_zt_pool_sub_new_em = ak.stock_zt_pool_sub_new_em(date=request.date)
+        stock_zt_pool_sub_new_em_df = sanitize_data_pandas(stock_zt_pool_sub_new_em)
         return stock_zt_pool_sub_new_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -108,7 +114,8 @@ async def post_stock_zt_pool_zbgc_em(request: DateRequest):
     限量: 单次返回指定时间的炸板股池数据；该接口只能获取近期的数据
     """
     try:
-        stock_zt_pool_zbgc_em_df = ak.stock_zt_pool_zbgc_em(date=request.date)
+        stock_zt_pool_zbgc_em = ak.stock_zt_pool_zbgc_em(date=request.date)
+        stock_zt_pool_zbgc_em_df = sanitize_data_pandas(stock_zt_pool_zbgc_em)
         return stock_zt_pool_zbgc_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -129,7 +136,8 @@ async def post_stock_zt_pool_dtgc_em(request: DateRequest):
     限量: 单次返回指定时间的跌停股池数据；该接口只能获取近期的数据
     """
     try:
-        stock_zt_pool_dtgc_em_df = ak.stock_zt_pool_dtgc_em(date=request.date)
+        stock_zt_pool_dtgc_em = ak.stock_zt_pool_dtgc_em(date=request.date)
+        stock_zt_pool_dtgc_em_df = sanitize_data_pandas(stock_zt_pool_dtgc_em)
         return stock_zt_pool_dtgc_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

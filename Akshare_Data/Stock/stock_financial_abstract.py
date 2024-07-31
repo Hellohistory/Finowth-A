@@ -26,8 +26,8 @@ async def post_stock_financial_abstract(request: SymbolRequest):
     限量: 单次获取关键指标所有历史数据
     """
     try:
-        stock_financial_abstract_df = ak.stock_financial_abstract(symbol=request.symbol)
-        stock_financial_abstract_df = sanitize_data_pandas(stock_financial_abstract_df)
+        stock_financial_abstract = ak.stock_financial_abstract(symbol=request.symbol)
+        stock_financial_abstract_df = sanitize_data_pandas(stock_financial_abstract)
 
         return stock_financial_abstract_df.to_dict(orient="records")
     except Exception as e:
@@ -54,9 +54,11 @@ async def post_stock_financial_abstract_ths(request: TongHuaShunSymbolIndicatorR
     限量: 单次获取主要指标所有历史数据
     """
     try:
-        stock_financial_abstract_ths_df = ak.stock_financial_abstract_ths(symbol=request.symbol,
-                                                                          indicator=request.indicator)
-        stock_financial_abstract_ths_df = sanitize_data_pandas(stock_financial_abstract_ths_df)
+        stock_financial_abstract_ths = ak.stock_financial_abstract_ths(
+            symbol=request.symbol,
+            indicator=request.indicator
+        )
+        stock_financial_abstract_ths_df = sanitize_data_pandas(stock_financial_abstract_ths)
 
         return stock_financial_abstract_ths_df.to_dict(orient="records")
     except Exception as e:
@@ -84,9 +86,11 @@ async def post_stock_financial_analysis_indicator(request: XinLangFinancialAnaly
     限量: 单次获取指定个股和指定年份的所有财务指标历史数据
     """
     try:
-        stock_financial_analysis_indicator_df = ak.stock_financial_analysis_indicator(symbol=request.symbol,
-                                                                                      start_year=request.start_year)
-        stock_financial_analysis_indicator_df = sanitize_data_pandas(stock_financial_analysis_indicator_df)
+        stock_financial_analysis_indicator = ak.stock_financial_analysis_indicator(
+            symbol=request.symbol,
+            start_year=request.start_year
+        )
+        stock_financial_analysis_indicator_df = sanitize_data_pandas(stock_financial_analysis_indicator)
 
         return stock_financial_analysis_indicator_df.to_dict(orient="records")
     except Exception as e:
@@ -114,10 +118,11 @@ async def post_stock_financial_hk_analysis_indicator_em(request: DongCaiSymolInd
     限量: 单次获取财务指标所有历史数据
     """
     try:
-        stock_financial_hk_analysis_indicator_em_df = (
-            ak.stock_financial_hk_analysis_indicator_em(symbol=request.symbol,
-                                                        indicator=request.indicator))
-        stock_financial_hk_analysis_indicator_em_df = sanitize_data_pandas(stock_financial_hk_analysis_indicator_em_df)
+        stock_financial_hk_analysis_indicator_em = ak.stock_financial_hk_analysis_indicator_em(
+            symbol=request.symbol,
+            indicator=request.indicator
+        )
+        stock_financial_hk_analysis_indicator_em_df = sanitize_data_pandas(stock_financial_hk_analysis_indicator_em)
 
         return stock_financial_hk_analysis_indicator_em_df.to_dict(orient="records")
     except Exception as e:

@@ -2,11 +2,13 @@ import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
+from Akshare_Data.utility_function import sanitize_data_pandas
+
 router = APIRouter()
 
 
 class ShSymbolRequest(BaseModel):
-    symbol: str = Field(..., title="指定个股代码或全部", description="可输入全部或者指定个股代码, 例：600000")
+    symbol: str = Field(..., title="指定个股代码或全部", description="可输入全部或者指定个股代码, 例：001308")
 
 
 # 上海证券交易所-董监高人员股份变动
@@ -24,7 +26,8 @@ async def post_stock_share_hold_change_sse(request: ShSymbolRequest):
     限量: 单次获取指定个股的数据
     """
     try:
-        stock_share_hold_change_sse_df = ak.stock_share_hold_change_sse(symbol=request.symbol)
+        stock_share_hold_change_sse = ak.stock_share_hold_change_sse(symbol=request.symbol)
+        stock_share_hold_change_sse_df = sanitize_data_pandas(stock_share_hold_change_sse)
         return stock_share_hold_change_sse_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -45,7 +48,8 @@ async def post_stock_share_hold_change_szse(request: ShSymbolRequest):
     限量: 单次获取指定个股的数据
     """
     try:
-        stock_share_hold_change_szse_df = ak.stock_share_hold_change_szse(symbol=request.symbol)
+        stock_share_hold_change_szse = ak.stock_share_hold_change_szse(symbol=request.symbol)
+        stock_share_hold_change_szse_df = sanitize_data_pandas(stock_share_hold_change_szse)
         return stock_share_hold_change_szse_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -66,7 +70,8 @@ async def post_stock_share_hold_change_bse(request: ShSymbolRequest):
     限量: 单次获取指定个股的数据
     """
     try:
-        stock_share_hold_change_bse_df = ak.stock_share_hold_change_bse(symbol=request.symbol)
+        stock_share_hold_change_bse = ak.stock_share_hold_change_bse(symbol=request.symbol)
+        stock_share_hold_change_bse_df = sanitize_data_pandas(stock_share_hold_change_bse)
         return stock_share_hold_change_bse_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -91,7 +96,8 @@ async def post_stock_hold_management_detail_cninfo(request: JuChaoGaoGuanSymbolR
     限量: 单次指定类型的高管持股变动明细数据, 返回近一年的数据
     """
     try:
-        stock_hold_management_detail_cninfo_df = ak.stock_hold_management_detail_cninfo(symbol=request.symbol)
+        stock_hold_management_detail_cninfo = ak.stock_hold_management_detail_cninfo(symbol=request.symbol)
+        stock_hold_management_detail_cninfo_df = sanitize_data_pandas(stock_hold_management_detail_cninfo)
         return stock_hold_management_detail_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -112,7 +118,8 @@ def get_stock_hold_management_detail_em():
     限量: 单次返回所有数据
     """
     try:
-        stock_hold_management_detail_em_df = ak.stock_hold_management_detail_em()
+        stock_hold_management_detail_em = ak.stock_hold_management_detail_em()
+        stock_hold_management_detail_em_df = sanitize_data_pandas(stock_hold_management_detail_em)
         return stock_hold_management_detail_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

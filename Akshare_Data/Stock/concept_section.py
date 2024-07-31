@@ -2,6 +2,8 @@ import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
+from Akshare_Data.utility_function import sanitize_data_pandas
+
 router = APIRouter()
 
 
@@ -20,7 +22,8 @@ def get_stock_board_concept_name_em():
     限量: 单次返回当前时刻所有概念板块数据
     """
     try:
-        stock_board_concept_name_em_df = ak.stock_board_concept_name_em()
+        stock_board_concept_name_em = ak.stock_board_concept_name_em()
+        stock_board_concept_name_em_df = sanitize_data_pandas(stock_board_concept_name_em)
         return stock_board_concept_name_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -46,7 +49,8 @@ async def post_stock_board_concept_cons_em(request: DongCaiBankuaiSymbolRequest)
     限量: 单次返回当前时刻所有成份股
     """
     try:
-        stock_board_concept_cons_em_df = ak.stock_board_concept_cons_em(symbol=request.symbol)
+        stock_board_concept_cons_em = ak.stock_board_concept_cons_em(symbol=request.symbol)
+        stock_board_concept_cons_em_df = sanitize_data_pandas(stock_board_concept_cons_em)
         return stock_board_concept_cons_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -76,13 +80,14 @@ async def post_stock_board_concept_hist_em(request: ConceptHistRequest):
     限量: 单次返回指定个股和 adjust 的历史数据
     """
     try:
-        stock_board_concept_hist_em_df = ak.stock_board_concept_hist_em(
+        stock_board_concept_hist_em = ak.stock_board_concept_hist_em(
             symbol=request.symbol,
             period=request.period,
             start_date=request.start_date,
             end_date=request.end_date,
             adjust=request.adjust
         )
+        stock_board_concept_hist_em_df = sanitize_data_pandas(stock_board_concept_hist_em)
         return stock_board_concept_hist_em_df.to_dict(orient="records")
     except IndexError as e:
         raise HTTPException(status_code=404, detail="暂无该概念，请通过调用stock_board_concept_name_em接口检索")
@@ -112,10 +117,11 @@ async def post_stock_board_concept_hist_min_em(request: ConceptHistMinRequest):
     限量: 单次返回指定个股和时间周期的历史数据
     """
     try:
-        stock_board_concept_hist_min_em_df = ak.stock_board_concept_hist_min_em(
+        stock_board_concept_hist_min_em = ak.stock_board_concept_hist_min_em(
             symbol=request.symbol,
             period=request.period
         )
+        stock_board_concept_hist_min_em_df = sanitize_data_pandas(stock_board_concept_hist_min_em)
         return stock_board_concept_hist_min_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

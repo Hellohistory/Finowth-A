@@ -26,7 +26,8 @@ async def post_stock_fund_flow_individual(request: SymbolRequest):
     限量: 单次获取指定个股的概念资金流数据
     """
     try:
-        stock_fund_flow_individual_df = ak.stock_fund_flow_individual(symbol=request.symbol)
+        stock_fund_flow_individual = ak.stock_fund_flow_individual(symbol=request.symbol)
+        stock_fund_flow_individual_df = sanitize_data_pandas(stock_fund_flow_individual)
         return stock_fund_flow_individual_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -47,7 +48,8 @@ async def post_stock_fund_flow_concept(request: SymbolRequest):
     限量: 单次获取指定个股的概念资金流数据
     """
     try:
-        stock_fund_flow_concept_df = ak.stock_fund_flow_concept(symbol=request.symbol)
+        stock_fund_flow_concept = ak.stock_fund_flow_concept(symbol=request.symbol)
+        stock_fund_flow_concept_df = sanitize_data_pandas(stock_fund_flow_concept)
         return stock_fund_flow_concept_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -68,7 +70,8 @@ async def post_stock_fund_flow_industry(request: SymbolRequest):
     限量: 单次获取指定个股的行业资金流数据
     """
     try:
-        stock_fund_flow_industry_df = ak.stock_fund_flow_industry(symbol=request.symbol)
+        stock_fund_flow_industry = ak.stock_fund_flow_industry(symbol=request.symbol)
+        stock_fund_flow_industry_df = sanitize_data_pandas(stock_fund_flow_industry)
         return stock_fund_flow_industry_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -89,7 +92,8 @@ def get_stock_fund_flow_big_deal():
     限量: 单次获取当前时点的所有大单追踪数据
     """
     try:
-        stock_fund_flow_big_deal_df = ak.stock_fund_flow_big_deal()
+        stock_fund_flow_big_deal = ak.stock_fund_flow_big_deal()
+        stock_fund_flow_big_deal_df = sanitize_data_pandas(stock_fund_flow_big_deal)
         return stock_fund_flow_big_deal_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -115,7 +119,8 @@ async def post_stock_individual_fund_flow(request: SymbolMarketRequest):
     限量: 单次获取指定市场和股票的近 100 个交易日的资金流数据
     """
     try:
-        stock_individual_fund_flow_df = ak.stock_individual_fund_flow(stock=request.stock, market=request.market)
+        stock_individual_fund_flow = ak.stock_individual_fund_flow(stock=request.stock, market=request.market)
+        stock_individual_fund_flow_df = sanitize_data_pandas(stock_individual_fund_flow)
         return stock_individual_fund_flow_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -140,7 +145,8 @@ async def post_stock_individual_fund_flow_rank(request: IndicatorRequest):
     限量: 单次获取指定类型的个股资金流排名数据
     """
     try:
-        stock_individual_fund_flow_rank_df = ak.stock_individual_fund_flow_rank(indicator=request.indicator)
+        stock_individual_fund_flow_rank = ak.stock_individual_fund_flow_rank(indicator=request.indicator)
+        stock_individual_fund_flow_rank_df = sanitize_data_pandas(stock_individual_fund_flow_rank)
         return stock_individual_fund_flow_rank_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -161,7 +167,8 @@ def get_stock_market_fund_flow():
     限量: 单次获取大盘资金流向历史数据
     """
     try:
-        stock_market_fund_flow_df = ak.stock_market_fund_flow()
+        stock_market_fund_flow = ak.stock_market_fund_flow()
+        stock_market_fund_flow_df = sanitize_data_pandas(stock_market_fund_flow)
         return stock_market_fund_flow_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -187,8 +194,9 @@ async def post_stock_sector_fund_flow_rank(request: SectorRequest):
     限量: 单次获取指定板块的指定期限的资金流排名数据
     """
     try:
-        stock_sector_fund_flow_rank_df = ak.stock_sector_fund_flow_rank(indicator=request.indicator,
+        stock_sector_fund_flow_rank = ak.stock_sector_fund_flow_rank(indicator=request.indicator,
                                                                         sector_type=request.sector_type)
+        stock_sector_fund_flow_rank_df = sanitize_data_pandas(stock_sector_fund_flow_rank)
         return stock_sector_fund_flow_rank_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -214,8 +222,8 @@ async def post_stock_main_fund_flow(request: DongCaiZhuLiSymbolRequest):
     限量: 单次获取指定板块的主力净流入排名数据
     """
     try:
-        stock_main_fund_flow_df = ak.stock_main_fund_flow(symbol=request.symbol)
-        stock_main_fund_flow_df = sanitize_data_pandas(stock_main_fund_flow_df)
+        stock_main_fund_flow = ak.stock_main_fund_flow(symbol=request.symbol)
+        stock_main_fund_flow_df = sanitize_data_pandas(stock_main_fund_flow)
 
         return stock_main_fund_flow_df.to_dict(orient="records")
     except Exception as e:
@@ -242,9 +250,9 @@ async def post_stock_sector_fund_flow_summary(request: DongCaiZiJinSymbolRequest
     限量: 单次获取指定行业的个股资金流
     """
     try:
-        stock_sector_fund_flow_summary_df = ak.stock_sector_fund_flow_summary(symbol=request.symbol,
+        stock_sector_fund_flow_summary = ak.stock_sector_fund_flow_summary(symbol=request.symbol,
                                                                               indicator=request.indicator)
-        stock_sector_fund_flow_summary_df = sanitize_data_pandas(stock_sector_fund_flow_summary_df)
+        stock_sector_fund_flow_summary_df = sanitize_data_pandas(stock_sector_fund_flow_summary)
 
         return stock_sector_fund_flow_summary_df.to_dict(orient="records")
     except Exception as e:
@@ -270,7 +278,9 @@ async def post_stock_sector_fund_flow_hist(request: DongCaiZiJinHistorySymbolReq
     限量: 单次获取指定行业的行业历史资金流数据
     """
     try:
-        stock_sector_fund_flow_hist_df = ak.stock_sector_fund_flow_hist(symbol=request.symbol)
+        stock_sector_fund_flow_hist = ak.stock_sector_fund_flow_hist(symbol=request.symbol)
+        stock_sector_fund_flow_hist_df = sanitize_data_pandas(stock_sector_fund_flow_hist)
+
         return stock_sector_fund_flow_hist_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -295,7 +305,9 @@ async def post_stock_concept_fund_flow_hist(request: DongCaiZiJinGaiNianHistoryS
     限量: 单次获取指定个股的近期概念历史资金流数据
     """
     try:
-        stock_concept_fund_flow_hist_df = ak.stock_concept_fund_flow_hist(symbol=request.symbol)
+        stock_concept_fund_flow_hist = ak.stock_concept_fund_flow_hist(symbol=request.symbol)
+        stock_concept_fund_flow_hist_df = sanitize_data_pandas(stock_concept_fund_flow_hist)
+
         return stock_concept_fund_flow_hist_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

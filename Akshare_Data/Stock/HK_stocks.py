@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data
+from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
 
 router = APIRouter()
 
@@ -22,10 +22,9 @@ def get_stock_hk_spot_em():
     限量: 单次返回最近交易日的所有港股的数据
     """
     try:
-        stock_hk_spot_em_df = ak.stock_hk_spot_em()
-        sanitized_data = stock_hk_spot_em_df.applymap(sanitize_data)
-
-        return sanitized_data.to_dict(orient="records")
+        stock_hk_spot_em = ak.stock_hk_spot_em()
+        stock_hk_spot_em_df = sanitize_data_pandas(stock_hk_spot_em)
+        return stock_hk_spot_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -45,10 +44,9 @@ def get_stock_hk_main_board_spot_em():
     限量: 单次返回港股主板的数据
     """
     try:
-        stock_hk_main_board_spot_em_df = ak.stock_hk_main_board_spot_em()
-        sanitized_data = stock_hk_main_board_spot_em_df.applymap(sanitize_data)
-
-        return sanitized_data.to_dict(orient="records")
+        stock_hk_main_board_spot_em = ak.stock_hk_main_board_spot_em()
+        stock_hk_main_board_spot_em_df = sanitize_data_pandas(stock_hk_main_board_spot_em)
+        return stock_hk_main_board_spot_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -70,12 +68,11 @@ def get_stock_hk_spot():
     限量: 单次返回当前时间戳的所有港股的数据
     """
     try:
-        stock_hk_spot_df = ak.stock_hk_spot()
-        stock_hk_spot_list = stock_hk_spot_df.to_dict(orient="records")
+        stock_hk_spot = ak.stock_hk_spot()
+        stock_hk_spot_df = sanitize_data_pandas(stock_hk_spot)
 
-        # 将字段名转换为中文
         translated_list = []
-        for item in stock_hk_spot_list:
+        for item in stock_hk_spot_df:
             translated_item = {
                 "股票代码": item.get("symbol"),
                 "股票名称": item.get("name"),
@@ -127,13 +124,14 @@ async def post_stock_hk_hist_min_em(request: DongCaiHKStockMinuteRequest):
     限量: 单次返回指定上市公司最近 5 个交易日分钟数据, 注意港股有延时
     """
     try:
-        stock_hk_hist_min_em_df = ak.stock_hk_hist_min_em(
+        stock_hk_hist_min_em = ak.stock_hk_hist_min_em(
             symbol=request.symbol,
             period=request.period,
             adjust=request.adjust,
             start_date=request.start_date,
             end_date=request.end_date
         )
+        stock_hk_hist_min_em_df = sanitize_data_pandas(stock_hk_hist_min_em)
         return stock_hk_hist_min_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -165,13 +163,14 @@ async def post_stock_hk_hist(request: DongCaiHKStockHistoryRequest):
     限量: 单次返回指定上市公司的历史行情数据
     """
     try:
-        stock_hk_hist_df = ak.stock_hk_hist(
+        stock_hk_hist = ak.stock_hk_hist(
             symbol=request.symbol,
             period=request.period,
             start_date=request.start_date,
             end_date=request.end_date,
             adjust=request.adjust
         )
+        stock_hk_hist_df = sanitize_data_pandas(stock_hk_hist)
         return stock_hk_hist_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -202,10 +201,9 @@ async def post_stock_hk_daily(request: StockDailyRequest):
     并不等于该股票从上市至今的数据)
     """
     try:
-        stock_hk_daily_df = ak.stock_hk_daily(symbol=request.symbol, adjust=request.adjust)
+        stock_hk_daily = ak.stock_hk_daily(symbol=request.symbol, adjust=request.adjust)
 
-        # 重命名字段
-        stock_hk_daily_df.rename(columns={
+        stock_hk_daily.rename(columns={
             "date": "日期",
             "open": "开盘价",
             "high": "最高价",
@@ -216,6 +214,7 @@ async def post_stock_hk_daily(request: StockDailyRequest):
             "cash": "现金分红"
         }, inplace=True)
 
+        stock_hk_daily_df = sanitize_data_pandas(stock_hk_daily)
         return stock_hk_daily_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

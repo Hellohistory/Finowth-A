@@ -2,6 +2,8 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import Field, BaseModel
 
+from Akshare_Data.utility_function import sanitize_data_pandas
+
 router = APIRouter()
 
 
@@ -28,8 +30,8 @@ async def post_stock_zh_a_minute(request: XinLangMinuteStock):
     限量: 单次返回指定股票或指数的指定频率的最近交易日的历史分时行情数据; 注意调用频率
     """
     try:
-        stock_zh_a_minute_df = ak.stock_zh_a_minute(symbol=request.symbol, period=request.period, adjust=request.adjust)
-        stock_zh_a_minute_df.rename(columns={
+        stock_zh_a_minute = ak.stock_zh_a_minute(symbol=request.symbol, period=request.period, adjust=request.adjust)
+        stock_zh_a_minute.rename(columns={
             "day": "日期",
             "open": "开盘价",
             "high": "最高价",
@@ -37,6 +39,7 @@ async def post_stock_zh_a_minute(request: XinLangMinuteStock):
             "close": "收盘价",
             "volume": "成交量"
         }, inplace=True)
+        stock_zh_a_minute_df = sanitize_data_pandas(stock_zh_a_minute)
         return stock_zh_a_minute_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
@@ -68,13 +71,14 @@ async def post_stock_zh_a_hist_min_em(request: DongCaiMinuteRequest):
     限量: 单次返回指定股票、频率、复权调整和时间区间的分时数据, 其中 1 分钟数据只返回近 5 个交易日数据且不复权
     """
     try:
-        stock_zh_a_hist_min_em_df = ak.stock_zh_a_hist_min_em(
+        stock_zh_a_hist_min_em = ak.stock_zh_a_hist_min_em(
             symbol=request.symbol,
             start_date=request.start_date,
             end_date=request.end_date,
             period=request.period,
             adjust=request.adjust
         )
+        stock_zh_a_hist_min_em_df = sanitize_data_pandas(stock_zh_a_hist_min_em)
         return stock_zh_a_hist_min_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -99,7 +103,8 @@ async def post_stock_intraday_em(request: DongCaiDayMinute):
     限量: 单次返回指定股票最近一个交易日的分时数据, 包含盘前数据
     """
     try:
-        stock_intraday_em_df = ak.stock_intraday_em(symbol=request.symbol)
+        stock_intraday_em = ak.stock_intraday_em(symbol=request.symbol)
+        stock_intraday_em_df = sanitize_data_pandas(stock_intraday_em)
         return stock_intraday_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -127,7 +132,8 @@ async def post_stock_intraday_sina(request: XinLangDayMinute):
     限量: 单次返回指定交易日的分时数据；只能获取近期的数据
     """
     try:
-        stock_intraday_sina_df = ak.stock_intraday_sina(symbol=request.symbol, date=request.date)
+        stock_intraday_sina = ak.stock_intraday_sina(symbol=request.symbol, date=request.date)
+        stock_intraday_sina_df = sanitize_data_pandas(stock_intraday_sina)
         return stock_intraday_sina_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -154,11 +160,12 @@ async def post_stock_zh_a_hist_pre_min_em(request: DongCaiPanQianRequest):
     限量: 单次返回指定个股的最近一个交易日的股票分钟数据, 包含盘前分钟数据
     """
     try:
-        stock_zh_a_hist_pre_min_em_df = ak.stock_zh_a_hist_pre_min_em(
+        stock_zh_a_hist_pre_min_em = ak.stock_zh_a_hist_pre_min_em(
             symbol=request.symbol,
             start_time=request.start_time,
             end_time=request.end_time
         )
+        stock_zh_a_hist_pre_min_em_df = sanitize_data_pandas(stock_zh_a_hist_pre_min_em)
         return stock_zh_a_hist_pre_min_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

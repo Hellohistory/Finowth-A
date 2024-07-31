@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -22,10 +22,9 @@ def get_stock_sy_profile_em():
     限量: 单次所有历史数据
     """
     try:
-        stock_sy_profile_em_df = ak.stock_sy_profile_em()
-        sanitized_data = stock_sy_profile_em_df.applymap(sanitize_data)
-
-        return sanitized_data.to_dict(orient="records")
+        stock_sy_profile_em = ak.stock_sy_profile_em()
+        stock_sy_profile_em_df = sanitize_data_pandas(stock_sy_profile_em)
+        return stock_sy_profile_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -49,10 +48,9 @@ async def post_stock_sy_yq_em(request: DateRequest):
     限量: 单次所有历史数据
     """
     try:
-        stock_sy_yq_em_df = ak.stock_sy_yq_em(date=request.date)
-        sanitized_data = stock_sy_yq_em_df.applymap(sanitize_data)
-
-        return sanitized_data.to_dict(orient="records")
+        stock_sy_yq_em = ak.stock_sy_yq_em(date=request.date)
+        stock_sy_yq_em_df = sanitize_data_pandas(stock_sy_yq_em)
+        return stock_sy_yq_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -72,10 +70,9 @@ async def post_stock_sy_jz_em(request: DateRequest):
     限量: 单次返回所有历史数据
     """
     try:
-        stock_sy_jz_em_df = ak.stock_sy_jz_em(date=request.date)
-        sanitized_data = stock_sy_jz_em_df.applymap(sanitize_data)
-
-        return sanitized_data.to_dict(orient="records")
+        stock_sy_jz_em = ak.stock_sy_jz_em(date=request.date)
+        stock_sy_jz_em_df = sanitize_data_pandas(stock_sy_jz_em)
+        return stock_sy_jz_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -95,7 +92,8 @@ async def post_stock_sy_hy_em(request: DateRequest):
     限量: 单次返回所有历史数据
     """
     try:
-        stock_sy_hy_em_df = ak.stock_sy_hy_em(date=request.date)
+        stock_sy_hy_em = ak.stock_sy_hy_em(date=request.date)
+        stock_sy_hy_em_df = sanitize_data_pandas(stock_sy_hy_em)
         return stock_sy_hy_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

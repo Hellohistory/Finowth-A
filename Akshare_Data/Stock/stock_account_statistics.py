@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -23,10 +23,9 @@ def get_stock_account_statistics_em():
     限量: 单次返回从 201504 开始 202308 的所有历史数据
     """
     try:
-        stock_account_statistics_em_df = ak.stock_account_statistics_em()
-        sanitized_data = stock_account_statistics_em_df.applymap(sanitize_data)
-
-        return sanitized_data.to_dict(orient="records")
+        stock_account_statistics_em = ak.stock_account_statistics_em()
+        stock_account_statistics_em_df = sanitize_data_pandas(stock_account_statistics_em)
+        return stock_account_statistics_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -51,7 +50,8 @@ async def post_stock_analyst_rank_em(request: YearRequest):
     限量: 单次获取指定年份的所有数据
     """
     try:
-        stock_analyst_rank_em_df = ak.stock_analyst_rank_em(year=request.year)
+        stock_analyst_rank_em = ak.stock_analyst_rank_em(year=request.year)
+        stock_analyst_rank_em_df = sanitize_data_pandas(stock_analyst_rank_em)
         return stock_analyst_rank_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -80,8 +80,9 @@ async def post_stock_analyst_detail_em(request: AnalystDetailRequest):
     限量: 单次获取指定 indicator 指定的数据
     """
     try:
-        stock_analyst_detail_em_df = ak.stock_analyst_detail_em(analyst_id=request.analyst_id,
+        stock_analyst_detail_em = ak.stock_analyst_detail_em(analyst_id=request.analyst_id,
                                                                 indicator=request.indicator)
+        stock_analyst_detail_em_df = sanitize_data_pandas(stock_analyst_detail_em)
         return stock_analyst_detail_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

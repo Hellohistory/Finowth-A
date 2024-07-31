@@ -27,8 +27,8 @@ async def post_stock_lhb_detail_em(request: DongCaiWinnerListDateRangeRequest):
     限量: 单次返回所有历史数据
     """
     try:
-        stock_lhb_detail_em_df = ak.stock_lhb_detail_em(start_date=request.start_date, end_date=request.end_date)
-        stock_lhb_detail_em_df = sanitize_data_pandas(stock_lhb_detail_em_df)
+        stock_lhb_detail_em = ak.stock_lhb_detail_em(start_date=request.start_date, end_date=request.end_date)
+        stock_lhb_detail_em_df = sanitize_data_pandas(stock_lhb_detail_em)
 
         return stock_lhb_detail_em_df.to_dict(orient="records")
     except Exception as e:
@@ -54,7 +54,8 @@ async def post_stock_lhb_stock_statistic_em(request: DongCaiWinnerListSymbolRequ
     限量: 单次返回所有历史数据
     """
     try:
-        stock_lhb_stock_statistic_em_df = ak.stock_lhb_stock_statistic_em(symbol=request.symbol)
+        stock_lhb_stock_statistic_em = ak.stock_lhb_stock_statistic_em(symbol=request.symbol)
+        stock_lhb_stock_statistic_em_df = sanitize_data_pandas(stock_lhb_stock_statistic_em)
         return stock_lhb_stock_statistic_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -80,7 +81,8 @@ async def post_stock_lhb_jgmmtj_em(request: DongCaiWinnerListDateRangeRequest):
     限量: 单次返回所有历史数据
     """
     try:
-        stock_lhb_jgmmtj_em_df = ak.stock_lhb_jgmmtj_em(start_date=request.start_date, end_date=request.end_date)
+        stock_lhb_jgmmtj_em = ak.stock_lhb_jgmmtj_em(start_date=request.start_date, end_date=request.end_date)
+        stock_lhb_jgmmtj_em_df = sanitize_data_pandas(stock_lhb_jgmmtj_em)
         return stock_lhb_jgmmtj_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -101,9 +103,8 @@ async def post_stock_lhb_jgstatistic_em(request: DongCaiWinnerListSymbolRequest)
     限量: 单次返回所有历史数据
     """
     try:
-        stock_lhb_jgstatistic_em_df = ak.stock_lhb_jgstatistic_em(symbol=request.symbol)
-        stock_lhb_jgstatistic_em_df = sanitize_data_pandas(stock_lhb_jgstatistic_em_df)
-
+        stock_lhb_jgstatistic_em = ak.stock_lhb_jgstatistic_em(symbol=request.symbol)
+        stock_lhb_jgstatistic_em_df = sanitize_data_pandas(stock_lhb_jgstatistic_em)
         return stock_lhb_jgstatistic_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -124,9 +125,8 @@ async def post_stock_lhb_hyyyb_em(request: DongCaiWinnerListDateRangeRequest):
     限量: 单次返回所有历史数据
     """
     try:
-        stock_lhb_hyyyb_em_df = ak.stock_lhb_hyyyb_em(start_date=request.start_date, end_date=request.end_date)
-        stock_lhb_hyyyb_em_df = sanitize_data_pandas(stock_lhb_hyyyb_em_df)
-
+        stock_lhb_hyyyb_em = ak.stock_lhb_hyyyb_em(start_date=request.start_date, end_date=request.end_date)
+        stock_lhb_hyyyb_em_df = sanitize_data_pandas(stock_lhb_hyyyb_em)
         return stock_lhb_hyyyb_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -147,7 +147,8 @@ async def post_stock_lhb_yybph_em(request: DongCaiWinnerListSymbolRequest):
     限量: 单次返回所有历史数据
     """
     try:
-        stock_lhb_yybph_em_df = ak.stock_lhb_yybph_em(symbol=request.symbol)
+        stock_lhb_yybph_em = ak.stock_lhb_yybph_em(symbol=request.symbol)
+        stock_lhb_yybph_em_df = sanitize_data_pandas(stock_lhb_yybph_em)
         return stock_lhb_yybph_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -168,7 +169,8 @@ async def post_stock_lhb_traderstatistic_em(request: DongCaiWinnerListSymbolRequ
     限量: 单次返回所有历史数据
     """
     try:
-        stock_lhb_traderstatistic_em_df = ak.stock_lhb_traderstatistic_em(symbol=request.symbol)
+        stock_lhb_traderstatistic_em = ak.stock_lhb_traderstatistic_em(symbol=request.symbol)
+        stock_lhb_traderstatistic_em_df = sanitize_data_pandas(stock_lhb_traderstatistic_em)
         return stock_lhb_traderstatistic_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -196,10 +198,9 @@ async def post_stock_lhb_stock_detail_em(request: DongCaiWinnerListSymbolFlagDat
     限量: 单次返回所有历史数据
     """
     try:
-        stock_lhb_stock_detail_em_df = ak.stock_lhb_stock_detail_em(symbol=request.symbol, date=request.date,
-                                                                    flag=request.flag)
-        stock_lhb_stock_detail_em_df = sanitize_data_pandas(stock_lhb_stock_detail_em_df)
-
+        stock_lhb_stock_detail_em = ak.stock_lhb_stock_detail_em(symbol=request.symbol, date=request.date,
+                                                                 flag=request.flag)
+        stock_lhb_stock_detail_em_df = sanitize_data_pandas(stock_lhb_stock_detail_em)
         return stock_lhb_stock_detail_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -220,7 +221,8 @@ def get_stock_lh_yyb_most():
     限量: 单次返回所有历史数据
     """
     try:
-        stock_lh_yyb_most_df = ak.stock_lh_yyb_most()
+        stock_lh_yyb_most = ak.stock_lh_yyb_most()
+        stock_lh_yyb_most_df = sanitize_data_pandas(stock_lh_yyb_most)
         return stock_lh_yyb_most_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -241,7 +243,8 @@ def get_stock_lh_yyb_capital():
     限量: 单次返回所有历史数据
     """
     try:
-        stock_lh_yyb_capital_df = ak.stock_lh_yyb_capital()
+        stock_lh_yyb_capital = ak.stock_lh_yyb_capital()
+        stock_lh_yyb_capital_df = sanitize_data_pandas(stock_lh_yyb_capital)
         return stock_lh_yyb_capital_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -262,7 +265,8 @@ def get_stock_lh_yyb_control():
     限量: 单次返回所有历史数据
     """
     try:
-        stock_lh_yyb_control_df = ak.stock_lh_yyb_control()
+        stock_lh_yyb_control = ak.stock_lh_yyb_control()
+        stock_lh_yyb_control_df = sanitize_data_pandas(stock_lh_yyb_control)
         return stock_lh_yyb_control_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -287,17 +291,21 @@ async def post_stock_lhb_detail_daily_sina(request: XinLangWinnerListDateRequest
     限量: 单次返回指定时间的所有数据
     """
     try:
-        stock_lhb_detail_daily_sina_df = ak.stock_lhb_detail_daily_sina(date=request.date)
-        stock_lhb_detail_daily_sina_df = sanitize_data_pandas(stock_lhb_detail_daily_sina_df)
-
+        stock_lhb_detail_daily_sina = ak.stock_lhb_detail_daily_sina(date=request.date)
+        stock_lhb_detail_daily_sina_df = sanitize_data_pandas(stock_lhb_detail_daily_sina)
         return stock_lhb_detail_daily_sina_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class XinLangSymbolRequest(BaseModel):
+    symbol: str = Field(..., title="时间周期",
+                        description="可选择 5: 最近 5 天; 10 : 最近 10 天; 30 : 最近 30 天; 60 : 最近 60 天")
+
+
 # 新浪财经-龙虎榜-个股上榜统计
 @router.post("/stock_lhb_ggtj_sina", operation_id="post_stock_lhb_ggtj_sina")
-async def post_stock_lhb_ggtj_sina(request: XinLangWinnerListDateRequest):
+async def post_stock_lhb_ggtj_sina(request: XinLangSymbolRequest):
     """
     新浪财经-龙虎榜-个股上榜统计
 
@@ -310,15 +318,11 @@ async def post_stock_lhb_ggtj_sina(request: XinLangWinnerListDateRequest):
     限量: 单次返回指定个股的所有历史数据
     """
     try:
-        stock_lhb_ggtj_sina_df = ak.stock_lhb_ggtj_sina(symbol=request.symbol)
+        stock_lhb_ggtj_sina = ak.stock_lhb_ggtj_sina(symbol=request.symbol)
+        stock_lhb_ggtj_sina_df = sanitize_data_pandas(stock_lhb_ggtj_sina)
         return stock_lhb_ggtj_sina_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
-class XinLangSymbolRequest(BaseModel):
-    symbol: str = Field(..., title="时间周期",
-                        description="可选择'5': 最近 5 天; '10': 最近 10 天; '30': 最近 30 天; '60': 最近 60 天")
 
 
 # 新浪财经-龙虎榜-营业上榜统计
@@ -336,7 +340,8 @@ async def post_stock_lhb_yytj_sina(request: XinLangSymbolRequest):
     限量: 单次返回指定个股的所有历史数据
     """
     try:
-        stock_lhb_yytj_sina_df = ak.stock_lhb_yytj_sina(symbol=request.symbol)
+        stock_lhb_yytj_sina = ak.stock_lhb_yytj_sina(symbol=request.symbol)
+        stock_lhb_yytj_sina_df = sanitize_data_pandas(stock_lhb_yytj_sina)
         return stock_lhb_yytj_sina_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -357,7 +362,8 @@ async def post_stock_lhb_jgzz_sina(request: XinLangSymbolRequest):
     限量: 单次返回指定个股的所有历史数据
     """
     try:
-        stock_lhb_jgzz_sina_df = ak.stock_lhb_jgzz_sina(symbol=request.symbol)
+        stock_lhb_jgzz_sina = ak.stock_lhb_jgzz_sina(symbol=request.symbol)
+        stock_lhb_jgzz_sina_df = sanitize_data_pandas(stock_lhb_jgzz_sina)
         return stock_lhb_jgzz_sina_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -378,8 +384,8 @@ def get_stock_lhb_jgmx_sina():
     限量: 单次返回所有历史数据
     """
     try:
-        stock_lhb_jgmx_sina_df = ak.stock_lhb_jgmx_sina()
-        data = stock_lhb_jgmx_sina_df.to_dict(orient="records")
+        stock_lhb_jgmx_sina = ak.stock_lhb_jgmx_sina()
+        data = stock_lhb_jgmx_sina.to_dict(orient="records")
         sanitized_data = sanitize_data(data)
 
         return sanitized_data

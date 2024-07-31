@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -31,10 +31,9 @@ async def post_stock_changes_em(request: SymbolRequest):
     """
     try:
 
-        stock_changes_em_df = ak.stock_changes_em(symbol=request.symbol)
+        stock_changes_em = ak.stock_changes_em(symbol=request.symbol)
 
-        stock_changes_em_df = sanitize_data(stock_changes_em_df)
-
+        stock_changes_em_df = sanitize_data_pandas(stock_changes_em)
         return stock_changes_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -54,10 +53,8 @@ def get_stock_board_change_em():
     限量: 返回最近交易日的数据
     """
     try:
-        stock_board_change_em_df = ak.stock_hsgt_fund_flow_summary_em()
-        data = stock_board_change_em_df.to_dict(orient="records")
-        sanitized_data = sanitize_data(data)
-
-        return sanitized_data
+        stock_board_change_em = ak.stock_hsgt_fund_flow_summary_em()
+        stock_board_change_em_df = sanitize_data_pandas(stock_board_change_em)
+        return stock_board_change_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

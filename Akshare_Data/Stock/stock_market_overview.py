@@ -6,7 +6,7 @@ import pandas as pd
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data
+from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
 
 router = APIRouter()
 
@@ -58,10 +58,9 @@ async def post_stock_szse_summary(request: DateRequest):
     限量: 单次返回指定时间的市场总貌数据-证券类别统计(当前交易日的数据需要交易所收盘后统计)
     """
     try:
-        stock_szse_summary_df = ak.stock_szse_summary(date=request.date)
-        sanitized_data = stock_szse_summary_df.applymap(sanitize_data)
-
-        return sanitized_data.to_dict(orient="records")
+        stock_szse_summary = ak.stock_szse_summary(date=request.date)
+        stock_szse_summary_df = sanitize_data_pandas(stock_szse_summary)
+        return stock_szse_summary_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error retrieving SZSE summary: {str(e)}")
 
@@ -94,10 +93,9 @@ def post_stock_sse_deal_daily(data: SseDealStockDataRequest) -> list[dict]:
     限量: 单次返回指定日期的每日概况数据, 当前交易日数据需要在收盘后获取; 注意在 20211227（包含）之后输出格式变化
     """
     try:
-        stock_sse_deal_daily_df = ak.stock_sse_deal_daily(date=data.date)
-        cleaned_data = sanitize_data_sse_deal(stock_sse_deal_daily_df)
-        data_dict = cleaned_data.to_dict(orient="records")
-        return data_dict
+        stock_sse_deal_daily = ak.stock_sse_deal_daily(date=data.date)
+        stock_sse_deal_daily_df = sanitize_data_pandas(stock_sse_deal_daily)
+        return stock_sse_deal_daily_df.to_dict(orient="records")
     except Exception as e:
         print(f"错误信息: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -122,9 +120,9 @@ async def post_stock_szse_sector_summary(request: SectorSummaryRequest):
     限量: 单次返回指定个股和 date 的统计资料-股票行业成交数据
     """
     try:
-        stock_szse_sector_summary_df = ak.stock_szse_sector_summary(symbol=request.symbol, date=request.ym_date)
-        sanitized_data = stock_szse_sector_summary_df.to_dict(orient="records")
-        return sanitized_data
+        stock_szse_sector_summary = ak.stock_szse_sector_summary(symbol=request.symbol, date=request.ym_date)
+        stock_szse_sector_summary_df = sanitize_data_pandas(stock_szse_sector_summary)
+        return stock_szse_sector_summary_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error retrieving SZSE sector summary: {str(e)}")
 
@@ -147,7 +145,8 @@ async def post_stock_szse_area_summary(request: AreaSummaryRequest):
     限量: 单次返回指定日期的市场总貌数据-地区交易排序数据
     """
     try:
-        data_df = ak.stock_szse_area_summary(date=request.ym_date)
-        return data_df.to_dict(orient="records")
+        stock_szse_area_summary = ak.stock_szse_area_summary(date=request.ym_date)
+        stock_szse_area_summary_df = sanitize_data_pandas(stock_szse_area_summary)
+        return stock_szse_area_summary_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

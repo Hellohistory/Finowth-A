@@ -26,7 +26,8 @@ async def post_stock_add_stock(request: SymbolRequest):
     限量: 单次指定个股的股票增发详情数据
     """
     try:
-        stock_add_stock_df = ak.stock_add_stock(symbol=request.symbol)
+        stock_add_stock = ak.stock_add_stock(symbol=request.symbol)
+        stock_add_stock_df = sanitize_data_pandas(stock_add_stock)
         return stock_add_stock_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -52,7 +53,8 @@ async def post_stock_zh_vote_baidu(request: BaiDuStockZhVoteBaiduRequest):
     限量: 单次获取指定个股和指定时间段的所有数据
     """
     try:
-        stock_zh_vote_baidu_df = ak.stock_zh_vote_baidu(symbol=request.symbol, indicator=request.indicator)
+        stock_zh_vote_baidu = ak.stock_zh_vote_baidu(symbol=request.symbol, indicator=request.indicator)
+        stock_zh_vote_baidu_df = sanitize_data_pandas(stock_zh_vote_baidu)
         return stock_zh_vote_baidu_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -80,8 +82,8 @@ async def post_stock_hk_valuation_baidu(request: BaiDuHKSymbolIndicatorPeriodReq
     限量: 单次获取指定个股的指定指定时间段的特定 period 的历史数据
     """
     try:
-        stock_hk_valuation_baidu_df = ak.stock_hk_valuation_baidu(symbol=request.symbol, indicator=request.indicator,
-                                                                  period=request.period)
+        stock_hk_valuation_baidu = ak.stock_hk_valuation_baidu(symbol=request.symbol, indicator=request.indicator, period=request.period)
+        stock_hk_valuation_baidu_df = sanitize_data_pandas(stock_hk_valuation_baidu)
         return stock_hk_valuation_baidu_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -107,8 +109,8 @@ async def post_stock_a_high_low_statistics(request: XSymbolRequest):
     限量: 单次获取指定市场的近两年的历史数据
     """
     try:
-        stock_a_high_low_statistics_df = ak.stock_a_high_low_statistics(symbol=request.symbol)
-        # 更改列名为中文
+        stock_a_high_low_statistics = ak.stock_a_high_low_statistics(symbol=request.symbol)
+        stock_a_high_low_statistics_df = sanitize_data_pandas(stock_a_high_low_statistics)
         stock_a_high_low_statistics_df.rename(columns={
             'date': '交易日',
             'close': '相关指数收盘价',
@@ -144,8 +146,8 @@ async def post_stock_a_below_net_asset_statistics(request: PSymbolRequest):
     限量: 单次获取指定类型的所有历史数据
     """
     try:
-        stock_a_below_net_asset_statistics_df = ak.stock_a_below_net_asset_statistics(symbol=request.symbol)
-        # 更改列名为中文
+        stock_a_below_net_asset_statistics = ak.stock_a_below_net_asset_statistics(symbol=request.symbol)
+        stock_a_below_net_asset_statistics_df = sanitize_data_pandas(stock_a_below_net_asset_statistics)
         stock_a_below_net_asset_statistics_df.rename(columns={
             'date': '交易日',
             'below_net_asset': '破净股家数',
@@ -172,10 +174,9 @@ def get_stock_ipo_declare():
     限量: 单次返回所有历史数据
     """
     try:
-        stock_ipo_declare_df = ak.stock_ipo_declare()
-        data = stock_ipo_declare_df.to_dict(orient="records")
+        stock_ipo_declare = ak.stock_ipo_declare()
+        data = stock_ipo_declare.to_dict(orient="records")
         sanitized_data = sanitize_data(data)
-
         return sanitized_data
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -196,9 +197,8 @@ def get_stock_qbzf_em():
     限量: 单次返回所有历史数据
     """
     try:
-        stock_qbzf_em_df = ak.stock_qbzf_em()
-        stock_qbzf_em_df = sanitize_data_pandas(stock_qbzf_em_df)
-
+        stock_qbzf_em = ak.stock_qbzf_em()
+        stock_qbzf_em_df = sanitize_data_pandas(stock_qbzf_em)
         return stock_qbzf_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -219,9 +219,8 @@ def get_stock_pg_em():
     限量: 单次返回所有历史数据
     """
     try:
-        stock_pg_em_df = ak.stock_pg_em()
-        stock_pg_em_df = sanitize_data_pandas(stock_pg_em_df)
-
+        stock_pg_em = ak.stock_pg_em()
+        stock_pg_em_df = sanitize_data_pandas(stock_pg_em)
         return stock_pg_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -244,7 +243,6 @@ def get_stock_repurchase_em():
     try:
         stock_repurchase_em = ak.stock_repurchase_em()
         stock_repurchase_em_df = sanitize_data_pandas(stock_repurchase_em)
-
         return stock_repurchase_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

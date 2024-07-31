@@ -26,10 +26,9 @@ async def post_stock_fhps_em(request: DateRequest):
     限量: 单次获取指定日期的分红配送数据
     """
     try:
-        stock_fhps_em_df = ak.stock_fhps_em(date=request.date)
-        stock_us_famous_spot_em_df = sanitize_data_pandas(stock_fhps_em_df)
-
-        return stock_us_famous_spot_em_df.to_dict(orient="records")
+        stock_fhps_em = ak.stock_fhps_em(date=request.date)
+        stock_fhps_em_df = sanitize_data_pandas(stock_fhps_em)
+        return stock_fhps_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -53,10 +52,9 @@ async def post_stock_fhps_detail_em(request: SymbolRequest):
     限量: 单次获取指定个股的分红配送详情数据
     """
     try:
-        stock_fhps_detail_em_df = ak.stock_fhps_detail_em(symbol=request.symbol)
-        stock_us_famous_spot_em_df = sanitize_data_pandas(stock_fhps_detail_em_df)
-
-        return stock_us_famous_spot_em_df.to_dict(orient="records")
+        stock_fhps_detail_em = ak.stock_fhps_detail_em(symbol=request.symbol)
+        stock_fhps_detail_em_df = sanitize_data_pandas(stock_fhps_detail_em)
+        return stock_fhps_detail_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -76,7 +74,8 @@ async def post_stock_fhps_detail_ths(request: SymbolRequest):
     限量: 单次获取指定个股的分红情况数据
     """
     try:
-        stock_fhps_detail_ths_df = ak.stock_fhps_detail_ths(symbol=request.symbol)
+        stock_fhps_detail_ths = ak.stock_fhps_detail_ths(symbol=request.symbol)
+        stock_fhps_detail_ths_df = sanitize_data_pandas(stock_fhps_detail_ths)
         return stock_fhps_detail_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -97,7 +96,8 @@ async def post_stock_hk_fhpx_detail_ths(request: SymbolRequest):
     限量: 单次获取指定股票的分红派息数据
     """
     try:
-        stock_hk_fhpx_detail_ths_df = ak.stock_hk_fhpx_detail_ths(symbol=request.symbol)
+        stock_hk_fhpx_detail_ths = ak.stock_hk_fhpx_detail_ths(symbol=request.symbol)
+        stock_hk_fhpx_detail_ths_df = sanitize_data_pandas(stock_hk_fhpx_detail_ths)
         return stock_hk_fhpx_detail_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -118,7 +118,8 @@ def get_stock_history_dividend():
     限量: 单次获取所有股票的历史分红数据
     """
     try:
-        stock_history_dividend_df = ak.stock_history_dividend()
+        stock_history_dividend = ak.stock_history_dividend()
+        stock_history_dividend_df = sanitize_data_pandas(stock_history_dividend)
         return stock_history_dividend_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -146,12 +147,13 @@ async def post_stock_history_dividend_detail(request: DividendDetailRequest):
     """
     try:
         if request.date:
-            stock_history_dividend_detail_df = ak.stock_history_dividend_detail(symbol=request.symbol,
+            stock_history_dividend_detail = ak.stock_history_dividend_detail(symbol=request.symbol,
                                                                                 indicator=request.indicator,
                                                                                 date=request.date)
         else:
-            stock_history_dividend_detail_df = ak.stock_history_dividend_detail(symbol=request.symbol,
+            stock_history_dividend_detail = ak.stock_history_dividend_detail(symbol=request.symbol,
                                                                                 indicator=request.indicator)
+        stock_history_dividend_detail_df = sanitize_data_pandas(stock_history_dividend_detail)
         return stock_history_dividend_detail_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -172,8 +174,8 @@ async def post_stock_dividend_cninfo(request: SymbolRequest):
     限量: 单次获取指定股票的历史分红数据
     """
     try:
-        stock_dividend_cninfo_df = ak.stock_dividend_cninfo(symbol=request.symbol)
-        stock_dividend_cninfo_df = sanitize_data_pandas(stock_dividend_cninfo_df)
+        stock_dividend_cninfo = ak.stock_dividend_cninfo(symbol=request.symbol)
+        stock_dividend_cninfo_df = sanitize_data_pandas(stock_dividend_cninfo)
 
         return stock_dividend_cninfo_df.to_dict(orient="records")
     except Exception as e:

@@ -4,6 +4,8 @@ import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
+from Akshare_Data.utility_function import sanitize_data_pandas
+
 router = APIRouter()
 
 
@@ -27,7 +29,8 @@ def post_stock_profit_forecast_em(request: DongCaiSymbolRequest):
     限量: 单次返回指定个股的数据
     """
     try:
-        stock_profit_forecast_em_df = ak.stock_profit_forecast_em(symbol=request.symbol)
+        stock_profit_forecast_em = ak.stock_profit_forecast_em(symbol=request.symbol)
+        stock_profit_forecast_em_df = sanitize_data_pandas(stock_profit_forecast_em)
         return stock_profit_forecast_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -54,8 +57,9 @@ async def post_stock_hk_profit_forecast_et(request: JingJiTongHKSymbolIndicatorR
     限量: 单次返回指定个股和指定时间段的数据
     """
     try:
-        stock_hk_profit_forecast_et_df = ak.stock_hk_profit_forecast_et(symbol=request.symbol,
+        stock_hk_profit_forecast_et = ak.stock_hk_profit_forecast_et(symbol=request.symbol,
                                                                         indicator=request.indicator)
+        stock_hk_profit_forecast_et_df = sanitize_data_pandas(stock_hk_profit_forecast_et)
         return stock_hk_profit_forecast_et_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -82,7 +86,11 @@ async def post_stock_profit_forecast_ths(request: TongHuaShunSymbolIndicatorRequ
     限量: 单次返回指定个股和指定时间段的数据
     """
     try:
-        stock_profit_forecast_ths_df = ak.stock_profit_forecast_ths(symbol=request.symbol, indicator=request.indicator)
+        stock_profit_forecast_ths = ak.stock_profit_forecast_ths(
+            symbol=request.symbol,
+            indicator=request.indicator
+        )
+        stock_profit_forecast_ths_df = sanitize_data_pandas(stock_profit_forecast_ths)
         return stock_profit_forecast_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

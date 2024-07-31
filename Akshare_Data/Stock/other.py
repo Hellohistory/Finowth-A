@@ -26,10 +26,9 @@ async def post_stock_ggcg_em(request: ExecutiveSymbolRequest):
     限量: 单次获取所有高管持股数据数据
     """
     try:
-        stock_ggcg_em_df = ak.stock_ggcg_em(symbol=request.symbol)
-        stock_us_famous_spot_em_df = sanitize_data_pandas(stock_ggcg_em_df)
-
-        return stock_us_famous_spot_em_df.to_dict(orient="records")
+        stock_ggcg_em = ak.stock_ggcg_em(symbol=request.symbol)
+        stock_ggcg_em_df = sanitize_data_pandas(stock_ggcg_em)
+        return stock_ggcg_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -55,7 +54,11 @@ async def post_stock_cyq_em(request: ChouMaSymbolRequest):
     限量: 单次返回指定个股和指定复权种类的近 90 个交易日数据
     """
     try:
-        stock_cyq_em_df = ak.stock_cyq_em(symbol=request.symbol, adjust=request.adjust)
+        stock_cyq_em = ak.stock_cyq_em(
+            symbol=request.symbol,
+            adjust=request.adjust
+        )
+        stock_cyq_em_df = sanitize_data_pandas(stock_cyq_em)
         return stock_cyq_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -80,7 +83,8 @@ def post_stock_yzxdr_em(request: StockYzxdrRequest):
     限量: 单次返回所有历史数据
     """
     try:
-        stock_yzxdr_em_df = ak.stock_yzxdr_em(date=request.date)
+        stock_yzxdr_em = ak.stock_yzxdr_em(date=request.date)
+        stock_yzxdr_em_df = sanitize_data_pandas(stock_yzxdr_em)
         return stock_yzxdr_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -101,7 +105,8 @@ def get_stock_market_activity_legu():
     限量: 单次返回当前赚钱效应分析数据
     """
     try:
-        stock_market_activity_legu_df = ak.stock_market_activity_legu()
+        stock_market_activity_legu = ak.stock_market_activity_legu()
+        stock_market_activity_legu_df = sanitize_data_pandas(stock_market_activity_legu)
         return stock_market_activity_legu_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

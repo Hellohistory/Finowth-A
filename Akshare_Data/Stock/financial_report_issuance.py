@@ -26,7 +26,8 @@ async def post_stock_news_em(request: DongCaiNewsSymbolRequest):
     限量: 指定个股当日最近 100 条新闻资讯数据
     """
     try:
-        stock_news_em_df = ak.stock_news_em(symbol=request.symbol)
+        stock_news_em = ak.stock_news_em(symbol=request.symbol)
+        stock_news_em_df = sanitize_data_pandas(stock_news_em)
         return stock_news_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -51,7 +52,8 @@ async def post_news_report_time_baidu(request: BaiduDateRequest):
     限量: 单次获取指定时间的财报发行, 提供港股的财报发行数据
     """
     try:
-        news_report_time_baidu_df = ak.news_report_time_baidu(date=request.date)
+        news_report_time_baidu = ak.news_report_time_baidu(date=request.date)
+        news_report_time_baidu_df = sanitize_data_pandas(news_report_time_baidu)
         return news_report_time_baidu_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -77,9 +79,8 @@ async def post_stock_yjbb_em(request: AnnualDateRequest):
     限量: 单次获取指定时间的业绩报告数据
     """
     try:
-        stock_yjbb_em_df = ak.stock_yjbb_em(date=request.date)
-        stock_yjbb_em_df = sanitize_data_pandas(stock_yjbb_em_df)
-
+        stock_yjbb_em = ak.stock_yjbb_em(date=request.date)
+        stock_yjbb_em_df = sanitize_data_pandas(stock_yjbb_em)
         return stock_yjbb_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -100,9 +101,8 @@ async def post_stock_yjkb_em(request: AnnualDateRequest):
     限量: 单次获取指定时间的业绩快报数据
     """
     try:
-        stock_yjkb_em_df = ak.stock_yjkb_em(date=request.date)
-        stock_yjkb_em_df = sanitize_data_pandas(stock_yjkb_em_df)
-
+        stock_yjkb_em = ak.stock_yjkb_em(date=request.date)
+        stock_yjkb_em_df = sanitize_data_pandas(stock_yjkb_em)
         return stock_yjkb_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -123,10 +123,9 @@ async def post_stock_yjyg_em(request: AnnualDateRequest):
     限量: 单次获取指定时间的业绩预告数据
     """
     try:
-        stock_yjyg_em_df = ak.stock_yjyg_em(date=request.date)
-        stock_us_famous_spot_em_df = sanitize_data_pandas(stock_yjyg_em_df)
-
-        return stock_us_famous_spot_em_df.to_dict(orient="records")
+        stock_yjyg_em = ak.stock_yjyg_em(date=request.date)
+        stock_yjyg_em_df = sanitize_data_pandas(stock_yjyg_em)
+        return stock_yjyg_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -153,7 +152,11 @@ async def post_stock_yysj_em(request: DongCaiAnnualSymbolDateRequest):
     限量: 单次获取指定个股和指定时间的预约披露时间数据
     """
     try:
-        stock_yysj_em_df = ak.stock_yysj_em(symbol=request.symbol, date=request.date)
+        stock_yysj_em = ak.stock_yysj_em(
+            symbol=request.symbol,
+            date=request.date
+        )
+        stock_yysj_em_df = sanitize_data_pandas(stock_yysj_em)
         return stock_yysj_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -181,7 +184,8 @@ async def post_stock_report_disclosure(request: JuChaoMarketPeriodRequest):
     限量: 单次获取指定市场和指定时期的预约披露数据
     """
     try:
-        stock_report_disclosure_df = ak.stock_report_disclosure(market=request.market, period=request.period)
+        stock_report_disclosure = ak.stock_report_disclosure(market=request.market, period=request.period)
+        stock_report_disclosure_df = sanitize_data_pandas(stock_report_disclosure)
         return stock_report_disclosure_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -219,13 +223,14 @@ async def post_stock_zh_a_disclosure_report_cninfo(request: JuChaoDisclosureRequ
     限量: 单次获取指定个股的信息披露公告数据
     """
     try:
-        stock_zh_a_disclosure_report_cninfo_df = ak.stock_zh_a_disclosure_report_cninfo(
+        stock_zh_a_disclosure_report_cninfo = ak.stock_zh_a_disclosure_report_cninfo(
             symbol=request.symbol,
             market=request.market,
             keyword=request.keyword,
             category=request.category,
             start_date=request.start_date,
             end_date=request.end_date)
+        stock_zh_a_disclosure_report_cninfo_df = sanitize_data_pandas(stock_zh_a_disclosure_report_cninfo)
         return stock_zh_a_disclosure_report_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -255,8 +260,12 @@ async def post_stock_zh_a_disclosure_relation_cninfo(request: JuChaoSymbolDateRa
     限量: 单次获取指定个股的信息披露调研数据
     """
     try:
-        stock_zh_a_disclosure_relation_cninfo_df = ak.stock_zh_a_disclosure_relation_cninfo(
-            symbol=request.symbol, market=request.market, start_date=request.start_date, end_date=request.end_date)
+        stock_zh_a_disclosure_relation_cninfo = ak.stock_zh_a_disclosure_relation_cninfo(
+            symbol=request.symbol,
+            market=request.market,
+            start_date=request.start_date,
+            end_date=request.end_date)
+        stock_zh_a_disclosure_relation_cninfo_df = sanitize_data_pandas(stock_zh_a_disclosure_relation_cninfo)
         return stock_zh_a_disclosure_relation_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -284,7 +293,8 @@ async def post_stock_industry_category_cninfo(request: JuChaoDataSymbolRequest):
     限量: 单次获取指定个股的行业分类数据
     """
     try:
-        stock_industry_category_cninfo_df = ak.stock_industry_category_cninfo(symbol=request.symbol)
+        stock_industry_category_cninfo = ak.stock_industry_category_cninfo(symbol=request.symbol)
+        stock_industry_category_cninfo_df = sanitize_data_pandas(stock_industry_category_cninfo)
         return stock_industry_category_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -311,12 +321,11 @@ async def post_stock_industry_change_cninfo(request: JuChaoDataSymbolDateRangeRe
     限量: 单次获取指定个股在指定起始时间和终止时间之间的上市公司行业归属的变动情况数据
     """
     try:
-        stock_industry_change_cninfo_df = ak.stock_industry_change_cninfo(symbol=request.symbol,
+        stock_industry_change_cninfo = ak.stock_industry_change_cninfo(symbol=request.symbol,
                                                                           start_date=request.start_date,
                                                                           end_date=request.end_date)
-        sanitized_df = sanitize_data_pandas(stock_industry_change_cninfo_df)
-
-        return sanitized_df.to_dict(orient="records")
+        stock_industry_change_cninfo_df = sanitize_data_pandas(stock_industry_change_cninfo)
+        return stock_industry_change_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -336,14 +345,11 @@ async def post_stock_share_change_cninfo(request: JuChaoDataSymbolDateRangeReque
     限量: 单次获取指定个股在起始时间和终止时间之间的公司股本变动数据
     """
     try:
-        stock_share_change_cninfo_df = ak.stock_share_change_cninfo(symbol=request.symbol,
+        stock_share_change_cninfo = ak.stock_share_change_cninfo(symbol=request.symbol,
                                                                     start_date=request.start_date,
                                                                     end_date=request.end_date)
-        # 清洗数据
-        sanitized_df = sanitize_data_pandas(stock_share_change_cninfo_df)
-
-        # 返回清洗后的数据
-        return sanitized_df.to_dict(orient="records")
+        stock_share_change_cninfo_df = sanitize_data_pandas(stock_share_change_cninfo)
+        return stock_share_change_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -363,11 +369,10 @@ async def post_stock_allotment_cninfo(request: JuChaoDataSymbolDateRangeRequest)
     限量: 单次获取指定个股在起始时间和终止时间之间的公司股本变动数据
     """
     try:
-        stock_allotment_cninfo_df = ak.stock_allotment_cninfo(symbol=request.symbol, start_date=request.start_date,
+        stock_allotment_cninfo = ak.stock_allotment_cninfo(symbol=request.symbol, start_date=request.start_date,
                                                               end_date=request.end_date)
-        sanitized_df = sanitize_data_pandas(stock_allotment_cninfo_df)
-
-        return sanitized_df.to_dict(orient="records")
+        stock_allotment_cninfo_df = sanitize_data_pandas(stock_allotment_cninfo)
+        return stock_allotment_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -392,9 +397,9 @@ async def post_stock_zcfz_em(request: DongCaiBalanceSheetRequest):
     限量: 单次获取指定时间的资产负债表数据
     """
     try:
-        stock_zcfz_em_df = ak.stock_zcfz_em(date=request.date)
-        stock_us_famous_spot_em_df = sanitize_data_pandas(stock_zcfz_em_df)
-        return stock_us_famous_spot_em_df.to_dict(orient="records")
+        stock_zcfz_em = ak.stock_zcfz_em(date=request.date)
+        stock_zcfz_em_df = sanitize_data_pandas(stock_zcfz_em)
+        return stock_zcfz_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -419,10 +424,9 @@ async def post_stock_lrb_em(request: DongCaiIncomeStatementDateRequest):
     限量: 单次获取指定时间的利润表数据
     """
     try:
-        stock_lrb_em_df = ak.stock_lrb_em(date=request.date)
-        stock_us_famous_spot_em_df = sanitize_data_pandas(stock_lrb_em_df)
-
-        return stock_us_famous_spot_em_df.to_dict(orient="records")
+        stock_lrb_em = ak.stock_lrb_em(date=request.date)
+        stock_lrb_em_df = sanitize_data_pandas(stock_lrb_em)
+        return stock_lrb_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -442,9 +446,8 @@ async def post_stock_xjll_em(request: DongCaiBalanceSheetRequest):
     限量: 单次获取指定时间的现金流量表数据
     """
     try:
-        stock_xjll_em_df = ak.stock_xjll_em(date=request.date)
-        stock_us_famous_spot_em_df = sanitize_data_pandas(stock_xjll_em_df)
-
-        return stock_us_famous_spot_em_df.to_dict(orient="records")
+        stock_xjll_em = ak.stock_xjll_em(date=request.date)
+        stock_xjll_em_df = sanitize_data_pandas(stock_xjll_em)
+        return stock_xjll_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

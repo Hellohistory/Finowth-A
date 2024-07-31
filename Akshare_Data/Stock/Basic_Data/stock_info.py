@@ -2,6 +2,8 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
+from Akshare_Data.utility_function import sanitize_data_pandas
+
 router = APIRouter()
 
 
@@ -24,8 +26,8 @@ async def post_stock_sector_detail(request: XinLangSectorRequest):
     限量: 单次获取指定的新浪行业-板块行情-成份详情
     """
     try:
-        stock_sector_detail_df = ak.stock_sector_detail(sector=request.sector)
-
+        stock_sector_detail = ak.stock_sector_detail(sector=request.sector)
+        stock_sector_detail_df = sanitize_data_pandas(stock_sector_detail)
         stock_sector_detail_df.rename(columns={
             "symbol": "带市场标识股票代码",
             "code": "代码",
@@ -69,7 +71,8 @@ def get_stock_info_a_code_name():
     限量: 单次获取所有 A 股股票代码和简称数据
     """
     try:
-        stock_info_a_code_name_df = ak.stock_info_a_code_name()
+        stock_info_a_code_name = ak.stock_info_a_code_name()
+        stock_info_a_code_name_df = sanitize_data_pandas(stock_info_a_code_name)
         stock_info_a_code_name_df.rename(columns={
             "code": "股票代码",
             "name": "股票简称",
@@ -98,7 +101,8 @@ async def post_stock_info_sh_name_code(request: ShSymbolRequest):
     限量: 单次获取所有上海证券交易所股票代码和简称数据
     """
     try:
-        stock_info_sh_name_code_df = ak.stock_info_sh_name_code(symbol=request.symbol)
+        stock_info_sh_name_code = ak.stock_info_sh_name_code(symbol=request.symbol)
+        stock_info_sh_name_code_df = sanitize_data_pandas(stock_info_sh_name_code)
         return stock_info_sh_name_code_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -123,7 +127,8 @@ async def post_stock_info_sz_name_code(request: SzSymbolRequest):
     限量: 单次获取深证证券交易所股票代码和简称数据
     """
     try:
-        stock_info_sz_name_code_df = ak.stock_info_sz_name_code(symbol=request.symbol)
+        stock_info_sz_name_code = ak.stock_info_sz_name_code(symbol=request.symbol)
+        stock_info_sz_name_code_df = sanitize_data_pandas(stock_info_sz_name_code)
         return stock_info_sz_name_code_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -144,15 +149,15 @@ def get_stock_info_bj_name_code():
     限量: 单次获取北京证券交易所所有的股票代码和简称数据
     """
     try:
-        stock_info_bj_name_code_df = ak.stock_info_bj_name_code()
+        stock_info_bj_name_code = ak.stock_info_bj_name_code()
+        stock_info_bj_name_code_df = sanitize_data_pandas(stock_info_bj_name_code)
         return stock_info_bj_name_code_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
 class SzTsSymbolRequest(BaseModel):
-    symbol: str = Field(..., title="数据类型",
-                        description="可选择'暂停上市公司', '终止上市公司'")
+    symbol: str = Field(..., title="数据类型", description="可选择'暂停上市公司', '终止上市公司'")
 
 
 # 深证证券交易所终止/暂停上市股票
@@ -170,7 +175,8 @@ async def post_stock_info_sz_delist(request: SzTsSymbolRequest):
     限量: 单次获取深证证券交易所终止/暂停上市数据
     """
     try:
-        stock_info_sz_delist_df = ak.stock_info_sz_delist(symbol=request.symbol)
+        stock_info_sz_delist = ak.stock_info_sz_delist(symbol=request.symbol)
+        stock_info_sz_delist_df = sanitize_data_pandas(stock_info_sz_delist)
         return stock_info_sz_delist_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -191,7 +197,8 @@ def get_stock_staq_net_stop():
     限量: 单次获取所有两网及退市的股票数据
     """
     try:
-        stock_staq_net_stop_df = ak.stock_staq_net_stop()
+        stock_staq_net_stop = ak.stock_staq_net_stop()
+        stock_staq_net_stop_df = sanitize_data_pandas(stock_staq_net_stop)
         return stock_staq_net_stop_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -217,7 +224,8 @@ async def post_stock_info_sh_delist(request: ShTsSymbolRequest):
     限量: 单次获取上海证券交易所暂停/终止上市股票
     """
     try:
-        stock_info_sh_delist_df = ak.stock_info_sh_delist(symbol=request.symbol)
+        stock_info_sh_delist = ak.stock_info_sh_delist(symbol=request.symbol)
+        stock_info_sh_delist_df = sanitize_data_pandas(stock_info_sh_delist)
         return stock_info_sh_delist_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -242,8 +250,9 @@ async def post_stock_info_change_name(request: XinLangSymbolRequest):
     限量: 单次指定个股的所有历史曾用名称
     """
     try:
-        stock_info_change_name_list = ak.stock_info_change_name(symbol=request.symbol)
-        return stock_info_change_name_list.to_dict(orient="records")
+        stock_info_change_name = ak.stock_info_change_name(symbol=request.symbol)
+        stock_info_change_name_df = sanitize_data_pandas(stock_info_change_name)
+        return stock_info_change_name_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -267,7 +276,8 @@ async def post_stock_info_sz_change_name(request: SzSymbolRequest):
     限量: 单次获取所有历史数据
     """
     try:
-        stock_info_sz_change_name_df = ak.stock_info_sz_change_name(symbol=request.symbol)
+        stock_info_sz_change_name = ak.stock_info_sz_change_name(symbol=request.symbol)
+        stock_info_sz_change_name_df = sanitize_data_pandas(stock_info_sz_change_name)
         return stock_info_sz_change_name_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

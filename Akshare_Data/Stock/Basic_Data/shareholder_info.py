@@ -53,10 +53,8 @@ async def post_stock_hold_management_person_em(request: DongCaiSymbolAndNameRequ
     限量: 单次返回指定个股和指定高管的数据
     """
     try:
-        stock_hold_management_person_em_df = ak.stock_hold_management_person_em(symbol=request.symbol,
-                                                                                name=request.name)
-        stock_hold_management_person_em_df = sanitize_data_pandas(stock_hold_management_person_em_df)
-
+        stock_hold_management_person_em = ak.stock_hold_management_person_em(symbol=request.symbol, name=request.name)
+        stock_hold_management_person_em_df = sanitize_data_pandas(stock_hold_management_person_em)
         return stock_hold_management_person_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -77,7 +75,8 @@ def get_stock_gddh_em():
     限量: 单次返回所有数据
     """
     try:
-        stock_gddh_em_df = ak.stock_gddh_em()
+        stock_gddh_em = ak.stock_gddh_em()
+        stock_gddh_em_df = sanitize_data_pandas(stock_gddh_em)
         return stock_gddh_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -103,9 +102,8 @@ async def post_stock_zdhtmx_em(request: DongCaiDateRangeRequest):
     限量: 单次返回指定开始查询的日期和结束查询的日期的所有数据
     """
     try:
-        stock_zdhtmx_em_df = ak.stock_zdhtmx_em(start_date=request.start_date, end_date=request.end_date)
-        stock_zdhtmx_em_df = sanitize_data_pandas(stock_zdhtmx_em_df)
-
+        stock_zdhtmx_em = ak.stock_zdhtmx_em(start_date=request.start_date, end_date=request.end_date)
+        stock_zdhtmx_em_df = sanitize_data_pandas(stock_zdhtmx_em)
         return stock_zdhtmx_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -130,9 +128,8 @@ async def post_stock_main_stock_holder(request: SymbolRequest):
     限量: 单次获取所有历史数据
     """
     try:
-        stock_main_stock_holder_df = ak.stock_main_stock_holder(stock=request.symbol)
-        stock_main_stock_holder_df = sanitize_data_pandas(stock_main_stock_holder_df)
-
+        stock_main_stock_holder = ak.stock_main_stock_holder(stock=request.symbol)
+        stock_main_stock_holder_df = sanitize_data_pandas(stock_main_stock_holder)
         return stock_main_stock_holder_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -153,7 +150,8 @@ async def post_stock_circulate_stock_holder(request: SymbolRequest):
     限量: 单次获取指定个股的流通股东数据
     """
     try:
-        stock_circulate_stock_holder_df = ak.stock_circulate_stock_holder(symbol=request.symbol)
+        stock_circulate_stock_holder = ak.stock_circulate_stock_holder(symbol=request.symbol)
+        stock_circulate_stock_holder_df = sanitize_data_pandas(stock_circulate_stock_holder)
         return stock_circulate_stock_holder_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -179,10 +177,8 @@ async def post_stock_gdfx_free_top_10_em(request: DongCaiSymbolDateRequest):
     限量: 单次返回指定个股和 date 的所有数据
     """
     try:
-        stock_gdfx_free_top_10_em_df = ak.stock_gdfx_free_top_10_em(symbol=request.symbol,
-                                                                    date=request.date)
-        stock_gdfx_free_top_10_em_df = sanitize_data_pandas(stock_gdfx_free_top_10_em_df)
-
+        stock_gdfx_free_top_10_em = ak.stock_gdfx_free_top_10_em(symbol=request.symbol, date=request.date)
+        stock_gdfx_free_top_10_em_df = sanitize_data_pandas(stock_gdfx_free_top_10_em)
         return stock_gdfx_free_top_10_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -203,9 +199,8 @@ async def post_stock_gdfx_top_10_em(request: DongCaiSymbolDateRequest):
     限量: 单次返回指定个股和 date 的所有数据
     """
     try:
-        stock_gdfx_top_10_em_df = ak.stock_gdfx_top_10_em(symbol=request.symbol, date=request.date)
-        stock_gdfx_top_10_em_df = sanitize_data_pandas(stock_gdfx_top_10_em_df)
-
+        stock_gdfx_top_10_em = ak.stock_gdfx_top_10_em(symbol=request.symbol, date=request.date)
+        stock_gdfx_top_10_em_df = sanitize_data_pandas(stock_gdfx_top_10_em)
         return stock_gdfx_top_10_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -230,9 +225,8 @@ async def post_stock_gdfx_free_holding_change_em(request: DongCaiDateRequest):
     限量: 单次返回指定时间的所有数据
     """
     try:
-        stock_gdfx_free_holding_change_em_df = ak.stock_gdfx_free_holding_change_em(date=request.date)
-        stock_gdfx_free_holding_change_em_df = sanitize_data_pandas(stock_gdfx_free_holding_change_em_df)
-
+        stock_gdfx_free_holding_change_em = ak.stock_gdfx_free_holding_change_em(date=request.date)
+        stock_gdfx_free_holding_change_em_df = sanitize_data_pandas(stock_gdfx_free_holding_change_em)
         return stock_gdfx_free_holding_change_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -253,9 +247,8 @@ async def post_stock_gdfx_holding_change_em(request: DongCaiDateRequest):
     限量: 单次返回指定时间的所有数据
     """
     try:
-        stock_gdfx_holding_change_em_df = ak.stock_gdfx_holding_change_em(date=request.date)
-        stock_gdfx_holding_change_em_df = sanitize_data_pandas(stock_gdfx_holding_change_em_df)
-
+        stock_gdfx_holding_change_em = ak.stock_gdfx_holding_change_em(date=request.date)
+        stock_gdfx_holding_change_em_df = sanitize_data_pandas(stock_gdfx_holding_change_em)
         return stock_gdfx_holding_change_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -276,9 +269,8 @@ async def post_stock_gdfx_free_holding_analyse_em(request: DongCaiDateRequest):
     限量: 单次获取返回所有数据
     """
     try:
-        stock_gdfx_free_holding_analyse_em_df = ak.stock_gdfx_free_holding_analyse_em(date=request.date)
-        stock_gdfx_free_holding_analyse_em_df = sanitize_data_pandas(stock_gdfx_free_holding_analyse_em_df)
-
+        stock_gdfx_free_holding_analyse_em = ak.stock_gdfx_free_holding_analyse_em(date=request.date)
+        stock_gdfx_free_holding_analyse_em_df = sanitize_data_pandas(stock_gdfx_free_holding_analyse_em)
         return stock_gdfx_free_holding_analyse_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -299,9 +291,8 @@ async def post_stock_gdfx_holding_analyse_em(request: DongCaiDateRequest):
     限量: 单次获取返回所有数据
     """
     try:
-        stock_gdfx_holding_analyse_em_df = ak.stock_gdfx_holding_analyse_em(date=request.date)
-        stock_gdfx_holding_analyse_em_df = sanitize_data_pandas(stock_gdfx_holding_analyse_em_df)
-
+        stock_gdfx_holding_analyse_em = ak.stock_gdfx_holding_analyse_em(date=request.date)
+        stock_gdfx_holding_analyse_em_df = sanitize_data_pandas(stock_gdfx_holding_analyse_em)
         return stock_gdfx_holding_analyse_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -322,9 +313,8 @@ async def post_stock_gdfx_free_holding_detail_em(request: DongCaiDateRequest):
     限量: 单次返回指定时间的所有数据
     """
     try:
-        stock_gdfx_free_holding_detail_em_df = ak.stock_gdfx_free_holding_detail_em(date=request.date)
-        stock_gdfx_free_holding_detail_em_df = sanitize_data_pandas(stock_gdfx_free_holding_detail_em_df)
-
+        stock_gdfx_free_holding_detail_em = ak.stock_gdfx_free_holding_detail_em(date=request.date)
+        stock_gdfx_free_holding_detail_em_df = sanitize_data_pandas(stock_gdfx_free_holding_detail_em)
         return stock_gdfx_free_holding_detail_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -351,11 +341,8 @@ async def post_stock_gdfx_holding_detail_em(request: DongCaiHoldingDetailRequest
     限量: 单次返回指定参数的所有数据
     """
     try:
-        stock_gdfx_holding_detail_em_df = ak.stock_gdfx_holding_detail_em(date=request.date,
-                                                                          indicator=request.indicator,
-                                                                          symbol=request.symbol)
-        stock_gdfx_holding_detail_em_df = sanitize_data_pandas(stock_gdfx_holding_detail_em_df)
-
+        stock_gdfx_holding_detail_em = ak.stock_gdfx_holding_detail_em(date=request.date, indicator=request.indicator, symbol=request.symbol)
+        stock_gdfx_holding_detail_em_df = sanitize_data_pandas(stock_gdfx_holding_detail_em)
         return stock_gdfx_holding_detail_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -376,9 +363,8 @@ async def post_stock_gdfx_free_holding_statistics_em(request: DongCaiDateRequest
     限量: 单次返回指定时间的所有数据
     """
     try:
-        stock_gdfx_free_holding_statistics_em_df = ak.stock_gdfx_free_holding_statistics_em(date=request.date)
-        stock_gdfx_free_holding_statistics_em_df = sanitize_data_pandas(stock_gdfx_free_holding_statistics_em_df)
-
+        stock_gdfx_free_holding_statistics_em = ak.stock_gdfx_free_holding_statistics_em(date=request.date)
+        stock_gdfx_free_holding_statistics_em_df = sanitize_data_pandas(stock_gdfx_free_holding_statistics_em)
         return stock_gdfx_free_holding_statistics_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -399,9 +385,8 @@ async def post_stock_gdfx_holding_statistics_em(request: DongCaiDateRequest):
     限量: 单次返回指定时间的所有数据
     """
     try:
-        stock_gdfx_holding_statistics_em_df = ak.stock_gdfx_holding_statistics_em(date=request.date)
-        stock_gdfx_holding_statistics_em_df = sanitize_data_pandas(stock_gdfx_holding_statistics_em_df)
-
+        stock_gdfx_holding_statistics_em = ak.stock_gdfx_holding_statistics_em(date=request.date)
+        stock_gdfx_holding_statistics_em_df = sanitize_data_pandas(stock_gdfx_holding_statistics_em)
         return stock_gdfx_holding_statistics_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -427,9 +412,8 @@ async def post_stock_gdfx_free_holding_teamwork_em(request: DongCaiGuDongSymbolR
     限量: 单次返回所有数据
     """
     try:
-        stock_gdfx_free_holding_teamwork_em_df = ak.stock_gdfx_free_holding_teamwork_em(symbol=request.symbol)
-        stock_gdfx_free_holding_teamwork_em_df = sanitize_data_pandas(stock_gdfx_free_holding_teamwork_em_df)
-
+        stock_gdfx_free_holding_teamwork_em = ak.stock_gdfx_free_holding_teamwork_em(symbol=request.symbol)
+        stock_gdfx_free_holding_teamwork_em_df = sanitize_data_pandas(stock_gdfx_free_holding_teamwork_em)
         return stock_gdfx_free_holding_teamwork_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -450,9 +434,8 @@ async def post_stock_gdfx_holding_teamwork_em(request: DongCaiGuDongSymbolReques
     限量: 单次返回所有数据
     """
     try:
-        stock_gdfx_holding_teamwork_em_df = ak.stock_gdfx_holding_teamwork_em(symbol=request.symbol)
-        stock_gdfx_holding_teamwork_em_df = sanitize_data_pandas(stock_gdfx_holding_teamwork_em_df)
-
+        stock_gdfx_holding_teamwork_em = ak.stock_gdfx_holding_teamwork_em(symbol=request.symbol)
+        stock_gdfx_holding_teamwork_em_df = sanitize_data_pandas(stock_gdfx_holding_teamwork_em)
         return stock_gdfx_holding_teamwork_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -478,9 +461,8 @@ async def post_stock_zh_a_gdhs(request: DongCaiGuDongDateRequest):
     限量: 单次获取返回所有数据
     """
     try:
-        stock_zh_a_gdhs_df = ak.stock_zh_a_gdhs(symbol=request.date)
-        stock_zh_a_gdhs_df = sanitize_data_pandas(stock_zh_a_gdhs_df)
-
+        stock_zh_a_gdhs = ak.stock_zh_a_gdhs(symbol=request.date)
+        stock_zh_a_gdhs_df = sanitize_data_pandas(stock_zh_a_gdhs)
         return stock_zh_a_gdhs_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -501,9 +483,8 @@ async def post_stock_zh_a_gdhs_detail_em(request: SymbolRequest):
     限量: 单次获取指定个股的所有数据
     """
     try:
-        stock_zh_a_gdhs_detail_em_df = ak.stock_zh_a_gdhs_detail_em(symbol=request.symbol)
-        stock_zh_a_gdhs_detail_em_df = sanitize_data_pandas(stock_zh_a_gdhs_detail_em_df)
-
+        stock_zh_a_gdhs_detail_em = ak.stock_zh_a_gdhs_detail_em(symbol=request.symbol)
+        stock_zh_a_gdhs_detail_em_df = sanitize_data_pandas(stock_zh_a_gdhs_detail_em)
         return stock_zh_a_gdhs_detail_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

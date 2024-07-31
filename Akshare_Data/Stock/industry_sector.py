@@ -2,6 +2,8 @@ import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
+from Akshare_Data.utility_function import sanitize_data_pandas
+
 router = APIRouter()
 
 
@@ -19,7 +21,8 @@ def get_stock_board_industry_name_em():
     限量: 单次返回当前时刻所有行业板块数据
     """
     try:
-        stock_board_industry_name_em_df = ak.stock_board_industry_name_em()
+        stock_board_industry_name_em = ak.stock_board_industry_name_em()
+        stock_board_industry_name_em_df = sanitize_data_pandas(stock_board_industry_name_em)
         return stock_board_industry_name_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -39,7 +42,8 @@ def get_stock_board_industry_summary_ths():
     限量: 单次返回当前时刻同花顺行业一览表
     """
     try:
-        stock_board_industry_summary_ths_df = ak.stock_board_industry_summary_ths()
+        stock_board_industry_summary_ths = ak.stock_board_industry_summary_ths()
+        stock_board_industry_summary_ths_df = sanitize_data_pandas(stock_board_industry_summary_ths)
         return stock_board_industry_summary_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -67,11 +71,12 @@ async def post_stock_board_industry_index_ths(request: IndustryIndexRequest):
     限量: 单次返回所有日频指数数据
     """
     try:
-        stock_board_industry_index_ths_df = ak.stock_board_industry_index_ths(
+        stock_board_industry_index_ths = ak.stock_board_industry_index_ths(
             symbol=request.symbol,
             start_date=request.start_date,
             end_date=request.end_date
         )
+        stock_board_industry_index_ths_df = sanitize_data_pandas(stock_board_industry_index_ths)
         return stock_board_industry_index_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -97,7 +102,8 @@ async def post_stock_board_industry_cons_em(request: SymbolRequest):
     限量: 单次返回指定概念板块的所有成份股
     """
     try:
-        stock_board_industry_cons_em_df = ak.stock_board_industry_cons_em(symbol=request.symbol)
+        stock_board_industry_cons_em = ak.stock_board_industry_cons_em(symbol=request.symbol)
+        stock_board_industry_cons_em_df = sanitize_data_pandas(stock_board_industry_cons_em)
         return stock_board_industry_cons_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -128,13 +134,14 @@ async def post_stock_board_industry_hist_em(request: IndustryHistRequest):
     限量: 单次返回指定个股和指定复权类型的所有历史数据
     """
     try:
-        stock_board_industry_hist_em_df = ak.stock_board_industry_hist_em(
+        stock_board_industry_hist_em = ak.stock_board_industry_hist_em(
             symbol=request.symbol,
             start_date=request.start_date,
             end_date=request.end_date,
             period=request.period,
             adjust=request.adjust
         )
+        stock_board_industry_hist_em_df = sanitize_data_pandas(stock_board_industry_hist_em)
         return stock_board_industry_hist_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -162,10 +169,11 @@ async def post_stock_board_industry_hist_min_em(request: IndustryHistMinRequest)
     限量: 单次返回指定个股和 period 的所有历史数据
     """
     try:
-        stock_board_industry_hist_min_em_df = ak.stock_board_industry_hist_min_em(
+        stock_board_industry_hist_min_em = ak.stock_board_industry_hist_min_em(
             symbol=request.symbol,
             period=request.period
         )
+        stock_board_industry_hist_min_em_df = sanitize_data_pandas(stock_board_industry_hist_min_em)
         return stock_board_industry_hist_min_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

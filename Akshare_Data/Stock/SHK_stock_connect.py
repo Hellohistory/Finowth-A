@@ -23,7 +23,8 @@ def get_stock_hsgt_fund_flow_summary_em():
     限量: 单次获取沪深港通资金流向数据
     """
     try:
-        stock_hsgt_fund_flow_summary_em_df = ak.stock_hsgt_fund_flow_summary_em()
+        stock_hsgt_fund_flow_summary_em = ak.stock_hsgt_fund_flow_summary_em()
+        stock_hsgt_fund_flow_summary_em_df = sanitize_data_pandas(stock_hsgt_fund_flow_summary_em)
         return stock_hsgt_fund_flow_summary_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -45,7 +46,8 @@ def get_stock_sgt_settlement_exchange_rate_szse():
     限量: 单次获取所有深港通结算汇率数据
     """
     try:
-        stock_sgt_settlement_exchange_rate_szse_df = ak.stock_sgt_settlement_exchange_rate_szse()
+        stock_sgt_settlement_exchange_rate_szse = ak.stock_sgt_settlement_exchange_rate_szse()
+        stock_sgt_settlement_exchange_rate_szse_df = sanitize_data_pandas(stock_sgt_settlement_exchange_rate_szse)
         return stock_sgt_settlement_exchange_rate_szse_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -67,7 +69,8 @@ def get_stock_sgt_settlement_exchange_rate_sse():
     限量: 单次获取所有沪港通结算汇率数据
     """
     try:
-        stock_sgt_settlement_exchange_rate_sse_df = ak.stock_sgt_settlement_exchange_rate_sse()
+        stock_sgt_settlement_exchange_rate_sse = ak.stock_sgt_settlement_exchange_rate_sse()
+        stock_sgt_settlement_exchange_rate_sse_df = sanitize_data_pandas(stock_sgt_settlement_exchange_rate_sse)
         return stock_sgt_settlement_exchange_rate_sse_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -89,7 +92,8 @@ def get_stock_sgt_reference_exchange_rate_szse():
     限量: 单次获取所有深港通参考汇率数据
     """
     try:
-        stock_sgt_reference_exchange_rate_szse_df = ak.stock_sgt_reference_exchange_rate_szse()
+        stock_sgt_reference_exchange_rate_szse = ak.stock_sgt_reference_exchange_rate_szse()
+        stock_sgt_reference_exchange_rate_szse_df = sanitize_data_pandas(stock_sgt_reference_exchange_rate_szse)
         return stock_sgt_reference_exchange_rate_szse_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -111,7 +115,8 @@ def get_stock_sgt_reference_exchange_rate_sse():
     限量: 单次获取所有沪港通参考汇率数据
     """
     try:
-        stock_sgt_reference_exchange_rate_sse_df = ak.stock_sgt_reference_exchange_rate_sse()
+        stock_sgt_reference_exchange_rate_sse = ak.stock_sgt_reference_exchange_rate_sse()
+        stock_sgt_reference_exchange_rate_sse_df = sanitize_data_pandas(stock_sgt_reference_exchange_rate_sse)
         return stock_sgt_reference_exchange_rate_sse_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -133,7 +138,8 @@ def get_stock_hk_ggt_components_em():
     限量: 单次获取所有港股通成份股数据
     """
     try:
-        stock_hk_ggt_components_em_df = ak.stock_hk_ggt_components_em()
+        stock_hk_ggt_components_em = ak.stock_hk_ggt_components_em()
+        stock_hk_ggt_components_em_df = sanitize_data_pandas(stock_hk_ggt_components_em)
         return stock_hk_ggt_components_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -159,7 +165,8 @@ async def post_stock_hsgt_fund_min_em(request: DongCaiSHKSymbolRequest):
     限量: 单次返回指定个股的所有数据
     """
     try:
-        stock_hsgt_fund_min_em_df = ak.stock_hsgt_fund_min_em(symbol=request.symbol)
+        stock_hsgt_fund_min_em = ak.stock_hsgt_fund_min_em(symbol=request.symbol)
+        stock_hsgt_fund_min_em_df = sanitize_data_pandas(stock_hsgt_fund_min_em)
         return stock_hsgt_fund_min_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -188,16 +195,16 @@ async def post_stock_hsgt_board_rank_em(data: DongCaiSHKSymolIndicatorRequest):
     限量: 单次获取指定个股和指定时间段的所有数据
     """
     try:
-        df = ak.stock_hsgt_board_rank_em(symbol=data.symbol, indicator=data.indicator)
-        df.columns = [
+        stock_hsgt_board_rank_em = ak.stock_hsgt_board_rank_em(symbol=data.symbol, indicator=data.indicator)
+        stock_hsgt_board_rank_em.columns = [
             "序号", "名称", "最新涨跌幅", "北向资金今日持股-股票只数", "北向资金今日持股-市值",
             "北向资金今日持股-占板块比", "北向资金今日持股-占北向资金比", "北向资金今日增持估计-股票只数",
             "北向资金今日增持估计-市值", "北向资金今日增持估计-市值增幅", "北向资金今日增持估计-占板块比",
             "北向资金今日增持估计-占北向资金比", "今日增持最大股-市值", "今日增持最大股-占股本比",
             "今日减持最大股-占股本比", "今日减持最大股-市值", "报告时间"
         ]
-        result = df.to_dict(orient="records")
-        return result
+        stock_hsgt_board_rank_em_df = sanitize_data_pandas(stock_hsgt_board_rank_em)
+        return stock_hsgt_board_rank_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -224,7 +231,8 @@ def post_stock_hsgt_hold_stock_em(data: DongCaiSHKMarketRequest):
     限量: 单次获取指定市场和指定时间段的所有数据
     """
     try:
-        stock_em_hsgt_hold_stock_df = ak.stock_hsgt_hold_stock_em(market=data.market, indicator=data.indicator)
+        stock_em_hsgt_hold_stock = ak.stock_hsgt_hold_stock_em(market=data.market, indicator=data.indicator)
+        stock_em_hsgt_hold_stock_df = sanitize_data_pandas(stock_em_hsgt_hold_stock)
         return stock_em_hsgt_hold_stock_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -252,9 +260,10 @@ async def post_stock_hsgt_stock_statistics_em(request: DongCaiSymbolDateRangeReq
     限量: 单次获取指定市场的起始时间和终止时间之间的所有数据, 该接口只能获取近期的数据
     """
     try:
-        stock_hsgt_stock_statistics_em_df = ak.stock_hsgt_stock_statistics_em(symbol=request.symbol,
+        stock_hsgt_stock_statistics_em = ak.stock_hsgt_stock_statistics_em(symbol=request.symbol,
                                                                               start_date=request.start_date,
                                                                               end_date=request.end_date)
+        stock_hsgt_stock_statistics_em_df = sanitize_data_pandas(stock_hsgt_stock_statistics_em)
         return stock_hsgt_stock_statistics_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -282,9 +291,10 @@ async def post_stock_hsgt_institution_statistics_em(request: DongCaiMarketDateRa
     限量: 单次获取指定市场的所有数据, 该接口只能获取近期的数据
     """
     try:
-        stock_hsgt_institution_statistics_em_df = ak.stock_hsgt_institution_statistics_em(market=request.market,
+        stock_hsgt_institution_statistics_em = ak.stock_hsgt_institution_statistics_em(market=request.market,
                                                                                           start_date=request.start_date,
                                                                                           end_date=request.end_date)
+        stock_hsgt_institution_statistics_em_df = sanitize_data_pandas(stock_hsgt_institution_statistics_em)
         return stock_hsgt_institution_statistics_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -312,8 +322,8 @@ async def post_stock_hsgt_hist_em(request: DongCaiSHKHistorySymbolRequest):
     """
     try:
 
-        stock_hsgt_hist_em_df = ak.stock_hsgt_hist_em(symbol=request.symbol)
-        stock_hsgt_hist_em_df = sanitize_data_pandas(stock_hsgt_hist_em_df)
+        stock_hsgt_hist_em = ak.stock_hsgt_hist_em(symbol=request.symbol)
+        stock_hsgt_hist_em_df = sanitize_data_pandas(stock_hsgt_hist_em)
         return stock_hsgt_hist_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -339,7 +349,8 @@ async def post_stock_hsgt_individual_em(request: OnlyStockRequest):
     限量: 单次获取指定个股的近期数据
     """
     try:
-        stock_hsgt_individual_em_df = ak.stock_hsgt_individual_em(stock=request.stock)
+        stock_hsgt_individual_em = ak.stock_hsgt_individual_em(stock=request.stock)
+        stock_hsgt_individual_em_df = sanitize_data_pandas(stock_hsgt_individual_em)
         return stock_hsgt_individual_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -367,9 +378,10 @@ async def post_stock_hsgt_individual_detail_em(request: DongCaiStockRequest):
     限量: 单次获取指定个股的在起始时间和终止时间之间的所有数据; 注意只能返回 90 个交易日内的数据
     """
     try:
-        stock_hsgt_individual_detail_em_df = ak.stock_hsgt_individual_detail_em(symbol=request.stock,
+        stock_hsgt_individual_detail_em = ak.stock_hsgt_individual_detail_em(symbol=request.stock,
                                                                                 start_date=request.start_date,
                                                                                 end_date=request.end_date)
+        stock_hsgt_individual_detail_em_df = sanitize_data_pandas(stock_hsgt_individual_detail_em)
         return stock_hsgt_individual_detail_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

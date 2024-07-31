@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -22,11 +22,9 @@ def get_stock_us_spot_em():
     限量: 单次返回美股所有上市公司的实时行情数据
     """
     try:
-        stock_us_spot_em_df = ak.stock_us_spot_em()
-        data = stock_us_spot_em_df.to_dict(orient="records")
-        sanitized_data = sanitize_data(data)
-
-        return sanitized_data
+        stock_us_spot_em = ak.stock_us_spot_em()
+        stock_us_spot_em_df = sanitize_data_pandas(stock_us_spot_em)
+        return stock_us_spot_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -46,7 +44,7 @@ def get_stock_us_spot():
     限量: 单次返回美股所有上市公司的实时行情数据，需要注意该端口数据量较大，获取时间较长，需要耐心等待
     """
     try:
-        us_stock_current_df = ak.stock_us_spot()
+        us_stock_current = ak.stock_us_spot()
         columns_mapping = {
             "name": "公司名称",
             "cname": "中文名称",
@@ -66,9 +64,10 @@ def get_stock_us_spot():
             "market": "市场",
             "category_id": "行业类别ID"
         }
-        us_stock_current_df.rename(columns=columns_mapping, inplace=True)
+        us_stock_current.rename(columns=columns_mapping, inplace=True)
 
-        return us_stock_current_df.to_dict(orient="records")
+        stock_hk_hot_rank_latest_em_df = sanitize_data_pandas(us_stock_current)
+        return stock_hk_hot_rank_latest_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -99,13 +98,14 @@ async def post_stock_us_hist(request: UStockDayHistoryRequest):
     限量: 单次返回指定上市公司的指定复权类型的所有历史行情数据
     """
     try:
-        stock_us_hist_df = ak.stock_us_hist(
+        stock_us_hist = ak.stock_us_hist(
             symbol=request.symbol,
             period=request.period,
             start_date=request.start_date,
             end_date=request.end_date,
             adjust=request.adjust
         )
+        stock_us_hist_df = sanitize_data_pandas(stock_us_hist)
         return stock_us_hist_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -135,7 +135,8 @@ async def post_stock_us_hist_min_em(request: DongCaiUDayMinRequest):
     限量: 单次返回指定上市公司最近 5 个交易日分钟数据, 注意美股数据更新有延时
     """
     try:
-        stock_us_hist_min_em_df = ak.stock_us_hist_min_em(symbol=request.symbol)
+        stock_us_hist_min_em = ak.stock_us_hist_min_em(symbol=request.symbol)
+        stock_us_hist_min_em_df = sanitize_data_pandas(stock_us_hist_min_em)
         return stock_us_hist_min_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -165,9 +166,9 @@ async def post_stock_us_daily(request: XinLangUStockHistoryRequest):
     限量: 单次返回指定上市公司的指定复权类型后的所有历史行情数据
     """
     try:
-        stock_us_daily_df = ak.stock_us_daily(symbol=request.symbol, adjust=request.adjust)
+        stock_us_daily = ak.stock_us_daily(symbol=request.symbol, adjust=request.adjust)
 
-        stock_us_daily_df.rename(columns={
+        stock_us_daily.rename(columns={
             "date": "时间",
             "open": "开盘价",
             "high": "最高价",
@@ -178,6 +179,7 @@ async def post_stock_us_daily(request: XinLangUStockHistoryRequest):
             "adjust": "调整因子"
         }, inplace=True)
 
+        stock_us_daily_df = sanitize_data_pandas(stock_us_daily)
         return stock_us_daily_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -198,11 +200,9 @@ def get_stock_us_pink_spot_em():
     限量: 单次返回指定所有粉单市场的行情数据
     """
     try:
-        stock_us_pink_spot_em_df = ak.stock_us_pink_spot_em()
-        data = stock_us_pink_spot_em_df.to_dict(orient="records")
-        sanitized_data = sanitize_data(data)
-
-        return sanitized_data
+        stock_us_pink_spot_em = ak.stock_us_pink_spot_em()
+        stock_us_pink_spot_em_df = sanitize_data_pandas(stock_us_pink_spot_em)
+        return stock_us_pink_spot_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -227,9 +227,9 @@ async def post_stock_us_famous_spot_em(request: USFamouSpot):
     限量: 单次返回指定个股的行情数据
     """
     try:
-        stock_us_famous_spot_em_df = ak.stock_us_famous_spot_em(symbol=request.symbol)
+        stock_us_famous_spot_em = ak.stock_us_famous_spot_em(symbol=request.symbol)
 
-        stock_us_famous_spot_em_df = sanitize_data_pandas(stock_us_famous_spot_em_df)
+        stock_us_famous_spot_em_df = sanitize_data_pandas(stock_us_famous_spot_em)
 
         return stock_us_famous_spot_em_df.to_dict(orient="records")
 
@@ -253,9 +253,7 @@ def get_stock_hk_famous_spot_em():
     """
     try:
         stock_hk_famous_spot_em = ak.stock_hk_famous_spot_em()
-        data = stock_hk_famous_spot_em.to_dict(orient="records")
-        sanitized_data = sanitize_data(data)
-
-        return sanitized_data
+        stock_hk_famous_spot_em_df = sanitize_data_pandas(stock_hk_famous_spot_em)
+        return stock_hk_famous_spot_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

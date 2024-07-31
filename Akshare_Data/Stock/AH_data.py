@@ -2,6 +2,8 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
+from Akshare_Data.utility_function import sanitize_data_pandas
+
 router = APIRouter()
 
 
@@ -20,7 +22,8 @@ def get_stock_zh_ah_spot():
     限量: 单次返回所有 A+H 上市公司的实时行情数据
     """
     try:
-        stock_zh_ah_spot_df = ak.stock_zh_ah_spot()
+        stock_zh_ah_spot = ak.stock_zh_ah_spot()
+        stock_zh_ah_spot_df = sanitize_data_pandas(stock_zh_ah_spot)
         return stock_zh_ah_spot_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -48,12 +51,13 @@ async def post_stock_zh_ah_daily(request: StockAHDailyRequest):
     限量: 单次返回指定参数的 A+H 上市公司的历史行情数据
     """
     try:
-        stock_zh_ah_daily_df = ak.stock_zh_ah_daily(
+        stock_zh_ah_daily = ak.stock_zh_ah_daily(
             symbol=request.symbol,
             start_year=request.start_year,
             end_year=request.end_year,
             adjust=request.adjust
         )
+        stock_zh_ah_daily_df = sanitize_data_pandas(stock_zh_ah_daily)
         return stock_zh_ah_daily_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -74,7 +78,8 @@ def get_stock_zh_ah_name():
     限量: 单次返回所有 A+H 上市公司的代码和名称
     """
     try:
-        stock_zh_ah_name_df = ak.stock_zh_ah_name()
+        stock_zh_ah_name = ak.stock_zh_ah_name()
+        stock_zh_ah_name_df = sanitize_data_pandas(stock_zh_ah_name)
         return stock_zh_ah_name_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

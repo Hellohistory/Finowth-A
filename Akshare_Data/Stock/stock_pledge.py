@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -22,7 +22,8 @@ def get_stock_gpzy_profile_em():
     限量: 单次所有历史数据, 由于数据量比较大需要等待一定时间
     """
     try:
-        stock_gpzy_profile_em_df = ak.stock_gpzy_profile_em()
+        stock_gpzy_profile_em = ak.stock_gpzy_profile_em()
+        stock_gpzy_profile_em_df = sanitize_data_pandas(stock_gpzy_profile_em)
         return stock_gpzy_profile_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -47,8 +48,8 @@ async def post_stock_gpzy_pledge_ratio_em(request: DongcaiCDateRequest):
     限量: 单次返回指定交易日的所有历史数据; 其中的交易日需要根据网站提供的为准; 请访问 http://data.eastmoney.com/gpzy/pledgeRatio.aspx 查询具体交易日
     """
     try:
-        stock_gpzy_pledge_ratio_em_df = ak.stock_gpzy_pledge_ratio_em(date=request.date)
-        stock_gpzy_pledge_ratio_em_df = sanitize_data_pandas(stock_gpzy_pledge_ratio_em_df)
+        stock_gpzy_pledge_ratio_em = ak.stock_gpzy_pledge_ratio_em(date=request.date)
+        stock_gpzy_pledge_ratio_em_df = sanitize_data_pandas(stock_gpzy_pledge_ratio_em)
         return stock_gpzy_pledge_ratio_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -68,10 +69,9 @@ def get_stock_gpzy_pledge_ratio_detail_em():
     限量: 单次所有历史数据, 由于数据量比较大需要等待一定时间，一定时间未返回内容属正常现象，请稍作等待
     """
     try:
-        stock_gpzy_pledge_ratio_detail_em_df = ak.stock_gpzy_pledge_ratio_detail_em()
-        sanitized_data = stock_gpzy_pledge_ratio_detail_em_df.applymap(sanitize_data)
-
-        return sanitized_data.to_dict(orient="records")
+        stock_gpzy_pledge_ratio_detail_em = ak.stock_gpzy_pledge_ratio_detail_em()
+        stock_gpzy_pledge_ratio_detail_em_df = sanitize_data_pandas(stock_gpzy_pledge_ratio_detail_em)
+        return stock_gpzy_pledge_ratio_detail_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -92,7 +92,10 @@ def get_stock_gpzy_distribute_statistics_company_em():
     限量: 单次返回当前时点所有历史数据
     """
     try:
-        stock_gpzy_distribute_statistics_company_em_df = ak.stock_gpzy_distribute_statistics_company_em()
+        stock_gpzy_distribute_statistics_company_em = ak.stock_gpzy_distribute_statistics_company_em()
+        stock_gpzy_distribute_statistics_company_em_df = sanitize_data_pandas(
+            stock_gpzy_distribute_statistics_company_em
+        )
         return stock_gpzy_distribute_statistics_company_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -114,7 +117,8 @@ def get_stock_gpzy_distribute_statistics_bank_em():
     限量: 单次返回当前时点所有历史数据
     """
     try:
-        stock_gpzy_distribute_statistics_bank_em_df = ak.stock_gpzy_distribute_statistics_bank_em()
+        stock_gpzy_distribute_statistics_bank_em = ak.stock_gpzy_distribute_statistics_bank_em()
+        stock_gpzy_distribute_statistics_bank_em_df = sanitize_data_pandas(stock_gpzy_distribute_statistics_bank_em)
         return stock_gpzy_distribute_statistics_bank_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -135,7 +139,8 @@ def get_stock_gpzy_industry_data_em():
     限量: 单次返回所有历史数据
     """
     try:
-        stock_gpzy_industry_data_em_df = ak.stock_gpzy_industry_data_em()
+        stock_gpzy_industry_data_em = ak.stock_gpzy_industry_data_em()
+        stock_gpzy_industry_data_em_df = sanitize_data_pandas(stock_gpzy_industry_data_em)
         return stock_gpzy_industry_data_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

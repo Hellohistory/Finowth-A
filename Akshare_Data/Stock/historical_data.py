@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data_pandas, sanitize_data
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -32,13 +32,14 @@ async def post_stock_zh_a_hist(request: StockHistoryRequest):
     限量: 单次返回指定沪深京 A 股上市公司、指定周期和指定日期间的历史行情日频率数据
     """
     try:
-        stock_zh_a_hist_df = ak.stock_zh_a_hist(
+        stock_zh_a_hist = ak.stock_zh_a_hist(
             symbol=request.symbol,
             period=request.period,
             start_date=request.start_date,
             end_date=request.end_date,
             adjust=request.adjust
         )
+        stock_zh_a_hist_df = sanitize_data_pandas(stock_zh_a_hist)
         return stock_zh_a_hist_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -73,13 +74,13 @@ async def post_stock_zh_a_daily(request: XinLangStockHistoryRequest):
     限量: 单次返回指定沪深京 A 股上市公司指定日期间的历史行情日频率数据, 多次获取容易封禁 IP
     """
     try:
-        stock_zh_a_daily_df = ak.stock_zh_a_daily(
+        stock_zh_a_daily = ak.stock_zh_a_daily(
             symbol=request.symbol,
             start_date=request.start_date,
             end_date=request.end_date,
             adjust=request.adjust
         )
-        stock_zh_a_daily_df.rename(columns={
+        stock_zh_a_daily.rename(columns={
             "date": "交易日",
             "symbol": "日期",
             "open": "开盘价",
@@ -91,6 +92,7 @@ async def post_stock_zh_a_daily(request: XinLangStockHistoryRequest):
             "outstanding_share": "流通股本",
             "turnover": "换手率"
         }, inplace=True)
+        stock_zh_a_daily_df = sanitize_data_pandas(stock_zh_a_daily)
         return stock_zh_a_daily_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -120,7 +122,7 @@ async def post_stock_zh_a_hist_tx(request: TXStockHistoryRequest):
     限量: 单次返回指定沪深京 A 股上市公司、指定周期和指定日期间的历史行情日频率数据
     """
     try:
-        stock_zh_a_hist_tx_df = ak.stock_zh_a_hist_tx(
+        stock_zh_a_hist_tx = ak.stock_zh_a_hist_tx(
             symbol=request.symbol,
             start_date=request.start_date,
             end_date=request.end_date,
@@ -128,7 +130,7 @@ async def post_stock_zh_a_hist_tx(request: TXStockHistoryRequest):
         )
 
         # 重命名列名称
-        stock_zh_a_hist_tx_df.rename(columns={
+        stock_zh_a_hist_tx.rename(columns={
             'date': '交易日',
             'open': '开盘价',
             'close': '收盘价',
@@ -137,6 +139,7 @@ async def post_stock_zh_a_hist_tx(request: TXStockHistoryRequest):
             'amount': '交易量'
         }, inplace=True)
 
+        stock_zh_a_hist_tx_df = sanitize_data_pandas(stock_zh_a_hist_tx)
         return stock_zh_a_hist_tx_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -163,13 +166,13 @@ async def post_stock_zh_a_cdr_daily(request: KCBCDRDayRequest):
     限量: 单次返回指定 CDR 的日频率数据, 分钟历史行情数据可以通过 stock_zh_a_minute 获取
     """
     try:
-        stock_zh_a_cdr_daily_df = ak.stock_zh_a_cdr_daily(
+        stock_zh_a_cdr_daily = ak.stock_zh_a_cdr_daily(
             symbol=request.symbol,
             start_date=request.start_date,
             end_date=request.end_date
         )
 
-        stock_zh_a_cdr_daily_df.rename(columns={
+        stock_zh_a_cdr_daily.rename(columns={
             "date": "日期",
             "prevclose": "前收盘价",
             "open": "开盘价",
@@ -182,8 +185,7 @@ async def post_stock_zh_a_cdr_daily(request: KCBCDRDayRequest):
             "postAmt": "盘后成交金额"
         }, inplace=True)
 
-        stock_zh_a_cdr_daily_df = sanitize_data_pandas(stock_zh_a_cdr_daily_df)
-
+        stock_zh_a_cdr_daily_df = sanitize_data_pandas(stock_zh_a_cdr_daily)
         return stock_zh_a_cdr_daily_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -204,11 +206,9 @@ def get_stock_zh_b_spot_em():
     限量: 单次返回所有 B 股上市公司的实时行情数据
     """
     try:
-        stock_zh_b_spot_em_df = ak.stock_zh_b_spot_em()
-        data = stock_zh_b_spot_em_df.to_dict(orient="records")
-        sanitized_data = sanitize_data(data)
-
-        return sanitized_data
+        stock_zh_b_spot_em = ak.stock_zh_b_spot_em()
+        stock_zh_b_spot_em_df = sanitize_data_pandas(stock_zh_b_spot_em)
+        return stock_zh_b_spot_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -228,13 +228,13 @@ def get_stock_zh_b_spot():
     限量: 单次返回所有 B 股上市公司的实时行情数据
     """
     try:
-        stock_zh_b_spot_df = ak.stock_zh_b_spot()
+        stock_zh_b_spot = ak.stock_zh_b_spot()
+        stock_zh_b_spot_df = sanitize_data_pandas(stock_zh_b_spot)
         return stock_zh_b_spot_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# 字段名称映射
 field_mapping = {
     "symbol": "新浪代码",
     "code": "股票代码",
@@ -263,10 +263,9 @@ def get_stock_zh_a_new():
     限量: 单次返回所有次新股行情数据, 由于次新股名单随着交易日变化而变化，只能获取最近交易日的数据
     """
     try:
-        stock_zh_a_new_df = ak.stock_zh_a_new()
+        stock_zh_a_new = ak.stock_zh_a_new()
 
-        stock_zh_a_new_df.rename(columns=field_mapping, inplace=True)
-
+        stock_zh_a_new_df = sanitize_data_pandas(stock_zh_a_new)
         return stock_zh_a_new_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

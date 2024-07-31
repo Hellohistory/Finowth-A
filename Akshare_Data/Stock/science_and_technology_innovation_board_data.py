@@ -2,6 +2,8 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
+from Akshare_Data.utility_function import sanitize_data_pandas
+
 router = APIRouter()
 
 
@@ -20,7 +22,8 @@ async def get_stock_zh_kcb_spot():
     限量: 单次返回所有科创板上市公司的实时行情数据; 请控制采集的频率, 大量抓取容易封IP
     """
     try:
-        stock_zh_kcb_spot_df = ak.stock_zh_kcb_spot()
+        stock_zh_kcb_spot = ak.stock_zh_kcb_spot()
+        stock_zh_kcb_spot_df = sanitize_data_pandas(stock_zh_kcb_spot)
         return stock_zh_kcb_spot_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -52,9 +55,9 @@ async def post_stock_zh_kcb_daily(request: StockDailyRequest):
     补充描述：API返回的“公告代码”一项可以用来获取公告详情: http://data.eastmoney.com/notices/detail/688595/{替换到此处}.html
     """
     try:
-        stock_zh_kcb_daily_df = ak.stock_zh_kcb_daily(symbol=request.symbol, adjust=request.adjust)
+        stock_zh_kcb_daily = ak.stock_zh_kcb_daily(symbol=request.symbol, adjust=request.adjust)
 
-        stock_zh_kcb_daily_df.rename(columns={
+        stock_zh_kcb_daily.rename(columns={
             "date": "日期",
             "open": "开盘价",
             "high": "最高价",
@@ -67,6 +70,7 @@ async def post_stock_zh_kcb_daily(request: StockDailyRequest):
             "turnover": "换手率"
         }, inplace=True)
 
+        stock_zh_kcb_daily_df = sanitize_data_pandas(stock_zh_kcb_daily)
         return stock_zh_kcb_daily_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -94,7 +98,11 @@ async def post_stock_zh_kcb_report_em(request: StockReportRequest):
     限量: 单次返回所有科创板上市公司的报告数据
     """
     try:
-        stock_zh_kcb_report_em_df = ak.stock_zh_kcb_report_em(from_page=request.from_page, to_page=request.to_page)
+        stock_zh_kcb_report_em = ak.stock_zh_kcb_report_em(
+            from_page=request.from_page,
+            to_page=request.to_page
+        )
+        stock_zh_kcb_report_em_df = sanitize_data_pandas(stock_zh_kcb_report_em)
         return stock_zh_kcb_report_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -4,7 +4,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -28,7 +28,8 @@ async def post_stock_gsrl_gsdt_em(request: DateRequest):
     限量: 单次返回指定交易日的数据
     """
     try:
-        stock_gsrl_gsdt_em_df = ak.stock_gsrl_gsdt_em(date=request.date)
+        stock_gsrl_gsdt_em = ak.stock_gsrl_gsdt_em(date=request.date)
+        stock_gsrl_gsdt_em_df = sanitize_data_pandas(stock_gsrl_gsdt_em)
         return stock_gsrl_gsdt_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -49,11 +50,9 @@ def get_stock_zh_a_st_em():
     限量: 单次返回当前交易日风险警示板的所有股票的行情数据
     """
     try:
-        stock_zh_a_st_em_df = ak.stock_zh_a_st_em()
-        data = stock_zh_a_st_em_df.to_dict(orient="records")
-        sanitized_data = sanitize_data(data)
-
-        return sanitized_data
+        stock_zh_a_st_em = ak.stock_zh_a_st_em()
+        stock_zh_a_st_em_df = sanitize_data_pandas(stock_zh_a_st_em)
+        return stock_zh_a_st_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -73,13 +72,11 @@ def get_stock_zh_a_new_em():
     限量: 单次返回当前交易日新股板块的所有股票的行情数据
     """
     try:
-        stock_zh_a_new_em_df = ak.stock_zh_a_new_em()
-        stock_zh_a_new_em_df = sanitize_data_pandas(stock_zh_a_new_em_df)
-
-        stock_zh_a_new_em_list = stock_zh_a_new_em_df.to_dict(orient="records")
+        stock_zh_a_new_em = ak.stock_zh_a_new_em()
+        stock_zh_a_new_em_df = sanitize_data_pandas(stock_zh_a_new_em)
 
         current_date = datetime.now().strftime("%Y-%m-%d")
-        for record in stock_zh_a_new_em_list:
+        for record in stock_zh_a_new_em_df:
             temp_record = record.copy()
             record.clear()
             record["序号"] = temp_record["序号"]
@@ -88,7 +85,7 @@ def get_stock_zh_a_new_em():
                 if key != "序号":
                     record[key] = value
 
-        return stock_zh_a_new_em_list
+        return stock_zh_a_new_em_df
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -136,13 +133,12 @@ def get_stock_zh_a_stop_em():
     限量: 单次返回当前交易日两网及退市的所有股票的行情数据
     """
     try:
-        stock_zh_a_stop_em_df = ak.stock_zh_a_stop_em()
-        data = stock_zh_a_stop_em_df.to_dict(orient="records")
-        sanitized_data = sanitize_data(data)
+        stock_zh_a_stop_em = ak.stock_zh_a_stop_em()
+        stock_zh_a_stop_em_df = sanitize_data_pandas(stock_zh_a_stop_em)
 
         current_date = datetime.now().strftime("%Y-%m-%d")
 
-        for record in sanitized_data:
+        for record in stock_zh_a_stop_em_df:
             temp_record = record.copy()
             record.clear()
             for key, value in temp_record.items():
@@ -150,6 +146,6 @@ def get_stock_zh_a_stop_em():
                 if key == "序号":
                     record["日期"] = current_date
 
-        return sanitized_data
+        return stock_zh_a_stop_em_df
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

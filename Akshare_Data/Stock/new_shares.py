@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -26,7 +26,8 @@ def post_stock_ipo_info(request: StockRequest):
     限量: 单次获取新股发行的基本信息数据
     """
     try:
-        stock_ipo_info_df = ak.stock_ipo_info(stock=request.stock)
+        stock_ipo_info = ak.stock_ipo_info(stock=request.stock)
+        stock_ipo_info_df = sanitize_data_pandas(stock_ipo_info)
         return stock_ipo_info_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -47,7 +48,8 @@ def get_stock_new_gh_cninfo():
     限量: 单次获取近一年所有新股过会的数据
     """
     try:
-        stock_new_gh_cninfo_df = ak.stock_new_gh_cninfo()
+        stock_new_gh_cninfo = ak.stock_new_gh_cninfo()
+        stock_new_gh_cninfo_df = sanitize_data_pandas(stock_new_gh_cninfo)
         return stock_new_gh_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -68,8 +70,9 @@ def get_stock_new_ipo_cninfo():
     限量: 单次获取近三年所有新股发行的数据
     """
     try:
-        stock_new_ipo_cninfo_df = ak.stock_new_ipo_cninfo()
-        return stock_new_ipo_cninfo_df.to_dict(orient="records")
+        stock_new_ipo_cninfo = ak.stock_new_ipo_cninfo()
+        stock_margin_ratio_pa_df = sanitize_data_pandas(stock_new_ipo_cninfo)
+        return stock_margin_ratio_pa_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -89,10 +92,9 @@ def get_stock_dxsyl_em():
     限量: 单次获取所有打新收益率数据
     """
     try:
-        stock_dxsyl_em_df = ak.stock_dxsyl_em()
-        data = stock_dxsyl_em_df.to_dict(orient="records")
-        sanitized_data = sanitize_data(data)
-        return sanitized_data
+        stock_dxsyl_em = ak.stock_dxsyl_em()
+        stock_dxsyl_em_df = sanitize_data_pandas(stock_dxsyl_em)
+        return stock_dxsyl_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -117,8 +119,9 @@ async def post_stock_xgsglb_em(request: DongCaiSymbolRequest):
     限量: 单次获取指定市场的新股申购与中签查询数据
     """
     try:
-        stock_xgsglb_em_df = ak.stock_xgsglb_em(symbol=request.symbol)
+        stock_xgsglb_em = ak.stock_xgsglb_em(symbol=request.symbol)
 
+        stock_xgsglb_em_df = sanitize_data_pandas(stock_xgsglb_em)
         return stock_xgsglb_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

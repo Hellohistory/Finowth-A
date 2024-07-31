@@ -2,6 +2,8 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
+from Akshare_Data.utility_function import sanitize_data_pandas
+
 router = APIRouter()
 
 
@@ -27,7 +29,8 @@ async def post_stock_hk_indicator_eniu(request: SymolIndicatorRequest):
     限量: 单次获取指定个股和指定时间段的所有历史数据
     """
     try:
-        stock_hk_indicator_eniu_df = ak.stock_hk_indicator_eniu(symbol=request.symbol, indicator=request.indicator)
+        stock_hk_indicator_eniu = ak.stock_hk_indicator_eniu(symbol=request.symbol, indicator=request.indicator)
+        stock_hk_indicator_eniu_df = sanitize_data_pandas(stock_hk_indicator_eniu)
         return stock_hk_indicator_eniu_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

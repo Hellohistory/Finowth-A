@@ -26,7 +26,8 @@ async def post_stock_restricted_release_queue_sina(request: SymbolRequest):
     限量: 单次获取指定个股的限售解禁数据
     """
     try:
-        stock_restricted_release_queue_sina_df = ak.stock_restricted_release_queue_sina(symbol=request.symbol)
+        stock_restricted_release_queue_sina = ak.stock_restricted_release_queue_sina(symbol=request.symbol)
+        stock_restricted_release_queue_sina_df = sanitize_data_pandas(stock_restricted_release_queue_sina)
         return stock_restricted_release_queue_sina_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -54,9 +55,10 @@ async def post_stock_restricted_release_summary_em(request: RestrictedReleaseSum
     限量: 单次获取指定个股在近期限售股解禁数据
     """
     try:
-        stock_restricted_release_summary_em_df = ak.stock_restricted_release_summary_em(symbol=request.symbol,
-                                                                                        start_date=request.start_date,
-                                                                                        end_date=request.end_date)
+        stock_restricted_release_summary_em = ak.stock_restricted_release_summary_em(symbol=request.symbol,
+                                                                                     start_date=request.start_date,
+                                                                                     end_date=request.end_date)
+        stock_restricted_release_summary_em_df = sanitize_data_pandas(stock_restricted_release_summary_em)
         return stock_restricted_release_summary_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -82,10 +84,11 @@ async def post_stock_restricted_release_detail_em(request: DateRangeRequest):
     限量: 单次获取指定时间段限售股解禁数据
     """
     try:
-        stock_restricted_release_detail_em_df = ak.stock_restricted_release_detail_em(start_date=request.start_date,
-                                                                                      end_date=request.end_date)
-        stock_restricted_release_detail_em_df = sanitize_data_pandas(stock_restricted_release_detail_em_df)
-
+        stock_restricted_release_detail_em = ak.stock_restricted_release_detail_em(
+            start_date=request.start_date,
+            end_date=request.end_date
+        )
+        stock_restricted_release_detail_em_df = sanitize_data_pandas(stock_restricted_release_detail_em)
         return stock_restricted_release_detail_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -110,9 +113,8 @@ async def post_stock_sector_spot(request: SectorSpotRequest):
     限量: 单次获取指定的板块行情实时数据
     """
     try:
-        stock_sector_spot_df = ak.stock_sector_spot(indicator=request.indicator)
-        stock_sector_spot_df = sanitize_data_pandas(stock_sector_spot_df)
-
+        stock_sector_spot = ak.stock_sector_spot(indicator=request.indicator)
+        stock_sector_spot_df = sanitize_data_pandas(stock_sector_spot)
         return stock_sector_spot_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -133,7 +135,8 @@ async def post_stock_restricted_release_queue_em(request: SymbolRequest):
     限量: 单次获取指定个股的解禁批次数据
     """
     try:
-        stock_restricted_release_queue_em_df = ak.stock_restricted_release_queue_em(symbol=request.symbol)
+        stock_restricted_release_queue_em = ak.stock_restricted_release_queue_em(symbol=request.symbol)
+        stock_restricted_release_queue_em_df = sanitize_data_pandas(stock_restricted_release_queue_em)
         return stock_restricted_release_queue_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -156,11 +159,14 @@ async def post_stock_restricted_release_stockholder_em(request: SymbolDateReques
 
     描述: 东方财富-数据中心-个股限售解禁-解禁股东
 
-    限量: 单次获取指定个股的解禁批次数据
+    限量: 单次获取指定个股的解禁股东数据
     """
     try:
-        stock_restricted_release_stockholder_em_df = ak.stock_restricted_release_stockholder_em(symbol=request.symbol,
-                                                                                                date=request.date)
+        stock_restricted_release_stockholder_em = ak.stock_restricted_release_stockholder_em(
+            symbol=request.symbol,
+            date=request.date
+        )
+        stock_restricted_release_stockholder_em_df = sanitize_data_pandas(stock_restricted_release_stockholder_em)
         return stock_restricted_release_stockholder_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

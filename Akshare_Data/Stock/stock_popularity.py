@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -25,10 +25,9 @@ async def post_stock_hot_follow_xq(request: StockHotXQRequest):
     限量: 单次返回指定个股的排行数据
     """
     try:
-        stock_hot_follow_xq_df = ak.stock_hot_follow_xq(symbol=request.symbol)
-        sanitized_data = stock_hot_follow_xq_df.applymap(sanitize_data)
-
-        return sanitized_data.to_dict(orient="records")
+        stock_hot_follow_xq = ak.stock_hot_follow_xq(symbol=request.symbol)
+        stock_hot_follow_xq_df = sanitize_data_pandas(stock_hot_follow_xq)
+        return stock_hot_follow_xq_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -48,10 +47,9 @@ async def post_stock_hot_tweet_xq(request: StockHotXQRequest):
     限量: 单次返回指定个股的排行数据
     """
     try:
-        stock_hot_tweet_xq_df = ak.stock_hot_tweet_xq(symbol=request.symbol)
-        sanitized_data = stock_hot_tweet_xq_df.applymap(sanitize_data)
-
-        return sanitized_data.to_dict(orient="records")
+        stock_hot_tweet_xq = ak.stock_hot_tweet_xq(symbol=request.symbol)
+        stock_hot_tweet_xq_df = sanitize_data_pandas(stock_hot_tweet_xq)
+        return stock_hot_tweet_xq_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -70,7 +68,8 @@ def post_stock_hot_deal_xq(request: StockHotXQRequest):
     限量: 单次返回指定个股的排行数据
     """
     try:
-        stock_hot_deal_xq_df = ak.stock_hot_deal_xq(symbol=request.symbol)
+        stock_hot_deal_xq = ak.stock_hot_deal_xq(symbol=request.symbol)
+        stock_hot_deal_xq_df = sanitize_data_pandas(stock_hot_deal_xq)
         return stock_hot_deal_xq_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -94,9 +93,8 @@ def post_stock_hot_rank_wc(request: StockHotRankWCRequest):
     限量: 单次返回近 5000 个股票的热门排名数据, 当前交易日的数据请在收盘后访问
     """
     try:
-        stock_hot_rank_wc_df = ak.stock_hot_rank_wc(date=request.date)
-        stock_hot_rank_wc_df = sanitize_data_pandas(stock_hot_rank_wc_df)
-
+        stock_hot_rank_wc = ak.stock_hot_rank_wc(date=request.date)
+        stock_hot_rank_wc_df = sanitize_data_pandas(stock_hot_rank_wc)
         return stock_hot_rank_wc_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -116,7 +114,8 @@ def get_stock_hot_rank_em():
     限量: 单次返回当前交易日前 100 个股票的人气排名数据
     """
     try:
-        stock_hot_rank_em_df = ak.stock_hot_rank_em()
+        stock_hot_rank_em = ak.stock_hot_rank_em()
+        stock_hot_rank_em_df = sanitize_data_pandas(stock_hot_rank_em)
         return stock_hot_rank_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -136,7 +135,8 @@ def get_stock_hot_up_em():
     限量: 单次返回当前交易日前 100 个股票的飙升榜排名数据
     """
     try:
-        stock_hot_up_em_df = ak.stock_hot_up_em()
+        stock_hot_up_em = ak.stock_hot_up_em()
+        stock_hot_up_em_df = sanitize_data_pandas(stock_hot_up_em)
         return stock_hot_up_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -156,9 +156,8 @@ def get_stock_hk_hot_rank_em():
     限量: 单次返回当前交易日前 100 个股票的人气排名数据
     """
     try:
-        stock_hk_hot_rank_em_df = ak.stock_hk_hot_rank_em()
-        stock_hk_hot_rank_em_df = sanitize_data_pandas(stock_hk_hot_rank_em_df)
-
+        stock_hk_hot_rank_em = ak.stock_hk_hot_rank_em()
+        stock_hk_hot_rank_em_df = sanitize_data_pandas(stock_hk_hot_rank_em)
         return stock_hk_hot_rank_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -182,7 +181,8 @@ async def post_stock_hk_hot_rank_detail_em(request: StockHKHotRankDetailEMReques
     限量: 单次返回指定个股的股票近期历史数据
     """
     try:
-        stock_hk_hot_rank_detail_em_df = ak.stock_hk_hot_rank_detail_em(symbol=request.symbol)
+        stock_hk_hot_rank_detail_em = ak.stock_hk_hot_rank_detail_em(symbol=request.symbol)
+        stock_hk_hot_rank_detail_em_df = sanitize_data_pandas(stock_hk_hot_rank_detail_em)
         return stock_hk_hot_rank_detail_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -203,11 +203,9 @@ def get_stock_inner_trade_xq():
     限量: 单次返回所有历史数据
     """
     try:
-        stock_inner_trade_xq_df = ak.stock_inner_trade_xq()
-        data = stock_inner_trade_xq_df.to_dict(orient="records")
-        sanitized_data = sanitize_data(data)
-
-        return sanitized_data
+        stock_inner_trade_xq = ak.stock_inner_trade_xq()
+        stock_inner_trade_xq_df = sanitize_data_pandas(stock_inner_trade_xq)
+        return stock_inner_trade_xq_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -232,7 +230,8 @@ async def post_stock_hot_rank_detail_realtime_em(request: StockHotRankDetailEMRe
     限量: 单次返回指定个股的股票近期历史数据
     """
     try:
-        stock_hot_rank_detail_realtime_em_df = ak.stock_hot_rank_detail_realtime_em(symbol=request.symbol)
+        stock_hot_rank_detail_realtime_em = ak.stock_hot_rank_detail_realtime_em(symbol=request.symbol)
+        stock_hot_rank_detail_realtime_em_df = sanitize_data_pandas(stock_hot_rank_detail_realtime_em)
         return stock_hot_rank_detail_realtime_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -258,7 +257,8 @@ async def post_stock_hk_hot_rank_detail_realtime_em(request: StockHotRankHKDetai
     限量: 单次返回指定个股的股票近期历史数据
     """
     try:
-        stock_hk_hot_rank_detail_realtime_em_df = ak.stock_hk_hot_rank_detail_realtime_em(symbol=request.symbol)
+        stock_hk_hot_rank_detail_realtime_em = ak.stock_hk_hot_rank_detail_realtime_em(symbol=request.symbol)
+        stock_hk_hot_rank_detail_realtime_em_df = sanitize_data_pandas(stock_hk_hot_rank_detail_realtime_em)
         return stock_hk_hot_rank_detail_realtime_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -283,7 +283,8 @@ async def post_stock_hot_keyword_em(request: StockHotKeywordRequest):
     限量: 单次返回指定个股的最近交易日时点数据
     """
     try:
-        stock_hot_keyword_em_df = ak.stock_hot_keyword_em(symbol=request.symbol)
+        stock_hot_keyword_em = ak.stock_hot_keyword_em(symbol=request.symbol)
+        stock_hot_keyword_em_df = sanitize_data_pandas(stock_hot_keyword_em)
         return stock_hot_keyword_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -304,7 +305,8 @@ async def post_stock_hot_rank_latest_em(request: StockHotKeywordRequest):
     限量: 单次返回指定个股的股票近期历史数据
     """
     try:
-        stock_hot_rank_latest_em_df = ak.stock_hot_rank_latest_em(symbol=request.symbol)
+        stock_hot_rank_latest_em = ak.stock_hot_rank_latest_em(symbol=request.symbol)
+        stock_hot_rank_latest_em_df = sanitize_data_pandas(stock_hot_rank_latest_em)
         return stock_hot_rank_latest_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -325,7 +327,8 @@ async def post_stock_hk_hot_rank_latest_em(request: StockHotRankHKDetailEMReques
     限量: 单次返回指定个股的股票近期历史数据
     """
     try:
-        stock_hk_hot_rank_latest_em_df = ak.stock_hk_hot_rank_latest_em(symbol=request.symbol)
+        stock_hk_hot_rank_latest_em = ak.stock_hk_hot_rank_latest_em(symbol=request.symbol)
+        stock_hk_hot_rank_latest_em_df = sanitize_data_pandas(stock_hk_hot_rank_latest_em)
         return stock_hk_hot_rank_latest_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -353,9 +356,9 @@ async def post_stock_hot_search_baidu(request: HotSearchRequest):
     限量: 单次返回指定类型, 日期和时段的热搜股票数据
     """
     try:
-        stock_hot_search_baidu_df = ak.stock_hot_search_baidu(symbol=request.symbol, date=request.date,
+        stock_hot_search_baidu = ak.stock_hot_search_baidu(symbol=request.symbol, date=request.date,
                                                               time=request.time)
-        stock_hot_search_baidu_df = sanitize_data_pandas(stock_hot_search_baidu_df)
+        stock_hot_search_baidu_df = sanitize_data_pandas(stock_hot_search_baidu)
 
         return stock_hot_search_baidu_df.to_dict(orient="records")
     except Exception as e:
@@ -381,7 +384,8 @@ async def post_stock_hot_rank_relate_em(request: StockHotRankSymbolRequest):
     限量: 单次返回指定个股的股票近期历史数据
     """
     try:
-        stock_hot_rank_relate_em_df = ak.stock_hot_rank_relate_em(symbol=request.symbol)
+        stock_hot_rank_relate_em = ak.stock_hot_rank_relate_em(symbol=request.symbol)
+        stock_hot_rank_relate_em_df = sanitize_data_pandas(stock_hot_rank_relate_em)
         return stock_hot_rank_relate_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

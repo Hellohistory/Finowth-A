@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
-from Akshare_Data.utility_function import sanitize_data, sanitize_data_pandas
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -27,7 +27,8 @@ async def post_stock_rank_cxg_ths(request: THSCXGSymbolRequest):
     限量：单次指定个股的所有数据
     """
     try:
-        stock_rank_cxg_ths_df = ak.stock_rank_cxg_ths(symbol=request.symbol)
+        stock_rank_cxg_ths = ak.stock_rank_cxg_ths(symbol=request.symbol)
+        stock_rank_cxg_ths_df = sanitize_data_pandas(stock_rank_cxg_ths)
         return stock_rank_cxg_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -53,7 +54,8 @@ async def post_stock_rank_cxd_ths(request: THSCXDSymbolRequest):
     限量：单次指定个股的所有数据
     """
     try:
-        stock_rank_cxd_ths_df = ak.stock_rank_cxd_ths(symbol=request.symbol)
+        stock_rank_cxd_ths = ak.stock_rank_cxd_ths(symbol=request.symbol)
+        stock_rank_cxd_ths_df = sanitize_data_pandas(stock_rank_cxd_ths)
         return stock_rank_cxd_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -74,7 +76,8 @@ def get_stock_rank_lxsz_ths():
     限量：单次返回所有数据
     """
     try:
-        stock_rank_lxsz_ths_df = ak.stock_rank_lxsz_ths()
+        stock_rank_lxsz_ths = ak.stock_rank_lxsz_ths()
+        stock_rank_lxsz_ths_df = sanitize_data_pandas(stock_rank_lxsz_ths)
         return stock_rank_lxsz_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -95,7 +98,8 @@ def get_stock_rank_lxxd_ths():
     限量：单次返回所有数据
     """
     try:
-        stock_rank_lxxd_ths_df = ak.stock_rank_lxxd_ths()
+        stock_rank_lxxd_ths = ak.stock_rank_lxxd_ths()
+        stock_rank_lxxd_ths_df = sanitize_data_pandas(stock_rank_lxxd_ths)
         return stock_rank_lxxd_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -116,7 +120,8 @@ def get_stock_rank_cxfl_ths():
     限量: 单次返回所有数据
     """
     try:
-        stock_rank_cxfl_ths_df = ak.stock_rank_cxfl_ths()
+        stock_rank_cxfl_ths = ak.stock_rank_cxfl_ths()
+        stock_rank_cxfl_ths_df = sanitize_data_pandas(stock_rank_cxfl_ths)
         return stock_rank_cxfl_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -137,7 +142,8 @@ def get_stock_rank_cxsl_ths():
     限量: 单次返回所有数据
     """
     try:
-        stock_rank_cxsl_ths_df = ak.stock_rank_cxsl_ths()
+        stock_rank_cxsl_ths = ak.stock_rank_cxsl_ths()
+        stock_rank_cxsl_ths_df = sanitize_data_pandas(stock_rank_cxsl_ths)
         return stock_rank_cxsl_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -163,7 +169,8 @@ async def post_stock_rank_xstp_ths(request: THSCXDSymbolRequest):
     限量: 单次返回所有数据
     """
     try:
-        stock_rank_xstp_ths_df = ak.stock_rank_xstp_ths(symbol=request.symbol)
+        stock_rank_xstp_ths = ak.stock_rank_xstp_ths(symbol=request.symbol)
+        stock_rank_xstp_ths_df = sanitize_data_pandas(stock_rank_xstp_ths)
         return stock_rank_xstp_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -184,7 +191,8 @@ async def post_stock_rank_xxtp_ths(request: THSCXDSymbolRequest):
     限量: 单次返回所有数据
     """
     try:
-        stock_rank_xxtp_ths_df = ak.stock_rank_xxtp_ths(symbol=request.symbol)
+        stock_rank_xxtp_ths = ak.stock_rank_xxtp_ths(symbol=request.symbol)
+        stock_rank_xxtp_ths_df = sanitize_data_pandas(stock_rank_xxtp_ths)
         return stock_rank_xxtp_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -205,8 +213,8 @@ def get_stock_rank_ljqs_ths():
     限量: 单次返回所有数据
     """
     try:
-        stock_rank_ljqs_ths_df = ak.stock_rank_ljqs_ths()
-        stock_rank_ljqs_ths_df = sanitize_data_pandas(stock_rank_ljqs_ths_df)
+        stock_rank_ljqs_ths = ak.stock_rank_ljqs_ths()
+        stock_rank_ljqs_ths_df = sanitize_data_pandas(stock_rank_ljqs_ths)
 
         return stock_rank_ljqs_ths_df.to_dict(orient="records")
     except Exception as e:
@@ -228,11 +236,9 @@ def get_stock_rank_ljqd_ths():
     限量: 单次返回所有数据
     """
     try:
-        stock_rank_ljqd_ths_df = ak.stock_rank_ljqd_ths()
-        data = stock_rank_ljqd_ths_df.to_dict(orient="records")
-        sanitized_data = sanitize_data(data)
-
-        return sanitized_data
+        stock_rank_ljqd_ths = ak.stock_rank_ljqd_ths()
+        stock_rank_ljqd_ths_df = sanitize_data_pandas(stock_rank_ljqd_ths)
+        return stock_rank_ljqd_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500)
 
@@ -252,7 +258,8 @@ def get_stock_rank_xzjp_ths():
     限量: 单次返回所有数据
     """
     try:
-        stock_rank_xzjp_ths_df = ak.stock_rank_xzjp_ths()
+        stock_rank_xzjp_ths = ak.stock_rank_xzjp_ths()
+        stock_rank_xzjp_ths_df = sanitize_data_pandas(stock_rank_xzjp_ths)
         return stock_rank_xzjp_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

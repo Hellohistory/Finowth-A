@@ -26,7 +26,8 @@ async def post_stock_tfp_em(request: TFDateRequest):
     限量: 单次获取指定时间的停复牌数据, 具体更新逻辑跟目标网页统一
     """
     try:
-        stock_tfp_em_df = ak.stock_tfp_em(date=request.date)
+        stock_tfp_em = ak.stock_tfp_em(date=request.date)
+        stock_tfp_em_df = sanitize_data_pandas(stock_tfp_em)
         return stock_tfp_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -47,7 +48,8 @@ async def post_news_trade_notify_suspend_baidu(request: TFDateRequest):
     限量: 单次获取指定时间的停复牌数据, 提供港股的停复牌数据
     """
     try:
-        news_trade_notify_suspend_baidu_df = ak.news_trade_notify_suspend_baidu(date=request.date)
+        news_trade_notify_suspend_baidu = ak.news_trade_notify_suspend_baidu(date=request.date)
+        news_trade_notify_suspend_baidu_df = sanitize_data_pandas(news_trade_notify_suspend_baidu)
         return news_trade_notify_suspend_baidu_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -68,9 +70,8 @@ async def post_news_trade_notify_dividend_baidu(request: TFDateRequest):
     限量: 单次获取指定时间的分红派息数据, 提供港股的分红派息数据
     """
     try:
-        news_trade_notify_dividend_baidu_df = ak.news_trade_notify_dividend_baidu(date=request.date)
-        sanitized_df = sanitize_data_pandas(news_trade_notify_dividend_baidu_df)
-
-        return sanitized_df.to_dict(orient="records")
+        news_trade_notify_dividend_baidu_ = ak.news_trade_notify_dividend_baidu(date=request.date)
+        news_trade_notify_dividend_baidu_df = sanitize_data_pandas(news_trade_notify_dividend_baidu_)
+        return news_trade_notify_dividend_baidu_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -54,7 +54,8 @@ async def post_stock_a_gxl_lg(request: LeGuSymbolRequest):
     限量: 单次获取指定类型市场的所有历史数据
     """
     try:
-        stock_a_gxl_lg_df = ak.stock_a_gxl_lg(symbol=request.symbol)
+        stock_a_gxl_lg = ak.stock_a_gxl_lg(symbol=request.symbol)
+        stock_a_gxl_lg_df = sanitize_data_pandas(stock_a_gxl_lg)
         return stock_a_gxl_lg_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -75,7 +76,8 @@ def get_stock_hk_gxl_lg():
     限量: 单次获取所有月度历史数据
     """
     try:
-        stock_hk_gxl_lg_df = ak.stock_hk_gxl_lg()
+        stock_hk_gxl_lg = ak.stock_hk_gxl_lg()
+        stock_hk_gxl_lg_df = sanitize_data_pandas(stock_hk_gxl_lg)
         return stock_hk_gxl_lg_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -96,12 +98,13 @@ def get_stock_a_congestion_lg():
     限量: 单次获取近 4 年的历史数据
     """
     try:
-        stock_a_congestion_lg_df = ak.stock_a_congestion_lg()
-        stock_a_congestion_lg_df.rename(columns={
+        stock_a_congestion_lg = ak.stock_a_congestion_lg()
+        stock_a_congestion_lg.rename(columns={
             'date': '日期',
             'close': '收盘价',
             'congestion': '拥挤度'
         }, inplace=True)
+        stock_a_congestion_lg_df = sanitize_data_pandas(stock_a_congestion_lg)
         return stock_a_congestion_lg_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -122,7 +125,8 @@ def get_stock_ebs_lg():
     限量: 单次所有历史数据
     """
     try:
-        stock_ebs_lg_df = ak.stock_ebs_lg()
+        stock_ebs_lg = ak.stock_ebs_lg()
+        stock_ebs_lg_df = sanitize_data_pandas(stock_ebs_lg)
         return stock_ebs_lg_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -143,7 +147,8 @@ def get_stock_buffett_index_lg():
     限量: 单次获取所有历史数据
     """
     try:
-        stock_buffett_index_lg_df = ak.stock_buffett_index_lg()
+        stock_buffett_index_lg = ak.stock_buffett_index_lg()
+        stock_buffett_index_lg_df = sanitize_data_pandas(stock_buffett_index_lg)
         return stock_buffett_index_lg_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -163,9 +168,9 @@ def get_stock_a_ttm_lyr():
     限量: 单次返回所有数据
     """
     try:
-        stock_a_ttm_lyr_df = ak.stock_a_ttm_lyr()
+        stock_a_ttm_lyr = ak.stock_a_ttm_lyr()
 
-        stock_a_ttm_lyr_df.rename(columns={
+        stock_a_ttm_lyr.rename(columns={
             "date": "日期",
             "middlePETTM": "全A股滚动市盈率(TTM)中位数",
             "averagePETTM": "全A股滚动市盈率(TTM)等权平均",
@@ -182,6 +187,7 @@ def get_stock_a_ttm_lyr():
             "close": "沪深300指数"
         }, inplace=True)
 
+        stock_a_ttm_lyr_df = sanitize_data_pandas(stock_a_ttm_lyr)
         return stock_a_ttm_lyr_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -202,10 +208,9 @@ def get_stock_a_all_pb():
     限量: 单次返回所有数据
     """
     try:
-        stock_a_all_pb_df = ak.stock_a_all_pb()
+        stock_a_all_pb = ak.stock_a_all_pb()
 
-        # 重命名字段
-        stock_a_all_pb_df.rename(columns={
+        stock_a_all_pb.rename(columns={
             "date": "日期",
             "middlePB": "全部A股市净率中位数",
             "equalWeightAveragePB": "全部A股市净率等权平均",
@@ -216,6 +221,7 @@ def get_stock_a_all_pb():
             "quantileInRecent10YearsEqualWeightAveragePB": "当前市净率等权平均在最近10年数据上的分位数"
         }, inplace=True)
 
+        stock_a_all_pb_df = sanitize_data_pandas(stock_a_all_pb)
         return stock_a_all_pb_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -240,7 +246,8 @@ async def post_stock_market_pe_lg(request: LeGuZhuBanSymbolRequest):
     限量: 单次获取指定个股的所有数据
     """
     try:
-        stock_market_pe_lg_df = ak.stock_market_pe_lg(symbol=request.symbol)
+        stock_market_pe_lg = ak.stock_market_pe_lg(symbol=request.symbol)
+        stock_market_pe_lg_df = sanitize_data_pandas(stock_market_pe_lg)
         return stock_market_pe_lg_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -267,7 +274,8 @@ async def post_stock_index_pe_lg(request: LeGuZhiShuSymbolRequest):
     限量: 单次获取指定类型的所有数据
     """
     try:
-        stock_index_pe_lg_df = ak.stock_index_pe_lg(symbol=request.symbol)
+        stock_index_pe_lg = ak.stock_index_pe_lg(symbol=request.symbol)
+        stock_index_pe_lg_df = sanitize_data_pandas(stock_index_pe_lg)
         return stock_index_pe_lg_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -288,7 +296,8 @@ async def post_stock_market_pb_lg(request: LeGuZhuBanSymbolRequest):
     限量: 单次获取指定类型的所有数据
     """
     try:
-        stock_market_pb_lg_df = ak.stock_market_pb_lg(symbol=request.symbol)
+        stock_market_pb_lg = ak.stock_market_pb_lg(symbol=request.symbol)
+        stock_market_pb_lg_df = sanitize_data_pandas(stock_market_pb_lg)
         return stock_market_pb_lg_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -309,7 +318,8 @@ async def post_stock_index_pb_lg(request: LeGuZhiShuSymbolRequest):
     限量: 单次获取指定类型的所有数据
     """
     try:
-        stock_index_pb_lg_df = ak.stock_index_pb_lg(symbol=request.symbol)
+        stock_index_pb_lg = ak.stock_index_pb_lg(symbol=request.symbol)
+        stock_index_pb_lg_df = sanitize_data_pandas(stock_index_pb_lg)
         return stock_index_pb_lg_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -337,9 +347,10 @@ async def post_stock_zh_valuation_baidu(request: SymbolIndicatorPeriodRequest):
     限量: 单次获取指定个股和指定时间段的所有历史数据
     """
     try:
-        stock_zh_valuation_baidu_df = ak.stock_zh_valuation_baidu(
+        stock_zh_valuation_baidu = ak.stock_zh_valuation_baidu(
             symbol=request.symbol, indicator=request.indicator, period=request.period
         )
+        stock_zh_valuation_baidu_df = sanitize_data_pandas(stock_zh_valuation_baidu)
         return stock_zh_valuation_baidu_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

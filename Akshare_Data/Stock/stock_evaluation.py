@@ -2,7 +2,7 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import Field, BaseModel
 
-from Akshare_Data.utility_function import sanitize_data
+from Akshare_Data.utility_function import sanitize_data_pandas
 
 router = APIRouter()
 
@@ -22,10 +22,9 @@ def get_stock_comment_em():
     限量: 单次获取所有数据
     """
     try:
-        stock_comment_em_df = ak.stock_comment_em()
-        sanitized_data = stock_comment_em_df.applymap(sanitize_data)
-
-        return sanitized_data.to_dict(orient="records")
+        stock_comment_em = ak.stock_comment_em()
+        stock_comment_em_df = sanitize_data_pandas(stock_comment_em)
+        return stock_comment_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -50,7 +49,8 @@ async def post_stock_comment_detail_zlkp_jgcyd_em(request: SymbolRequest):
     限量: 单次获取所有数据
     """
     try:
-        stock_comment_detail_zlkp_jgcyd_em_df = ak.stock_comment_detail_zlkp_jgcyd_em(symbol=request.symbol)
+        stock_comment_detail_zlkp_jgcyd_em = ak.stock_comment_detail_zlkp_jgcyd_em(symbol=request.symbol)
+        stock_comment_detail_zlkp_jgcyd_em_df = sanitize_data_pandas(stock_comment_detail_zlkp_jgcyd_em)
         return stock_comment_detail_zlkp_jgcyd_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -72,7 +72,8 @@ async def post_stock_comment_detail_zhpj_lspf_em(request: SymbolRequest):
     限量: 单次获取所有数据
     """
     try:
-        stock_comment_detail_zhpj_lspf_em_df = ak.stock_comment_detail_zhpj_lspf_em(symbol=request.symbol)
+        stock_comment_detail_zhpj_lspf_em = ak.stock_comment_detail_zhpj_lspf_em(symbol=request.symbol)
+        stock_comment_detail_zhpj_lspf_em_df = sanitize_data_pandas(stock_comment_detail_zhpj_lspf_em)
         return stock_comment_detail_zhpj_lspf_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -94,7 +95,8 @@ async def post_stock_comment_detail_scrd_focus_em(request: SymbolRequest):
     限量: 单次获取所有数据
     """
     try:
-        stock_comment_detail_scrd_focus_em_df = ak.stock_comment_detail_scrd_focus_em(symbol=request.symbol)
+        stock_comment_detail_scrd_focus_em = ak.stock_comment_detail_scrd_focus_em(symbol=request.symbol)
+        stock_comment_detail_scrd_focus_em_df = sanitize_data_pandas(stock_comment_detail_scrd_focus_em)
         return stock_comment_detail_scrd_focus_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -116,7 +118,8 @@ async def post_stock_comment_detail_scrd_desire_em(request: SymbolRequest):
     限量: 单次获取所有数据
     """
     try:
-        stock_comment_detail_scrd_desire_em_df = ak.stock_comment_detail_scrd_desire_em(symbol=request.symbol)
+        stock_comment_detail_scrd_desire_em = ak.stock_comment_detail_scrd_desire_em(symbol=request.symbol)
+        stock_comment_detail_scrd_desire_em_df = sanitize_data_pandas(stock_comment_detail_scrd_desire_em)
         return stock_comment_detail_scrd_desire_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -138,8 +141,9 @@ async def post_stock_comment_detail_scrd_desire_daily_em(request: SymbolRequest)
     限量: 单次获取所有数据
     """
     try:
-        stock_comment_detail_scrd_desire_daily_em_df = ak.stock_comment_detail_scrd_desire_daily_em(
+        stock_comment_detail_scrd_desire_daily_em = ak.stock_comment_detail_scrd_desire_daily_em(
             symbol=request.symbol)
+        stock_comment_detail_scrd_desire_daily_em_df = sanitize_data_pandas(stock_comment_detail_scrd_desire_daily_em)
         return stock_comment_detail_scrd_desire_daily_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -161,7 +165,8 @@ async def post_stock_comment_detail_scrd_cost_em(request: SymbolRequest):
     限量: 单次获取所有数据
     """
     try:
-        stock_comment_detail_scrd_cost_em_df = ak.stock_comment_detail_scrd_cost_em(symbol=request.symbol)
+        stock_comment_detail_scrd_cost_em = ak.stock_comment_detail_scrd_cost_em(symbol=request.symbol)
+        stock_comment_detail_scrd_cost_em_df = sanitize_data_pandas(stock_comment_detail_scrd_cost_em)
         return stock_comment_detail_scrd_cost_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

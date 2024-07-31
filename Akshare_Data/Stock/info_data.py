@@ -2,6 +2,8 @@ import akshare as ak
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
+from Akshare_Data.utility_function import sanitize_data_pandas
+
 router = APIRouter()
 
 
@@ -19,7 +21,8 @@ def get_stock_info_cjzc_em():
     限量：单次返回全部历史数据
     """
     try:
-        stock_info_cjzc_em_df = ak.stock_info_cjzc_em()
+        stock_info_cjzc_em = ak.stock_info_cjzc_em()
+        stock_info_cjzc_em_df = sanitize_data_pandas(stock_info_cjzc_em)
         return stock_info_cjzc_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -40,7 +43,8 @@ def get_stock_info_global_em():
     限量：单次返回最近 200 条新闻数据
     """
     try:
-        stock_info_global_em_df = ak.stock_info_global_em()
+        stock_info_global_em = ak.stock_info_global_em()
+        stock_info_global_em_df = sanitize_data_pandas(stock_info_global_em)
         return stock_info_global_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -61,7 +65,8 @@ def get_stock_info_global_sina():
     限量：单次返回最近 20 条新闻数据
     """
     try:
-        stock_info_global_sina_df = ak.stock_info_global_sina()
+        stock_info_global_sina = ak.stock_info_global_sina()
+        stock_info_global_sina_df = sanitize_data_pandas(stock_info_global_sina)
         return stock_info_global_sina_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -82,7 +87,8 @@ def get_stock_info_global_futu():
     限量：单次返回最近 50 条新闻数据
     """
     try:
-        stock_info_global_futu_df = ak.stock_info_global_futu()
+        stock_info_global_futu = ak.stock_info_global_futu()
+        stock_info_global_futu_df = sanitize_data_pandas(stock_info_global_futu)
         return stock_info_global_futu_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -103,7 +109,8 @@ def get_stock_info_global_ths():
     限量：单次返回最近 20 条新闻数据
     """
     try:
-        stock_info_global_ths_df = ak.stock_info_global_ths()
+        stock_info_global_ths = ak.stock_info_global_ths()
+        stock_info_global_ths_df = sanitize_data_pandas(stock_info_cjzc_em)
         return stock_info_global_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -127,7 +134,8 @@ def post_stock_info_global_cls(request: StockInfoGlobalCLSRequest):
     限量：单次返回指定个股的最近 300 条财联社-电报的数据
     """
     try:
-        stock_info_global_cls_df = ak.stock_info_global_cls(symbol=request.symbol)
+        stock_info_global_cls = ak.stock_info_global_cls(symbol=request.symbol)
+        stock_info_global_cls_df = sanitize_data_pandas(stock_info_global_cls)
         return stock_info_global_cls_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -152,7 +160,8 @@ def post_stock_info_broker_sina(request: StockInfoBrokerSinaRequest):
     限量：单次返回指定页面的数据
     """
     try:
-        stock_info_broker_sina_df = ak.stock_info_broker_sina(page=request.page)
+        stock_info_broker_sina = ak.stock_info_broker_sina(page=request.page)
+        stock_info_broker_sina_df = sanitize_data_pandas(stock_info_broker_sina)
         return stock_info_broker_sina_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -40,7 +40,7 @@ def post_option_sse_list_sina(request: OptionSseListSina):
 
 
 class OptionSseExpireDaySina(BaseModel):
-    trade_date: str = Field(..., title="选择年月", description="例：202002")
+    trade_date: str = Field(..., title="选择年月", description="例：202406")
     symbol: str = Field(..., title="选择期权类型", description="可选择 看涨期权, 看跌期权")
     underlying: str = Field(..., title="选择类型", description="例：510300")
 
@@ -69,8 +69,21 @@ def post_option_sse_codes_sina(request: OptionSseExpireDaySina):
         option_sse_codes_sina_df = sanitize_data_pandas(option_sse_codes_sina)
 
         return option_sse_codes_sina_df.to_dict(orient="records")
+    except ValueError as ve:
+        error_message = str(ve)
+        # 分析错误信息以确定问题来源
+        if "Length mismatch" in error_message:
+            error_detail = (
+                "这个问题可能是由于 'trade_date' 字段格式不正确导致的。"
+                "请确保 'trade_date' 采用 'YYYYMM' 格式，仅包含年和月。"
+                "且时间范围需自行控制"
+            )
+        else:
+            error_detail = error_message
+
+        raise HTTPException(status_code=400, detail=f"ValueError: {error_detail}")
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
 
 
 class OptionSseSpotPriceSina(BaseModel):

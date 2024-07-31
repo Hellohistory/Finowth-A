@@ -26,7 +26,8 @@ async def post_stock_zyjs_ths(request: SymbolRequest):
     限量: 单次返回所有数据
     """
     try:
-        stock_zyjs_ths_df = ak.stock_zyjs_ths(symbol=request.symbol)
+        stock_zyjs_ths = ak.stock_zyjs_ths(symbol=request.symbol)
+        stock_zyjs_ths_df = sanitize_data_pandas(stock_zyjs_ths)
         return stock_zyjs_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -51,9 +52,8 @@ async def post_stock_zygc_em(request: DongCaiSymbolRequest):
     限量: 单次返回所有历史数据
     """
     try:
-        stock_zygc_em_df = ak.stock_zygc_em(symbol=request.symbol)
-        stock_zygc_em_df = sanitize_data_pandas(stock_zygc_em_df)
-
+        stock_zygc_em = ak.stock_zygc_em(symbol=request.symbol)
+        stock_zygc_em_df = sanitize_data_pandas(stock_zygc_em)
         return stock_zygc_em_df.to_dict(orient="records")
 
     except Exception as e:
@@ -75,7 +75,8 @@ async def post_stock_zygc_ym(request: SymbolRequest):
     限量: 单次返回所有历史数据
     """
     try:
-        stock_zygc_ym_df = ak.stock_zygc_ym(symbol=request.symbol)
+        stock_zygc_ym = ak.stock_zygc_ym(symbol=request.symbol)
+        stock_zygc_ym_df = sanitize_data_pandas(stock_zygc_ym)
         return stock_zygc_ym_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -96,7 +97,8 @@ async def post_stock_mda_ym(request: SymbolRequest):
     限量: 单次返回所有历史数据
     """
     try:
-        stock_mda_ym_df = ak.stock_mda_ym(symbol=request.symbol)
+        stock_mda_ym = ak.stock_mda_ym(symbol=request.symbol)
+        stock_mda_ym_df = sanitize_data_pandas(stock_mda_ym)
         return stock_mda_ym_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -117,7 +119,8 @@ async def post_stock_profile_cninfo(request: SymbolRequest):
     限量: 单次获取指定个股的公司概况
     """
     try:
-        stock_profile_cninfo_df = ak.stock_profile_cninfo(symbol=request.symbol)
+        stock_profile_cninfo = ak.stock_profile_cninfo(symbol=request.symbol)
+        stock_profile_cninfo_df = sanitize_data_pandas(stock_profile_cninfo)
         return stock_profile_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -138,7 +141,8 @@ async def post_stock_ipo_summary_cninfo(request: SymbolRequest):
     限量: 单次获取指定个股的上市相关数据
     """
     try:
-        stock_ipo_summary_cninfo_df = ak.stock_ipo_summary_cninfo(symbol=request.symbol)
+        stock_ipo_summary_cninfo = ak.stock_ipo_summary_cninfo(symbol=request.symbol)
+        stock_ipo_summary_cninfo_df = sanitize_data_pandas(stock_ipo_summary_cninfo)
         return stock_ipo_summary_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

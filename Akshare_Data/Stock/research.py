@@ -26,9 +26,9 @@ async def post_stock_jgdy_tj_em(request: DateRequest):
     限量: 单次返回所有历史数据
     """
     try:
-        stock_jgdy_tj_em_df = ak.stock_jgdy_tj_em(date=request.date)
+        stock_jgdy_tj_em = ak.stock_jgdy_tj_em(date=request.date)
 
-        stock_jgdy_tj_em_df = sanitize_data_pandas(stock_jgdy_tj_em_df)
+        stock_jgdy_tj_em_df = sanitize_data_pandas(stock_jgdy_tj_em)
 
         return stock_jgdy_tj_em_df.to_dict(orient="records")
     except Exception as e:
@@ -50,9 +50,9 @@ async def post_stock_jgdy_detail_em(request: DateRequest):
     限量: 单次所有历史数据, 由于数据量比较大需要等待一定时间
     """
     try:
-        stock_jgdy_detail_em_df = ak.stock_jgdy_detail_em(date=request.date)
+        stock_jgdy_detail_em = ak.stock_jgdy_detail_em(date=request.date)
 
-        stock_jgdy_detail_em_df = sanitize_data(stock_jgdy_detail_em_df)
+        stock_jgdy_detail_em_df = sanitize_data(stock_jgdy_detail_em)
 
         return stock_jgdy_detail_em_df.to_dict(orient="records")
     except Exception as e:

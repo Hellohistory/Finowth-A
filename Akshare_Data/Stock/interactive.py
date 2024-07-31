@@ -2,6 +2,8 @@ import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
+from Akshare_Data.utility_function import sanitize_data_pandas
+
 router = APIRouter()
 
 
@@ -24,7 +26,8 @@ async def post_stock_irm_cninfo(request: IrmSymbolRequest):
     限量: 单次返回近期 10000 条提问数据
     """
     try:
-        stock_irm_cninfo_df = ak.stock_irm_cninfo(symbol=request.symbol)
+        stock_irm_cninfo = ak.stock_irm_cninfo(symbol=request.symbol)
+        stock_irm_cninfo_df = sanitize_data_pandas(stock_irm_cninfo)
         return stock_irm_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -50,7 +53,8 @@ async def post_stock_irm_ans_cninfo(request: IrmAnsSymbolRequest):
     限量: 单次返回指定个股的回答数据
     """
     try:
-        stock_irm_ans_cninfo_df = ak.stock_irm_ans_cninfo(symbol=request.symbol)
+        stock_irm_ans_cninfo = ak.stock_irm_ans_cninfo(symbol=request.symbol)
+        stock_irm_ans_cninfo_df = sanitize_data_pandas(stock_irm_ans_cninfo)
         return stock_irm_ans_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -75,7 +79,8 @@ async def post_stock_sns_sseinfo(request: ShESymbolRequest):
     限量: 单次返回指定个股的提问与回答数据
     """
     try:
-        stock_sns_sseinfo_df = ak.stock_sns_sseinfo(symbol=request.symbol)
+        stock_sns_sseinfo = ak.stock_sns_sseinfo(symbol=request.symbol)
+        stock_sns_sseinfo_df = sanitize_data_pandas(stock_sns_sseinfo)
         return stock_sns_sseinfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

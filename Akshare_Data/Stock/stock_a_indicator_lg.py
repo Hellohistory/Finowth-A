@@ -25,9 +25,9 @@ async def post_stock_a_indicator_lg(request: SymbolRequest):
     限量: 单次获取指定个股的所有历史数据
     """
     try:
-        stock_a_indicator_lg_df = ak.stock_a_indicator_lg(symbol=request.symbol)
+        stock_a_indicator_lg = ak.stock_a_indicator_lg(symbol=request.symbol)
 
-        stock_a_indicator_lg_df = sanitize_data_pandas(stock_a_indicator_lg_df)
+        stock_a_indicator_lg_df = sanitize_data_pandas(stock_a_indicator_lg)
 
         stock_a_indicator_lg_df.rename(columns={
             "trade_date": "交易日期",

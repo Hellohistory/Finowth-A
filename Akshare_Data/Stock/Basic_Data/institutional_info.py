@@ -28,7 +28,8 @@ async def post_stock_institute_hold(request: XinLangSymbolRequest):
     限量: 单次获取所有历史数据
     """
     try:
-        stock_institute_hold_df = ak.stock_institute_hold(symbol=request.symbol)
+        stock_institute_hold = ak.stock_institute_hold(symbol=request.symbol)
+        stock_institute_hold_df = sanitize_data_pandas(stock_institute_hold)
         return stock_institute_hold_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -56,7 +57,11 @@ async def post_stock_institute_hold_detail(request: XinLangStockQuarterRequest):
     限量: 单次所有历史数据
     """
     try:
-        stock_institute_hold_detail_df = ak.stock_institute_hold_detail(stock=request.stock, quarter=request.quarter)
+        stock_institute_hold_detail = ak.stock_institute_hold_detail(
+            stock=request.stock,
+            quarter=request.quarter
+        )
+        stock_institute_hold_detail_df = sanitize_data_pandas(stock_institute_hold_detail)
         return stock_institute_hold_detail_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -83,8 +88,8 @@ async def post_stock_institute_recommend(request: XinLangJiGouSymbolRequest):
     限量: 单次获取新浪财经-机构推荐池-具体指标的所有数据
     """
     try:
-        stock_institute_recommend_df = ak.stock_institute_recommend(symbol=request.symbol)
-        stock_institute_recommend_df = sanitize_data_pandas(stock_institute_recommend_df)
+        stock_institute_recommend = ak.stock_institute_recommend(symbol=request.symbol)
+        stock_institute_recommend_df = sanitize_data_pandas(stock_institute_recommend)
         return stock_institute_recommend_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -109,9 +114,8 @@ async def post_stock_institute_recommend_detail(request: SymbolRequest):
     限量: 单次获取新浪财经-机构推荐池-股票评级记录的所有数据
     """
     try:
-        stock_institute_recommend_detail_df = ak.stock_institute_recommend_detail(symbol=request.symbol)
-        stock_institute_recommend_detail_df = sanitize_data_pandas(stock_institute_recommend_detail_df)
-
+        stock_institute_recommend_detail = ak.stock_institute_recommend_detail(symbol=request.symbol)
+        stock_institute_recommend_detail_df = sanitize_data_pandas(stock_institute_recommend_detail)
         return stock_institute_recommend_detail_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -136,7 +140,8 @@ async def post_stock_rank_forecast_cninfo(request: DateRequest):
     限量: 单次获取指定交易日的所有数据
     """
     try:
-        stock_rank_forecast_cninfo_df = ak.stock_rank_forecast_cninfo(date=request.date)
+        stock_rank_forecast_cninfo = ak.stock_rank_forecast_cninfo(date=request.date)
+        stock_rank_forecast_cninfo_df = sanitize_data_pandas(stock_rank_forecast_cninfo)
         return stock_rank_forecast_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

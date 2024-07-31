@@ -28,9 +28,10 @@ async def post_stock_cg_guarantee_cninfo(request: JuChaoSymbolDateRangeRequest):
     限量: 单次指定个股和起始日期的对外担保数据
     """
     try:
-        stock_corporate_governance_guarantee_df = ak.stock_cg_guarantee_cninfo(
+        stock_corporate_governance_guarantee = ak.stock_cg_guarantee_cninfo(
             symbol=request.symbol, start_date=request.start_date, end_date=request.end_date
         )
+        stock_corporate_governance_guarantee_df = sanitize_data_pandas(stock_corporate_governance_guarantee)
         return stock_corporate_governance_guarantee_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -51,9 +52,10 @@ async def post_stock_cg_lawsuit_cninfo(request: JuChaoSymbolDateRangeRequest):
     限量: 单次指定个股和起始日期的公司诉讼数据
     """
     try:
-        stock_cg_lawsuit_cninfo_df = ak.stock_cg_lawsuit_cninfo(
+        stock_cg_lawsuit_cninfo = ak.stock_cg_lawsuit_cninfo(
             symbol=request.symbol, start_date=request.start_date, end_date=request.end_date
         )
+        stock_cg_lawsuit_cninfo_df = sanitize_data_pandas(stock_cg_lawsuit_cninfo)
         return stock_cg_lawsuit_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -78,9 +80,8 @@ async def post_stock_cg_equity_mortgage_cninfo(request: JuChaoDateRequest):
     限量: 单次指定时间的股权质押数据
     """
     try:
-        stock_cg_equity_mortgage_cninfo_df = ak.stock_cg_equity_mortgage_cninfo(date=request.date)
-        stock_cg_equity_mortgage_cninfo_df = sanitize_data_pandas(stock_cg_equity_mortgage_cninfo_df)
-
+        stock_cg_equity_mortgage_cninfo = ak.stock_cg_equity_mortgage_cninfo(date=request.date)
+        stock_cg_equity_mortgage_cninfo_df = sanitize_data_pandas(stock_cg_equity_mortgage_cninfo)
         return stock_cg_equity_mortgage_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -105,8 +106,8 @@ async def post_stock_qsjy_em(request: DongCaiTeSeDateRequest):
     限量: 单次获取所有数据, 数据从 201006-202007, 月频率
     """
     try:
-        stock_qsjy_em_df = ak.stock_qsjy_em(date=request.date)
-        stock_qsjy_em_df = sanitize_data_pandas(stock_qsjy_em_df)
+        stock_qsjy_em = ak.stock_qsjy_em(date=request.date)
+        stock_qsjy_em_df = sanitize_data_pandas(stock_qsjy_em)
         return stock_qsjy_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -132,7 +133,8 @@ async def post_stock_hold_control_cninfo(request: JuChaoSymbolRequest):
     限量: 单次指定个股的实际控制人持股变动数据, 从 2010 开始
     """
     try:
-        stock_hold_control_cninfo_df = ak.stock_hold_control_cninfo(symbol=request.symbol)
+        stock_hold_control_cninfo = ak.stock_hold_control_cninfo(symbol=request.symbol)
+        stock_hold_control_cninfo_df = sanitize_data_pandas(stock_hold_control_cninfo)
         return stock_hold_control_cninfo_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

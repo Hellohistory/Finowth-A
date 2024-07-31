@@ -2,6 +2,8 @@ import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
+from Akshare_Data.utility_function import sanitize_data_pandas
+
 router = APIRouter()
 
 
@@ -23,7 +25,8 @@ async def post_stock_margin_ratio_pa(request: SingleDateRequest):
     限量: 单次返回指定交易日的所有历史数据
     """
     try:
-        stock_margin_ratio_pa_df = ak.stock_margin_ratio_pa(date=request.date)
+        stock_margin_ratio_pa = ak.stock_margin_ratio_pa(date=request.date)
+        stock_margin_ratio_pa_df = sanitize_data_pandas(stock_margin_ratio_pa)
         return stock_margin_ratio_pa_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -43,7 +46,8 @@ def get_stock_margin_account_info():
     限量: 单次返回所有历史数据
     """
     try:
-        stock_margin_account_info_df = ak.stock_margin_account_info()
+        stock_margin_account_info = ak.stock_margin_account_info()
+        stock_margin_account_info_df = sanitize_data_pandas(stock_margin_account_info)
         return stock_margin_account_info_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -68,7 +72,10 @@ async def post_stock_margin_sse(request: DateRangeRequest):
     限量: 单次返回指定时间段内的所有历史数据
     """
     try:
-        stock_margin_sse_df = ak.stock_margin_sse(start_date=request.start_date, end_date=request.end_date)
+        stock_margin_sse = ak.stock_margin_sse(
+            start_date=request.start_date,
+            end_date=request.end_date)
+        stock_margin_sse_df = sanitize_data_pandas(stock_margin_sse)
         return stock_margin_sse_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -88,7 +95,8 @@ async def post_stock_margin_detail_sse(request: SingleDateRequest):
     限量: 单次返回交易日的所有历史数据
     """
     try:
-        stock_margin_detail_sse_df = ak.stock_margin_detail_sse(date=request.date)
+        stock_margin_detail_sse = ak.stock_margin_detail_sse(date=request.date)
+        stock_margin_detail_sse_df = sanitize_data_pandas(stock_margin_detail_sse)
         return stock_margin_detail_sse_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -108,7 +116,8 @@ async def post_stock_margin_szse(request: SingleDateRequest):
     限量: 单次返回指定时间内的所有历史数据
     """
     try:
-        stock_margin_szse_df = ak.stock_margin_szse(date=request.date)
+        stock_margin_szse = ak.stock_margin_szse(date=request.date)
+        stock_margin_szse_df = sanitize_data_pandas(stock_margin_szse)
         return stock_margin_szse_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -128,7 +137,8 @@ async def post_stock_margin_detail_szse(request: SingleDateRequest):
     限量: 单次返回指定时间的所有历史数据
     """
     try:
-        stock_margin_detail_szse_df = ak.stock_margin_detail_szse(date=request.date)
+        stock_margin_detail_szse = ak.stock_margin_detail_szse(date=request.date)
+        stock_margin_detail_szse_df = sanitize_data_pandas(stock_margin_detail_szse)
         return stock_margin_detail_szse_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -148,7 +158,8 @@ async def post_stock_margin_underlying_info_szse(request: SingleDateRequest):
     限量: 单次返回交易日的所有历史数据
     """
     try:
-        stock_margin_underlying_info_szse_df = ak.stock_margin_underlying_info_szse(date=request.date)
+        stock_margin_underlying_info_szse = ak.stock_margin_underlying_info_szse(date=request.date)
+        stock_margin_underlying_info_szse_df = sanitize_data_pandas(stock_margin_underlying_info_szse)
         return stock_margin_underlying_info_szse_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

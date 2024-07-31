@@ -111,8 +111,8 @@ async def post_stock_intraday_em(request: DongCaiDayMinute):
 
 
 class XinLangDayMinute(BaseModel):
-    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例：sh600900")
-    date: str = Field(..., title="指定交易日", description="例：20230701，只能获取近期的数据")
+    symbol: str = Field(..., title="个股代码(需带有市场标识)", description="例：sz000001")
+    date: str = Field(..., title="指定交易日", description="例：20240321，只能获取近期的数据")
 
 
 # 新浪财经-日内分时数据
@@ -120,8 +120,6 @@ class XinLangDayMinute(BaseModel):
 async def post_stock_intraday_sina(request: XinLangDayMinute):
     """
     新浪财经-日内分时数据
-
-    接口损坏，暂无法使用
 
     接口: stock_intraday_sina
 
@@ -141,8 +139,8 @@ async def post_stock_intraday_sina(request: XinLangDayMinute):
 
 class DongCaiPanQianRequest(BaseModel):
     symbol: str = Field(..., title="个股代码", description="例：600900")
-    start_time: str = Field(..., title="开始时间", description="例：09:30,默认返回所有数据")
-    end_time: str = Field(..., title="结束时间", description="例：09:35,默认返回所有数据")
+    start_time: str = Field(..., title="开始时间", description="例：09:30，此参数可为空，默认返回所有数据")
+    end_time: str = Field(..., title="结束时间", description="例：09:35，此参数可为空，默认返回所有数据")
 
 
 # 东方财富-股票行情-盘前数据
@@ -183,9 +181,9 @@ async def post_stock_zh_a_tick_tx(request: TXTickHistoryRequest):
 
     接口: stock_zh_a_tick_tx
 
-    目标地址: http://gu.qq.com/sz300494/gp/detail(示例)
+    目标地址: http://gu.qq.com/sz300494/gp/detail (示例)
 
-    描述: 每个交易日 16:00 提供当日数据; 如遇到数据缺失, 请使用stock_zh_a_tick_163接口(注意数据会有一定差异)
+    描述: 每个交易日 16:00 提供当日数据;
 
     限量: 单次返回最近交易日的历史分笔行情数据
     """

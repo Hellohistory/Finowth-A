@@ -63,14 +63,13 @@ def get_index_value_name_funddb():
 
 class IndexValueHistFunddb(BaseModel):
     symbol: str = Field(..., title="指数名称",
-                        description="例：H30374，可通过 index_value_name_funddb 获取")
+                        description="例：创业板成长，可通过 index_value_name_funddb 获取")
     indicator: str = Field(..., title="获取类型",
-                           description="可选择 市盈率', 市净率, 股息率, 风险溢价")
+                           description="可选择 市盈率 , 市净率 , 股息率 , 风险溢价 ")
 
 
 # 指数数据-指数估值-中证
-@router.post("/index_value_hist_funddb",
-             operation_id="post_index_value_hist_funddb")
+@router.post("/index_value_hist_funddb", operation_id="post_index_value_hist_funddb")
 def post_index_value_hist_funddb(request: IndexValueHistFunddb):
     """
     指数数据-指数估值-指数估值-中证

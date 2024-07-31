@@ -76,8 +76,7 @@ async def get_macro_shipping_bdi():
 
 
 # 国民经济运行状况-行业指数-巴拿马型运费指数
-@router.get("/macro_shipping_bpi",
-            operation_id="get_macro_shipping_bpi")
+@router.get("/macro_shipping_bpi", operation_id="get_macro_shipping_bpi")
 async def get_macro_shipping_bpi():
     """
     国民经济运行状况-行业指数-巴拿马型运费指数

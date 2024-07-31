@@ -115,7 +115,7 @@ async def post_stock_qsjy_em(request: DongCaiTeSeDateRequest):
 
 class JuChaoSymbolRequest(BaseModel):
     symbol: str = Field(..., title="指定获取类型",
-                        description="数据从2010开始，可选择'单独控制', '实际控制人', '一致行动人', '家族控制', '全部'")
+                        description="数据从2010开始，可选择 单独控制 , 实际控制人 , 一致行动人 , 家族控制 , 全部 ")
 
 
 # 巨潮资讯-数据中心-专题统计-股东股本-实际控制人持股变动

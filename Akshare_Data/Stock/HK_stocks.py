@@ -1,4 +1,5 @@
 import akshare as ak
+import pandas as pd
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 
@@ -72,7 +73,8 @@ def get_stock_hk_spot():
         stock_hk_spot_df = sanitize_data_pandas(stock_hk_spot)
 
         translated_list = []
-        for item in stock_hk_spot_df:
+        for _, row in stock_hk_spot_df.iterrows():
+            item = row.to_dict()
             translated_item = {
                 "股票代码": item.get("symbol"),
                 "股票名称": item.get("name"),

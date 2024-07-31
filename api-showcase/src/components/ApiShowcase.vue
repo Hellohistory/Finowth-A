@@ -3,7 +3,7 @@
     <aside class="sidebar">
       <h2>{{ apiTitle }}</h2>
       <input type="text" v-model="searchQuery" placeholder="搜索API..." class="search-box" />
-      <h2>API 列表</h2>
+      <h2>API 在线测试列表</h2>
       <ul>
         <li v-for="api in filteredApiInfo" :key="api.api_path" @click="selectApi(api)" :class="{ selected: api.api_path === selectedApi?.api_path }" class="api-item">
           <span class="api-path">{{ api.api_path }}</span>

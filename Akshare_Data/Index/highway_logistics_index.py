@@ -37,9 +37,9 @@ def post_index_price_cflp(request: IndexPriceCflp):
 
 
 # 指数数据-公路物流指数-中国公路物流运量指数
-@router.post("/index_volume_cflp",
-             operation_id="post_index_volume_cflp")
-def post_index_volume_cflp(request: IndexPriceCflp):
+@router.get("/index_volume_cflp",
+            operation_id="get_index_volume_cflp")
+def get_index_volume_cflp():
     """
     指数数据-公路物流指数-中国公路物流运量指数
 
@@ -50,9 +50,7 @@ def post_index_volume_cflp(request: IndexPriceCflp):
     描述: 获取指定时间周期的中国公路物流运价指数的数据
     """
     try:
-        index_volume_cflp = ak.index_volume_cflp(
-            symbol=request.symbol
-        )
+        index_volume_cflp = ak.index_volume_cflp()
         index_volume_cflp_df = sanitize_data_pandas(index_volume_cflp)
 
         return index_volume_cflp_df.to_dict(orient="records")

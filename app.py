@@ -190,7 +190,7 @@ from Akshare_Data.Others.futures_czce_warehouse_receipt import router as router1
 from Akshare_Data.Others.tool_trade_date_hist_sina import router as router150
 # 数据来源：自编写
 # 新闻模块
-from News.xinwenlianbo import router as router116
+from Finowth.News.xinwenlianbo import router as router116
 
 app = FastAPI()
 

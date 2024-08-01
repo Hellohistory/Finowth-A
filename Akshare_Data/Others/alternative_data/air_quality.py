@@ -127,8 +127,8 @@ class AirQualityRank(BaseModel):
 
 # 另类数据-空气质量-空气质量排名
 @router.post("/air_quality_rank",
-             operation_id="post_air_quality_hist")
-def post_air_quality_hist(request: AirQualityRank):
+             operation_id="post_air_quality_rank")
+def post_air_quality_rank(request: AirQualityRank):
     """
     另类数据-空气质量-空气质量排名
 

@@ -251,7 +251,7 @@ def process_api_info() -> List[APIInfo]:
     for path, path_item in openapi_json.get('paths', {}).items():
         for method, operation in path_item.items():
             api_name = operation.get('operationId', '无操作ID')
-            api_summary = operation.get('summary', '无描述信息')
+            operation.get('summary', '无描述信息')
             api_description = operation.get('description', '无详细描述')
 
             parameters = []

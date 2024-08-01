@@ -1,5 +1,4 @@
 import akshare as ak
-import pandas as pd
 from fastapi import HTTPException, APIRouter
 from pydantic import BaseModel, Field
 

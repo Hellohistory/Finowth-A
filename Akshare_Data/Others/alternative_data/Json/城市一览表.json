@@ -1,0 +1,34 @@
+[
+    {
+        "name": "europe",
+        "object": "欧洲"
+    },
+    {
+        "name": "north-america",
+        "object": "北美洲"
+    },
+    {
+        "name": "latin-america",
+        "object": "拉丁美洲"
+    },
+    {
+        "name": "asia",
+        "object": "亚洲"
+    },
+    {
+        "name": "middle-east",
+        "object": "中东"
+    },
+    {
+        "name": "africa",
+        "object": "非洲"
+    },
+    {
+        "name": "oceania",
+        "object": "大洋洲"
+    },
+    {
+        "name": "world",
+        "object": "默认全球所有城市"
+    }
+]

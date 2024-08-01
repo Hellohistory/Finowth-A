@@ -188,6 +188,18 @@ from Akshare_Data.Others.article_epu_index import router as router148
 from Akshare_Data.Others.futures_czce_warehouse_receipt import router as router149
 # # 交易日历
 from Akshare_Data.Others.tool_trade_date_hist_sina import router as router150
+# # 另类数据
+from Akshare_Data.Others.alternative_data.air_quality import router as router151
+from Akshare_Data.Others.alternative_data.artist import router as router152
+from Akshare_Data.Others.alternative_data.box_office import router as router153
+from Akshare_Data.Others.alternative_data.car_sales_ranking import router as router154
+from Akshare_Data.Others.alternative_data.cost_living import router as router155
+from Akshare_Data.Others.alternative_data.rich_list import router as router156
+from Akshare_Data.Others.alternative_data.sports_events import router as router157
+from Akshare_Data.Others.alternative_data.stock_js_weibo_report import router as router158
+from Akshare_Data.Others.alternative_data.sunrise_and_sunset import router as router159
+from Akshare_Data.Others.alternative_data.video_playback import router as router160
+from Akshare_Data.Others.alternative_data.wealth_ranking import router as router161
 # 数据来源：自编写
 # 新闻模块
 from Finowth.News.xinwenlianbo import router as router116
@@ -462,6 +474,17 @@ app.include_router(router147)
 app.include_router(router148)
 app.include_router(router149)
 app.include_router(router150)
+app.include_router(router151)
+app.include_router(router152)
+app.include_router(router153)
+app.include_router(router154)
+app.include_router(router155)
+app.include_router(router156)
+app.include_router(router157)
+app.include_router(router158)
+app.include_router(router159)
+app.include_router(router160)
+app.include_router(router161)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=36925)

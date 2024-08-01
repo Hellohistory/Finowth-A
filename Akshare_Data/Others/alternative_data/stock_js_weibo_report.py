@@ -29,8 +29,7 @@ class StockWeiboReport(BaseModel):
 
 
 # 另类数据-微博股票舆情报告
-@router.post("/stock_js_weibo_report",
-             operation_id="post_stock_js_weibo_report")
+@router.post("/stock_js_weibo_report", operation_id="post_stock_js_weibo_report")
 def post_stock_js_weibo_report(request: StockWeiboReport):
     """
     另类数据-微博股票舆情报告
@@ -44,13 +43,12 @@ def post_stock_js_weibo_report(request: StockWeiboReport):
     限量: 单次返回指定时间内微博舆情报告中近期受关注的股票
 
     time_period参数一览表:
-    参数	        说明
-    CNHOUR2	    2小时
-    CNHOUR6	    6小时
-    CNHOUR12	12小时
-    CNHOUR24	1天
-    CNDAY7	    1周
-    CNDAY30	    1月
+    参数: CNHOUR2; 说明: 2小时
+    参数: CNHOUR6; 说明: 6小时
+    参数: CNHOUR12; 说明: 12小时
+    参数: CNHOUR24; 说明: 1天
+    参数: CNDAY7; 说明: 1周
+    参数: CNDAY30; 说明: 1月
     """
     try:
         stock_js_weibo_report = ak.stock_js_weibo_report(

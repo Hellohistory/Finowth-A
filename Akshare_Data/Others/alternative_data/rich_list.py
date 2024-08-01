@@ -12,8 +12,7 @@ class FortuneRank(BaseModel):
 
 
 # 另类数据-财富排行榜-中文
-@router.post("/fortune_rank",
-             operation_id="post_fortune_rank")
+@router.post("/fortune_rank", operation_id="post_fortune_rank")
 def post_fortune_rank(request: FortuneRank):
     """
     另类数据-财富排行榜-中文
@@ -39,8 +38,7 @@ def post_fortune_rank(request: FortuneRank):
 
 
 # 另类数据-财富排行榜-英文
-@router.post("/fortune_rank_eng",
-             operation_id="post_fortune_rank_eng")
+@router.post("/fortune_rank_eng", operation_id="post_fortune_rank_eng")
 def post_fortune_rank_eng(request: FortuneRank):
     """
     另类数据-财富排行榜-英文

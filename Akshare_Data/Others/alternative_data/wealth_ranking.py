@@ -12,8 +12,7 @@ JSON_FILE_PATH_1 = 'Akshare_Data/Others/alternative_data/Json/福布斯中国指
 
 
 # 另类数据-财富排行-福布斯中国榜单
-@router.get("/forbes_rank_info",
-            operation_id="get_forbes_rank_info")
+@router.get("/forbes_rank_info", operation_id="get_forbes_rank_info")
 async def get_forbes_rank_info():
     """
     另类数据-财富排行-福布斯中国榜单一览表

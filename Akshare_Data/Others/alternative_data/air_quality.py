@@ -92,8 +92,7 @@ class AirQualityHist(BaseModel):
 
 
 # 另类数据-空气质量-空气质量历史数据
-@router.post("/air_quality_hist",
-             operation_id="post_air_quality_hist")
+@router.post("/air_quality_hist", operation_id="post_air_quality_hist")
 def post_air_quality_hist(request: AirQualityHist):
     """
     另类数据-空气质量-空气质量历史数据
@@ -126,8 +125,7 @@ class AirQualityRank(BaseModel):
 
 
 # 另类数据-空气质量-空气质量排名
-@router.post("/air_quality_rank",
-             operation_id="post_air_quality_rank")
+@router.post("/air_quality_rank", operation_id="post_air_quality_rank")
 def post_air_quality_rank(request: AirQualityRank):
     """
     另类数据-空气质量-空气质量排名
@@ -158,8 +156,7 @@ class AirQualityHist(BaseModel):
 
 
 # 另类数据-空气质量-监测点空气质量
-@router.post("/air_quality_watch_point",
-             operation_id="post_air_quality_watch_point")
+@router.post("/air_quality_watch_point", operation_id="post_air_quality_watch_point")
 def post_air_quality_watch_point(request: AirQualityHist):
     """
     另类数据-空气质量-监测点空气质量

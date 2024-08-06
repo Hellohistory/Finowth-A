@@ -123,3 +123,47 @@ async def get_spot_hog_lean_price_soozhu():
         return spot_hog_lean_price_soozhu_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# 搜猪-生猪大数据-今年以来全国出栏均价走势
+@router.get("/spot_hog_year_trend_soozhu", operation_id="get_spot_hog_year_trend_soozhu")
+async def get_spot_hog_year_trend_soozhu():
+    """
+    搜猪-生猪大数据-今年以来全国出栏均价走势
+
+    接口: spot_hog_year_trend_soozhu
+
+    目标地址: https://www.soozhu.com/price/data/center/
+
+    描述: 搜猪-生猪大数据-今年以来全国出栏均价走势
+
+    限量: 单次返回近一年所有历史数据
+    """
+    try:
+        spot_hog_year_trend_soozhu = ak.spot_hog_year_trend_soozhu()
+        spot_hog_year_trend_soozhu_df = sanitize_data_pandas(spot_hog_year_trend_soozhu)
+        return spot_hog_year_trend_soozhu_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 搜猪-生猪大数据-各省均价实时排行榜
+@router.get("/spot_hog_soozhu", operation_id="get_spot_hog_soozhu")
+async def get_spot_hog_soozhu():
+    """
+    搜猪-生猪大数据-各省均价实时排行榜
+
+    接口: spot_hog_soozhu
+
+    目标地址: https://www.soozhu.com/price/data/center/
+
+    描述: 搜猪-生猪大数据-各省均价实时排行榜
+
+    限量: 单次返回所有实时数据
+    """
+    try:
+        spot_hog_soozhu = ak.spot_hog_soozhu()
+        spot_hog_soozhu_df = sanitize_data_pandas(spot_hog_soozhu)
+        return spot_hog_soozhu_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

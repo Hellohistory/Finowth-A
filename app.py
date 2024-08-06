@@ -195,7 +195,7 @@ from Akshare_Data.Others.alternative_data.box_office import router as router153
 from Akshare_Data.Others.alternative_data.car_sales_ranking import router as router154
 from Akshare_Data.Others.alternative_data.cost_living import router as router155
 from Akshare_Data.Others.alternative_data.rich_list import router as router156
-from Akshare_Data.Others.alternative_data.sports_events import router as router157
+
 from Akshare_Data.Others.alternative_data.stock_js_weibo_report import router as router158
 from Akshare_Data.Others.alternative_data.sunrise_and_sunset import router as router159
 from Akshare_Data.Others.alternative_data.video_playback import router as router160
@@ -211,7 +211,7 @@ origins = [
     "http://localhost:36924",
     "http://localhost:36925",
     "http://192.168.1.18:36929",
-    "http://192.168.1.6:36924"
+    "http://192.168.1.6:36926"
 ]
 
 app.add_middleware(
@@ -480,7 +480,7 @@ app.include_router(router153)
 app.include_router(router154)
 app.include_router(router155)
 app.include_router(router156)
-app.include_router(router157)
+
 app.include_router(router158)
 app.include_router(router159)
 app.include_router(router160)

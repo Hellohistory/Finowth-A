@@ -9,7 +9,7 @@ router = APIRouter()
 
 class OptionCommodityContractSina(BaseModel):
     symbol: str = Field(..., title="合约类型",
-                        description="例：au2012C328，可通过 option_commodity_contract_table_sina 获取")
+                        description="例：黄金期权，可通过 option_commodity_contract_table_sina 获取")
 
 
 # 期权-商品期权-新浪财经-历史行情

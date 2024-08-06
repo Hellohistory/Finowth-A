@@ -33,7 +33,7 @@ async def get_cost_living_info():
 
 
 class CostLiving(BaseModel):
-    symbol: str = Field(..., title="城市名称", description="通过 cost_living_info 获取")
+    symbol: str = Field(..., title="城市名称", description="通过 cost_living_info 获取城市名称")
 
 
 # 另类数据-生活成本

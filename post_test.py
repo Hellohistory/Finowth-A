@@ -1,9 +1,13 @@
 import requests
 import json
 
-url = 'http://localhost:36925/stock_szse_summary'
+url = 'http://localhost:36925/stock_board_concept_hist_em'
 data = {
-    'date': "20240717"
+    'symbol': "租售同权",
+    'period': "daily",
+    'start_date': "20240701",
+    'end_date': "20240708",
+    'adjust': ""
 }
 headers = {'Content-Type': 'application/json'}
 

@@ -2,6 +2,8 @@ import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
+from Akshare_Data.utility_function import sanitize_data_pandas
+
 router = APIRouter()
 
 
@@ -23,7 +25,9 @@ async def post_spot_price_qh(request: SpotPriceSymbolRequest):
     限量: 单次返回指定品种的所有历史数据
     """
     try:
-        spot_price_qh_df = ak.spot_price_qh(symbol=request.symbol)
+        spot_price_qh = ak.spot_price_qh(symbol=request.symbol)
+        spot_price_qh_df = sanitize_data_pandas(spot_price_qh)
+
         return spot_price_qh_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -47,7 +51,9 @@ async def post_spot_hist_sge(request: SpotPriceSymbolRequest):
     限量: 单次返回指定品种的所有历史数据
     """
     try:
-        spot_hist_sge_df = ak.spot_hist_sge(symbol=request.symbol)
+        spot_hist_sge = ak.spot_hist_sge(symbol=request.symbol)
+        spot_hist_sge_df = sanitize_data_pandas(spot_hist_sge)
+
         return spot_hist_sge_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -69,11 +75,10 @@ async def get_spot_golden_benchmark_sge():
     """
     try:
         spot_golden_benchmark_sge = ak.spot_golden_benchmark_sge()
-        data = spot_golden_benchmark_sge.to_dict(orient="records")
+        spot_golden_benchmark_sge_df = sanitize_data_pandas(spot_golden_benchmark_sge)
+        return spot_golden_benchmark_sge_df.to_dict(orient="records")
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
-
-    return data
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 # 上海黄金交易所-上海银基准价-历史数据
@@ -92,8 +97,29 @@ async def get_spot_silver_benchmark_sge():
     """
     try:
         spot_silver_benchmark_sge = ak.spot_silver_benchmark_sge()
-        data = spot_silver_benchmark_sge.to_dict(orient="records")
+        spot_silver_benchmark_sge_df = sanitize_data_pandas(spot_silver_benchmark_sge)
+        return spot_silver_benchmark_sge_df.to_dict(orient="records")
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
 
-    return data
+
+# 搜猪-生猪大数据-全国瘦肉型肉猪
+@router.get("/spot_hog_lean_price_soozhu", operation_id="get_spot_hog_lean_price_soozhu")
+async def get_spot_hog_lean_price_soozhu():
+    """
+    搜猪-生猪大数据-全国瘦肉型肉猪
+
+    接口: spot_hog_lean_price_soozhu
+
+    目标地址: https://www.soozhu.com/price/data/center/
+
+    描述: 搜猪-生猪大数据-全国瘦肉型肉猪
+
+    限量: 单次返回近半个月的历史数据
+    """
+    try:
+        spot_hog_lean_price_soozhu = ak.spot_hog_lean_price_soozhu()
+        spot_hog_lean_price_soozhu_df = sanitize_data_pandas(spot_hog_lean_price_soozhu)
+        return spot_hog_lean_price_soozhu_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

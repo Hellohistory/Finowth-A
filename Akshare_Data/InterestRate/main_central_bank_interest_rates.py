@@ -13,11 +13,6 @@ async def get_interest_macro_bank_usa_interest_rate():
     """
     接口: macro_bank_usa_interest_rate
 
-    目标地址: https://datacenter.jin10.com/reportType/dc_usa_interest_rate_decision
-
-    描述: 美联储利率决议报告, 数据区间从 19820927-至今
-
-    限量: 单次返回所有历史数据
     """
     try:
         interest_macro_bank_usa_interest_rate = ak.macro_bank_usa_interest_rate()

@@ -451,3 +451,25 @@ async def post_stock_xjll_em(request: DongCaiBalanceSheetRequest):
         return stock_xjll_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# 财新网-财新数据通-内容精选
+@router.get("/stock_news_main_cx", operation_id="get_stock_news_main_cx")
+def get_stock_news_main_cx():
+    """
+    财新网-财新数据通-内容精选
+
+    接口: stock_news_main_cx
+
+    目标地址: https://cxdata.caixin.com/pc/
+
+    描述: 财新网-财新数据通-内容精选
+
+    限量: 返回所有历史新闻数据
+    """
+    try:
+        stock_news_main_cx = ak.stock_news_main_cx()
+        stock_news_main_cx_df = sanitize_data_pandas(stock_news_main_cx)
+        return stock_news_main_cx_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

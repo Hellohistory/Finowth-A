@@ -167,3 +167,25 @@ async def get_spot_hog_soozhu():
         return spot_hog_soozhu_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# 搜猪-生猪大数据-全国三元仔猪
+@router.get("/spot_hog_three_way_soozhu", operation_id="get_spot_hog_three_way_soozhu")
+async def get_spot_hog_three_way_soozhu():
+    """
+    搜猪-生猪大数据-全国三元仔猪
+
+    接口: spot_hog_lean_price_soozhu
+
+    目标地址: https://www.soozhu.com/price/data/center/
+
+    描述: 搜猪-生猪大数据-全国三元仔猪
+
+    限量: 单次返回近半个月的历史数据
+    """
+    try:
+        spot_hog_three_way_soozhu = ak.spot_hog_three_way_soozhu()
+        spot_hog_three_way_soozhu_df = sanitize_data_pandas(spot_hog_three_way_soozhu)
+        return spot_hog_three_way_soozhu_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

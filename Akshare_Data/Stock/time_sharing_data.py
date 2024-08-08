@@ -193,3 +193,9 @@ async def post_stock_zh_a_tick_tx(request: TXTickHistoryRequest):
         return {"symbol": request.symbol, "data": data}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"获取分笔行情数据失败: {str(e)}")
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

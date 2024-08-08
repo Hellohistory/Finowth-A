@@ -239,7 +239,7 @@ def get_stock_rank_ljqd_ths():
         stock_rank_ljqd_ths = ak.stock_rank_ljqd_ths()
         stock_rank_ljqd_ths_df = sanitize_data_pandas(stock_rank_ljqd_ths)
         return stock_rank_ljqd_ths_df.to_dict(orient="records")
-    except Exception as e:
+    except Exception:
         raise HTTPException(status_code=500)
 
 
@@ -263,3 +263,9 @@ def get_stock_rank_xzjp_ths():
         return stock_rank_xzjp_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

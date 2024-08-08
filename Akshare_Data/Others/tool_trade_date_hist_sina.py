@@ -27,3 +27,9 @@ def get_tool_trade_date_hist_sina():
         return tool_trade_date_hist_sina.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

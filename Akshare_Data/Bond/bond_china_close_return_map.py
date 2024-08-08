@@ -22,3 +22,9 @@ async def get_bond_china_close_return_map():
         "enLabel": "英文名称"
     }, inplace=True)
     return bond_china_close_return_map_df.to_dict(orient="records")
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

@@ -26,3 +26,8 @@ async def get_spot_symbol_table_sge():
     spot_symbol_table_sge = ak.spot_symbol_table_sge()
     data = spot_symbol_table_sge.to_dict(orient="records")
     return data
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

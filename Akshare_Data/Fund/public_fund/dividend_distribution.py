@@ -73,3 +73,9 @@ async def get_fund_fh_rank_em():
         raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return fund_fh_rank_em_df.to_dict(orient="records")
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

@@ -174,3 +174,9 @@ def get_market_data():
     限量: 单次返回所有历史数据
     """
     return data
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

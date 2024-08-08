@@ -13,8 +13,7 @@ class StockGoods(BaseModel):
 
 
 # 指数数据-新浪财经-商品现货价格指数
-@router.post("/spot_goods",
-             operation_id="post_spot_goods")
+@router.post("/spot_goods", operation_id="post_spot_goods")
 def post_spot_goods(request: StockGoods):
     """
     指数数据-新浪财经-商品现货价格指数
@@ -42,8 +41,7 @@ class IndexYW(BaseModel):
 
 
 # 指数数据-义乌小商品指数
-@router.post("/index_yw",
-             operation_id="post_index_yw")
+@router.post("/index_yw", operation_id="post_index_yw")
 def post_index_yw(request: IndexYW):
     """
     指数数据-义乌小商品指数
@@ -71,8 +69,7 @@ class IndexKQFZ(BaseModel):
 
 
 # 指数数据-柯桥纺织品指数
-@router.post("/index_kq_fz",
-             operation_id="post_index_kq_fz")
+@router.post("/index_kq_fz", operation_id="post_index_kq_fz")
 def post_index_kq_fz(request: IndexKQFZ):
     """
     指数数据-柯桥纺织品指数
@@ -103,8 +100,7 @@ class IndexKQFashion(BaseModel):
 
 
 # 指数数据-柯桥纺织品指数
-@router.post("/index_kq_fz",
-             operation_id="IndexKQFashion")
+@router.post("/index_kq_fz", operation_id="IndexKQFashion")
 def post_index_kq_fz(request: IndexKQFZ):
     """
     指数数据-柯桥纺织品指数
@@ -124,3 +120,9 @@ def post_index_kq_fz(request: IndexKQFZ):
         return index_kq_fz_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

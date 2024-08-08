@@ -378,10 +378,18 @@ async def post_stock_hsgt_individual_detail_em(request: DongCaiStockRequest):
     限量: 单次获取指定个股的在起始时间和终止时间之间的所有数据; 注意只能返回 90 个交易日内的数据
     """
     try:
-        stock_hsgt_individual_detail_em = ak.stock_hsgt_individual_detail_em(symbol=request.stock,
-                                                                                start_date=request.start_date,
-                                                                                end_date=request.end_date)
+        stock_hsgt_individual_detail_em = ak.stock_hsgt_individual_detail_em(
+            symbol=request.stock,
+            start_date=request.start_date,
+            end_date=request.end_date
+        )
         stock_hsgt_individual_detail_em_df = sanitize_data_pandas(stock_hsgt_individual_detail_em)
         return stock_hsgt_individual_detail_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

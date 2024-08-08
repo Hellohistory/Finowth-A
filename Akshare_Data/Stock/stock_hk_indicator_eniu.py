@@ -34,3 +34,9 @@ async def post_stock_hk_indicator_eniu(request: SymolIndicatorRequest):
         return stock_hk_indicator_eniu_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

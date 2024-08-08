@@ -339,3 +339,11 @@ async def get_fund_amac_manager_cancelled_info():
         fund_amac_manager_cancelled_info_df = sanitize_data_pandas(fund_amac_manager_cancelled_info)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
+
+    return fund_amac_manager_cancelled_info_df.to_dict(orient="records")
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

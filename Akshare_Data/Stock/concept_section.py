@@ -89,7 +89,7 @@ async def post_stock_board_concept_hist_em(request: ConceptHistRequest):
         )
         stock_board_concept_hist_em_df = sanitize_data_pandas(stock_board_concept_hist_em)
         return stock_board_concept_hist_em_df.to_dict(orient="records")
-    except IndexError as e:
+    except IndexError:
         raise HTTPException(status_code=404, detail="暂无该概念，请通过调用stock_board_concept_name_em接口检索")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -125,3 +125,9 @@ async def post_stock_board_concept_hist_min_em(request: ConceptHistMinRequest):
         return stock_board_concept_hist_min_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

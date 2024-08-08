@@ -9,7 +9,7 @@ router = APIRouter()
 
 class OptionRiskIndicator(BaseModel):
     date: str = Field(..., title="指定交易日",
-                           description="例：20240626，数据从 20150209 开始")
+                      description="例：20240626，数据从 20150209 开始")
 
 
 # 期权-金融期权-风险指标-上海证券交易所
@@ -82,3 +82,9 @@ def post_option_daily_stats_szse(request: OptionRiskIndicator):
         return option_daily_stats_szse_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

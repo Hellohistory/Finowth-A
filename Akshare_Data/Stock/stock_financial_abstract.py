@@ -127,3 +127,9 @@ async def post_stock_financial_hk_analysis_indicator_em(request: DongCaiSymolInd
         return stock_financial_hk_analysis_indicator_em_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"获取财务分析指标数据失败: {str(e)}")
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

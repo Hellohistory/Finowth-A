@@ -25,3 +25,9 @@ async def get_futures_exchange_info():
         raise HTTPException(status_code=500, detail="JSON 解码错误")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"服务器错误: {str(e)}")
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

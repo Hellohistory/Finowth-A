@@ -7,8 +7,7 @@ router = APIRouter()
 
 
 # 指数数据-申万一级行业信息
-@router.get("/sw_index_first_info",
-            operation_id="get_sw_index_first_info")
+@router.get("/sw_index_first_info", operation_id="get_sw_index_first_info")
 def get_sw_index_first_info():
     """
     指数数据-申万一级行业信息
@@ -30,8 +29,7 @@ def get_sw_index_first_info():
 
 
 # 指数数据-申万二级行业信息
-@router.get("/sw_index_second_info",
-            operation_id="get_sw_index_second_info")
+@router.get("/sw_index_second_info", operation_id="get_sw_index_second_info")
 def get_sw_index_second_info():
     """
     指数数据-申万二级行业信息
@@ -53,8 +51,7 @@ def get_sw_index_second_info():
 
 
 # 指数数据-申万三级行业信息
-@router.get("/sw_index_third_info",
-            operation_id="get_sw_index_third_info")
+@router.get("/sw_index_third_info", operation_id="get_sw_index_third_info")
 def get_sw_index_third_info():
     """
     指数数据-申万三级行业信息
@@ -76,8 +73,7 @@ def get_sw_index_third_info():
 
 
 # 指数数据-申万三级行业信息
-@router.get("/sw_index_third_cons",
-            operation_id="get_sw_index_third_cons")
+@router.get("/sw_index_third_cons", operation_id="get_sw_index_third_cons")
 def get_sw_index_third_cons():
     """
     指数数据-申万三级行业信息
@@ -96,3 +92,9 @@ def get_sw_index_third_cons():
         return sanitized_data
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

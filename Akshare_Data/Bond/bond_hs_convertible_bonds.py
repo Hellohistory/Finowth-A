@@ -473,26 +473,7 @@ async def post_bond_zh_us_rate(request: BondZHUSRate):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+if __name__ == "__main__":
+    import uvicorn
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    uvicorn.run(router, host="0.0.0.0", port=36925)

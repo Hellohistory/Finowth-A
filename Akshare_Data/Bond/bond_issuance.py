@@ -131,3 +131,10 @@ async def get_bond_cov_stock_issue_cninfo():
         raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
 
     return bond_cov_stock_issue_cninfo_df.to_dict(orient="records")
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)
+

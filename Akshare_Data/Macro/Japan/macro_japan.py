@@ -119,3 +119,9 @@ async def get_macro_japan_head_indicator():
         return macro_japan_head_indicator_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

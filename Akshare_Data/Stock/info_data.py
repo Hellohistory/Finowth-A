@@ -110,7 +110,7 @@ def get_stock_info_global_ths():
     """
     try:
         stock_info_global_ths = ak.stock_info_global_ths()
-        stock_info_global_ths_df = sanitize_data_pandas(stock_info_cjzc_em)
+        stock_info_global_ths_df = sanitize_data_pandas(stock_info_global_ths)
         return stock_info_global_ths_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -165,3 +165,9 @@ def post_stock_info_broker_sina(request: StockInfoBrokerSinaRequest):
         return stock_info_broker_sina_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

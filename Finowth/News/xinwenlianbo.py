@@ -43,3 +43,9 @@ async def post_news_xinwenlianbo_text(request: NewsRequest):
         news_data.append({'title': title, 'content': content})
 
     return news_data
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(router, host="0.0.0.0", port=36925)

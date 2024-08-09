@@ -12,8 +12,8 @@ class ExecutiveSymbolRequest(BaseModel):
 
 
 # 东方财富-数据中心-特色数据-高管持股
-@router.post("/stock_ggcg_em", operation_id="post_stock_ggcg_em")
-async def post_stock_ggcg_em(request: ExecutiveSymbolRequest):
+@router.post("/stock_ggcg_em", operation_id="stock_ggcg_em")
+async def stock_ggcg_em(request: ExecutiveSymbolRequest):
     """
     东方财富-高管持股
 
@@ -40,8 +40,8 @@ class ChouMaSymbolRequest(BaseModel):
 
 
 # 东方财富-概念板-行情中心-日K-筹码分布
-@router.post("/stock_cyq_em", operation_id="post_stock_cyq_em")
-async def post_stock_cyq_em(request: ChouMaSymbolRequest):
+@router.post("/stock_cyq_em", operation_id="stock_cyq_em")
+async def stock_cyq_em(request: ChouMaSymbolRequest):
     """
     东方财富-概念板-日K-筹码分布
 
@@ -69,8 +69,8 @@ class StockYzxdrRequest(BaseModel):
 
 
 # 一致行动人
-@router.post("/stock_yzxdr_em", operation_id="post_stock_yzxdr_em")
-def post_stock_yzxdr_em(request: StockYzxdrRequest):
+@router.post("/stock_yzxdr_em", operation_id="stock_yzxdr_em")
+def stock_yzxdr_em(request: StockYzxdrRequest):
     """
     东方财富-一致行动人
 
@@ -91,8 +91,8 @@ def post_stock_yzxdr_em(request: StockYzxdrRequest):
 
 
 # 赚钱效应分析
-@router.get("/stock_market_activity_legu", operation_id="get_stock_market_activity_legu")
-def get_stock_market_activity_legu():
+@router.get("/stock_market_activity_legu", operation_id="stock_market_activity_legu")
+def stock_market_activity_legu():
     """
     乐咕乐股-赚钱效应分析数据
 

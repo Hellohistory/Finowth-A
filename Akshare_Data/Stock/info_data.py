@@ -7,8 +7,8 @@ from Akshare_Data.utility_function import sanitize_data_pandas
 router = APIRouter()
 
 
-@router.get("/stock_info_cjzc_em", operation_id="get_stock_info_cjzc_em")
-def get_stock_info_cjzc_em():
+@router.get("/stock_info_cjzc_em", operation_id="stock_info_cjzc_em")
+def stock_info_cjzc_em():
     """
     东方财富-财经早餐
 
@@ -29,8 +29,8 @@ def get_stock_info_cjzc_em():
 
 
 # 全球财经快讯-东财财富
-@router.get("/stock_info_global_em", operation_id="get_stock_info_global_em")
-def get_stock_info_global_em():
+@router.get("/stock_info_global_em", operation_id="stock_info_global_em")
+def stock_info_global_em():
     """
     东方财富-全球财经快讯
 
@@ -51,8 +51,8 @@ def get_stock_info_global_em():
 
 
 # 全球财经快讯-新浪财经
-@router.get("/stock_info_global_sina", operation_id="get_stock_info_global_sina")
-def get_stock_info_global_sina():
+@router.get("/stock_info_global_sina", operation_id="stock_info_global_sina")
+def stock_info_global_sina():
     """
     新浪财经-全球财经快讯
 
@@ -73,8 +73,8 @@ def get_stock_info_global_sina():
 
 
 # 快讯-富途牛牛
-@router.get("/stock_info_global_futu", operation_id="get_stock_info_global_futu")
-def get_stock_info_global_futu():
+@router.get("/stock_info_global_futu", operation_id="stock_info_global_futu")
+def stock_info_global_futu():
     """
     富途牛牛-快讯
 
@@ -95,8 +95,8 @@ def get_stock_info_global_futu():
 
 
 # 全球财经直播-同花顺财经
-@router.get("/stock_info_global_ths", operation_id="get_stock_info_global_ths")
-def get_stock_info_global_ths():
+@router.get("/stock_info_global_ths", operation_id="stock_info_global_ths")
+def stock_info_global_ths():
     """
     同花顺财经-全球财经直播
 
@@ -120,8 +120,8 @@ class StockInfoGlobalCLSRequest(BaseModel):
     symbol: str = Field(..., title="类型", description="可选择'全部', '重点'")
 
 
-@router.post("/stock_info_global_cls", operation_id="post_stock_info_global_cls")
-def post_stock_info_global_cls(request: StockInfoGlobalCLSRequest):
+@router.post("/stock_info_global_cls", operation_id="stock_info_global_cls")
+def stock_info_global_cls(request: StockInfoGlobalCLSRequest):
     """
     财联社-电报
 
@@ -146,8 +146,8 @@ class StockInfoBrokerSinaRequest(BaseModel):
 
 
 # 证券原创-新浪财经
-@router.post("/stock_info_broker_sina", operation_id="post_stock_info_broker_sina")
-def post_stock_info_broker_sina(request: StockInfoBrokerSinaRequest):
+@router.post("/stock_info_broker_sina", operation_id="stock_info_broker_sina")
+def stock_info_broker_sina(request: StockInfoBrokerSinaRequest):
     """
     新浪财经-证券-证券原创
 

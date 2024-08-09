@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 国民经济运行状况-金融市场-股票筹资
 @router.get("/macro_stock_finance",
-            operation_id="get_macro_stock_finance")
-async def get_macro_stock_finance():
+            operation_id="macro_stock_finance")
+async def macro_stock_finance():
     """
     国民经济运行状况-金融市场-股票筹资
 
@@ -31,8 +31,8 @@ async def get_macro_stock_finance():
 
 # 国民经济运行状况-金融市场-新增人民币贷款
 @router.get("/macro_rmb_loan",
-            operation_id="get_macro_rmb_loan")
-async def get_macro_rmb_loan():
+            operation_id="macro_rmb_loan")
+async def macro_rmb_loan():
     """
     国民经济运行状况-金融市场-新增人民币贷款
 
@@ -54,8 +54,8 @@ async def get_macro_rmb_loan():
 
 # 国民经济运行状况-金融市场-人民币存款余额
 @router.get("/macro_rmb_deposit",
-            operation_id="get_macro_rmb_deposit")
-async def get_macro_rmb_deposit():
+            operation_id="macro_rmb_deposit")
+async def macro_rmb_deposit():
     """
     国民经济运行状况-金融市场-人民币存款余额
 

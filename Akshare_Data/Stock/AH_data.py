@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 腾讯财经-A+H 股实时行情数据
-@router.get("/stock_zh_ah_spot", operation_id="get_stock_zh_ah_spot")
-def get_stock_zh_ah_spot():
+@router.get("/stock_zh_ah_spot", operation_id="stock_zh_ah_spot")
+def stock_zh_ah_spot():
     """
     腾讯财经-A+H 股数据
 
@@ -37,8 +37,8 @@ class StockAHDailyRequest(BaseModel):
 
 
 # 腾讯财经-A+H 股历史行情数据
-@router.post("/stock_zh_ah_daily", operation_id="post_stock_zh_ah_daily")
-async def post_stock_zh_ah_daily(request: StockAHDailyRequest):
+@router.post("/stock_zh_ah_daily", operation_id="stock_zh_ah_daily")
+async def stock_zh_ah_daily(request: StockAHDailyRequest):
     """
     腾讯财经-A+H 股数据
 
@@ -64,8 +64,8 @@ async def post_stock_zh_ah_daily(request: StockAHDailyRequest):
 
 
 # A+H 股票字典
-@router.get("/stock_zh_ah_name", operation_id="get_stock_zh_ah_name")
-def get_stock_zh_ah_name():
+@router.get("/stock_zh_ah_name", operation_id="stock_zh_ah_name")
+def stock_zh_ah_name():
     """
     腾讯财经-A+H 股票字典
 

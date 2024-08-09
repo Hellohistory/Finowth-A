@@ -12,8 +12,8 @@ JSON_FILE_PATH_5 = 'Akshare_Data/Option/json/金融期权合约名称一览表.j
 
 
 @router.get("/options_of_the_previous_stock_exchange",
-            operation_id="get_options_of_the_previous_stock_exchange")
-async def get_options_of_the_previous_stock_exchange():
+            operation_id="options_of_the_previous_stock_exchange")
+async def options_of_the_previous_stock_exchange():
     """
     期权-金融期权-金融期权合约名称一览表
 
@@ -32,8 +32,8 @@ async def get_options_of_the_previous_stock_exchange():
 
 
 @router.get("/options_dalian_commodity_exchange",
-            operation_id="get_options_dalian_commodity_exchange")
-async def get_options_dalian_commodity_exchange():
+            operation_id="options_dalian_commodity_exchange")
+async def options_dalian_commodity_exchange():
     """
     期权-大商所-商品期权-商品期权合约名称一览表
 
@@ -52,8 +52,8 @@ async def get_options_dalian_commodity_exchange():
 
 
 @router.get("/options_zhengzhou_commodity_exchange",
-            operation_id="get_options_zhengzhou_commodity_exchange")
-async def get_options_zhengzhou_commodity_exchange():
+            operation_id="options_zhengzhou_commodity_exchange")
+async def options_zhengzhou_commodity_exchange():
     """
     期权-郑商所-商品期权-商品期权合约名称一览表
 
@@ -72,8 +72,8 @@ async def get_options_zhengzhou_commodity_exchange():
 
 
 @router.get("/options_guangzhou_commodity_exchange",
-            operation_id="get_options_guangzhou_commodity_exchange")
-async def get_options_guangzhou_commodity_exchange():
+            operation_id="options_guangzhou_commodity_exchange")
+async def options_guangzhou_commodity_exchange():
     """
     期权-郑商所-商品期权-商品期权合约名称一览表
 
@@ -92,8 +92,8 @@ async def get_options_guangzhou_commodity_exchange():
 
 
 @router.get("/option_list_of_financial_option_contract_names",
-            operation_id="get_option_list_of_financial_option_contract_names")
-async def get_option_list_of_financial_option_contract_names():
+            operation_id="option_list_of_financial_option_contract_names")
+async def option_list_of_financial_option_contract_names():
     """
     期权-金融期权-金融期权合约名称一览表
 

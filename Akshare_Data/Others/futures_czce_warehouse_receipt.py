@@ -15,8 +15,8 @@ class FuturesCzceWarehouseReceipt(BaseModel):
 
 # 银行数据-银保监分局本级行政处罚
 @router.post("/futures_czce_warehouse_receipt",
-             operation_id="post_futures_czce_warehouse_receipt")
-def post_futures_czce_warehouse_receipt(request: FuturesCzceWarehouseReceipt):
+             operation_id="futures_czce_warehouse_receipt")
+def futures_czce_warehouse_receipt(request: FuturesCzceWarehouseReceipt):
     """
     银行数据-银保监分局本级行政处罚
 

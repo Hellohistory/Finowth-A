@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # ESG 评级数据
-@router.get("/stock_esg_rate_sina", operation_id="get_stock_esg_rate_sina")
-def get_stock_esg_rate_sina():
+@router.get("/stock_esg_rate_sina", operation_id="stock_esg_rate_sina")
+def stock_esg_rate_sina():
     """
     新浪财经-ESG评级中心-ESG评级-ESG评级数据
 
@@ -29,8 +29,8 @@ def get_stock_esg_rate_sina():
 
 
 # MSCI
-@router.get("/stock_esg_msci_sina", operation_id="get_stock_esg_msci_sina")
-def get_stock_esg_msci_sina():
+@router.get("/stock_esg_msci_sina", operation_id="stock_esg_msci_sina")
+def stock_esg_msci_sina():
     """
     新浪财经-ESG评级中心-ESG评级-MSCI
 
@@ -51,8 +51,8 @@ def get_stock_esg_msci_sina():
 
 
 # 路孚特
-@router.get("/stock_esg_rft_sina", operation_id="get_stock_esg_rft_sina")
-def get_stock_esg_rft_sina():
+@router.get("/stock_esg_rft_sina", operation_id="stock_esg_rft_sina")
+def stock_esg_rft_sina():
     """
     新浪财经-ESG评级中心-ESG评级-路孚特
 
@@ -73,8 +73,8 @@ def get_stock_esg_rft_sina():
 
 
 # 秩鼎
-@router.get("/stock_esg_zd_sina", operation_id="get_stock_esg_zd_sina")
-def get_stock_esg_zd_sina():
+@router.get("/stock_esg_zd_sina", operation_id="stock_esg_zd_sina")
+def stock_esg_zd_sina():
     """
     新浪财经-ESG评级中心-ESG评级-秩鼎
 
@@ -95,8 +95,8 @@ def get_stock_esg_zd_sina():
 
 
 # 华证指数
-@router.get("/stock_esg_hz_sina", operation_id="get_stock_esg_hz_sina")
-def get_stock_esg_hz_sina():
+@router.get("/stock_esg_hz_sina", operation_id="stock_esg_hz_sina")
+def stock_esg_hz_sina():
     """
     新浪财经-ESG评级中心-ESG评级-华证指数
 

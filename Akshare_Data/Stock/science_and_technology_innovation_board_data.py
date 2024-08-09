@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 新浪财经-科创板股票实时行情数据
-@router.get("/stock_zh_kcb_spot", operation_id="get_stock_zh_kcb_spot")
-async def get_stock_zh_kcb_spot():
+@router.get("/stock_zh_kcb_spot", operation_id="stock_zh_kcb_spot")
+async def stock_zh_kcb_spot():
     """
     新浪财经-科创板股票实时行情数据
 
@@ -39,8 +39,8 @@ class StockDailyRequest(BaseModel):
 
 
 # 新浪财经-科创板股票历史行情数据
-@router.post("/stock_zh_kcb_daily", operation_id="post_stock_zh_kcb_daily")
-async def post_stock_zh_kcb_daily(request: StockDailyRequest):
+@router.post("/stock_zh_kcb_daily", operation_id="stock_zh_kcb_daily")
+async def stock_zh_kcb_daily(request: StockDailyRequest):
     """
     新浪财经-科创板股票历史行情数据
 
@@ -82,8 +82,8 @@ class StockReportRequest(BaseModel):
 
 
 # 东方财富-科创板报告数据
-@router.post("/stock_zh_kcb_report_em", operation_id="post_stock_zh_kcb_report_em")
-async def post_stock_zh_kcb_report_em(request: StockReportRequest):
+@router.post("/stock_zh_kcb_report_em", operation_id="stock_zh_kcb_report_em")
+async def stock_zh_kcb_report_em(request: StockReportRequest):
     """
     有概率能获取，有概率无法获取，需排查问题
 

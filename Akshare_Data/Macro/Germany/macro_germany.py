@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 德国宏观-IFO商业景气指数
 @router.get("/macro_germany_ifo",
-            operation_id="get_macro_germany_ifo")
-async def get_macro_germany_ifo():
+            operation_id="macro_germany_ifo")
+async def macro_germany_ifo():
     """
     德国宏观-IFO商业景气指数
 
@@ -31,8 +31,8 @@ async def get_macro_germany_ifo():
 
 # 德国宏观-消费者物价指数月率终值
 @router.get("/macro_germany_cpi_monthly",
-            operation_id="get_macro_germany_cpi_monthly")
-async def get_macro_germany_cpi_monthly():
+            operation_id="macro_germany_cpi_monthly")
+async def macro_germany_cpi_monthly():
     """
     德国宏观-消费者物价指数月率终值
 
@@ -54,8 +54,8 @@ async def get_macro_germany_cpi_monthly():
 
 # 德国宏观-消费者物价指数年率终值
 @router.get("/macro_germany_cpi_yearly",
-            operation_id="get_macro_germany_cpi_yearly")
-async def get_macro_germany_cpi_yearly():
+            operation_id="macro_germany_cpi_yearly")
+async def macro_germany_cpi_yearly():
     """
     德国宏观-消费者物价指数年率终值
 
@@ -77,8 +77,8 @@ async def get_macro_germany_cpi_yearly():
 
 # 德国宏观-贸易帐-季调后
 @router.get("/macro_germany_trade_adjusted",
-            operation_id="get_macro_germany_trade_adjusted")
-async def get_macro_germany_trade_adjusted():
+            operation_id="macro_germany_trade_adjusted")
+async def macro_germany_trade_adjusted():
     """
     德国宏观-贸易帐-季调后
 
@@ -100,8 +100,8 @@ async def get_macro_germany_trade_adjusted():
 
 # 德国宏观-贸易帐-GDP
 @router.get("/macro_germany_gdp",
-            operation_id="get_macro_germany_gdp")
-async def get_macro_germany_gdp():
+            operation_id="macro_germany_gdp")
+async def macro_germany_gdp():
     """
     德国宏观-贸易帐-GDP
 
@@ -123,8 +123,8 @@ async def get_macro_germany_gdp():
 
 # 德国宏观-实际零售销售月率
 @router.get("/macro_germany_retail_sale_monthly",
-            operation_id="get_macro_germany_retail_sale_monthly")
-async def get_macro_germany_retail_sale_monthly():
+            operation_id="macro_germany_retail_sale_monthly")
+async def macro_germany_retail_sale_monthly():
     """
     德国宏观-实际零售销售月率
 
@@ -146,8 +146,8 @@ async def get_macro_germany_retail_sale_monthly():
 
 # 德国宏观-实际零售销售年率
 @router.get("/macro_germany_retail_sale_yearly",
-            operation_id="get_macro_germany_retail_sale_yearly")
-async def get_macro_germany_retail_sale_yearly():
+            operation_id="macro_germany_retail_sale_yearly")
+async def macro_germany_retail_sale_yearly():
     """
     德国宏观-实际零售销售月率
 
@@ -169,8 +169,8 @@ async def get_macro_germany_retail_sale_yearly():
 
 # 德国宏观-ZEW 经济景气指数
 @router.get("/macro_germany_zew",
-            operation_id="get_macro_germany_zew")
-async def get_macro_germany_zew():
+            operation_id="macro_germany_zew")
+async def macro_germany_zew():
     """
     德国宏观-ZEW 经济景气指数
 

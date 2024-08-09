@@ -16,8 +16,8 @@ class SymbolRequest(BaseModel):
 
 
 # 东方财富-行情中心-盘口异动数据
-@router.post("/stock_changes_em", operation_id="post_stock_changes_em")
-async def post_stock_changes_em(request: SymbolRequest):
+@router.post("/stock_changes_em", operation_id="stock_changes_em")
+async def stock_changes_em(request: SymbolRequest):
     """
     东方财富-盘口异动数据
 
@@ -39,8 +39,8 @@ async def post_stock_changes_em(request: SymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_board_change_em", operation_id="get_stock_board_change_em")
-def get_stock_board_change_em():
+@router.get("/stock_board_change_em", operation_id="stock_board_change_em")
+def stock_board_change_em():
     """
     东方财富-当日板块异动详情
 

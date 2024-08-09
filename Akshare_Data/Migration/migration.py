@@ -14,8 +14,8 @@ class MigrationAreaBaidu(BaseModel):
 
 
 # 迁入与迁出地详情
-@router.post("/migration_area_baidu", operation_id="post_migration_area_baidu")
-async def post_migration_area_baidu(request: MigrationAreaBaidu):
+@router.post("/migration_area_baidu", operation_id="migration_area_baidu")
+async def migration_area_baidu(request: MigrationAreaBaidu):
     """
     迁入与迁出地详情
 
@@ -51,8 +51,8 @@ class MigrationScaleBaidu(BaseModel):
 
 
 # 迁入与迁出地详情
-@router.post("/migration_scale_baidu", operation_id="post_migration_scale_baidu")
-async def post_migration_scale_baidu(request: MigrationScaleBaidu):
+@router.post("/migration_scale_baidu", operation_id="migration_scale_baidu")
+async def migration_scale_baidu(request: MigrationScaleBaidu):
     """
     迁徙规模
 

@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 公募基金数据-东方财富-基金评级-基金评级总汇
-@router.get("/fund_rating_all", operation_id="get_fund_rating_all")
-async def get_fund_rating_all():
+@router.get("/fund_rating_all", operation_id="fund_rating_all")
+async def fund_rating_all():
     """
     公募基金数据-东方财富-基金评级-基金评级总汇
 
@@ -37,8 +37,8 @@ class FundRating(BaseModel):
 
 # 公募基金数据-东方财富-基金评级-上海证券评级
 @router.post("/fund_rating_sh",
-             operation_id="post_fund_rating_sh")
-def post_fund_rating_sh(request: FundRating):
+             operation_id="fund_rating_sh")
+def fund_rating_sh(request: FundRating):
     """
     公募基金数据-东方财富-基金评级-上海证券评级
 
@@ -63,8 +63,8 @@ def post_fund_rating_sh(request: FundRating):
 
 # 公募基金数据-东方财富-基金评级-招商证券评级
 @router.post("/fund_rating_zs",
-             operation_id="post_fund_rating_zs")
-def post_fund_rating_zs(request: FundRating):
+             operation_id="fund_rating_zs")
+def fund_rating_zs(request: FundRating):
     """
     公募基金数据-东方财富-基金评级-招商证券评级
 
@@ -89,8 +89,8 @@ def post_fund_rating_zs(request: FundRating):
 
 # 公募基金数据-东方财富-基金评级-招商证券评级
 @router.post("/fund_rating_ja",
-             operation_id="post_fund_rating_ja")
-def post_fund_rating_ja(request: FundRating):
+             operation_id="fund_rating_ja")
+def fund_rating_ja(request: FundRating):
     """
     公募基金数据-东方财富-基金评级-招商证券评级
 
@@ -114,8 +114,8 @@ def post_fund_rating_ja(request: FundRating):
 
 
 # 公募基金数据-东方财富-基金评级-基金评级总汇
-@router.get("/fund_manager_em", operation_id="get_fund_manager_em")
-async def get_fund_manager_em():
+@router.get("/fund_manager_em", operation_id="fund_manager_em")
+async def fund_manager_em():
     """
     公募基金数据-东方财富-基金评级-基金评级总汇
 
@@ -137,8 +137,8 @@ async def get_fund_manager_em():
 
 
 # 公募基金数据-东方财富-基金评级-新发基金
-@router.get("/fund_new_found_em", operation_id="get_fund_new_found_em")
-async def get_fund_new_found_em():
+@router.get("/fund_new_found_em", operation_id="fund_new_found_em")
+async def fund_new_found_em():
     """
     公募基金数据-东方财富-基金评级-新发基金
 

@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 国民经济运行状况-行业指数-海岬型运费指数
 @router.get("/macro_shipping_bci",
-            operation_id="get_macro_shipping_bci")
-async def get_macro_shipping_bci():
+            operation_id="macro_shipping_bci")
+async def macro_shipping_bci():
     """
     国民经济运行状况-行业指数-海岬型运费指数
 
@@ -31,8 +31,8 @@ async def get_macro_shipping_bci():
 
 # 国民经济运行状况-行业指数-超灵便型船运价指数
 @router.get("/macro_china_bsi_index",
-            operation_id="get_macro_china_bsi_index")
-async def get_macro_china_bsi_index():
+            operation_id="macro_china_bsi_index")
+async def macro_china_bsi_index():
     """
     国民经济运行状况-行业指数-超灵便型船运价指数
 
@@ -54,8 +54,8 @@ async def get_macro_china_bsi_index():
 
 # 国民经济运行状况-行业指数-波罗的海干散货指数
 @router.get("/macro_shipping_bdi",
-            operation_id="get_macro_shipping_bdi")
-async def get_macro_shipping_bdi():
+            operation_id="macro_shipping_bdi")
+async def macro_shipping_bdi():
     """
     国民经济运行状况-行业指数-波罗的海干散货指数
 
@@ -76,8 +76,8 @@ async def get_macro_shipping_bdi():
 
 
 # 国民经济运行状况-行业指数-巴拿马型运费指数
-@router.get("/macro_shipping_bpi", operation_id="get_macro_shipping_bpi")
-async def get_macro_shipping_bpi():
+@router.get("/macro_shipping_bpi", operation_id="macro_shipping_bpi")
+async def macro_shipping_bpi():
     """
     国民经济运行状况-行业指数-巴拿马型运费指数
 

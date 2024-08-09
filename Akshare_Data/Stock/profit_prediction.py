@@ -15,8 +15,8 @@ class DongCaiSymbolRequest(BaseModel):
 
 
 # 东方财富-数据中心-研究报告-盈利预测
-@router.post("/stock_profit_forecast_em", operation_id="post_stock_profit_forecast_em")
-def post_stock_profit_forecast_em(request: DongCaiSymbolRequest):
+@router.post("/stock_profit_forecast_em", operation_id="stock_profit_forecast_em")
+def stock_profit_forecast_em(request: DongCaiSymbolRequest):
     """
     东方财富-研究报告-盈利预测
 
@@ -43,8 +43,8 @@ class JingJiTongHKSymbolIndicatorRequest(BaseModel):
 
 
 # 经济通-公司资料-盈利预测
-@router.post("/stock_hk_profit_forecast_et", operation_id="post_stock_hk_profit_forecast_et")
-async def post_stock_hk_profit_forecast_et(request: JingJiTongHKSymbolIndicatorRequest):
+@router.post("/stock_hk_profit_forecast_et", operation_id="stock_hk_profit_forecast_et")
+async def stock_hk_profit_forecast_et(request: JingJiTongHKSymbolIndicatorRequest):
     """
     经济通-公司资料-盈利预测
 
@@ -72,8 +72,8 @@ class TongHuaShunSymbolIndicatorRequest(BaseModel):
 
 
 # 同花顺-盈利预测
-@router.post("/stock_profit_forecast_ths", operation_id="post_stock_profit_forecast_ths")
-async def post_stock_profit_forecast_ths(request: TongHuaShunSymbolIndicatorRequest):
+@router.post("/stock_profit_forecast_ths", operation_id="stock_profit_forecast_ths")
+async def stock_profit_forecast_ths(request: TongHuaShunSymbolIndicatorRequest):
     """
     同花顺-盈利预测
 

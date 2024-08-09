@@ -14,8 +14,8 @@ class FundReportStockCninfo(BaseModel):
 
 # 公募基金数据-巨潮资讯-基金报告-基金重仓股
 @router.post("/fund_report_stock_cninfo",
-             operation_id="post_fund_report_stock_cninfo")
-def post_fund_report_stock_cninfo(request: FundReportStockCninfo):
+             operation_id="fund_report_stock_cninfo")
+def fund_report_stock_cninfo(request: FundReportStockCninfo):
     """
     公募基金数据-巨潮资讯-基金报告-基金重仓股
 
@@ -38,8 +38,8 @@ def post_fund_report_stock_cninfo(request: FundReportStockCninfo):
 
 # 公募基金数据-巨潮资讯-基金报告-基金行业配置
 @router.post("/fund_report_industry_allocation_cninfo",
-             operation_id="post_fund_report_industry_allocation_cninfo")
-def post_fund_report_industry_allocation_cninfo(request: FundReportStockCninfo):
+             operation_id="fund_report_industry_allocation_cninfo")
+def fund_report_industry_allocation_cninfo(request: FundReportStockCninfo):
     """
     公募基金数据-巨潮资讯-基金报告-基金行业配置
 
@@ -64,8 +64,8 @@ def post_fund_report_industry_allocation_cninfo(request: FundReportStockCninfo):
 
 # 公募基金数据-巨潮资讯-基金报告-基金资产配置
 @router.get("/fund_report_asset_allocation_cninfo",
-            operation_id="get_fund_report_asset_allocation_cninfo")
-async def get_fund_report_asset_allocation_cninfo():
+            operation_id="fund_report_asset_allocation_cninfo")
+async def fund_report_asset_allocation_cninfo():
     """
     公募基金数据-巨潮资讯-基金报告-基金资产配置
 

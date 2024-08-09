@@ -12,8 +12,8 @@ class DateRequest(BaseModel):
 
 
 # 涨停股池
-@router.post("/stock_zt_pool_em", operation_id="post_stock_zt_pool_em")
-async def post_stock_zt_pool_em(request: DateRequest):
+@router.post("/stock_zt_pool_em", operation_id="stock_zt_pool_em")
+async def stock_zt_pool_em(request: DateRequest):
     """
     东方财富-涨停板行情-涨停股池
 
@@ -34,8 +34,8 @@ async def post_stock_zt_pool_em(request: DateRequest):
 
 
 # 昨日涨停股池
-@router.post("/stock_zt_pool_previous_em", operation_id="post_stock_zt_pool_previous_em")
-async def post_stock_zt_pool_previous_em(request: DateRequest):
+@router.post("/stock_zt_pool_previous_em", operation_id="stock_zt_pool_previous_em")
+async def stock_zt_pool_previous_em(request: DateRequest):
     """
     东方财富-涨停板行情-昨日涨停股池
 
@@ -56,8 +56,8 @@ async def post_stock_zt_pool_previous_em(request: DateRequest):
 
 
 # 强势股池
-@router.post("/stock_zt_pool_strong_em", operation_id="post_stock_zt_pool_strong_em")
-async def post_stock_zt_pool_strong_em(request: DateRequest):
+@router.post("/stock_zt_pool_strong_em", operation_id="stock_zt_pool_strong_em")
+async def stock_zt_pool_strong_em(request: DateRequest):
     """
     东方财富-涨停板行情-强势股池
 
@@ -78,8 +78,8 @@ async def post_stock_zt_pool_strong_em(request: DateRequest):
 
 
 # 次新股池
-@router.post("/stock_zt_pool_sub_new_em", operation_id="post_stock_zt_pool_sub_new_em")
-async def post_stock_zt_pool_sub_new_em(request: DateRequest):
+@router.post("/stock_zt_pool_sub_new_em", operation_id="stock_zt_pool_sub_new_em")
+async def stock_zt_pool_sub_new_em(request: DateRequest):
     """
     东方财富-涨停板行情-次新股池
 
@@ -100,8 +100,8 @@ async def post_stock_zt_pool_sub_new_em(request: DateRequest):
 
 
 # 炸板股池
-@router.post("/stock_zt_pool_zbgc_em", operation_id="post_stock_zt_pool_zbgc_em")
-async def post_stock_zt_pool_zbgc_em(request: DateRequest):
+@router.post("/stock_zt_pool_zbgc_em", operation_id="stock_zt_pool_zbgc_em")
+async def stock_zt_pool_zbgc_em(request: DateRequest):
     """
     东方财富-涨停板行情-炸板股池
 
@@ -122,8 +122,8 @@ async def post_stock_zt_pool_zbgc_em(request: DateRequest):
 
 
 # 跌停股池
-@router.post("/stock_zt_pool_dtgc_em", operation_id="post_stock_zt_pool_dtgc_em")
-async def post_stock_zt_pool_dtgc_em(request: DateRequest):
+@router.post("/stock_zt_pool_dtgc_em", operation_id="stock_zt_pool_dtgc_em")
+async def stock_zt_pool_dtgc_em(request: DateRequest):
     """
     东方财富-涨停板行情-跌停股池
 

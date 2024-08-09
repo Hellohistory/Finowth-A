@@ -13,8 +13,8 @@ class SymolIndicatorRequest(BaseModel):
                            description="可选择'港股', '市盈率', '市净率', '股息率', 'ROE', '市值'")
 
 
-@router.post("/stock_hk_indicator_eniu", operation_id="post_stock_hk_indicator_eniu")
-async def post_stock_hk_indicator_eniu(request: SymolIndicatorRequest):
+@router.post("/stock_hk_indicator_eniu", operation_id="stock_hk_indicator_eniu")
+async def stock_hk_indicator_eniu(request: SymolIndicatorRequest):
     """
     亿牛网-港股个股指标: 市盈率, 市净率, 股息率, ROE, 市值
 

@@ -12,8 +12,8 @@ class DateRequest(BaseModel):
 
 
 # 东方财富-数据中心-年报季报-分红配送
-@router.post("/stock_fhps_em", operation_id="post_stock_fhps_em")
-async def post_stock_fhps_em(request: DateRequest):
+@router.post("/stock_fhps_em", operation_id="stock_fhps_em")
+async def stock_fhps_em(request: DateRequest):
     """
     东方财富-年报季报-分红配送
 
@@ -38,8 +38,8 @@ class SymbolRequest(BaseModel):
 
 
 # 东方财富-数据中心-分红送配-分红送配详情
-@router.post("/stock_fhps_detail_em", operation_id="post_stock_fhps_detail_em")
-async def post_stock_fhps_detail_em(request: SymbolRequest):
+@router.post("/stock_fhps_detail_em", operation_id="stock_fhps_detail_em")
+async def stock_fhps_detail_em(request: SymbolRequest):
     """
     东方财富-分红送配-分红送配详情
 
@@ -60,8 +60,8 @@ async def post_stock_fhps_detail_em(request: SymbolRequest):
 
 
 # 同花顺-分红情况
-@router.post("/stock_fhps_detail_ths", operation_id="post_stock_fhps_detail_ths")
-async def post_stock_fhps_detail_ths(request: SymbolRequest):
+@router.post("/stock_fhps_detail_ths", operation_id="stock_fhps_detail_ths")
+async def stock_fhps_detail_ths(request: SymbolRequest):
     """
     同花顺-分红情况
 
@@ -82,8 +82,8 @@ async def post_stock_fhps_detail_ths(request: SymbolRequest):
 
 
 # 同花顺-港股-分红派息
-@router.post("/stock_hk_fhpx_detail_ths", operation_id="post_stock_hk_fhpx_detail_ths")
-async def post_stock_hk_fhpx_detail_ths(request: SymbolRequest):
+@router.post("/stock_hk_fhpx_detail_ths", operation_id="stock_hk_fhpx_detail_ths")
+async def stock_hk_fhpx_detail_ths(request: SymbolRequest):
     """
     同花顺-港股-分红派息
 
@@ -104,8 +104,8 @@ async def post_stock_hk_fhpx_detail_ths(request: SymbolRequest):
 
 
 # 新浪财经-发行与分配-历史分红
-@router.get("/stock_history_dividend", operation_id="get_stock_history_dividend")
-def get_stock_history_dividend():
+@router.get("/stock_history_dividend", operation_id="stock_history_dividend")
+def stock_history_dividend():
     """
     新浪财经-发行与分配-历史分红
 
@@ -132,8 +132,8 @@ class DividendDetailRequest(BaseModel):
 
 
 # 新浪财经-发行与分配-分红配股
-@router.post("/stock_history_dividend_detail", operation_id="post_stock_history_dividend_detail")
-async def post_stock_history_dividend_detail(request: DividendDetailRequest):
+@router.post("/stock_history_dividend_detail", operation_id="stock_history_dividend_detail")
+async def stock_history_dividend_detail(request: DividendDetailRequest):
     """
     新浪财经-发行与分配-分红配股
 
@@ -160,8 +160,8 @@ async def post_stock_history_dividend_detail(request: DividendDetailRequest):
 
 
 # 巨潮资讯-个股-历史分红
-@router.post("/stock_dividend_cninfo", operation_id="post_stock_dividend_cninfo")
-async def post_stock_dividend_cninfo(request: SymbolRequest):
+@router.post("/stock_dividend_cninfo", operation_id="stock_dividend_cninfo")
+async def stock_dividend_cninfo(request: SymbolRequest):
     """
     巨潮资讯-个股-历史分红
 

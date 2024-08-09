@@ -20,8 +20,8 @@ class NewCompositeIndexCbond(BaseModel):
 
 # 债券-中债指数-总指数-综合类指数-新综合指数
 @router.post("/bond_new_composite_index_cbond",
-             operation_id="post_bond_new_composite_index_cbond")
-async def post_bond_new_composite_index_cbond(request: NewCompositeIndexCbond):
+             operation_id="bond_new_composite_index_cbond")
+async def bond_new_composite_index_cbond(request: NewCompositeIndexCbond):
     """
     债券-中债指数-总指数-综合类指数-新综合指数
 
@@ -45,8 +45,8 @@ async def post_bond_new_composite_index_cbond(request: NewCompositeIndexCbond):
 
 # 债券-中债指数-总指数-综合类指数-综合指数
 @router.post("/bond_composite_index_cbond",
-             operation_id="post_bond_composite_index_cbond")
-async def post_bond_composite_index_cbond(request: NewCompositeIndexCbond):
+             operation_id="bond_composite_index_cbond")
+async def bond_composite_index_cbond(request: NewCompositeIndexCbond):
     """
     债券-中债指数-总指数-综合类指数-综合指数
 

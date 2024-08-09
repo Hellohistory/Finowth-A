@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 美国-劳动力市场-LMCI
 @router.get("/macro_usa_lmci",
-            operation_id="get_macro_usa_lmci")
-async def get_macro_usa_lmci():
+            operation_id="macro_usa_lmci")
+async def macro_usa_lmci():
     """
     美国-劳动力市场-LMCI
 
@@ -31,8 +31,8 @@ async def get_macro_usa_lmci():
 
 # 美国-劳动力市场-失业率-美国失业率报告
 @router.get("/macro_usa_unemployment_rate",
-            operation_id="get_macro_usa_unemployment_rate")
-async def get_macro_usa_unemployment_rate():
+            operation_id="macro_usa_unemployment_rate")
+async def macro_usa_unemployment_rate():
     """
     美国-劳动力市场-失业率-美国失业率报告
 
@@ -54,8 +54,8 @@ async def get_macro_usa_unemployment_rate():
 
 # 美国-劳动力市场-失业率-美国挑战者企业裁员人数报告
 @router.get("/macro_usa_job_cuts",
-            operation_id="get_macro_usa_job_cuts")
-async def get_macro_usa_job_cuts():
+            operation_id="macro_usa_job_cuts")
+async def macro_usa_job_cuts():
     """
     美国-劳动力市场-失业率-美国挑战者企业裁员人数报告
 
@@ -77,8 +77,8 @@ async def get_macro_usa_job_cuts():
 
 # 美国-劳动力市场-就业人口-美国非农就业人数报告
 @router.get("/macro_usa_non_farm",
-            operation_id="get_macro_usa_non_farm")
-async def get_macro_usa_non_farm():
+            operation_id="macro_usa_non_farm")
+async def macro_usa_non_farm():
     """
     美国-劳动力市场-就业人口-美国非农就业人数报告
 
@@ -100,8 +100,8 @@ async def get_macro_usa_non_farm():
 
 # 美国-劳动力市场-就业人口-美国ADP就业人数报告
 @router.get("/macro_usa_adp_employment",
-            operation_id="get_macro_usa_adp_employment")
-async def get_macro_usa_adp_employment():
+            operation_id="macro_usa_adp_employment")
+async def macro_usa_adp_employment():
     """
     美国-劳动力市场-就业人口-美国ADP就业人数报告
 

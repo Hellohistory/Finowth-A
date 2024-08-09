@@ -14,8 +14,8 @@ class OptionCommodityContractSina(BaseModel):
 
 # 期权-商品期权-新浪财经-历史行情
 @router.post("/option_commodity_contract_sina",
-             operation_id="post_option_commodity_contract_sina")
-def post_option_commodity_contract_sina(request: OptionCommodityContractSina):
+             operation_id="option_commodity_contract_sina")
+def option_commodity_contract_sina(request: OptionCommodityContractSina):
     """
     期权-商品期权-新浪财经-当前合约
 

@@ -12,8 +12,8 @@ class SymbolRequest(BaseModel):
 
 
 # 东方财富-数据中心-研究报告-个股研报
-@router.post("/stock_research_report_em", operation_id="post_post_stock_research_report_em")
-async def post_stock_research_report_em(request: SymbolRequest):
+@router.post("/stock_research_report_em", operation_id="stock_research_report_em")
+async def stock_research_report_em(request: SymbolRequest):
     """
     东方财富-研究报告-个股研报
 
@@ -41,8 +41,8 @@ class DongCaiSymbolDateRequest(BaseModel):
 
 
 # 东方财富-数据中心-公告大全-沪深京 A 股公告
-@router.post("/stock_notice_report", operation_id="post_stock_notice_report")
-async def post_stock_notice_report(request: DongCaiSymbolDateRequest):
+@router.post("/stock_notice_report", operation_id="stock_notice_report")
+async def stock_notice_report(request: DongCaiSymbolDateRequest):
     """
     东方财富-沪深京 A 股公告
 
@@ -68,8 +68,8 @@ class XinLangStockSymbolRequest(BaseModel):
 
 
 # 新浪财经-财务报表-三大报表
-@router.post("/stock_financial_report_sina", operation_id="post_stock_financial_report_sina")
-async def post_stock_financial_report_sina(request: XinLangStockSymbolRequest):
+@router.post("/stock_financial_report_sina", operation_id="stock_financial_report_sina")
+async def stock_financial_report_sina(request: XinLangStockSymbolRequest):
     """
     新浪财经-财务报表-三大报表
 
@@ -96,8 +96,8 @@ class DongCaiZiChanSymbolRequest(BaseModel):
 
 
 # 东方财富-股票-财务分析-资产负债表-按报告期
-@router.post("/stock_balance_sheet_by_report_em", operation_id="post_stock_balance_sheet_by_report_em")
-async def post_stock_balance_sheet_by_report_em(request: DongCaiZiChanSymbolRequest):
+@router.post("/stock_balance_sheet_by_report_em", operation_id="stock_balance_sheet_by_report_em")
+async def stock_balance_sheet_by_report_em(request: DongCaiZiChanSymbolRequest):
     """
     东方财富-财务分析-资产负债表-按报告期
 
@@ -118,8 +118,8 @@ async def post_stock_balance_sheet_by_report_em(request: DongCaiZiChanSymbolRequ
 
 
 # 东方财富-股票-财务分析-资产负债表-按年度
-@router.post("/stock_balance_sheet_by_yearly_em", operation_id="post_stock_balance_sheet_by_yearly_em")
-async def post_stock_balance_sheet_by_yearly_em(request: DongCaiZiChanSymbolRequest):
+@router.post("/stock_balance_sheet_by_yearly_em", operation_id="stock_balance_sheet_by_yearly_em")
+async def stock_balance_sheet_by_yearly_em(request: DongCaiZiChanSymbolRequest):
     """
     东方财富-财务分析-资产负债表-按年度
 
@@ -140,8 +140,8 @@ async def post_stock_balance_sheet_by_yearly_em(request: DongCaiZiChanSymbolRequ
 
 
 # 东方财富-股票-财务分析-利润表-报告期
-@router.post("/stock_profit_sheet_by_report_em", operation_id="post_stock_profit_sheet_by_report_em")
-async def post_stock_profit_sheet_by_report_em(request: DongCaiZiChanSymbolRequest):
+@router.post("/stock_profit_sheet_by_report_em", operation_id="stock_profit_sheet_by_report_em")
+async def stock_profit_sheet_by_report_em(request: DongCaiZiChanSymbolRequest):
     """
     东方财富-财务分析-利润表-报告期
 
@@ -162,8 +162,8 @@ async def post_stock_profit_sheet_by_report_em(request: DongCaiZiChanSymbolReque
 
 
 # 东方财富-股票-财务分析-利润表-按年度
-@router.post("/stock_profit_sheet_by_yearly_em", operation_id="post_stock_profit_sheet_by_yearly_em")
-async def post_stock_profit_sheet_by_yearly_em(request: DongCaiZiChanSymbolRequest):
+@router.post("/stock_profit_sheet_by_yearly_em", operation_id="stock_profit_sheet_by_yearly_em")
+async def stock_profit_sheet_by_yearly_em(request: DongCaiZiChanSymbolRequest):
     """
     东方财富-财务分析-利润表-按年度
 
@@ -184,8 +184,8 @@ async def post_stock_profit_sheet_by_yearly_em(request: DongCaiZiChanSymbolReque
 
 
 # 东方财富-股票-财务分析-利润表-按单季度
-@router.post("/stock_profit_sheet_by_quarterly_em", operation_id="post_stock_profit_sheet_by_quarterly_em")
-async def post_stock_profit_sheet_by_quarterly_em(request: DongCaiZiChanSymbolRequest):
+@router.post("/stock_profit_sheet_by_quarterly_em", operation_id="stock_profit_sheet_by_quarterly_em")
+async def stock_profit_sheet_by_quarterly_em(request: DongCaiZiChanSymbolRequest):
     """
     东方财富-财务分析-利润表-按单季度
 
@@ -206,8 +206,8 @@ async def post_stock_profit_sheet_by_quarterly_em(request: DongCaiZiChanSymbolRe
 
 
 # 东方财富-股票-财务分析-现金流量表-按报告期
-@router.post("/stock_cash_flow_sheet_by_report_em", operation_id="post_stock_cash_flow_sheet_by_report_em")
-async def post_stock_cash_flow_sheet_by_report_em(request: DongCaiZiChanSymbolRequest):
+@router.post("/stock_cash_flow_sheet_by_report_em", operation_id="stock_cash_flow_sheet_by_report_em")
+async def stock_cash_flow_sheet_by_report_em(request: DongCaiZiChanSymbolRequest):
     """
     东方财富-财务分析-现金流量表-按报告期
 
@@ -229,8 +229,8 @@ async def post_stock_cash_flow_sheet_by_report_em(request: DongCaiZiChanSymbolRe
 
 
 # 东方财富-股票-财务分析-现金流量表-按年度
-@router.post("/stock_cash_flow_sheet_by_yearly_em", operation_id="post_stock_cash_flow_sheet_by_yearly_em")
-async def post_stock_cash_flow_sheet_by_yearly_em(request: DongCaiZiChanSymbolRequest):
+@router.post("/stock_cash_flow_sheet_by_yearly_em", operation_id="stock_cash_flow_sheet_by_yearly_em")
+async def stock_cash_flow_sheet_by_yearly_em(request: DongCaiZiChanSymbolRequest):
     """
     东方财富-财务分析-现金流量表-按年度
 
@@ -253,8 +253,8 @@ async def post_stock_cash_flow_sheet_by_yearly_em(request: DongCaiZiChanSymbolRe
 
 
 # 东方财富-股票-财务分析-现金流量表-按单季度
-@router.post("/stock_cash_flow_sheet_by_quarterly_em", operation_id="post_stock_cash_flow_sheet_by_quarterly_em")
-async def post_stock_cash_flow_sheet_by_quarterly_em(request: DongCaiZiChanSymbolRequest):
+@router.post("/stock_cash_flow_sheet_by_quarterly_em", operation_id="stock_cash_flow_sheet_by_quarterly_em")
+async def stock_cash_flow_sheet_by_quarterly_em(request: DongCaiZiChanSymbolRequest):
     """
     东方财富-财务分析-现金流量表-按单季度
 
@@ -281,8 +281,8 @@ class TongHuaShunFinancialDebt(BaseModel):
 
 
 # 同花顺-财务指标-资产负债表
-@router.post("/stock_financial_debt_ths", operation_id="post_stock_financial_debt_ths")
-async def post_stock_financial_debt_ths(request: TongHuaShunFinancialDebt):
+@router.post("/stock_financial_debt_ths", operation_id="stock_financial_debt_ths")
+async def stock_financial_debt_ths(request: TongHuaShunFinancialDebt):
     """
     同花顺-财务指标-资产负债表
 
@@ -303,8 +303,8 @@ async def post_stock_financial_debt_ths(request: TongHuaShunFinancialDebt):
 
 
 # 同花顺-财务指标-利润表
-@router.post("/stock_financial_benefit_ths", operation_id="post_stock_financial_benefit_ths")
-async def post_stock_financial_benefit_ths(request: TongHuaShunFinancialDebt):
+@router.post("/stock_financial_benefit_ths", operation_id="stock_financial_benefit_ths")
+async def stock_financial_benefit_ths(request: TongHuaShunFinancialDebt):
     """
     同花顺-财务指标-利润表
 
@@ -325,8 +325,8 @@ async def post_stock_financial_benefit_ths(request: TongHuaShunFinancialDebt):
 
 
 # 同花顺-财务指标-现金流量表
-@router.post("/stock_financial_cash_ths", operation_id="post_stock_financial_cash_ths")
-async def post_stock_financial_cash_ths(request: TongHuaShunFinancialDebt):
+@router.post("/stock_financial_cash_ths", operation_id="stock_financial_cash_ths")
+async def stock_financial_cash_ths(request: TongHuaShunFinancialDebt):
     """
     同花顺-财务指标-现金流量表
 
@@ -352,7 +352,7 @@ class TuiShiSymbolRequest(BaseModel):
 
 # 东方财富-股票-财务分析-资产负债表-已退市股票-按报告期
 @router.post("/stock_balance_sheet_by_report_delisted_em", operation_id="stock_balance_sheet_by_report_delisted_em")
-async def post_stock_balance_sheet_by_report_delisted_em(request: TuiShiSymbolRequest):
+async def stock_balance_sheet_by_report_delisted_em(request: TuiShiSymbolRequest):
     """
     东方财富-资产负债表-已退市股票-按报告期
 
@@ -373,8 +373,8 @@ async def post_stock_balance_sheet_by_report_delisted_em(request: TuiShiSymbolRe
 
 
 # 东方财富-股票-财务分析-利润表-已退市股票-按报告期
-@router.post("/stock_profit_sheet_by_report_delisted_em", operation_id="post_stock_profit_sheet_by_report_delisted_em")
-async def post_stock_profit_sheet_by_report_delisted_em(request: TuiShiSymbolRequest):
+@router.post("/stock_profit_sheet_by_report_delisted_em", operation_id="stock_profit_sheet_by_report_delisted_em")
+async def stock_profit_sheet_by_report_delisted_em(request: TuiShiSymbolRequest):
     """
     东方财富-利润表-已退市股票-按报告期
 
@@ -395,8 +395,8 @@ async def post_stock_profit_sheet_by_report_delisted_em(request: TuiShiSymbolReq
 
 
 # 东方财富-股票-财务分析-现金流量表-已退市股票-按报告期
-@router.post("/stock_cash_flow_sheet_by_report_delisted_em", operation_id="post_stock_cash_flow_sheet_by_report_delisted_em")
-async def post_stock_cash_flow_sheet_by_report_delisted_em(request: TuiShiSymbolRequest):
+@router.post("/stock_cash_flow_sheet_by_report_delisted_em", operation_id="stock_cash_flow_sheet_by_report_delisted_em")
+async def stock_cash_flow_sheet_by_report_delisted_em(request: TuiShiSymbolRequest):
     """
     东方财富-现金流量表-已退市股票-按报告期
 
@@ -423,8 +423,8 @@ class DongCaiHKFinancialRequest(BaseModel):
 
 
 # 东方财富-港股-财务报表-三大报表
-@router.post("/stock_financial_hk_report_em", operation_id="post_stock_financial_hk_report_em")
-async def post_stock_financial_hk_report_em(request: DongCaiHKFinancialRequest):
+@router.post("/stock_financial_hk_report_em", operation_id="stock_financial_hk_report_em")
+async def stock_financial_hk_report_em(request: DongCaiHKFinancialRequest):
     """
     东方财富-港股-财务报表-三大报表
 

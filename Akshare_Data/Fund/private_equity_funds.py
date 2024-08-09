@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 会员机构综合查询
-@router.get("/fund_amac_member_info", operation_id="get_fund_amac_member_info")
-async def get_fund_amac_member_info():
+@router.get("/fund_amac_member_info", operation_id="fund_amac_member_info")
+async def fund_amac_member_info():
     """
     会员机构综合查询
 
@@ -37,8 +37,8 @@ class InterestSymbolRequest(BaseModel):
 
 
 # 基金从业人员资格注册信息
-@router.post("/fund_amac_person_fund_org_list", operation_id="post_fund_amac_person_fund_org_list")
-def post_fund_amac_person_fund_org_list(request: InterestSymbolRequest):
+@router.post("/fund_amac_person_fund_org_list", operation_id="fund_amac_person_fund_org_list")
+def fund_amac_person_fund_org_list(request: InterestSymbolRequest):
     """
     基金从业人员资格注册信息
 
@@ -60,8 +60,8 @@ def post_fund_amac_person_fund_org_list(request: InterestSymbolRequest):
 
 
 # 私募基金-从业人员信息-债券投资交易相关人员公示
-@router.get("/fund_amac_person_fund_org_list", operation_id="get_fund_amac_person_bond_org_list")
-async def get_fund_amac_person_bond_org_list():
+@router.get("/fund_amac_person_fund_org_list", operation_id="fund_amac_person_bond_org_list")
+async def fund_amac_person_bond_org_list():
     """
     私募基金-从业人员信息-债券投资交易相关人员公示
 
@@ -83,8 +83,8 @@ async def get_fund_amac_person_bond_org_list():
 
 
 # 私募基金管理人综合查询
-@router.get("/fund_amac_manager_info", operation_id="get_fund_amac_manager_info")
-async def get_fund_amac_manager_info():
+@router.get("/fund_amac_manager_info", operation_id="fund_amac_manager_info")
+async def fund_amac_manager_info():
     """
     私募基金管理人综合查询
 
@@ -106,8 +106,8 @@ async def get_fund_amac_manager_info():
 
 
 # 私募基金管理人分类公示
-@router.get("/fund_amac_manager_classify_info", operation_id="get_fund_amac_manager_classify_info")
-async def get_fund_amac_manager_classify_info():
+@router.get("/fund_amac_manager_classify_info", operation_id="fund_amac_manager_classify_info")
+async def fund_amac_manager_classify_info():
     """
     私募基金管理人分类公示
 
@@ -129,8 +129,8 @@ async def get_fund_amac_manager_classify_info():
 
 
 # 证券公司私募基金子公司管理人信息公示
-@router.get("/fund_amac_member_sub_info", operation_id="get_fund_amac_member_sub_info")
-async def get_fund_amac_member_sub_info():
+@router.get("/fund_amac_member_sub_info", operation_id="fund_amac_member_sub_info")
+async def fund_amac_member_sub_info():
     """
     证券公司私募基金子公司管理人信息公示
 
@@ -157,8 +157,8 @@ class StartEndRequest(BaseModel):
 
 
 # 基金从业人员资格注册信息
-@router.post("/fund_amac_fund_info", operation_id="post_fund_amac_fund_info")
-def post_fund_amac_fund_info(request: StartEndRequest):
+@router.post("/fund_amac_fund_info", operation_id="fund_amac_fund_info")
+def fund_amac_fund_info(request: StartEndRequest):
     """
     私募基金管理人基金产品
 
@@ -183,8 +183,8 @@ def post_fund_amac_fund_info(request: StartEndRequest):
 
 
 # 证券公司集合资管产品公示
-@router.get("/fund_amac_securities_info", operation_id="get_fund_amac_securities_info")
-async def get_fund_amac_securities_info():
+@router.get("/fund_amac_securities_info", operation_id="fund_amac_securities_info")
+async def fund_amac_securities_info():
     """
     证券公司集合资管产品公示
 
@@ -206,8 +206,8 @@ async def get_fund_amac_securities_info():
 
 
 # 证券公司直投基金
-@router.get("/fund_amac_aoin_info", operation_id="get_fund_amac_aoin_info")
-async def get_fund_amac_aoin_info():
+@router.get("/fund_amac_aoin_info", operation_id="fund_amac_aoin_info")
+async def fund_amac_aoin_info():
     """
     证券公司直投基金
 
@@ -229,8 +229,8 @@ async def get_fund_amac_aoin_info():
 
 
 # 证券公司私募投资基金
-@router.get("/fund_amac_fund_sub_info", operation_id="get_fund_amac_fund_sub_info")
-async def get_fund_amac_fund_sub_info():
+@router.get("/fund_amac_fund_sub_info", operation_id="fund_amac_fund_sub_info")
+async def fund_amac_fund_sub_info():
     """
     证券公司私募投资基金
 
@@ -252,8 +252,8 @@ async def get_fund_amac_fund_sub_info():
 
 
 # 基金公司及子公司集合资管产品公示
-@router.get("/fund_amac_fund_account_info", operation_id="get_fund_amac_fund_account_info")
-async def get_fund_amac_fund_account_info():
+@router.get("/fund_amac_fund_account_info", operation_id="fund_amac_fund_account_info")
+async def fund_amac_fund_account_info():
     """
     基金公司及子公司集合资管产品公示
 
@@ -275,8 +275,8 @@ async def get_fund_amac_fund_account_info():
 
 
 # 资产支持专项计划
-@router.get("/fund_amac_fund_abs", operation_id="get_fund_amac_fund_abs")
-async def get_fund_amac_fund_abs():
+@router.get("/fund_amac_fund_abs", operation_id="fund_amac_fund_abs")
+async def fund_amac_fund_abs():
     """
     资产支持专项计划
 
@@ -298,8 +298,8 @@ async def get_fund_amac_fund_abs():
 
 
 # 期货公司集合资管产品公示
-@router.get("/fund_amac_futures_info", operation_id="get_fund_amac_futures_info")
-async def get_fund_amac_futures_info():
+@router.get("/fund_amac_futures_info", operation_id="fund_amac_futures_info")
+async def fund_amac_futures_info():
     """
     期货公司集合资管产品公示
 
@@ -321,8 +321,8 @@ async def get_fund_amac_futures_info():
 
 
 # 已注销私募基金管理人名单
-@router.get("/fund_amac_manager_cancelled_info", operation_id="get_fund_amac_manager_cancelled_info")
-async def get_fund_amac_manager_cancelled_info():
+@router.get("/fund_amac_manager_cancelled_info", operation_id="fund_amac_manager_cancelled_info")
+async def fund_amac_manager_cancelled_info():
     """
     已注销私募基金管理人名单
 

@@ -12,8 +12,8 @@ class ActualIndex(BaseModel):
 
 
 # 指数数据-排污权指数
-@router.post("/index_eri", operation_id="post_index_eri")
-def post_index_eri(request: ActualIndex):
+@router.post("/index_eri", operation_id="index_eri")
+def index_eri(request: ActualIndex):
     """
     指数数据-排污权指数
 
@@ -43,8 +43,8 @@ class DrewryWCIndex(BaseModel):
 
 
 # 指数数据-集装箱指数
-@router.post("/drewry_wci_index", operation_id="post_drewry_wci_index")
-def post_drewry_wci_index(request: DrewryWCIndex):
+@router.post("/drewry_wci_index", operation_id="drewry_wci_index")
+def drewry_wci_index(request: DrewryWCIndex):
     """
     指数数据-集装箱指数
 

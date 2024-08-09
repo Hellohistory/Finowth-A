@@ -4,8 +4,8 @@ from fastapi import APIRouter
 router = APIRouter()
 
 
-@router.get("/spot_price_table_qh", operation_id="get_spot_price_table_qh")
-async def get_spot_price_table_qh():
+@router.get("/spot_price_table_qh", operation_id="spot_price_table_qh")
+async def spot_price_table_qh():
     """
     接口：spot_price
 
@@ -16,8 +16,8 @@ async def get_spot_price_table_qh():
     return data
 
 
-@router.get("/spot_symbol_table_sge", operation_id="get_spot_symbol_table_sge")
-async def get_spot_symbol_table_sge():
+@router.get("/spot_symbol_table_sge", operation_id="spot_symbol_table_sge")
+async def spot_symbol_table_sge():
     """
     接口：spot_symbol_table_sge
 

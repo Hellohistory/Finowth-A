@@ -14,8 +14,8 @@ class StockIndexSpotEM(BaseModel):
 
 # 指数数据-东方财富-A股股票指数数据-实时行情数据
 @router.post("/stock_zh_index_spot_em",
-             operation_id="post_stock_zh_index_spot_em")
-def post_stock_zh_index_spot_em(request: StockIndexSpotEM):
+             operation_id="stock_zh_index_spot_em")
+def stock_zh_index_spot_em(request: StockIndexSpotEM):
     """
     指数数据-东方财富-A股股票指数数据-实时行情数据
 
@@ -40,8 +40,8 @@ def post_stock_zh_index_spot_em(request: StockIndexSpotEM):
 
 # 指数数据-新浪财经-A股股票指数数据-实时行情数据
 @router.get("/stock_zh_index_spot_sina",
-            operation_id="get_stock_zh_index_spot_sina")
-def get_stock_zh_index_spot_sina():
+            operation_id="stock_zh_index_spot_sina")
+def stock_zh_index_spot_sina():
     """
     指数数据-新浪财经-A股股票指数数据-实时行情数据
 
@@ -71,8 +71,8 @@ class StockIndexHistCsindex(BaseModel):
 
 # 指数数据-中证指数
 @router.post("/stock_zh_index_hist_csindex",
-             operation_id="post_stock_zh_index_hist_csindex")
-def post_stock_zh_index_hist_csindex(request: StockIndexHistCsindex):
+             operation_id="stock_zh_index_hist_csindex")
+def stock_zh_index_hist_csindex(request: StockIndexHistCsindex):
     """
     指数数据-中证指数
 

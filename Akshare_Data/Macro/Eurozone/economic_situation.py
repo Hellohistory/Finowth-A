@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 国民经济运行状况-经济状况-欧元区季度GDP年率报告
 @router.get("/macro_euro_gdp_yoy",
-            operation_id="get_macro_euro_gdp_yoy")
-async def get_macro_euro_gdp_yoy():
+            operation_id="macro_euro_gdp_yoy")
+async def macro_euro_gdp_yoy():
     """
     国民经济运行状况-经济状况-欧元区季度GDP年率报告
 
@@ -31,8 +31,8 @@ async def get_macro_euro_gdp_yoy():
 
 # 国民经济运行状况-物价水平-欧元区CPI月率报告
 @router.get("/macro_euro_cpi_mom",
-            operation_id="get_macro_euro_cpi_mom")
-async def get_macro_euro_cpi_mom():
+            operation_id="macro_euro_cpi_mom")
+async def macro_euro_cpi_mom():
     """
     国民经济运行状况-物价水平-欧元区CPI月率报告
 
@@ -54,8 +54,8 @@ async def get_macro_euro_cpi_mom():
 
 # 国民经济运行状况-物价水平-欧元区CPI年率报告
 @router.get("/macro_euro_cpi_yoy",
-            operation_id="get_macro_euro_cpi_yoy")
-async def get_macro_euro_cpi_yoy():
+            operation_id="macro_euro_cpi_yoy")
+async def macro_euro_cpi_yoy():
     """
     国民经济运行状况-物价水平-欧元区CPI年率报告
 
@@ -77,8 +77,8 @@ async def get_macro_euro_cpi_yoy():
 
 # 国民经济运行状况-物价水平-欧元区PPI月率报告
 @router.get("/macro_euro_ppi_mom",
-            operation_id="get_macro_euro_ppi_mom")
-async def get_macro_euro_ppi_mom():
+            operation_id="macro_euro_ppi_mom")
+async def macro_euro_ppi_mom():
     """
     国民经济运行状况-物价水平-欧元区PPI月率报告
 
@@ -100,8 +100,8 @@ async def get_macro_euro_ppi_mom():
 
 # 国民经济运行状况-物价水平-欧元区零售销售月率报告
 @router.get("/macro_euro_retail_sales_mom",
-            operation_id="get_macro_euro_retail_sales_mom")
-async def get_macro_euro_retail_sales_mom():
+            operation_id="macro_euro_retail_sales_mom")
+async def macro_euro_retail_sales_mom():
     """
     国民经济运行状况-物价水平-欧元区零售销售月率报告
 
@@ -123,8 +123,8 @@ async def get_macro_euro_retail_sales_mom():
 
 # 国民经济运行状况-劳动力市场-欧元区季调后就业人数季率报告
 @router.get("/macro_euro_employment_change_qoq",
-            operation_id="get_macro_euro_employment_change_qoq")
-async def get_macro_euro_employment_change_qoq():
+            operation_id="macro_euro_employment_change_qoq")
+async def macro_euro_employment_change_qoq():
     """
     国民经济运行状况-劳动力市场-欧元区季调后就业人数季率报告
 
@@ -146,8 +146,8 @@ async def get_macro_euro_employment_change_qoq():
 
 # 国民经济运行状况-劳动力市场-欧元区失业率报告
 @router.get("/macro_euro_unemployment_rate_mom",
-            operation_id="get_macro_euro_unemployment_rate_mom")
-async def get_macro_euro_unemployment_rate_mom():
+            operation_id="macro_euro_unemployment_rate_mom")
+async def macro_euro_unemployment_rate_mom():
     """
     国民经济运行状况-劳动力市场-欧元区失业率报告
 
@@ -169,8 +169,8 @@ async def get_macro_euro_unemployment_rate_mom():
 
 # 国民经济运行状况-贸易状况-欧元区未季调贸易帐报告
 @router.get("/macro_euro_trade_balance",
-            operation_id="get_macro_euro_trade_balance")
-async def get_macro_euro_trade_balance():
+            operation_id="macro_euro_trade_balance")
+async def macro_euro_trade_balance():
     """
     国民经济运行状况-劳动力市场-欧元区失业率报告
 
@@ -192,8 +192,8 @@ async def get_macro_euro_trade_balance():
 
 # 国民经济运行状况-贸易状况-欧元区经常帐报告
 @router.get("/macro_euro_current_account_mom",
-            operation_id="get_macro_euro_current_account_mom")
-async def get_macro_euro_current_account_mom():
+            operation_id="macro_euro_current_account_mom")
+async def macro_euro_current_account_mom():
     """
     国民经济运行状况-劳动力市场-欧元区经常帐报告
 

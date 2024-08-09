@@ -12,8 +12,8 @@ JSON_FILE_PATH_1 = 'Akshare_Data/Others/alternative_data/Json/城市一览表.js
 
 
 # 另类数据-生活成本-城市一览表
-@router.get("/cost_living_info", operation_id="get_cost_living_info")
-async def get_cost_living_info():
+@router.get("/cost_living_info", operation_id="cost_living_info")
+async def cost_living_info():
     """
     另类数据-生活成本-城市一览表
 
@@ -36,8 +36,8 @@ class CostLiving(BaseModel):
 
 
 # 另类数据-生活成本
-@router.post("/cost_living", operation_id="post_cost_living")
-def post_cost_living(request: CostLiving):
+@router.post("/cost_living", operation_id="cost_living")
+def cost_living(request: CostLiving):
     """
     另类数据-生活成本
 

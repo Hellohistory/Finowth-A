@@ -16,8 +16,8 @@ class XinLangMinuteStock(BaseModel):
 
 
 # 新浪财经-沪深京 A 股股票/指数-分时数据
-@router.post("/stock_zh_a_minute", operation_id="post_stock_zh_a_minute")
-async def post_stock_zh_a_minute(request: XinLangMinuteStock):
+@router.post("/stock_zh_a_minute", operation_id="stock_zh_a_minute")
+async def stock_zh_a_minute(request: XinLangMinuteStock):
     """
     新浪财经-沪深京 A 股股票/指数-分时数据
 
@@ -57,8 +57,8 @@ class DongCaiMinuteRequest(BaseModel):
 
 
 # 东方财富-沪深京 A 股-每日分时行情
-@router.post("/stock_zh_a_hist_min_em", operation_id="post_stock_zh_a_hist_min_em")
-async def post_stock_zh_a_hist_min_em(request: DongCaiMinuteRequest):
+@router.post("/stock_zh_a_hist_min_em", operation_id="stock_zh_a_hist_min_em")
+async def stock_zh_a_hist_min_em(request: DongCaiMinuteRequest):
     """
     东方财富-沪深京 A 股-每日分时行情
 
@@ -89,8 +89,8 @@ class DongCaiDayMinute(BaseModel):
 
 
 # 日内分时数据-东财
-@router.post("/stock_intraday_em", operation_id="post_stock_intraday_em")
-async def post_stock_intraday_em(request: DongCaiDayMinute):
+@router.post("/stock_intraday_em", operation_id="stock_intraday_em")
+async def stock_intraday_em(request: DongCaiDayMinute):
     """
     东财财富-日内分时数据
 
@@ -116,8 +116,8 @@ class XinLangDayMinute(BaseModel):
 
 
 # 新浪财经-日内分时数据
-@router.post("/stock_intraday_sina", operation_id="post_stock_intraday_sina")
-async def post_stock_intraday_sina(request: XinLangDayMinute):
+@router.post("/stock_intraday_sina", operation_id="stock_intraday_sina")
+async def stock_intraday_sina(request: XinLangDayMinute):
     """
     新浪财经-日内分时数据
 
@@ -144,8 +144,8 @@ class DongCaiPanQianRequest(BaseModel):
 
 
 # 东方财富-股票行情-盘前数据
-@router.post("/stock_zh_a_hist_pre_min_em", operation_id="post_stock_zh_a_hist_pre_min_em")
-async def post_stock_zh_a_hist_pre_min_em(request: DongCaiPanQianRequest):
+@router.post("/stock_zh_a_hist_pre_min_em", operation_id="stock_zh_a_hist_pre_min_em")
+async def stock_zh_a_hist_pre_min_em(request: DongCaiPanQianRequest):
     """
     东方财富-股票行情-盘前数据
 
@@ -174,8 +174,8 @@ class TXTickHistoryRequest(BaseModel):
 
 
 # 腾讯-分笔数据
-@router.post("/stock_zh_a_tick_tx", operation_id="post_stock_zh_a_tick_tx")
-async def post_stock_zh_a_tick_tx(request: TXTickHistoryRequest):
+@router.post("/stock_zh_a_tick_tx", operation_id="stock_zh_a_tick_tx")
+async def stock_zh_a_tick_tx(request: TXTickHistoryRequest):
     """
     腾讯-分笔数据
 

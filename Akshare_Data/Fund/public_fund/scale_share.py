@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 公募基金数据-东方财富-规模份额-规模变动
 @router.get("/fund_scale_change_em",
-            operation_id="get_fund_scale_change_em")
-async def get_fund_scale_change_em():
+            operation_id="fund_scale_change_em")
+async def fund_scale_change_em():
     """
     公募基金数据-东方财富-规模份额-规模变动
 
@@ -32,8 +32,8 @@ async def get_fund_scale_change_em():
 
 # 公募基金数据-东方财富-规模份额-持有人结构
 @router.get("/fund_hold_structure_em",
-            operation_id="get_fund_hold_structure_em")
-async def get_fund_hold_structure_em():
+            operation_id="fund_hold_structure_em")
+async def fund_hold_structure_em():
     """
     公募基金数据-东方财富-规模份额-持有人结构
 

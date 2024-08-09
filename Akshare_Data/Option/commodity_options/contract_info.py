@@ -15,8 +15,8 @@ class OptionCommodityContractSina(BaseModel):
 
 # 期权-商品期权-新浪财经-当前合约- T 型报价表
 @router.post("/option_commodity_contract_table_sina",
-             operation_id="post_option_commodity_contract_table_sina")
-def post_option_commodity_contract_table_sina(request: OptionCommodityContractSina):
+             operation_id="option_commodity_contract_table_sina")
+def option_commodity_contract_table_sina(request: OptionCommodityContractSina):
     """
     期权-商品期权-新浪财经-当前合约- T 型报价表
 
@@ -47,8 +47,8 @@ class OptionCommInfo(BaseModel):
 
 # 期权-商品期权-新浪财经-当前合约
 @router.post("/option_comm_info",
-             operation_id="post_option_comm_info")
-def post_option_comm_info(request: OptionCommodityContractSina):
+             operation_id="option_comm_info")
+def option_comm_info(request: OptionCommodityContractSina):
     """
     期权-商品期权-新浪财经-当前合约
 
@@ -80,8 +80,8 @@ class OptionShfeDaily(BaseModel):
 
 # 期权-商品期权-上海期货交易所-商品期权数据
 @router.post("/option_shfe_daily",
-             operation_id="post_option_shfe_daily")
-def post_option_shfe_daily(request: OptionShfeDaily):
+             operation_id="option_shfe_daily")
+def option_shfe_daily(request: OptionShfeDaily):
     """
     期权-商品期权-上海期货交易所-商品期权数据
 
@@ -127,8 +127,8 @@ class OptionDceDaily(BaseModel):
 
 # 期权-商品期权-大连商品交易所-商品期权数据
 @router.post("/option_dce_daily",
-             operation_id="post_option_dce_daily")
-def post_option_dce_daily(request: OptionDceDaily):
+             operation_id="option_dce_daily")
+def option_dce_daily(request: OptionDceDaily):
     """
     期权-商品期权-大连商品交易所-商品期权数据
 
@@ -178,8 +178,8 @@ class OptionCzceDaily(BaseModel):
 
 # 期权-商品期权-郑州商品交易所-商品期权数据
 @router.post("/option_czce_daily",
-             operation_id="post_option_czce_daily")
-def post_option_czce_daily(request: OptionCzceDaily):
+             operation_id="option_czce_daily")
+def option_czce_daily(request: OptionCzceDaily):
     """
     期权-商品期权-郑州商品交易所-商品期权数据
 
@@ -226,8 +226,8 @@ class OptionCzceHist(BaseModel):
 
 # 期权-商品期权-郑州商品交易所-商品期权数据
 @router.post("/option_czce_hist",
-             operation_id="post_option_czce_hist")
-def post_option_czce_hist(request: OptionCzceHist):
+             operation_id="option_czce_hist")
+def option_czce_hist(request: OptionCzceHist):
     """
     期权-商品期权-郑州商品交易所-商品期权数据
 
@@ -260,8 +260,8 @@ class OptionGfexDaily(BaseModel):
 
 # 期权-商品期权-广州商品交易所-商品期权数据
 @router.post("/option_gfex_daily",
-             operation_id="post_option_gfex_daily")
-def post_option_gfex_daily(request: OptionGfexDaily):
+             operation_id="option_gfex_daily")
+def option_gfex_daily(request: OptionGfexDaily):
     """
     期权-商品期权-广州商品交易所-商品期权数据
 
@@ -301,8 +301,8 @@ def post_option_gfex_daily(request: OptionGfexDaily):
 
 # 期权-商品期权-广州商品交易所-隐含波动参考值
 @router.post("/option_gfex_vol_daily",
-             operation_id="post_option_gfex_vol_daily")
-def post_option_gfex_vol_daily(request: OptionGfexDaily):
+             operation_id="option_gfex_vol_daily")
+def option_gfex_vol_daily(request: OptionGfexDaily):
     """
     期权-商品期权-广州商品交易所-隐含波动参考值
 

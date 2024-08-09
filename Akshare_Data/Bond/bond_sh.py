@@ -12,8 +12,8 @@ class BondDateRequest(BaseModel):
 
 
 # 债券-上交所债券-债券现券市场概览
-@router.post("/bond_cash_summary_sse", operation_id="post_bond_cash_summary_sse")
-def post_bond_cash_summary_sse(request: BondDateRequest):
+@router.post("/bond_cash_summary_sse", operation_id="bond_cash_summary_sse")
+def bond_cash_summary_sse(request: BondDateRequest):
     """
     债券-上交所债券-债券现券市场概览
 
@@ -35,8 +35,8 @@ def post_bond_cash_summary_sse(request: BondDateRequest):
 
 
 # 债券-上交所债券-债券成交概览
-@router.post("/bond_deal_summary_sse", operation_id="post_bond_deal_summary_sse")
-def post_bond_deal_summary_sse(request: BondDateRequest):
+@router.post("/bond_deal_summary_sse", operation_id="bond_deal_summary_sse")
+def bond_deal_summary_sse(request: BondDateRequest):
     """
     债券-上交所债券-债券成交概览
 

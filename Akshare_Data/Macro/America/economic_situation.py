@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 美国-经济状况-美国GDP
 @router.get("/macro_usa_gdp_monthly",
-            operation_id="get_macro_usa_gdp_monthly")
-async def get_macro_usa_gdp_monthly():
+            operation_id="macro_usa_gdp_monthly")
+async def macro_usa_gdp_monthly():
     """
     美国-经济状况-美国GDP
 
@@ -31,8 +31,8 @@ async def get_macro_usa_gdp_monthly():
 
 # 美国-经济状况-美国个人支出月率报告
 @router.get("/macro_usa_personal_spending",
-            operation_id="get_macro_usa_personal_spending")
-async def get_macro_usa_personal_spending():
+            operation_id="macro_usa_personal_spending")
+async def macro_usa_personal_spending():
     """
     美国-经济状况-美国个人支出月率报告
 

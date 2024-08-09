@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 瑞士宏观-SVME 采购经理人指数
 @router.get("/macro_swiss_svme",
-            operation_id="get_macro_swiss_svme")
-async def get_macro_swiss_svme():
+            operation_id="macro_swiss_svme")
+async def macro_swiss_svme():
     """
     瑞士宏观-SVME 采购经理人指数
 
@@ -31,8 +31,8 @@ async def get_macro_swiss_svme():
 
 # 瑞士宏观-贸易帐
 @router.get("/macro_swiss_trade",
-            operation_id="get_macro_swiss_trade")
-async def get_macro_swiss_trade():
+            operation_id="macro_swiss_trade")
+async def macro_swiss_trade():
     """
     瑞士宏观-贸易帐
 
@@ -54,8 +54,8 @@ async def get_macro_swiss_trade():
 
 # 瑞士宏观-GDP 季率
 @router.get("/macro_swiss_gdp_quarterly",
-            operation_id="get_macro_swiss_gdp_quarterly")
-async def get_macro_swiss_gdp_quarterly():
+            operation_id="macro_swiss_gdp_quarterly")
+async def macro_swiss_gdp_quarterly():
     """
     瑞士宏观-GDP 季率
 
@@ -77,8 +77,8 @@ async def get_macro_swiss_gdp_quarterly():
 
 # 瑞士宏观-GDP 年率
 @router.get("/macro_swiss_gbd_yearly",
-            operation_id="get_macro_swiss_gbd_yearly")
-async def get_macro_swiss_gbd_yearly():
+            operation_id="macro_swiss_gbd_yearly")
+async def macro_swiss_gbd_yearly():
     """
     瑞士宏观-GDP 季率
 
@@ -100,8 +100,8 @@ async def get_macro_swiss_gbd_yearly():
 
 # 瑞士宏观-央行公布利率决议
 @router.get("/macro_swiss_gbd_bank_rate",
-            operation_id="get_macro_swiss_gbd_bank_rate")
-async def get_macro_swiss_gbd_bank_rate():
+            operation_id="macro_swiss_gbd_bank_rate")
+async def macro_swiss_gbd_bank_rate():
     """
     瑞士宏观-央行公布利率决议
 

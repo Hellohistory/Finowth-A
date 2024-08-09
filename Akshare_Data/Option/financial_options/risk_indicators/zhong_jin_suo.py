@@ -9,8 +9,8 @@ router = APIRouter()
 
 # 期权-金融期权-新浪财经-中金所-上证50指数列表
 @router.get("/option_cffex_sz50_list_sina",
-            operation_id="get_option_cffex_sz50_list_sina")
-async def get_option_cffex_sz50_list_sina():
+            operation_id="option_cffex_sz50_list_sina")
+async def option_cffex_sz50_list_sina():
     """
     期权-金融期权-新浪财经-中金所-上证50指数列表
 
@@ -32,8 +32,8 @@ async def get_option_cffex_sz50_list_sina():
 
 # 期权-金融期权-新浪财经-中金所-沪深300指数列表
 @router.get("/option_cffex_hs300_list_sina",
-            operation_id="get_option_cffex_hs300_list_sina")
-async def get_option_cffex_hs300_list_sina():
+            operation_id="option_cffex_hs300_list_sina")
+async def option_cffex_hs300_list_sina():
     """
     期权-金融期权-新浪财经-中金所-沪深300指数列表
 
@@ -55,8 +55,8 @@ async def get_option_cffex_hs300_list_sina():
 
 # 期权-金融期权-新浪财经-中金所-中证1000指数列表
 @router.get("/option_cffex_zz1000_list_sina",
-            operation_id="get_option_cffex_zz1000_list_sina")
-async def get_option_cffex_zz1000_list_sina():
+            operation_id="option_cffex_zz1000_list_sina")
+async def option_cffex_zz1000_list_sina():
     """
     期权-金融期权-新浪财经-中金所-中证1000指数列表
 
@@ -82,8 +82,8 @@ class OptionCffexSZ50SpotSina(BaseModel):
 
 # 期权-金融期权-新浪财经-中金所-实时行情-上证50指数
 @router.post("/option_cffex_sz50_spot_sina",
-             operation_id="post_option_cffex_sz50_spot_sina")
-def post_option_cffex_sz50_spot_sina(request: OptionCffexSZ50SpotSina):
+             operation_id="option_cffex_sz50_spot_sina")
+def option_cffex_sz50_spot_sina(request: OptionCffexSZ50SpotSina):
     """
     期权-金融期权-新浪财经-中金所-实时行情-上证50指数
 
@@ -108,8 +108,8 @@ def post_option_cffex_sz50_spot_sina(request: OptionCffexSZ50SpotSina):
 
 # 期权-金融期权-新浪财经-中金所-实时行情-沪深300指数
 @router.post("/option_cffex_hs300_spot_sina",
-             operation_id="post_option_cffex_hs300_spot_sina")
-def post_option_cffex_hs300_spot_sina(request: OptionCffexSZ50SpotSina):
+             operation_id="option_cffex_hs300_spot_sina")
+def option_cffex_hs300_spot_sina(request: OptionCffexSZ50SpotSina):
     """
     期权-金融期权-新浪财经-中金所-实时行情-沪深300指数
 
@@ -134,8 +134,8 @@ def post_option_cffex_hs300_spot_sina(request: OptionCffexSZ50SpotSina):
 
 # 期权-金融期权-新浪财经-中金所-实时行情-中证1000指数
 @router.post("/option_cffex_zz1000_spot_sina",
-             operation_id="post_option_cffex_zz1000_spot_sina")
-def post_option_cffex_zz1000_spot_sina(request: OptionCffexSZ50SpotSina):
+             operation_id="option_cffex_zz1000_spot_sina")
+def option_cffex_zz1000_spot_sina(request: OptionCffexSZ50SpotSina):
     """
     期权-金融期权-新浪财经-中金所-实时行情-中证1000指数
 
@@ -165,8 +165,8 @@ class OptionCffexSZ50DailySina(BaseModel):
 
 # 期权-金融期权-新浪财经-中金所-日频行情-上证50指数
 @router.post("/option_cffex_sz50_daily_sina",
-             operation_id="post_option_cffex_sz50_daily_sina")
-def post_option_cffex_sz50_daily_sina(request: OptionCffexSZ50DailySina):
+             operation_id="option_cffex_sz50_daily_sina")
+def option_cffex_sz50_daily_sina(request: OptionCffexSZ50DailySina):
     """
     期权-金融期权-新浪财经-中金所-日频行情-上证50指数
 
@@ -191,8 +191,8 @@ def post_option_cffex_sz50_daily_sina(request: OptionCffexSZ50DailySina):
 
 # 期权-金融期权-新浪财经-中金所-日频行情-沪深300指数
 @router.post("/option_cffex_hs300_daily_sina",
-             operation_id="post_option_cffex_hs300_daily_sina")
-def post_option_cffex_hs300_daily_sina(request: OptionCffexSZ50DailySina):
+             operation_id="option_cffex_hs300_daily_sina")
+def option_cffex_hs300_daily_sina(request: OptionCffexSZ50DailySina):
     """
     期权-金融期权-新浪财经-中金所-日频行情-沪深300指数
 
@@ -217,12 +217,12 @@ def post_option_cffex_hs300_daily_sina(request: OptionCffexSZ50DailySina):
 
 # 期权-金融期权-新浪财经-中金所-日频行情-中证1000指数
 @router.post("/option_cffex_zz1000_daily_sina",
-             operation_id="post_option_cffex_zz1000_daily_sina")
-def post_option_cffex_zz1000_daily_sina(request: OptionCffexSZ50DailySina):
+             operation_id="option_cffex_zz1000_daily_sina")
+def option_cffex_zz1000_daily_sina(request: OptionCffexSZ50DailySina):
     """
     期权-金融期权-新浪财经-中金所-日频行情-中证1000指数
 
-    接口: post_option_cffex_zz1000_daily_sina
+    接口: option_cffex_zz1000_daily_sina
 
     目标地址: https://stock.finance.sina.com.cn/futures/view/optionsCffexDP.php
 

@@ -393,7 +393,7 @@ $options = [
     ]
 ];
 $context = stream_context_create($options);
-$response = file_get_contents($url, false, $context);
+$response = file_contents($url, false, $context);
 
 if ($response === FALSE) {
     echo "Error: Unable to fetch the URL.\n";
@@ -426,7 +426,7 @@ $options = [
     ],
 ];
 $context  = stream_context_create($options);
-$response = file_get_contents($url, false, $context);
+$response = file_contents($url, false, $context);
 
 if ($response === FALSE) {
     echo "Error: Unable to post to the URL.\n";
@@ -476,7 +476,7 @@ const generateRubySample = (api, postParams) => {
 require 'json'
 
 url = URI('http://localhost:36925${api.api_path}')
-response = Net::HTTP.get_response(url)
+response = Net::HTTP.response(url)
 if response.code.to_i == 200
   puts JSON.pretty_generate(JSON.parse(response.body))
 else

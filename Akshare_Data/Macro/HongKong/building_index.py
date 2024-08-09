@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 中国香港-楼宇指数-香港楼宇买卖合约数量
 @router.get("/macro_china_hk_building_volume",
-            operation_id="get_macro_china_hk_building_volume")
-async def get_macro_china_hk_building_volume():
+            operation_id="macro_china_hk_building_volume")
+async def macro_china_hk_building_volume():
     """
     中国香港-楼宇指数-香港楼宇买卖合约数量
 
@@ -31,8 +31,8 @@ async def get_macro_china_hk_building_volume():
 
 # 中国香港-楼宇指数-香港楼宇买卖合约成交金额
 @router.get("/macro_china_hk_building_amount",
-            operation_id="get_macro_china_hk_building_amount")
-async def get_macro_china_hk_building_amount():
+            operation_id="macro_china_hk_building_amount")
+async def macro_china_hk_building_amount():
     """
     中国香港-楼宇指数-香港楼宇买卖合约成交金额
 

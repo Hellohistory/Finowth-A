@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 东方财富-美股-实时行情
-@router.get("/stock_us_spot_em", operation_id="get_stock_us_spot_em")
-def get_stock_us_spot_em():
+@router.get("/stock_us_spot_em", operation_id="stock_us_spot_em")
+def stock_us_spot_em():
     """
     东方财富-美股-实时行情
 
@@ -30,8 +30,8 @@ def get_stock_us_spot_em():
 
 
 # 新浪财经-美股-实时行情
-@router.get("/stock_us_spot", operation_id="get_stock_us_spot")
-def get_stock_us_spot():
+@router.get("/stock_us_spot", operation_id="stock_us_spot")
+def stock_us_spot():
     """
     新浪财经-美股-实时行情
 
@@ -84,8 +84,8 @@ class UStockDayHistoryRequest(BaseModel):
 
 
 # 东方财富-美股-每日行情
-@router.post("/stock_us_hist", operation_id="post_stock_us_hist")
-async def post_stock_us_hist(request: UStockDayHistoryRequest):
+@router.post("/stock_us_hist", operation_id="stock_us_hist")
+async def stock_us_hist(request: UStockDayHistoryRequest):
     """
     东方财富-美股-每日行情
 
@@ -121,8 +121,8 @@ class DongCaiUDayMinRequest(BaseModel):
 
 
 # 东方财富-美股-每日分时行情
-@router.post("/stock_us_hist_min_em", operation_id="post_stock_us_hist_min_em")
-async def post_stock_us_hist_min_em(request: DongCaiUDayMinRequest):
+@router.post("/stock_us_hist_min_em", operation_id="stock_us_hist_min_em")
+async def stock_us_hist_min_em(request: DongCaiUDayMinRequest):
     """
     东方财富-美股-每日分时行情
 
@@ -150,8 +150,8 @@ class XinLangUStockHistoryRequest(BaseModel):
 
 
 # 新浪财经-美股-历史行情
-@router.post("/stock_us_daily", operation_id="post_stock_us_daily")
-async def post_stock_us_daily(request: XinLangUStockHistoryRequest):
+@router.post("/stock_us_daily", operation_id="stock_us_daily")
+async def stock_us_daily(request: XinLangUStockHistoryRequest):
     """
     新浪财经-美股-历史行情
 
@@ -186,8 +186,8 @@ async def post_stock_us_daily(request: XinLangUStockHistoryRequest):
 
 
 # 美股粉单市场的实时行情数据
-@router.get("/stock_us_pink_spot_em", operation_id="get_stock_us_pink_spot_em")
-def get_stock_us_pink_spot_em():
+@router.get("/stock_us_pink_spot_em", operation_id="stock_us_pink_spot_em")
+def stock_us_pink_spot_em():
     """
     东方财富-美股粉单市场-实时行情数据
 
@@ -213,8 +213,8 @@ class USFamouSpot(BaseModel):
 
 
 # 东方财富-美股-知名美股-实时行情数据
-@router.post("/stock_us_famous_spot_em", operation_id="post_stock_us_famous_spot_em")
-async def post_stock_us_famous_spot_em(request: USFamouSpot):
+@router.post("/stock_us_famous_spot_em", operation_id="stock_us_famous_spot_em")
+async def stock_us_famous_spot_em(request: USFamouSpot):
     """
     东方财富-美股-知名美股-实时行情数据
 
@@ -238,8 +238,8 @@ async def post_stock_us_famous_spot_em(request: USFamouSpot):
 
 
 # 东方财富-行情中心-港股市场-知名港股-实时行情数据
-@router.get("/stock_hk_famous_spot_em", operation_id="get_stock_hk_famous_spot_em")
-def get_stock_hk_famous_spot_em():
+@router.get("/stock_hk_famous_spot_em", operation_id="stock_hk_famous_spot_em")
+def stock_hk_famous_spot_em():
     """
     东方财富-行情中心-港股市场-知名港股-实时行情数据
 

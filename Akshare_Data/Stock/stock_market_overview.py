@@ -11,8 +11,8 @@ from Akshare_Data.utility_function import sanitize_data_pandas
 router = APIRouter()
 
 
-@router.get("/stock_sse_summary", operation_id="get_stock_sse_summary")
-async def get_stock_sse_summary():
+@router.get("/stock_sse_summary", operation_id="stock_sse_summary")
+async def stock_sse_summary():
     """
     上海证券交易所-股票数据总貌
 
@@ -44,8 +44,8 @@ class DateRequest(BaseModel):
     date: str = Field(..., title="指定时间", description="例：20240717")
 
 
-@router.post("/stock_szse_summary", operation_id="post_stock_szse_summary")
-async def post_stock_szse_summary(request: DateRequest):
+@router.post("/stock_szse_summary", operation_id="stock_szse_summary")
+async def stock_szse_summary(request: DateRequest):
     """
     深圳证券交易所-证券类别统计
 
@@ -79,8 +79,8 @@ def sanitize_data_sse_deal(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-@router.post("/stock_sse_deal_daily", operation_id="post_stock_sse_deal_daily")
-def post_stock_sse_deal_daily(data: SseDealStockDataRequest) -> list[dict]:
+@router.post("/stock_sse_deal_daily", operation_id="stock_sse_deal_daily")
+def stock_sse_deal_daily(data: SseDealStockDataRequest) -> list[dict]:
     """
     上海证券交易所-每日概况
 
@@ -105,8 +105,8 @@ class SectorSummaryRequest(BaseModel):
     ym_date: str = Field(..., title="指定年月", description="例：202203")
 
 
-@router.post("/stock_szse_sector_summary", operation_id="post_stock_szse_sector_summary")
-async def post_stock_szse_sector_summary(request: SectorSummaryRequest):
+@router.post("/stock_szse_sector_summary", operation_id="stock_szse_sector_summary")
+async def stock_szse_sector_summary(request: SectorSummaryRequest):
     """
     深圳证券交易所-股票行业成交
 
@@ -130,8 +130,8 @@ class AreaSummaryRequest(BaseModel):
     ym_date: str = Field(..., title="指定交易月", description="例：202406")
 
 
-@router.post("/stock_szse_area_summary", operation_id="post_stock_szse_area_summary")
-async def post_stock_szse_area_summary(request: AreaSummaryRequest):
+@router.post("/stock_szse_area_summary", operation_id="stock_szse_area_summary")
+async def stock_szse_area_summary(request: AreaSummaryRequest):
     """
     深圳证券交易所-地区交易排序
 

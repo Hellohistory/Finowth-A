@@ -13,8 +13,8 @@ class SpotPriceSymbolRequest(BaseModel):
 
 
 # 99 期货-数据-期现-现货走势
-@router.post("/spot_price_qh", operation_id="post_spot_price_qh")
-async def post_spot_price_qh(request: SpotPriceSymbolRequest):
+@router.post("/spot_price_qh", operation_id="spot_price_qh")
+async def spot_price_qh(request: SpotPriceSymbolRequest):
     """
     接口: spot_price_qh
 
@@ -39,8 +39,8 @@ class SpotHistSymbolRequest(BaseModel):
 
 
 # 上海黄金交易所-行情走势-历史数据
-@router.post("/spot_hist_sge", operation_id="post_spot_hist_sge")
-async def post_spot_hist_sge(request: SpotPriceSymbolRequest):
+@router.post("/spot_hist_sge", operation_id="spot_hist_sge")
+async def spot_hist_sge(request: SpotPriceSymbolRequest):
     """
     接口: spot_hist_sge
 
@@ -60,8 +60,8 @@ async def post_spot_hist_sge(request: SpotPriceSymbolRequest):
 
 
 # 上海黄金交易所-上海金基准价-历史数据
-@router.get("/spot_golden_benchmark_sge", operation_id="get_spot_golden_benchmark_sge")
-async def get_spot_golden_benchmark_sge():
+@router.get("/spot_golden_benchmark_sge", operation_id="spot_golden_benchmark_sge")
+async def spot_golden_benchmark_sge():
     """
     上海黄金交易所-上海金基准价-历史数据
 
@@ -82,8 +82,8 @@ async def get_spot_golden_benchmark_sge():
 
 
 # 上海黄金交易所-上海银基准价-历史数据
-@router.get("/spot_silver_benchmark_sge", operation_id="get_spot_silver_benchmark_sge")
-async def get_spot_silver_benchmark_sge():
+@router.get("/spot_silver_benchmark_sge", operation_id="spot_silver_benchmark_sge")
+async def spot_silver_benchmark_sge():
     """
     上海黄金交易所-上海银基准价-历史数据
 
@@ -104,8 +104,8 @@ async def get_spot_silver_benchmark_sge():
 
 
 # 搜猪-生猪大数据-全国瘦肉型肉猪
-@router.get("/spot_hog_lean_price_soozhu", operation_id="get_spot_hog_lean_price_soozhu")
-async def get_spot_hog_lean_price_soozhu():
+@router.get("/spot_hog_lean_price_soozhu", operation_id="spot_hog_lean_price_soozhu")
+async def spot_hog_lean_price_soozhu():
     """
     搜猪-生猪大数据-全国瘦肉型肉猪
 
@@ -126,8 +126,8 @@ async def get_spot_hog_lean_price_soozhu():
 
 
 # 搜猪-生猪大数据-今年以来全国出栏均价走势
-@router.get("/spot_hog_year_trend_soozhu", operation_id="get_spot_hog_year_trend_soozhu")
-async def get_spot_hog_year_trend_soozhu():
+@router.get("/spot_hog_year_trend_soozhu", operation_id="spot_hog_year_trend_soozhu")
+async def spot_hog_year_trend_soozhu():
     """
     搜猪-生猪大数据-今年以来全国出栏均价走势
 
@@ -148,8 +148,8 @@ async def get_spot_hog_year_trend_soozhu():
 
 
 # 搜猪-生猪大数据-各省均价实时排行榜
-@router.get("/spot_hog_soozhu", operation_id="get_spot_hog_soozhu")
-async def get_spot_hog_soozhu():
+@router.get("/spot_hog_soozhu", operation_id="spot_hog_soozhu")
+async def spot_hog_soozhu():
     """
     搜猪-生猪大数据-各省均价实时排行榜
 
@@ -170,8 +170,8 @@ async def get_spot_hog_soozhu():
 
 
 # 搜猪-生猪大数据-全国三元仔猪
-@router.get("/spot_hog_three_way_soozhu", operation_id="get_spot_hog_three_way_soozhu")
-async def get_spot_hog_three_way_soozhu():
+@router.get("/spot_hog_three_way_soozhu", operation_id="spot_hog_three_way_soozhu")
+async def spot_hog_three_way_soozhu():
     """
     搜猪-生猪大数据-全国三元仔猪
 
@@ -190,6 +190,27 @@ async def get_spot_hog_three_way_soozhu():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+
+# 搜猪-生猪大数据-全国三元仔猪
+@router.get("/spot_hog_crossbred_soozhu", operation_id="spot_hog_crossbred_soozhu")
+async def spot_hog_crossbred_soozhu():
+    """
+    搜猪-生猪大数据-全国后备二元母猪
+
+    接口: spot_hog_crossbred_soozhu
+
+    目标地址: https://www.soozhu.com/price/data/center/
+
+    描述: 搜猪-生猪大数据-全国后备二元母猪
+
+    限量: 单次返回近半个月的历史数据
+    """
+    try:
+        spot_hog_crossbred_soozhu = ak.spot_hog_crossbred_soozhu()
+        spot_hog_crossbred_soozhu_df = sanitize_data_pandas(spot_hog_crossbred_soozhu)
+        return spot_hog_crossbred_soozhu_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
     import uvicorn

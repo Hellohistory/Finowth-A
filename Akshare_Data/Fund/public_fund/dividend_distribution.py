@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # 公募基金数据-东方财富-分红送配-基金分红
-@router.get("/fund_fh_em", operation_id="get_fund_fh_em")
-async def get_fund_fh_em():
+@router.get("/fund_fh_em", operation_id="fund_fh_em")
+async def fund_fh_em():
     """
     公募基金数据-东方财富-分红送配-基金分红
 
@@ -30,8 +30,8 @@ async def get_fund_fh_em():
 
 
 # 公募基金数据-东方财富-分红送配-基金拆分
-@router.get("/fund_cf_em", operation_id="get_fund_cf_em")
-async def get_fund_cf_em():
+@router.get("/fund_cf_em", operation_id="fund_cf_em")
+async def fund_cf_em():
     """
     公募基金数据-东方财富-分红送配-基金拆分
 
@@ -53,8 +53,8 @@ async def get_fund_cf_em():
 
 
 # 公募基金数据-东方财富-分红送配-基金分红排行
-@router.get("/fund_fh_rank_em", operation_id="get_fund_fh_rank_em")
-async def get_fund_fh_rank_em():
+@router.get("/fund_fh_rank_em", operation_id="fund_fh_rank_em")
+async def fund_fh_rank_em():
     """
     公募基金数据-东方财富-分红送配-基金拆分
 

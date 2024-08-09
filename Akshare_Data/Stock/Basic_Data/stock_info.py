@@ -12,8 +12,8 @@ class XinLangSectorRequest(BaseModel):
 
 
 # 新浪行业-板块行情-成份详情
-@router.post("/stock_sector_detail", operation_id="post_stock_sector_detail")
-async def post_stock_sector_detail(request: XinLangSectorRequest):
+@router.post("/stock_sector_detail", operation_id="stock_sector_detail")
+async def stock_sector_detail(request: XinLangSectorRequest):
     """
     新浪行业-板块行情-成份详情
 
@@ -57,8 +57,8 @@ async def post_stock_sector_detail(request: XinLangSectorRequest):
 
 
 # 沪深京 A 股股票代码和股票简称数据
-@router.get("/stock_info_a_code_name", operation_id="get_stock_info_a_code_name")
-def get_stock_info_a_code_name():
+@router.get("/stock_info_a_code_name", operation_id="stock_info_a_code_name")
+def stock_info_a_code_name():
     """
     沪深京 A 股股票代码和股票简称数据
 
@@ -87,8 +87,8 @@ class ShSymbolRequest(BaseModel):
 
 
 # 上海证券交易所股票代码和简称数据
-@router.post("/stock_info_sh_name_code", operation_id="post_stock_info_sh_name_code")
-async def post_stock_info_sh_name_code(request: ShSymbolRequest):
+@router.post("/stock_info_sh_name_code", operation_id="stock_info_sh_name_code")
+async def stock_info_sh_name_code(request: ShSymbolRequest):
     """
     上海证券交易所股票代码和简称数据
 
@@ -113,8 +113,8 @@ class SzSymbolRequest(BaseModel):
 
 
 # 深证证券交易所股票代码和股票简称数据
-@router.post("/stock_info_sz_name_code", operation_id="post_stock_info_sz_name_code")
-async def post_stock_info_sz_name_code(request: SzSymbolRequest):
+@router.post("/stock_info_sz_name_code", operation_id="stock_info_sz_name_code")
+async def stock_info_sz_name_code(request: SzSymbolRequest):
     """
     深证证券交易所股票代码和股票简称数据
 
@@ -135,8 +135,8 @@ async def post_stock_info_sz_name_code(request: SzSymbolRequest):
 
 
 # 北京证券交易所股票代码和简称数据
-@router.get("/stock_info_bj_name_code", operation_id="get_stock_info_bj_name_code")
-def get_stock_info_bj_name_code():
+@router.get("/stock_info_bj_name_code", operation_id="stock_info_bj_name_code")
+def stock_info_bj_name_code():
     """
     北京证券交易所股票代码和简称数据
 
@@ -161,8 +161,8 @@ class SzTsSymbolRequest(BaseModel):
 
 
 # 深证证券交易所终止/暂停上市股票
-@router.post("/stock_info_sz_delist", operation_id="post_stock_info_sz_delist")
-async def post_stock_info_sz_delist(request: SzTsSymbolRequest):
+@router.post("/stock_info_sz_delist", operation_id="stock_info_sz_delist")
+async def stock_info_sz_delist(request: SzTsSymbolRequest):
     """
     深证证券交易所终止/暂停上市股票
 
@@ -183,8 +183,8 @@ async def post_stock_info_sz_delist(request: SzTsSymbolRequest):
 
 
 # 东方财富-行情中心-沪深个股-两网及退市
-@router.get("/stock_staq_net_stop", operation_id="get_stock_staq_net_stop")
-def get_stock_staq_net_stop():
+@router.get("/stock_staq_net_stop", operation_id="stock_staq_net_stop")
+def stock_staq_net_stop():
     """
     东方财富-沪深个股-两网及退市
 
@@ -210,8 +210,8 @@ class ShTsSymbolRequest(BaseModel):
 
 
 # 上海证券交易所暂停/终止上市股票
-@router.post("/stock_info_sh_delist", operation_id="post_stock_info_sh_delist")
-async def post_stock_info_sh_delist(request: ShTsSymbolRequest):
+@router.post("/stock_info_sh_delist", operation_id="stock_info_sh_delist")
+async def stock_info_sh_delist(request: ShTsSymbolRequest):
     """
     上海证券交易所暂停/终止上市股票
 
@@ -236,8 +236,8 @@ class XinLangSymbolRequest(BaseModel):
 
 
 # 新浪财经-股票曾用名
-@router.post("/stock_info_change_name", operation_id="post_stock_info_change_name")
-async def post_stock_info_change_name(request: XinLangSymbolRequest):
+@router.post("/stock_info_change_name", operation_id="stock_info_change_name")
+async def stock_info_change_name(request: XinLangSymbolRequest):
     """
     新浪财经-股票曾用名
 
@@ -262,8 +262,8 @@ class SzSymbolRequest(BaseModel):
 
 
 # 深证证券交易所-市场数据-股票数据-名称变更
-@router.post("/stock_info_sz_change_name", operation_id="post_stock_info_sz_change_name")
-async def post_stock_info_sz_change_name(request: SzSymbolRequest):
+@router.post("/stock_info_sz_change_name", operation_id="stock_info_sz_change_name")
+async def stock_info_sz_change_name(request: SzSymbolRequest):
     """
     深证证券交易所-名称变更
 

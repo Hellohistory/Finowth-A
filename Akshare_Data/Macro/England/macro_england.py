@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 英国宏观-Halifax 房价指数月率
 @router.get("/macro_uk_halifax_monthly",
-            operation_id="get_macro_uk_halifax_monthly")
-async def get_macro_uk_halifax_monthly():
+            operation_id="macro_uk_halifax_monthly")
+async def macro_uk_halifax_monthly():
     """
     英国宏观-Halifax 房价指数月率
 
@@ -31,8 +31,8 @@ async def get_macro_uk_halifax_monthly():
 
 # 英国宏观-Halifax 房价指数年率
 @router.get("/macro_uk_halifax_yearly",
-            operation_id="get_macro_uk_halifax_yearly")
-async def get_macro_uk_halifax_yearly():
+            operation_id="macro_uk_halifax_yearly")
+async def macro_uk_halifax_yearly():
     """
     英国宏观-Halifax 房价指数年率
 
@@ -54,8 +54,8 @@ async def get_macro_uk_halifax_yearly():
 
 # 英国宏观-贸易帐
 @router.get("/macro_uk_trade",
-            operation_id="get_macro_uk_trade")
-async def get_macro_uk_trade():
+            operation_id="macro_uk_trade")
+async def macro_uk_trade():
     """
     英国宏观-贸易帐
 
@@ -77,8 +77,8 @@ async def get_macro_uk_trade():
 
 # 英国宏观-央行公布利率决议
 @router.get("/macro_uk_bank_rate",
-            operation_id="get_macro_uk_bank_rate")
-async def get_macro_uk_bank_rate():
+            operation_id="macro_uk_bank_rate")
+async def macro_uk_bank_rate():
     """
     英国宏观-央行公布利率决议
 
@@ -100,8 +100,8 @@ async def get_macro_uk_bank_rate():
 
 # 英国宏观-核心消费者物价指数年率
 @router.get("/macro_uk_core_cpi_yearly",
-            operation_id="get_macro_uk_core_cpi_yearly")
-async def get_macro_uk_core_cpi_yearly():
+            operation_id="macro_uk_core_cpi_yearly")
+async def macro_uk_core_cpi_yearly():
     """
     英国宏观-核心消费者物价指数年率
 
@@ -123,8 +123,8 @@ async def get_macro_uk_core_cpi_yearly():
 
 # 英国宏观-核心消费者物价指数月率
 @router.get("/macro_uk_core_cpi_monthly",
-            operation_id="get_macro_uk_core_cpi_monthly")
-async def get_macro_uk_core_cpi_monthly():
+            operation_id="macro_uk_core_cpi_monthly")
+async def macro_uk_core_cpi_monthly():
     """
     英国宏观-核心消费者物价指数月率
 
@@ -146,8 +146,8 @@ async def get_macro_uk_core_cpi_monthly():
 
 # 英国宏观-消费者物价指数年率
 @router.get("/macro_uk_cpi_yearly",
-            operation_id="get_macro_uk_cpi_yearly")
-async def get_macro_uk_cpi_yearly():
+            operation_id="macro_uk_cpi_yearly")
+async def macro_uk_cpi_yearly():
     """
     英国宏观-消费者物价指数年率
 
@@ -169,8 +169,8 @@ async def get_macro_uk_cpi_yearly():
 
 # 英国宏观-消费者物价指数月率
 @router.get("/macro_uk_cpi_monthly",
-            operation_id="get_macro_uk_cpi_monthly")
-async def get_macro_uk_cpi_monthly():
+            operation_id="macro_uk_cpi_monthly")
+async def macro_uk_cpi_monthly():
     """
     英国宏观-消费者物价指数月率
 
@@ -192,8 +192,8 @@ async def get_macro_uk_cpi_monthly():
 
 # 英国宏观-零售销售月率
 @router.get("/macro_uk_retail_monthly",
-            operation_id="get_macro_uk_retail_monthly")
-async def get_macro_uk_retail_monthly():
+            operation_id="macro_uk_retail_monthly")
+async def macro_uk_retail_monthly():
     """
     英国宏观-零售销售月率
 
@@ -215,8 +215,8 @@ async def get_macro_uk_retail_monthly():
 
 # 英国宏观-零售销售年率
 @router.get("/macro_uk_retail_yearly",
-            operation_id="get_macro_uk_retail_yearly")
-async def get_macro_uk_retail_yearly():
+            operation_id="macro_uk_retail_yearly")
+async def macro_uk_retail_yearly():
     """
     英国宏观-零售销售年率
 
@@ -238,8 +238,8 @@ async def get_macro_uk_retail_yearly():
 
 # 英国宏观-Rightmove 房价指数年率
 @router.get("/macro_uk_rightmove_yearly",
-            operation_id="get_macro_uk_rightmove_yearly")
-async def get_macro_uk_rightmove_yearly():
+            operation_id="macro_uk_rightmove_yearly")
+async def macro_uk_rightmove_yearly():
     """
     英国宏观-Rightmove 房价指数年率
 
@@ -261,8 +261,8 @@ async def get_macro_uk_rightmove_yearly():
 
 # 英国宏观-Rightmove 房价指数月率
 @router.get("/macro_uk_rightmove_monthly",
-            operation_id="get_macro_uk_rightmove_monthly")
-async def get_macro_uk_rightmove_monthly():
+            operation_id="macro_uk_rightmove_monthly")
+async def macro_uk_rightmove_monthly():
     """
     英国宏观-Rightmove 房价指数月率
 
@@ -284,8 +284,8 @@ async def get_macro_uk_rightmove_monthly():
 
 # 英国宏观-GDP 季率初值
 @router.get("/macro_uk_gdp_quarterly",
-            operation_id="get_macro_uk_gdp_quarterly")
-async def get_macro_uk_gdp_quarterly():
+            operation_id="macro_uk_gdp_quarterly")
+async def macro_uk_gdp_quarterly():
     """
     英国宏观-GDP 季率初值
 
@@ -307,8 +307,8 @@ async def get_macro_uk_gdp_quarterly():
 
 # 英国宏观-GDP 年率初值
 @router.get("/macro_uk_gdp_yearly",
-            operation_id="get_macro_uk_gdp_yearly")
-async def get_macro_uk_gdp_yearly():
+            operation_id="macro_uk_gdp_yearly")
+async def macro_uk_gdp_yearly():
     """
     英国宏观-GDP 年率初值
 
@@ -330,8 +330,8 @@ async def get_macro_uk_gdp_yearly():
 
 # 英国宏观-失业率
 @router.get("/macro_uk_unemployment_rate",
-            operation_id="get_macro_uk_unemployment_rate")
-async def get_macro_uk_unemployment_rate():
+            operation_id="macro_uk_unemployment_rate")
+async def macro_uk_unemployment_rate():
     """
     英国宏观-失业率
 

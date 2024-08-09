@@ -14,8 +14,8 @@ class OptionSseListSina(BaseModel):
 
 # 期权-金融期权-上交所-合约到期月份列表
 @router.post("/option_sse_list_sina",
-             operation_id="post_option_sse_list_sina")
-def post_option_sse_list_sina(request: OptionSseListSina):
+             operation_id="option_sse_list_sina")
+def option_sse_list_sina(request: OptionSseListSina):
     """
     期权-金融期权-上交所-合约到期月份列表
 
@@ -47,8 +47,8 @@ class OptionSseExpireDaySina(BaseModel):
 
 # 期权-金融期权-上交所-所有合约的代码
 @router.post("/option_sse_codes_sina",
-             operation_id="post_option_sse_codes_sina")
-def post_option_sse_codes_sina(request: OptionSseExpireDaySina):
+             operation_id="option_sse_codes_sina")
+def option_sse_codes_sina(request: OptionSseExpireDaySina):
     """
     期权-金融期权-上交所-所有合约的代码
 
@@ -92,8 +92,8 @@ class OptionSseSpotPriceSina(BaseModel):
 
 # 期权-金融期权-上交所-期权希腊字母信息表
 @router.post("/option_sse_greeks_sina",
-             operation_id="post_option_sse_greeks_sina")
-def post_option_sse_greeks_sina(request: OptionSseSpotPriceSina):
+             operation_id="option_sse_greeks_sina")
+def option_sse_greeks_sina(request: OptionSseSpotPriceSina):
     """
     期权-金融期权-上交所-期权希腊字母信息表
 
@@ -122,8 +122,8 @@ class OptionSseSpotUnderlyingPriceSina(BaseModel):
 
 # 期权-金融期权-上交所-期权标的物的实时数据
 @router.post("/option_sse_underlying_spot_price_sina",
-             operation_id="post_option_sse_underlying_spot_price_sina")
-def post_option_sse_underlying_spot_price_sina(request: OptionSseSpotUnderlyingPriceSina):
+             operation_id="option_sse_underlying_spot_price_sina")
+def option_sse_underlying_spot_price_sina(request: OptionSseSpotUnderlyingPriceSina):
     """
     期权-金融期权-上交所-期权标的物的实时数据
 
@@ -147,8 +147,8 @@ def post_option_sse_underlying_spot_price_sina(request: OptionSseSpotUnderlyingP
 
 
 # 东方财富-期权市场-期权价值分析
-@router.get("/option_value_analysis_em", operation_id="get_option_value_analysis_em")
-def get_option_value_analysis_em():
+@router.get("/option_value_analysis_em", operation_id="option_value_analysis_em")
+def option_value_analysis_em():
     """
     东方财富-期权市场-期权价值分析
 
@@ -171,8 +171,8 @@ def get_option_value_analysis_em():
 
 
 # 东方财富-期权市场-期权风险分析
-@router.get("/option_risk_analysis_em", operation_id="get_option_risk_analysis_em")
-def get_option_risk_analysis_em():
+@router.get("/option_risk_analysis_em", operation_id="option_risk_analysis_em")
+def option_risk_analysis_em():
     """
     东方财富-期权市场-期权风险分析
 
@@ -195,8 +195,8 @@ def get_option_risk_analysis_em():
 
 
 # 东方财富-期权市场-期权折溢价
-@router.get("/option_premium_analysis_em", operation_id="get_option_premium_analysis_em")
-def get_option_premium_analysis_em():
+@router.get("/option_premium_analysis_em", operation_id="option_premium_analysis_em")
+def option_premium_analysis_em():
     """
     东方财富-期权市场-期权折溢价
 

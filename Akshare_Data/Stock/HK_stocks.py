@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 东方财富-港股-实时行情
-@router.get("/stock_hk_spot_em", operation_id="get_stock_hk_spot_em")
-def get_stock_hk_spot_em():
+@router.get("/stock_hk_spot_em", operation_id="stock_hk_spot_em")
+def stock_hk_spot_em():
     """
     东方财富-港股-实时行情
 
@@ -30,8 +30,8 @@ def get_stock_hk_spot_em():
 
 
 # 港股主板实时行情数据-东财
-@router.get("/stock_hk_main_board_spot_em", operation_id="get_stock_hk_main_board_spot_em")
-def get_stock_hk_main_board_spot_em():
+@router.get("/stock_hk_main_board_spot_em", operation_id="stock_hk_main_board_spot_em")
+def stock_hk_main_board_spot_em():
     """
     东方财富-港股主板实时行情数据
 
@@ -52,8 +52,8 @@ def get_stock_hk_main_board_spot_em():
 
 
 # 新浪财经-港股-历史行情数据
-@router.get("/stock_hk_spot", operation_id="get_stock_hk_spot")
-def get_stock_hk_spot():
+@router.get("/stock_hk_spot", operation_id="stock_hk_spot")
+def stock_hk_spot():
     """
     新浪财经-港股-历史行情数据
 
@@ -111,8 +111,8 @@ class DongCaiHKStockMinuteRequest(BaseModel):
 
 
 # 东方财富-港股-每日分时行情
-@router.post("/stock_hk_hist_min_em", operation_id="post_stock_zh_ah_spot")
-async def post_stock_hk_hist_min_em(request: DongCaiHKStockMinuteRequest):
+@router.post("/stock_hk_hist_min_em", operation_id="stock_zh_ah_spot")
+async def stock_hk_hist_min_em(request: DongCaiHKStockMinuteRequest):
     """
     东方财富-港股-每日分时行情
 
@@ -150,8 +150,8 @@ class DongCaiHKStockHistoryRequest(BaseModel):
 
 
 # 东方财富-港股-历史行情数据
-@router.post("/stock_hk_hist", operation_id="post_stock_hk_hist")
-async def post_stock_hk_hist(request: DongCaiHKStockHistoryRequest):
+@router.post("/stock_hk_hist", operation_id="stock_hk_hist")
+async def stock_hk_hist(request: DongCaiHKStockHistoryRequest):
     """
     东方财富-港股-历史行情数据
 
@@ -187,8 +187,8 @@ class StockDailyRequest(BaseModel):
 
 
 # 新浪财经-港股-历史行情数据
-@router.post("/stock_hk_daily", operation_id="post_stock_hk_daily")
-async def post_stock_hk_daily(request: StockDailyRequest):
+@router.post("/stock_hk_daily", operation_id="stock_hk_daily")
+async def stock_hk_daily(request: StockDailyRequest):
     """
     新浪财经-港股-历史行情数据
 

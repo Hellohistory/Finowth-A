@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 指数数据-市场情绪指数-A 股新闻情绪指数
 @router.get("/index_news_sentiment_scope",
-            operation_id="get_index_news_sentiment_scope")
-def get_index_news_sentiment_scope():
+            operation_id="index_news_sentiment_scope")
+def index_news_sentiment_scope():
     """
     指数数据-市场情绪指数-A 股新闻情绪指数
 

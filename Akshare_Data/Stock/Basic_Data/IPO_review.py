@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # 科创板
-@router.get("/stock_register_kcb", operation_id="get_stock_register_kcb")
-def get_stock_register_kcb():
+@router.get("/stock_register_kcb", operation_id="stock_register_kcb")
+def stock_register_kcb():
     """
     东方财富-IPO审核信息-科创板
 
@@ -29,8 +29,8 @@ def get_stock_register_kcb():
 
 
 # 创业板
-@router.get("/stock_register_cyb", operation_id="get_stock_register_cyb")
-def get_stock_register_cyb():
+@router.get("/stock_register_cyb", operation_id="stock_register_cyb")
+def stock_register_cyb():
     """
     东方财富-IPO审核信息-创业板
 
@@ -51,8 +51,8 @@ def get_stock_register_cyb():
 
 
 # 上海主板
-@router.get("/stock_register_sh", operation_id="get_stock_register_sh")
-def get_stock_register_sh():
+@router.get("/stock_register_sh", operation_id="stock_register_sh")
+def stock_register_sh():
     """
     东方财富-IPO审核信息-上海主板
 
@@ -73,8 +73,8 @@ def get_stock_register_sh():
 
 
 # 深圳主板
-@router.get("/stock_register_sz", operation_id="get_stock_register_sz")
-def get_stock_register_sz():
+@router.get("/stock_register_sz", operation_id="stock_register_sz")
+def stock_register_sz():
     """
     东方财富-IPO审核信息-深圳主板
 
@@ -95,8 +95,8 @@ def get_stock_register_sz():
 
 
 # 北交所
-@router.get("/stock_register_bj", operation_id="get_stock_register_bj")
-def get_stock_register_bj():
+@router.get("/stock_register_bj", operation_id="stock_register_bj")
+def stock_register_bj():
     """
     东方财富-IPO审核信息-北交所
 
@@ -117,8 +117,8 @@ def get_stock_register_bj():
 
 
 # 注册制审核-达标企业
-@router.get("/stock_register_db", operation_id="get_stock_register_db")
-def get_stock_register_db():
+@router.get("/stock_register_db", operation_id="stock_register_db")
+def stock_register_db():
     """
     东方财富-注册制审核-达标企业
 

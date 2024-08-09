@@ -13,8 +13,8 @@ class FundIndividualAchievementXQ(BaseModel):
 
 # 公募基金数据-基金排行-雪球-基金业绩
 @router.post("/fund_individual_achievement_xq",
-             operation_id="post_fund_individual_achievement_xq")
-def post_fund_individual_achievement_xq(request: FundIndividualAchievementXQ):
+             operation_id="fund_individual_achievement_xq")
+def fund_individual_achievement_xq(request: FundIndividualAchievementXQ):
     """
     公募基金数据-基金排行-雪球-基金业绩
 
@@ -37,8 +37,8 @@ def post_fund_individual_achievement_xq(request: FundIndividualAchievementXQ):
 
 # 公募基金数据-基金排行-雪球-基金数据分析
 @router.post("/fund_individual_analysis_xq",
-             operation_id="post_fund_individual_analysis_xq")
-def post_fund_individual_analysis_xq(request: FundIndividualAchievementXQ):
+             operation_id="fund_individual_analysis_xq")
+def fund_individual_analysis_xq(request: FundIndividualAchievementXQ):
     """
     公募基金数据-基金排行-雪球-基金数据分析
 
@@ -61,8 +61,8 @@ def post_fund_individual_analysis_xq(request: FundIndividualAchievementXQ):
 
 # 公募基金数据-基金排行-雪球-基金盈利概率
 @router.post("/fund_individual_profit_probability_xq",
-             operation_id="post_fund_individual_profit_probability_xq")
-def post_fund_individual_profit_probability_xq(request: FundIndividualAchievementXQ):
+             operation_id="fund_individual_profit_probability_xq")
+def fund_individual_profit_probability_xq(request: FundIndividualAchievementXQ):
     """
     公募基金数据-基金排行-雪球-基金盈利概率
 
@@ -90,8 +90,8 @@ class FundIndividualDetailHoldXQ(BaseModel):
 
 # 公募基金数据-基金排行-雪球-基金持仓资产比例
 @router.post("/fund_individual_detail_hold_xq",
-             operation_id="post_fund_individual_detail_hold_xq")
-def post_fund_individual_detail_hold_xq(request: FundIndividualDetailHoldXQ):
+             operation_id="fund_individual_detail_hold_xq")
+def fund_individual_detail_hold_xq(request: FundIndividualDetailHoldXQ):
     """
     公募基金数据-基金排行-雪球-基金持仓资产比例
 
@@ -117,8 +117,8 @@ def post_fund_individual_detail_hold_xq(request: FundIndividualDetailHoldXQ):
 
 # 公募基金数据-基金排行-雪球-基金交易规则
 @router.post("/fund_individual_detail_info_xq",
-             operation_id="post_fund_individual_detail_info_xq")
-def post_fund_individual_detail_info_xq(request: FundIndividualAchievementXQ):
+             operation_id="fund_individual_detail_info_xq")
+def fund_individual_detail_info_xq(request: FundIndividualAchievementXQ):
     """
     公募基金数据-基金排行-雪球-基金交易规则
 
@@ -146,8 +146,8 @@ class FundPortfolioHoldEM(BaseModel):
 
 # 公募基金数据-基金排行-东方财富-基金持仓
 @router.post("/fund_portfolio_hold_em",
-             operation_id="post_fund_portfolio_hold_em")
-def post_fund_portfolio_hold_em(request: FundPortfolioHoldEM):
+             operation_id="fund_portfolio_hold_em")
+def fund_portfolio_hold_em(request: FundPortfolioHoldEM):
     """
     公募基金数据-基金排行-东方财富-基金持仓
 
@@ -176,8 +176,8 @@ class FundPortfolioBondHoldEM(BaseModel):
 
 # 公募基金数据-基金排行-东方财富-债券持仓
 @router.post("/fund_portfolio_bond_hold_em",
-             operation_id="post_fund_portfolio_bond_hold_em")
-def post_fund_portfolio_bond_hold_em(request: FundPortfolioBondHoldEM):
+             operation_id="fund_portfolio_bond_hold_em")
+def fund_portfolio_bond_hold_em(request: FundPortfolioBondHoldEM):
     """
     公募基金数据-基金排行-东方财富-债券持仓
 
@@ -203,8 +203,8 @@ def post_fund_portfolio_bond_hold_em(request: FundPortfolioBondHoldEM):
 
 # 公募基金数据-基金排行-东方财富-行业配置
 @router.post("/fund_portfolio_industry_allocation_em",
-             operation_id="post_fund_portfolio_industry_allocation_em")
-def post_fund_portfolio_industry_allocation_em(request: FundPortfolioHoldEM):
+             operation_id="fund_portfolio_industry_allocation_em")
+def fund_portfolio_industry_allocation_em(request: FundPortfolioHoldEM):
     """
     公募基金数据-基金排行-东方财富-行业配置
 
@@ -238,8 +238,8 @@ class FundPortfolioHoldEM(BaseModel):
 
 # 公募基金数据-基金档案-东方财富-重大变动
 @router.post("/fund_portfolio_change_em",
-             operation_id="post_fund_portfolio_change_em")
-def post_fund_portfolio_change_em(request: FundPortfolioHoldEM):
+             operation_id="fund_portfolio_change_em")
+def fund_portfolio_change_em(request: FundPortfolioHoldEM):
     """
     公募基金数据-基金档案-东方财富-债券持仓
 

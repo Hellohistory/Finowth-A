@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 国民经济运行状况-其他指标-中国日度沿海六大电库存
 @router.get("/macro_china_daily_energy",
-            operation_id="get_macro_china_daily_energy")
-async def get_macro_china_daily_energy():
+            operation_id="macro_china_daily_energy")
+async def macro_china_daily_energy():
     """
     国民经济运行状况-其他指标-中国日度沿海六大电库存
 

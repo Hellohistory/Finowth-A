@@ -14,8 +14,8 @@ class OptionRiskIndicator(BaseModel):
 
 # 期权-金融期权-风险指标-上海证券交易所
 @router.post("/option_risk_indicator_sse",
-             operation_id="post_option_risk_indicator_sse")
-def post_option_risk_indicator_sse(request: OptionRiskIndicator):
+             operation_id="option_risk_indicator_sse")
+def option_risk_indicator_sse(request: OptionRiskIndicator):
     """
     期权-金融期权-风险指标-上海证券交易所
 
@@ -38,8 +38,8 @@ def post_option_risk_indicator_sse(request: OptionRiskIndicator):
 
 # 期权-金融期权-每日统计-上海证券交易所
 @router.post("/option_daily_stats_sse",
-             operation_id="post_option_daily_stats_sse")
-def post_option_daily_stats_sse(request: OptionRiskIndicator):
+             operation_id="option_daily_stats_sse")
+def option_daily_stats_sse(request: OptionRiskIndicator):
     """
     期权-金融期权-每日统计-上海证券交易所
 
@@ -62,8 +62,8 @@ def post_option_daily_stats_sse(request: OptionRiskIndicator):
 
 # 期权-金融期权-每日统计-上海证券交易所
 @router.post("/option_daily_stats_szse",
-             operation_id="post_option_daily_stats_szse")
-def post_option_daily_stats_szse(request: OptionRiskIndicator):
+             operation_id="option_daily_stats_szse")
+def option_daily_stats_szse(request: OptionRiskIndicator):
     """
     期权-金融期权-每日统计-深圳证券交易所
 

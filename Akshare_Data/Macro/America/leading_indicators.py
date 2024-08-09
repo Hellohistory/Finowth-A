@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 美国-领先指标-未决房屋销售月率
 @router.get("/macro_usa_phs",
-            operation_id="get_macro_usa_phs")
-async def get_macro_usa_phs():
+            operation_id="macro_usa_phs")
+async def macro_usa_phs():
     """
     美国-领先指标-未决房屋销售月率
 
@@ -31,8 +31,8 @@ async def get_macro_usa_phs():
 
 # 美国-领先指标-美国谘商会消费者信心指数报告
 @router.get("/macro_usa_cb_consumer_confidence",
-            operation_id="get_macro_usa_cb_consumer_confidence")
-async def get_macro_usa_cb_consumer_confidence():
+            operation_id="macro_usa_cb_consumer_confidence")
+async def macro_usa_cb_consumer_confidence():
     """
     美国-领先指标-美国谘商会消费者信心指数报告
 
@@ -54,8 +54,8 @@ async def get_macro_usa_cb_consumer_confidence():
 
 # 美国-领先指标-美国NFIB小型企业信心指数报告
 @router.get("/macro_usa_nfib_small_business",
-            operation_id="get_macro_usa_nfib_small_business")
-async def get_macro_usa_nfib_small_business():
+            operation_id="macro_usa_nfib_small_business")
+async def macro_usa_nfib_small_business():
     """
     美国-领先指标-美国NFIB小型企业信心指数报告
 
@@ -77,8 +77,8 @@ async def get_macro_usa_nfib_small_business():
 
 # 美国-领先指标-美国密歇根大学消费者信心指数初值报告
 @router.get("/macro_usa_michigan_consumer_sentiment",
-            operation_id="get_macro_usa_michigan_consumer_sentiment")
-async def get_macro_usa_michigan_consumer_sentiment():
+            operation_id="macro_usa_michigan_consumer_sentiment")
+async def macro_usa_michigan_consumer_sentiment():
     """
     美国-领先指标-美国密歇根大学消费者信心指数初值报告
 

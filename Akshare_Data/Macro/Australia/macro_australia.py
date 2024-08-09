@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 澳大利亚宏观-零售销售月率
 @router.get("/macro_australia_retail_rate_monthly",
-            operation_id="get_macro_australia_retail_rate_monthly")
-async def get_macro_australia_retail_rate_monthly():
+            operation_id="macro_australia_retail_rate_monthly")
+async def macro_australia_retail_rate_monthly():
     """
     澳大利亚宏观-零售销售月率
 
@@ -31,8 +31,8 @@ async def get_macro_australia_retail_rate_monthly():
 
 # 澳大利亚宏观-贸易帐
 @router.get("/macro_australia_trade",
-            operation_id="get_macro_australia_trade")
-async def get_macro_australia_trade():
+            operation_id="macro_australia_trade")
+async def macro_australia_trade():
     """
     澳大利亚宏观-贸易帐
 
@@ -54,8 +54,8 @@ async def get_macro_australia_trade():
 
 # 澳大利亚宏观-失业率
 @router.get("/macro_australia_unemployment_rate",
-            operation_id="get_macro_australia_unemployment_rate")
-async def get_macro_australia_unemployment_rate():
+            operation_id="macro_australia_unemployment_rate")
+async def macro_australia_unemployment_rate():
     """
     澳大利亚宏观-失业率
 
@@ -77,8 +77,8 @@ async def get_macro_australia_unemployment_rate():
 
 # 澳大利亚宏观-生产者物价指数季率
 @router.get("/macro_australia_ppi_quarterly",
-            operation_id="get_macro_australia_ppi_quarterly")
-async def get_macro_australia_ppi_quarterly():
+            operation_id="macro_australia_ppi_quarterly")
+async def macro_australia_ppi_quarterly():
     """
     澳大利亚宏观-生产者物价指数季率
 
@@ -100,8 +100,8 @@ async def get_macro_australia_ppi_quarterly():
 
 # 澳大利亚宏观-消费者物价指数季率
 @router.get("/macro_australia_cpi_quarterly",
-            operation_id="get_macro_australia_cpi_quarterly")
-async def get_macro_australia_cpi_quarterly():
+            operation_id="macro_australia_cpi_quarterly")
+async def macro_australia_cpi_quarterly():
     """
     澳大利亚宏观-消费者物价指数季率
 
@@ -123,8 +123,8 @@ async def get_macro_australia_cpi_quarterly():
 
 # 澳大利亚宏观-消费者物价指数年率
 @router.get("/macro_australia_cpi_yearly",
-            operation_id="get_macro_australia_cpi_yearly")
-async def get_macro_australia_cpi_yearly():
+            operation_id="macro_australia_cpi_yearly")
+async def macro_australia_cpi_yearly():
     """
     澳大利亚宏观-消费者物价指数年率
 
@@ -146,8 +146,8 @@ async def get_macro_australia_cpi_yearly():
 
 # 澳大利亚宏观-央行公布利率决议
 @router.get("/macro_australia_bank_rate",
-            operation_id="get_macro_australia_bank_rate")
-async def get_macro_australia_bank_rate():
+            operation_id="macro_australia_bank_rate")
+async def macro_australia_bank_rate():
     """
     澳大利亚宏观-央行公布利率决议
 

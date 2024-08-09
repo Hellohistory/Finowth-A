@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # 指数数据-申万一级行业信息
-@router.get("/sw_index_first_info", operation_id="get_sw_index_first_info")
-def get_sw_index_first_info():
+@router.get("/sw_index_first_info", operation_id="sw_index_first_info")
+def sw_index_first_info():
     """
     指数数据-申万一级行业信息
 
@@ -29,8 +29,8 @@ def get_sw_index_first_info():
 
 
 # 指数数据-申万二级行业信息
-@router.get("/sw_index_second_info", operation_id="get_sw_index_second_info")
-def get_sw_index_second_info():
+@router.get("/sw_index_second_info", operation_id="sw_index_second_info")
+def sw_index_second_info():
     """
     指数数据-申万二级行业信息
 
@@ -51,8 +51,8 @@ def get_sw_index_second_info():
 
 
 # 指数数据-申万三级行业信息
-@router.get("/sw_index_third_info", operation_id="get_sw_index_third_info")
-def get_sw_index_third_info():
+@router.get("/sw_index_third_info", operation_id="sw_index_third_info")
+def sw_index_third_info():
     """
     指数数据-申万三级行业信息
 
@@ -73,8 +73,8 @@ def get_sw_index_third_info():
 
 
 # 指数数据-申万三级行业信息
-@router.get("/sw_index_third_cons", operation_id="get_sw_index_third_cons")
-def get_sw_index_third_cons():
+@router.get("/sw_index_third_cons", operation_id="sw_index_third_cons")
+def sw_index_third_cons():
     """
     指数数据-申万三级行业信息
 

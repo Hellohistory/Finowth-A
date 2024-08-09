@@ -12,8 +12,8 @@ class TFDateRequest(BaseModel):
 
 
 # 东方财富-数据中心-特色数据-停复牌信息
-@router.post("/stock_tfp_em", operation_id="post_stock_tfp_em")
-async def post_stock_tfp_em(request: TFDateRequest):
+@router.post("/stock_tfp_em", operation_id="stock_tfp_em")
+async def stock_tfp_em(request: TFDateRequest):
     """
     东方财富-特色数据-停复牌信息
 
@@ -34,8 +34,8 @@ async def post_stock_tfp_em(request: TFDateRequest):
 
 
 # 百度股市通-交易提醒-停复牌
-@router.post("/news_trade_notify_suspend_baidu", operation_id="post_news_trade_notify_suspend_baidu")
-async def post_news_trade_notify_suspend_baidu(request: TFDateRequest):
+@router.post("/news_trade_notify_suspend_baidu", operation_id="news_trade_notify_suspend_baidu")
+async def news_trade_notify_suspend_baidu(request: TFDateRequest):
     """
     百度股市通-交易提醒-停复牌
 
@@ -56,8 +56,8 @@ async def post_news_trade_notify_suspend_baidu(request: TFDateRequest):
 
 
 # 百度股市通-交易提醒-分红派息
-@router.post("/news_trade_notify_dividend_baidu", operation_id="post_news_trade_notify_dividend_baidu")
-async def post_news_trade_notify_dividend_baidu(request: TFDateRequest):
+@router.post("/news_trade_notify_dividend_baidu", operation_id="news_trade_notify_dividend_baidu")
+async def news_trade_notify_dividend_baidu(request: TFDateRequest):
     """
     百度股市通-交易提醒-分红派息
 

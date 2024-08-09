@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 日本宏观-央行公布利率决议
 @router.get("/macro_japan_bank_rate",
-            operation_id="get_macro_japan_bank_rate")
-async def get_macro_japan_bank_rate():
+            operation_id="macro_japan_bank_rate")
+async def macro_japan_bank_rate():
     """
     日本宏观-央行公布利率决议
 
@@ -31,8 +31,8 @@ async def get_macro_japan_bank_rate():
 
 # 日本宏观-全国消费者物价指数年率
 @router.get("/macro_japan_cpi_yearly",
-            operation_id="get_macro_japan_cpi_yearly")
-async def get_macro_japan_cpi_yearly():
+            operation_id="macro_japan_cpi_yearly")
+async def macro_japan_cpi_yearly():
     """
     日本宏观-全国消费者物价指数年率
 
@@ -54,8 +54,8 @@ async def get_macro_japan_cpi_yearly():
 
 # 日本宏观-全国核心消费者物价指数年率
 @router.get("/macro_japan_core_cpi_yearly",
-            operation_id="get_macro_japan_core_cpi_yearly")
-async def get_macro_japan_core_cpi_yearly():
+            operation_id="macro_japan_core_cpi_yearly")
+async def macro_japan_core_cpi_yearly():
     """
     日本宏观-全国核心消费者物价指数年率
 
@@ -77,8 +77,8 @@ async def get_macro_japan_core_cpi_yearly():
 
 # 日本宏观-失业率
 @router.get("/macro_japan_unemployment_rate",
-            operation_id="get_macro_japan_unemployment_rate")
-async def get_macro_japan_unemployment_rate():
+            operation_id="macro_japan_unemployment_rate")
+async def macro_japan_unemployment_rate():
     """
     日本宏观-失业率
 
@@ -100,8 +100,8 @@ async def get_macro_japan_unemployment_rate():
 
 # 日本宏观-领先指标终值
 @router.get("/macro_japan_head_indicator",
-            operation_id="get_macro_japan_head_indicator")
-async def get_macro_japan_head_indicator():
+            operation_id="macro_japan_head_indicator")
+async def macro_japan_head_indicator():
     """
     日本宏观-领先指标终值
 

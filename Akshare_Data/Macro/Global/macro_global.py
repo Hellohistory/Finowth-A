@@ -12,8 +12,8 @@ class MacroInfoWS(BaseModel):
 
 
 # 全球宏观-宏观日历
-@router.post("/macro_info_ws", operation_id="post_macro_info_ws")
-async def post_macro_info_ws(request: MacroInfoWS):
+@router.post("/macro_info_ws", operation_id="macro_info_ws")
+async def macro_info_ws(request: MacroInfoWS):
     """
     全球宏观-宏观日历
 
@@ -35,8 +35,8 @@ async def post_macro_info_ws(request: MacroInfoWS):
 
 
 # 全球宏观-全球宏观事件
-@router.post("/news_economic_baidu", operation_id="post_news_economic_baidu")
-async def post_news_economic_baidu(request: MacroInfoWS):
+@router.post("/news_economic_baidu", operation_id="news_economic_baidu")
+async def news_economic_baidu(request: MacroInfoWS):
     """
     全球宏观-宏观日历
 

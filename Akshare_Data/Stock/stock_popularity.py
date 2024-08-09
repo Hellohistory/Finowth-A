@@ -11,8 +11,8 @@ class StockHotXQRequest(BaseModel):
     symbol: str = Field(..., title="数据类型", description="可选择'本周新增', '最热门'")
 
 
-@router.post("/stock_hot_follow_xq", operation_id="post_stock_hot_follow_xq")
-async def post_stock_hot_follow_xq(request: StockHotXQRequest):
+@router.post("/stock_hot_follow_xq", operation_id="stock_hot_follow_xq")
+async def stock_hot_follow_xq(request: StockHotXQRequest):
     """
     雪球-沪深股市-热度排行榜-关注排行榜
 
@@ -33,8 +33,8 @@ async def post_stock_hot_follow_xq(request: StockHotXQRequest):
 
 
 # 雪球-沪深股市-热度排行榜-讨论排行榜
-@router.post("/stock_hot_tweet_xq", operation_id="post_stock_hot_tweet_xq")
-async def post_stock_hot_tweet_xq(request: StockHotXQRequest):
+@router.post("/stock_hot_tweet_xq", operation_id="stock_hot_tweet_xq")
+async def stock_hot_tweet_xq(request: StockHotXQRequest):
     """
     雪球-沪深股市-热度排行榜-讨论排行榜
 
@@ -54,8 +54,8 @@ async def post_stock_hot_tweet_xq(request: StockHotXQRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/stock_hot_deal_xq", operation_id="post_stock_hot_deal_xq")
-def post_stock_hot_deal_xq(request: StockHotXQRequest):
+@router.post("/stock_hot_deal_xq", operation_id="stock_hot_deal_xq")
+def stock_hot_deal_xq(request: StockHotXQRequest):
     """
     雪球-沪深股市-热度排行榜-交易排行榜
 
@@ -79,8 +79,8 @@ class StockHotRankWCRequest(BaseModel):
     date: str = Field(..., title="查询日期", description="例：20230129")
 
 
-@router.post("/stock_hot_rank_wc", operation_id="post_stock_hot_rank_wc")
-def post_stock_hot_rank_wc(request: StockHotRankWCRequest):
+@router.post("/stock_hot_rank_wc", operation_id="stock_hot_rank_wc")
+def stock_hot_rank_wc(request: StockHotRankWCRequest):
     """
     问财-热门股票排名数据
 
@@ -100,8 +100,8 @@ def post_stock_hot_rank_wc(request: StockHotRankWCRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_hot_rank_em", operation_id="get_stock_hot_rank_em")
-def get_stock_hot_rank_em():
+@router.get("/stock_hot_rank_em", operation_id="stock_hot_rank_em")
+def stock_hot_rank_em():
     """
     东方财富站-股票热度
 
@@ -121,8 +121,8 @@ def get_stock_hot_rank_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_hot_up_em", operation_id="get_stock_hot_up_em")
-def get_stock_hot_up_em():
+@router.get("/stock_hot_up_em", operation_id="stock_hot_up_em")
+def stock_hot_up_em():
     """
     东方财富-个股人气榜-飙升榜
 
@@ -142,8 +142,8 @@ def get_stock_hot_up_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_hk_hot_rank_em", operation_id="get_stock_hk_hot_rank_em")
-def get_stock_hk_hot_rank_em():
+@router.get("/stock_hk_hot_rank_em", operation_id="stock_hk_hot_rank_em")
+def stock_hk_hot_rank_em():
     """
     东方财富-个股人气榜-人气榜-港股市场
 
@@ -167,8 +167,8 @@ class StockHKHotRankDetailEMRequest(BaseModel):
     symbol: str = Field(..., title="港股代码", description="例：00700")
 
 
-@router.post("/stock_hk_hot_rank_detail_em", operation_id="post_stock_hot_rank_em")
-async def post_stock_hk_hot_rank_detail_em(request: StockHKHotRankDetailEMRequest):
+@router.post("/stock_hk_hot_rank_detail_em", operation_id="stock_hot_rank_em")
+async def stock_hk_hot_rank_detail_em(request: StockHKHotRankDetailEMRequest):
     """
     东方财富-股票热度-历史趋势及粉丝特征
 
@@ -189,8 +189,8 @@ async def post_stock_hk_hot_rank_detail_em(request: StockHKHotRankDetailEMReques
 
 
 # 内部交易
-@router.get("/stock_inner_trade_xq", operation_id="get_stock_inner_trade_xq")
-def get_stock_inner_trade_xq():
+@router.get("/stock_inner_trade_xq", operation_id="stock_inner_trade_xq")
+def stock_inner_trade_xq():
     """
     雪球-沪深股市-内部交易
 
@@ -216,8 +216,8 @@ class StockHotRankDetailEMRequest(BaseModel):
 
 # 个股人气榜-实时变动
 @router.post("/stock_hot_rank_detail_realtime_em",
-             operation_id="post_stock_hot_rank_detail_realtime_em")
-async def post_stock_hot_rank_detail_realtime_em(request: StockHotRankDetailEMRequest):
+             operation_id="stock_hot_rank_detail_realtime_em")
+async def stock_hot_rank_detail_realtime_em(request: StockHotRankDetailEMRequest):
     """
     东方财富-个股人气榜-实时变动
 
@@ -243,8 +243,8 @@ class StockHotRankHKDetailEMRequest(BaseModel):
 
 # 港股-个股人气榜-实时变动
 @router.post("/stock_hk_hot_rank_detail_realtime_em",
-             operation_id="post_stock_hk_hot_rank_detail_realtime_em")
-async def post_stock_hk_hot_rank_detail_realtime_em(request: StockHotRankHKDetailEMRequest):
+             operation_id="stock_hk_hot_rank_detail_realtime_em")
+async def stock_hk_hot_rank_detail_realtime_em(request: StockHotRankHKDetailEMRequest):
     """
     东方财富-个股人气榜-实时变动
 
@@ -269,8 +269,8 @@ class StockHotKeywordRequest(BaseModel):
 
 
 # 热门关键词
-@router.post("/stock_hot_keyword_em", operation_id="post_stock_hot_keyword_em")
-async def post_stock_hot_keyword_em(request: StockHotKeywordRequest):
+@router.post("/stock_hot_keyword_em", operation_id="stock_hot_keyword_em")
+async def stock_hot_keyword_em(request: StockHotKeywordRequest):
     """
     东方财富-个股人气榜-热门关键词
 
@@ -291,8 +291,8 @@ async def post_stock_hot_keyword_em(request: StockHotKeywordRequest):
 
 
 # 个股人气榜-最新排名
-@router.post("/stock_hot_rank_latest_em", operation_id="post_stock_hot_rank_latest_em")
-async def post_stock_hot_rank_latest_em(request: StockHotKeywordRequest):
+@router.post("/stock_hot_rank_latest_em", operation_id="stock_hot_rank_latest_em")
+async def stock_hot_rank_latest_em(request: StockHotKeywordRequest):
     """
     东方财富-个股人气榜-最新排名
 
@@ -313,8 +313,8 @@ async def post_stock_hot_rank_latest_em(request: StockHotKeywordRequest):
 
 
 # 港股-个股人气榜-最新排名
-@router.post("/stock_hk_hot_rank_latest_em", operation_id="post_stock_hk_hot_rank_latest_em")
-async def post_stock_hk_hot_rank_latest_em(request: StockHotRankHKDetailEMRequest):
+@router.post("/stock_hk_hot_rank_latest_em", operation_id="stock_hk_hot_rank_latest_em")
+async def stock_hk_hot_rank_latest_em(request: StockHotRankHKDetailEMRequest):
     """
     东方财富-个股人气榜-最新排名
 
@@ -342,8 +342,8 @@ class HotSearchRequest(BaseModel):
     time: str = Field(..., title="时间周期", description="可选择'今日','1小时'")
 
 
-@router.post("/stock_hot_search_baidu", operation_id="post_stock_hot_search_baidu")
-async def post_stock_hot_search_baidu(request: HotSearchRequest):
+@router.post("/stock_hot_search_baidu", operation_id="stock_hot_search_baidu")
+async def stock_hot_search_baidu(request: HotSearchRequest):
     """
     百度股市通-热搜股票
 
@@ -370,8 +370,8 @@ class StockHotRankSymbolRequest(BaseModel):
 
 
 # 相关股票
-@router.post("/stock_hot_rank_relate_em", operation_id="post_stock_hot_rank_relate_em")
-async def post_stock_hot_rank_relate_em(request: StockHotRankSymbolRequest):
+@router.post("/stock_hot_rank_relate_em", operation_id="stock_hot_rank_relate_em")
+async def stock_hot_rank_relate_em(request: StockHotRankSymbolRequest):
     """
     东方财富-个股人气榜-相关股票
 

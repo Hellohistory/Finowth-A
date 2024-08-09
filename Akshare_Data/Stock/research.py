@@ -12,8 +12,8 @@ class DateRequest(BaseModel):
 
 
 # 东方财富-数据中心-特色数据-机构调研-机构调研统计
-@router.post("/stock_jgdy_tj_em", operation_id="post_stock_jgdy_tj_em")
-async def post_stock_jgdy_tj_em(request: DateRequest):
+@router.post("/stock_jgdy_tj_em", operation_id="stock_jgdy_tj_em")
+async def stock_jgdy_tj_em(request: DateRequest):
     """
     东方财富-机构调研-机构调研统计
 
@@ -36,8 +36,8 @@ async def post_stock_jgdy_tj_em(request: DateRequest):
 
 
 # 东方财富-数据中心-特色数据-机构调研-机构调研详细
-@router.post("/stock_jgdy_detail_em", operation_id="post_stock_jgdy_detail_em")
-async def post_stock_jgdy_detail_em(request: DateRequest):
+@router.post("/stock_jgdy_detail_em", operation_id="stock_jgdy_detail_em")
+async def stock_jgdy_detail_em(request: DateRequest):
     """
     东方财富-机构调研-机构调研详细
 

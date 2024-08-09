@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # 国民经济运行状况-物价水平-中国 CPI 年率报告
-@router.get("/macro_china_cpi_yearly", operation_id="get_macro_china_cpi_yearly")
-async def get_macro_china_cpi_yearly():
+@router.get("/macro_china_cpi_yearly", operation_id="macro_china_cpi_yearly")
+async def macro_china_cpi_yearly():
     """
     国民经济运行状况-物价水平-中国 CPI 年率报告
 
@@ -29,8 +29,8 @@ async def get_macro_china_cpi_yearly():
 
 
 # 国民经济运行状况-物价水平-中国 CPI 月率报告
-@router.get("/macro_china_cpi_monthly", operation_id="get_macro_china_cpi_monthly")
-async def get_macro_china_cpi_monthly():
+@router.get("/macro_china_cpi_monthly", operation_id="macro_china_cpi_monthly")
+async def macro_china_cpi_monthly():
     """
     国民经济运行状况-物价水平-中国 CPI 月率报告
 
@@ -51,8 +51,8 @@ async def get_macro_china_cpi_monthly():
 
 
 # 国民经济运行状况-物价水平-中国 PPI 年率报告
-@router.get("/macro_china_ppi_yearly", operation_id="get_macro_china_ppi_yearly")
-async def get_macro_china_ppi_yearly():
+@router.get("/macro_china_ppi_yearly", operation_id="macro_china_ppi_yearly")
+async def macro_china_ppi_yearly():
     """
     国民经济运行状况-物价水平-中国 PPI 年率报告
 
@@ -74,8 +74,8 @@ async def get_macro_china_ppi_yearly():
 
 # 国民经济运行状况-物价水平-采购经理人指数
 @router.get("/macro_china_pmi",
-            operation_id="get_mmacro_china_pmi")
-async def get_mmacro_china_pmi():
+            operation_id="mmacro_china_pmi")
+async def mmacro_china_pmi():
     """
     国民经济运行状况-物价水平-采购经理人指数
 
@@ -97,8 +97,8 @@ async def get_mmacro_china_pmi():
 
 # 国民经济运行状况-物价水平-消费者信心指数
 @router.get("/macro_china_xfzxx",
-            operation_id="get_macro_china_xfzxx")
-async def get_macro_china_xfzxx():
+            operation_id="macro_china_xfzxx")
+async def macro_china_xfzxx():
     """
     国民经济运行状况-物价水平-消费者信心指数
 

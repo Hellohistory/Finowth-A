@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # 另类数据-艺人-艺人商业价值
-@router.get("/business_value_artist", operation_id="get_business_value_artist")
-def get_business_value_artist():
+@router.get("/business_value_artist", operation_id="business_value_artist")
+def business_value_artist():
     """
     另类数据-艺人-艺人商业价值
 
@@ -29,8 +29,8 @@ def get_business_value_artist():
 
 
 # 另类数据-艺人-艺人流量价值
-@router.get("/online_value_artist", operation_id="get_online_value_artist")
-def get_online_value_artist():
+@router.get("/online_value_artist", operation_id="online_value_artist")
+def online_value_artist():
     """
     另类数据-艺人-艺人流量价值
 

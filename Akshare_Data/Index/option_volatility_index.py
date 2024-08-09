@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 指数数据-期权波动率指数-50ETF 期权波动率指数
 @router.get("/index_option_50etf_qvix",
-            operation_id="get_index_option_50etf_qvix")
-def get_index_option_50etf_qvix():
+            operation_id="index_option_50etf_qvix")
+def index_option_50etf_qvix():
     """
     指数数据-期权波动率指数-50ETF 期权波动率指数
 
@@ -33,8 +33,8 @@ def get_index_option_50etf_qvix():
 
 # 指数数据-期权波动率指数-50ETF 期权波动率指数-分时
 @router.get("/index_option_50etf_min_qvix",
-            operation_id="get_index_option_50etf_min_qvix")
-def get_index_option_50etf_min_qvix():
+            operation_id="index_option_50etf_min_qvix")
+def index_option_50etf_min_qvix():
     """
     指数数据-期权波动率指数-50ETF 期权波动率指数-分时
 
@@ -58,8 +58,8 @@ def get_index_option_50etf_min_qvix():
 
 # 指数数据-期权波动率指数-300ETF 期权波动率指数
 @router.get("/index_option_300etf_qvix",
-            operation_id="get_index_option_300etf_qvix")
-def get_index_option_300etf_qvix():
+            operation_id="index_option_300etf_qvix")
+def index_option_300etf_qvix():
     """
     指数数据-期权波动率指数-300ETF 期权波动率指数
 
@@ -83,8 +83,8 @@ def get_index_option_300etf_qvix():
 
 # 指数数据-期权波动率指数-300ETF 期权波动率指数-分时
 @router.get("/index_option_300etf_min_qvix",
-            operation_id="get_index_option_300etf_min_qvix")
-def get_index_option_300etf_min_qvix():
+            operation_id="index_option_300etf_min_qvix")
+def index_option_300etf_min_qvix():
     """
     指数数据-期权波动率指数-300ETF 期权波动率指数-分时
 

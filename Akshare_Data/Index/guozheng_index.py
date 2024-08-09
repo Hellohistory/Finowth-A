@@ -9,8 +9,8 @@ router = APIRouter()
 
 # 指数数据-国证指数-全部指数
 @router.get("/index_all_cni",
-            operation_id="get_index_all_cni")
-def get_index_all_cni():
+            operation_id="index_all_cni")
+def index_all_cni():
     """
     指数数据-国证指数-全部指数
 
@@ -41,8 +41,8 @@ class IndexHistCNI(BaseModel):
 
 # 指数数据-国证指数-指数行情
 @router.post("/index_hist_cni",
-             operation_id="post_index_hist_cni")
-def post_index_hist_cni(request: IndexHistCNI):
+             operation_id="index_hist_cni")
+def index_hist_cni(request: IndexHistCNI):
     """
     指数数据-国证指数-指数行情
 
@@ -74,8 +74,8 @@ class IndexHistCNI(BaseModel):
 
 # 指数数据-国证指数-指数样本详情
 @router.post("/index_detail_cni",
-             operation_id="post_index_detail_cni")
-def post_index_detail_cni(request: IndexHistCNI):
+             operation_id="index_detail_cni")
+def index_detail_cni(request: IndexHistCNI):
     """
     指数数据-国证指数-指数样本详情
 
@@ -99,8 +99,8 @@ def post_index_detail_cni(request: IndexHistCNI):
 
 # 指数数据-国证指数-历史样本
 @router.post("/index_detail_hist_cni",
-             operation_id="post_index_detail_hist_cni")
-def post_index_detail_hist_cni(request: IndexHistCNI):
+             operation_id="index_detail_hist_cni")
+def index_detail_hist_cni(request: IndexHistCNI):
     """
     指数数据-国证指数-历史样本
 
@@ -129,8 +129,8 @@ class IndexDetailHistAdjustCNI(BaseModel):
 
 # 指数数据-国证指数-历史调样
 @router.post("/index_detail_hist_adjust_cni",
-             operation_id="post_index_detail_hist_adjust_cni")
-def post_index_detail_hist_adjust_cni(request: IndexDetailHistAdjustCNI):
+             operation_id="index_detail_hist_adjust_cni")
+def index_detail_hist_adjust_cni(request: IndexDetailHistAdjustCNI):
     """
     指数数据-国证指数-历史调样
 

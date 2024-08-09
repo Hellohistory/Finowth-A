@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 加拿大宏观-新屋开工
 @router.get("/macro_canada_new_house_rate",
-            operation_id="get_macro_canada_new_house_rate")
-async def get_macro_canada_new_house_rate():
+            operation_id="macro_canada_new_house_rate")
+async def macro_canada_new_house_rate():
     """
     加拿大宏观-新屋开工
 
@@ -31,8 +31,8 @@ async def get_macro_canada_new_house_rate():
 
 # 加拿大宏观-失业率
 @router.get("/macro_canada_unemployment_rate",
-            operation_id="get_macro_canada_unemployment_rate")
-async def get_macro_canada_unemployment_rate():
+            operation_id="macro_canada_unemployment_rate")
+async def macro_canada_unemployment_rate():
     """
     加拿大宏观-失业率
 
@@ -54,8 +54,8 @@ async def get_macro_canada_unemployment_rate():
 
 # 加拿大宏观-贸易帐
 @router.get("/macro_canada_trade",
-            operation_id="get_macro_canada_trade")
-async def get_macro_canada_trade():
+            operation_id="macro_canada_trade")
+async def macro_canada_trade():
     """
     加拿大宏观-贸易帐
 
@@ -77,8 +77,8 @@ async def get_macro_canada_trade():
 
 # 加拿大宏观-零售销售月率
 @router.get("/macro_canada_retail_rate_monthly",
-            operation_id="get_macro_canada_retail_rate_monthly")
-async def get_macro_canada_retail_rate_monthly():
+            operation_id="macro_canada_retail_rate_monthly")
+async def macro_canada_retail_rate_monthly():
     """
     加拿大宏观-零售销售月率
 
@@ -100,8 +100,8 @@ async def get_macro_canada_retail_rate_monthly():
 
 # 加拿大宏观-央行公布利率决议
 @router.get("/macro_canada_bank_rate",
-            operation_id="get_macro_canada_bank_rate")
-async def get_macro_canada_bank_rate():
+            operation_id="macro_canada_bank_rate")
+async def macro_canada_bank_rate():
     """
     加拿大宏观-央行公布利率决议
 
@@ -123,8 +123,8 @@ async def get_macro_canada_bank_rate():
 
 # 加拿大宏观-核心消费者物价指数年率
 @router.get("/macro_canada_core_cpi_yearly",
-            operation_id="get_macro_canada_core_cpi_yearly")
-async def get_macro_canada_core_cpi_yearly():
+            operation_id="macro_canada_core_cpi_yearly")
+async def macro_canada_core_cpi_yearly():
     """
     加拿大宏观-核心消费者物价指数年率
 
@@ -146,8 +146,8 @@ async def get_macro_canada_core_cpi_yearly():
 
 # 加拿大宏观-核心消费者物价指数月率
 @router.get("/macro_canada_core_cpi_monthly",
-            operation_id="get_macro_canada_core_cpi_monthly")
-async def get_macro_canada_core_cpi_monthly():
+            operation_id="macro_canada_core_cpi_monthly")
+async def macro_canada_core_cpi_monthly():
     """
     加拿大宏观-核心消费者物价指数月率
 
@@ -169,8 +169,8 @@ async def get_macro_canada_core_cpi_monthly():
 
 # 加拿大宏观-消费者物价指数年率
 @router.get("/macro_canada_cpi_yearly",
-            operation_id="get_macro_canada_cpi_yearly")
-async def get_macro_canada_cpi_yearly():
+            operation_id="macro_canada_cpi_yearly")
+async def macro_canada_cpi_yearly():
     """
     加拿大宏观-核心消费者物价指数月率
 
@@ -192,8 +192,8 @@ async def get_macro_canada_cpi_yearly():
 
 # 加拿大宏观-GDP 月率
 @router.get("/macro_canada_gdp_monthly",
-            operation_id="get_macro_canada_gdp_monthly")
-async def get_macro_canada_gdp_monthly():
+            operation_id="macro_canada_gdp_monthly")
+async def macro_canada_gdp_monthly():
     """
     加拿大宏观-GDP 月率
 

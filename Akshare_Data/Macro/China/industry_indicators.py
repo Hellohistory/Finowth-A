@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # 国民经济运行状况-产业指标-工业增加值增长
-@router.get("/macro_china_gyzjz", operation_id="get_macro_china_gyzjz")
-async def get_macro_china_gyzjz():
+@router.get("/macro_china_gyzjz", operation_id="macro_china_gyzjz")
+async def macro_china_gyzjz():
     """
     国民经济运行状况-产业指标-工业增加值增长
 
@@ -29,8 +29,8 @@ async def get_macro_china_gyzjz():
 
 
 # 国民经济运行状况-产业指标-规模以上工业增加值年率
-@router.get("/macro_china_industrial_production_yoy", operation_id="get_macro_china_industrial_production_yoy")
-async def get_macro_china_industrial_production_yoy():
+@router.get("/macro_china_industrial_production_yoy", operation_id="macro_china_industrial_production_yoy")
+async def macro_china_industrial_production_yoy():
     """
     国民经济运行状况-产业指标-规模以上工业增加值年率
 
@@ -51,8 +51,8 @@ async def get_macro_china_industrial_production_yoy():
 
 
 # 国民经济运行状况-产业指标-官方制造业 PMI
-@router.get("/macro_china_pmi_yearly", operation_id="get_macro_china_pmi_yearly")
-async def get_macro_china_pmi_yearly():
+@router.get("/macro_china_pmi_yearly", operation_id="macro_china_pmi_yearly")
+async def macro_china_pmi_yearly():
     """
     国民经济运行状况-产业指标-官方制造业 PMI
 
@@ -73,8 +73,8 @@ async def get_macro_china_pmi_yearly():
 
 
 # 国民经济运行状况-产业指标-财新制造业PMI终值
-@router.get("/macro_china_cx_pmi_yearly", operation_id="get_macro_china_cx_pmi_yearly")
-async def get_macro_china_cx_pmi_yearly():
+@router.get("/macro_china_cx_pmi_yearly", operation_id="macro_china_cx_pmi_yearly")
+async def macro_china_cx_pmi_yearly():
     """
     国民经济运行状况-产业指标-财新制造业PMI终值
 
@@ -95,8 +95,8 @@ async def get_macro_china_cx_pmi_yearly():
 
 
 # 国民经济运行状况-产业指标-财新服务业PMI
-@router.get("/macro_china_cx_services_pmi_yearly", operation_id="get_macro_china_cx_services_pmi_yearly")
-async def get_macro_china_cx_services_pmi_yearly():
+@router.get("/macro_china_cx_services_pmi_yearly", operation_id="macro_china_cx_services_pmi_yearly")
+async def macro_china_cx_services_pmi_yearly():
     """
     国民经济运行状况-产业指标-财新服务业PMI
 
@@ -117,8 +117,8 @@ async def get_macro_china_cx_services_pmi_yearly():
 
 
 # 国民经济运行状况-产业指标-中国官方非制造业PMI
-@router.get("/macro_china_non_man_pmi", operation_id="get_macro_china_non_man_pmi")
-async def get_macro_china_non_man_pmi():
+@router.get("/macro_china_non_man_pmi", operation_id="macro_china_non_man_pmi")
+async def macro_china_non_man_pmi():
     """
     国民经济运行状况-产业指标-中国官方非制造业PMI
 
@@ -139,8 +139,8 @@ async def get_macro_china_non_man_pmi():
 
 
 # 国民经济运行状况-产业指标-工业品出厂价格指数
-@router.get("/macro_china_ppi", operation_id="get_macro_china_ppi")
-async def get_macro_china_ppi():
+@router.get("/macro_china_ppi", operation_id="macro_china_ppi")
+async def macro_china_ppi():
     """
     国民经济运行状况-产业指标-工业品出厂价格指数
 

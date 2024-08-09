@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # 公募基金数据-东方财富-REITs-REITs-行情
-@router.get("/reits_realtime_em", operation_id="get_reits_realtime_em")
-async def get_reits_realtime_em():
+@router.get("/reits_realtime_em", operation_id="reits_realtime_em")
+async def reits_realtime_em():
     """
     公募基金数据-东方财富-REITs-REITs-行情
 

@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 另类数据-视频播映-电视剧集
-@router.get("/stock_js_weibo_nlp_time", operation_id="get_stock_js_weibo_nlp_time")
-def get_stock_js_weibo_nlp_time():
+@router.get("/stock_js_weibo_nlp_time", operation_id="stock_js_weibo_nlp_time")
+def stock_js_weibo_nlp_time():
     """
     另类数据-微博股票舆情报告
 
@@ -29,8 +29,8 @@ class StockWeiboReport(BaseModel):
 
 
 # 另类数据-微博股票舆情报告
-@router.post("/stock_js_weibo_report", operation_id="post_stock_js_weibo_report")
-def post_stock_js_weibo_report(request: StockWeiboReport):
+@router.post("/stock_js_weibo_report", operation_id="stock_js_weibo_report")
+def stock_js_weibo_report(request: StockWeiboReport):
     """
     另类数据-微博股票舆情报告
 

@@ -8,8 +8,8 @@ JSON_FILE_PATH_1 = 'Akshare_Data/Option/json/期货交易所信息.json'
 
 
 @router.get("/futures_exchange_info",
-            operation_id="get_futures_exchange_info")
-async def get_futures_exchange_info():
+            operation_id="futures_exchange_info")
+async def futures_exchange_info():
     """
     期货数据-期货基础信息-期货交易所
 

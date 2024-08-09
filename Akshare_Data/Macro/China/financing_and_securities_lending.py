@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 国民经济运行状况-金融报告-深圳融资融券报告
 @router.get("/macro_china_market_margin_sz",
-            operation_id="get_macro_china_market_margin_sz")
-async def get_macro_china_market_margin_sz():
+            operation_id="macro_china_market_margin_sz")
+async def macro_china_market_margin_sz():
     """
     国民经济运行状况-融资融券报告-深圳融资融券报告
 
@@ -31,8 +31,8 @@ async def get_macro_china_market_margin_sz():
 
 # 国民经济运行状况-金融报告-上海融资融券报告
 @router.get("/macro_china_market_margin_sh",
-            operation_id="get_macro_china_market_margin_sh")
-async def get_macro_china_market_margin_sh():
+            operation_id="macro_china_market_margin_sh")
+async def macro_china_market_margin_sh():
     """
     国民经济运行状况-融资融券报告-上海融资融券报告
 
@@ -54,8 +54,8 @@ async def get_macro_china_market_margin_sh():
 
 # 国民经济运行状况-金融报告-上海黄金交易所报告
 @router.get("/macro_china_au_report",
-            operation_id="get_macro_china_au_report")
-async def get_macro_china_au_report():
+            operation_id="macro_china_au_report")
+async def macro_china_au_report():
     """
     国民经济运行状况-融资融券报告-上海黄金交易所报告
 

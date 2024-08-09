@@ -14,8 +14,8 @@ class IndexPriceCflp(BaseModel):
 
 # 指数数据-公路物流指数-中国公路物流运价指数
 @router.post("/index_price_cflp",
-             operation_id="post_index_price_cflp")
-def post_index_price_cflp(request: IndexPriceCflp):
+             operation_id="index_price_cflp")
+def index_price_cflp(request: IndexPriceCflp):
     """
     指数数据-公路物流指数-中国公路物流运价指数
 
@@ -38,8 +38,8 @@ def post_index_price_cflp(request: IndexPriceCflp):
 
 # 指数数据-公路物流指数-中国公路物流运量指数
 @router.get("/index_volume_cflp",
-            operation_id="get_index_volume_cflp")
-def get_index_volume_cflp():
+            operation_id="index_volume_cflp")
+def index_volume_cflp():
     """
     指数数据-公路物流指数-中国公路物流运量指数
 

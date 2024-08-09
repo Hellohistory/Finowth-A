@@ -14,8 +14,8 @@ class FundReportStockCninfo(BaseModel):
 
 # 公募基金数据-东方财富-基金公告-人事公告
 @router.post("/fund_announcement_personnel_em",
-             operation_id="post_fund_announcement_personnel_em")
-def post_fund_announcement_personnel_em(request: FundReportStockCninfo):
+             operation_id="fund_announcement_personnel_em")
+def fund_announcement_personnel_em(request: FundReportStockCninfo):
     """
     公募基金数据-东方财富-基金公告-人事公告
 

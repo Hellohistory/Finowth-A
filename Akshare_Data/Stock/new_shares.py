@@ -12,8 +12,8 @@ class StockRequest(BaseModel):
 
 
 # 新浪财经-发行与分配-新股发行
-@router.post("/stock_ipo_info", operation_id="post_stock_ipo_info")
-def post_stock_ipo_info(request: StockRequest):
+@router.post("/stock_ipo_info", operation_id="stock_ipo_info")
+def stock_ipo_info(request: StockRequest):
     """
     新浪财经-新股发行
 
@@ -34,8 +34,8 @@ def post_stock_ipo_info(request: StockRequest):
 
 
 # 巨潮资讯-数据中心-新股数据-新股过会
-@router.get("/stock_new_gh_cninfo", operation_id="get_stock_new_gh_cninfo")
-def get_stock_new_gh_cninfo():
+@router.get("/stock_new_gh_cninfo", operation_id="stock_new_gh_cninfo")
+def stock_new_gh_cninfo():
     """
     巨潮资讯-新股过会
 
@@ -56,8 +56,8 @@ def get_stock_new_gh_cninfo():
 
 
 # 巨潮资讯-数据中心-新股数据-新股发行
-@router.get("/stock_new_ipo_cninfo", operation_id="get_stock_new_ipo_cninfo")
-def get_stock_new_ipo_cninfo():
+@router.get("/stock_new_ipo_cninfo", operation_id="stock_new_ipo_cninfo")
+def stock_new_ipo_cninfo():
     """
     巨潮资讯-新股发行
 
@@ -78,8 +78,8 @@ def get_stock_new_ipo_cninfo():
 
 
 # 东方财富-数据中心-新股申购-打新收益率
-@router.get("/stock_dxsyl_em", operation_id="get_stock_dxsyl_em")
-def get_stock_dxsyl_em():
+@router.get("/stock_dxsyl_em", operation_id="stock_dxsyl_em")
+def stock_dxsyl_em():
     """
     东方财富-打新收益率
 
@@ -105,8 +105,8 @@ class DongCaiSymbolRequest(BaseModel):
 
 
 # 东方财富-数据中心-新股数据-新股申购-新股申购与中签查询
-@router.post("/stock_xgsglb_em", operation_id="post_stock_xgsglb_em")
-async def post_stock_xgsglb_em(request: DongCaiSymbolRequest):
+@router.post("/stock_xgsglb_em", operation_id="stock_xgsglb_em")
+async def stock_xgsglb_em(request: DongCaiSymbolRequest):
     """
     东方财富-新股申购与中签查询
 

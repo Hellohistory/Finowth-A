@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 美国-产业指标-房地产-美国NAHB房产市场指数报告
 @router.get("/macro_usa_nahb_house_market_index",
-            operation_id="get_macro_usa_nahb_house_market_index")
-async def get_macro_usa_nahb_house_market_index():
+            operation_id="macro_usa_nahb_house_market_index")
+async def macro_usa_nahb_house_market_index():
     """
     美国-产业指标-房地产-美国NAHB房产市场指数报告
 
@@ -31,8 +31,8 @@ async def get_macro_usa_nahb_house_market_index():
 
 # 美国-产业指标-房地产-美国新屋开工总数年化报告
 @router.get("/macro_usa_house_starts",
-            operation_id="get_macro_usa_house_starts")
-async def get_macro_usa_house_starts():
+            operation_id="macro_usa_house_starts")
+async def macro_usa_house_starts():
     """
     美国-产业指标-房地产-美国新屋开工总数年化报告
 
@@ -54,8 +54,8 @@ async def get_macro_usa_house_starts():
 
 # 美国-产业指标-房地产-美国新屋销售总数年化报告
 @router.get("/macro_usa_new_home_sales",
-            operation_id="get_macro_usa_new_home_sales")
-async def get_macro_usa_new_home_sales():
+            operation_id="macro_usa_new_home_sales")
+async def macro_usa_new_home_sales():
     """
     美国-产业指标-房地产-美国新屋销售总数年化报告
 
@@ -77,8 +77,8 @@ async def get_macro_usa_new_home_sales():
 
 # 美国-产业指标-房地产-美国营建许可总数报告
 @router.get("/macro_usa_building_permits",
-            operation_id="get_macro_usa_building_permits")
-async def get_macro_usa_building_permits():
+            operation_id="macro_usa_building_permits")
+async def macro_usa_building_permits():
     """
     美国-产业指标-房地产-美国营建许可总数报告
 
@@ -100,8 +100,8 @@ async def get_macro_usa_building_permits():
 
 # 美国-产业指标-房地产-美国成屋销售总数年化报告
 @router.get("/macro_usa_exist_home_sales",
-            operation_id="get_macro_usa_exist_home_sales")
-async def get_macro_usa_exist_home_sales():
+            operation_id="macro_usa_exist_home_sales")
+async def macro_usa_exist_home_sales():
     """
     美国-产业指标-房地产-美国成屋销售总数年化报告
 
@@ -123,8 +123,8 @@ async def get_macro_usa_exist_home_sales():
 
 # 美国-产业指标-房地产-美国FHFA房价指数月率报告
 @router.get("/macro_usa_house_price_index",
-            operation_id="get_macro_usa_house_price_index")
-async def get_macro_usa_house_price_index():
+            operation_id="macro_usa_house_price_index")
+async def macro_usa_house_price_index():
     """
     美国-产业指标-房地产-美国FHFA房价指数月率报告
 
@@ -146,8 +146,8 @@ async def get_macro_usa_house_price_index():
 
 # 美国-产业指标-房地产-美国S&P/CS20座大城市房价指数年率报告
 @router.get("/macro_usa_spcs20",
-            operation_id="get_macro_usa_spcs20")
-async def get_macro_usa_spcs20():
+            operation_id="macro_usa_spcs20")
+async def macro_usa_spcs20():
     """
     美国-产业指标-房地产-美国S&P/CS20座大城市房价指数年率报告
 
@@ -169,8 +169,8 @@ async def get_macro_usa_spcs20():
 
 # 美国-产业指标-房地产-美国成屋签约销售指数月率报告
 @router.get("/macro_usa_pending_home_sales",
-            operation_id="get_macro_usa_pending_home_sales")
-async def get_macro_usa_pending_home_sales():
+            operation_id="macro_usa_pending_home_sales")
+async def macro_usa_pending_home_sales():
     """
     美国-产业指标-房地产-美国成屋签约销售指数月率报告
 

@@ -12,8 +12,8 @@ class SymbolRequest(BaseModel):
 
 
 # 股票增发
-@router.post("/stock_add_stock", operation_id="post_stock_add_stock")
-async def post_stock_add_stock(request: SymbolRequest):
+@router.post("/stock_add_stock", operation_id="stock_add_stock")
+async def stock_add_stock(request: SymbolRequest):
     """
     新浪财经-发行与分配-增发
 
@@ -39,8 +39,8 @@ class BaiDuStockZhVoteBaiduRequest(BaseModel):
 
 
 # 涨跌投票
-@router.post("/stock_zh_vote_baidu", operation_id="post_stock_zh_vote_baidu")
-async def post_stock_zh_vote_baidu(request: BaiDuStockZhVoteBaiduRequest):
+@router.post("/stock_zh_vote_baidu", operation_id="stock_zh_vote_baidu")
+async def stock_zh_vote_baidu(request: BaiDuStockZhVoteBaiduRequest):
     """
     百度股市通- A 股或指数-股评-投票
 
@@ -68,8 +68,8 @@ class BaiDuHKSymbolIndicatorPeriodRequest(BaseModel):
 
 
 # 港股估值指标
-@router.post("/stock_hk_valuation_baidu", operation_id="post_stock_hk_valuation_baidu")
-async def post_stock_hk_valuation_baidu(request: BaiDuHKSymbolIndicatorPeriodRequest):
+@router.post("/stock_hk_valuation_baidu", operation_id="stock_hk_valuation_baidu")
+async def stock_hk_valuation_baidu(request: BaiDuHKSymbolIndicatorPeriodRequest):
     """
     百度股市通-港股-财务报表-估值数据
 
@@ -95,8 +95,8 @@ class XSymbolRequest(BaseModel):
 
 
 # 创新高和新低的股票数量
-@router.post("/stock_a_high_low_statistics", operation_id="post_stock_a_high_low_statistics")
-async def post_stock_a_high_low_statistics(request: XSymbolRequest):
+@router.post("/stock_a_high_low_statistics", operation_id="stock_a_high_low_statistics")
+async def stock_a_high_low_statistics(request: XSymbolRequest):
     """
     不同市场的创新高和新低的股票数量
 
@@ -132,8 +132,8 @@ class PSymbolRequest(BaseModel):
 
 
 # 破净股统计
-@router.post("/stock_a_below_net_asset_statistics", operation_id="post_stock_a_below_net_asset_statistics")
-async def post_stock_a_below_net_asset_statistics(request: PSymbolRequest):
+@router.post("/stock_a_below_net_asset_statistics", operation_id="stock_a_below_net_asset_statistics")
+async def stock_a_below_net_asset_statistics(request: PSymbolRequest):
     """
     乐咕乐股-A 股破净股统计数据
 
@@ -160,8 +160,8 @@ async def post_stock_a_below_net_asset_statistics(request: PSymbolRequest):
 
 
 # 东方财富-首发申报信息-首发申报企业信息
-@router.get("/stock_ipo_declare", operation_id="get_stock_ipo_declare")
-def get_stock_ipo_declare():
+@router.get("/stock_ipo_declare", operation_id="stock_ipo_declare")
+def stock_ipo_declare():
     """
     东方财富-首发申报信息-首发申报企业信息
 
@@ -182,8 +182,8 @@ def get_stock_ipo_declare():
 
 
 # 增发
-@router.get("/stock_qbzf_em", operation_id="get_stock_qbzf_em")
-def get_stock_qbzf_em():
+@router.get("/stock_qbzf_em", operation_id="stock_qbzf_em")
+def stock_qbzf_em():
     """
     东方财富-新股数据-增发-全部增发
 
@@ -204,8 +204,8 @@ def get_stock_qbzf_em():
 
 
 # 配股
-@router.get("/stock_pg_em", operation_id="get_stock_pg_em")
-def get_stock_pg_em():
+@router.get("/stock_pg_em", operation_id="stock_pg_em")
+def stock_pg_em():
     """
     东方财富-新股数据-配股
 
@@ -226,8 +226,8 @@ def get_stock_pg_em():
 
 
 # 股票回购数据
-@router.get("/stock_repurchase_em", operation_id="get_stock_repurchase_em")
-def get_stock_repurchase_em():
+@router.get("/stock_repurchase_em", operation_id="stock_repurchase_em")
+def stock_repurchase_em():
     """
     东方财富-股票回购-股票回购数据
 

@@ -18,8 +18,8 @@ class StockHistoryRequest(BaseModel):
 
 
 # 东方财富-沪深京 A 股日频率数据
-@router.post("/stock_zh_a_hist", operation_id="post_stock_zh_a_hist")
-async def post_stock_zh_a_hist(request: StockHistoryRequest):
+@router.post("/stock_zh_a_hist", operation_id="stock_zh_a_hist")
+async def stock_zh_a_hist(request: StockHistoryRequest):
     """
     东方财富-沪深京 A 股日频率数据
 
@@ -58,8 +58,8 @@ class XinLangStockHistoryRequest(BaseModel):
 
 
 # 新浪财经-沪深京 A 股的数据
-@router.post("/stock_zh_a_daily", operation_id="post_stock_zh_a_daily")
-async def post_stock_zh_a_daily(request: XinLangStockHistoryRequest):
+@router.post("/stock_zh_a_daily", operation_id="stock_zh_a_daily")
+async def stock_zh_a_daily(request: XinLangStockHistoryRequest):
     """
     新浪财经-沪深京 A 股日频率数据
 
@@ -108,8 +108,8 @@ class TXStockHistoryRequest(BaseModel):
                                     "hfq: 返回后复权后的数据")
 
 
-@router.post("/stock_zh_a_hist_tx", operation_id="post_stock_zh_a_hist_tx")
-async def post_stock_zh_a_hist_tx(request: TXStockHistoryRequest):
+@router.post("/stock_zh_a_hist_tx", operation_id="stock_zh_a_hist_tx")
+async def stock_zh_a_hist_tx(request: TXStockHistoryRequest):
     """
     腾讯证券-日频-股票历史数据
 
@@ -152,8 +152,8 @@ class KCBCDRDayRequest(BaseModel):
 
 
 # A 股行情数据-上海证券交易所-科创板-CDR
-@router.post("/stock_zh_a_cdr_daily", operation_id="post_stock_zh_a_cdr_daily")
-async def post_stock_zh_a_cdr_daily(request: KCBCDRDayRequest):
+@router.post("/stock_zh_a_cdr_daily", operation_id="stock_zh_a_cdr_daily")
+async def stock_zh_a_cdr_daily(request: KCBCDRDayRequest):
     """
     上海证券交易所-科创板-CDR
 
@@ -192,8 +192,8 @@ async def post_stock_zh_a_cdr_daily(request: KCBCDRDayRequest):
 
 
 # B 股行情数据-东方财富-实时行情数据
-@router.get("/stock_zh_b_spot_em", operation_id="get_stock_zh_b_spot_em")
-def get_stock_zh_b_spot_em():
+@router.get("/stock_zh_b_spot_em", operation_id="stock_zh_b_spot_em")
+def stock_zh_b_spot_em():
     """
     东方财富-实时行情数据
 
@@ -214,8 +214,8 @@ def get_stock_zh_b_spot_em():
 
 
 # B 股行情数据-新浪财经-实时行情数据
-@router.get("/stock_zh_b_spot", operation_id="get_stock_zh_b_spot")
-def get_stock_zh_b_spot():
+@router.get("/stock_zh_b_spot", operation_id="stock_zh_b_spot")
+def stock_zh_b_spot():
     """
     新浪财经-B 股行情数据
 
@@ -249,8 +249,8 @@ field_mapping = {
 }
 
 
-@router.get("/stock_zh_a_new", operation_id="get_stock_zh_a_new")
-def get_stock_zh_a_new():
+@router.get("/stock_zh_a_new", operation_id="stock_zh_a_new")
+def stock_zh_a_new():
     """
     新浪财经-沪深股市-次新股
 

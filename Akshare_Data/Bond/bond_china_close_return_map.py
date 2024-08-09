@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # 查询债券名称
-@router.get("/bond_china_close_return_map", operation_id="get_bond_china_close_return_map")
-async def get_bond_china_close_return_map():
+@router.get("/bond_china_close_return_map", operation_id="bond_china_close_return_map")
+async def bond_china_close_return_map():
     """
     查询债券名称
 

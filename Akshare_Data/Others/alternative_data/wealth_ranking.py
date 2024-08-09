@@ -12,8 +12,8 @@ JSON_FILE_PATH_1 = 'Akshare_Data/Others/alternative_data/Json/福布斯中国指
 
 
 # 另类数据-财富排行-福布斯中国榜单
-@router.get("/forbes_rank_info", operation_id="get_forbes_rank_info")
-async def get_forbes_rank_info():
+@router.get("/forbes_rank_info", operation_id="forbes_rank_info")
+async def forbes_rank_info():
     """
     另类数据-财富排行-福布斯中国榜单一览表
 
@@ -36,8 +36,8 @@ class ForbesRank(BaseModel):
 
 
 # 另类数据-财富排行-福布斯中国榜单
-@router.post("/forbes_rank", operation_id="post_forbes_rank")
-def post_forbes_rank(request: ForbesRank):
+@router.post("/forbes_rank", operation_id="forbes_rank")
+def forbes_rank(request: ForbesRank):
     """
     另类数据-财富排行-福布斯中国榜单
 
@@ -66,8 +66,8 @@ class XincaifuRank(BaseModel):
 
 
 # 另类数据-财富排行-新财富富豪榜
-@router.post("/xincaifu_rank", operation_id="post_xincaifu_rank")
-def post_xincaifu_rank(request: XincaifuRank):
+@router.post("/xincaifu_rank", operation_id="xincaifu_rank")
+def xincaifu_rank(request: XincaifuRank):
     """
     另类数据-财富排行-新财富富豪榜
 
@@ -103,8 +103,8 @@ class XincaifuRank(BaseModel):
 
 
 # 另类数据-财富排行-胡润排行榜
-@router.post("/hurun_rank", operation_id="post_hurun_rank")
-def post_hurun_rank(request: XincaifuRank):
+@router.post("/hurun_rank", operation_id="hurun_rank")
+def hurun_rank(request: XincaifuRank):
     """
     另类数据-财富排行-胡润排行榜
 

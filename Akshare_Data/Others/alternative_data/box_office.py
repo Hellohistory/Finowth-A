@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 另类数据-电影票房-实时票房
-@router.get("/movie_boxoffice_realtime", operation_id="get_movie_boxoffice_realtime")
-def get_movie_boxoffice_realtime():
+@router.get("/movie_boxoffice_realtime", operation_id="movie_boxoffice_realtime")
+def movie_boxoffice_realtime():
     """
     另类数据-电影票房-实时票房
 
@@ -35,8 +35,8 @@ class MovieBoxoffice(BaseModel):
 
 # 另类数据-电影票房-单日票房
 @router.post("/movie_boxoffice_daily",
-             operation_id="post_movie_boxoffice_daily")
-def post_movie_boxoffice_daily(request: MovieBoxoffice):
+             operation_id="movie_boxoffice_daily")
+def movie_boxoffice_daily(request: MovieBoxoffice):
     """
     另类数据-电影票房-单日票房
 
@@ -61,8 +61,8 @@ def post_movie_boxoffice_daily(request: MovieBoxoffice):
 
 # 另类数据-电影票房-单周票房
 @router.post("/movie_boxoffice_weekly",
-             operation_id="post_movie_boxoffice_weekly")
-def post_movie_boxoffice_weekly(request: MovieBoxoffice):
+             operation_id="movie_boxoffice_weekly")
+def movie_boxoffice_weekly(request: MovieBoxoffice):
     """
     另类数据-电影票房-单周票房
 
@@ -87,8 +87,8 @@ def post_movie_boxoffice_weekly(request: MovieBoxoffice):
 
 # 另类数据-电影票房-单月票房
 @router.post("/movie_boxoffice_monthly",
-             operation_id="post_movie_boxoffice_monthly")
-def post_movie_boxoffice_monthly(request: MovieBoxoffice):
+             operation_id="movie_boxoffice_monthly")
+def movie_boxoffice_monthly(request: MovieBoxoffice):
     """
     另类数据-电影票房-单月票房
 
@@ -113,8 +113,8 @@ def post_movie_boxoffice_monthly(request: MovieBoxoffice):
 
 # 另类数据-电影票房-年度票房
 @router.post("/movie_boxoffice_yearly",
-             operation_id="post_movie_boxoffice_yearly")
-def post_movie_boxoffice_yearly(request: MovieBoxoffice):
+             operation_id="movie_boxoffice_yearly")
+def movie_boxoffice_yearly(request: MovieBoxoffice):
     """
     另类数据-电影票房-年度票房
 
@@ -139,8 +139,8 @@ def post_movie_boxoffice_yearly(request: MovieBoxoffice):
 
 # 另类数据-电影票房-年度票房
 @router.post("/movie_boxoffice_yearly_first_week",
-             operation_id="post_movie_boxoffice_yearly_first_week")
-def post_movie_boxoffice_yearly_first_week(request: MovieBoxoffice):
+             operation_id="movie_boxoffice_yearly_first_week")
+def movie_boxoffice_yearly_first_week(request: MovieBoxoffice):
     """
     另类数据-电影票房-年度票房
 
@@ -165,8 +165,8 @@ def post_movie_boxoffice_yearly_first_week(request: MovieBoxoffice):
 
 # 另类数据-电影票房-影院票房-日票房排行
 @router.post("/movie_boxoffice_cinema_daily",
-             operation_id="post_movie_boxoffice_cinema_daily")
-def post_movie_boxoffice_cinema_daily(request: MovieBoxoffice):
+             operation_id="movie_boxoffice_cinema_daily")
+def movie_boxoffice_cinema_daily(request: MovieBoxoffice):
     """
     另类数据-电影票房-影院票房-日票房排行
 
@@ -191,8 +191,8 @@ def post_movie_boxoffice_cinema_daily(request: MovieBoxoffice):
 
 # 另类数据-电影票房-影院票房-周票房排行
 @router.post("/movie_boxoffice_cinema_weekly",
-             operation_id="post_movie_boxoffice_cinema_weekly")
-def post_movie_boxoffice_cinema_weekly(request: MovieBoxoffice):
+             operation_id="movie_boxoffice_cinema_weekly")
+def movie_boxoffice_cinema_weekly(request: MovieBoxoffice):
     """
     另类数据-电影票房-影院票房-周票房排行
 

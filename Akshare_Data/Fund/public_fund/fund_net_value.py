@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 公募基金数据-基金行情-东方财富-基金净值-开放式基金-实时数据
-@router.get("/fund_open_fund_daily_em", operation_id="get_fund_open_fund_daily_em")
-async def get_fund_open_fund_daily_em():
+@router.get("/fund_open_fund_daily_em", operation_id="fund_open_fund_daily_em")
+async def fund_open_fund_daily_em():
     """
     公募基金数据-基金行情-东方财富-基金净值-开放式基金-实时数据
 
@@ -40,8 +40,8 @@ class FundETFSpotTHS(BaseModel):
 
 
 # 公募基金数据-基金行情-东方财富-开放式基金-历史数据
-@router.post("/fund_open_fund_info_em", operation_id="post_fund_open_fund_info_em")
-def post_fund_open_fund_info_em(request: FundETFSpotTHS):
+@router.post("/fund_open_fund_info_em", operation_id="fund_open_fund_info_em")
+def fund_open_fund_info_em(request: FundETFSpotTHS):
     """
     公募基金数据-基金行情-东方财富-开放式基金-历史数据
 
@@ -67,8 +67,8 @@ def post_fund_open_fund_info_em(request: FundETFSpotTHS):
 
 
 # 公募基金数据-基金行情-东方财富-货币型基金-实时数据
-@router.get("/fund_money_fund_daily_em", operation_id="get_fund_money_fund_daily_em")
-async def get_fund_money_fund_daily_em():
+@router.get("/fund_money_fund_daily_em", operation_id="fund_money_fund_daily_em")
+async def fund_money_fund_daily_em():
     """
     公募基金数据-基金行情-东方财富-货币型基金-实时数据
 
@@ -95,8 +95,8 @@ class FundMoneyFundDailyEM(BaseModel):
 
 
 # 公募基金数据-基金行情-东方财富-货币型基金-历史数据
-@router.post("/fund_money_fund_info_em", operation_id="post_fund_money_fund_info_em")
-def post_fund_money_fund_info_em(request: FundMoneyFundDailyEM):
+@router.post("/fund_money_fund_info_em", operation_id="fund_money_fund_info_em")
+def fund_money_fund_info_em(request: FundMoneyFundDailyEM):
     """
     公募基金数据-基金行情-东方财富-货币型基金-历史数据
 
@@ -125,8 +125,8 @@ class FundMoneyFundInfoEM(BaseModel):
 
 
 # 公募基金数据-基金行情-东方财富-货币型基金-历史数据
-@router.post("/fund_financial_fund_info_em", operation_id="post_fund_financial_fund_info_em")
-def post_fund_financial_fund_info_em(request: FundMoneyFundInfoEM):
+@router.post("/fund_financial_fund_info_em", operation_id="fund_financial_fund_info_em")
+def fund_financial_fund_info_em(request: FundMoneyFundInfoEM):
     """
     公募基金数据-基金行情-东方财富-货币型基金-历史数据
 
@@ -150,8 +150,8 @@ def post_fund_financial_fund_info_em(request: FundMoneyFundInfoEM):
 
 
 # 公募基金数据-基金行情-东方财富-分级基金-实时数据
-@router.get("/fund_graded_fund_daily_em", operation_id="get_fund_graded_fund_daily_em")
-async def get_fund_graded_fund_daily_em():
+@router.get("/fund_graded_fund_daily_em", operation_id="fund_graded_fund_daily_em")
+async def fund_graded_fund_daily_em():
     """
     公募基金数据-基金行情-东方财富-分级基金-实时数据
 
@@ -178,8 +178,8 @@ class FundGradedFundDailyEM(BaseModel):
 
 
 # 公募基金数据-基金行情-东方财富-货币型基金-历史数据
-@router.post("/fund_graded_fund_info_em", operation_id="post_fund_graded_fund_info_em")
-def post_fund_graded_fund_info_em(request: FundGradedFundDailyEM):
+@router.post("/fund_graded_fund_info_em", operation_id="fund_graded_fund_info_em")
+def fund_graded_fund_info_em(request: FundGradedFundDailyEM):
     """
     公募基金数据-基金行情-东方财富-分级基金-历史数据
 
@@ -203,8 +203,8 @@ def post_fund_graded_fund_info_em(request: FundGradedFundDailyEM):
 
 
 # 公募基金数据-基金行情-东方财富-分级基金-实时数据
-@router.get("/fund_etf_fund_daily_em", operation_id="get_fund_etf_fund_daily_em")
-async def get_fund_etf_fund_daily_em():
+@router.get("/fund_etf_fund_daily_em", operation_id="fund_etf_fund_daily_em")
+async def fund_etf_fund_daily_em():
     """
     公募基金数据-基金行情-东方财富-分级基金-实时数据
 
@@ -233,8 +233,8 @@ class FundETFFundInfoEM(BaseModel):
 
 
 # 公募基金数据-基金行情-东方财富-场内交易基金-历史数据
-@router.post("/fund_etf_fund_info_em", operation_id="post_fund_etf_fund_info_em")
-def post_fund_etf_fund_info_em(request: FundETFFundInfoEM):
+@router.post("/fund_etf_fund_info_em", operation_id="fund_etf_fund_info_em")
+def fund_etf_fund_info_em(request: FundETFFundInfoEM):
     """
     公募基金数据-基金行情-东方财富-场内交易基金-历史数据
 
@@ -266,8 +266,8 @@ class FundETFFundInfoEM(BaseModel):
 
 
 # 公募基金数据-基金行情-东方财富-香港基金-历史数据
-@router.post("/fund_hk_fund_hist_em", operation_id="post_fund_hk_fund_hist_em")
-def post_fund_hk_fund_hist_em(request: FundETFFundInfoEM):
+@router.post("/fund_hk_fund_hist_em", operation_id="fund_hk_fund_hist_em")
+def fund_hk_fund_hist_em(request: FundETFFundInfoEM):
     """
     公募基金数据-基金行情-东方财富-香港基金-历史数据
 

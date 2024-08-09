@@ -13,8 +13,8 @@ class EnergyCarbonDomestic(BaseModel):
 
 
 # 碳排放权-国内
-@router.post("/energy_carbon_domestic", operation_id="post_energy_carbon_domestic")
-async def post_energy_carbon_domestic(request: EnergyCarbonDomestic):
+@router.post("/energy_carbon_domestic", operation_id="energy_carbon_domestic")
+async def energy_carbon_domestic(request: EnergyCarbonDomestic):
     """
     碳排放权-国内
 
@@ -35,8 +35,8 @@ async def post_energy_carbon_domestic(request: EnergyCarbonDomestic):
 
 
 # 碳排放权-北京
-@router.get("/energy_carbon_bj", operation_id="get_energy_carbon_bj")
-async def get_energy_carbon_bj():
+@router.get("/energy_carbon_bj", operation_id="energy_carbon_bj")
+async def energy_carbon_bj():
     """
     碳排放权-北京
 
@@ -60,8 +60,8 @@ async def get_energy_carbon_bj():
 
 
 # 碳排放权-深圳
-@router.get("/energy_carbon_sz", operation_id="get_energy_carbon_sz")
-async def get_energy_carbon_sz():
+@router.get("/energy_carbon_sz", operation_id="energy_carbon_sz")
+async def energy_carbon_sz():
     """
     碳排放权-深圳
 
@@ -83,8 +83,8 @@ async def get_energy_carbon_sz():
 
 
 # 碳排放权-国际
-@router.get("/energy_carbon_eu", operation_id="get_energy_carbon_eu")
-async def get_energy_carbon_eu():
+@router.get("/energy_carbon_eu", operation_id="energy_carbon_eu")
+async def energy_carbon_eu():
     """
     碳排放权-国际
 
@@ -106,8 +106,8 @@ async def get_energy_carbon_eu():
 
 
 # 碳排放权-湖北
-@router.get("/energy_carbon_hb", operation_id="get_energy_carbon_hb")
-async def get_energy_carbon_hb():
+@router.get("/energy_carbon_hb", operation_id="energy_carbon_hb")
+async def energy_carbon_hb():
     """
     碳排放权-湖北
 
@@ -129,8 +129,8 @@ async def get_energy_carbon_hb():
 
 
 # 碳排放权-广州
-@router.get("/energy_carbon_gz", operation_id="get_energy_carbon_gz")
-async def get_energy_carbon_gz():
+@router.get("/energy_carbon_gz", operation_id="energy_carbon_gz")
+async def energy_carbon_gz():
     """
     碳排放权-广州
 

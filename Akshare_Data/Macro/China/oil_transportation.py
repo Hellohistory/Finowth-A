@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 国民经济运行状况-行业指数-原油运输指数
 @router.get("/macro_china_bdti_index",
-            operation_id="get_macro_china_bdti_index")
-async def get_macro_china_bdti_index():
+            operation_id="macro_china_bdti_index")
+async def macro_china_bdti_index():
     """
     国民经济运行状况-行业指数-物流景气指数
 
@@ -31,8 +31,8 @@ async def get_macro_china_bdti_index():
 
 # 国民经济运行状况-行业指数-成品油运输指数
 @router.get("/macro_shipping_bcti",
-            operation_id="get_macro_shipping_bcti")
-async def get_macro_shipping_bcti():
+            operation_id="macro_shipping_bcti")
+async def macro_shipping_bcti():
     """
     国民经济运行状况-行业指数-成品油运输指数
 

@@ -9,8 +9,8 @@ router = APIRouter()
 
 # 东方财富-数据中心-资金流向-沪深港通资金流向
 @router.get("/stock_hsgt_fund_flow_summary_em",
-            operation_id="get_stock_hsgt_fund_flow_summary_em")
-def get_stock_hsgt_fund_flow_summary_em():
+            operation_id="stock_hsgt_fund_flow_summary_em")
+def stock_hsgt_fund_flow_summary_em():
     """
     东方财富-资金流向-沪深港通资金流向
 
@@ -32,8 +32,8 @@ def get_stock_hsgt_fund_flow_summary_em():
 
 # 深港通-港股通业务信息-结算汇率
 @router.get("/stock_sgt_settlement_exchange_rate_szse",
-            operation_id="get_stock_sgt_settlement_exchange_rate_szse")
-def get_stock_sgt_settlement_exchange_rate_szse():
+            operation_id="stock_sgt_settlement_exchange_rate_szse")
+def stock_sgt_settlement_exchange_rate_szse():
     """
     深港通-港股通业务信息-结算汇率
 
@@ -55,8 +55,8 @@ def get_stock_sgt_settlement_exchange_rate_szse():
 
 # 沪港通-港股通信息披露-结算汇兑
 @router.get("/stock_sgt_settlement_exchange_rate_sse",
-            operation_id="get_stock_sgt_settlement_exchange_rate_sse")
-def get_stock_sgt_settlement_exchange_rate_sse():
+            operation_id="stock_sgt_settlement_exchange_rate_sse")
+def stock_sgt_settlement_exchange_rate_sse():
     """
     沪港通-港股通信息披露-结算汇兑
 
@@ -78,8 +78,8 @@ def get_stock_sgt_settlement_exchange_rate_sse():
 
 # 深港通-港股通业务信息-参考汇率
 @router.get("/stock_sgt_reference_exchange_rate_szse",
-            operation_id="get_stock_sgt_reference_exchange_rate_szse")
-def get_stock_sgt_reference_exchange_rate_szse():
+            operation_id="stock_sgt_reference_exchange_rate_szse")
+def stock_sgt_reference_exchange_rate_szse():
     """
     深港通-港股通业务信息-参考汇率
 
@@ -101,8 +101,8 @@ def get_stock_sgt_reference_exchange_rate_szse():
 
 # 沪港通-港股通信息披露-参考汇率
 @router.get("/stock_sgt_reference_exchange_rate_sse",
-            operation_id="get_stock_sgt_reference_exchange_rate_sse")
-def get_stock_sgt_reference_exchange_rate_sse():
+            operation_id="stock_sgt_reference_exchange_rate_sse")
+def stock_sgt_reference_exchange_rate_sse():
     """
     沪港通-港股通信息披露-参考汇率
 
@@ -124,8 +124,8 @@ def get_stock_sgt_reference_exchange_rate_sse():
 
 # 东方财富-行情中心-港股市场-港股通成份股
 @router.get("/stock_hk_ggt_components_em",
-            operation_id="get_stock_hk_ggt_components_em")
-def get_stock_hk_ggt_components_em():
+            operation_id="stock_hk_ggt_components_em")
+def stock_hk_ggt_components_em():
     """
     东方财富-港股市场-港股通成份股
 
@@ -151,8 +151,8 @@ class DongCaiSHKSymbolRequest(BaseModel):
 
 # 东方财富-数据中心-沪深港通-市场概括-分时数据
 @router.post("/stock_hsgt_fund_min_em",
-             operation_id="post_stock_hsgt_fund_min_em")
-async def post_stock_hsgt_fund_min_em(request: DongCaiSHKSymbolRequest):
+             operation_id="stock_hsgt_fund_min_em")
+async def stock_hsgt_fund_min_em(request: DongCaiSHKSymbolRequest):
     """
     东方财富-沪深港通-市场概括-分时数据
 
@@ -181,8 +181,8 @@ class DongCaiSHKSymolIndicatorRequest(BaseModel):
 
 # 东方财富-数据中心-沪深港通持股-板块排行
 @router.post("/stock_hsgt_board_rank_em",
-             operation_id="post_stock_hsgt_board_rank_em")
-async def post_stock_hsgt_board_rank_em(data: DongCaiSHKSymolIndicatorRequest):
+             operation_id="stock_hsgt_board_rank_em")
+async def stock_hsgt_board_rank_em(data: DongCaiSHKSymolIndicatorRequest):
     """
     东方财富-沪深港通持股-板块排行
 
@@ -217,8 +217,8 @@ class DongCaiSHKMarketRequest(BaseModel):
 
 # 东方财富-数据中心-沪深港通持股-个股排行
 @router.post("/stock_hsgt_hold_stock_em",
-             operation_id="post_stock_hsgt_hold_stock_em")
-def post_stock_hsgt_hold_stock_em(data: DongCaiSHKMarketRequest):
+             operation_id="stock_hsgt_hold_stock_em")
+def stock_hsgt_hold_stock_em(data: DongCaiSHKMarketRequest):
     """
     东方财富-沪深港通持股-个股排行
 
@@ -246,8 +246,8 @@ class DongCaiSymbolDateRangeRequest(BaseModel):
 
 # 东方财富-数据中心-沪深港通-沪深港通持股-每日个股统计
 @router.post("/stock_hsgt_stock_statistics_em",
-             operation_id="post_stock_hsgt_stock_statistics_em")
-async def post_stock_hsgt_stock_statistics_em(request: DongCaiSymbolDateRangeRequest):
+             operation_id="stock_hsgt_stock_statistics_em")
+async def stock_hsgt_stock_statistics_em(request: DongCaiSymbolDateRangeRequest):
     """
     东方财富-沪深港通-沪深港通持股-每日个股统计
 
@@ -277,8 +277,8 @@ class DongCaiMarketDateRangeRequest(BaseModel):
 
 # 东方财富-数据中心-沪深港通-沪深港通持股-机构排行
 @router.post("/stock_hsgt_institution_statistics_em",
-             operation_id="post_stock_hsgt_institution_statistics_em")
-async def post_stock_hsgt_institution_statistics_em(request: DongCaiMarketDateRangeRequest):
+             operation_id="stock_hsgt_institution_statistics_em")
+async def stock_hsgt_institution_statistics_em(request: DongCaiMarketDateRangeRequest):
     """
     东方财富-沪深港通-沪深港通持股-机构排行
 
@@ -307,8 +307,8 @@ class DongCaiSHKHistorySymbolRequest(BaseModel):
 
 # 东方财富-数据中心-资金流向-沪深港通资金流向-沪深港通历史数据
 @router.post("/stock_hsgt_hist_em",
-             operation_id="post_stock_hsgt_hist_em")
-async def post_stock_hsgt_hist_em(request: DongCaiSHKHistorySymbolRequest):
+             operation_id="stock_hsgt_hist_em")
+async def stock_hsgt_hist_em(request: DongCaiSHKHistorySymbolRequest):
     """
     东方财富-资金流向-沪深港通资金流向-沪深港通历史数据
 
@@ -335,8 +335,8 @@ class OnlyStockRequest(BaseModel):
 
 # 东方财富-数据中心-沪深港通-沪深港通持股-具体股票
 @router.post("/stock_hsgt_individual_em",
-             operation_id="post_stock_hsgt_individual_em")
-async def post_stock_hsgt_individual_em(request: OnlyStockRequest):
+             operation_id="stock_hsgt_individual_em")
+async def stock_hsgt_individual_em(request: OnlyStockRequest):
     """
     东方财富-沪深港通-沪深港通持股-具体股票
 
@@ -364,8 +364,8 @@ class DongCaiStockRequest(BaseModel):
 
 # 东方财富-数据中心-沪深港通-沪深港通持股-具体股票-个股详情
 @router.post("/stock_hsgt_individual_detail_em",
-             operation_id="post_stock_hsgt_individual_detail_em")
-async def post_stock_hsgt_individual_detail_em(request: DongCaiStockRequest):
+             operation_id="stock_hsgt_individual_detail_em")
+async def stock_hsgt_individual_detail_em(request: DongCaiStockRequest):
     """
     东方财富-沪深港通-沪深港通持股-具体股票-个股详情
 

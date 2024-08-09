@@ -19,8 +19,8 @@ class BondInfo(BaseModel):
 
 
 # 债券-债券查询
-@router.post("/bond_info_cm", operation_id="post_bond_info_cm")
-def post_bond_info_cm(request: BondInfo):
+@router.post("/bond_info_cm", operation_id="bond_info_cm")
+def bond_info_cm(request: BondInfo):
     """
     债券-债券查询
 
@@ -54,8 +54,8 @@ class BondInfoDetail(BaseModel):
 
 
 # 债券-债券基础信息
-@router.post("/bond_info_detail_cm", operation_id="post_bond_info_detail_cm")
-def post_bond_info_detail_cm(request: BondInfoDetail):
+@router.post("/bond_info_detail_cm", operation_id="bond_info_detail_cm")
+def bond_info_detail_cm(request: BondInfoDetail):
     """
     债券-债券基础信息
 

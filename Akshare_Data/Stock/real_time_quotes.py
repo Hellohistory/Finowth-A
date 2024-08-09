@@ -13,8 +13,8 @@ class ASymbolRequest(BaseModel):
 
 
 # 雪球-行情中心-个股
-@router.post("/stock_individual_spot_xq", operation_id="post_stock_individual_spot_xq")
-async def post_stock_individual_spot_xq(request: ASymbolRequest):
+@router.post("/stock_individual_spot_xq", operation_id="stock_individual_spot_xq")
+async def stock_individual_spot_xq(request: ASymbolRequest):
     """
     实时行情数据-雪球
 
@@ -39,8 +39,8 @@ class DongCaiASymbolRequest(BaseModel):
 
 
 # 东方财富-个股-股票信息
-@router.post("/stock_individual_info_em", operation_id="post_stock_individual_info_em")
-async def post_stock_individual_info_em(request: DongCaiASymbolRequest):
+@router.post("/stock_individual_info_em", operation_id="stock_individual_info_em")
+async def stock_individual_info_em(request: DongCaiASymbolRequest):
     """
     东方财富-个股查询
 
@@ -61,8 +61,8 @@ async def post_stock_individual_info_em(request: DongCaiASymbolRequest):
 
 
 # 东方财富-行情报价
-@router.post("/stock_bid_ask_em", operation_id="post_stock_bid_ask_em")
-async def post_stock_bid_ask_em(request: DongCaiASymbolRequest):
+@router.post("/stock_bid_ask_em", operation_id="stock_bid_ask_em")
+async def stock_bid_ask_em(request: DongCaiASymbolRequest):
     """
     东方财富-行情报价
 
@@ -82,8 +82,8 @@ async def post_stock_bid_ask_em(request: DongCaiASymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_zh_a_spot_em", operation_id="get_stock_zh_a_spot_em")
-def get_stock_zh_a_spot_em():
+@router.get("/stock_zh_a_spot_em", operation_id="stock_zh_a_spot_em")
+def stock_zh_a_spot_em():
     """
     东方财富-沪深京 A 股-实时行情数据
 
@@ -114,8 +114,8 @@ def get_stock_zh_a_spot_em():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_sh_a_spot_em", operation_id="get_stock_sh_a_spot_em")
-def get_stock_sh_a_spot_em():
+@router.get("/stock_sh_a_spot_em", operation_id="stock_sh_a_spot_em")
+def stock_sh_a_spot_em():
     """
     东方财富-沪 A 股-实时行情数据
 
@@ -136,8 +136,8 @@ def get_stock_sh_a_spot_em():
 
 
 # 东方财富-深 A 股-实时行情数据
-@router.get("/stock_sz_a_spot_em", operation_id="get_stock_sz_a_spot_em")
-def get_stock_sz_a_spot_em():
+@router.get("/stock_sz_a_spot_em", operation_id="stock_sz_a_spot_em")
+def stock_sz_a_spot_em():
     """
     东方财富-深 A 股-实时行情数据
 
@@ -158,8 +158,8 @@ def get_stock_sz_a_spot_em():
 
 
 # 东方财富-京 A 股-实时行情数据
-@router.get("/stock_bj_a_spot_em", operation_id="get_stock_bj_a_spot_em")
-def get_stock_bj_a_spot_em():
+@router.get("/stock_bj_a_spot_em", operation_id="stock_bj_a_spot_em")
+def stock_bj_a_spot_em():
     """
     东方财富-京 A 股-实时行情数据
 
@@ -180,8 +180,8 @@ def get_stock_bj_a_spot_em():
 
 
 # 东方财富-新股-实时行情数据
-@router.get("/stock_new_a_spot_em", operation_id="get_stock_new_a_spot_em")
-def get_stock_new_a_spot_em():
+@router.get("/stock_new_a_spot_em", operation_id="stock_new_a_spot_em")
+def stock_new_a_spot_em():
     """
     东方财富-新股-实时行情数据
 
@@ -202,8 +202,8 @@ def get_stock_new_a_spot_em():
 
 
 # 东方财富-创业板-实时行情
-@router.get("/stock_cy_a_spot_em", operation_id="get_stock_cy_a_spot_em")
-def get_stock_cy_a_spot_em():
+@router.get("/stock_cy_a_spot_em", operation_id="stock_cy_a_spot_em")
+def stock_cy_a_spot_em():
     """
     东方财富-创业板-实时行情
 
@@ -224,8 +224,8 @@ def get_stock_cy_a_spot_em():
 
 
 # 东方财富-科创板-实时行情
-@router.get("/stock_kc_a_spot_em", operation_id="get_stock_kc_a_spot_em")
-def get_stock_kc_a_spot_em():
+@router.get("/stock_kc_a_spot_em", operation_id="stock_kc_a_spot_em")
+def stock_kc_a_spot_em():
     """
     东方财富-科创板-实时行情
 
@@ -246,8 +246,8 @@ def get_stock_kc_a_spot_em():
 
 
 # 新浪财经-沪深京 A 股数据
-@router.get("/stock_zh_a_spot", operation_id="get_stock_zh_a_spot")
-def get_stock_zh_a_spot():
+@router.get("/stock_zh_a_spot", operation_id="stock_zh_a_spot")
+def stock_zh_a_spot():
     """
     实时行情数据-东财-沪深京 A 股
 

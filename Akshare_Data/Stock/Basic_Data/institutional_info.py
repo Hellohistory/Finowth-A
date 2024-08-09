@@ -14,8 +14,8 @@ class XinLangSymbolRequest(BaseModel):
 
 
 # 新浪财经-机构持股-机构持股一览表
-@router.post("/stock_institute_hold", operation_id="post_stock_institute_hold")
-async def post_stock_institute_hold(request: XinLangSymbolRequest):
+@router.post("/stock_institute_hold", operation_id="stock_institute_hold")
+async def stock_institute_hold(request: XinLangSymbolRequest):
     """
     新浪财经-机构持股-机构持股一览表
 
@@ -43,8 +43,8 @@ class XinLangStockQuarterRequest(BaseModel):
 
 
 # 新浪财经-机构持股-机构持股详情
-@router.post("/stock_institute_hold_detail", operation_id="post_stock_institute_hold_detail")
-async def post_stock_institute_hold_detail(request: XinLangStockQuarterRequest):
+@router.post("/stock_institute_hold_detail", operation_id="stock_institute_hold_detail")
+async def stock_institute_hold_detail(request: XinLangStockQuarterRequest):
     """
     新浪财经-机构持股-机构持股详情
 
@@ -74,8 +74,8 @@ class XinLangJiGouSymbolRequest(BaseModel):
 
 
 # 新浪财经-机构推荐池-具体指标的数据
-@router.post("/stock_institute_recommend", operation_id="post_stock_institute_recommend")
-async def post_stock_institute_recommend(request: XinLangJiGouSymbolRequest):
+@router.post("/stock_institute_recommend", operation_id="stock_institute_recommend")
+async def stock_institute_recommend(request: XinLangJiGouSymbolRequest):
     """
     新浪财经-机构推荐池-具体指标的数据
 
@@ -100,8 +100,8 @@ class SymbolRequest(BaseModel):
 
 
 # 新浪财经-机构推荐池-股票评级记录
-@router.post("/stock_institute_recommend_detail", operation_id="post_stock_institute_recommend_detail")
-async def post_stock_institute_recommend_detail(request: SymbolRequest):
+@router.post("/stock_institute_recommend_detail", operation_id="stock_institute_recommend_detail")
+async def stock_institute_recommend_detail(request: SymbolRequest):
     """
     新浪财经-机构推荐池-股票评级记录
 
@@ -126,8 +126,8 @@ class DateRequest(BaseModel):
 
 
 # 巨潮资讯-数据中心-评级预测-投资评级
-@router.post("/stock_rank_forecast_cninfo", operation_id="post_stock_rank_forecast_cninfo")
-async def post_stock_rank_forecast_cninfo(request: DateRequest):
+@router.post("/stock_rank_forecast_cninfo", operation_id="stock_rank_forecast_cninfo")
+async def stock_rank_forecast_cninfo(request: DateRequest):
     """
     巨潮资讯-评级预测-投资评级
 

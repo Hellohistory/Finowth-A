@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 东方财富-数据中心-特色数据-股权质押-股权质押市场概况
-@router.get("/stock_gpzy_profile_em", operation_id="get_stock_gpzy_profile_em")
-def get_stock_gpzy_profile_em():
+@router.get("/stock_gpzy_profile_em", operation_id="stock_gpzy_profile_em")
+def stock_gpzy_profile_em():
     """
     东方财富-股权质押-股权质押市场概况
 
@@ -34,8 +34,8 @@ class DongcaiCDateRequest(BaseModel):
 
 
 # 东方财富-数据中心-特色数据-股权质押-上市公司质押比例
-@router.post("/stock_gpzy_pledge_ratio_em", operation_id="post_stock_gpzy_pledge_ratio_em")
-async def post_stock_gpzy_pledge_ratio_em(request: DongcaiCDateRequest):
+@router.post("/stock_gpzy_pledge_ratio_em", operation_id="stock_gpzy_pledge_ratio_em")
+async def stock_gpzy_pledge_ratio_em(request: DongcaiCDateRequest):
     """
     东方财富-股权质押-上市公司质押比例
 
@@ -55,8 +55,8 @@ async def post_stock_gpzy_pledge_ratio_em(request: DongcaiCDateRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_gpzy_pledge_ratio_detail_em", operation_id="get_stock_gpzy_pledge_ratio_detail_em")
-def get_stock_gpzy_pledge_ratio_detail_em():
+@router.get("/stock_gpzy_pledge_ratio_detail_em", operation_id="stock_gpzy_pledge_ratio_detail_em")
+def stock_gpzy_pledge_ratio_detail_em():
     """
     东方财富-股权质押-重要股东股权质押明细
 
@@ -78,8 +78,8 @@ def get_stock_gpzy_pledge_ratio_detail_em():
 
 # 东方财富-数据中心-特色数据-股权质押-质押机构分布统计-证券公司
 @router.get("/stock_gpzy_distribute_statistics_company_em",
-            operation_id="get_stock_gpzy_distribute_statistics_company_em")
-def get_stock_gpzy_distribute_statistics_company_em():
+            operation_id="stock_gpzy_distribute_statistics_company_em")
+def stock_gpzy_distribute_statistics_company_em():
     """
     东方财富-股权质押-质押机构分布统计-证券公司
 
@@ -103,8 +103,8 @@ def get_stock_gpzy_distribute_statistics_company_em():
 
 # 东方财富-数据中心-特色数据-股权质押-质押机构分布统计-银行
 @router.get("/stock_gpzy_distribute_statistics_bank_em",
-            operation_id="get_stock_gpzy_distribute_statistics_bank_em")
-def get_stock_gpzy_distribute_statistics_bank_em():
+            operation_id="stock_gpzy_distribute_statistics_bank_em")
+def stock_gpzy_distribute_statistics_bank_em():
     """
     东方财富-股权质押-质押机构分布统计-银行
 
@@ -125,8 +125,8 @@ def get_stock_gpzy_distribute_statistics_bank_em():
 
 
 # 东方财富-数据中心-特色数据-股权质押-上市公司质押比例-行业数据
-@router.get("/stock_gpzy_industry_data_em", operation_id="get_stock_gpzy_industry_data_em")
-def get_stock_gpzy_industry_data_em():
+@router.get("/stock_gpzy_industry_data_em", operation_id="stock_gpzy_industry_data_em")
+def stock_gpzy_industry_data_em():
     """
     东方财富-股权质押-上市公司质押比例-行业数据
 

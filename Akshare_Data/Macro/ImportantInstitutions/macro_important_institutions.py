@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 重要机构-全球最大黄金 ETF—SPDR Gold Trust 持仓报告
 @router.get("/macro_cons_gold",
-            operation_id="get_macro_cons_gold")
-async def get_macro_cons_gold():
+            operation_id="macro_cons_gold")
+async def macro_cons_gold():
     """
     重要机构-全球最大黄金 ETF—SPDR Gold Trust 持仓报告
 
@@ -31,8 +31,8 @@ async def get_macro_cons_gold():
 
 # 重要机构-全球最大白银ETF–iShares Silver Trust持仓报告
 @router.get("/macro_cons_silver",
-            operation_id="get_macro_cons_silver")
-async def get_macro_cons_silver():
+            operation_id="macro_cons_silver")
+async def macro_cons_silver():
     """
     重要机构-全球最大白银ETF–iShares Silver Trust持仓报告
 
@@ -54,8 +54,8 @@ async def get_macro_cons_silver():
 
 # 重要机构-欧佩克报告
 @router.get("/macro_cons_opec_month",
-            operation_id="get_macro_cons_opec_month")
-async def get_macro_cons_opec_month():
+            operation_id="macro_cons_opec_month")
+async def macro_cons_opec_month():
     """
     重要机构-欧佩克报告
 
@@ -77,8 +77,8 @@ async def get_macro_cons_opec_month():
 
 # 重要机构-伦敦金属交易所-持仓报告
 @router.get("/macro_euro_lme_holding",
-            operation_id="get_macro_euro_lme_holding")
-async def get_macro_euro_lme_holding():
+            operation_id="macro_euro_lme_holding")
+async def macro_euro_lme_holding():
     """
     重要机构-伦敦金属交易所-持仓报告
 
@@ -100,8 +100,8 @@ async def get_macro_euro_lme_holding():
 
 # 重要机构-伦敦金属交易所-持仓报告
 @router.get("/macro_euro_lme_stock",
-            operation_id="get_macro_euro_lme_stock")
-async def get_macro_euro_lme_stock():
+            operation_id="macro_euro_lme_stock")
+async def macro_euro_lme_stock():
     """
     重要机构-伦敦金属交易所-库存报告
 
@@ -123,8 +123,8 @@ async def get_macro_euro_lme_stock():
 
 # 重要机构-美国商品期货交易委员会-外汇类非商业持仓报告
 @router.get("/macro_usa_cftc_nc_holding",
-            operation_id="get_macro_usa_cftc_nc_holding")
-async def get_macro_usa_cftc_nc_holding():
+            operation_id="macro_usa_cftc_nc_holding")
+async def macro_usa_cftc_nc_holding():
     """
     重要机构-美国商品期货交易委员会-外汇类非商业持仓报告
 
@@ -146,8 +146,8 @@ async def get_macro_usa_cftc_nc_holding():
 
 # 重要机构-美国商品期货交易委员会-商品类非商业持仓报告
 @router.get("/macro_usa_cftc_c_holding",
-            operation_id="get_macro_usa_cftc_c_holding")
-async def get_macro_usa_cftc_c_holding():
+            operation_id="macro_usa_cftc_c_holding")
+async def macro_usa_cftc_c_holding():
     """
     重要机构-美国商品期货交易委员会-商品类非商业持仓报告
 
@@ -169,8 +169,8 @@ async def get_macro_usa_cftc_c_holding():
 
 # 重要机构-美国商品期货交易委员会-外汇类商业持仓报告
 @router.get("/macro_usa_cftc_merchant_currency_holding",
-            operation_id="get_macro_usa_cftc_merchant_currency_holding")
-async def get_macro_usa_cftc_merchant_currency_holding():
+            operation_id="macro_usa_cftc_merchant_currency_holding")
+async def macro_usa_cftc_merchant_currency_holding():
     """
     重要机构-美国商品期货交易委员会-外汇类商业持仓报告
 
@@ -192,8 +192,8 @@ async def get_macro_usa_cftc_merchant_currency_holding():
 
 # 重要机构-美国商品期货交易委员会-商品类商业持仓报告
 @router.get("/macro_usa_cftc_merchant_goods_holding",
-            operation_id="get_macro_usa_cftc_merchant_goods_holding")
-async def get_macro_usa_cftc_merchant_goods_holding():
+            operation_id="macro_usa_cftc_merchant_goods_holding")
+async def macro_usa_cftc_merchant_goods_holding():
     """
     重要机构-美国商品期货交易委员会-商品类商业持仓报告
 
@@ -215,8 +215,8 @@ async def get_macro_usa_cftc_merchant_goods_holding():
 
 # 重要机构-芝加哥交易所-贵金属
 @router.get("/macro_usa_cme_merchant_goods_holding",
-            operation_id="get_macro_usa_cme_merchant_goods_holding")
-async def get_macro_usa_cme_merchant_goods_holding():
+            operation_id="macro_usa_cme_merchant_goods_holding")
+async def macro_usa_cme_merchant_goods_holding():
     """
     重要机构-芝加哥交易所-贵金属
 

@@ -13,8 +13,8 @@ class JuChaoGuDongDateRequest(BaseModel):
 
 
 # 巨潮资讯-数据中心-专题统计-股东股本-股东人数及持股集中度
-@router.post("/stock_hold_num_cninfo", operation_id="post_stock_hold_num_cninfo")
-async def post_stock_hold_num_cninfo(request: JuChaoGuDongDateRequest):
+@router.post("/stock_hold_num_cninfo", operation_id="stock_hold_num_cninfo")
+async def stock_hold_num_cninfo(request: JuChaoGuDongDateRequest):
     """
     巨潮资讯-股东股本-股东人数及持股集中度
 
@@ -39,8 +39,8 @@ class DongCaiSymbolAndNameRequest(BaseModel):
 
 
 # 东方财富-数据中心-特色数据-高管持股-人员增减持股变动明细
-@router.post("/stock_hold_management_person_em", operation_id="post_stock_hold_management_person_em")
-async def post_stock_hold_management_person_em(request: DongCaiSymbolAndNameRequest):
+@router.post("/stock_hold_management_person_em", operation_id="stock_hold_management_person_em")
+async def stock_hold_management_person_em(request: DongCaiSymbolAndNameRequest):
     """
     东方财富-高管持股-人员增减持股变动明细
 
@@ -61,8 +61,8 @@ async def post_stock_hold_management_person_em(request: DongCaiSymbolAndNameRequ
 
 
 # 东方财富-数据中心-股东大会
-@router.get("/stock_gddh_em", operation_id="get_stock_gddh_em")
-def get_stock_gddh_em():
+@router.get("/stock_gddh_em", operation_id="stock_gddh_em")
+def stock_gddh_em():
     """
     东方财富-数据中心-股东大会
 
@@ -88,8 +88,8 @@ class DongCaiDateRangeRequest(BaseModel):
 
 
 # 东方财富-数据中心-重大合同-重大合同明细
-@router.post("/stock_zdhtmx_em", operation_id="post_stock_zdhtmx_em")
-async def post_stock_zdhtmx_em(request: DongCaiDateRangeRequest):
+@router.post("/stock_zdhtmx_em", operation_id="stock_zdhtmx_em")
+async def stock_zdhtmx_em(request: DongCaiDateRangeRequest):
     """
     东方财富-重大合同-重大合同明细
 
@@ -114,8 +114,8 @@ class SymbolRequest(BaseModel):
 
 
 # 新浪财经-股本股东-主要股东
-@router.post("/stock_main_stock_holder", operation_id="post_stock_main_stock_holder")
-async def post_stock_main_stock_holder(request: SymbolRequest):
+@router.post("/stock_main_stock_holder", operation_id="stock_main_stock_holder")
+async def stock_main_stock_holder(request: SymbolRequest):
     """
     新浪财经-股本股东-主要股东
 
@@ -136,8 +136,8 @@ async def post_stock_main_stock_holder(request: SymbolRequest):
 
 
 # 新浪财经-股东股本-流通股东
-@router.post("/stock_circulate_stock_holder", operation_id="post_stock_circulate_stock_holder")
-async def post_stock_circulate_stock_holder(request: SymbolRequest):
+@router.post("/stock_circulate_stock_holder", operation_id="stock_circulate_stock_holder")
+async def stock_circulate_stock_holder(request: SymbolRequest):
     """
     新浪财经-股东股本-流通股东
 
@@ -163,8 +163,8 @@ class DongCaiSymbolDateRequest(BaseModel):
 
 
 # 东方财富-个股-十大流通股东
-@router.post("/stock_gdfx_free_top_10_em", operation_id="post_stock_gdfx_free_top_10_em")
-async def post_stock_gdfx_free_top_10_em(request: DongCaiSymbolDateRequest):
+@router.post("/stock_gdfx_free_top_10_em", operation_id="stock_gdfx_free_top_10_em")
+async def stock_gdfx_free_top_10_em(request: DongCaiSymbolDateRequest):
     """
     东方财富-个股-十大流通股东
 
@@ -185,8 +185,8 @@ async def post_stock_gdfx_free_top_10_em(request: DongCaiSymbolDateRequest):
 
 
 # 东方财富-个股-十大股东
-@router.post("/stock_gdfx_top_10_em", operation_id="post_stock_gdfx_top_10_em")
-async def post_stock_gdfx_top_10_em(request: DongCaiSymbolDateRequest):
+@router.post("/stock_gdfx_top_10_em", operation_id="stock_gdfx_top_10_em")
+async def stock_gdfx_top_10_em(request: DongCaiSymbolDateRequest):
     """
     东方财富-个股-十大股东
 
@@ -211,8 +211,8 @@ class DongCaiDateRequest(BaseModel):
 
 
 # 东方财富-数据中心-股东分析-股东持股变动统计-十大流通股东
-@router.post("/stock_gdfx_free_holding_change_em", operation_id="post_stock_gdfx_free_holding_change_em")
-async def post_stock_gdfx_free_holding_change_em(request: DongCaiDateRequest):
+@router.post("/stock_gdfx_free_holding_change_em", operation_id="stock_gdfx_free_holding_change_em")
+async def stock_gdfx_free_holding_change_em(request: DongCaiDateRequest):
     """
     东方财富-股东分析-股东持股变动统计-十大流通股东
 
@@ -233,8 +233,8 @@ async def post_stock_gdfx_free_holding_change_em(request: DongCaiDateRequest):
 
 
 # 东方财富-数据中心-股东分析-股东持股变动统计-十大股东
-@router.post("/stock_gdfx_holding_change_em", operation_id="post_stock_gdfx_holding_change_em")
-async def post_stock_gdfx_holding_change_em(request: DongCaiDateRequest):
+@router.post("/stock_gdfx_holding_change_em", operation_id="stock_gdfx_holding_change_em")
+async def stock_gdfx_holding_change_em(request: DongCaiDateRequest):
     """
     东方财富-股东分析-股东持股变动统计-十大股东
 
@@ -255,8 +255,8 @@ async def post_stock_gdfx_holding_change_em(request: DongCaiDateRequest):
 
 
 # 东方财富-数据中心-股东分析-股东持股分析-十大流通股东
-@router.post("/stock_gdfx_free_holding_analyse_em", operation_id="post_stock_gdfx_free_holding_analyse_em")
-async def post_stock_gdfx_free_holding_analyse_em(request: DongCaiDateRequest):
+@router.post("/stock_gdfx_free_holding_analyse_em", operation_id="stock_gdfx_free_holding_analyse_em")
+async def stock_gdfx_free_holding_analyse_em(request: DongCaiDateRequest):
     """
     东方财富-股东分析-股东持股分析-十大流通股东
 
@@ -277,8 +277,8 @@ async def post_stock_gdfx_free_holding_analyse_em(request: DongCaiDateRequest):
 
 
 # 东方财富-数据中心-股东分析-股东持股分析-十大股东
-@router.post("/stock_gdfx_holding_analyse_em", operation_id="post_stock_gdfx_holding_analyse_em")
-async def post_stock_gdfx_holding_analyse_em(request: DongCaiDateRequest):
+@router.post("/stock_gdfx_holding_analyse_em", operation_id="stock_gdfx_holding_analyse_em")
+async def stock_gdfx_holding_analyse_em(request: DongCaiDateRequest):
     """
     东方财富-股东分析-股东持股分析-十大股东
 
@@ -299,8 +299,8 @@ async def post_stock_gdfx_holding_analyse_em(request: DongCaiDateRequest):
 
 
 # 东方财富-数据中心-股东分析-股东持股明细-十大流通股东
-@router.post("/stock_gdfx_free_holding_detail_em", operation_id="post_stock_gdfx_free_holding_detail_em")
-async def post_stock_gdfx_free_holding_detail_em(request: DongCaiDateRequest):
+@router.post("/stock_gdfx_free_holding_detail_em", operation_id="stock_gdfx_free_holding_detail_em")
+async def stock_gdfx_free_holding_detail_em(request: DongCaiDateRequest):
     """
     东方财富-股东分析-股东持股明细-十大流通股东
 
@@ -327,8 +327,8 @@ class DongCaiHoldingDetailRequest(BaseModel):
 
 
 # 东方财富-数据中心-股东分析-股东持股明细-十大股东
-@router.post("/stock_gdfx_holding_detail_em", operation_id="post_stock_gdfx_holding_detail_em")
-async def post_stock_gdfx_holding_detail_em(request: DongCaiHoldingDetailRequest):
+@router.post("/stock_gdfx_holding_detail_em", operation_id="stock_gdfx_holding_detail_em")
+async def stock_gdfx_holding_detail_em(request: DongCaiHoldingDetailRequest):
     """
     东方财富-股东分析-股东持股明细-十大股东
 
@@ -349,8 +349,8 @@ async def post_stock_gdfx_holding_detail_em(request: DongCaiHoldingDetailRequest
 
 
 # 东方财富-数据中心-股东分析-股东持股统计-十大流通股东
-@router.post("/stock_gdfx_free_holding_statistics_em", operation_id="post_stock_gdfx_free_holding_statistics_em")
-async def post_stock_gdfx_free_holding_statistics_em(request: DongCaiDateRequest):
+@router.post("/stock_gdfx_free_holding_statistics_em", operation_id="stock_gdfx_free_holding_statistics_em")
+async def stock_gdfx_free_holding_statistics_em(request: DongCaiDateRequest):
     """
     东方财富-股东分析-股东持股统计-十大股东
 
@@ -371,8 +371,8 @@ async def post_stock_gdfx_free_holding_statistics_em(request: DongCaiDateRequest
 
 
 # 东方财富-数据中心-股东分析-股东持股统计-十大股东
-@router.post("/stock_gdfx_holding_statistics_em", operation_id="post_stock_gdfx_holding_statistics_em")
-async def post_stock_gdfx_holding_statistics_em(request: DongCaiDateRequest):
+@router.post("/stock_gdfx_holding_statistics_em", operation_id="stock_gdfx_holding_statistics_em")
+async def stock_gdfx_holding_statistics_em(request: DongCaiDateRequest):
     """
     东方财富-股东分析-股东持股统计-十大股东
 
@@ -398,8 +398,8 @@ class DongCaiGuDongSymbolRequest(BaseModel):
 
 
 # 东方财富-数据中心-股东分析-股东协同-十大流通股东
-@router.post("/stock_gdfx_free_holding_teamwork_em", operation_id="post_stock_gdfx_free_holding_teamwork_em")
-async def post_stock_gdfx_free_holding_teamwork_em(request: DongCaiGuDongSymbolRequest):
+@router.post("/stock_gdfx_free_holding_teamwork_em", operation_id="stock_gdfx_free_holding_teamwork_em")
+async def stock_gdfx_free_holding_teamwork_em(request: DongCaiGuDongSymbolRequest):
     """
     东方财富-股东分析-股东协同-十大流通股东
 
@@ -420,8 +420,8 @@ async def post_stock_gdfx_free_holding_teamwork_em(request: DongCaiGuDongSymbolR
 
 
 # 东方财富-数据中心-股东分析-股东协同-十大股东
-@router.post("/stock_gdfx_holding_teamwork_em", operation_id="post_stock_gdfx_holding_teamwork_em")
-async def post_stock_gdfx_holding_teamwork_em(request: DongCaiGuDongSymbolRequest):
+@router.post("/stock_gdfx_holding_teamwork_em", operation_id="stock_gdfx_holding_teamwork_em")
+async def stock_gdfx_holding_teamwork_em(request: DongCaiGuDongSymbolRequest):
     """
     东方财富-股东分析-股东协同-十大股东
 
@@ -447,8 +447,8 @@ class DongCaiGuDongDateRequest(BaseModel):
 
 
 # 东方财富-数据中心-特色数据-股东户数数据
-@router.post("/stock_zh_a_gdhs", operation_id="post_stock_zh_a_gdhs")
-async def post_stock_zh_a_gdhs(request: DongCaiGuDongDateRequest):
+@router.post("/stock_zh_a_gdhs", operation_id="stock_zh_a_gdhs")
+async def stock_zh_a_gdhs(request: DongCaiGuDongDateRequest):
     """
     东方财富-股东户数详情
 
@@ -469,8 +469,8 @@ async def post_stock_zh_a_gdhs(request: DongCaiGuDongDateRequest):
 
 
 # 东方财富-数据中心-特色数据-股东户数详情
-@router.post("/stock_zh_a_gdhs_detail_em", operation_id="post_stock_zh_a_gdhs_detail_em")
-async def post_stock_zh_a_gdhs_detail_em(request: SymbolRequest):
+@router.post("/stock_zh_a_gdhs_detail_em", operation_id="stock_zh_a_gdhs_detail_em")
+async def stock_zh_a_gdhs_detail_em(request: SymbolRequest):
     """
     东方财富-股东户数详情
 

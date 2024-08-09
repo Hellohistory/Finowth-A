@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 国民经济运行状况-经济状况-民航客座率及载运率
 @router.get("/macro_china_passenger_load_factor",
-            operation_id="get_macro_china_passenger_load_factor")
-async def get_macro_china_passenger_load_factor():
+            operation_id="macro_china_passenger_load_factor")
+async def macro_china_passenger_load_factor():
     """
     国民经济运行状况-经济状况-民航客座率及载运率
 
@@ -31,8 +31,8 @@ async def get_macro_china_passenger_load_factor():
 
 # 国民经济运行状况-经济状况-航贸运价指数
 @router.get("/macro_china_freight_index",
-            operation_id="get_macro_china_freight_index")
-async def get_macro_china_freight_index():
+            operation_id="macro_china_freight_index")
+async def macro_china_freight_index():
     """
     国民经济运行状况-经济状况-航贸运价指数
 

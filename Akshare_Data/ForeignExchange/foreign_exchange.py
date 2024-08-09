@@ -19,8 +19,8 @@ class CurrencyBocSina(BaseModel):
 
 
 # 外汇数据-人民币牌价数据
-@router.post("/currency_boc_sina", operation_id="post_currency_boc_sina")
-def post_currency_boc_sina(request: CurrencyBocSina):
+@router.post("/currency_boc_sina", operation_id="currency_boc_sina")
+def currency_boc_sina(request: CurrencyBocSina):
     """
     外汇数据-人民币牌价数据
 
@@ -46,8 +46,8 @@ def post_currency_boc_sina(request: CurrencyBocSina):
 
 
 # 外汇数据-人民币汇率中间价
-@router.get("/currency_boc_safe", operation_id="get_currency_boc_safe")
-async def get_currency_boc_safe():
+@router.get("/currency_boc_safe", operation_id="currency_boc_safe")
+async def currency_boc_safe():
     """
     外汇数据-人民币汇率中间价
 
@@ -73,8 +73,8 @@ async def get_currency_boc_safe():
 
 
 # 外汇数据-人民币外汇即期报价
-@router.get("/fx_spot_quote", operation_id="get_fx_spot_quote")
-async def get_fx_spot_quote():
+@router.get("/fx_spot_quote", operation_id="fx_spot_quote")
+async def fx_spot_quote():
     """
     外汇数据-人民币外汇即期报价
 
@@ -98,8 +98,8 @@ async def get_fx_spot_quote():
 
 
 # 外汇数据-人民币外汇远掉报价
-@router.get("/fx_swap_quote", operation_id="get_fx_swap_quote")
-async def get_fx_swap_quote():
+@router.get("/fx_swap_quote", operation_id="fx_swap_quote")
+async def fx_swap_quote():
     """
     外汇数据-人民币外汇远掉报价
 
@@ -126,8 +126,8 @@ class CurrencyPairMap(BaseModel):
 
 
 # 外汇数据-指定币种的所有货币对
-@router.post("/currency_pair_map", operation_id="post_currency_pair_map")
-def post_currency_pair_map(request: CurrencyPairMap):
+@router.post("/currency_pair_map", operation_id="currency_pair_map")
+def currency_pair_map(request: CurrencyPairMap):
     """
     外汇数据-指定币种的所有货币对
 
@@ -158,8 +158,8 @@ class MacroFXSentiment(BaseModel):
 
 
 # 外汇数据-指定币种的所有货币对
-@router.post("/macro_fx_sentiment", operation_id="post_macro_fx_sentiment")
-def post_macro_fx_sentiment(request: MacroFXSentiment):
+@router.post("/macro_fx_sentiment", operation_id="macro_fx_sentiment")
+def macro_fx_sentiment(request: MacroFXSentiment):
     """
     外汇数据-指定币种的所有货币对
 
@@ -189,8 +189,8 @@ class FXQuoteBaidu(BaseModel):
 
 
 # 外汇数据-指定币种的所有货币对
-@router.post("/fx_quote_baidu", operation_id="post_fx_quote_baidu")
-def post_fx_quote_baidu(request: FXQuoteBaidu):
+@router.post("/fx_quote_baidu", operation_id="fx_quote_baidu")
+def fx_quote_baidu(request: FXQuoteBaidu):
     """
     外汇数据-指定币种的所有货币对
 

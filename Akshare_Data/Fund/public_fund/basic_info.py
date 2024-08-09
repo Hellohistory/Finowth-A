@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 公募基金数据-东方财富-基金基本信息
-@router.get("/fund_name_em", operation_id="get_fund_name_em")
-async def get_fund_name_em():
+@router.get("/fund_name_em", operation_id="fund_name_em")
+async def fund_name_em():
     """
     公募基金数据-东方财富-基金基本信息
 
@@ -35,8 +35,8 @@ class FundIndividualBasicInfo(BaseModel):
 
 
 # 公募基金数据-雪球-基金基本信息
-@router.post("/fund_individual_basic_info_xq", operation_id="post_fund_individual_basic_info_xq")
-def post_fund_individual_basic_info_xq(request: FundIndividualBasicInfo):
+@router.post("/fund_individual_basic_info_xq", operation_id="fund_individual_basic_info_xq")
+def fund_individual_basic_info_xq(request: FundIndividualBasicInfo):
     """
     公募基金数据-雪球-基金基本信息
 
@@ -64,8 +64,8 @@ class FundInfoIndexEM(BaseModel):
 
 
 # 公募基金数据-东方财富-基金基本信息-指数型
-@router.post("/fund_info_index_em", operation_id="post_fund_info_index_em")
-def post_fund_info_index_em(request: FundInfoIndexEM):
+@router.post("/fund_info_index_em", operation_id="fund_info_index_em")
+def fund_info_index_em(request: FundInfoIndexEM):
     """
     公募基金数据-东方财富-基金基本信息-指数型
 
@@ -90,8 +90,8 @@ def post_fund_info_index_em(request: FundInfoIndexEM):
 
 
 # 公募基金数据-东方财富-基金申购状态
-@router.get("/fund_purchase_em", operation_id="get_fund_purchase_em")
-async def get_fund_purchase_em():
+@router.get("/fund_purchase_em", operation_id="fund_purchase_em")
+async def fund_purchase_em():
     """
     公募基金数据-东方财富-基金申购状态
 

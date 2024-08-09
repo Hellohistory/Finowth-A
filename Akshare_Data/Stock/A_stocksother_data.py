@@ -14,8 +14,8 @@ class DateRequest(BaseModel):
 
 
 # 东方财富-数据中心-股市日历-公司动态
-@router.post("/stock_gsrl_gsdt_em", operation_id="post_stock_gsrl_gsdt_em")
-async def post_stock_gsrl_gsdt_em(request: DateRequest):
+@router.post("/stock_gsrl_gsdt_em", operation_id="stock_gsrl_gsdt_em")
+async def stock_gsrl_gsdt_em(request: DateRequest):
     """
     东方财富-股市日历-公司动态
 
@@ -36,8 +36,8 @@ async def post_stock_gsrl_gsdt_em(request: DateRequest):
 
 
 # 东方财富-行情中心-沪深个股-风险警示板
-@router.get("/stock_zh_a_st_em", operation_id="get_stock_zh_a_st_em")
-def get_stock_zh_a_st_em():
+@router.get("/stock_zh_a_st_em", operation_id="stock_zh_a_st_em")
+def stock_zh_a_st_em():
     """
     东方财富-沪深个股-风险警示板
 
@@ -58,8 +58,8 @@ def get_stock_zh_a_st_em():
 
 
 # 东方财富-行情中心-沪深个股-新股
-@router.get("/stock_zh_a_new_em", operation_id="get_stock_zh_a_new_em")
-def get_stock_zh_a_new_em():
+@router.get("/stock_zh_a_new_em", operation_id="stock_zh_a_new_em")
+def stock_zh_a_new_em():
     """
     东方财富-沪深个股-新股
 
@@ -91,8 +91,8 @@ def get_stock_zh_a_new_em():
 
 
 # 同花顺-数据中心-新股数据-IPO受益股
-@router.get("/stock_ipo_benefit_ths", operation_id="get_stock_ipo_benefit_ths")
-def get_stock_ipo_benefit_ths():
+@router.get("/stock_ipo_benefit_ths", operation_id="stock_ipo_benefit_ths")
+def stock_ipo_benefit_ths():
     """
     同花顺-新股数据-IPO受益股
 
@@ -119,8 +119,8 @@ def get_stock_ipo_benefit_ths():
 
 
 # 东方财富-行情中心-沪深个股-两网及退市
-@router.get("/stock_zh_a_stop_em", operation_id="get_stock_zh_a_stop_em")
-def get_stock_zh_a_stop_em():
+@router.get("/stock_zh_a_stop_em", operation_id="stock_zh_a_stop_em")
+def stock_zh_a_stop_em():
     """
     东方财富-沪深个股-两网及退市
 

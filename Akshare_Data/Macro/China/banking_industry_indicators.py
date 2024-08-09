@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 国民经济运行状况-金融指标-上海银行业同业拆借报告
 @router.get("/macro_china_shibor_all",
-            operation_id="get_macro_china_shibor_all")
-async def get_macro_china_shibor_all():
+            operation_id="macro_china_shibor_all")
+async def macro_china_shibor_all():
     """
     国民经济运行状况-金融指标-上海银行业同业拆借报告
 
@@ -31,8 +31,8 @@ async def get_macro_china_shibor_all():
 
 # 国民经济运行状况-金融指标-人民币香港银行同业拆息
 @router.get("/macro_china_hk_market_info",
-            operation_id="get_macro_china_hk_market_info")
-async def get_macro_china_hk_market_info():
+            operation_id="macro_china_hk_market_info")
+async def macro_china_hk_market_info():
     """
     国民经济运行状况-金融指标-人民币香港银行同业拆息
 

@@ -13,8 +13,8 @@ class THSCXGSymbolRequest(BaseModel):
 
 
 # 创新高
-@router.post("/stock_rank_cxg_ths", operation_id="post_stock_rank_cxg_ths")
-async def post_stock_rank_cxg_ths(request: THSCXGSymbolRequest):
+@router.post("/stock_rank_cxg_ths", operation_id="stock_rank_cxg_ths")
+async def stock_rank_cxg_ths(request: THSCXGSymbolRequest):
     """
     同花顺-技术选股-创新高
 
@@ -40,8 +40,8 @@ class THSCXDSymbolRequest(BaseModel):
 
 
 # 创新低
-@router.post("/stock_rank_cxd_ths", operation_id="post_stock_rank_cxd_ths")
-async def post_stock_rank_cxd_ths(request: THSCXDSymbolRequest):
+@router.post("/stock_rank_cxd_ths", operation_id="stock_rank_cxd_ths")
+async def stock_rank_cxd_ths(request: THSCXDSymbolRequest):
     """
     同花顺-技术选股-创新低
 
@@ -62,8 +62,8 @@ async def post_stock_rank_cxd_ths(request: THSCXDSymbolRequest):
 
 
 # 连续上涨
-@router.get("/stock_rank_lxsz_ths", operation_id="get_stock_rank_lxsz_ths")
-def get_stock_rank_lxsz_ths():
+@router.get("/stock_rank_lxsz_ths", operation_id="stock_rank_lxsz_ths")
+def stock_rank_lxsz_ths():
     """
     同花顺-技术选股-连续上涨
 
@@ -84,8 +84,8 @@ def get_stock_rank_lxsz_ths():
 
 
 # 连续下跌
-@router.get("/stock_rank_lxxd_ths", operation_id="get_stock_rank_lxxd_ths")
-def get_stock_rank_lxxd_ths():
+@router.get("/stock_rank_lxxd_ths", operation_id="stock_rank_lxxd_ths")
+def stock_rank_lxxd_ths():
     """
     同花顺-技术选股-连续下跌
 
@@ -106,8 +106,8 @@ def get_stock_rank_lxxd_ths():
 
 
 # 持续放量
-@router.get("/stock_rank_cxfl_ths", operation_id="get_stock_rank_cxfl_ths")
-def get_stock_rank_cxfl_ths():
+@router.get("/stock_rank_cxfl_ths", operation_id="stock_rank_cxfl_ths")
+def stock_rank_cxfl_ths():
     """
     同花顺-技术选股-持续放量
 
@@ -128,8 +128,8 @@ def get_stock_rank_cxfl_ths():
 
 
 # 持续缩量
-@router.get("/stock_rank_cxsl_ths", operation_id="get_stock_rank_cxsl_ths")
-def get_stock_rank_cxsl_ths():
+@router.get("/stock_rank_cxsl_ths", operation_id="stock_rank_cxsl_ths")
+def stock_rank_cxsl_ths():
     """
     同花顺-技术选股-持续缩量
 
@@ -155,8 +155,8 @@ class THSCXDSymbolRequest(BaseModel):
 
 
 # 向上突破
-@router.post("/stock_rank_xstp_ths", operation_id="post_stock_rank_xstp_ths")
-async def post_stock_rank_xstp_ths(request: THSCXDSymbolRequest):
+@router.post("/stock_rank_xstp_ths", operation_id="stock_rank_xstp_ths")
+async def stock_rank_xstp_ths(request: THSCXDSymbolRequest):
     """
     同花顺-技术选股-向上突破
 
@@ -177,8 +177,8 @@ async def post_stock_rank_xstp_ths(request: THSCXDSymbolRequest):
 
 
 # 向下突破
-@router.post("/stock_rank_xxtp_ths", operation_id="post_stock_rank_xxtp_ths")
-async def post_stock_rank_xxtp_ths(request: THSCXDSymbolRequest):
+@router.post("/stock_rank_xxtp_ths", operation_id="stock_rank_xxtp_ths")
+async def stock_rank_xxtp_ths(request: THSCXDSymbolRequest):
     """
     同花顺-技术选股-向下突破
 
@@ -199,8 +199,8 @@ async def post_stock_rank_xxtp_ths(request: THSCXDSymbolRequest):
 
 
 # 量价齐升
-@router.get("/stock_rank_ljqs_ths", operation_id="get_stock_rank_ljqs_ths")
-def get_stock_rank_ljqs_ths():
+@router.get("/stock_rank_ljqs_ths", operation_id="stock_rank_ljqs_ths")
+def stock_rank_ljqs_ths():
     """
     同花顺-技术选股-量价齐升
 
@@ -222,8 +222,8 @@ def get_stock_rank_ljqs_ths():
 
 
 # 量价齐跌
-@router.get("/stock_rank_ljqd_ths", operation_id="get_stock_rank_ljqd_ths")
-def get_stock_rank_ljqd_ths():
+@router.get("/stock_rank_ljqd_ths", operation_id="stock_rank_ljqd_ths")
+def stock_rank_ljqd_ths():
     """
     同花顺-技术选股-量价齐跌
 
@@ -244,8 +244,8 @@ def get_stock_rank_ljqd_ths():
 
 
 # 险资举牌
-@router.get("/stock_rank_xzjp_ths", operation_id="get_stock_rank_xzjp_ths")
-def get_stock_rank_xzjp_ths():
+@router.get("/stock_rank_xzjp_ths", operation_id="stock_rank_xzjp_ths")
+def stock_rank_xzjp_ths():
     """
     同花顺-技术选股-险资举牌
 

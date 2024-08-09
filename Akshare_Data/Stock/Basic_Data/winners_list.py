@@ -13,8 +13,8 @@ class DongCaiWinnerListDateRangeRequest(BaseModel):
 
 
 # 东方财富-龙虎榜单-龙虎榜详情
-@router.post("/stock_lhb_detail_em", operation_id="post_stock_lhb_detail_em")
-async def post_stock_lhb_detail_em(request: DongCaiWinnerListDateRangeRequest):
+@router.post("/stock_lhb_detail_em", operation_id="stock_lhb_detail_em")
+async def stock_lhb_detail_em(request: DongCaiWinnerListDateRangeRequest):
     """
     东方财富-龙虎榜单-龙虎榜详情
 
@@ -40,8 +40,8 @@ class DongCaiWinnerListSymbolRequest(BaseModel):
 
 
 # 东方财富-龙虎榜单-个股上榜统计
-@router.post("/stock_lhb_stock_statistic_em", operation_id="post_stock_lhb_stock_statistic_em")
-async def post_stock_lhb_stock_statistic_em(request: DongCaiWinnerListSymbolRequest):
+@router.post("/stock_lhb_stock_statistic_em", operation_id="stock_lhb_stock_statistic_em")
+async def stock_lhb_stock_statistic_em(request: DongCaiWinnerListSymbolRequest):
     """
     东方财富-龙虎榜单-个股上榜统计
 
@@ -67,8 +67,8 @@ class DongCaiWinnerListDateRangeRequest(BaseModel):
 
 
 # 东方财富-龙虎榜单-机构买卖每日统计
-@router.post("/stock_lhb_jgmmtj_em", operation_id="post_stock_lhb_jgmmtj_em")
-async def post_stock_lhb_jgmmtj_em(request: DongCaiWinnerListDateRangeRequest):
+@router.post("/stock_lhb_jgmmtj_em", operation_id="stock_lhb_jgmmtj_em")
+async def stock_lhb_jgmmtj_em(request: DongCaiWinnerListDateRangeRequest):
     """
     东方财富-龙虎榜单-机构买卖每日统计
 
@@ -89,8 +89,8 @@ async def post_stock_lhb_jgmmtj_em(request: DongCaiWinnerListDateRangeRequest):
 
 
 # 东方财富-龙虎榜单-机构席位追踪
-@router.post("/stock_lhb_jgstatistic_em", operation_id="post_stock_lhb_jgstatistic_em")
-async def post_stock_lhb_jgstatistic_em(request: DongCaiWinnerListSymbolRequest):
+@router.post("/stock_lhb_jgstatistic_em", operation_id="stock_lhb_jgstatistic_em")
+async def stock_lhb_jgstatistic_em(request: DongCaiWinnerListSymbolRequest):
     """
     东方财富-龙虎榜单-机构席位追踪
 
@@ -111,8 +111,8 @@ async def post_stock_lhb_jgstatistic_em(request: DongCaiWinnerListSymbolRequest)
 
 
 # 东方财富-龙虎榜单-每日活跃营业部
-@router.post("/stock_lhb_hyyyb_em", operation_id="post_stock_lhb_hyyyb_em")
-async def post_stock_lhb_hyyyb_em(request: DongCaiWinnerListDateRangeRequest):
+@router.post("/stock_lhb_hyyyb_em", operation_id="stock_lhb_hyyyb_em")
+async def stock_lhb_hyyyb_em(request: DongCaiWinnerListDateRangeRequest):
     """
     东方财富-龙虎榜单-每日活跃营业部
 
@@ -133,8 +133,8 @@ async def post_stock_lhb_hyyyb_em(request: DongCaiWinnerListDateRangeRequest):
 
 
 # 东方财富-龙虎榜单-营业部排行
-@router.post("/stock_lhb_yybph_em", operation_id="post_stock_lhb_yybph_em")
-async def post_stock_lhb_yybph_em(request: DongCaiWinnerListSymbolRequest):
+@router.post("/stock_lhb_yybph_em", operation_id="stock_lhb_yybph_em")
+async def stock_lhb_yybph_em(request: DongCaiWinnerListSymbolRequest):
     """
     东方财富-龙虎榜单-营业部排行
 
@@ -155,8 +155,8 @@ async def post_stock_lhb_yybph_em(request: DongCaiWinnerListSymbolRequest):
 
 
 # 东方财富-龙虎榜单-营业部统计
-@router.post("/stock_lhb_traderstatistic_em", operation_id="post_stock_lhb_traderstatistic_em")
-async def post_stock_lhb_traderstatistic_em(request: DongCaiWinnerListSymbolRequest):
+@router.post("/stock_lhb_traderstatistic_em", operation_id="stock_lhb_traderstatistic_em")
+async def stock_lhb_traderstatistic_em(request: DongCaiWinnerListSymbolRequest):
     """
     东方财富-龙虎榜单-营业部统计
 
@@ -184,8 +184,8 @@ class DongCaiWinnerListSymbolFlagDateRequest(BaseModel):
 
 
 # 东方财富-龙虎榜单-个股龙虎榜详情
-@router.post("/stock_lhb_stock_detail_em", operation_id="post_stock_lhb_stock_detail_em")
-async def post_stock_lhb_stock_detail_em(request: DongCaiWinnerListSymbolFlagDateRequest):
+@router.post("/stock_lhb_stock_detail_em", operation_id="stock_lhb_stock_detail_em")
+async def stock_lhb_stock_detail_em(request: DongCaiWinnerListSymbolFlagDateRequest):
     """
     东方财富-龙虎榜单-个股龙虎榜详情
 
@@ -207,8 +207,8 @@ async def post_stock_lhb_stock_detail_em(request: DongCaiWinnerListSymbolFlagDat
 
 
 # 龙虎榜-营业部排行-上榜次数最多
-@router.get("/stock_lh_yyb_most", operation_id="get_stock_lh_yyb_most")
-def get_stock_lh_yyb_most():
+@router.get("/stock_lh_yyb_most", operation_id="stock_lh_yyb_most")
+def stock_lh_yyb_most():
     """
     龙虎榜-营业部排行-上榜次数最多
 
@@ -229,8 +229,8 @@ def get_stock_lh_yyb_most():
 
 
 # 龙虎榜-营业部排行-资金实力最强
-@router.get("/stock_lh_yyb_capital", operation_id="get_stock_lh_yyb_capital")
-def get_stock_lh_yyb_capital():
+@router.get("/stock_lh_yyb_capital", operation_id="stock_lh_yyb_capital")
+def stock_lh_yyb_capital():
     """
     龙虎榜-营业部排行-资金实力最强
 
@@ -251,8 +251,8 @@ def get_stock_lh_yyb_capital():
 
 
 # 龙虎榜-营业部排行-抱团操作实力
-@router.get("/stock_lh_yyb_control", operation_id="get_stock_lh_yyb_control")
-def get_stock_lh_yyb_control():
+@router.get("/stock_lh_yyb_control", operation_id="stock_lh_yyb_control")
+def stock_lh_yyb_control():
     """
     龙虎榜-营业部排行-抱团操作实力
 
@@ -277,8 +277,8 @@ class XinLangWinnerListDateRequest(BaseModel):
 
 
 # 新浪财经-龙虎榜-每日详情
-@router.post("/stock_lhb_detail_daily_sina", operation_id="post_stock_lhb_detail_daily_sina")
-async def post_stock_lhb_detail_daily_sina(request: XinLangWinnerListDateRequest):
+@router.post("/stock_lhb_detail_daily_sina", operation_id="stock_lhb_detail_daily_sina")
+async def stock_lhb_detail_daily_sina(request: XinLangWinnerListDateRequest):
     """
     新浪财经-龙虎榜-每日详情
 
@@ -304,8 +304,8 @@ class XinLangSymbolRequest(BaseModel):
 
 
 # 新浪财经-龙虎榜-个股上榜统计
-@router.post("/stock_lhb_ggtj_sina", operation_id="post_stock_lhb_ggtj_sina")
-async def post_stock_lhb_ggtj_sina(request: XinLangSymbolRequest):
+@router.post("/stock_lhb_ggtj_sina", operation_id="stock_lhb_ggtj_sina")
+async def stock_lhb_ggtj_sina(request: XinLangSymbolRequest):
     """
     新浪财经-龙虎榜-个股上榜统计
 
@@ -326,8 +326,8 @@ async def post_stock_lhb_ggtj_sina(request: XinLangSymbolRequest):
 
 
 # 新浪财经-龙虎榜-营业上榜统计
-@router.post("/stock_lhb_yytj_sina", operation_id="post_stock_lhb_yytj_sina")
-async def post_stock_lhb_yytj_sina(request: XinLangSymbolRequest):
+@router.post("/stock_lhb_yytj_sina", operation_id="stock_lhb_yytj_sina")
+async def stock_lhb_yytj_sina(request: XinLangSymbolRequest):
     """
     新浪财经-龙虎榜-营业上榜统计
 
@@ -348,8 +348,8 @@ async def post_stock_lhb_yytj_sina(request: XinLangSymbolRequest):
 
 
 # 新浪财经-龙虎榜-机构席位追踪
-@router.post("/stock_lhb_jgzz_sina", operation_id="post_stock_lhb_jgzz_sina")
-async def post_stock_lhb_jgzz_sina(request: XinLangSymbolRequest):
+@router.post("/stock_lhb_jgzz_sina", operation_id="stock_lhb_jgzz_sina")
+async def stock_lhb_jgzz_sina(request: XinLangSymbolRequest):
     """
     新浪财经-龙虎榜-机构席位追踪
 
@@ -370,8 +370,8 @@ async def post_stock_lhb_jgzz_sina(request: XinLangSymbolRequest):
 
 
 # 新浪财经-龙虎榜-机构席位成交明细
-@router.get("/stock_lhb_jgmx_sina", operation_id="get_stock_lhb_jgmx_sina")
-def get_stock_lhb_jgmx_sina():
+@router.get("/stock_lhb_jgmx_sina", operation_id="stock_lhb_jgmx_sina")
+def stock_lhb_jgmx_sina():
     """
     新浪财经-龙虎榜-机构席位成交明细
 

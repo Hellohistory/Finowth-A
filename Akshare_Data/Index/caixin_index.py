@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # 指数数据-财新指数-综合 PMI
-@router.get("/index_pmi_com_cx", operation_id="get_index_pmi_com_cx")
-def get_index_pmi_com_cx():
+@router.get("/index_pmi_com_cx", operation_id="index_pmi_com_cx")
+def index_pmi_com_cx():
     """
     指数数据-财新指数-综合 PMI
 
@@ -31,8 +31,8 @@ def get_index_pmi_com_cx():
 
 
 # 指数数据-财新指数-制造业 PMI
-@router.get("/index_pmi_man_cx", operation_id="get_index_pmi_man_cx")
-def get_index_pmi_man_cx():
+@router.get("/index_pmi_man_cx", operation_id="index_pmi_man_cx")
+def index_pmi_man_cx():
     """
     指数数据-财新指数-制造业 PMI
 
@@ -55,8 +55,8 @@ def get_index_pmi_man_cx():
 
 
 # 指数数据-财新指数-服务业 PMI
-@router.get("/index_pmi_ser_cx", operation_id="get_index_pmi_ser_cx")
-def get_index_pmi_ser_cx():
+@router.get("/index_pmi_ser_cx", operation_id="index_pmi_ser_cx")
+def index_pmi_ser_cx():
     """
     指数数据-财新指数-服务业 PMI
 
@@ -79,8 +79,8 @@ def get_index_pmi_ser_cx():
 
 
 # 指数数据-财新指数-数字经济指数
-@router.get("/index_dei_cx", operation_id="get_index_dei_cx")
-def get_index_dei_cx():
+@router.get("/index_dei_cx", operation_id="index_dei_cx")
+def index_dei_cx():
     """
     指数数据-财新指数-数字经济指数
 
@@ -103,8 +103,8 @@ def get_index_dei_cx():
 
 
 # 指数数据-财新指数-产业指数
-@router.get("/index_ii_cx", operation_id="get_index_ii_cx")
-def get_index_ii_cx():
+@router.get("/index_ii_cx", operation_id="index_ii_cx")
+def index_ii_cx():
     """
     指数数据-财新指数-产业指数
 
@@ -127,8 +127,8 @@ def get_index_ii_cx():
 
 
 # 指数数据-财新指数-溢出指数
-@router.get("/index_si_cx", operation_id="get_index_si_cx")
-def get_index_si_cx():
+@router.get("/index_si_cx", operation_id="index_si_cx")
+def index_si_cx():
     """
     指数数据-财新指数-溢出指数
 
@@ -151,8 +151,8 @@ def get_index_si_cx():
 
 
 # 指数数据-财新指数-融合指数
-@router.get("/index_fi_cx", operation_id="get_index_fi_cx")
-def get_index_fi_cx():
+@router.get("/index_fi_cx", operation_id="index_fi_cx")
+def index_fi_cx():
     """
     指数数据-财新指数-融合指数
 
@@ -175,8 +175,8 @@ def get_index_fi_cx():
 
 
 # 指数数据-财新指数-基础指数
-@router.get("/index_bi_cx", operation_id="get_index_bi_cx")
-def get_index_bi_cx():
+@router.get("/index_bi_cx", operation_id="index_bi_cx")
+def index_bi_cx():
     """
     指数数据-财新指数-融合指数
 
@@ -199,8 +199,8 @@ def get_index_bi_cx():
 
 
 # 指数数据-财新指数-中国新经济指数
-@router.get("/index_nei_cx", operation_id="get_index_nei_cx")
-def get_index_nei_cx():
+@router.get("/index_nei_cx", operation_id="index_nei_cx")
+def index_nei_cx():
     """
     指数数据-财新指数-中国新经济指数
 
@@ -223,8 +223,8 @@ def get_index_nei_cx():
 
 
 # 指数数据-财新指数-劳动力投入指数
-@router.get("/index_li_cx", operation_id="get_index_li_cx")
-def get_index_li_cx():
+@router.get("/index_li_cx", operation_id="index_li_cx")
+def index_li_cx():
     """
     指数数据-财新指数-劳动力投入指数
 
@@ -247,8 +247,8 @@ def get_index_li_cx():
 
 
 # 指数数据-财新指数-资本投入指数
-@router.get("/index_ci_cx", operation_id="get_index_ci_cx")
-def get_index_ci_cx():
+@router.get("/index_ci_cx", operation_id="index_ci_cx")
+def index_ci_cx():
     """
     指数数据-财新指数-资本投入指数
 
@@ -271,8 +271,8 @@ def get_index_ci_cx():
 
 
 # 指数数据-财新指数-科技投入指数
-@router.get("/index_ti_cx", operation_id="get_index_ti_cx")
-def get_index_ti_cx():
+@router.get("/index_ti_cx", operation_id="index_ti_cx")
+def index_ti_cx():
     """
     指数数据-财新指数-科技投入指数
 
@@ -295,8 +295,8 @@ def get_index_ti_cx():
 
 
 # 指数数据-财新指数-新经济行业入职平均工资水平
-@router.get("/index_neaw_cx", operation_id="get_index_neaw_cx")
-def get_index_neaw_cx():
+@router.get("/index_neaw_cx", operation_id="index_neaw_cx")
+def index_neaw_cx():
     """
     指数数据-财新指数-新经济行业入职平均工资水平
 
@@ -319,8 +319,8 @@ def get_index_neaw_cx():
 
 
 # 指数数据-财新指数-新经济入职工资溢价水平
-@router.get("/index_awpr_cx", operation_id="get_index_awpr_cx")
-def get_index_awpr_cx():
+@router.get("/index_awpr_cx", operation_id="index_awpr_cx")
+def index_awpr_cx():
     """
     指数数据-财新指数-新经济入职工资溢价水平
 
@@ -343,8 +343,8 @@ def get_index_awpr_cx():
 
 
 # 指数数据-财新指数-大宗商品指数
-@router.get("/index_cci_cx", operation_id="get_index_cci_cx")
-def get_index_cci_cx():
+@router.get("/index_cci_cx", operation_id="index_cci_cx")
+def index_cci_cx():
     """
     指数数据-财新指数-大宗商品指数
 
@@ -367,8 +367,8 @@ def get_index_cci_cx():
 
 
 # 指数数据-财新指数-高质量因子
-@router.get("/index_qli_cx", operation_id="get_index_qli_cx")
-def get_index_qli_cx():
+@router.get("/index_qli_cx", operation_id="index_qli_cx")
+def index_qli_cx():
     """
     指数数据-财新指数-高质量因子
 
@@ -391,8 +391,8 @@ def get_index_qli_cx():
 
 
 # 指数数据-财新指数-AI策略指数
-@router.get("/index_ai_cx", operation_id="get_index_ai_cx")
-def get_index_ai_cx():
+@router.get("/index_ai_cx", operation_id="index_ai_cx")
+def index_ai_cx():
     """
     指数数据-财新指数-AI策略指数
 
@@ -415,8 +415,8 @@ def get_index_ai_cx():
 
 
 # 指数数据-财新指数-基石经济指数
-@router.get("/index_bei_cx", operation_id="get_index_bei_cx")
-def get_index_bei_cx():
+@router.get("/index_bei_cx", operation_id="index_bei_cx")
+def index_bei_cx():
     """
     指数数据-财新指数-基石经济指数
 
@@ -439,8 +439,8 @@ def get_index_bei_cx():
 
 
 # 指数数据-财新指数-新动能指数
-@router.get("/index_neei_cx", operation_id="get_index_neei_cx")
-def get_index_neei_cx():
+@router.get("/index_neei_cx", operation_id="index_neei_cx")
+def index_neei_cx():
     """
     指数数据-财新指数-新动能指数
 

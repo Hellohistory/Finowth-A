@@ -13,8 +13,8 @@ class StockGoods(BaseModel):
 
 
 # 指数数据-新浪财经-商品现货价格指数
-@router.post("/spot_goods", operation_id="post_spot_goods")
-def post_spot_goods(request: StockGoods):
+@router.post("/spot_goods", operation_id="spot_goods")
+def spot_goods(request: StockGoods):
     """
     指数数据-新浪财经-商品现货价格指数
 
@@ -41,8 +41,8 @@ class IndexYW(BaseModel):
 
 
 # 指数数据-义乌小商品指数
-@router.post("/index_yw", operation_id="post_index_yw")
-def post_index_yw(request: IndexYW):
+@router.post("/index_yw", operation_id="index_yw")
+def index_yw(request: IndexYW):
     """
     指数数据-义乌小商品指数
 
@@ -69,8 +69,8 @@ class IndexKQFZ(BaseModel):
 
 
 # 指数数据-柯桥纺织品指数
-@router.post("/index_kq_fz", operation_id="post_index_kq_fz")
-def post_index_kq_fz(request: IndexKQFZ):
+@router.post("/index_kq_fz", operation_id="index_kq_fz")
+def index_kq_fz(request: IndexKQFZ):
     """
     指数数据-柯桥纺织品指数
 
@@ -101,7 +101,7 @@ class IndexKQFashion(BaseModel):
 
 # 指数数据-柯桥纺织品指数
 @router.post("/index_kq_fz", operation_id="IndexKQFashion")
-def post_index_kq_fz(request: IndexKQFZ):
+def index_kq_fz(request: IndexKQFZ):
     """
     指数数据-柯桥纺织品指数
 

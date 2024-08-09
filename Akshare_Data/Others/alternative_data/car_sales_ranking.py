@@ -16,8 +16,8 @@ class CarMarketTotalCpca(BaseModel):
 
 # 另类数据-汽车销量排行-乘联会-统计数据-总体市场
 @router.post("/car_market_total_cpca",
-             operation_id="post_car_market_total_cpca")
-def post_car_market_total_cpca(request: CarMarketTotalCpca):
+             operation_id="car_market_total_cpca")
+def car_market_total_cpca(request: CarMarketTotalCpca):
     """
     另类数据-汽车销量排行-乘联会-统计数据-总体市场
 
@@ -43,8 +43,8 @@ def post_car_market_total_cpca(request: CarMarketTotalCpca):
 
 # 另类数据-汽车销量排行-乘联会-统计数据-总体市场
 @router.post("/car_market_man_rank_cpca",
-             operation_id="post_car_market_man_rank_cpca")
-def post_car_market_man_rank_cpca(request: CarMarketTotalCpca):
+             operation_id="car_market_man_rank_cpca")
+def car_market_man_rank_cpca(request: CarMarketTotalCpca):
     """
     另类数据-汽车销量排行-乘联会-统计数据-总体市场
 
@@ -75,8 +75,8 @@ class CarMarketCateCpca(BaseModel):
 
 # 另类数据-汽车销量排行-乘联会-统计数据-总体市场
 @router.post("/car_market_cate_cpca",
-             operation_id="post_car_market_cate_cpca")
-def post_car_market_cate_cpca(request: CarMarketCateCpca):
+             operation_id="car_market_cate_cpca")
+def car_market_cate_cpca(request: CarMarketCateCpca):
     """
     另类数据-汽车销量排行-乘联会-统计数据-车型大类
 
@@ -101,8 +101,8 @@ def post_car_market_cate_cpca(request: CarMarketCateCpca):
 
 
 # 另类数据-汽车销量排行-乘联会-统计数据-国别细分市场
-@router.get("/car_market_country_cpca", operation_id="get_car_market_country_cpca")
-def get_car_market_country_cpca():
+@router.get("/car_market_country_cpca", operation_id="car_market_country_cpca")
+def car_market_country_cpca():
     """
     另类数据-汽车销量排行-乘联会-统计数据-国别细分市场
 
@@ -128,8 +128,8 @@ class CarMarketCateCpca(BaseModel):
 
 # 另类数据-汽车销量排行-乘联会-统计数据-级别细分市场
 @router.post("/car_market_segment_cpca",
-             operation_id="post_car_market_segment_cpca")
-def post_car_market_segment_cpca(request: CarMarketCateCpca):
+             operation_id="car_market_segment_cpca")
+def car_market_segment_cpca(request: CarMarketCateCpca):
     """
     另类数据-汽车销量排行-乘联会-统计数据-级别细分市场
 
@@ -158,8 +158,8 @@ class CarMarketFuelCpca(BaseModel):
 
 # 另类数据-汽车销量排行-乘联会-统计数据-新能源细分市场
 @router.post("/car_market_fuel_cpca",
-             operation_id="post_car_market_fuel_cpca")
-def post_car_market_fuel_cpca(request: CarMarketFuelCpca):
+             operation_id="car_market_fuel_cpca")
+def car_market_fuel_cpca(request: CarMarketFuelCpca):
     """
     另类数据-汽车销量排行-乘联会-统计数据-新能源细分市场
 
@@ -189,8 +189,8 @@ class CarSaleRankGasgoo(BaseModel):
 
 # 另类数据-汽车销量排行-盖世研究院
 @router.post("/car_sale_rank_gasgoo",
-             operation_id="post_car_sale_rank_gasgoo")
-def post_car_sale_rank_gasgoo(request: CarSaleRankGasgoo):
+             operation_id="car_sale_rank_gasgoo")
+def car_sale_rank_gasgoo(request: CarSaleRankGasgoo):
     """
     另类数据-汽车销量排行-盖世研究院
 

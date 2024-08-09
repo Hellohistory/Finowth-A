@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 美国-产业指标-工业-美国工业产出月率报告
 @router.get("/macro_usa_industrial_production",
-            operation_id="get_macro_usa_industrial_production")
-async def get_macro_usa_industrial_production():
+            operation_id="macro_usa_industrial_production")
+async def macro_usa_industrial_production():
     """
     美国-产业指标-制造业-美国工业产出月率报告
 
@@ -31,8 +31,8 @@ async def get_macro_usa_industrial_production():
 
 # 美国-产业指标-工业-美国耐用品订单月率报告
 @router.get("/macro_usa_durable_goods_orders",
-            operation_id="get_macro_usa_durable_goods_orders")
-async def get_macro_usa_durable_goods_orders():
+            operation_id="macro_usa_durable_goods_orders")
+async def macro_usa_durable_goods_orders():
     """
     美国-产业指标-制造业-美国耐用品订单月率报告
 
@@ -54,8 +54,8 @@ async def get_macro_usa_durable_goods_orders():
 
 # 美国-产业指标-工业-美国工厂订单月率报告
 @router.get("/macro_usa_factory_orders",
-            operation_id="get_macro_usa_factory_orders")
-async def get_macro_usa_factory_orders():
+            operation_id="macro_usa_factory_orders")
+async def macro_usa_factory_orders():
     """
     美国-产业指标-制造业-美国工厂订单月率报告
 

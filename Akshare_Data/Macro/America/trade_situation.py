@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 美国-贸易状况-美国贸易帐报告
 @router.get("/macro_usa_trade_balance",
-            operation_id="get_macro_usa_trade_balance")
-async def get_macro_usa_trade_balance():
+            operation_id="macro_usa_trade_balance")
+async def macro_usa_trade_balance():
     """
     美国-贸易状况-美国贸易帐报告
 
@@ -31,8 +31,8 @@ async def get_macro_usa_trade_balance():
 
 # 美国-贸易状况-美国经常帐报告
 @router.get("/macro_usa_current_account",
-            operation_id="get_macro_usa_current_account")
-async def get_macro_usa_current_account():
+            operation_id="macro_usa_current_account")
+async def macro_usa_current_account():
     """
     美国-贸易状况-美国贸易帐报告
 

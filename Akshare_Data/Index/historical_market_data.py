@@ -14,8 +14,8 @@ class StockIndexDaily(BaseModel):
 
 # 指数数据-新浪财经-历史行情数据
 @router.post("/stock_zh_index_daily",
-             operation_id="post_stock_zh_index_daily")
-def post_stock_zh_index_daily(request: StockIndexDaily):
+             operation_id="stock_zh_index_daily")
+def stock_zh_index_daily(request: StockIndexDaily):
     """
     指数数据-新浪财经-历史行情数据
 
@@ -40,8 +40,8 @@ def post_stock_zh_index_daily(request: StockIndexDaily):
 
 # 指数数据-腾讯-历史行情数据
 @router.post("/stock_zh_index_daily_tx",
-             operation_id="post_stock_zh_index_daily_tx")
-def post_stock_zh_index_daily_tx(request: StockIndexDaily):
+             operation_id="stock_zh_index_daily_tx")
+def stock_zh_index_daily_tx(request: StockIndexDaily):
     """
     指数数据-腾讯-历史行情数据
 
@@ -75,8 +75,8 @@ class StockIndexDailyEM(BaseModel):
 
 # 指数数据-东方财富-历史行情数据
 @router.post("/stock_zh_index_daily_em",
-             operation_id="post_stock_zh_index_daily_em")
-def post_stock_zh_index_daily_em(request: StockIndexDailyEM):
+             operation_id="stock_zh_index_daily_em")
+def stock_zh_index_daily_em(request: StockIndexDailyEM):
     """
     指数数据-东方财富-历史行情数据
 
@@ -114,8 +114,8 @@ class IndexZHAHist(BaseModel):
 
 # 指数数据-东方财富-历史行情数据-通用
 @router.post("/index_zh_a_hist",
-             operation_id="post_index_zh_a_hist")
-def post_index_zh_a_hist(request: IndexZHAHist):
+             operation_id="index_zh_a_hist")
+def index_zh_a_hist(request: IndexZHAHist):
     """
     指数数据-东方财富-历史行情数据-通用
 
@@ -154,8 +154,8 @@ class IndexZHAHistMinEM(BaseModel):
 
 # 指数数据-东方财富-历史行情数据-通用
 @router.post("/index_zh_a_hist_min_em",
-             operation_id="post_index_zh_a_hist_min_em")
-def post_index_zh_a_hist_min_em(request: IndexZHAHistMinEM):
+             operation_id="index_zh_a_hist_min_em")
+def index_zh_a_hist_min_em(request: IndexZHAHistMinEM):
     """
     指数数据-东方财富-历史行情数据-通用
 

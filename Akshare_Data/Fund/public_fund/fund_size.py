@@ -14,8 +14,8 @@ class FundRating(BaseModel):
 
 # 公募基金数据-东方财富-基金规模-开放式基金
 @router.post("/fund_scale_open_sina",
-             operation_id="post_fund_scale_open_sina")
-def post_fund_scale_open_sina(request: FundRating):
+             operation_id="fund_scale_open_sina")
+def fund_scale_open_sina(request: FundRating):
     """
     公募基金数据-东方财富-基金规模-开放式基金
 
@@ -40,8 +40,8 @@ def post_fund_scale_open_sina(request: FundRating):
 
 # 公募基金数据-东方财富-基金规模-封闭式基金
 @router.get("/fund_scale_close_sina",
-            operation_id="get_fund_scale_close_sina")
-async def get_fund_scale_close_sina():
+            operation_id="fund_scale_close_sina")
+async def fund_scale_close_sina():
     """
     公募基金数据-东方财富-基金规模-封闭式基金
 
@@ -64,8 +64,8 @@ async def get_fund_scale_close_sina():
 
 # 公募基金数据-东方财富-基金规模-分级子基金
 @router.get("/fund_scale_structured_sina",
-            operation_id="get_fund_scale_structured_sina")
-async def get_fund_scale_structured_sina():
+            operation_id="fund_scale_structured_sina")
+async def fund_scale_structured_sina():
     """
     公募基金数据-东方财富-基金规模-分级子基金
 

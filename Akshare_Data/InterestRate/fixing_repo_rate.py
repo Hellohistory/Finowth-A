@@ -14,8 +14,8 @@ class RepoRateHistRequest(BaseModel):
                           description="例：20230129,开始时间与结束时间需要在一年内")
 
 
-@router.post("/interest_repo_rate_hist", operation_id="post_interest_repo_rate_hist")
-def post_interest_repo_rate_hist(request: RepoRateHistRequest):
+@router.post("/interest_repo_rate_hist", operation_id="interest_repo_rate_hist")
+def interest_repo_rate_hist(request: RepoRateHistRequest):
     """
     接口: repo_rate_hist
 
@@ -41,8 +41,8 @@ class RepoRateSymbolRequest(BaseModel):
     symbol: str = Field(..., title="指定回购定盘利率类型", description="可选择回购定盘利率, 银银间回购定盘利率")
 
 
-@router.post("/interest_repo_rate_query", operation_id="post_interest_repo_rate_query")
-def post_interest_repo_rate_query(request: RepoRateSymbolRequest):
+@router.post("/interest_repo_rate_query", operation_id="interest_repo_rate_query")
+def interest_repo_rate_query(request: RepoRateSymbolRequest):
     """
     接口: stock_hot_rank_wc
 

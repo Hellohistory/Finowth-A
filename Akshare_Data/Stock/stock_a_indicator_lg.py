@@ -11,8 +11,8 @@ class SymbolRequest(BaseModel):
     symbol: str = Field(..., title="指定个股代码", description="例：000066")
 
 
-@router.post("/stock_a_indicator_lg", operation_id="post_stock_a_indicator_lg")
-async def post_stock_a_indicator_lg(request: SymbolRequest):
+@router.post("/stock_a_indicator_lg", operation_id="stock_a_indicator_lg")
+async def stock_a_indicator_lg(request: SymbolRequest):
     """
     乐咕乐股-A 股个股指标: 市盈率, 市净率, 股息率
 

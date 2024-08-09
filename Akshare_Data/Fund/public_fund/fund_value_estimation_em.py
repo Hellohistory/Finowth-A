@@ -15,8 +15,8 @@ class FundValuEstimationEM(BaseModel):
 
 # 公募基金数据-基金排行-东方财富-净值估算
 @router.post("/fund_value_estimation_em",
-             operation_id="post_fund_value_estimation_em")
-def post_fund_value_estimation_em(request: FundValuEstimationEM):
+             operation_id="fund_value_estimation_em")
+def fund_value_estimation_em(request: FundValuEstimationEM):
     """
     公募基金数据-基金排行-东方财富-净值估算
 

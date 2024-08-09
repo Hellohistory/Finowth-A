@@ -14,8 +14,8 @@ class JuChaoSymbolDateRangeRequest(BaseModel):
 
 
 # 巨潮资讯-数据中心-专题统计-公司治理-对外担保
-@router.post("/stock_cg_guarantee_cninfo", operation_id="post_stock_cg_guarantee_cninfo")
-async def post_stock_cg_guarantee_cninfo(request: JuChaoSymbolDateRangeRequest):
+@router.post("/stock_cg_guarantee_cninfo", operation_id="stock_cg_guarantee_cninfo")
+async def stock_cg_guarantee_cninfo(request: JuChaoSymbolDateRangeRequest):
     """
     巨潮资讯-公司治理-对外担保
 
@@ -38,8 +38,8 @@ async def post_stock_cg_guarantee_cninfo(request: JuChaoSymbolDateRangeRequest):
 
 
 # 巨潮资讯-数据中心-专题统计-公司治理-公司诉讼
-@router.post("/stock_cg_lawsuit_cninfo", operation_id="post_stock_cg_lawsuit_cninfo")
-async def post_stock_cg_lawsuit_cninfo(request: JuChaoSymbolDateRangeRequest):
+@router.post("/stock_cg_lawsuit_cninfo", operation_id="stock_cg_lawsuit_cninfo")
+async def stock_cg_lawsuit_cninfo(request: JuChaoSymbolDateRangeRequest):
     """
     巨潮资讯-公司治理-公司诉讼
 
@@ -66,8 +66,8 @@ class JuChaoDateRequest(BaseModel):
 
 
 # 巨潮资讯-数据中心-专题统计-公司治理-股权质押
-@router.post("/stock_cg_equity_mortgage_cninfo", operation_id="post_stock_cg_equity_mortgage_cninfo")
-async def post_stock_cg_equity_mortgage_cninfo(request: JuChaoDateRequest):
+@router.post("/stock_cg_equity_mortgage_cninfo", operation_id="stock_cg_equity_mortgage_cninfo")
+async def stock_cg_equity_mortgage_cninfo(request: JuChaoDateRequest):
     """
     巨潮资讯-公司治理-股权质押
 
@@ -92,8 +92,8 @@ class DongCaiTeSeDateRequest(BaseModel):
 
 
 # 东方财富-数据中心-特色数据-券商业绩月报
-@router.post("/stock_qsjy_em", operation_id="post_stock_qsjy_em")
-async def post_stock_qsjy_em(request: DongCaiTeSeDateRequest):
+@router.post("/stock_qsjy_em", operation_id="stock_qsjy_em")
+async def stock_qsjy_em(request: DongCaiTeSeDateRequest):
     """
     东方财富-券商业绩月报
 
@@ -119,8 +119,8 @@ class JuChaoSymbolRequest(BaseModel):
 
 
 # 巨潮资讯-数据中心-专题统计-股东股本-实际控制人持股变动
-@router.post("/stock_hold_control_cninfo", operation_id="post_stock_hold_control_cninfo")
-async def post_stock_hold_control_cninfo(request: JuChaoSymbolRequest):
+@router.post("/stock_hold_control_cninfo", operation_id="stock_hold_control_cninfo")
+async def stock_hold_control_cninfo(request: JuChaoSymbolRequest):
     """
     巨潮资讯-股东股本-实际控制人持股变动
 

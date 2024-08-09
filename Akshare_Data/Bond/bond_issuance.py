@@ -14,8 +14,8 @@ class TreasureIssueCNInfo(BaseModel):
 
 # 债券-债券发行-国债发行
 @router.post("/bond_treasure_issue_cninfo",
-             operation_id="post_bond_treasure_issue_cninfo")
-async def post_bond_treasure_issue_cninfo(request: TreasureIssueCNInfo):
+             operation_id="bond_treasure_issue_cninfo")
+async def bond_treasure_issue_cninfo(request: TreasureIssueCNInfo):
     """
     债券-债券发行-国债发行
 
@@ -39,8 +39,8 @@ async def post_bond_treasure_issue_cninfo(request: TreasureIssueCNInfo):
 
 # 债券-债券发行-地方债发行
 @router.post("/bond_local_government_issue_cninfo",
-             operation_id="post_bond_local_government_issue_cninfo")
-async def post_bond_local_government_issue_cninfo(request: TreasureIssueCNInfo):
+             operation_id="bond_local_government_issue_cninfo")
+async def bond_local_government_issue_cninfo(request: TreasureIssueCNInfo):
     """
     债券-债券发行-地方债发行
 
@@ -64,8 +64,8 @@ async def post_bond_local_government_issue_cninfo(request: TreasureIssueCNInfo):
 
 # 债券-债券发行-企业债发行
 @router.post("/bond_corporate_issue_cninfo",
-             operation_id="post_bond_corporate_issue_cninfo")
-async def post_bond_corporate_issue_cninfo(request: TreasureIssueCNInfo):
+             operation_id="bond_corporate_issue_cninfo")
+async def bond_corporate_issue_cninfo(request: TreasureIssueCNInfo):
     """
     债券-债券发行-企业债发行
 
@@ -89,8 +89,8 @@ async def post_bond_corporate_issue_cninfo(request: TreasureIssueCNInfo):
 
 # 债券-债券发行-可转债发行
 @router.post("/bond_cov_issue_cninfo",
-             operation_id="post_bond_cov_issue_cninfo")
-async def post_bond_cov_issue_cninfo(request: TreasureIssueCNInfo):
+             operation_id="bond_cov_issue_cninfo")
+async def bond_cov_issue_cninfo(request: TreasureIssueCNInfo):
     """
     债券-债券发行-可转债发行
 
@@ -113,8 +113,8 @@ async def post_bond_cov_issue_cninfo(request: TreasureIssueCNInfo):
 
 
 # 债券-债券发行-可转债转股
-@router.get("/bond_cov_stock_issue_cninfo", operation_id="get_bond_cov_stock_issue_cninfo")
-async def get_bond_cov_stock_issue_cninfo():
+@router.get("/bond_cov_stock_issue_cninfo", operation_id="bond_cov_stock_issue_cninfo")
+async def bond_cov_stock_issue_cninfo():
     """
     债券-债券发行-可转债转股
 

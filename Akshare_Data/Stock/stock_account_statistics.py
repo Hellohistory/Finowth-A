@@ -9,8 +9,8 @@ router = APIRouter()
 
 # 东方财富-数据中心-特色数据-股票账户统计
 @router.get("/stock_account_statistics_em",
-            operation_id="get_stock_account_statistics_em")
-def get_stock_account_statistics_em():
+            operation_id="stock_account_statistics_em")
+def stock_account_statistics_em():
     """
     东方财富-特色数据-股票账户统计
 
@@ -36,8 +36,8 @@ class YearRequest(BaseModel):
 
 # 东方财富-数据中心-研究报告-东方财富分析师指数
 @router.post("/stock_analyst_rank_em",
-             operation_id="post_stock_analyst_rank_em")
-async def post_stock_analyst_rank_em(request: YearRequest):
+             operation_id="stock_analyst_rank_em")
+async def stock_analyst_rank_em(request: YearRequest):
     """
     东方财富-研究报告-东方财富分析师指数
 
@@ -66,8 +66,8 @@ class AnalystDetailRequest(BaseModel):
 
 # 东方财富-数据中心-研究报告-东方财富分析师指数-分析师详情
 @router.post("/stock_analyst_detail_em",
-             operation_id="post_stock_analyst_detail_em")
-async def post_stock_analyst_detail_em(request: AnalystDetailRequest):
+             operation_id="stock_analyst_detail_em")
+async def stock_analyst_detail_em(request: AnalystDetailRequest):
     """
     东方财富-研究报告-东方财富分析师指数-分析师详情
 

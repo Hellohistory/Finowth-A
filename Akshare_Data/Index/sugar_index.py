@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 指数数据-沐甜科技数据中心-中国食糖指数
 @router.get("/index_sugar_msweet",
-            operation_id="get_index_sugar_msweet")
-def get_index_sugar_msweet():
+            operation_id="index_sugar_msweet")
+def index_sugar_msweet():
     """
     指数数据-沐甜科技数据中心-中国食糖指数
 
@@ -31,8 +31,8 @@ def get_index_sugar_msweet():
 
 # 指数数据-沐甜科技数据中心-配额内进口糖估算指数
 @router.get("/index_inner_quote_sugar_msweet",
-            operation_id="get_index_inner_quote_sugar_msweet")
-def get_index_inner_quote_sugar_msweet():
+            operation_id="index_inner_quote_sugar_msweet")
+def index_inner_quote_sugar_msweet():
     """
     指数数据-沐甜科技数据中心-配额内进口糖估算指数
 
@@ -54,8 +54,8 @@ def get_index_inner_quote_sugar_msweet():
 
 # 指数数据-沐甜科技数据中心-配额外进口糖估算指数
 @router.get("/index_outer_quote_sugar_msweet",
-            operation_id="get_index_outer_quote_sugar_msweet")
-def get_index_outer_quote_sugar_msweet():
+            operation_id="index_outer_quote_sugar_msweet")
+def index_outer_quote_sugar_msweet():
     """
     指数数据-沐甜科技数据中心-配额外进口糖估算指数
 

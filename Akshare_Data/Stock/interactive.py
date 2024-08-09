@@ -12,8 +12,8 @@ class IrmSymbolRequest(BaseModel):
 
 
 # 互动易-提问
-@router.post("/stock_irm_cninfo", operation_id="post_stock_irm_cninfo")
-async def post_stock_irm_cninfo(request: IrmSymbolRequest):
+@router.post("/stock_irm_cninfo", operation_id="stock_irm_cninfo")
+async def stock_irm_cninfo(request: IrmSymbolRequest):
     """
     互动易-提问
 
@@ -39,8 +39,8 @@ class IrmAnsSymbolRequest(BaseModel):
 
 
 # 互动易-回答
-@router.post("/stock_irm_ans_cninfo", operation_id="post_stock_irm_ans_cninfo")
-async def post_stock_irm_ans_cninfo(request: IrmAnsSymbolRequest):
+@router.post("/stock_irm_ans_cninfo", operation_id="stock_irm_ans_cninfo")
+async def stock_irm_ans_cninfo(request: IrmAnsSymbolRequest):
     """
     互动易-回答
 
@@ -65,8 +65,8 @@ class ShESymbolRequest(BaseModel):
 
 
 # 上证e互动-提问与回答
-@router.post("/stock_sns_sseinfo", operation_id="post_stock_sns_sseinfo")
-async def post_stock_sns_sseinfo(request: ShESymbolRequest):
+@router.post("/stock_sns_sseinfo", operation_id="stock_sns_sseinfo")
+async def stock_sns_sseinfo(request: ShESymbolRequest):
     """
     上证e互动-提问与回答
 

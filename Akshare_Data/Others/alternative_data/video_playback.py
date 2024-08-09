@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # 另类数据-视频播映-电视剧集
-@router.get("/video_tv", operation_id="get_video_tv")
-def get_video_tv():
+@router.get("/video_tv", operation_id="video_tv")
+def video_tv():
     """
     另类数据-视频播映-电视剧集
 
@@ -29,8 +29,8 @@ def get_video_tv():
 
 
 # 另类数据-视频播映-综艺节目
-@router.get("/video_variety_show", operation_id="get_video_variety_show")
-def get_video_variety_show():
+@router.get("/video_variety_show", operation_id="video_variety_show")
+def video_variety_show():
     """
     另类数据-视频播映-综艺节目
 

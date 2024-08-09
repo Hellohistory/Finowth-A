@@ -14,8 +14,8 @@ class FundETFSpotTHS(BaseModel):
 
 # 公募基金数据-基金排行-东方财富-开放式基金排行
 @router.post("/fund_open_fund_rank_em",
-             operation_id="post_fund_open_fund_rank_em")
-def post_fund_open_fund_rank_em(request: FundETFSpotTHS):
+             operation_id="fund_open_fund_rank_em")
+def fund_open_fund_rank_em(request: FundETFSpotTHS):
     """
     公募基金数据-基金排行-东方财富-开放式基金排行
 
@@ -37,8 +37,8 @@ def post_fund_open_fund_rank_em(request: FundETFSpotTHS):
 
 
 # 公募基金数据-基金排行-东方财富-场内交易基金排行榜
-@router.get("/fund_exchange_rank_em", operation_id="get_fund_exchange_rank_em")
-async def get_fund_exchange_rank_em():
+@router.get("/fund_exchange_rank_em", operation_id="fund_exchange_rank_em")
+async def fund_exchange_rank_em():
     """
     公募基金数据-基金排行-东方财富-场内交易基金排行榜
 
@@ -60,8 +60,8 @@ async def get_fund_exchange_rank_em():
 
 
 # 公募基金数据-基金排行-东方财富-货币型基金排行
-@router.get("/fund_money_rank_em", operation_id="get_fund_money_rank_em")
-async def get_fund_money_rank_em():
+@router.get("/fund_money_rank_em", operation_id="fund_money_rank_em")
+async def fund_money_rank_em():
     """
     公募基金数据-基金排行-东方财富-货币型基金排行
 
@@ -83,8 +83,8 @@ async def get_fund_money_rank_em():
 
 
 # 公募基金数据-基金排行-东方财富-香港基金排行
-@router.get("/fund_hk_rank_em", operation_id="get_fund_hk_rank_em")
-async def get_fund_hk_rank_em():
+@router.get("/fund_hk_rank_em", operation_id="fund_hk_rank_em")
+async def fund_hk_rank_em():
     """
     公募基金数据-基金排行-东方财富-香港基金排行
 

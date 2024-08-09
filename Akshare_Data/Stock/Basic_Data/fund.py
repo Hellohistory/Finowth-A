@@ -12,8 +12,8 @@ class SymbolRequest(BaseModel):
 
 
 # 新浪财经-股本股东-基金持股
-@router.post("/stock_fund_stock_holder", operation_id="post_stock_fund_stock_holder")
-async def post_stock_fund_stock_holder(request: SymbolRequest):
+@router.post("/stock_fund_stock_holder", operation_id="stock_fund_stock_holder")
+async def stock_fund_stock_holder(request: SymbolRequest):
     """
     新浪财经-基金持股
 
@@ -41,8 +41,8 @@ class DongCaiSymbolDateRequest(BaseModel):
 
 
 # 东方财富-数据中心-主力数据-基金持仓
-@router.post("/stock_report_fund_hold", operation_id="post_stock_report_fund_hold")
-async def post_stock_report_fund_hold(request: DongCaiSymbolDateRequest):
+@router.post("/stock_report_fund_hold", operation_id="stock_report_fund_hold")
+async def stock_report_fund_hold(request: DongCaiSymbolDateRequest):
     """
     东方财富-主力数据-基金持仓
 
@@ -69,8 +69,8 @@ class DongCaiChiCangSymbolDateRequest(BaseModel):
 
 
 # 东方财富-数据中心-主力数据-基金持仓-基金持仓明细表
-@router.post("/stock_report_fund_hold_detail", operation_id="post_stock_report_fund_hold_detail")
-async def post_stock_report_fund_hold_detail(request: DongCaiChiCangSymbolDateRequest):
+@router.post("/stock_report_fund_hold_detail", operation_id="stock_report_fund_hold_detail")
+async def stock_report_fund_hold_detail(request: DongCaiChiCangSymbolDateRequest):
     """
     东方财富-基金持仓-基金持仓明细表
 

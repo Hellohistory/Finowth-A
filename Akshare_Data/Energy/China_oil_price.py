@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 汽柴油历史调价信息
-@router.get("/energy_oil_hist", operation_id="get_energy_oil_hist")
-async def get_energy_oil_hist():
+@router.get("/energy_oil_hist", operation_id="energy_oil_hist")
+async def energy_oil_hist():
     """
     汽柴油历史调价信息
 
@@ -35,8 +35,8 @@ class EnergyOilDetail(BaseModel):
 
 
 # 碳排放权-国内
-@router.post("/energy_oil_detail", operation_id="post_energy_oil_detail")
-async def post_energy_oil_detail(request: EnergyOilDetail):
+@router.post("/energy_oil_detail", operation_id="energy_oil_detail")
+async def energy_oil_detail(request: EnergyOilDetail):
     """
     碳排放权-国内
 
@@ -49,11 +49,12 @@ async def post_energy_oil_detail(request: EnergyOilDetail):
     限量: 返回指定省份的所有历史数据
     """
     try:
-        energy_oil_detail = ak.energy_oil_detail(date=request.date)
-
-        return energy_oil_detail.to_dict(orient="records")
+        energy_oil_detail = ak.energy_oil_hist()
+        energy_oil_detail_df = sanitize_data_pandas(energy_oil_detail)
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
+
+    return energy_oil_detail_df.to_dict(orient="records")
 
 
 if __name__ == "__main__":

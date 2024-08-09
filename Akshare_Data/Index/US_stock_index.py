@@ -14,8 +14,8 @@ class StockUSIndexDailySina(BaseModel):
 
 # 指数数据-新浪财经-美股股票指数数据-指数行情
 @router.post("/index_us_stock_sina",
-             operation_id="post_index_us_stock_sina")
-def post_index_us_stock_sina(request: StockUSIndexDailySina):
+             operation_id="index_us_stock_sina")
+def index_us_stock_sina(request: StockUSIndexDailySina):
     """
     指数数据-新浪财经-美股股票指数数据-指数行情
 

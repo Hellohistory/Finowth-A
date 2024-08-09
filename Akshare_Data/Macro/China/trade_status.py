@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # 国民经济运行状况-贸易状况-以美元计算出口年率
-@router.get("/macro_china_exports_yoy", operation_id="get_macro_china_exports_yoy")
-async def get_macro_china_exports_yoy():
+@router.get("/macro_china_exports_yoy", operation_id="macro_china_exports_yoy")
+async def macro_china_exports_yoy():
     """
     国民经济运行状况-贸易状况-以美元计算出口年率
 
@@ -29,8 +29,8 @@ async def get_macro_china_exports_yoy():
 
 
 # 国民经济运行状况-贸易状况-以美元计算进口年率
-@router.get("/macro_china_imports_yoy", operation_id="get_macro_china_imports_yoy")
-async def get_macro_china_imports_yoy():
+@router.get("/macro_china_imports_yoy", operation_id="macro_china_imports_yoy")
+async def macro_china_imports_yoy():
     """
     国民经济运行状况-贸易状况-以美元计算进口年率
 
@@ -51,8 +51,8 @@ async def get_macro_china_imports_yoy():
 
 
 # 国民经济运行状况-贸易状况-以美元计算贸易帐(亿美元)
-@router.get("/macro_china_trade_balance", operation_id="get_macro_china_trade_balance")
-async def get_macro_china_trade_balance():
+@router.get("/macro_china_trade_balance", operation_id="macro_china_trade_balance")
+async def macro_china_trade_balance():
     """
     国民经济运行状况-贸易状况-以美元计算贸易帐(亿美元)
 

@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 欧元区宏观-产业指标-欧元区工业产出月率报告
 @router.get("/macro_euro_industrial_production_mom",
-            operation_id="get_macro_euro_industrial_production_mom")
-async def get_macro_euro_industrial_production_mom():
+            operation_id="macro_euro_industrial_production_mom")
+async def macro_euro_industrial_production_mom():
     """
     欧元区宏观-产业指标-欧元区工业产出月率报告
 
@@ -31,8 +31,8 @@ async def get_macro_euro_industrial_production_mom():
 
 # 欧元区宏观-产业指标-欧元区制造业PMI初值报告
 @router.get("/macro_euro_manufacturing_pmi",
-            operation_id="get_macro_euro_manufacturing_pmi")
-async def get_macro_euro_manufacturing_pmi():
+            operation_id="macro_euro_manufacturing_pmi")
+async def macro_euro_manufacturing_pmi():
     """
     欧元区宏观-产业指标-欧元区制造业PMI初值报告
 
@@ -54,8 +54,8 @@ async def get_macro_euro_manufacturing_pmi():
 
 # 欧元区宏观-产业指标-欧元区制造业PMI初值报告
 @router.get("/macro_euro_services_pmi",
-            operation_id="get_macro_euro_services_pmi")
-async def get_macro_euro_services_pmi():
+            operation_id="macro_euro_services_pmi")
+async def macro_euro_services_pmi():
     """
     欧元区宏观-产业指标-欧元区制造业PMI初值报告
 

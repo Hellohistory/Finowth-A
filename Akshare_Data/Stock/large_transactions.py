@@ -10,8 +10,8 @@ router = APIRouter()
 
 
 # 市场统计
-@router.get("/stock_dzjy_sctj", operation_id="get_stock_dzjy_sctj")
-def get_stock_dzjy_sctj():
+@router.get("/stock_dzjy_sctj", operation_id="stock_dzjy_sctj")
+def stock_dzjy_sctj():
     """
     东方财富-大宗交易-市场统计
 
@@ -38,8 +38,8 @@ class SymbolDateRequest(BaseModel):
 
 
 # 东方财富-数据中心-大宗交易-每日明细
-@router.post("/stock_dzjy_mrmx", operation_id="post_stock_dzjy_mrmx")
-async def post_stock_dzjy_mrmx(request: SymbolDateRequest):
+@router.post("/stock_dzjy_mrmx", operation_id="stock_dzjy_mrmx")
+async def stock_dzjy_mrmx(request: SymbolDateRequest):
     """
     东方财富-大宗交易-每日明细
 
@@ -67,8 +67,8 @@ class DateRangeRequest(BaseModel):
     end_date: str = Field(..., title="结束查询的日期", description="例：20240716")
 
 
-@router.post("/stock_dzjy_mrtj", operation_id="post_stock_dzjy_mrtj")
-async def post_stock_dzjy_mrtj(request: DateRangeRequest):
+@router.post("/stock_dzjy_mrtj", operation_id="stock_dzjy_mrtj")
+async def stock_dzjy_mrtj(request: DateRangeRequest):
     """
     东方财富-大宗交易-每日统计
 
@@ -93,8 +93,8 @@ class DongCaiASymbolRequest(BaseModel):
 
 
 # 东方财富-数据中心-大宗交易-活跃 A 股统计
-@router.post("/stock_dzjy_hygtj", operation_id="post_stock_dzjy_hygtj")
-async def post_stock_dzjy_hygtj(request: DongCaiASymbolRequest):
+@router.post("/stock_dzjy_hygtj", operation_id="stock_dzjy_hygtj")
+async def stock_dzjy_hygtj(request: DongCaiASymbolRequest):
     """
     东方财富-大宗交易-活跃 A 股统计
 
@@ -120,8 +120,8 @@ class DongCaiYingSymbolRequest(BaseModel):
 
 
 # 东方财富-数据中心-大宗交易-活跃营业部统计
-@router.post("/stock_dzjy_hyyybtj", operation_id="post_stock_dzjy_hyyybtj")
-async def post_stock_dzjy_hyyybtj(request: DongCaiYingSymbolRequest):
+@router.post("/stock_dzjy_hyyybtj", operation_id="stock_dzjy_hyyybtj")
+async def stock_dzjy_hyyybtj(request: DongCaiYingSymbolRequest):
     """
     东方财富-大宗交易-活跃营业部统计
 
@@ -141,8 +141,8 @@ async def post_stock_dzjy_hyyybtj(request: DongCaiYingSymbolRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/stock_dzjy_yybph", operation_id="post_stock_dzjy_yybph")
-async def post_stock_dzjy_yybph(request: DongCaiASymbolRequest):
+@router.post("/stock_dzjy_yybph", operation_id="stock_dzjy_yybph")
+async def stock_dzjy_yybph(request: DongCaiASymbolRequest):
     """
     东方财富-大宗交易-活跃营业部统计
 

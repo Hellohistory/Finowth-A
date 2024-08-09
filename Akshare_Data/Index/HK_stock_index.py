@@ -9,8 +9,8 @@ router = APIRouter()
 
 # 指数数据-新浪财经-港股股票指数数据-实时行情数据
 @router.get("/stock_hk_index_spot_sina",
-            operation_id="get_stock_hk_index_spot_sina")
-def get_stock_hk_index_spot_sina():
+            operation_id="stock_hk_index_spot_sina")
+def stock_hk_index_spot_sina():
     """
     指数数据-新浪财经-A股股票指数数据-实时行情数据
 
@@ -39,8 +39,8 @@ class StockHKIndexDailySina(BaseModel):
 
 # 指数数据-东方财富-港股股票指数数据-历史行情数据
 @router.post("/stock_hk_index_daily_sina",
-             operation_id="post_stock_hk_index_daily_sina")
-def post_stock_hk_index_daily_sina(request: StockHKIndexDailySina):
+             operation_id="stock_hk_index_daily_sina")
+def stock_hk_index_daily_sina(request: StockHKIndexDailySina):
     """
     指数数据-东方财富-历史行情数据-通用
 
@@ -65,8 +65,8 @@ def post_stock_hk_index_daily_sina(request: StockHKIndexDailySina):
 
 # 指数数据-东方财富-港股股票指数数据-实时行情数据
 @router.get("/stock_hk_index_spot_em",
-            operation_id="get_stock_hk_index_spot_em")
-def get_stock_hk_index_spot_em():
+            operation_id="stock_hk_index_spot_em")
+def stock_hk_index_spot_em():
     """
     指数数据-东方财富-A股股票指数数据-实时行情数据
 
@@ -95,8 +95,8 @@ class StockHKIndexDailySina(BaseModel):
 
 # 指数数据-东方财富-港股股票指数数据-历史行情数据
 @router.post("/stock_hk_index_daily_em",
-             operation_id="post_stock_hk_index_daily_em")
-def post_stock_hk_index_daily_em(request: StockHKIndexDailySina):
+             operation_id="stock_hk_index_daily_em")
+def stock_hk_index_daily_em(request: StockHKIndexDailySina):
     """
     指数数据-东方财富-港股股票指数数据-历史行情数据
 

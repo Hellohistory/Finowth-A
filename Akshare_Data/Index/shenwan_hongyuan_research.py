@@ -14,8 +14,8 @@ class IndexRealtimeFundSW(BaseModel):
 
 # 指数数据-申万宏源研究-基金指数实时行情
 @router.post("/index_realtime_fund_sw",
-             operation_id="post_index_realtime_fund_sw")
-def post_index_realtime_fund_sw(request: IndexRealtimeFundSW):
+             operation_id="index_realtime_fund_sw")
+def index_realtime_fund_sw(request: IndexRealtimeFundSW):
     """
     指数数据-申万宏源研究-基金指数实时行情
 
@@ -46,8 +46,8 @@ class IndexHistFundSW(BaseModel):
 
 # 指数数据-申万宏源研究-基金指数历史行情
 @router.post("/index_hist_fund_sw",
-             operation_id="post_index_hist_fund_sw")
-def post_index_hist_fund_sw(request: IndexHistFundSW):
+             operation_id="index_hist_fund_sw")
+def index_hist_fund_sw(request: IndexHistFundSW):
     """
     指数数据-申万宏源研究-基金指数历史行情
 
@@ -78,8 +78,8 @@ class IndexRealtimeSW(BaseModel):
 
 # 指数数据-申万宏源研究-申万指数实时行情
 @router.post("/index_realtime_sw",
-             operation_id="post_index_realtime_sw")
-def post_index_realtime_sw(request: IndexRealtimeSW):
+             operation_id="index_realtime_sw")
+def index_realtime_sw(request: IndexRealtimeSW):
     """
     指数数据-申万宏源研究-基金指数实时行情
 
@@ -104,8 +104,8 @@ def post_index_realtime_sw(request: IndexRealtimeSW):
 
 # 指数数据-申万宏源研究-申万指数历史行情
 @router.post("/index_hist_sw",
-             operation_id="post_index_hist_sw")
-def post_index_hist_sw(request: IndexHistFundSW):
+             operation_id="index_hist_sw")
+def index_hist_sw(request: IndexHistFundSW):
     """
     指数数据-申万宏源研究-申万指数历史行情
 
@@ -135,8 +135,8 @@ class IndexMinSW(BaseModel):
 
 # 指数数据-申万宏源研究-申万指数分时行情
 @router.post("/index_min_sw",
-             operation_id="post_index_min_sw")
-def post_index_min_sw(request: IndexMinSW):
+             operation_id="index_min_sw")
+def index_min_sw(request: IndexMinSW):
     """
     指数数据-申万宏源研究-申万指数分时行情
 
@@ -161,8 +161,8 @@ def post_index_min_sw(request: IndexMinSW):
 
 # 指数数据-申万宏源研究-申万指数分时行情
 @router.post("/index_component_sw",
-             operation_id="post_index_component_sw")
-def post_index_component_sw(request: IndexMinSW):
+             operation_id="index_component_sw")
+def index_component_sw(request: IndexMinSW):
     """
     指数数据-申万宏源研究-申万指数分时行情
 
@@ -194,8 +194,8 @@ class IndexAnalysisDailySW(BaseModel):
 
 # 指数数据-申万宏源研究-申万指数分析-日报表
 @router.post("/index_analysis_daily_sw",
-             operation_id="post_index_analysis_daily_sw")
-def post_index_analysis_daily_sw(request: IndexAnalysisDailySW):
+             operation_id="index_analysis_daily_sw")
+def index_analysis_daily_sw(request: IndexAnalysisDailySW):
     """
     指数数据-申万宏源研究-申万指数分析-日报表
 
@@ -229,8 +229,8 @@ class IndexAnalysisDailySW(BaseModel):
 
 # 指数数据-申万宏源研究-申万指数分析-周报表
 @router.post("/index_analysis_weekly_sw",
-             operation_id="post_index_analysis_weekly_sw")
-def post_index_analysis_weekly_sw(request: IndexAnalysisDailySW):
+             operation_id="index_analysis_weekly_sw")
+def index_analysis_weekly_sw(request: IndexAnalysisDailySW):
     """
     指数数据-申万宏源研究-申万指数分析-周报表
 
@@ -256,8 +256,8 @@ def post_index_analysis_weekly_sw(request: IndexAnalysisDailySW):
 
 # 指数数据-申万宏源研究-申万指数分析-月报表
 @router.post("/index_analysis_monthly_sw",
-             operation_id="post_index_analysis_monthly_sw")
-def post_index_analysis_monthly_sw(request: IndexAnalysisDailySW):
+             operation_id="index_analysis_monthly_sw")
+def index_analysis_monthly_sw(request: IndexAnalysisDailySW):
     """
     指数数据-申万宏源研究-申万指数分析-月报表
 

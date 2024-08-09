@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # 国民经济运行状况-经济状况-企业商品价格指数
-@router.get("/macro_china_qyspjg", operation_id="get_macro_china_qyspjg")
-async def get_macro_china_qyspjg():
+@router.get("/macro_china_qyspjg", operation_id="macro_china_qyspjg")
+async def macro_china_qyspjg():
     """
     国民经济运行状况-经济状况-企业商品价格指数
 
@@ -29,8 +29,8 @@ async def get_macro_china_qyspjg():
 
 
 # 国民经济运行状况-经济状况-外商直接投资数据
-@router.get("/macro_china_fdi", operation_id="get_macro_china_fdi")
-async def get_macro_china_fdi():
+@router.get("/macro_china_fdi", operation_id="macro_china_fdi")
+async def macro_china_fdi():
     """
     国民经济运行状况-经济状况-外商直接投资数据
 
@@ -51,8 +51,8 @@ async def get_macro_china_fdi():
 
 
 # 国民经济运行状况-经济状况-LPR品种数据
-@router.get("/macro_china_lpr", operation_id="get_macro_china_lpr")
-async def get_macro_china_lpr():
+@router.get("/macro_china_lpr", operation_id="macro_china_lpr")
+async def macro_china_lpr():
     """
     国民经济运行状况-经济状况-LPR品种数据
 
@@ -74,8 +74,8 @@ async def get_macro_china_lpr():
 
 # 国民经济运行状况-经济状况-城镇调查失业率
 @router.get("/macro_china_urban_unemployment",
-            operation_id="get_macro_china_urban_unemployment")
-async def get_macro_china_urban_unemployment():
+            operation_id="macro_china_urban_unemployment")
+async def macro_china_urban_unemployment():
     """
     国民经济运行状况-经济状况-城镇调查失业率
 
@@ -97,8 +97,8 @@ async def get_macro_china_urban_unemployment():
 
 # 国民经济运行状况-经济状况-社会融资规模增量统计
 @router.get("/macro_china_shrzgm",
-            operation_id="get_macro_china_shrzgm")
-async def get_macro_china_shrzgm():
+            operation_id="macro_china_shrzgm")
+async def macro_china_shrzgm():
     """
     国民经济运行状况-经济状况-社会融资规模增量统计
 
@@ -120,8 +120,8 @@ async def get_macro_china_shrzgm():
 
 # 国民经济运行状况-经济状况-中国 GDP 年率
 @router.get("/macro_china_gdp_yearly",
-            operation_id="get_macro_china_gdp_yearly")
-async def get_macro_china_gdp_yearly():
+            operation_id="macro_china_gdp_yearly")
+async def macro_china_gdp_yearly():
     """
     国民经济运行状况-经济状况-中国 GDP 年率
 
@@ -143,8 +143,8 @@ async def get_macro_china_gdp_yearly():
 
 # 国民经济运行状况-经济状况-新增信贷数据
 @router.get("/macro_china_new_financial_credit",
-            operation_id="get_macro_china_new_financial_credit")
-async def get_macro_china_new_financial_credit():
+            operation_id="macro_china_new_financial_credit")
+async def macro_china_new_financial_credit():
     """
     国民经济运行状况-经济状况-新增信贷数据
 
@@ -166,8 +166,8 @@ async def get_macro_china_new_financial_credit():
 
 # 国民经济运行状况-经济状况-居民消费价格指数
 @router.get("/macro_china_cpi",
-            operation_id="get_macro_china_cpi")
-async def get_macro_china_cpi():
+            operation_id="macro_china_cpi")
+async def macro_china_cpi():
     """
     国民经济运行状况-经济状况-居民消费价格指数
 
@@ -189,8 +189,8 @@ async def get_macro_china_cpi():
 
 # 国民经济运行状况-经济状况-国内生产总值
 @router.get("/macro_china_gdp",
-            operation_id="get_macro_china_gdp")
-async def get_macro_china_gdp():
+            operation_id="macro_china_gdp")
+async def macro_china_gdp():
     """
     国民经济运行状况-经济状况-国内生产总值
 
@@ -212,8 +212,8 @@ async def get_macro_china_gdp():
 
 # 国民经济运行状况-经济状况-本外币存款
 @router.get("/macro_china_wbck",
-            operation_id="get_macro_china_wbck")
-async def get_macro_china_wbck():
+            operation_id="macro_china_wbck")
+async def macro_china_wbck():
     """
     国民经济运行状况-经济状况-本外币存款
 
@@ -235,8 +235,8 @@ async def get_macro_china_wbck():
 
 # 国民经济运行状况-经济状况-存款准备金率
 @router.get("/macro_china_reserve_requirement_ratio",
-            operation_id="get_macro_china_reserve_requirement_ratio")
-async def get_macro_china_reserve_requirement_ratio():
+            operation_id="macro_china_reserve_requirement_ratio")
+async def macro_china_reserve_requirement_ratio():
     """
     国民经济运行状况-经济状况-存款准备金率
 
@@ -258,8 +258,8 @@ async def get_macro_china_reserve_requirement_ratio():
 
 # 国民经济运行状况-经济状况-国际旅游外汇收入构成
 @router.get("/macro_china_international_tourism_fx",
-            operation_id="get_macro_china_international_tourism_fx")
-async def get_macro_china_international_tourism_fx():
+            operation_id="macro_china_international_tourism_fx")
+async def macro_china_international_tourism_fx():
     """
     国民经济运行状况-经济状况-国际旅游外汇收入构成
 
@@ -281,8 +281,8 @@ async def get_macro_china_international_tourism_fx():
 
 # 国民经济运行状况-经济状况-保险业经营情况
 @router.get("/macro_china_insurance",
-            operation_id="get_macro_china_insurance")
-async def get_macro_china_insurance():
+            operation_id="macro_china_insurance")
+async def macro_china_insurance():
     """
     国民经济运行状况-经济状况-保险业经营情况
 

@@ -13,8 +13,8 @@ class StockZHIndexValueCsindex(BaseModel):
 
 # 指数数据-指数估值-指数估值-中证
 @router.post("/stock_zh_index_value_csindex",
-             operation_id="post_stock_zh_index_value_csindex")
-def post_stock_zh_index_value_csindex(request: StockZHIndexValueCsindex):
+             operation_id="stock_zh_index_value_csindex")
+def stock_zh_index_value_csindex(request: StockZHIndexValueCsindex):
     """
     指数数据-指数估值-指数估值-中证
 
@@ -38,8 +38,8 @@ def post_stock_zh_index_value_csindex(request: StockZHIndexValueCsindex):
 
 
 # 指数数据-指数估值-指数信息-韭圈儿
-@router.get("/index_value_name_funddb", operation_id="get_index_value_name_funddb")
-def get_index_value_name_funddb():
+@router.get("/index_value_name_funddb", operation_id="index_value_name_funddb")
+def index_value_name_funddb():
     """
     指数数据-指数估值-指数估值-指数信息-韭圈儿
 
@@ -69,8 +69,8 @@ class IndexValueHistFunddb(BaseModel):
 
 
 # 指数数据-指数估值-中证
-@router.post("/index_value_hist_funddb", operation_id="post_index_value_hist_funddb")
-def post_index_value_hist_funddb(request: IndexValueHistFunddb):
+@router.post("/index_value_hist_funddb", operation_id="index_value_hist_funddb")
+def index_value_hist_funddb(request: IndexValueHistFunddb):
     """
     指数数据-指数估值-指数估值-中证
 
@@ -101,8 +101,8 @@ class IndexValueHistFunddb(BaseModel):
 
 # 指数数据-估值情绪-恐惧贪婪指数
 @router.post("/index_fear_greed_funddb",
-             operation_id="post_index_fear_greed_funddb")
-def post_index_fear_greed_funddb(request: IndexValueHistFunddb):
+             operation_id="index_fear_greed_funddb")
+def index_fear_greed_funddb(request: IndexValueHistFunddb):
     """
     指数数据-估值情绪-恐惧贪婪指数
 

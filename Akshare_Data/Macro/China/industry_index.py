@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 # 国民经济运行状况-行业指数-菜篮子产品批发价格指数
-@router.get("/macro_china_vegetable_basket", operation_id="get_macro_china_vegetable_basket")
-async def get_macro_china_vegetable_basket():
+@router.get("/macro_china_vegetable_basket", operation_id="macro_china_vegetable_basket")
+async def macro_china_vegetable_basket():
     """
     国民经济运行状况-行业指数-菜篮子产品批发价格指数
 
@@ -29,8 +29,8 @@ async def get_macro_china_vegetable_basket():
 
 
 # 国民经济运行状况-行业指数-农产品批发价格总指数
-@router.get("/macro_china_agricultural_product", operation_id="get_macro_china_agricultural_product")
-async def get_macro_china_agricultural_product():
+@router.get("/macro_china_agricultural_product", operation_id="macro_china_agricultural_product")
+async def macro_china_agricultural_product():
     """
     国民经济运行状况-行业指数-农产品批发价格总指数
 
@@ -51,8 +51,8 @@ async def get_macro_china_agricultural_product():
 
 
 # 国民经济运行状况-行业指数-农副指数
-@router.get("/macro_china_agricultural_index", operation_id="get_macro_china_agricultural_index")
-async def get_macro_china_agricultural_index():
+@router.get("/macro_china_agricultural_index", operation_id="macro_china_agricultural_index")
+async def macro_china_agricultural_index():
     """
     国民经济运行状况-行业指数-农副指数
 
@@ -73,8 +73,8 @@ async def get_macro_china_agricultural_index():
 
 
 # 国民经济运行状况-行业指数-能源指数
-@router.get("/macro_china_energy_index", operation_id="get_macro_china_energy_index")
-async def get_macro_china_energy_index():
+@router.get("/macro_china_energy_index", operation_id="macro_china_energy_index")
+async def macro_china_energy_index():
     """
     国民经济运行状况-行业指数-能源指数
 
@@ -95,8 +95,8 @@ async def get_macro_china_energy_index():
 
 
 # 国民经济运行状况-行业指数-大宗商品价格
-@router.get("/macro_china_commodity_price_index", operation_id="get_macro_china_commodity_price_index")
-async def get_macro_china_commodity_price_index():
+@router.get("/macro_china_commodity_price_index", operation_id="macro_china_commodity_price_index")
+async def macro_china_commodity_price_index():
     """
     国民经济运行状况-行业指数-大宗商品价格
 
@@ -117,8 +117,8 @@ async def get_macro_china_commodity_price_index():
 
 
 # 国民经济运行状况-行业指数-费城半导体指数
-@router.get("/macro_global_sox_index", operation_id="get_macro_global_sox_index")
-async def get_macro_global_sox_index():
+@router.get("/macro_global_sox_index", operation_id="macro_global_sox_index")
+async def macro_global_sox_index():
     """
     国民经济运行状况-行业指数-费城半导体指数
 
@@ -139,8 +139,8 @@ async def get_macro_global_sox_index():
 
 
 # 国民经济运行状况-行业指数-义乌小商品指数-电子元器件
-@router.get("/macro_china_yw_electronic_index", operation_id="get_macro_china_yw_electronic_index")
-async def get_macro_china_yw_electronic_index():
+@router.get("/macro_china_yw_electronic_index", operation_id="macro_china_yw_electronic_index")
+async def macro_china_yw_electronic_index():
     """
     国民经济运行状况-行业指数-义乌小商品指数-电子元器件
 
@@ -161,8 +161,8 @@ async def get_macro_china_yw_electronic_index():
 
 
 # 国民经济运行状况-行业指数-建材指数
-@router.get("/macro_china_construction_index", operation_id="get_macro_china_construction_index")
-async def get_macro_china_construction_index():
+@router.get("/macro_china_construction_index", operation_id="macro_china_construction_index")
+async def macro_china_construction_index():
     """
     国民经济运行状况-行业指数-建材指数
 
@@ -184,8 +184,8 @@ async def get_macro_china_construction_index():
 
 # 国民经济运行状况-行业指数-建材价格指数
 @router.get("/macro_china_construction_price_index",
-            operation_id="get_macro_china_construction_price_index")
-async def get_macro_china_construction_price_index():
+            operation_id="macro_china_construction_price_index")
+async def macro_china_construction_price_index():
     """
     国民经济运行状况-行业指数-建材价格指数
 
@@ -207,8 +207,8 @@ async def get_macro_china_construction_price_index():
 
 # 国民经济运行状况-行业指数-物流景气指数
 @router.get("/macro_china_lpi_index",
-            operation_id="get_macro_china_lpi_index")
-async def get_macro_china_lpi_index():
+            operation_id="macro_china_lpi_index")
+async def macro_china_lpi_index():
     """
     国民经济运行状况-行业指数-物流景气指数
 
@@ -230,8 +230,8 @@ async def get_macro_china_lpi_index():
 
 # 国民经济运行状况-行业指数-商品零售价格指数
 @router.get("/macro_china_retail_price_index",
-            operation_id="get_macro_china_retail_price_index")
-async def get_macro_china_retail_price_index():
+            operation_id="macro_china_retail_price_index")
+async def macro_china_retail_price_index():
     """
     国民经济运行状况-行业指数-商品零售价格指数
 
@@ -253,8 +253,8 @@ async def get_macro_china_retail_price_index():
 
 # 国民经济运行状况-行业指数-国房景气指数
 @router.get("/macro_china_real_estate",
-            operation_id="get_macro_china_real_estate")
-async def get_macro_china_real_estate():
+            operation_id="macro_china_real_estate")
+async def macro_china_real_estate():
     """
     国民经济运行状况-行业指数-国房景气指数
 

@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 公募基金数据-基金行情-东方财富-ETF基金实时行情
-@router.get("/fund_etf_spot_em", operation_id="get_fund_etf_spot_em")
-async def get_fund_etf_spot_em():
+@router.get("/fund_etf_spot_em", operation_id="fund_etf_spot_em")
+async def fund_etf_spot_em():
     """
     公募基金数据-基金行情-东方财富-ETF基金实时行情
 
@@ -35,8 +35,8 @@ class FundETFSpotTHS(BaseModel):
 
 
 # 公募基金数据-基金行情-同花顺-ETF基金实时行情
-@router.post("/fund_etf_spot_ths", operation_id="post_fund_etf_spot_ths")
-def post_fund_etf_spot_ths(request: FundETFSpotTHS):
+@router.post("/fund_etf_spot_ths", operation_id="fund_etf_spot_ths")
+def fund_etf_spot_ths(request: FundETFSpotTHS):
     """
     公募基金数据-基金行情-同花顺-ETF基金实时行情
 
@@ -58,8 +58,8 @@ def post_fund_etf_spot_ths(request: FundETFSpotTHS):
 
 
 # 公募基金数据-基金行情-东方财富-LOF基金实时行情
-@router.get("/fund_lof_spot_em", operation_id="get_fund_lof_spot_em")
-async def get_fund_lof_spot_em():
+@router.get("/fund_lof_spot_em", operation_id="fund_lof_spot_em")
+async def fund_lof_spot_em():
     """
     公募基金数据-基金行情-东方财富-LOF基金实时行情
 
@@ -86,8 +86,8 @@ class FundETFSpotSina(BaseModel):
 
 
 # 公募基金数据-基金行情-新浪财经-基金实时行情
-@router.post("/fund_etf_category_sina", operation_id="post_fund_etf_category_sina")
-def post_fund_etf_category_sina(request: FundETFSpotSina):
+@router.post("/fund_etf_category_sina", operation_id="fund_etf_category_sina")
+def fund_etf_category_sina(request: FundETFSpotSina):
     """
     公募基金数据-基金行情-新浪财经-基金实时行情
 
@@ -122,8 +122,8 @@ class FundETFSpotSina(BaseModel):
 
 
 # 公募基金数据-基金行情-东方财富-ETF基金分时行情
-@router.post("/fund_etf_hist_min_em", operation_id="post_fund_etf_hist_min_em")
-def post_fund_etf_hist_min_em(request: FundETFSpotSina):
+@router.post("/fund_etf_hist_min_em", operation_id="fund_etf_hist_min_em")
+def fund_etf_hist_min_em(request: FundETFSpotSina):
     """
     公募基金数据-基金行情-新浪财经-基金实时行情
 
@@ -164,8 +164,8 @@ class FundLOFHistEM(BaseModel):
 
 
 # 公募基金数据-基金行情-东方财富-LOF基金历史行情
-@router.post("/fund_lof_hist_em", operation_id="post_fund_lof_hist_em")
-def post_fund_lof_hist_em(request: FundLOFHistEM):
+@router.post("/fund_lof_hist_em", operation_id="fund_lof_hist_em")
+def fund_lof_hist_em(request: FundLOFHistEM):
     """
     公募基金数据-基金行情-新浪财经-LOF基金历史行情
 
@@ -198,8 +198,8 @@ class FundETFHistSina(BaseModel):
 
 
 # 公募基金数据-基金行情-新浪财经-基金历史行情
-@router.post("/fund_etf_hist_sina", operation_id="post_fund_etf_hist_sina")
-def post_fund_etf_hist_sina(request: FundETFHistSina):
+@router.post("/fund_etf_hist_sina", operation_id="fund_etf_hist_sina")
+def fund_etf_hist_sina(request: FundETFHistSina):
     """
     公募基金数据-基金行情-新浪财经-基金历史行情
 

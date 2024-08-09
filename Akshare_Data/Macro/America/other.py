@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 美国-其他-美国EIA原油库存报告
 @router.get("/macro_usa_eia_crude_rate",
-            operation_id="get_macro_usa_eia_crude_rate")
-async def get_macro_usa_eia_crude_rate():
+            operation_id="macro_usa_eia_crude_rate")
+async def macro_usa_eia_crude_rate():
     """
     美国-其他-美国EIA原油库存报告
 
@@ -31,8 +31,8 @@ async def get_macro_usa_eia_crude_rate():
 
 # 美国-其他-美国初请失业金人数报告
 @router.get("/macro_usa_initial_jobless",
-            operation_id="get_macro_usa_initial_jobless")
-async def get_macro_usa_initial_jobless():
+            operation_id="macro_usa_initial_jobless")
+async def macro_usa_initial_jobless():
     """
     美国-其他-美国初请失业金人数报告
 
@@ -54,8 +54,8 @@ async def get_macro_usa_initial_jobless():
 
 # 美国-其他-美国原油产量报告
 @router.get("/macro_usa_crude_inner",
-            operation_id="get_macro_usa_crude_inner")
-async def get_macro_usa_crude_inner():
+            operation_id="macro_usa_crude_inner")
+async def macro_usa_crude_inner():
     """
     美国-其他-美国原油产量报告
 

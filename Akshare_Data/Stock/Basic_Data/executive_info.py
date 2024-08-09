@@ -12,8 +12,8 @@ class ShSymbolRequest(BaseModel):
 
 
 # 上海证券交易所-董监高人员股份变动
-@router.post("/stock_share_hold_change_sse", operation_id="post_stock_share_hold_change_sse")
-async def post_stock_share_hold_change_sse(request: ShSymbolRequest):
+@router.post("/stock_share_hold_change_sse", operation_id="stock_share_hold_change_sse")
+async def stock_share_hold_change_sse(request: ShSymbolRequest):
     """
     上海证券交易所-公司监管-董董监高人员股份变动
 
@@ -34,8 +34,8 @@ async def post_stock_share_hold_change_sse(request: ShSymbolRequest):
 
 
 # 深圳证券交易所-董监高人员股份变动
-@router.post("/stock_share_hold_change_szse", operation_id="post_stock_share_hold_change_szse")
-async def post_stock_share_hold_change_szse(request: ShSymbolRequest):
+@router.post("/stock_share_hold_change_szse", operation_id="stock_share_hold_change_szse")
+async def stock_share_hold_change_szse(request: ShSymbolRequest):
     """
     深圳证券交易所-监管信息公开-董监高人员股份变动
 
@@ -56,8 +56,8 @@ async def post_stock_share_hold_change_szse(request: ShSymbolRequest):
 
 
 # 北京证券交易所-董监高及相关人员持股变动
-@router.post("/stock_share_hold_change_bse", operation_id="post_stock_share_hold_change_bse")
-async def post_stock_share_hold_change_bse(request: ShSymbolRequest):
+@router.post("/stock_share_hold_change_bse", operation_id="stock_share_hold_change_bse")
+async def stock_share_hold_change_bse(request: ShSymbolRequest):
     """
     北京证券交易所-监管信息-董监高及相关人员持股变动
 
@@ -82,8 +82,8 @@ class JuChaoGaoGuanSymbolRequest(BaseModel):
 
 
 # 巨潮资讯-高管持股变动明细
-@router.post("/stock_hold_management_detail_cninfo", operation_id="post_stock_hold_management_detail_cninfo")
-async def post_stock_hold_management_detail_cninfo(request: JuChaoGaoGuanSymbolRequest):
+@router.post("/stock_hold_management_detail_cninfo", operation_id="stock_hold_management_detail_cninfo")
+async def stock_hold_management_detail_cninfo(request: JuChaoGaoGuanSymbolRequest):
     """
     巨潮资讯-股东股本-高管持股变动明细
 
@@ -104,8 +104,8 @@ async def post_stock_hold_management_detail_cninfo(request: JuChaoGaoGuanSymbolR
 
 
 # 东方财富-董监高及相关人员持股变动明细
-@router.get("/stock_hold_management_detail_em", operation_id="get_stock_hold_management_detail_em")
-def get_stock_hold_management_detail_em():
+@router.get("/stock_hold_management_detail_em", operation_id="stock_hold_management_detail_em")
+def stock_hold_management_detail_em():
     """
     东方财富-高管持股-董监高及相关人员持股变动明细
 

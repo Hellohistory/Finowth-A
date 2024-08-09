@@ -12,8 +12,8 @@ class SymbolRequest(BaseModel):
 
 
 # 新浪财经-财务报表-关键指标
-@router.post("/stock_financial_abstract", operation_id="post_stock_financial_abstract")
-async def post_stock_financial_abstract(request: SymbolRequest):
+@router.post("/stock_financial_abstract", operation_id="stock_financial_abstract")
+async def stock_financial_abstract(request: SymbolRequest):
     """
     新浪财经-财务报表-关键指标
 
@@ -40,8 +40,8 @@ class TongHuaShunSymbolIndicatorRequest(BaseModel):
 
 
 # 同花顺-财务指标-主要指标
-@router.post("/stock_financial_abstract_ths", operation_id="post_stock_financial_abstract_ths")
-async def post_stock_financial_abstract_ths(request: TongHuaShunSymbolIndicatorRequest):
+@router.post("/stock_financial_abstract_ths", operation_id="stock_financial_abstract_ths")
+async def stock_financial_abstract_ths(request: TongHuaShunSymbolIndicatorRequest):
     """
     同花顺-财务指标-主要指标
 
@@ -72,8 +72,8 @@ class XinLangFinancialAnalysis(BaseModel):
 
 # 新浪财经-财务分析-财务指标
 @router.post("/stock_financial_analysis_indicator",
-             operation_id="post_stock_financial_analysis_indicator")
-async def post_stock_financial_analysis_indicator(request: XinLangFinancialAnalysis):
+             operation_id="stock_financial_analysis_indicator")
+async def stock_financial_analysis_indicator(request: XinLangFinancialAnalysis):
     """
     新浪财经-财务分析-财务指标
 
@@ -104,8 +104,8 @@ class DongCaiSymolIndicatorRequest(BaseModel):
 
 # 东方财富-港股-财务分析-主要指标
 @router.post("/stock_financial_hk_analysis_indicator_em",
-             operation_id="post_stock_financial_hk_analysis_indicator_em")
-async def post_stock_financial_hk_analysis_indicator_em(request: DongCaiSymolIndicatorRequest):
+             operation_id="stock_financial_hk_analysis_indicator_em")
+async def stock_financial_hk_analysis_indicator_em(request: DongCaiSymolIndicatorRequest):
     """
     东方财富-港股-财务分析-主要指标
 

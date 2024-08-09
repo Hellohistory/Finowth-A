@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 欧元区宏观-领先指标-欧元区ZEW经济景气指数报告
 @router.get("/macro_euro_zew_economic_sentiment",
-            operation_id="get_macro_euro_zew_economic_sentiment")
-async def get_macro_euro_zew_economic_sentiment():
+            operation_id="macro_euro_zew_economic_sentiment")
+async def macro_euro_zew_economic_sentiment():
     """
     欧元区宏观-领先指标-欧元区ZEW经济景气指数报告
 
@@ -31,8 +31,8 @@ async def get_macro_euro_zew_economic_sentiment():
 
 # 欧元区宏观-领先指标-欧元区Sentix投资者信心指数报告
 @router.get("/macro_euro_sentix_investor_confidence",
-            operation_id="get_macro_euro_sentix_investor_confidence")
-async def get_macro_euro_sentix_investor_confidence():
+            operation_id="macro_euro_sentix_investor_confidence")
+async def macro_euro_sentix_investor_confidence():
     """
     欧元区宏观-领先指标-欧元区Sentix投资者信心指数报告
 

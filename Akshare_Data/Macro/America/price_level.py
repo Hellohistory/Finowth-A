@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 美国-物价水平-美国CPI月率报告
 @router.get("/macro_usa_cpi_monthly",
-            operation_id="get_macro_usa_cpi_monthly")
-async def get_macro_usa_cpi_monthly():
+            operation_id="macro_usa_cpi_monthly")
+async def macro_usa_cpi_monthly():
     """
     美国-物价水平-美国CPI月率报告
 
@@ -31,8 +31,8 @@ async def get_macro_usa_cpi_monthly():
 
 # 美国-物价水平-美国CPI年率报告
 @router.get("/macro_usa_cpi_yoy",
-            operation_id="get_macro_usa_cpi_yoy")
-async def get_macro_usa_cpi_yoy():
+            operation_id="macro_usa_cpi_yoy")
+async def macro_usa_cpi_yoy():
     """
     美国-物价水平-美国CPI年率报告
 
@@ -54,8 +54,8 @@ async def get_macro_usa_cpi_yoy():
 
 # 美国-物价水平-美国核心CPI月率报告
 @router.get("/macro_usa_core_cpi_monthly",
-            operation_id="get_macro_usa_core_cpi_monthly")
-async def get_macro_usa_core_cpi_monthly():
+            operation_id="macro_usa_core_cpi_monthly")
+async def macro_usa_core_cpi_monthly():
     """
     美国-物价水平-美国核心CPI月率报告
 
@@ -77,8 +77,8 @@ async def get_macro_usa_core_cpi_monthly():
 
 # 美国-物价水平-美国零售销售月率报告
 @router.get("/macro_usa_retail_sales",
-            operation_id="get_macro_usa_retail_sales")
-async def get_macro_usa_retail_sales():
+            operation_id="macro_usa_retail_sales")
+async def macro_usa_retail_sales():
     """
     美国-物价水平-美国零售销售月率报告
 
@@ -100,8 +100,8 @@ async def get_macro_usa_retail_sales():
 
 # 美国-物价水平-美国进口物价指数报告
 @router.get("/macro_usa_import_price",
-            operation_id="get_macro_usa_import_price")
-async def get_macro_usa_import_price():
+            operation_id="macro_usa_import_price")
+async def macro_usa_import_price():
     """
     美国-物价水平-美国进口物价指数报告
 
@@ -123,8 +123,8 @@ async def get_macro_usa_import_price():
 
 # 美国-物价水平-美国出口价格指数报告
 @router.get("/macro_usa_export_price",
-            operation_id="get_macro_usa_export_price")
-async def get_macro_usa_export_price():
+            operation_id="macro_usa_export_price")
+async def macro_usa_export_price():
     """
     美国-物价水平-美国出口价格指数报告
 

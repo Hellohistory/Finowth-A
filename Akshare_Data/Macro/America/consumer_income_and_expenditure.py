@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 美国-消费者收入与支出-美国核心PCE物价指数年率报告
 @router.get("/macro_usa_core_pce_price",
-            operation_id="get_macro_usa_core_pce_price")
-async def get_macro_usa_core_pce_price():
+            operation_id="macro_usa_core_pce_price")
+async def macro_usa_core_pce_price():
     """
     美国-消费者收入与支出-美国核心PCE物价指数年率报告
 
@@ -31,8 +31,8 @@ async def get_macro_usa_core_pce_price():
 
 # 美国-消费者收入与支出-美国实际个人消费支出季率初值报告
 @router.get("/macro_usa_real_consumer_spending",
-            operation_id="get_macro_usa_real_consumer_spending")
-async def get_macro_usa_real_consumer_spending():
+            operation_id="macro_usa_real_consumer_spending")
+async def macro_usa_real_consumer_spending():
     """
     美国-消费者收入与支出-美国核心PCE物价指数年率报告
 

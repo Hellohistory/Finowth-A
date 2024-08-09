@@ -10,8 +10,8 @@ class NewsRequest(BaseModel):
     date: str = Field(..., title="指定时间", description="例：20240725，数据开始于20070101")
 
 
-@router.post("/news_xinwenlianbo_text", operation_id="post_news_xinwenlianbo_text")
-async def post_news_xinwenlianbo_text(request: NewsRequest):
+@router.post("/news_xinwenlianbo_text", operation_id="news_xinwenlianbo_text")
+async def news_xinwenlianbo_text(request: NewsRequest):
     """
     新闻_新闻联播文字稿
 

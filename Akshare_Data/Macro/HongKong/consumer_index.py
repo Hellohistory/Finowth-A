@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 中国香港-消费者指数-消费者物价指数
 @router.get("/macro_china_hk_cpi",
-            operation_id="get_macro_china_hk_cpi")
-async def get_macro_china_hk_cpi():
+            operation_id="macro_china_hk_cpi")
+async def macro_china_hk_cpi():
     """
     中国香港-消费者指数-消费者物价指数
 
@@ -31,8 +31,8 @@ async def get_macro_china_hk_cpi():
 
 # 中国香港-消费者指数-消费者物价指数年率
 @router.get("/macro_china_hk_cpi_ratio",
-            operation_id="get_macro_china_hk_cpi_ratio")
-async def get_macro_china_hk_cpi_ratio():
+            operation_id="macro_china_hk_cpi_ratio")
+async def macro_china_hk_cpi_ratio():
     """
     中国香港-消费者指数-消费者物价指数年率
 

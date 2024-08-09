@@ -13,8 +13,8 @@ class JuChaoSymbolDateRequest(BaseModel):
 
 
 # 巨潮资讯-数据中心-行业分析-行业市盈率
-@router.post("/stock_industry_pe_ratio_cninfo", operation_id="post_stock_industry_pe_ratio_cninfo")
-async def gpost_stock_industry_pe_ratio_cninfo(request: JuChaoSymbolDateRequest):
+@router.post("/stock_industry_pe_ratio_cninfo", operation_id="stock_industry_pe_ratio_cninfo")
+async def gstock_industry_pe_ratio_cninfo(request: JuChaoSymbolDateRequest):
     """
     巨潮资讯-行业市盈率
 
@@ -40,8 +40,8 @@ class LeGuSymbolRequest(BaseModel):
 
 
 # 乐咕乐股-股息率-A 股股息率
-@router.post("/stock_a_gxl_lg", operation_id="post_stock_a_gxl_lg")
-async def post_stock_a_gxl_lg(request: LeGuSymbolRequest):
+@router.post("/stock_a_gxl_lg", operation_id="stock_a_gxl_lg")
+async def stock_a_gxl_lg(request: LeGuSymbolRequest):
     """
     乐咕乐股-A 股股息率
 
@@ -62,8 +62,8 @@ async def post_stock_a_gxl_lg(request: LeGuSymbolRequest):
 
 
 # 乐咕乐股-股息率-恒生指数股息率
-@router.get("/stock_hk_gxl_lg", operation_id="get_stock_hk_gxl_lg")
-def get_stock_hk_gxl_lg():
+@router.get("/stock_hk_gxl_lg", operation_id="stock_hk_gxl_lg")
+def stock_hk_gxl_lg():
     """
     乐咕乐股-股息率-恒生指数股息率
 
@@ -84,8 +84,8 @@ def get_stock_hk_gxl_lg():
 
 
 # 乐咕乐股-大盘拥挤度
-@router.get("/stock_a_congestion_lg", operation_id="get_stock_a_congestion_lg")
-def get_stock_a_congestion_lg():
+@router.get("/stock_a_congestion_lg", operation_id="stock_a_congestion_lg")
+def stock_a_congestion_lg():
     """
     乐咕乐股-大盘拥挤度
 
@@ -111,8 +111,8 @@ def get_stock_a_congestion_lg():
 
 
 # 乐咕乐股-股债利差
-@router.get("/stock_ebs_lg", operation_id="get_stock_ebs_lg")
-def get_stock_ebs_lg():
+@router.get("/stock_ebs_lg", operation_id="stock_ebs_lg")
+def stock_ebs_lg():
     """
     乐咕乐股-股债利差
 
@@ -133,8 +133,8 @@ def get_stock_ebs_lg():
 
 
 # 乐估乐股-底部研究-巴菲特指标
-@router.get("/stock_buffett_index_lg", operation_id="get_stock_buffett_index_lg")
-def get_stock_buffett_index_lg():
+@router.get("/stock_buffett_index_lg", operation_id="stock_buffett_index_lg")
+def stock_buffett_index_lg():
     """
     乐估乐股-底部研究-巴菲特指标
 
@@ -154,8 +154,8 @@ def get_stock_buffett_index_lg():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stock_a_ttm_lyr", operation_id="get_stock_a_ttm_lyr")
-def get_stock_a_ttm_lyr():
+@router.get("/stock_a_ttm_lyr", operation_id="stock_a_ttm_lyr")
+def stock_a_ttm_lyr():
     """
     乐咕乐股-A 股等权重市盈率与中位数市盈率
 
@@ -194,8 +194,8 @@ def get_stock_a_ttm_lyr():
 
 
 # 乐咕乐股-A 股等权重与中位数市净率
-@router.get("/stock_a_all_pb", operation_id="get_stock_a_all_pb")
-def get_stock_a_all_pb():
+@router.get("/stock_a_all_pb", operation_id="stock_a_all_pb")
+def stock_a_all_pb():
     """
     乐咕乐股-A 股等权重与中位数市净率
 
@@ -232,8 +232,8 @@ class LeGuZhuBanSymbolRequest(BaseModel):
 
 
 # 乐咕乐股-主板市盈率
-@router.post("/stock_market_pe_lg", operation_id="post_stock_market_pe_lg")
-async def post_stock_market_pe_lg(request: LeGuZhuBanSymbolRequest):
+@router.post("/stock_market_pe_lg", operation_id="stock_market_pe_lg")
+async def stock_market_pe_lg(request: LeGuZhuBanSymbolRequest):
     """
     乐咕乐股-主板市盈率
 
@@ -260,8 +260,8 @@ class LeGuZhiShuSymbolRequest(BaseModel):
 
 
 # 乐咕乐股-指数市盈率
-@router.post("/stock_index_pe_lg", operation_id="post_stock_index_pe_lg")
-async def post_stock_index_pe_lg(request: LeGuZhiShuSymbolRequest):
+@router.post("/stock_index_pe_lg", operation_id="stock_index_pe_lg")
+async def stock_index_pe_lg(request: LeGuZhiShuSymbolRequest):
     """
     乐咕乐股-指数市盈率
 
@@ -282,8 +282,8 @@ async def post_stock_index_pe_lg(request: LeGuZhiShuSymbolRequest):
 
 
 # 乐咕乐股-主板市净率
-@router.post("/stock_market_pb_lg", operation_id="post_stock_market_pb_lg")
-async def post_stock_market_pb_lg(request: LeGuZhuBanSymbolRequest):
+@router.post("/stock_market_pb_lg", operation_id="stock_market_pb_lg")
+async def stock_market_pb_lg(request: LeGuZhuBanSymbolRequest):
     """
     乐咕乐股-主板市净率
 
@@ -304,8 +304,8 @@ async def post_stock_market_pb_lg(request: LeGuZhuBanSymbolRequest):
 
 
 # 乐咕乐股-指数市净率
-@router.post("/stock_index_pb_lg", operation_id="post_stock_index_pb_lg")
-async def post_stock_index_pb_lg(request: LeGuZhiShuSymbolRequest):
+@router.post("/stock_index_pb_lg", operation_id="stock_index_pb_lg")
+async def stock_index_pb_lg(request: LeGuZhiShuSymbolRequest):
     """
     乐咕乐股-指数市净率
 
@@ -333,8 +333,8 @@ class SymbolIndicatorPeriodRequest(BaseModel):
 
 
 # 百度股市通-A 股-财务报表-估值数据
-@router.post("/stock_zh_valuation_baidu", operation_id="post_stock_zh_valuation_baidu")
-async def post_stock_zh_valuation_baidu(request: SymbolIndicatorPeriodRequest):
+@router.post("/stock_zh_valuation_baidu", operation_id="stock_zh_valuation_baidu")
+async def stock_zh_valuation_baidu(request: SymbolIndicatorPeriodRequest):
     """
     百度股市通-A 股-财务报表-估值数据
 

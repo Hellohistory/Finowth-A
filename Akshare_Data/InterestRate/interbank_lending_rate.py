@@ -17,8 +17,8 @@ class DongCaiBankSymbolRequest(BaseModel):
 
 
 # 东方财富-拆借利率一览-具体市场的具体品种的具体指标的拆借利率数据
-@router.post("/interest_rate_interbank", operation_id="post_interest_rate_interbank")
-async def post_interest_rate_interbank(request: DongCaiBankSymbolRequest):
+@router.post("/interest_rate_interbank", operation_id="interest_rate_interbank")
+async def interest_rate_interbank(request: DongCaiBankSymbolRequest):
     """
     接口: rate_interbank
 
@@ -161,9 +161,9 @@ data = [
 
 @router.get("/interest_rate_interbank_market_data",
             response_model=List[MarketData],
-            operation_id="get_interest_rate_interbank_market_data"
+            operation_id="interest_rate_interbank_market_data"
             )
-def get_market_data():
+def market_data():
     """
     接口: interest_rate_interbank_market_data
 

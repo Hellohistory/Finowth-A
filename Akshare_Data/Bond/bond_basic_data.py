@@ -12,8 +12,8 @@ class BondPageRequest(BaseModel):
 
 
 # 债券-债券基础数据-银行间市场债券发行基础数据
-@router.post("/bond_debt_nafmii", operation_id="post_bond_debt_nafmii")
-def post_bond_debt_nafmii(request: BondPageRequest):
+@router.post("/bond_debt_nafmii", operation_id="bond_debt_nafmii")
+def bond_debt_nafmii(request: BondPageRequest):
     """
     债券-上交所债券-债券现券市场概览
 
@@ -35,8 +35,8 @@ def post_bond_debt_nafmii(request: BondPageRequest):
 
 
 # 债券-中国债券市场行情数据-现券市场做市报价
-@router.get("/bond_spot_quote", operation_id="get_bond_spot_quote")
-async def get_bond_spot_quote():
+@router.get("/bond_spot_quote", operation_id="bond_spot_quote")
+async def bond_spot_quote():
     """
     债券-上交所债券-债券现券市场概览
 
@@ -58,8 +58,8 @@ async def get_bond_spot_quote():
 
 
 # 债券-中国债券市场行情数据-现券市场成交行情
-@router.get("/bond_spot_deal", operation_id="get_bond_spot_deal")
-async def get_bond_spot_deal():
+@router.get("/bond_spot_deal", operation_id="bond_spot_deal")
+async def bond_spot_deal():
     """
     债券-上交所债券-现券市场成交行情
 
@@ -86,8 +86,8 @@ class BondChinaYield(BaseModel):
 
 
 # 债券-债券基础数据-国债及其他债券收益率曲线
-@router.post("/bond_china_yield", operation_id="post_bond_china_yield")
-def post_bond_china_yield(request: BondChinaYield):
+@router.post("/bond_china_yield", operation_id="bond_china_yield")
+def bond_china_yield(request: BondChinaYield):
     """
     债券-上交所债券-国债及其他债券收益率曲线
 

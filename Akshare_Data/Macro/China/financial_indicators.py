@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 国民经济运行状况-金融指标-外汇储备(亿美元)
-@router.get("/macro_china_fx_reserves_yearly", operation_id="get_macro_china_fx_reserves_yearly")
-async def get_macro_china_fx_reserves_yearly():
+@router.get("/macro_china_fx_reserves_yearly", operation_id="macro_china_fx_reserves_yearly")
+async def macro_china_fx_reserves_yearly():
     """
     国民经济运行状况-金融指标-外汇储备(亿美元)
 
@@ -30,8 +30,8 @@ async def get_macro_china_fx_reserves_yearly():
 
 
 # 国民经济运行状况-金融指标-M2货币供应年率
-@router.get("/macro_china_m2_yearly", operation_id="get_macro_china_m2_yearly")
-async def get_macro_china_m2_yearly():
+@router.get("/macro_china_m2_yearly", operation_id="macro_china_m2_yearly")
+async def macro_china_m2_yearly():
     """
     国民经济运行状况-金融指标-M2货币供应年率
 
@@ -52,8 +52,8 @@ async def get_macro_china_m2_yearly():
 
 
 # 国民经济运行状况-金融指标-新房价指数
-@router.get("/macro_china_new_house_price", operation_id="get_macro_china_new_house_price")
-async def get_macro_china_new_house_price():
+@router.get("/macro_china_new_house_price", operation_id="macro_china_new_house_price")
+async def macro_china_new_house_price():
     """
     国民经济运行状况-金融指标-新房价指数
 
@@ -74,8 +74,8 @@ async def get_macro_china_new_house_price():
 
 
 # 国民经济运行状况-金融指标-企业景气及企业家信心指数
-@router.get("/macro_china_enterprise_boom_index", operation_id="get_macro_china_enterprise_boom_index")
-async def get_macro_china_enterprise_boom_index():
+@router.get("/macro_china_enterprise_boom_index", operation_id="macro_china_enterprise_boom_index")
+async def macro_china_enterprise_boom_index():
     """
     国民经济运行状况-金融指标-企业景气及企业家信心指数
 
@@ -96,8 +96,8 @@ async def get_macro_china_enterprise_boom_index():
 
 
 # 国民经济运行状况-金融指标-全国税收收入
-@router.get("/macro_china_national_tax_receipts", operation_id="get_macro_china_national_tax_receipts")
-async def get_macro_china_national_tax_receipts():
+@router.get("/macro_china_national_tax_receipts", operation_id="macro_china_national_tax_receipts")
+async def macro_china_national_tax_receipts():
     """
     国民经济运行状况-金融指标-全国税收收入
 
@@ -118,8 +118,8 @@ async def get_macro_china_national_tax_receipts():
 
 
 # 国民经济运行状况-金融指标-银行理财产品发行数量
-@router.get("/macro_china_bank_financing", operation_id="get_macro_china_bank_financing")
-async def get_macro_china_bank_financing():
+@router.get("/macro_china_bank_financing", operation_id="macro_china_bank_financing")
+async def macro_china_bank_financing():
     """
     国民经济运行状况-金融指标-银行理财产品发行数量
 
@@ -140,8 +140,8 @@ async def get_macro_china_bank_financing():
 
 
 # 国民经济运行状况-金融指标-原保险保费收入
-@router.get("/macro_china_insurance_income", operation_id="get_macro_china_insurance_income")
-async def get_macro_china_insurance_income():
+@router.get("/macro_china_insurance_income", operation_id="macro_china_insurance_income")
+async def macro_china_insurance_income():
     """
     国民经济运行状况-金融指标-原保险保费收入
 
@@ -162,8 +162,8 @@ async def get_macro_china_insurance_income():
 
 
 # 国民经济运行状况-金融指标-原保险保费收入
-@router.get("/macro_china_mobile_number", operation_id="get_macro_china_mobile_number")
-async def get_macro_china_mobile_number():
+@router.get("/macro_china_mobile_number", operation_id="macro_china_mobile_number")
+async def macro_china_mobile_number():
     """
     国民经济运行状况-金融指标-原保险保费收入
 
@@ -185,8 +185,8 @@ async def get_macro_china_mobile_number():
 
 # 国民经济运行状况-金融指标-中国城镇固定资产投资
 @router.get("/macro_china_gdzctz",
-            operation_id="get_macro_china_gdzctz")
-async def get_macro_china_gdzctz():
+            operation_id="macro_china_gdzctz")
+async def macro_china_gdzctz():
     """
     国民经济运行状况-金融指标-中国城镇固定资产投资
 
@@ -212,8 +212,8 @@ class MacroChinaSwapRate(BaseModel):
 
 
 # 国民经济运行状况-金融指标-FR007利率互换曲线历史数据
-@router.post("/macro_china_swap_rate", operation_id="post_macro_china_swap_rate")
-async def post_macro_china_swap_rate(request: MacroChinaSwapRate):
+@router.post("/macro_china_swap_rate", operation_id="macro_china_swap_rate")
+async def macro_china_swap_rate(request: MacroChinaSwapRate):
     """
     国民经济运行状况-金融指标-FR007利率互换曲线历史数据
 
@@ -239,8 +239,8 @@ async def post_macro_china_swap_rate(request: MacroChinaSwapRate):
 
 # 国民经济运行状况-金融指标-中国货币供应量
 @router.get("/macro_china_money_supply",
-            operation_id="get_macro_china_money_supply")
-async def get_macro_china_money_supply():
+            operation_id="macro_china_money_supply")
+async def macro_china_money_supply():
     """
     国民经济运行状况-金融指标-中国货币供应量
 
@@ -262,8 +262,8 @@ async def get_macro_china_money_supply():
 
 # 国民经济运行状况-金融指标-全国股票交易统计表
 @router.get("/macro_china_money_supply",
-            operation_id="get_macro_china_stock_market_cap")
-async def get_macro_china_stock_market_cap():
+            operation_id="macro_china_stock_market_cap")
+async def macro_china_stock_market_cap():
     """
     国民经济运行状况-金融指标-全国股票交易统计表
 
@@ -285,8 +285,8 @@ async def get_macro_china_stock_market_cap():
 
 # 国民经济运行状况-金融指标-人民币汇率中间价报告
 @router.get("/macro_china_rmb",
-            operation_id="get_macro_china_rmb")
-async def get_macro_china_rmb():
+            operation_id="macro_china_rmb")
+async def macro_china_rmb():
     """
     国民经济运行状况-金融指标-人民币汇率中间价报告
 

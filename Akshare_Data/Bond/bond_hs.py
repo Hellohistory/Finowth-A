@@ -13,8 +13,8 @@ class BondZHSpot(BaseModel):
 
 
 # 债券-沪深债券-实时行情数据
-@router.post("/bond_zh_hs_spot", operation_id="post_bond_zh_hs_spot")
-async def post_bond_zh_hs_spot(request: BondZHSpot):
+@router.post("/bond_zh_hs_spot", operation_id="bond_zh_hs_spot")
+async def bond_zh_hs_spot(request: BondZHSpot):
     """
     债券-沪深债券-实时行情数据
 
@@ -43,8 +43,8 @@ class BondSymbolSpot(BaseModel):
 
 
 # 债券-沪深债券-实时行情数据
-@router.post("/bond_zh_hs_daily", operation_id="post_bond_zh_hs_daily")
-async def post_bond_zh_hs_daily(request: BondSymbolSpot):
+@router.post("/bond_zh_hs_daily", operation_id="bond_zh_hs_daily")
+async def bond_zh_hs_daily(request: BondSymbolSpot):
     """
     债券-沪深债券-历史行情数据
 

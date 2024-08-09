@@ -16,8 +16,8 @@ class Sunrise(BaseModel):
 
 # 另类数据-日出和日落-日出和日落-天
 @router.post("/sunrise_daily",
-             operation_id="post_sunrise_daily")
-def post_sunrise_daily(request: Sunrise):
+             operation_id="sunrise_daily")
+def sunrise_daily(request: Sunrise):
     """
     另类数据-日出和日落-日出和日落-天
 
@@ -43,8 +43,8 @@ def post_sunrise_daily(request: Sunrise):
 
 # 另类数据-日出和日落-日出和日落-月
 @router.post("/sunrise_monthly",
-             operation_id="post_sunrise_monthly")
-def post_sunrise_monthly(request: Sunrise):
+             operation_id="sunrise_monthly")
+def sunrise_monthly(request: Sunrise):
     """
     另类数据-日出和日落-日出和日落-月
 

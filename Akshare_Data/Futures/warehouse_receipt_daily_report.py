@@ -13,8 +13,8 @@ class FuturesCzceWarehouseReceipt(BaseModel):
 
 # 期货数据-仓单日报-仓单日报-郑州商品交易所
 @router.post("/futures_czce_warehouse_receipt",
-             operation_id="post_futures_czce_warehouse_receipt")
-def post_futures_czce_warehouse_receipt(request: FuturesCzceWarehouseReceipt):
+             operation_id="futures_czce_warehouse_receipt")
+def futures_czce_warehouse_receipt(request: FuturesCzceWarehouseReceipt):
     """
     期货数据-仓单日报-仓单日报-郑州商品交易所
 

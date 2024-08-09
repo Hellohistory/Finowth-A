@@ -8,8 +8,8 @@ router = APIRouter()
 
 # 美国-产业指标-服务业-美国Markit服务业PMI初值报告
 @router.get("/macro_usa_services_pmi",
-            operation_id="get_macro_usa_services_pmi")
-async def get_macro_usa_services_pmi():
+            operation_id="macro_usa_services_pmi")
+async def macro_usa_services_pmi():
     """
     美国-产业指标-服务业-美国Markit服务业PMI初值报告
 
@@ -31,8 +31,8 @@ async def get_macro_usa_services_pmi():
 
 # 美国-产业指标-服务业-美国商业库存月率报告
 @router.get("/macro_usa_business_inventories",
-            operation_id="get_macro_usa_business_inventories")
-async def get_macro_usa_business_inventories():
+            operation_id="macro_usa_business_inventories")
+async def macro_usa_business_inventories():
     """
     美国-产业指标-服务业-美国商业库存月率报告
 
@@ -54,8 +54,8 @@ async def get_macro_usa_business_inventories():
 
 # 美国-产业指标-服务业-美国ISM非制造业PMI报告
 @router.get("/macro_usa_ism_non_pmi",
-            operation_id="get_macro_usa_ism_non_pmi")
-async def get_macro_usa_ism_non_pmi():
+            operation_id="macro_usa_ism_non_pmi")
+async def macro_usa_ism_non_pmi():
     """
     美国-产业指标-服务业-美国ISM非制造业PMI报告
 

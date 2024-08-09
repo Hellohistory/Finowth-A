@@ -12,8 +12,8 @@ class SymbolRequest(BaseModel):
 
 
 # 同花顺-数据中心-资金流向-个股资金流
-@router.post("/stock_fund_flow_individual", operation_id="post_stock_fund_flow_individual")
-async def post_stock_fund_flow_individual(request: SymbolRequest):
+@router.post("/stock_fund_flow_individual", operation_id="stock_fund_flow_individual")
+async def stock_fund_flow_individual(request: SymbolRequest):
     """
     同花顺-资金流向-个股资金流
 
@@ -34,8 +34,8 @@ async def post_stock_fund_flow_individual(request: SymbolRequest):
 
 
 # 同花顺-数据中心-资金流向-概念资金流
-@router.post("/stock_fund_flow_concept", operation_id="post_stock_fund_flow_concept")
-async def post_stock_fund_flow_concept(request: SymbolRequest):
+@router.post("/stock_fund_flow_concept", operation_id="stock_fund_flow_concept")
+async def stock_fund_flow_concept(request: SymbolRequest):
     """
     同花顺-资金流向-概念资金流
 
@@ -56,8 +56,8 @@ async def post_stock_fund_flow_concept(request: SymbolRequest):
 
 
 # 同花顺-数据中心-资金流向-行业资金流
-@router.post("/stock_fund_flow_industry", operation_id="post_stock_fund_flow_industry")
-async def post_stock_fund_flow_industry(request: SymbolRequest):
+@router.post("/stock_fund_flow_industry", operation_id="stock_fund_flow_industry")
+async def stock_fund_flow_industry(request: SymbolRequest):
     """
     同花顺-资金流向-行业资金流
 
@@ -78,8 +78,8 @@ async def post_stock_fund_flow_industry(request: SymbolRequest):
 
 
 # 同花顺-数据中心-资金流向-大单追踪
-@router.get("/stock_fund_flow_big_deal", operation_id="get_stock_fund_flow_big_deal")
-def get_stock_fund_flow_big_deal():
+@router.get("/stock_fund_flow_big_deal", operation_id="stock_fund_flow_big_deal")
+def stock_fund_flow_big_deal():
     """
     同花顺-资金流向-大单追踪
 
@@ -105,8 +105,8 @@ class SymbolMarketRequest(BaseModel):
 
 
 # 东方财富-数据中心-个股资金流向
-@router.post("/stock_individual_fund_flow", operation_id="post_stock_individual_fund_flow")
-async def post_stock_individual_fund_flow(request: SymbolMarketRequest):
+@router.post("/stock_individual_fund_flow", operation_id="stock_individual_fund_flow")
+async def stock_individual_fund_flow(request: SymbolMarketRequest):
     """
     东方财富-个股资金流向
 
@@ -131,8 +131,8 @@ class IndicatorRequest(BaseModel):
 
 
 # 东方财富-数据中心-资金流向-排名
-@router.post("/stock_individual_fund_flow_rank", operation_id="post_stock_individual_fund_flow_rank")
-async def post_stock_individual_fund_flow_rank(request: IndicatorRequest):
+@router.post("/stock_individual_fund_flow_rank", operation_id="stock_individual_fund_flow_rank")
+async def stock_individual_fund_flow_rank(request: IndicatorRequest):
     """
     东方财富-资金流向-排名
 
@@ -153,8 +153,8 @@ async def post_stock_individual_fund_flow_rank(request: IndicatorRequest):
 
 
 # 东方财富-数据中心-资金流向-大盘
-@router.get("/stock_market_fund_flow", operation_id="get_stock_market_fund_flow")
-def get_stock_market_fund_flow():
+@router.get("/stock_market_fund_flow", operation_id="stock_market_fund_flow")
+def stock_market_fund_flow():
     """
     东方财富-资金流向-大盘
 
@@ -180,8 +180,8 @@ class SectorRequest(BaseModel):
 
 
 # 东方财富-数据中心-资金流向-板块资金流-排名
-@router.post("/stock_sector_fund_flow_rank", operation_id="post_stock_sector_fund_flow_rank")
-async def post_stock_sector_fund_flow_rank(request: SectorRequest):
+@router.post("/stock_sector_fund_flow_rank", operation_id="stock_sector_fund_flow_rank")
+async def stock_sector_fund_flow_rank(request: SectorRequest):
     """
     东方财富-资金流向-板块资金流-排名
 
@@ -208,8 +208,8 @@ class DongCaiZhuLiSymbolRequest(BaseModel):
 
 
 # 东方财富-数据中心-资金流向-主力净流入排名
-@router.post("/stock_main_fund_flow", operation_id="post_stock_main_fund_flow")
-async def post_stock_main_fund_flow(request: DongCaiZhuLiSymbolRequest):
+@router.post("/stock_main_fund_flow", operation_id="stock_main_fund_flow")
+async def stock_main_fund_flow(request: DongCaiZhuLiSymbolRequest):
     """
     东方财富-资金流向-主力净流入排名
 
@@ -236,8 +236,8 @@ class DongCaiZiJinSymbolRequest(BaseModel):
 
 
 # 东方财富-数据中心-资金流向-行业资金流-xx行业个股资金流
-@router.post("/stock_sector_fund_flow_summary", operation_id="post_stock_sector_fund_flow_summary")
-async def post_stock_sector_fund_flow_summary(request: DongCaiZiJinSymbolRequest):
+@router.post("/stock_sector_fund_flow_summary", operation_id="stock_sector_fund_flow_summary")
+async def stock_sector_fund_flow_summary(request: DongCaiZiJinSymbolRequest):
     """
     东方财富-资金流向-行业资金流-xx行业个股资金流
 
@@ -264,8 +264,8 @@ class DongCaiZiJinHistorySymbolRequest(BaseModel):
 
 
 # 东方财富-数据中心-资金流向-行业资金流-行业历史资金流
-@router.post("/stock_sector_fund_flow_hist", operation_id="post_stock_sector_fund_flow_hist")
-async def post_stock_sector_fund_flow_hist(request: DongCaiZiJinHistorySymbolRequest):
+@router.post("/stock_sector_fund_flow_hist", operation_id="stock_sector_fund_flow_hist")
+async def stock_sector_fund_flow_hist(request: DongCaiZiJinHistorySymbolRequest):
     """
     东方财富-资金流向-行业资金流-行业历史资金流
 
@@ -291,8 +291,8 @@ class DongCaiZiJinGaiNianHistorySymbolRequest(BaseModel):
 
 
 # 东方财富-数据中心-资金流向-概念资金流-概念历史资金流
-@router.post("/stock_concept_fund_flow_hist", operation_id="post_stock_concept_fund_flow_hist")
-async def post_stock_concept_fund_flow_hist(request: DongCaiZiJinGaiNianHistorySymbolRequest):
+@router.post("/stock_concept_fund_flow_hist", operation_id="stock_concept_fund_flow_hist")
+async def stock_concept_fund_flow_hist(request: DongCaiZiJinGaiNianHistorySymbolRequest):
     """
     东方财富-资金流向-概念资金流-概念历史资金流
 

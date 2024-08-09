@@ -14,8 +14,8 @@ class StockUSIndexDailySina(BaseModel):
 
 # 指数数据-新浪财经-中国股票指数成份-最新成份
 @router.post("/index_stock_cons",
-             operation_id="post_index_stock_cons")
-def post_index_stock_cons(request: StockUSIndexDailySina):
+             operation_id="index_stock_cons")
+def index_stock_cons(request: StockUSIndexDailySina):
     """
     指数数据-新浪财经-中国股票指数成份-最新成份
 
@@ -40,8 +40,8 @@ def post_index_stock_cons(request: StockUSIndexDailySina):
 
 # 指数数据-新浪财经-A股股票指数数据-实时行情数据
 @router.get("/index_stock_info",
-            operation_id="get_index_stock_info")
-def get_index_stock_info():
+            operation_id="index_stock_info")
+def index_stock_info():
     """
     指数数据-股指一览表
 
@@ -64,8 +64,8 @@ class IndexStockConsCsindex(BaseModel):
 
 # 指数数据-新浪财经-中国股票指数成份-中证指数成份股
 @router.post("/index_stock_cons_csindex",
-             operation_id="post_index_stock_cons_csindex")
-def post_index_stock_cons_csindex(request: IndexStockConsCsindex):
+             operation_id="index_stock_cons_csindex")
+def index_stock_cons_csindex(request: IndexStockConsCsindex):
     """
     指数数据-新浪财经-中国股票指数成份-中证指数成份股
 
@@ -88,8 +88,8 @@ def post_index_stock_cons_csindex(request: IndexStockConsCsindex):
 
 # 指数数据-新浪财经-中国股票指数成份-中证指数成份股权重
 @router.post("/index_stock_cons_weight_csindex",
-             operation_id="post_index_stock_cons_weight_csindex")
-def post_index_stock_cons_weight_csindex(request: IndexStockConsCsindex):
+             operation_id="index_stock_cons_weight_csindex")
+def index_stock_cons_weight_csindex(request: IndexStockConsCsindex):
     """
     指数数据-新浪财经-中国股票指数成份-中证指数成份股权重
 

@@ -5,8 +5,8 @@ router = APIRouter()
 
 
 # 工具箱-新浪财经-交易日历
-@router.get("/tool_trade_date_hist_sina", operation_id="get_tool_trade_date_hist_sina")
-def get_tool_trade_date_hist_sina():
+@router.get("/tool_trade_date_hist_sina", operation_id="tool_trade_date_hist_sina")
+def tool_trade_date_hist_sina():
     """
     工具箱-新浪财经-交易日历
 

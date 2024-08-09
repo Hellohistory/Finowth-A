@@ -12,8 +12,8 @@ class SymbolRequest(BaseModel):
 
 
 # 同花顺-主营介绍
-@router.post("/stock_zyjs_ths", operation_id="post_stock_zyjs_ths")
-async def post_stock_zyjs_ths(request: SymbolRequest):
+@router.post("/stock_zyjs_ths", operation_id="stock_zyjs_ths")
+async def stock_zyjs_ths(request: SymbolRequest):
     """
     同花顺-主营介绍
 
@@ -38,8 +38,8 @@ class DongCaiSymbolRequest(BaseModel):
 
 
 # 东方财富-个股-主营构成
-@router.post("/stock_zygc_em", operation_id="post_stock_zygc_em")
-async def post_stock_zygc_em(request: DongCaiSymbolRequest):
+@router.post("/stock_zygc_em", operation_id="stock_zygc_em")
+async def stock_zygc_em(request: DongCaiSymbolRequest):
     """
     东方财富-主营构成
 
@@ -61,8 +61,8 @@ async def post_stock_zygc_em(request: DongCaiSymbolRequest):
 
 
 # 益盟-F10-主营构成
-@router.post("/stock_zygc_ym", operation_id="post_stock_zygc_ym")
-async def post_stock_zygc_ym(request: SymbolRequest):
+@router.post("/stock_zygc_ym", operation_id="stock_zygc_ym")
+async def stock_zygc_ym(request: SymbolRequest):
     """
     益盟-主营构成
 
@@ -83,8 +83,8 @@ async def post_stock_zygc_ym(request: SymbolRequest):
 
 
 # 益盟-F10-管理层讨论与分析
-@router.post("/stock_mda_ym", operation_id="post_stock_mda_ym")
-async def post_stock_mda_ym(request: SymbolRequest):
+@router.post("/stock_mda_ym", operation_id="stock_mda_ym")
+async def stock_mda_ym(request: SymbolRequest):
     """
     益盟-管理层讨论与分析
 
@@ -105,8 +105,8 @@ async def post_stock_mda_ym(request: SymbolRequest):
 
 
 # 巨潮资讯-个股-公司概况
-@router.post("/stock_profile_cninfo", operation_id="post_stock_profile_cninfo")
-async def post_stock_profile_cninfo(request: SymbolRequest):
+@router.post("/stock_profile_cninfo", operation_id="stock_profile_cninfo")
+async def stock_profile_cninfo(request: SymbolRequest):
     """
     巨潮资讯-公司概况
 
@@ -127,8 +127,8 @@ async def post_stock_profile_cninfo(request: SymbolRequest):
 
 
 # 巨潮资讯-个股-上市相关
-@router.post("/stock_ipo_summary_cninfo", operation_id="post_stock_ipo_summary_cninfo")
-async def post_stock_ipo_summary_cninfo(request: SymbolRequest):
+@router.post("/stock_ipo_summary_cninfo", operation_id="stock_ipo_summary_cninfo")
+async def stock_ipo_summary_cninfo(request: SymbolRequest):
     """
     巨潮资讯-上市相关
 

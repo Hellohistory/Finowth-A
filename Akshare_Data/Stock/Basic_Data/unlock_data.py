@@ -12,8 +12,8 @@ class SymbolRequest(BaseModel):
 
 
 # 新浪财经-发行分配-限售解禁
-@router.post("/stock_restricted_release_queue_sina", operation_id="post_stock_restricted_release_queue_sina")
-async def post_stock_restricted_release_queue_sina(request: SymbolRequest):
+@router.post("/stock_restricted_release_queue_sina", operation_id="stock_restricted_release_queue_sina")
+async def stock_restricted_release_queue_sina(request: SymbolRequest):
     """
     新浪财经-发行分配-限售解禁
 
@@ -41,8 +41,8 @@ class RestrictedReleaseSummaryRequest(BaseModel):
 
 
 # 东方财富-数据中心-特色数据-限售股解禁
-@router.post("/stock_restricted_release_summary_em", operation_id="post_stock_restricted_release_summary_em")
-async def post_stock_restricted_release_summary_em(request: RestrictedReleaseSummaryRequest):
+@router.post("/stock_restricted_release_summary_em", operation_id="stock_restricted_release_summary_em")
+async def stock_restricted_release_summary_em(request: RestrictedReleaseSummaryRequest):
     """
     东方财富-限售股解禁
 
@@ -70,8 +70,8 @@ class DateRangeRequest(BaseModel):
 
 
 # 东方财富-数据中心-限售股解禁-解禁详情一览
-@router.post("/stock_restricted_release_detail_em", operation_id="post_stock_restricted_release_detail_em")
-async def post_stock_restricted_release_detail_em(request: DateRangeRequest):
+@router.post("/stock_restricted_release_detail_em", operation_id="stock_restricted_release_detail_em")
+async def stock_restricted_release_detail_em(request: DateRangeRequest):
     """
     东方财富-限售股解禁-解禁详情一览
 
@@ -99,8 +99,8 @@ class SectorSpotRequest(BaseModel):
 
 
 # 新浪行业-板块行情
-@router.post("/stock_sector_spot", operation_id="post_stock_sector_spot")
-async def post_stock_sector_spot(request: SectorSpotRequest):
+@router.post("/stock_sector_spot", operation_id="stock_sector_spot")
+async def stock_sector_spot(request: SectorSpotRequest):
     """
     新浪行业-板块行情
 
@@ -121,8 +121,8 @@ async def post_stock_sector_spot(request: SectorSpotRequest):
 
 
 # 东方财富-数据中心-个股限售解禁-解禁批次
-@router.post("/stock_restricted_release_queue_em", operation_id="post_stock_restricted_release_queue_em")
-async def post_stock_restricted_release_queue_em(request: SymbolRequest):
+@router.post("/stock_restricted_release_queue_em", operation_id="stock_restricted_release_queue_em")
+async def stock_restricted_release_queue_em(request: SymbolRequest):
     """
     东方财富-个股限售解禁-解禁批次
 
@@ -148,8 +148,8 @@ class SymbolDateRequest(BaseModel):
 
 
 # 东方财富-数据中心-个股限售解禁-解禁股东
-@router.post("/stock_restricted_release_stockholder_em", operation_id="post_stock_restricted_release_stockholder_em")
-async def post_stock_restricted_release_stockholder_em(request: SymbolDateRequest):
+@router.post("/stock_restricted_release_stockholder_em", operation_id="stock_restricted_release_stockholder_em")
+async def stock_restricted_release_stockholder_em(request: SymbolDateRequest):
     """
     东方财富-个股限售解禁-解禁股东
 

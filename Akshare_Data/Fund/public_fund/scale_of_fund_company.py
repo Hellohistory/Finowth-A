@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 公募基金数据-东方财富-基金公司规模-基金规模详情
-@router.get("/fund_aum_em", operation_id="get_fund_aum_em")
-async def get_fund_aum_em():
+@router.get("/fund_aum_em", operation_id="fund_aum_em")
+async def fund_aum_em():
     """
     公募基金数据-东方财富-基金公司规模-基金规模详情
 
@@ -31,8 +31,8 @@ async def get_fund_aum_em():
 
 
 # 公募基金数据-东方财富-基金公司规模-基金规模走势
-@router.get("/fund_aum_trend_em", operation_id="get_fund_aum_trend_em")
-async def get_fund_aum_trend_em():
+@router.get("/fund_aum_trend_em", operation_id="fund_aum_trend_em")
+async def fund_aum_trend_em():
     """
     公募基金数据-东方财富-基金公司规模-基金规模走势
 
@@ -60,8 +60,8 @@ class FundValuEstimationEM(BaseModel):
 
 # 公募基金数据-基金排行-东方财富-净值估算
 @router.post("/fund_aum_hist_em",
-             operation_id="post_fund_aum_hist_em")
-def post_fund_aum_hist_em(request: FundValuEstimationEM):
+             operation_id="fund_aum_hist_em")
+def fund_aum_hist_em(request: FundValuEstimationEM):
     """
     公募基金数据-基金排行-东方财富-净值估算
 

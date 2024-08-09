@@ -14,8 +14,8 @@ class BondSymbolSpot(BaseModel):
 
 # 债券-沪深可转债-可转债-详情资料
 @router.post("/bond_cb_profile_sina",
-             operation_id="post_bond_cb_profile_sina")
-async def post_bond_cb_profile_sina(request: BondSymbolSpot):
+             operation_id="bond_cb_profile_sina")
+async def bond_cb_profile_sina(request: BondSymbolSpot):
     """
     债券-沪深可转债-可转债-详情资料
 
@@ -38,8 +38,8 @@ async def post_bond_cb_profile_sina(request: BondSymbolSpot):
 
 # 债券-沪深可转债-实时行情数据
 @router.get("/bond_zh_hs_cov_spot",
-            operation_id="get_bond_zh_hs_cov_spot")
-async def get_bond_zh_hs_cov_spot():
+            operation_id="bond_zh_hs_cov_spot")
+async def bond_zh_hs_cov_spot():
     """
     债券-沪深可转债-实时行情数据
 
@@ -62,8 +62,8 @@ async def get_bond_zh_hs_cov_spot():
 
 # 债券-沪深可转债-可转债-详情资料
 @router.post("/bond_zh_hs_cov_daily",
-             operation_id="post_bond_zh_hs_cov_daily")
-async def post_bond_zh_hs_cov_daily(request: BondSymbolSpot):
+             operation_id="bond_zh_hs_cov_daily")
+async def bond_zh_hs_cov_daily(request: BondSymbolSpot):
     """
     债券-沪深可转债-历史行情数据-日频
 
@@ -96,8 +96,8 @@ class BondZHSCovMin(BaseModel):
 
 # 债券-沪深可转债-可转债-详情资料
 @router.post("/bond_zh_hs_cov_min",
-             operation_id="post_bond_zh_hs_cov_min")
-async def post_bond_zh_hs_cov_min(request: BondZHSCovMin):
+             operation_id="bond_zh_hs_cov_min")
+async def bond_zh_hs_cov_min(request: BondZHSCovMin):
     """
     债券-沪深可转债-可转债-详情资料
 
@@ -121,8 +121,8 @@ async def post_bond_zh_hs_cov_min(request: BondZHSCovMin):
 
 # 债券-沪深可转债-历史行情数据-盘前分时
 @router.get("/bond_zh_hs_cov_pre_min",
-            operation_id="get_bond_zh_hs_cov_pre_min")
-async def get_bond_zh_hs_cov_pre_min():
+            operation_id="bond_zh_hs_cov_pre_min")
+async def bond_zh_hs_cov_pre_min():
     """
     债券-沪深可转债-实时行情数据
 
@@ -144,8 +144,8 @@ async def get_bond_zh_hs_cov_pre_min():
 
 
 # 债券-沪深可转债-可转债数据一览表
-@router.get("/bond_zh_cov", operation_id="get_bond_zh_cov")
-async def get_bond_zh_cov():
+@router.get("/bond_zh_cov", operation_id="bond_zh_cov")
+async def bond_zh_cov():
     """
     债券-沪深可转债-可转债数据一览表
 
@@ -174,8 +174,8 @@ class BondZHSCovInfo(BaseModel):
 
 # 债券-沪深可转债-可转债详情
 @router.post("/bond_zh_cov_info",
-             operation_id="post_bond_zh_cov_info")
-async def post_bond_zh_cov_info(request: BondZHSCovInfo):
+             operation_id="bond_zh_cov_info")
+async def bond_zh_cov_info(request: BondZHSCovInfo):
     """
     债券-沪深可转债-可转债详情
 
@@ -200,8 +200,8 @@ async def post_bond_zh_cov_info(request: BondZHSCovInfo):
 
 
 # 债券-沪深可转债-可转债详情-同花顺
-@router.get("/bond_zh_cov_info_ths", operation_id="get_bond_zh_cov_info_ths")
-async def get_bond_zh_cov_info_ths():
+@router.get("/bond_zh_cov_info_ths", operation_id="bond_zh_cov_info_ths")
+async def bond_zh_cov_info_ths():
     """
     债券-沪深可转债-可转债数据一览表
 
@@ -223,8 +223,8 @@ async def get_bond_zh_cov_info_ths():
 
 
 # 债券-沪深可转债-可转债比价表
-@router.get("/bond_cov_comparison", operation_id="get_bond_cov_comparison")
-async def get_bond_cov_comparison():
+@router.get("/bond_cov_comparison", operation_id="bond_cov_comparison")
+async def bond_cov_comparison():
     """
     债券-沪深可转债-可转债比价表
 
@@ -251,8 +251,8 @@ class BondZHSCoValueAnalysis(BaseModel):
 
 # 债券-沪深可转债-可转债价值分析
 @router.post("/bond_zh_cov_value_analysis",
-             operation_id="post_bond_zh_cov_value_analysis")
-async def post_bond_zh_cov_value_analysis(request: BondZHSCoValueAnalysis):
+             operation_id="bond_zh_cov_value_analysis")
+async def bond_zh_cov_value_analysis(request: BondZHSCoValueAnalysis):
     """
     债券-沪深可转债-可转债价值分析
 
@@ -282,8 +282,8 @@ class BondCBJsl(BaseModel):
 
 # 债券-沪深可转债-可转债实时数据-集思录
 @router.post("/bond_cb_jsl",
-             operation_id="post_bond_cb_jsl")
-async def post_bond_cb_jsl(request: BondCBJsl):
+             operation_id="bond_cb_jsl")
+async def bond_cb_jsl(request: BondCBJsl):
     """
     债券-沪深可转债-可转债实时数据-集思录
 
@@ -307,8 +307,8 @@ async def post_bond_cb_jsl(request: BondCBJsl):
 
 
 # 债券-沪深可转债-可转债强赎
-@router.get("/bond_cb_redeem_jsl", operation_id="get_bond_cb_redeem_jsl")
-async def get_bond_cb_redeem_jsl():
+@router.get("/bond_cb_redeem_jsl", operation_id="bond_cb_redeem_jsl")
+async def bond_cb_redeem_jsl():
     """
     债券-沪深可转债-可转债强赎
 
@@ -330,8 +330,8 @@ async def get_bond_cb_redeem_jsl():
 
 
 # 债券-沪深可转债-集思录可转债等权指数
-@router.get("/bond_cb_index_jsl", operation_id="get_bond_cb_index_jsl")
-async def get_bond_cb_index_jsl():
+@router.get("/bond_cb_index_jsl", operation_id="bond_cb_index_jsl")
+async def bond_cb_index_jsl():
     """
     债券-沪深可转债-集思录可转债等权指数
 
@@ -354,8 +354,8 @@ async def get_bond_cb_index_jsl():
 
 # 债券-沪深可转债-可转债转股价格调整记录-集思录
 @router.post("/bond_cb_adj_logs_jsl",
-             operation_id="post_bond_cb_adj_logs_jsl")
-async def post_bond_cb_adj_logs_jsl(request: BondZHSCoValueAnalysis):
+             operation_id="bond_cb_adj_logs_jsl")
+async def bond_cb_adj_logs_jsl(request: BondZHSCoValueAnalysis):
     """
     债券-沪深可转债-可转债转股价格调整记录-集思录
 
@@ -384,8 +384,8 @@ class FuturesDeliverableCoupons(BaseModel):
 
 # 债券-沪深可转债-国债期货可交割券相关指标
 @router.post("/bond_futures_deliverable_coupons",
-             operation_id="post_bond_futures_deliverable_coupons")
-async def post_bond_futures_deliverable_coupons(request: FuturesDeliverableCoupons):
+             operation_id="bond_futures_deliverable_coupons")
+async def bond_futures_deliverable_coupons(request: FuturesDeliverableCoupons):
     """
     债券-沪深可转债-国债期货可交割券相关指标
 
@@ -418,8 +418,8 @@ class FuturesDeliverableCoupons(BaseModel):
 
 # 债券-沪深可转债-国债期货可交割券相关指标
 @router.post("/bond_china_close_return",
-             operation_id="post_bond_china_close_return")
-async def post_bond_china_close_return(request: FuturesDeliverableCoupons):
+             operation_id="bond_china_close_return")
+async def bond_china_close_return(request: FuturesDeliverableCoupons):
     """
     债券-沪深可转债-国债期货可交割券相关指标
 
@@ -449,8 +449,8 @@ class BondZHUSRate(BaseModel):
 
 # 债券-沪深可转债-中美国债收益率
 @router.post("/bond_zh_us_rate",
-             operation_id="post_bond_zh_us_rate")
-async def post_bond_zh_us_rate(request: BondZHUSRate):
+             operation_id="bond_zh_us_rate")
+async def bond_zh_us_rate(request: BondZHUSRate):
     """
     债券-沪深可转债-中美国债收益率
 

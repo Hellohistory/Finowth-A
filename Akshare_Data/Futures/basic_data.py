@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 期货交易费用参照表
-@router.get("/futures_fees_info", operation_id="get_futures_fees_info")
-async def get_futures_fees_info():
+@router.get("/futures_fees_info", operation_id="futures_fees_info")
+async def futures_fees_info():
     """
     期货交易费用参照表
 
@@ -36,8 +36,8 @@ class FuturesSymbolRequest(BaseModel):
 
 
 # 期货手续费与保证金
-@router.post("/futures_comm_info", operation_id="post_futures_comm_info")
-def post_futures_comm_info(request: FuturesSymbolRequest):
+@router.post("/futures_comm_info", operation_id="futures_comm_info")
+def futures_comm_info(request: FuturesSymbolRequest):
     """
     期货手续费与保证金
 
@@ -64,8 +64,8 @@ class FuturesDateRequest(BaseModel):
 
 
 # 期货手续费与保证金
-@router.post("/futures_rule", operation_id="post_futures_rule")
-def post_futures_rule(request: FuturesDateRequest):
+@router.post("/futures_rule", operation_id="futures_rule")
+def futures_rule(request: FuturesDateRequest):
     """
     期货规则-交易日历表
 
@@ -95,8 +95,8 @@ class ExchangeSymbolRequest(BaseModel):
 
 
 # 库存数据-99期货网
-@router.post("/futures_inventory_99", operation_id="post_futures_inventory_99")
-def post_futures_inventory_99(request: ExchangeSymbolRequest):
+@router.post("/futures_inventory_99", operation_id="futures_inventory_99")
+def futures_inventory_99(request: ExchangeSymbolRequest):
     """
     库存数据-99期货网
 
@@ -126,8 +126,8 @@ class ExchangeSymbolRequest(BaseModel):
 
 
 # 东方财富-库存数据
-@router.post("/futures_inventory_em", operation_id="post_futures_inventory_em")
-def post_futures_inventory_em(request: ExchangeSymbolRequest):
+@router.post("/futures_inventory_em", operation_id="futures_inventory_em")
+def futures_inventory_em(request: ExchangeSymbolRequest):
     """
     东方财富-库存数据
 

@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 # 东方财富-行情中心-沪深京板块-概念板块
-@router.get("/stock_board_concept_name_em", operation_id="get_stock_board_concept_name_em")
-def get_stock_board_concept_name_em():
+@router.get("/stock_board_concept_name_em", operation_id="stock_board_concept_name_em")
+def stock_board_concept_name_em():
     """
     东方财富-沪深京板块-概念板块
 
@@ -35,8 +35,8 @@ class DongCaiBankuaiSymbolRequest(BaseModel):
 
 
 # 东方财富-沪深板块-概念板块-板块成份
-@router.post("/stock_board_concept_cons_em", operation_id="post_stock_board_concept_cons_em")
-async def post_stock_board_concept_cons_em(request: DongCaiBankuaiSymbolRequest):
+@router.post("/stock_board_concept_cons_em", operation_id="stock_board_concept_cons_em")
+async def stock_board_concept_cons_em(request: DongCaiBankuaiSymbolRequest):
     """
     东方财富-沪深板块-概念板块-板块成份
 
@@ -66,8 +66,8 @@ class ConceptHistRequest(BaseModel):
 
 
 # 东方财富-沪深板块-概念板块-历史行情数据
-@router.post("/stock_board_concept_hist_em", operation_id="post_stock_board_concept_hist_em")
-async def post_stock_board_concept_hist_em(request: ConceptHistRequest):
+@router.post("/stock_board_concept_hist_em", operation_id="stock_board_concept_hist_em")
+async def stock_board_concept_hist_em(request: ConceptHistRequest):
     """
     东方财富-沪深板块-概念板块-历史行情数据
 
@@ -103,8 +103,8 @@ class ConceptHistMinRequest(BaseModel):
 
 
 # 东方财富-沪深板块-概念板块-分时历史行情数据
-@router.post("/stock_board_concept_hist_min_em", operation_id="post_stock_board_concept_hist_min_em")
-async def post_stock_board_concept_hist_min_em(request: ConceptHistMinRequest):
+@router.post("/stock_board_concept_hist_min_em", operation_id="stock_board_concept_hist_min_em")
+async def stock_board_concept_hist_min_em(request: ConceptHistMinRequest):
     """
     东方财富-沪深板块-概念板块-分时历史行情数据
 

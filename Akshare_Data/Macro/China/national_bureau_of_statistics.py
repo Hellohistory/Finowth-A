@@ -21,8 +21,8 @@ class MacroChinaNbsNation(BaseModel):
 
 
 # 国民经济运行状况-国家统计局-国家统计局全国数据
-@router.post("/macro_china_nbs_nation", operation_id="post_macro_china_nbs_nation")
-async def post_macro_china_nbs_nation(request: MacroChinaNbsNation):
+@router.post("/macro_china_nbs_nation", operation_id="macro_china_nbs_nation")
+async def macro_china_nbs_nation(request: MacroChinaNbsNation):
     """
     国民经济运行状况-国家统计局-国家统计局全国数据
 
@@ -62,8 +62,8 @@ class MacroChinaNbsRegion(BaseModel):
 
 
 # 国民经济运行状况-国家统计局-国家统计局地区数据接口
-@router.post("/macro_china_nbs_region", operation_id="post_macro_china_nbs_region")
-async def post_macro_china_nbs_region(request: MacroChinaNbsRegion):
+@router.post("/macro_china_nbs_region", operation_id="macro_china_nbs_region")
+async def macro_china_nbs_region(request: MacroChinaNbsRegion):
     """
     国民经济运行状况-国家统计局-国家统计局地区数据接口
 

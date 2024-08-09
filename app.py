@@ -291,7 +291,7 @@ def process_api_info() -> List[APIInfo]:
 
 
 @app.get("/api_info", response_model=List[APIInfo])
-async def get_api_info():
+async def api_info():
     """
     获取API信息
 
@@ -306,7 +306,7 @@ async def get_api_info():
 
 
 @app.get("/openapi.json")
-async def get_open_api_endpoint():
+async def open_api_endpoint():
     """
     获取OpenAPI模式定义
 

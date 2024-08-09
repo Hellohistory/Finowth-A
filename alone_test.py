@@ -29,8 +29,8 @@ class JuChaoDisclosureRequest(BaseModel):
 
 # 巨潮资讯-首页-公告查询-信息披露公告-沪深京
 @app.post("/stock_zh_a_disclosure_report_cninfo",
-          operation_id="post_stock_zh_a_disclosure_report_cninfo")
-async def post_stock_zh_a_disclosure_report_cninfo(request: JuChaoDisclosureRequest):
+          operation_id="stock_zh_a_disclosure_report_cninfo")
+async def stock_zh_a_disclosure_report_cninfo(request: JuChaoDisclosureRequest):
     """
     接口: stock_zh_a_disclosure_report_cninfo
 

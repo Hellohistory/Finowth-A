@@ -8,8 +8,7 @@ router = APIRouter()
 
 
 class FundReportStockCninfo(BaseModel):
-    symbol: str = Field(..., title="基金代码",
-                        description="调用 fund_name_em 获取")
+    symbol: str = Field(..., title="基金代码", description="调用 fund_name_em 获取")
 
 
 # 公募基金数据-东方财富-基金公告-人事公告

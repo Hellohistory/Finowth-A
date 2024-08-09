@@ -1,13 +1,16 @@
 import requests
 import json
 
-url = 'http://localhost:36925/stock_board_concept_hist_em'
+url = 'http://localhost:36925/config'
 data = {
-    'symbol': "租售同权",
-    'period': "daily",
-    'start_date': "20240701",
-    'end_date': "20240708",
-    'adjust': ""
+    "config_type": "db",
+    "db_config": {
+        "db_type": "mysql",
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "hellohistory"
+    }
 }
 headers = {'Content-Type': 'application/json'}
 

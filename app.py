@@ -219,6 +219,7 @@ origins = [
     "http://192.168.1.16:8083"
 ]
 
+# noinspection PyTypeChecker
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -226,6 +227,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 # 统计数据
 api_request_counts = defaultdict(int)
 api_response_times = defaultdict(list)
@@ -242,9 +244,6 @@ websocket_clients = []
 
 # 要排除统计的路径
 excluded_paths = ["/api_monitor"]
-
-
-
 
 
 @app.middleware("http")
@@ -315,7 +314,7 @@ class APIInfo(BaseModel):
     parameters: List[Dict[str, Any]]
 
 
-@app.get("/api_info", response_model=List[APIInfo])
+@app.get("/api_info", response_model=List[APIInfo], operation_id="api_info")
 async def api_info():
     """
     获取API信息

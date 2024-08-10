@@ -105,10 +105,6 @@ export default {
     searchFields(api) {
       return [api.api_path, api.description, api.api_name || ''];
     },
-    searchApi() {
-      // 触发重新计算过滤的API列表
-      this.$forceUpdate();
-    },
     selectApi(api) {
       this.selectedApi = api;
       this.postParams = {};

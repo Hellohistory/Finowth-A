@@ -111,7 +111,7 @@ class DongCaiHKStockMinuteRequest(BaseModel):
 
 
 # 东方财富-港股-每日分时行情
-@router.post("/stock_hk_hist_min_em", operation_id="stock_zh_ah_spot")
+@router.post("/stock_hk_hist_min_em", operation_id="stock_hk_hist_min_em")
 async def stock_hk_hist_min_em(request: DongCaiHKStockMinuteRequest):
     """
     东方财富-港股-每日分时行情

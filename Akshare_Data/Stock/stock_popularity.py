@@ -167,7 +167,7 @@ class StockHKHotRankDetailEMRequest(BaseModel):
     symbol: str = Field(..., title="港股代码", description="例：00700")
 
 
-@router.post("/stock_hk_hot_rank_detail_em", operation_id="stock_hot_rank_em")
+@router.post("/stock_hk_hot_rank_detail_em", operation_id="stock_hk_hot_rank_detail_em")
 async def stock_hk_hot_rank_detail_em(request: StockHKHotRankDetailEMRequest):
     """
     东方财富-股票热度-历史趋势及粉丝特征

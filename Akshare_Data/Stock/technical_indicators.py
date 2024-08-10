@@ -151,7 +151,7 @@ def stock_rank_cxsl_ths():
 
 class THSCXDSymbolRequest(BaseModel):
     symbol: str = Field(..., title="时间周期",
-                        description="可选择'5日均线', '10日均线','20日均线','30日均线','60日均线','90日均线','250日均线','500日均线'")
+                        description="可选择 5日均线, 10日均线 , 20日均线 , 30日均线 , 60日均线 , 90日均线 , 250日均线 , 500日均线 ")
 
 
 # 向上突破

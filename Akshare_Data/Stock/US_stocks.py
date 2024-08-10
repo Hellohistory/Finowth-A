@@ -209,7 +209,7 @@ def stock_us_pink_spot_em():
 
 class USFamouSpot(BaseModel):
     symbol: str = Field(..., title="指定种类知名美股",
-                        description="可从'科技类', '金融类', '医药食品类', '媒体类', '汽车能源类', '制造零售类'选择请求")
+                        description="可选择 科技类 , 金融类 , 医药食品类 , 媒体类 , 汽车能源类 ,  制造零售类 ")
 
 
 # 东方财富-美股-知名美股-实时行情数据

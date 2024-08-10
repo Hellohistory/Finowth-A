@@ -235,20 +235,6 @@ def stock_zh_b_spot():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-field_mapping = {
-    "symbol": "新浪代码",
-    "code": "股票代码",
-    "name": "股票简称",
-    "open": "开盘价",
-    "high": "最高价",
-    "low": "最低价",
-    "volume": "成交量",
-    "amount": "成交额",
-    "mktcap": "市值",
-    "turnoverratio": "换手率"
-}
-
-
 @router.get("/stock_zh_a_new", operation_id="stock_zh_a_new")
 def stock_zh_a_new():
     """
@@ -265,8 +251,21 @@ def stock_zh_a_new():
     try:
         stock_zh_a_new = ak.stock_zh_a_new()
 
-        stock_zh_a_new_df = sanitize_data_pandas(stock_zh_a_new)
-        return stock_zh_a_new_df.to_dict(orient="records")
+        stock_zh_a_new.rename(columns={
+            "symbol": "新浪代码",
+            "code": "股票代码",
+            "name": "股票简称",
+            "open": "开盘价",
+            "high": "最高价",
+            "low": "最低价",
+            "volume": "成交量",
+            "amount": "成交额",
+            "mktcap": "市值",
+            "turnoverratio": "换手率"
+        }, inplace=True)
+
+        stock_hk_daily_df = sanitize_data_pandas(stock_zh_a_new)
+        return stock_hk_daily_df.to_dict(orient="records")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

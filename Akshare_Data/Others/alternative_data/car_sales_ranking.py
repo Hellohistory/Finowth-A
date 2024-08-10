@@ -41,10 +41,17 @@ def car_market_total_cpca(request: CarMarketTotalCpca):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class CarMarketManRankCpca(BaseModel):
+    symbol: str = Field(..., title="车辆类型",
+                        description="可选择 狭义乘用车-单月, 狭义乘用车-累计, 广义乘用车-单月, 广义乘用车-累计 ")
+    indicator: str = Field(..., title="销售类型",
+                           description="可选择 批发 , 零售")
+
+
 # 另类数据-汽车销量排行-乘联会-统计数据-总体市场
 @router.post("/car_market_man_rank_cpca",
              operation_id="car_market_man_rank_cpca")
-def car_market_man_rank_cpca(request: CarMarketTotalCpca):
+def car_market_man_rank_cpca(request: CarMarketManRankCpca):
     """
     另类数据-汽车销量排行-乘联会-统计数据-总体市场
 

@@ -1,3 +1,5 @@
+import warnings
+
 import akshare as ak
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
@@ -206,13 +208,25 @@ def option_czce_daily(request: OptionCzceDaily):
     (6)隐含波动率: 将当日期权合约的结算价代入期权定价模型, 反推出来的波动率数值
     """
     try:
-        option_czce_daily = ak.option_czce_daily(
-            symbol=request.symbol,
-            trade_date=request.trade_date
-        )
-        option_czce_daily_df = sanitize_data_pandas(option_czce_daily)
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            option_czce_daily = ak.option_czce_daily(
+                symbol=request.symbol,
+                trade_date=request.trade_date
+            )
+            option_czce_daily_df = sanitize_data_pandas(option_czce_daily)
 
-        return option_czce_daily_df.to_dict(orient="records")
+            # 筛选警告信息，提取包含“非交易日”的信息
+            warning_msgs = [str(warn.message) for warn in w if "非交易日" in str(warn.message)]
+
+            # 如果 data 为空，并且有警告信息，则只返回警告信息
+            if option_czce_daily_df.empty and warning_msgs:
+                return {"warnings": warning_msgs}
+            elif warning_msgs:
+                return {"data": option_czce_daily_df.to_dict(orient="records"), "warnings": warning_msgs}
+            else:
+                return option_czce_daily_df.to_dict(orient="records")
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

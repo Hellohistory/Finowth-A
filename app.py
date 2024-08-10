@@ -1,10 +1,16 @@
 from typing import List, Dict, Any
 
 import uvicorn
-from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from pydantic import BaseModel
-from starlette.middleware.cors import CORSMiddleware
+from fastapi import FastAPI, Request, WebSocket
+from fastapi.middleware.cors import CORSMiddleware
+import time
+import asyncio
+from collections import defaultdict
+from datetime import datetime
+
+# from cache_model import router as router_cache
 
 # 数据来源：Akshare
 # 基金数据
@@ -195,7 +201,6 @@ from Akshare_Data.Others.alternative_data.box_office import router as router153
 from Akshare_Data.Others.alternative_data.car_sales_ranking import router as router154
 from Akshare_Data.Others.alternative_data.cost_living import router as router155
 
-
 from Akshare_Data.Others.alternative_data.stock_js_weibo_report import router as router158
 from Akshare_Data.Others.alternative_data.sunrise_and_sunset import router as router159
 from Akshare_Data.Others.alternative_data.video_playback import router as router160
@@ -211,16 +216,95 @@ origins = [
     "http://localhost:36924",
     "http://localhost:36925",
     "http://192.168.1.18:36929",
-    "http://192.168.1.6:36924"
+    "http://192.168.1.16:8083"
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+# 统计数据
+api_request_counts = defaultdict(int)
+api_response_times = defaultdict(list)
+api_status_codes = defaultdict(int)
+api_success_counts = defaultdict(int)
+api_failure_counts = defaultdict(int)
+
+# 时间序列数据
+time_series_data = defaultdict(lambda: {"time": "", "count": 0})
+start_time = datetime.now()
+
+# WebSocket客户端集合
+websocket_clients = []
+
+# 要排除统计的路径
+excluded_paths = ["/api_monitor"]
+
+
+
+
+
+@app.middleware("http")
+async def count_requests(request: Request, call_next):
+    path = request.url.path
+
+    if request.method == "OPTIONS" or path in excluded_paths:
+        return await call_next(request)
+
+    start_time = time.time()
+    response = await call_next(request)
+    duration = time.time() - start_time
+    status_code = response.status_code
+
+    # 更新统计数据
+    api_request_counts[path] += 1
+    api_response_times[path].append(duration)
+    api_status_codes[status_code] += 1
+
+    # 根据状态码更新成功或失败计数
+    if 200 <= status_code < 300:
+        api_success_counts[path] += 1
+    else:
+        api_failure_counts[path] += 1
+    from monitoring_module import get_time_range_key
+    # 更新时间序列数据
+    time_key = get_time_range_key("1h")  # 你可以根据需要改变时间区间
+    time_series_data[time_key]["time"] = time_key
+    time_series_data[time_key]["count"] += 1
+
+    from monitoring_module import notify_clients
+    await notify_clients()
+    return response
+
+
+@app.get("/api_monitor", operation_id="api_monitor")
+async def get_api_monitor():
+    return {
+        "api_details": dict(api_request_counts),
+        "response_times": {k: sum(v) / len(v) for k, v in api_response_times.items()},
+        "status_codes": dict(api_status_codes),
+        "success_counts": dict(api_success_counts),
+        "failure_counts": dict(api_failure_counts),
+        "time_series": list(time_series_data.values())[-24:],  # 返回最近24小时的数据
+        "total_success": sum(api_success_counts.values()),
+        "total_failures": sum(api_failure_counts.values())
+    }
+
+
+@app.websocket("/ws/api_monitor")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    websocket_clients.append(websocket)
+    try:
+        while True:
+            await asyncio.sleep(1)
+    except Exception as e:
+        print(f"WebSocket error: {e}")
+    finally:
+        websocket_clients.remove(websocket)
 
 
 class APIInfo(BaseModel):
@@ -229,65 +313,6 @@ class APIInfo(BaseModel):
     method: str
     description: str
     parameters: List[Dict[str, Any]]
-
-
-def process_api_info() -> List[APIInfo]:
-    openapi_json = get_openapi(
-        title="FinDataAPI",
-        version="0.0.1",
-        routes=app.routes,
-    )
-
-    def resolve_ref(ref, spec):
-        """解析$ref引用"""
-        parts = ref.lstrip('#/').split('/')
-        result = spec
-        for part in parts:
-            result = result.get(part, {})
-        return result
-
-    api_info_list = []
-
-    for path, path_item in openapi_json.get('paths', {}).items():
-        for method, operation in path_item.items():
-            api_name = operation.get('operationId', '无操作ID')
-            operation.get('summary', '无描述信息')
-            api_description = operation.get('description', '无详细描述')
-
-            parameters = []
-
-            if method == 'post':
-                request_body = operation.get('requestBody', {})
-                content = request_body.get('content', {})
-                for media_type, media_type_object in content.items():
-                    schema = media_type_object.get('schema', {})
-                    if '$ref' in schema:
-                        schema = resolve_ref(schema['$ref'], openapi_json)
-                    properties = schema.get('properties', {})
-                    required = schema.get('required', [])
-                    for param_name, param_info in properties.items():
-                        param_type = param_info.get('type', '未知类型')
-                        param_description = param_info.get('description', '无描述')
-                        param_title = param_info.get('title', '无标题')
-                        is_required = param_name in required
-                        parameters.append({
-                            "name": param_name,
-                            "type": param_type,
-                            "required": is_required,
-                            "description": param_description,
-                            "title": param_title
-                        })
-
-            api_info = APIInfo(
-                api_name=api_name,
-                api_path=path,
-                method=method,
-                description=api_description,
-                parameters=parameters
-            )
-            api_info_list.append(api_info)
-
-    return api_info_list
 
 
 @app.get("/api_info", response_model=List[APIInfo])
@@ -301,11 +326,12 @@ async def api_info():
 
     :rtype: List[APIInfo]
     """
+    from api_info_model import process_api_info
     api_info = process_api_info()
     return api_info
 
 
-@app.get("/openapi.json")
+@app.get("/openapi.json", operation_id="openapi.json")
 async def open_api_endpoint():
     """
     获取OpenAPI模式定义
@@ -324,6 +350,7 @@ async def open_api_endpoint():
     return openapi_schema
 
 
+# app.include_router(router_cache)
 app.include_router(router1)
 app.include_router(router2)
 app.include_router(router3)
@@ -479,7 +506,6 @@ app.include_router(router152)
 app.include_router(router153)
 app.include_router(router154)
 app.include_router(router155)
-
 
 app.include_router(router158)
 app.include_router(router159)

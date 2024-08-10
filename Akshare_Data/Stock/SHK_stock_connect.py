@@ -174,14 +174,13 @@ async def stock_hsgt_fund_min_em(request: DongCaiSHKSymbolRequest):
 
 class DongCaiSHKSymolIndicatorRequest(BaseModel):
     symbol: str = Field(..., title="类型",
-                        description="可选择'北向资金增持行业板块排行', '北向资金增持概念板块排行', '北向资金增持地域板块排行'")
+                        description="可选择 北向资金增持行业板块排行 , 北向资金增持概念板块排行 , 北向资金增持地域板块排行 ")
     indicator: str = Field(..., title="时间周期",
-                           description="可选择'今日', '3日', '5日', '10日', '1月', '1季', '1年'")
+                           description="可选择 今日 , 3日 , 5日 , 10日 , 1月 , 1季 , 1年")
 
 
 # 东方财富-数据中心-沪深港通持股-板块排行
-@router.post("/stock_hsgt_board_rank_em",
-             operation_id="stock_hsgt_board_rank_em")
+@router.post("/stock_hsgt_board_rank_em", operation_id="stock_hsgt_board_rank_em")
 async def stock_hsgt_board_rank_em(data: DongCaiSHKSymolIndicatorRequest):
     """
     东方财富-沪深港通持股-板块排行
@@ -212,12 +211,11 @@ async def stock_hsgt_board_rank_em(data: DongCaiSHKSymolIndicatorRequest):
 class DongCaiSHKMarketRequest(BaseModel):
     market: str = Field(..., title="市场", description="可选择'北向', '沪股通', '深股通'")
     indicator: str = Field(..., title="时间周期",
-                           description="可选择'今日排行', '3日排行', '5日排行', '10日排行', '月排行', '季排行', '年排行'")
+                           description="可选择 今日排行 , 3日排行 , 5日排行 , 10日排行 , 月排行 , 季排行 , 年排行")
 
 
 # 东方财富-数据中心-沪深港通持股-个股排行
-@router.post("/stock_hsgt_hold_stock_em",
-             operation_id="stock_hsgt_hold_stock_em")
+@router.post("/stock_hsgt_hold_stock_em", operation_id="stock_hsgt_hold_stock_em")
 def stock_hsgt_hold_stock_em(data: DongCaiSHKMarketRequest):
     """
     东方财富-沪深港通持股-个股排行
@@ -245,8 +243,7 @@ class DongCaiSymbolDateRangeRequest(BaseModel):
 
 
 # 东方财富-数据中心-沪深港通-沪深港通持股-每日个股统计
-@router.post("/stock_hsgt_stock_statistics_em",
-             operation_id="stock_hsgt_stock_statistics_em")
+@router.post("/stock_hsgt_stock_statistics_em", operation_id="stock_hsgt_stock_statistics_em")
 async def stock_hsgt_stock_statistics_em(request: DongCaiSymbolDateRangeRequest):
     """
     东方财富-沪深港通-沪深港通持股-每日个股统计

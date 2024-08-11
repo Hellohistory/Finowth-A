@@ -317,13 +317,7 @@ class APIInfo(BaseModel):
 @app.get("/api_info", response_model=List[APIInfo], operation_id="api_info")
 async def api_info():
     """
-    获取API信息
-
-    这个接口用于获取所有API的相关信息。返回值是一个包含多个API信息对象的列表。
-
-    :return: 包含API信息对象的列表
-
-    :rtype: List[APIInfo]
+    获取 API 信息
     """
     from api_info_model import process_api_info
     api_info = process_api_info()
@@ -333,13 +327,7 @@ async def api_info():
 @app.get("/openapi.json", operation_id="openapi.json")
 async def open_api_endpoint():
     """
-    获取OpenAPI模式定义
-
-    这个接口用于获取当前应用的OpenAPI模式定义。OpenAPI模式定义包含了应用中所有API的详细信息，包括路径、请求方法、请求参数、响应格式等。
-
-    :return: 包含应用中所有API详细信息的OpenAPI模式定义
-
-    :rtype: dict
+    获取 OpenAPI 文档
     """
     openapi_schema = get_openapi(
         title="FinDataAPI",

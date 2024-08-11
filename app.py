@@ -10,7 +10,6 @@ import asyncio
 from collections import defaultdict
 from datetime import datetime
 
-# from cache_model import router as router_cache
 
 # 数据来源：Akshare
 # 基金数据

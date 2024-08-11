@@ -59,8 +59,7 @@ def futures_comm_info(request: FuturesSymbolRequest):
 
 
 class FuturesDateRequest(BaseModel):
-    date: str = Field(..., title="指定交易日",
-                      description="例：20240723，需要指定为交易日,且为一年内")
+    date: str = Field(..., title="指定交易日",  description="例：20240723，需要指定为交易日,且为一年内")
 
 
 # 期货手续费与保证金

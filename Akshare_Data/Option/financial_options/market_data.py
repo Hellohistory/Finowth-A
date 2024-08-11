@@ -108,8 +108,7 @@ def option_sse_minute_sina(request: OptionSseSpotPriceSina):
 
 
 # 期权-金融期权-上交所-期权行情日数据
-@router.post("/option_sse_daily_sina",
-             operation_id="option_sse_daily_sina")
+@router.post("/option_sse_daily_sina", operation_id="option_sse_daily_sina")
 def option_sse_daily_sina(request: OptionSseSpotPriceSina):
     """
     期权-金融期权-上交所-期权行情日数据
@@ -139,8 +138,7 @@ class OptionFinanceMinuteSina(BaseModel):
 
 
 # 期权-金融期权-新浪-期权行情分时数据
-@router.post("/option_finance_minute_sina",
-             operation_id="option_finance_minute_sina")
+@router.post("/option_finance_minute_sina", operation_id="option_finance_minute_sina")
 def option_finance_minute_sina(request: OptionFinanceMinuteSina):
     """
     期权-金融期权-新浪-期权行情分时数据
@@ -170,8 +168,7 @@ class OptionMinuteEM(BaseModel):
 
 
 # 期权-金融期权-东财-期权行情分时数据
-@router.post("/option_minute_em",
-             operation_id="option_minute_em")
+@router.post("/option_minute_em", operation_id="option_minute_em")
 def option_minute_em(request: OptionMinuteEM):
     """
     期权-金融期权-东财-期权行情分时数据

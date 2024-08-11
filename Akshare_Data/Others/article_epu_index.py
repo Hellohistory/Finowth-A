@@ -17,8 +17,7 @@ class ArticleEpuIndex(BaseModel):
 
 
 # 政策不确定性数据-国家和地区指数
-@router.post("/article_epu_index",
-             operation_id="article_epu_index")
+@router.post("/article_epu_index", operation_id="article_epu_index")
 def article_epu_index(request: ArticleEpuIndex):
     """
     政策不确定性数据-国家和地区指数
@@ -43,8 +42,7 @@ def article_epu_index(request: ArticleEpuIndex):
 
 
 # 政策不确定性数据-国家和地区指数-国家和地区一览表
-@router.get("/article_epu_index_info",
-            operation_id="article_epu_index_info")
+@router.get("/article_epu_index_info", operation_id="article_epu_index_info")
 async def article_epu_index_info():
     """
     政策不确定性数据-国家和地区指数-国家和地区一览表

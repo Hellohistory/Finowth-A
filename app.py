@@ -336,7 +336,6 @@ async def open_api_endpoint():
     return openapi_schema
 
 
-# app.include_router(router_cache)
 app.include_router(router1)
 app.include_router(router2)
 app.include_router(router3)

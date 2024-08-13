@@ -234,6 +234,29 @@ async def spot_soybean_price_soozhu():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+
+# 搜猪-生猪大数据-全国育肥猪合料（含自配料）半月走势
+@router.get("/spot_mixed_feed_soozhu", operation_id="spot_mixed_feed_soozhu")
+async def spot_mixed_feed_soozhu():
+    """
+    搜猪-生猪大数据-全国育肥猪合料（含自配料）半月走势
+
+    接口: spot_mixed_feed_soozhu
+
+    目标地址: https://www.soozhu.com/price/data/center/
+
+    描述: 搜猪-生猪大数据-全国育肥猪合料（含自配料）半月走势
+
+    限量: 单次返回近半个月的历史数据
+    """
+    try:
+        spot_mixed_feed_soozhu = ak.spot_mixed_feed_soozhu()
+        spot_mixed_feed_soozhu_df = sanitize_data_pandas(spot_mixed_feed_soozhu)
+        return spot_mixed_feed_soozhu_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import uvicorn
 

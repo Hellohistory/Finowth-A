@@ -379,36 +379,6 @@ async def bond_cb_adj_logs_jsl(request: BondZHSCoValueAnalysis):
 
 
 class FuturesDeliverableCoupons(BaseModel):
-    trade_date: str = Field(..., title="需查询日期", description="例：20200922")
-
-
-# 债券-沪深可转债-国债期货可交割券相关指标
-@router.post("/bond_futures_deliverable_coupons",
-             operation_id="bond_futures_deliverable_coupons")
-async def bond_futures_deliverable_coupons(request: FuturesDeliverableCoupons):
-    """
-    债券-沪深可转债-国债期货可交割券相关指标
-
-    接口: bond_futures_deliverable_coupons
-
-    目标地址: http://www.csindex.com.cn/zh-CN/bond-valuation/bond-futures-deliverable-coupons-related-indicators
-
-    描述: 国债期货可交割券相关指标
-
-    限量: 只能返回近一年的数据
-    """
-    try:
-        bond_futures_deliverable_coupons = ak.bond_futures_deliverable_coupons(
-            trade_date=request.trade_date
-        )
-        bond_futures_deliverable_coupons_df = sanitize_data_pandas(bond_futures_deliverable_coupons)
-
-        return bond_futures_deliverable_coupons_df.to_dict(orient="records")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-class FuturesDeliverableCoupons(BaseModel):
     symbol: str = Field(..., title="查询债券名称",
                         description="例：政策性金融债(进出口行)，可通过bond_china_close_return_map获取")
     period: str = Field(..., title="期限间隔", description="可选择'0.1', '0.5', '1'")

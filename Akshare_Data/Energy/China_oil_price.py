@@ -34,22 +34,24 @@ class EnergyOilDetail(BaseModel):
     date: str = Field(..., title="调价日期", description="通过调用 energy_oil_hist 可以获取历史调价日期")
 
 
-# 碳排放权-国内
+# 中国油价-地区油价
 @router.post("/energy_oil_detail", operation_id="energy_oil_detail")
 async def energy_oil_detail(request: EnergyOilDetail):
     """
-    碳排放权-国内
+    中国油价-地区油价
 
-    接口: energy_carbon_domestic
+    接口: energy_oil_detail
 
-    目标地址: http://www.tanjiaoyi.com/
+    目标地址: https://data.eastmoney.com/cjsj/oil_default.html
 
-    描述: 碳交易网-行情信息
+    描述: 东方财富-数据中心-中国油价-地区油价
 
-    限量: 返回指定省份的所有历史数据
+    限量: 返回指定调价日的全国各地区的油价的历史数据
     """
     try:
-        energy_oil_detail = ak.energy_oil_hist()
+        energy_oil_detail = ak.energy_oil_detail(
+            date=request.date
+        )
         energy_oil_detail_df = sanitize_data_pandas(energy_oil_detail)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")

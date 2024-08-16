@@ -207,6 +207,9 @@ from Akshare_Data.Others.alternative_data.wealth_ranking import router as router
 # 数据来源：自编写
 # 新闻模块
 from Finowth.News.xinwenlianbo import router as router116
+# 工具API
+# 依赖库及其版本
+from Tools_API.requirements_model import router as router156
 
 app = FastAPI()
 
@@ -491,6 +494,7 @@ app.include_router(router152)
 app.include_router(router153)
 app.include_router(router154)
 app.include_router(router155)
+app.include_router(router156)
 
 app.include_router(router158)
 app.include_router(router159)

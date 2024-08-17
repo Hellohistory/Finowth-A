@@ -3,13 +3,10 @@ from typing import List, Dict, Any
 import uvicorn
 from fastapi.openapi.utils import get_openapi
 from pydantic import BaseModel
-from fastapi import FastAPI, Request, WebSocket
+from fastapi import FastAPI, WebSocket
 from fastapi.middleware.cors import CORSMiddleware
-import time
-import asyncio
-from collections import defaultdict
-from datetime import datetime
 
+import asyncio
 
 # 数据来源：Akshare
 # 基金数据
@@ -210,6 +207,8 @@ from Finowth.News.xinwenlianbo import router as router116
 # 工具API
 # 依赖库及其版本
 from Tools_API.requirements_model import router as router156
+# 中间件模块
+from middleware_module.monitoring_middleware import count_requests_middleware
 
 app = FastAPI()
 
@@ -230,59 +229,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 统计数据
-api_request_counts = defaultdict(int)
-api_response_times = defaultdict(list)
-api_status_codes = defaultdict(int)
-api_success_counts = defaultdict(int)
-api_failure_counts = defaultdict(int)
-
-# 时间序列数据
-time_series_data = defaultdict(lambda: {"time": "", "count": 0})
-start_time = datetime.now()
+# 添加拆分后的中间件
+app.middleware("http")(count_requests_middleware)
 
 # WebSocket客户端集合
 websocket_clients = []
 
-# 要排除统计的路径
-excluded_paths = ["/api_monitor"]
-
-
-@app.middleware("http")
-async def count_requests(request: Request, call_next):
-    path = request.url.path
-
-    if request.method == "OPTIONS" or path in excluded_paths:
-        return await call_next(request)
-
-    start_time = time.time()
-    response = await call_next(request)
-    duration = time.time() - start_time
-    status_code = response.status_code
-
-    # 更新统计数据
-    api_request_counts[path] += 1
-    api_response_times[path].append(duration)
-    api_status_codes[status_code] += 1
-
-    # 根据状态码更新成功或失败计数
-    if 200 <= status_code < 300:
-        api_success_counts[path] += 1
-    else:
-        api_failure_counts[path] += 1
-    from monitoring_utils import get_time_range_key
-    # 更新时间序列数据
-    time_key = get_time_range_key("1h")  # 你可以根据需要改变时间区间
-    time_series_data[time_key]["time"] = time_key
-    time_series_data[time_key]["count"] += 1
-
-    from monitoring_utils import notify_clients
-    await notify_clients()
-    return response
-
 
 @app.get("/api_monitor", operation_id="api_monitor")
 async def get_api_monitor():
+    """
+    获取API的统计信息
+    """
+    from middleware_module.monitoring_middleware import api_request_counts, api_response_times, api_status_codes
+    from middleware_module.monitoring_middleware import api_success_counts, api_failure_counts, time_series_data
+
     return {
         "api_details": dict(api_request_counts),
         "response_times": {k: sum(v) / len(v) for k, v in api_response_times.items()},
@@ -297,6 +258,9 @@ async def get_api_monitor():
 
 @app.websocket("/ws/api_monitor")
 async def websocket_endpoint(websocket: WebSocket):
+    """
+    WebSocket 端点，接收并发送监控数据
+    """
     await websocket.accept()
     websocket_clients.append(websocket)
     try:
@@ -337,7 +301,6 @@ async def open_api_endpoint():
         routes=app.routes,
     )
     return openapi_schema
-
 
 app.include_router(router1)
 app.include_router(router2)

@@ -1,7 +1,4 @@
 from starlette.websockets import WebSocketDisconnect
-
-from app import websocket_clients, api_request_counts, api_status_codes, api_success_counts, \
-    api_failure_counts, time_series_data, api_response_times
 from datetime import datetime, timedelta
 
 
@@ -22,8 +19,12 @@ def get_time_range_key(duration="1h"):
 
 async def notify_clients():
     disconnected_clients = []
+    from app import websocket_clients
     for websocket in websocket_clients:
         try:
+            from middleware_module.monitoring_middleware import api_request_counts, api_response_times, \
+                api_status_codes, \
+                api_success_counts, api_failure_counts, time_series_data
             await websocket.send_json({
                 "api_details": dict(api_request_counts),
                 "response_times": {k: sum(v) / len(v) for k, v in api_response_times.items()},

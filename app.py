@@ -270,13 +270,13 @@ async def count_requests(request: Request, call_next):
         api_success_counts[path] += 1
     else:
         api_failure_counts[path] += 1
-    from monitoring_module import get_time_range_key
+    from monitoring_utils import get_time_range_key
     # 更新时间序列数据
     time_key = get_time_range_key("1h")  # 你可以根据需要改变时间区间
     time_series_data[time_key]["time"] = time_key
     time_series_data[time_key]["count"] += 1
 
-    from monitoring_module import notify_clients
+    from monitoring_utils import notify_clients
     await notify_clients()
     return response
 

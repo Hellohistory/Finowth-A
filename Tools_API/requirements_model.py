@@ -7,10 +7,11 @@ router = APIRouter()
 
 @router.get("/dependencies")
 async def get_dependencies():
-    # 获取所有已安装的依赖库及其版本
+    """
+    工具API-获取依赖库名称及版本
+    """
     installed_packages = importlib.metadata.distributions()
 
-    # 创建一个包含库名和版本号的列表
     dependencies = [{"名称": package.metadata["Name"], "版本号": package.version} for package in installed_packages]
 
     return dependencies

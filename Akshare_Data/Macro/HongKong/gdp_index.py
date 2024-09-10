@@ -7,8 +7,7 @@ router = APIRouter()
 
 
 # 中国香港-GDP指数-GDP
-@router.get("/macro_china_hk_gbp",
-            operation_id="macro_china_hk_gbp")
+@router.get("/macro_china_hk_gbp", operation_id="macro_china_hk_gbp")
 async def macro_china_hk_gbp():
     """
     中国香港-GDP指数-GDP
@@ -30,8 +29,7 @@ async def macro_china_hk_gbp():
 
 
 # 中国香港-GDP指数-GDP 同比
-@router.get("/macro_china_hk_gbp_ratio",
-            operation_id="macro_china_hk_gbp_ratio")
+@router.get("/macro_china_hk_gbp_ratio", operation_id="macro_china_hk_gbp_ratio")
 async def macro_china_hk_gbp_ratio():
     """
     中国香港-GDP指数-GDP 同比

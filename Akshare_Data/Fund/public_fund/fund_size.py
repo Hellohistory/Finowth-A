@@ -8,8 +8,7 @@ router = APIRouter()
 
 
 class FundRating(BaseModel):
-    symbol: str = Field(..., title="指定类型",
-                        description="可选择 股票型基金, 混合型基金, 债券型基金, 货币型基金, QDII基金")
+    symbol: str = Field(..., title="指定类型", description="可选择 股票型基金, 混合型基金, 债券型基金, 货币型基金, QDII基金")
 
 
 # 公募基金数据-东方财富-基金规模-开放式基金

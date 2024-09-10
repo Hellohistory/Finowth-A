@@ -1,5 +1,4 @@
 # 市场全貌获取模块
-from datetime import datetime
 
 import akshare as ak
 import pandas as pd
@@ -24,20 +23,12 @@ async def stock_sse_summary():
 
     限量: 单次返回最近交易日的股票数据总貌(当前交易日的数据需要交易所收盘后统计)
     """
-    stock_sse_summary_df = ak.stock_sse_summary()
-    stock_sse_summary_list = stock_sse_summary_df.to_dict(orient="records")
-
-    current_date = datetime.now().strftime("%Y-%m-%d")
-    for record in stock_sse_summary_list:
-        temp_record = record.copy()
-        record.clear()
-        record["项目"] = temp_record["项目"]
-        record["日期"] = current_date
-        for key, value in temp_record.items():
-            if key != "项目":
-                record[key] = value
-
-    return stock_sse_summary_list
+    try:
+        stock_sse_summary = ak.stock_sse_summary()
+        stock_sse_summary_df = sanitize_data_pandas(stock_sse_summary)
+        return stock_sse_summary_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 class DateRequest(BaseModel):
@@ -102,7 +93,7 @@ def stock_sse_deal_daily(data: SseDealStockDataRequest) -> list[dict]:
 
 class SectorSummaryRequest(BaseModel):
     symbol: str = Field(..., title="指定时间类型", description="可选择'当月', '当年'")
-    ym_date: str = Field(..., title="指定年月", description="例：202203")
+    date: str = Field(..., title="指定年月", description="例：202203")
 
 
 @router.post("/stock_szse_sector_summary", operation_id="stock_szse_sector_summary")
@@ -119,7 +110,7 @@ async def stock_szse_sector_summary(request: SectorSummaryRequest):
     限量: 单次返回指定个股和 date 的统计资料-股票行业成交数据
     """
     try:
-        stock_szse_sector_summary = ak.stock_szse_sector_summary(symbol=request.symbol, date=request.ym_date)
+        stock_szse_sector_summary = ak.stock_szse_sector_summary(symbol=request.symbol, date=request.date)
         stock_szse_sector_summary_df = sanitize_data_pandas(stock_szse_sector_summary)
         return stock_szse_sector_summary_df.to_dict(orient="records")
     except Exception as e:
@@ -127,7 +118,7 @@ async def stock_szse_sector_summary(request: SectorSummaryRequest):
 
 
 class AreaSummaryRequest(BaseModel):
-    ym_date: str = Field(..., title="指定交易月", description="例：202406")
+    date: str = Field(..., title="指定交易月", description="例：202406")
 
 
 @router.post("/stock_szse_area_summary", operation_id="stock_szse_area_summary")
@@ -144,7 +135,7 @@ async def stock_szse_area_summary(request: AreaSummaryRequest):
     限量: 单次返回指定日期的市场总貌数据-地区交易排序数据
     """
     try:
-        stock_szse_area_summary = ak.stock_szse_area_summary(date=request.ym_date)
+        stock_szse_area_summary = ak.stock_szse_area_summary(date=request.date)
         stock_szse_area_summary_df = sanitize_data_pandas(stock_szse_area_summary)
         return stock_szse_area_summary_df.to_dict(orient="records")
     except Exception as e:

@@ -38,8 +38,7 @@ async def bond_zh_hs_spot(request: BondZHSpot):
 
 
 class BondSymbolSpot(BaseModel):
-    symbol: str = Field(..., title="带市场标识的债券代码",
-                        description="例：sh010107")
+    symbol: str = Field(..., title="带市场标识的债券代码", description="例：sh010107")
 
 
 # 债券-沪深债券-实时行情数据

@@ -9,7 +9,7 @@ router = APIRouter()
 
 class EnergyCarbonDomestic(BaseModel):
     symbol: str = Field(..., title="需查询的省份",
-                        description="可选择'湖北', '上海', '北京', '重庆', '广东', '天津', '深圳', '福建")
+                        description="可选择 湖北 , 上海 , 北京 , 重庆 , 广东 , 天津 , 深圳 , 福建")
 
 
 # 碳排放权-国内

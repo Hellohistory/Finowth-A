@@ -7,8 +7,7 @@ router = APIRouter()
 
 
 # 公募基金数据-乐咕乐股-基金仓位-股票型基金仓位
-@router.get("/fund_stock_position_lg",
-            operation_id="fund_stock_position_lg")
+@router.get("/fund_stock_position_lg", operation_id="fund_stock_position_lg")
 async def fund_stock_position_lg():
     """
     公募基金数据-乐咕乐股-基金仓位-股票型基金仓位
@@ -31,8 +30,7 @@ async def fund_stock_position_lg():
 
 
 # 公募基金数据-乐咕乐股-基金仓位-平衡混合型基金仓位
-@router.get("/fund_balance_position_lg",
-            operation_id="fund_balance_position_lg")
+@router.get("/fund_balance_position_lg", operation_id="fund_balance_position_lg")
 async def fund_balance_position_lg():
     """
     公募基金数据-乐咕乐股-基金仓位-平衡混合型基金仓位
@@ -55,8 +53,7 @@ async def fund_balance_position_lg():
 
 
 # 公募基金数据-乐咕乐股-基金仓位-灵活配置型基金仓位
-@router.get("/fund_linghuo_position_lg",
-            operation_id="fund_linghuo_position_lg")
+@router.get("/fund_linghuo_position_lg", operation_id="fund_linghuo_position_lg")
 async def fund_linghuo_position_lg():
     """
     公募基金数据-乐咕乐股-基金仓位-灵活配置型基金仓位

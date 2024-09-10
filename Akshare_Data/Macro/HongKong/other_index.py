@@ -30,8 +30,7 @@ async def macro_china_hk_rate_of_unemployment():
 
 
 # 中国香港-其他指数-香港商品贸易差额年率
-@router.get("/macro_china_hk_trade_diff_ratio",
-            operation_id="macro_china_hk_trade_diff_ratio")
+@router.get("/macro_china_hk_trade_diff_ratio", operation_id="macro_china_hk_trade_diff_ratio")
 async def macro_china_hk_trade_diff_ratio():
     """
     中国香港-其他指数-香港商品贸易差额年率
@@ -53,8 +52,7 @@ async def macro_china_hk_trade_diff_ratio():
 
 
 # 中国香港-其他指数-香港制造业 PPI 年率
-@router.get("/macro_china_hk_ppi",
-            operation_id="macro_china_hk_ppi")
+@router.get("/macro_china_hk_ppi", operation_id="macro_china_hk_ppi")
 async def macro_china_hk_ppi():
     """
     中国香港-其他指数-香港制造业 PPI 年率

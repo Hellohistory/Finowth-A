@@ -83,12 +83,6 @@ async def bond_zh_hs_cov_daily(request: BondSymbolSpot):
 
 class BondZHSCovMin(BaseModel):
     symbol: str = Field(..., title="带市场标识的转债代码", description="例：sz128039")
-    period: str = Field(..., title="数据周期",
-                        description="可选择：1分钟:1, 5分钟:5, 15分钟:15, 30分钟:30, 60分钟：60")
-    adjust: str = Field(..., title="复权类型",
-                        description="默认为空则为不复权，可选择：前复权：qfq, 后复权：hfq")
-    start_date: str = Field(..., title="开始日期", description="例：1979-09-01 09:32:00")
-    end_date: str = Field(..., title="结束日期", description="例：2222-01-01 09:32:00")
 
 
 # 债券-沪深可转债-可转债-详情资料

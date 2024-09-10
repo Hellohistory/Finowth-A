@@ -7,8 +7,7 @@ router = APIRouter()
 
 
 # 美国-物价水平-美国CPI月率报告
-@router.get("/macro_usa_cpi_monthly",
-            operation_id="macro_usa_cpi_monthly")
+@router.get("/macro_usa_cpi_monthly", operation_id="macro_usa_cpi_monthly")
 async def macro_usa_cpi_monthly():
     """
     美国-物价水平-美国CPI月率报告
@@ -30,8 +29,7 @@ async def macro_usa_cpi_monthly():
 
 
 # 美国-物价水平-美国CPI年率报告
-@router.get("/macro_usa_cpi_yoy",
-            operation_id="macro_usa_cpi_yoy")
+@router.get("/macro_usa_cpi_yoy", operation_id="macro_usa_cpi_yoy")
 async def macro_usa_cpi_yoy():
     """
     美国-物价水平-美国CPI年率报告

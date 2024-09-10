@@ -8,8 +8,7 @@ router = APIRouter()
 
 
 class StockIndexDaily(BaseModel):
-    symbol: str = Field(..., title="带市场标识的股票指数代码",
-                        description="例：sz399552")
+    symbol: str = Field(..., title="带市场标识的股票指数代码", description="例：sz399552")
 
 
 # 指数数据-新浪财经-历史行情数据
@@ -102,14 +101,10 @@ def stock_zh_index_daily_em(request: StockIndexDailyEM):
 
 
 class IndexZHAHist(BaseModel):
-    symbol: str = Field(..., title="带市场标识的股票指数代码",
-                        description="例：sz399552,支持 sz: 深交所, sh: 上交所, csi: 中信指数 + id(000905)")
-    period: str = Field(..., title="时间周期",
-                        description="可选择：天：daily, 周：weekly, 月：monthly")
-    start_date: str = Field(..., title="开始查询时间",
-                            description="例：19900101")
-    end_date: str = Field(..., title="结束查询时间",
-                          description="例：20500101")
+    symbol: str = Field(..., title="股票指数代码", description="例：399552")
+    period: str = Field(..., title="时间周期", description="可选择：天：daily, 周：weekly, 月：monthly")
+    start_date: str = Field(..., title="开始查询时间", description="例：19900101")
+    end_date: str = Field(..., title="结束查询时间", description="例：20500101")
 
 
 # 指数数据-东方财富-历史行情数据-通用
@@ -142,14 +137,10 @@ def index_zh_a_hist(request: IndexZHAHist):
 
 
 class IndexZHAHistMinEM(BaseModel):
-    symbol: str = Field(..., title="指数代码",
-                        description="例：399006")
-    period: str = Field(..., title="时间周期",
-                        description="可选择：一分钟：1, 五分钟：5, 十五分钟：15, 三十分钟：30, 六十分钟：60")
-    start_date: str = Field(..., title="开始查询时间",
-                            description="例：19900101")
-    end_date: str = Field(..., title="结束查询时间",
-                          description="例：20500101")
+    symbol: str = Field(..., title="指数代码", description="例：399006")
+    period: str = Field(..., title="时间周期", description="可选择：一分钟：1, 五分钟：5, 十五分钟：15, 三十分钟：30, 六十分钟：60")
+    start_date: str = Field(..., title="开始查询时间", description="例：19900101")
+    end_date: str = Field(..., title="结束查询时间", description="例：20500101")
 
 
 # 指数数据-东方财富-历史行情数据-通用

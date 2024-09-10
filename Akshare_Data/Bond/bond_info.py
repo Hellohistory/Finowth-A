@@ -49,8 +49,7 @@ def bond_info_cm(request: BondInfo):
 
 
 class BondInfoDetail(BaseModel):
-    symbol: str = Field(..., title="债券简称",
-                        description="例：19万林投资CP001，可通过bond_info_cm查询")
+    symbol: str = Field(..., title="债券简称", description="例：19万林投资CP001，可通过bond_info_cm查询")
 
 
 # 债券-债券基础信息

@@ -167,6 +167,31 @@ def stock_info_broker_sina(request: StockInfoBrokerSinaRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class StockZcfzBjEm(BaseModel):
+    date: str = Field(..., title="年报季报时间", description="从 20081231 开始，可输入 XXXX0331, XXXX0630, XXXX0930, XXXX1231")
+
+
+@router.post("/stock_zcfz_bj_em", operation_id="stock_zcfz_bj_em")
+def stock_zcfz_bj_em(request: StockZcfzBjEm):
+    """
+    东方财富-数据中心-年报季报-业绩快报-资产负债表
+
+    接口: stock_zcfz_bj_em
+
+    目标地址: https://data.eastmoney.com/bbsj/202003/zcfz.html
+
+    描述: 东方财富-数据中心-年报季报-业绩快报-资产负债表
+
+    限量: 单次获取指定 date 的资产负债表数据
+    """
+    try:
+        stock_zcfz_bj_em = ak.stock_zcfz_bj_em(date=request.date)
+        stock_zcfz_bj_em_df = sanitize_data_pandas(stock_zcfz_bj_em)
+        return stock_zcfz_bj_em_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import uvicorn
 

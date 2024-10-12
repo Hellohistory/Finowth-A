@@ -146,7 +146,7 @@ def stock_hk_ggt_components_em():
 
 
 class DongCaiSHKSymbolRequest(BaseModel):
-    stock: str = Field(..., title="资金类型", description="可选择'北向资金', '南向资金'")
+    stock: str = Field(..., title="资金类型", description="可选择北向资金, 南向资金")
 
 
 # 东方财富-数据中心-沪深港通-市场概括-分时数据

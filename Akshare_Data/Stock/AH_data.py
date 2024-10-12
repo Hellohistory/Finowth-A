@@ -73,7 +73,7 @@ def stock_zh_ah_name():
 
     目标地址: https://stockapp.finance.qq.com/mstats/#mod=list&id=hk_ah&module=HK&type=AH
 
-    描述: A+H 股数据是从腾讯财经获取的数据, 历史数据按日频率更新
+    描述: A+H 股数据是从腾讯财经获取的数据, 历史数据按日频率更新，代码与名称均使用港股称呼
 
     限量: 单次返回所有 A+H 上市公司的代码和名称
     """

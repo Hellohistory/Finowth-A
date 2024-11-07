@@ -1,4 +1,5 @@
 import akshare as ak
+import pandas as pd
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
@@ -23,9 +24,20 @@ async def option_cffex_sz50_list_sina():
     限量: 单次返回所有合约
     """
     try:
+        # 获取数据
         option_cffex_sz50_list_sina = ak.option_cffex_sz50_list_sina()
-        option_cffex_sz50_list_sina_df = sanitize_data_pandas(option_cffex_sz50_list_sina)
+
+        # 检查返回值是否为 DataFrame 类型，如果不是，则进行转换
+        if isinstance(option_cffex_sz50_list_sina, dict):
+            # 将字典转换为 DataFrame
+            option_cffex_sz50_list_sina_df = pd.DataFrame([option_cffex_sz50_list_sina])
+        else:
+            option_cffex_sz50_list_sina_df = option_cffex_sz50_list_sina
+
+        # 清理数据并返回
+        option_cffex_sz50_list_sina_df = sanitize_data_pandas(option_cffex_sz50_list_sina_df)
         return option_cffex_sz50_list_sina_df.to_dict(orient="records")
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

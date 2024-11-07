@@ -48,5 +48,5 @@ def news_xinwenlianbo_text(date: str):
 
 
 if __name__ == "__main__":
-    news_xinwenlianbo_text = news_xinwenlianbo_text(date="20240816")
+    news_xinwenlianbo_text = news_xinwenlianbo_text(date="20241012")
     print(news_xinwenlianbo_text)

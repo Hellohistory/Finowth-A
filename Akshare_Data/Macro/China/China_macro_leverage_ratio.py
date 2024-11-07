@@ -300,6 +300,29 @@ async def macro_china_fx_gold():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# 中国央行决议报告
+@router.get("/macro_bank_china_interest_rate",
+            operation_id="macro_bank_china_interest_rate")
+async def macro_bank_china_interest_rate():
+    """
+    中国央行决议报告
+
+    接口: macro_bank_china_interest_rate
+
+    目标地址: https://datacenter.jin10.com/reportType/dc_china_interest_rate_decision
+
+    描述: 中国央行决议报告, 数据区间从 19910105-至今
+
+    限量: 单次返回所有历史数据
+    """
+    try:
+        macro_bank_china_interest_rate = ak.macro_bank_china_interest_rate()
+        macro_bank_china_interest_rate_df = sanitize_data_pandas(macro_bank_china_interest_rate)
+        return macro_bank_china_interest_rate_df.to_dict(orient="records")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import uvicorn
 
